@@ -1,4 +1,4 @@
-import CTASection from "@/components/AboutUsSectionComponents/CTASection"
+// import CTASection from "@/components/AboutUsSectionComponents/CTASection"
 import DevelopmentApproach from "@/components/AboutUsSectionComponents/DevelopmentApproach"
 import LocationAvailability from "@/components/AboutUsSectionComponents/LocationAvailability"
 import PersonalStory from "@/components/AboutUsSectionComponents/PersonalStory"
