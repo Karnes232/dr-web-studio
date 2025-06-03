@@ -10,7 +10,7 @@ import WhyChooseUs from "@/components/AboutUsSectionComponents/WhyChooseUs"
 import React from "react"
 
 
-export default function AboutUs({params}: {params: {slug: string}}) {
+export default function AboutUs() {
   return (
     <section id="about" className="py-16 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
