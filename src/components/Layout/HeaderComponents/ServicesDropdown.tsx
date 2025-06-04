@@ -1,6 +1,10 @@
 import { ChevronDown } from "lucide-react"
 import React from "react"
 
+import { usePathname } from "next/navigation"
+import { languages, fallbackLng } from "@/i18n/settings"
+import useTranslations from "@/i18n/useTranslations"
+
 const ServicesDropdown = ({
   servicesOpen,
   setServicesOpen,
@@ -8,13 +12,26 @@ const ServicesDropdown = ({
   servicesOpen: boolean
   setServicesOpen: any
 }) => {
+  const pathname = usePathname()
+
+  const getCurrentLocale = () => {
+    const segments = pathname.split("/")
+    return languages.includes(segments[1]) ? segments[1] : fallbackLng
+  }
+
+  const currentLocale = getCurrentLocale()
+  const t = useTranslations(currentLocale)
+
+  const getLocalizedPath = (path: string) => {
+    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
+  }
   const services = [
-    { href: "#custom-websites", label: "Custom Websites" },
-    { href: "#ecommerce", label: "E-commerce" },
-    { href: "#landing-pages", label: "Landing Pages" },
-    { href: "#cms", label: "CMS Solutions" },
-    { href: "#maintenance", label: "Maintenance" },
-    { href: "#seo", label: "SEO & Performance" },
+    { href: "#custom-websites", label: t("services.custom_websites") },
+    { href: "#ecommerce", label: t("services.ecommerce") },
+    { href: "#landing-pages", label: t("services.landing_pages") },
+    { href: "#cms", label: t("services.cms") },
+    { href: "#maintenance", label: t("services.maintenance") },
+    { href: "#seo", label: t("services.seo") },
   ]
   return (
     <div className="relative">
@@ -22,7 +39,7 @@ const ServicesDropdown = ({
         onClick={() => setServicesOpen(!servicesOpen)}
         className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
       >
-        Services
+        {t("services.services")}
         <ChevronDown className="ml-1 h-4 w-4" />
       </button>
 

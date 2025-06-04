@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 import { client } from "@/sanity/lib/client"
 const FooterLogo = async () => {
-    const logo = await client.fetch(`
+  const logo = await client.fetch(`
         *[_type == "generalLayout"][0] {
           footerLogo {
             asset->{
@@ -22,7 +22,6 @@ const FooterLogo = async () => {
       `)
   return (
     <div className="flex items-center mb-6">
-
       <Image
         src={logo.footerLogo.asset.url}
         alt={logo.footerLogo.alt}
@@ -35,8 +34,7 @@ const FooterLogo = async () => {
            (max-width: 1024px) 100px,
            100px"
       />
- 
-  </div>
+    </div>
   )
 }
 

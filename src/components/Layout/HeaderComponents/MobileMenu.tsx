@@ -1,22 +1,38 @@
 import React from "react"
+import { usePathname } from "next/navigation"
+import { languages, fallbackLng } from "@/i18n/settings"
+import useTranslations from "@/i18n/useTranslations"
 
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
+  const pathname = usePathname()
+
+  const getCurrentLocale = () => {
+    const segments = pathname.split("/")
+    return languages.includes(segments[1]) ? segments[1] : fallbackLng
+  }
+
+  const currentLocale = getCurrentLocale()
+  const t = useTranslations(currentLocale)
+
+  const getLocalizedPath = (path: string) => {
+    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
+  }
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", label: t("navigation.home") },
+    { href: "#about", label: t("navigation.about") },
+    { href: "#portfolio", label: t("navigation.portfolio") },
+    { href: "#pricing", label: t("navigation.pricing") },
+    { href: "#blog", label: t("navigation.blog") },
+    { href: "#contact", label: t("navigation.contact") },
   ]
 
   const services = [
-    { href: "#custom-websites", label: "Custom Websites" },
-    { href: "#ecommerce", label: "E-commerce" },
-    { href: "#landing-pages", label: "Landing Pages" },
-    { href: "#cms", label: "CMS Solutions" },
-    { href: "#maintenance", label: "Maintenance" },
-    { href: "#seo", label: "SEO & Performance" },
+    { href: "#custom-websites", label: t("services.custom_websites") },
+    { href: "#ecommerce", label: t("services.ecommerce") },
+    { href: "#landing-pages", label: t("services.landing_pages") },
+    { href: "#cms", label: t("services.cms") },
+    { href: "#maintenance", label: t("services.maintenance") },
+    { href: "#seo", label: t("services.seo") },
   ]
 
   return (
@@ -40,7 +56,9 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
 
         {/* Mobile Services */}
         <div className="px-3 py-2">
-          <div className="text-slate-700 font-medium mb-2">Services</div>
+          <div className="text-slate-700 font-medium mb-2">
+            {t("services.services")}
+          </div>
           <div className="pl-4 space-y-1">
             {services.map((service, index) => (
               <a

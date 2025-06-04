@@ -1,6 +1,10 @@
 import React from "react"
 import ServicesDropdown from "./ServicesDropdown"
 
+import { usePathname } from "next/navigation"
+import { languages, fallbackLng } from "@/i18n/settings"
+import useTranslations from "@/i18n/useTranslations"
+
 const DesktopNavigation = ({
   servicesOpen,
   setServicesOpen,
@@ -8,13 +12,26 @@ const DesktopNavigation = ({
   servicesOpen: boolean
   setServicesOpen: any
 }) => {
+  const pathname = usePathname()
+
+  const getCurrentLocale = () => {
+    const segments = pathname.split("/")
+    return languages.includes(segments[1]) ? segments[1] : fallbackLng
+  }
+
+  const currentLocale = getCurrentLocale()
+  const t = useTranslations(currentLocale)
+
+  const getLocalizedPath = (path: string) => {
+    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
+  }
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", label: t("navigation.home") },
+    { href: "#about", label: t("navigation.about") },
+    { href: "#portfolio", label: t("navigation.portfolio") },
+    { href: "#pricing", label: t("navigation.pricing") },
+    { href: "#blog", label: t("navigation.blog") },
+    { href: "#contact", label: t("navigation.contact") },
   ]
   return (
     <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 ">

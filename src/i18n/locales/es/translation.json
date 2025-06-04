@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "portfolio": "Portafolio",
+    "pricing": "Precios",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "services": {
+    "services": "Servicios",
+    "custom_websites": "Sitios Web Personalizados",
+    "ecommerce": "Comercio Electrónico",
+    "landing_pages": "Páginas de Aterrizaje",
+    "cms": "Soluciones CMS",
+    "maintenance": "Mantenimiento",
+    "seo": "SEO y Rendimiento"
+  }
+}

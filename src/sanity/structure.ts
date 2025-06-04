@@ -10,4 +10,11 @@ export const structure: StructureResolver = S =>
         .child(
           S.editor().schemaType("generalLayout").documentId("generalLayout"),
         ),
+      S.listItem()
+        .title("Hero Section")
+        .child(
+          S.documentList()
+            .title("Hero Sections")
+            .filter('_type == "heroSection"'),
+        ),
     ])
