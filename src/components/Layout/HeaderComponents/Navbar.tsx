@@ -6,6 +6,7 @@ import MobileMenuToggle from "./MobileMenuToggle"
 import MobileMenu from "./MobileMenu"
 import CTAButtons from "./CTAButtons"
 import DesktopNavigation from "./DesktopNavigation"
+import LanguageSwitcher from "@/components/LanguageSwitcher" // Adjust path as needed
 
 const Navbar = ({ logo }: { logo: any }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,12 +27,23 @@ const Navbar = ({ logo }: { logo: any }) => {
             setServicesOpen={setServicesOpen}
           />
 
-          <CTAButtons className="hidden lg:flex" />
+          {/* Desktop: Language Switcher + CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSwitcher />
+            <div className="w-px h-6 bg-slate-300"></div>
+            <CTAButtons />
+          </div>
 
-          <MobileMenuToggle
-            isOpen={isOpen}
-            toggleMobileMenu={toggleMobileMenu}
-          />
+          {/* Mobile: Language Switcher + Menu Toggle */}
+          <div className="lg:hidden flex items-center space-x-3">
+            {/* <div className="sm:block hidden">
+              <LanguageSwitcher />
+            </div> */}
+            <MobileMenuToggle
+              isOpen={isOpen}
+              toggleMobileMenu={toggleMobileMenu}
+            />
+          </div>
         </div>
 
         <MobileMenu isOpen={isOpen} />

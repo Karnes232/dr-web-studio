@@ -2,7 +2,7 @@ import React from "react"
 import { usePathname } from "next/navigation"
 import { languages, fallbackLng } from "@/i18n/settings"
 import useTranslations from "@/i18n/useTranslations"
-
+import LanguageSwitcher from "@/components/LanguageSwitcher" 
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
   const pathname = usePathname()
 
@@ -56,9 +56,7 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
 
         {/* Mobile Services */}
         <div className="px-3 py-2">
-          <div className="text-slate-700 font-medium mb-2">
-            {t("services.services")}
-          </div>
+          <div className="text-slate-700 font-medium mb-2">{t("services.services")}</div>
           <div className="pl-4 space-y-1">
             {services.map((service, index) => (
               <a
@@ -69,6 +67,13 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
                 {service.label}
               </a>
             ))}
+          </div>
+        </div>
+
+        <div className="px-3 py-2 border-t border-slate-100 mt-2 pt-4">
+          <div className="text-slate-700 font-medium mb-3">Language</div>
+          <div className="pl-1">
+            <LanguageSwitcher />
           </div>
         </div>
 
