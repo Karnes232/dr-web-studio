@@ -5,9 +5,9 @@ import QuickServicesOverview from "@/components/ServicesOverview/QuickServicesOv
 export default function Home() {
   return (
     <main className="">
-      <HeroSection />
+      {/* <HeroSection />
       <QuickServicesOverview />
-      <TrustSignals />
+      <TrustSignals /> */}
     </main>
   )
 }
