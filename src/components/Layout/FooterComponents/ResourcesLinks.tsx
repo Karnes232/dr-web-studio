@@ -1,13 +1,17 @@
+"use client"
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 import { ExternalLink } from "lucide-react"
+
 const ResourcesLinks = () => {
+  const { currentLocale, t, getLocalizedPath } = useLocale()
   const resources = [
-    { href: "#questionnaire", label: "Website Questionnaire" },
-    { href: "#quote", label: "Get Free Quote" },
-    { href: "#case-studies", label: "Case Studies" },
-    { href: "#testimonials", label: "Client Reviews" },
-    { href: "#faq", label: "FAQ" },
-    { href: "#privacy", label: "Privacy Policy" },
+    { href: "#questionnaire", label: t("resources.website_questionnaire") },
+    { href: "#quote", label: t("resources.get_free_quote") },
+    { href: "#case-studies", label: t("resources.case_studies") },
+    { href: "#testimonials", label: t("resources.client_reviews") },
+    { href: "#faq", label: t("resources.faq") },
+    { href: "#privacy", label: t("resources.privacy_policy") },
   ]
   return (
     <div>

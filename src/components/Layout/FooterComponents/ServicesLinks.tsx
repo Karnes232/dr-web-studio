@@ -1,13 +1,16 @@
+"use client"
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 
 const ServicesLinks = () => {
+  const { currentLocale, t, getLocalizedPath } = useLocale()
   const services = [
-    { href: "#custom-websites", label: "Custom Websites" },
-    { href: "#ecommerce", label: "E-commerce Solutions" },
-    { href: "#landing-pages", label: "Landing Pages" },
-    { href: "#cms", label: "CMS Solutions" },
-    { href: "#maintenance", label: "Maintenance & Support" },
-    { href: "#seo", label: "SEO & Performance" },
+    { href: "#custom-websites", label: t("services.custom_websites") },
+    { href: "#ecommerce", label: t("services.ecommerce") },
+    { href: "#landing-pages", label: t("services.landing_pages") },
+    { href: "#cms", label: t("services.cms") },
+    { href: "#maintenance", label: t("services.maintenance") },
+    { href: "#seo", label: t("services.seo") },
   ]
   return (
     <div>

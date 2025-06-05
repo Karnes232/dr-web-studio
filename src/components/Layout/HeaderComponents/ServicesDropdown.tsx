@@ -1,9 +1,6 @@
 import { ChevronDown } from "lucide-react"
 import React from "react"
-
-import { usePathname } from "next/navigation"
-import { languages, fallbackLng } from "@/i18n/settings"
-import useTranslations from "@/i18n/useTranslations"
+import { useLocale } from "@/i18n/useLocale"
 
 const ServicesDropdown = ({
   servicesOpen,
@@ -12,19 +9,8 @@ const ServicesDropdown = ({
   servicesOpen: boolean
   setServicesOpen: any
 }) => {
-  const pathname = usePathname()
+  const { t } = useLocale()
 
-  const getCurrentLocale = () => {
-    const segments = pathname.split("/")
-    return languages.includes(segments[1]) ? segments[1] : fallbackLng
-  }
-
-  const currentLocale = getCurrentLocale()
-  const t = useTranslations(currentLocale)
-
-  const getLocalizedPath = (path: string) => {
-    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
-  }
   const services = [
     { href: "#custom-websites", label: t("services.custom_websites") },
     { href: "#ecommerce", label: t("services.ecommerce") },

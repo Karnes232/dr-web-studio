@@ -15,5 +15,15 @@
     "cms": "Soluciones CMS",
     "maintenance": "Mantenimiento",
     "seo": "SEO y Rendimiento"
+  },
+  "resources": {
+    "website_questionnaire": "Cuestionario de Sitio Web",
+    "get_free_quote": "Obtener Cotización Gratis",
+    "case_studies": "Estudios de Caso",
+    "client_reviews": "Reseñas de Clientes",
+    "faq": "Preguntas Frecuentes",
+    "privacy_policy": "Política de Privacidad",
+    "terms_of_service": "Términos de Servicio",
+    "sitemap": "Mapa del Sitio"
   }
 }

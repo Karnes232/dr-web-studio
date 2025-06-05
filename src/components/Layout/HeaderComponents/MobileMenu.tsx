@@ -1,22 +1,10 @@
 import React from "react"
-import { usePathname } from "next/navigation"
-import { languages, fallbackLng } from "@/i18n/settings"
-import useTranslations from "@/i18n/useTranslations"
+import { useLocale } from "@/i18n/useLocale"
 import LanguageSwitcher from "@/components/LanguageSwitcher" 
+
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
-  const pathname = usePathname()
+  const { t } = useLocale()
 
-  const getCurrentLocale = () => {
-    const segments = pathname.split("/")
-    return languages.includes(segments[1]) ? segments[1] : fallbackLng
-  }
-
-  const currentLocale = getCurrentLocale()
-  const t = useTranslations(currentLocale)
-
-  const getLocalizedPath = (path: string) => {
-    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
-  }
   const navItems = [
     { href: "#home", label: t("navigation.home") },
     { href: "#about", label: t("navigation.about") },
@@ -43,7 +31,7 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
                 ${isOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-10 opacity-0 invisible"}
             `}
     >
-      <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-200">
+      <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-200 max-h-[calc(100vh-7rem)] md:max-h-[calc(100vh-9rem)] overflow-y-auto">
         {navItems.map((item, index) => (
           <a
             key={index}
@@ -53,7 +41,6 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
             {item.label}
           </a>
         ))}
-
         {/* Mobile Services */}
         <div className="px-3 py-2">
           <div className="text-slate-700 font-medium mb-2">{t("services.services")}</div>

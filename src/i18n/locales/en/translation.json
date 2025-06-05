@@ -15,5 +15,16 @@
     "cms": "CMS Solutions",
     "maintenance": "Maintenance",
     "seo": "SEO & Performance"
+  },
+  "resources": {
+    "website_questionnaire": "Website Questionnaire",
+    "get_free_quote": "Get Free Quote",
+    "case_studies": "Case Studies",
+    "client_reviews": "Client Reviews",
+    "faq": "FAQ",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "sitemap": "Sitemap"
+    
   }
 }

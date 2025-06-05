@@ -1,13 +1,16 @@
+"use client"
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 
 const QuickLinks = () => {
+  const { currentLocale, t, getLocalizedPath } = useLocale()
   const links = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About Us" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", label: t("navigation.home") },
+    { href: "#about", label: t("navigation.about") },
+    { href: "#portfolio", label: t("navigation.portfolio") },
+    { href: "#pricing", label: t("navigation.pricing") },
+    { href: "#blog", label: t("navigation.blog") },
+    { href: "#contact", label: t("navigation.contact") },
   ]
 
   return (
