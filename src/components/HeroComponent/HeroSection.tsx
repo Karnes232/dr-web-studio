@@ -1,17 +1,25 @@
+"use client"
 import React from "react"
-import { ArrowRight, Code, Star } from "lucide-react"
-import { client } from "@/sanity/lib/client"
+import { ArrowRight, Star } from "lucide-react"
+
 import Image from "next/image"
-const HeroSection = async ({
+import { useLocale } from "@/i18n/useLocale"
+// Import Swiper React components
+
+import VisualElement from "./VisualElement"
+
+const HeroSection = ({
   heading,
   subheading,
   backgroundImage,
+  visualElements,
 }: {
   heading: any
   subheading: string
   backgroundImage: any
+  visualElements: any[]
 }) => {
-  console.log(backgroundImage.asset.url)
+  const { currentLocale, t, getLocalizedPath } = useLocale()
 
   return (
     <section className="relative text-white overflow-hidden min-h-screen flex items-center">
@@ -62,7 +70,7 @@ const HeroSection = async ({
                 href="#quote"
                 className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
-                Get a Free Quote
+                {t("resources.get_free_quote")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
 
@@ -70,7 +78,7 @@ const HeroSection = async ({
                 href="#questionnaire"
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
-                Start Your Project
+                {t("resources.start_project")}
               </a>
             </div>
 
@@ -107,37 +115,10 @@ const HeroSection = async ({
           </div>
 
           {/* Visual Element */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <div className="bg-gradient-to-br from-orange-400 to-teal-500 rounded-xl p-8 text-center shadow-xl">
-                <Code className="w-20 h-20 mx-auto mb-6 text-white drop-shadow-lg" />
-                <h3 className="text-2xl font-bold text-white mb-3">
-                  Modern Web Solutions
-                </h3>
-                <p className="text-orange-100 text-lg">
-                  Built with Next.js, React & Tailwind CSS
-                </p>
-                <div className="mt-4 flex justify-center space-x-2">
-                  <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-white/70 rounded-full animate-pulse delay-75"></div>
-                  <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse delay-150"></div>
-                </div>
-              </div>
-
-              {/* Additional tech badges */}
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white border border-white/20">
-                  Responsive Design
-                </span>
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white border border-white/20">
-                  SEO Optimized
-                </span>
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white border border-white/20">
-                  Fast Loading
-                </span>
-              </div>
-            </div>
-          </div>
+          <VisualElement
+            visualElements={visualElements}
+            currentLocale={currentLocale}
+          />
         </div>
       </div>
     </section>

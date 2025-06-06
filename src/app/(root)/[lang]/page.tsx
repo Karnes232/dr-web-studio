@@ -10,6 +10,25 @@ async function getContent() {
 *[_type == "heroSection"][0] {
 heading,
 subheading,
+visualElements[]-> {
+  _id,
+  title,
+  icon {
+    asset-> {
+      url,
+      metadata {
+        dimensions
+      }
+    },
+    alt
+  },
+  gradientFrom,
+  gradientTo,
+  heading,
+  description,
+  badges,
+  order
+},
 backgroundImage {
   asset->{
     url,
@@ -45,6 +64,7 @@ export default async function Home({ params }: PageProps) {
           pageData.subheading ? pageData.subheading[lang] : pageData.subheading
         }
         backgroundImage={pageData.backgroundImage}
+        visualElements={pageData.visualElements}
       />
       <QuickServicesOverview />
       <TrustSignals />

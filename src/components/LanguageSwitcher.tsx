@@ -3,7 +3,7 @@
 import { useRouter, usePathname } from "next/navigation"
 import { languages, fallbackLng } from "@/i18n/settings"
 import { useState, useRef, useEffect } from "react"
-import { Globe, ChevronDown } from 'lucide-react'
+import { Globe, ChevronDown } from "lucide-react"
 
 export default function LanguageSwitcher() {
   const router = useRouter()
@@ -73,8 +73,12 @@ export default function LanguageSwitcher() {
         >
           <Globe className="h-4 w-4" />
           <span className="text-lg">{currentLangOption.flag}</span>
-          <span className="text-sm font-medium">{currentLangOption.code.toUpperCase()}</span>
-          <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+          <span className="text-sm font-medium">
+            {currentLangOption.code.toUpperCase()}
+          </span>
+          <ChevronDown
+            className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          />
         </button>
       </div>
 
@@ -86,7 +90,9 @@ export default function LanguageSwitcher() {
         >
           <Globe className="h-5 w-5" />
           <span className="text-lg">{currentLangOption.flag}</span>
-          <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+          <ChevronDown
+            className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          />
         </button>
       </div>
 
@@ -100,7 +106,7 @@ export default function LanguageSwitcher() {
                 key={lng.code}
                 onClick={() => handleLanguageChange(lng.code)}
                 className={`w-full text-left px-4 py-2 flex items-center space-x-3 hover:bg-orange-50 hover:text-orange-600 transition-colors ${
-                  isActive ? 'bg-orange-50 text-orange-600' : 'text-slate-700'
+                  isActive ? "bg-orange-50 text-orange-600" : "text-slate-700"
                 }`}
               >
                 <span className="text-lg">{lng.flag}</span>

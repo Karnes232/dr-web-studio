@@ -198,12 +198,19 @@ export default defineType({
             list: [
               { title: "Primary", value: "primary" },
               { title: "Secondary", value: "secondary" },
-              { title: "Outline", value: "outline" },
             ],
           },
-          initialValue: "primary",
         }),
       ],
+    }),
+    defineField({
+      name: "visualElements",
+      title: "Visual Elements",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "heroVisualElement" }] }],
+      validation: rule => rule.min(1).max(3),
+      description:
+        "Add between 1 and 3 visual elements to display in the slider",
     }),
     defineField({
       name: "textAlignment",

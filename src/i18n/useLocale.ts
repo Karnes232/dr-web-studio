@@ -20,6 +20,6 @@ export function useLocale() {
   return {
     currentLocale,
     t,
-    getLocalizedPath
+    getLocalizedPath,
   }
-} 
+}
