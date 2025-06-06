@@ -14,7 +14,7 @@ export function useLocale() {
   const t = useTranslations(currentLocale)
 
   const getLocalizedPath = (path: string) => {
-    return currentLocale === fallbackLng ? path : `/${currentLocale}${path}`
+    return `/${currentLocale}${path}`
   }
 
   return {

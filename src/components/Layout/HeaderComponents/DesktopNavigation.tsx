@@ -1,6 +1,7 @@
 import React from "react"
 import ServicesDropdown from "./ServicesDropdown"
 import { useLocale } from "@/i18n/useLocale"
+import Link from "next/link"
 
 const DesktopNavigation = ({
   servicesOpen,
@@ -9,26 +10,26 @@ const DesktopNavigation = ({
   servicesOpen: boolean
   setServicesOpen: any
 }) => {
-  const { currentLocale, t, getLocalizedPath } = useLocale()
+  const { t, getLocalizedPath } = useLocale()
 
   const navItems = [
-    { href: "#home", label: t("navigation.home") },
-    { href: "#about", label: t("navigation.about") },
-    { href: "#portfolio", label: t("navigation.portfolio") },
-    { href: "#pricing", label: t("navigation.pricing") },
-    { href: "#blog", label: t("navigation.blog") },
-    { href: "#contact", label: t("navigation.contact") },
+    { href: getLocalizedPath("/"), label: t("navigation.home") },
+    { href: getLocalizedPath("/about-us"), label: t("navigation.about") },
+    { href: getLocalizedPath("/portfolio"), label: t("navigation.portfolio") },
+    { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
+    { href: getLocalizedPath("/blog"), label: t("navigation.blog") },
+    { href: getLocalizedPath("/contact"), label: t("navigation.contact") },
   ]
   return (
     <div className="hidden lg:flex items-center space-x-6 xl:space-x-4 ">
       {navItems.slice(0, 2).map((item, index) => (
-        <a
+        <Link
           key={index}
           href={item.href}
           className="text-slate-700 hover:text-orange-500 font-medium xl:text-lg transition-colors duration-200"
         >
           {item.label}
-        </a>
+        </Link>
       ))}
 
       <ServicesDropdown
@@ -37,13 +38,13 @@ const DesktopNavigation = ({
       />
 
       {navItems.slice(2).map((item, index) => (
-        <a
+        <Link
           key={index + 2}
           href={item.href}
           className="text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"
         >
           {item.label}
-        </a>
+        </Link>
       ))}
     </div>
   )

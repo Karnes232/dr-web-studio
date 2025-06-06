@@ -3,24 +3,33 @@ import { useLocale } from "@/i18n/useLocale"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
-  const { t } = useLocale()
+  const { t, getLocalizedPath } = useLocale()
 
   const navItems = [
-    { href: "#home", label: t("navigation.home") },
-    { href: "#about", label: t("navigation.about") },
-    { href: "#portfolio", label: t("navigation.portfolio") },
-    { href: "#pricing", label: t("navigation.pricing") },
-    { href: "#blog", label: t("navigation.blog") },
-    { href: "#contact", label: t("navigation.contact") },
+    { href: getLocalizedPath("/"), label: t("navigation.home") },
+    { href: getLocalizedPath("/about-us"), label: t("navigation.about") },
+    { href: getLocalizedPath("/portfolio"), label: t("navigation.portfolio") },
+    { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
+    { href: getLocalizedPath("/blog"), label: t("navigation.blog") },
+    { href: getLocalizedPath("/contact"), label: t("navigation.contact") },
   ]
 
   const services = [
-    { href: "#custom-websites", label: t("services.custom_websites") },
-    { href: "#ecommerce", label: t("services.ecommerce") },
-    { href: "#landing-pages", label: t("services.landing_pages") },
-    { href: "#cms", label: t("services.cms") },
-    { href: "#maintenance", label: t("services.maintenance") },
-    { href: "#seo", label: t("services.seo") },
+    {
+      href: getLocalizedPath("/our-services"),
+      label: t("services.custom_websites"),
+    },
+    { href: getLocalizedPath("/our-services"), label: t("services.ecommerce") },
+    {
+      href: getLocalizedPath("/our-services"),
+      label: t("services.landing_pages"),
+    },
+    { href: getLocalizedPath("/our-services"), label: t("services.cms") },
+    {
+      href: getLocalizedPath("/our-services"),
+      label: t("services.maintenance"),
+    },
+    { href: getLocalizedPath("/our-services"), label: t("services.seo") },
   ]
 
   return (
