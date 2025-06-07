@@ -1,8 +1,16 @@
 import CustomQuoteCard from "@/components/PricingPageComponents/CustomQuoteCard"
 import PricingCard from "@/components/PricingPageComponents/PricingCard"
 import PricingFAQ from "@/components/PricingPageComponents/PricingFAQ"
+import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Globe, MessageCircle, ShoppingCart, Zap } from "lucide-react"
+import { Metadata } from "next"
 import React from "react"
+
+interface PageProps {
+  params: Promise<{
+    lang: "en" | "es"
+  }>
+}
 
 type PricingPackage = {
   title: string
@@ -83,67 +91,106 @@ const pricingData: PricingPackage[] = [
   },
 ]
 
-export default function Pricing() {
+export default async function Pricing({ params }: PageProps) {
+  const { lang } = await params
+  const seoData = await getSeoSchema("pricing")
+
   return (
-    <section
-      id="pricing"
-      className="py-20 bg-gradient-to-br from-gray-50 to-white"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose the perfect package for your business needs. All prices
-            include design, development, and post-launch support.
-          </p>
+    <>
+      {seoData?.structuredData?.[lang] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
+        />
+      )}
+      <section
+        id="pricing"
+        className="py-20 bg-gradient-to-br from-gray-50 to-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose the perfect package for your business needs. All prices
+              include design, development, and post-launch support.
+            </p>
 
-          {/* Price Toggle could go here for monthly/yearly if needed */}
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {pricingData.map((pkg, index) => (
-            <PricingCard key={index} {...pkg} />
-          ))}
-        </div>
-
-        {/* Custom Quote Card */}
-        <div className="max-w-md mx-auto mb-16">
-          <CustomQuoteCard />
-        </div>
-
-        {/* Additional CTA Section */}
-        <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-8 text-center text-white mb-16">
-          <h3 className="text-2xl font-bold mb-4">
-            Not sure which package is right for you?
-          </h3>
-          <p className="text-orange-100 mb-6 max-w-2xl mx-auto">
-            Take our quick questionnaire to get a personalized recommendation
-            and custom quote tailored to your specific business needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#questionnaire"
-              className="bg-white text-orange-600 px-8 py-3 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
-            >
-              Take Questionnaire
-            </a>
-            <a
-              href="https://wa.me/18091234567"
-              className="bg-teal-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-teal-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center"
-            >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              WhatsApp Us
-            </a>
+            {/* Price Toggle could go here for monthly/yearly if needed */}
           </div>
-        </div>
 
-        {/* FAQ Section */}
-        <PricingFAQ />
-      </div>
-    </section>
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            {pricingData.map((pkg, index) => (
+              <PricingCard key={index} {...pkg} />
+            ))}
+          </div>
+
+          {/* Custom Quote Card */}
+          <div className="max-w-md mx-auto mb-16">
+            <CustomQuoteCard />
+          </div>
+
+          {/* Additional CTA Section */}
+          <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-8 text-center text-white mb-16">
+            <h3 className="text-2xl font-bold mb-4">
+              Not sure which package is right for you?
+            </h3>
+            <p className="text-orange-100 mb-6 max-w-2xl mx-auto">
+              Take our quick questionnaire to get a personalized recommendation
+              and custom quote tailored to your specific business needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#questionnaire"
+                className="bg-white text-orange-600 px-8 py-3 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                Take Questionnaire
+              </a>
+              <a
+                href="https://wa.me/18091234567"
+                className="bg-teal-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-teal-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center"
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <PricingFAQ />
+        </div>
+      </section>
+    </>
   )
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params
+  const seoData = await getSEO("pricing")
+
+  if (!seoData) return {}
+
+  return {
+    title: seoData.meta[lang]?.title,
+    description: seoData.meta[lang]?.description,
+    openGraph: {
+      title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
+      description:
+        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
+      images: seoData.openGraph.image ? [seoData.openGraph.image] : [],
+    },
+    robots: {
+      index: !seoData.noIndex,
+      follow: !seoData.noFollow,
+    },
+    ...(seoData.canonicalUrl && { canonical: seoData.canonicalUrl }),
+    alternates: {
+      canonical: seoData.canonicalUrl,
+    },
+  }
 }
