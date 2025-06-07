@@ -14,7 +14,7 @@ const DesktopNavigation = ({
 
   const navItems = [
     { href: getLocalizedPath("/"), label: t("navigation.home") },
-    { href: getLocalizedPath("/about-us"), label: t("navigation.about") },
+    { href: getLocalizedPath("/about-me"), label: t("navigation.about") },
     { href: getLocalizedPath("/portfolio"), label: t("navigation.portfolio") },
     { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
     { href: getLocalizedPath("/blog"), label: t("navigation.blog") },

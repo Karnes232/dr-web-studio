@@ -29,7 +29,8 @@ export default defineType({
         list: [
           { title: "Home", value: "home" },
           { title: "About", value: "about" },
-          { title: "Projects", value: "projects" },
+          { title: "Portfolio", value: "portfolio" },
+          { title: "Pricing", value: "pricing" },
           { title: "Contact", value: "contact" },
           { title: "Blog", value: "blog" },
           { title: "Services", value: "services" },
