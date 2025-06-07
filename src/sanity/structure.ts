@@ -11,10 +11,13 @@ export const structure: StructureResolver = S =>
           S.editor().schemaType("generalLayout").documentId("generalLayout"),
         ),
       S.listItem()
-        .title("Hero Section")
+        .title("Home Page")
         .child(
           S.documentList()
             .title("Hero Sections")
             .filter('_type == "heroSection"'),
         ),
+      S.listItem()
+        .title("SEO")
+        .child(S.documentList().title("SEO").filter('_type == "seo"')),
     ])
