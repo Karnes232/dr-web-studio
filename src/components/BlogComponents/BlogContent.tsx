@@ -6,93 +6,32 @@ import FeaturedPost from "./FeaturedPost"
 import NewsletterSignup from "./NewsletterSignup"
 import BlogCard from "./BlogCard"
 import Pagination from "./Pagination"
+import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blogHeader"
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Top 5 Website Features Every Business Needs",
-    slug: "top-5-website-features-every-business-needs",
-    excerpt:
-      "Discover the essential features that make websites successful for businesses in 2024. From responsive design to SEO optimization.",
-    content:
-      "Every successful business website needs these crucial features to compete effectively online...",
-    category: "Business Tips",
-    author: "DR Web Studio",
-    publishDate: "2024-03-15",
-    readTime: "5 min read",
-    views: 1250,
-    image: "/blog/website-features.jpg",
-    tags: ["Web Design", "Business", "UX", "Features"],
-  },
-  {
-    id: 2,
-    title: "Why You Should Use Next.js for Your Next Website",
-    slug: "why-use-nextjs-for-your-website",
-    excerpt:
-      "Learn about the benefits of Next.js for modern web development and why it's perfect for business websites.",
-    content: "Next.js has revolutionized how we build modern websites...",
-    category: "Technology",
-    author: "DR Web Studio",
-    publishDate: "2024-03-10",
-    readTime: "7 min read",
-    views: 890,
-    image: "/blog/nextjs-benefits.jpg",
-    tags: ["Next.js", "React", "Development", "Performance"],
-  },
-  {
-    id: 3,
-    title: "How to Prepare Content for a New Website",
-    slug: "how-to-prepare-content-for-new-website",
-    excerpt:
-      "A comprehensive guide to organizing and preparing your content before starting your website project.",
-    content:
-      "Proper content preparation is crucial for a successful website launch...",
-    category: "Planning",
-    author: "DR Web Studio",
-    publishDate: "2024-03-05",
-    readTime: "6 min read",
-    views: 734,
-    image: "/blog/content-preparation.jpg",
-    tags: ["Content", "Planning", "Website Launch", "Strategy"],
-  },
-  {
-    id: 4,
-    title: "Building a Website for a Local Business in the DR",
-    slug: "building-website-local-business-dominican-republic",
-    excerpt:
-      "Special considerations and strategies for creating effective websites for Dominican Republic businesses.",
-    content: "Local businesses in the Dominican Republic have unique needs...",
-    category: "Local Business",
-    author: "DR Web Studio",
-    publishDate: "2024-02-28",
-    readTime: "8 min read",
-    views: 1156,
-    image: "/blog/dr-local-business.jpg",
-    tags: ["Dominican Republic", "Local Business", "Marketing", "SEO"],
-  },
-]
 
-const categories = [
-  "All",
-  "Business Tips",
-  "Technology",
-  "Planning",
-  "Local Business",
-]
-
-const BlogContent = () => {
+const BlogContent = ({ 
+  categories, 
+  lang, 
+  blogPosts,
+  header 
+}: { 
+  categories: any
+  lang: "en" | "es"
+  blogPosts: any
+  header: BlogHeaderType
+}) => {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 6
-
   // Filter posts
-  const filteredPosts = blogPosts.filter(post => {
+  const filteredPosts = blogPosts.filter((post: any) => {
     const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+      post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.description[lang].toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory =
-      selectedCategory === "All" || post.category === selectedCategory
+      selectedCategory === "All" || 
+      post.categories.some((cat: any) => cat.title[lang] === selectedCategory)
     return matchesSearch && matchesCategory
   })
 
@@ -103,33 +42,38 @@ const BlogContent = () => {
     startIndex,
     startIndex + postsPerPage,
   )
-  const featuredPost = blogPosts[0]
+
+  // Get featured post (first post that has featured = true)
+  const featuredPost = blogPosts.find((post: any) => post.featured === true) || blogPosts[0]
+
   return (
     <section
       id="blogSection"
-      className="min-h-screen  bg-gradient-to-br from-slate-50 to-orange-50"
+      className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50"
     >
-      <BlogHeader />
+      <BlogHeader header={header} lang={lang} />
       <BlogFilters
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        categories={categories}
+        lang={lang}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Featured Post */}
         {searchTerm === "" &&
           selectedCategory === "All" &&
-          currentPage === 1 && <FeaturedPost post={featuredPost} />}
-
-        {/* Newsletter Signup */}
-        {/* <NewsletterSignup /> */}
+          currentPage === 1 && 
+          featuredPost && (
+            <FeaturedPost post={featuredPost} lang={lang} />
+          )}
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedPosts.map(post => (
-            <BlogCard key={post.id} post={post} />
+          {paginatedPosts.map((post: any) => (
+            <BlogCard key={post.slug.current} post={post} lang={lang} />
           ))}
         </div>
 

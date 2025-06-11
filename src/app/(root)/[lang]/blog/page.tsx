@@ -1,5 +1,8 @@
 import BlogContent from "@/components/BlogComponents/BlogContent"
+import { getAllBlogPosts } from "@/sanity/queries/blog"
+import { getAllCategories } from "@/sanity/queries/categories"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getBlogHeader } from "@/sanity/queries/blogHeader"
 import { Metadata } from "next"
 import React from "react"
 
@@ -12,6 +15,13 @@ interface PageProps {
 export default async function Blog({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("blog")
+  const headerData = await getBlogHeader()
+  const blogPosts = await getAllBlogPosts()
+  const categories = await getAllCategories()
+
+  if (!headerData) {
+    throw new Error("Blog header data not found")
+  }
 
   return (
     <>
@@ -21,7 +31,12 @@ export default async function Blog({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <BlogContent />
+      <BlogContent 
+        categories={categories} 
+        lang={lang} 
+        blogPosts={blogPosts} 
+        header={headerData}
+      />
     </>
   )
 }

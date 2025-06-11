@@ -28,5 +28,11 @@
     "start_project": "Start Project",
     "get_quote": "Get Quote",
     "language": "Language"
+  },
+  "blog": {
+    "all": "All",
+    "readFullArticle": "Read Full Article",
+    "searchPlaceholder": "Search articles...",
+    "backToBlog": "Back to Blog"
   }
 }

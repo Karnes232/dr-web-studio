@@ -28,5 +28,11 @@
     "start_project": "Iniciar Proyecto",
     "get_quote": "Obtener Cotización",
     "language": "Idioma"
+  },
+  "blog": {
+    "all": "Todos",
+    "readFullArticle": "Leer Artículo Completo",
+    "searchPlaceholder": "Buscar artículos...",
+    "backToBlog": "Volver al Blog"
   }
 }
