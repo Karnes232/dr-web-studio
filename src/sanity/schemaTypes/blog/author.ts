@@ -9,7 +9,7 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'slug',
@@ -19,7 +19,7 @@ export default defineType({
         source: 'name',
         maxLength: 96,
       },
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'image',
@@ -37,18 +37,18 @@ export default defineType({
               name: 'en',
               title: 'English Alt Text',
               type: 'string',
-              validation: Rule => Rule.required()
+              validation: rule => rule.required()
             },
             {
               name: 'es',
               title: 'Spanish Alt Text',
               type: 'string',
-              validation: Rule => Rule.required()
+              validation: rule => rule.required()
             }
           ]
         }
       ],
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'bio',
@@ -66,7 +66,7 @@ export default defineType({
               lists: [],
             }
           ],
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         },
         {
           name: 'es',
@@ -79,7 +79,7 @@ export default defineType({
               lists: [],
             }
           ],
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         }
       ]
     }),

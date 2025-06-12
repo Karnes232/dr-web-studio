@@ -14,13 +14,13 @@ export default defineType({
           name: 'en',
           title: 'English',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         },
         {
           name: 'es',
           title: 'Spanish',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         }
       ]
     }),
@@ -34,14 +34,14 @@ export default defineType({
           title: 'English',
           type: 'text',
           rows: 3,
-          validation: Rule => Rule.required().max(200)
+          validation: rule => rule.required().max(200)
         },
         {
           name: 'es',
           title: 'Spanish',
           type: 'text',
           rows: 3,
-          validation: Rule => Rule.required().max(200)
+          validation: rule => rule.required().max(200)
         }
       ]
     }),
@@ -49,7 +49,7 @@ export default defineType({
       name: 'readTime',
       title: 'Read Time',
       type: 'number',
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'featured',
@@ -71,7 +71,7 @@ export default defineType({
           options: {
             layout: 'tags'
           },
-          validation: Rule => Rule.required().min(1).unique()
+          validation: rule => rule.required().min(1).unique()
         },
         {
           name: 'es',
@@ -81,7 +81,7 @@ export default defineType({
           options: {
             layout: 'tags'
           },
-          validation: Rule => Rule.required().min(1).unique()
+          validation: rule => rule.required().min(1).unique()
         }
       ]
     }),
@@ -93,27 +93,27 @@ export default defineType({
         source: 'title.en',
         maxLength: 96,
       },
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'blogCategory'}}],
-      validation: Rule => Rule.required().min(1).unique()
+      validation: rule => rule.required().min(1).unique()
     }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'mainImage',
@@ -131,18 +131,18 @@ export default defineType({
               name: 'en',
               title: 'English Alt Text',
               type: 'string',
-              validation: Rule => Rule.required()
+              validation: rule => rule.required()
             },
             {
               name: 'es',
               title: 'Spanish Alt Text',
               type: 'string',
-              validation: Rule => Rule.required()
+              validation: rule => rule.required()
             }
           ]
         }
       ],
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'body',
@@ -157,7 +157,7 @@ export default defineType({
             { type: 'block' },
             { type: 'image' }
           ],
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         },
         {
           name: 'es',
@@ -167,7 +167,7 @@ export default defineType({
             { type: 'block' },
             { type: 'image' }
           ],
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         }
       ]
     })
@@ -175,12 +175,8 @@ export default defineType({
   preview: {
     select: {
       title: 'title.en',
-      author: 'author.name',
+      subtitle: 'description.en',
       media: 'mainImage'
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
     }
   }
 })

@@ -14,13 +14,13 @@ export default defineType({
           name: 'en',
           title: 'English',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         },
         {
           name: 'es',
           title: 'Spanish',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         }
       ]
     }),
@@ -32,7 +32,7 @@ export default defineType({
         source: 'title.en',
         maxLength: 96,
       },
-      validation: Rule => Rule.required()
+      validation: rule => rule.required()
     }),
     defineField({
       name: 'description',
@@ -43,13 +43,13 @@ export default defineType({
           name: 'en',
           title: 'English Description',
           type: 'text',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         },
         {
           name: 'es',
           title: 'Spanish Description',
           type: 'text',
-          validation: Rule => Rule.required()
+          validation: rule => rule.required()
         }
       ]
     }),

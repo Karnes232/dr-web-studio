@@ -1,6 +1,7 @@
 // schemas/generalLayout.ts
 import { defineField, defineType } from "sanity"
 import { DocumentIcon } from "@sanity/icons"
+
 export default defineType({
   name: "generalLayout",
   title: "General Layout",
@@ -11,13 +12,13 @@ export default defineType({
       name: "companyName",
       title: "Company Name",
       type: "string",
-      validation: Rule => Rule.required(),
+      validation: rule => rule.required(),
     }),
     defineField({
       name: "email",
       title: "Email",
       type: "string",
-      validation: Rule => Rule.required().email(),
+      validation: rule => rule.required().email(),
     }),
     defineField({
       name: "telephone",
@@ -62,7 +63,7 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Important for SEO and accessibility",
-          validation: Rule => Rule.required(),
+          validation: rule => rule.required(),
         }),
       ],
     }),
@@ -79,7 +80,7 @@ export default defineType({
           title: "Alternative Text",
           type: "string",
           description: "Important for SEO and accessibility",
-          validation: Rule => Rule.required(),
+          validation: rule => rule.required(),
         }),
       ],
     }),

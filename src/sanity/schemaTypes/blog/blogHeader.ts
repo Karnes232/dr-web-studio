@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, Rule } from 'sanity'
 
 export default defineType({
   name: 'blogHeader',
@@ -14,13 +14,13 @@ export default defineType({
           name: 'en',
           title: 'English',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: (rule: Rule) => rule.required()
         },
         {
           name: 'es',
           title: 'Spanish',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: (rule: Rule) => rule.required()
         }
       ]
     }),
@@ -33,13 +33,13 @@ export default defineType({
           name: 'en',
           title: 'English',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: (rule: Rule) => rule.required()
         },
         {
           name: 'es',
           title: 'Spanish',
           type: 'string',
-          validation: Rule => Rule.required()
+          validation: (rule: Rule) => rule.required()
         }
       ]
     })
