@@ -33,6 +33,13 @@
     "all": "All",
     "readFullArticle": "Read Full Article",
     "searchPlaceholder": "Search articles...",
-    "backToBlog": "Back to Blog"
+    "backToBlog": "Back to Blog",
+    "noArticlesFound": "No articles found matching your criteria."
+  },
+  "hero": {
+    "happyClients": "Happy Clients",
+    "rating": "Rating",
+    "customerReviews": "Customer Reviews",
+    "acrossDominicanRepublic": "Across Dominican Republic"
   }
 }

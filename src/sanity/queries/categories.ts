@@ -72,4 +72,4 @@ export const categoryWithPostsQuery = `
 
 export async function getCategoryWithPosts(slug: string) {
   return await client.fetch(categoryWithPostsQuery, { slug })
-} 
+}

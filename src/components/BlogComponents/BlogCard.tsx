@@ -73,14 +73,15 @@ const BlogCard = ({ post, lang }: BlogCardProps) => {
 
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap gap-2">
-            {post.tags && post.tags[lang]?.slice(0, 2).map((tag: string, index: number) => (
-              <span
-                key={index}
-                className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded"
-              >
-                {tag}
-              </span>
-            ))}
+            {post.tags &&
+              post.tags[lang]?.slice(0, 2).map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded"
+                >
+                  {tag}
+                </span>
+              ))}
           </div>
 
           <a

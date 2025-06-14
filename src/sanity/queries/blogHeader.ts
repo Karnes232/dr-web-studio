@@ -25,4 +25,4 @@ export interface BlogHeader {
 
 export async function getBlogHeader(): Promise<BlogHeader | null> {
   return await client.fetch(blogHeaderQuery)
-} 
+}

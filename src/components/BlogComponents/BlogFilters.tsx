@@ -3,7 +3,6 @@ import { useLocale } from "@/i18n/useLocale"
 import { Search } from "lucide-react"
 import React from "react"
 
-
 const BlogFilters = ({
   searchTerm,
   setSearchTerm,
@@ -19,7 +18,7 @@ const BlogFilters = ({
   categories: any
   lang: string
 }) => {
-  const { t, getLocalizedPath } = useLocale()
+  const { t } = useLocale()
   return (
     <div className="bg-white shadow-sm border-b border-slate-200 py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

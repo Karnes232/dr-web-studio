@@ -7,6 +7,7 @@ import { useLocale } from "@/i18n/useLocale"
 // Import Swiper React components
 
 import VisualElement from "./VisualElement"
+import { Trans } from "react-i18next"
 
 const HeroSection = ({
   heading,
@@ -92,10 +93,10 @@ const HeroSection = ({
                 </div>
                 <div>
                   <div className="font-semibold text-white">
-                    50+ Happy Clients
+                    50+ {t("hero.happyClients")}
                   </div>
                   <div className="text-sm text-gray-400">
-                    Across Dominican Republic
+                    {t("hero.acrossDominicanRepublic")}
                   </div>
                 </div>
               </div>
@@ -107,8 +108,12 @@ const HeroSection = ({
                   ))}
                 </div>
                 <div>
-                  <div className="font-semibold text-white">5.0 Rating</div>
-                  <div className="text-sm text-gray-400">Customer Reviews</div>
+                  <div className="font-semibold text-white">
+                    5.0 {t("hero.rating")}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {t("hero.customerReviews")}
+                  </div>
                 </div>
               </div>
             </div>

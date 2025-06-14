@@ -15,9 +15,11 @@ export const structure: StructureResolver = S =>
               S.listItem()
                 .title("General Layout")
                 .child(
-                  S.editor().schemaType("generalLayout").documentId("generalLayout")
+                  S.editor()
+                    .schemaType("generalLayout")
+                    .documentId("generalLayout"),
                 ),
-            ])
+            ]),
         ),
 
       // Home Page Group
@@ -32,16 +34,40 @@ export const structure: StructureResolver = S =>
                 .child(
                   S.documentList()
                     .title("Hero Sections")
-                    .filter('_type == "heroSection"')
+                    .filter('_type == "heroSection"'),
                 ),
               S.listItem()
                 .title("Hero Visual Elements")
                 .child(
                   S.documentList()
                     .title("Visual Elements")
-                    .filter('_type == "heroVisualElement"')
+                    .filter('_type == "heroVisualElement"'),
                 ),
-            ])
+              S.listItem()
+                .title("Service Sections")
+                .child(
+                  S.documentList()
+                    .title("Service Sections")
+                    .filter('_type == "serviceSection"'),
+                ),
+            ]),
+        ),
+
+      // Services Group
+      S.listItem()
+        .title("Services")
+        .child(
+          S.list()
+            .title("Services")
+            .items([
+              S.listItem()
+                .title("Services")
+                .child(
+                  S.documentList()
+                    .title("Services")
+                    .filter('_type == "service"'),
+                ),
+            ]),
         ),
 
       // Blog Group
@@ -54,32 +80,28 @@ export const structure: StructureResolver = S =>
               S.listItem()
                 .title("Blog Header")
                 .child(
-                  S.editor()
-                    .schemaType("blogHeader")
-                    .documentId("blogHeader")
+                  S.editor().schemaType("blogHeader").documentId("blogHeader"),
                 ),
               S.listItem()
                 .title("Blog Posts")
                 .child(
                   S.documentList()
                     .title("Blog Posts")
-                    .filter('_type == "blogPost"')
+                    .filter('_type == "blogPost"'),
                 ),
               S.listItem()
                 .title("Authors")
                 .child(
-                  S.documentList()
-                    .title("Authors")
-                    .filter('_type == "author"')
+                  S.documentList().title("Authors").filter('_type == "author"'),
                 ),
               S.listItem()
                 .title("Categories")
                 .child(
                   S.documentList()
                     .title("Categories")
-                    .filter('_type == "blogCategory"')
+                    .filter('_type == "blogCategory"'),
                 ),
-            ])
+            ]),
         ),
 
       // SEO Group
@@ -91,12 +113,7 @@ export const structure: StructureResolver = S =>
             .items([
               S.listItem()
                 .title("SEO Configuration")
-                .child(
-                  S.documentList()
-                    .title("SEO")
-                    .filter('_type == "seo"')
-                ),
-            ])
+                .child(S.documentList().title("SEO").filter('_type == "seo"')),
+            ]),
         ),
     ])
-

@@ -31,10 +31,10 @@ export default async function Blog({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <BlogContent 
-        categories={categories} 
-        lang={lang} 
-        blogPosts={blogPosts} 
+      <BlogContent
+        categories={categories}
+        lang={lang}
+        blogPosts={blogPosts}
         header={headerData}
       />
     </>

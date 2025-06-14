@@ -5,6 +5,8 @@ import TrustSignals from "@/components/TrustSignalsComponents/TrustSignals"
 import { getTranslation } from "@/i18n"
 import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getHomePageService } from "@/sanity/queries/homePageService"
+import { getServices } from "@/sanity/queries/services"
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {
@@ -82,9 +84,11 @@ export default async function Home({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("home")
 
-  const [pageData, { t }] = await Promise.all([
+  const [pageData, { t }, serviceData, services] = await Promise.all([
     getContent(),
     getTranslation(lang),
+    getHomePageService(),
+    getServices(),
   ])
 
   return (
@@ -95,7 +99,7 @@ export default async function Home({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <main className="">
+      <main className="bg-gradient-to-br from-slate-50 to-orange-50">
         <HeroSection
           heading={pageData.heading ? pageData.heading[lang] : pageData.heading}
           subheading={
@@ -106,7 +110,13 @@ export default async function Home({ params }: PageProps) {
           backgroundImage={pageData.backgroundImage}
           visualElements={pageData.visualElements}
         />
-        <QuickServicesOverview />
+        <QuickServicesOverview
+          title={serviceData.title[lang]}
+          subtitle={serviceData.subtitle[lang]}
+          ctaText={serviceData.ctaButton.text[lang]}
+          services={services}
+          lang={lang}
+        />
         <TrustSignals />
       </main>
     </>

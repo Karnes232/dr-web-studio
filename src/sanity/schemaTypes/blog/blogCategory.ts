@@ -1,57 +1,57 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: 'blogCategory',
-  title: 'Blog Category',
-  type: 'document',
+  name: "blogCategory",
+  title: "Blog Category",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'object',
+      name: "title",
+      title: "Title",
+      type: "object",
       fields: [
         {
-          name: 'en',
-          title: 'English',
-          type: 'string',
-          validation: rule => rule.required()
+          name: "en",
+          title: "English",
+          type: "string",
+          validation: rule => rule.required(),
         },
         {
-          name: 'es',
-          title: 'Spanish',
-          type: 'string',
-          validation: rule => rule.required()
-        }
-      ]
+          name: "es",
+          title: "Spanish",
+          type: "string",
+          validation: rule => rule.required(),
+        },
+      ],
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title.en',
+        source: "title.en",
         maxLength: 96,
       },
-      validation: rule => rule.required()
+      validation: rule => rule.required(),
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'object',
+      name: "description",
+      title: "Description",
+      type: "object",
       fields: [
         {
-          name: 'en',
-          title: 'English Description',
-          type: 'text',
-          validation: rule => rule.required()
+          name: "en",
+          title: "English Description",
+          type: "text",
+          validation: rule => rule.required(),
         },
         {
-          name: 'es',
-          title: 'Spanish Description',
-          type: 'text',
-          validation: rule => rule.required()
-        }
-      ]
+          name: "es",
+          title: "Spanish Description",
+          type: "text",
+          validation: rule => rule.required(),
+        },
+      ],
     }),
     // defineField({
     //   name: 'color',
@@ -66,8 +66,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title.en',
-      subtitle: 'description.en'
-    }
-  }
-}) 
+      title: "title.en",
+      subtitle: "description.en",
+    },
+  },
+})

@@ -33,6 +33,13 @@
     "all": "Todos",
     "readFullArticle": "Leer Artículo Completo",
     "searchPlaceholder": "Buscar artículos...",
-    "backToBlog": "Volver al Blog"
+    "backToBlog": "Volver al Blog",
+    "noArticlesFound": "No se encontraron artículos que coincidan con tus criterios."
+  },
+  "hero": {
+    "happyClients": "Clientes Felices",
+    "rating": "Calificación",
+    "customerReviews": "Reseñas de Clientes",
+    "acrossDominicanRepublic": "En toda la República Dominicana"
   }
 }

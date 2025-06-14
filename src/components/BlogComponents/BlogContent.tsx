@@ -7,19 +7,20 @@ import NewsletterSignup from "./NewsletterSignup"
 import BlogCard from "./BlogCard"
 import Pagination from "./Pagination"
 import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blogHeader"
+import { useLocale } from "@/i18n/useLocale"
 
-
-const BlogContent = ({ 
-  categories, 
-  lang, 
+const BlogContent = ({
+  categories,
+  lang,
   blogPosts,
-  header 
-}: { 
+  header,
+}: {
   categories: any
   lang: "en" | "es"
   blogPosts: any
   header: BlogHeaderType
 }) => {
+  const { t } = useLocale()
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [currentPage, setCurrentPage] = useState(1)
@@ -30,7 +31,7 @@ const BlogContent = ({
       post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.description[lang].toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory =
-      selectedCategory === "All" || 
+      selectedCategory === "All" ||
       post.categories.some((cat: any) => cat.title[lang] === selectedCategory)
     return matchesSearch && matchesCategory
   })
@@ -44,7 +45,8 @@ const BlogContent = ({
   )
 
   // Get featured post (first post that has featured = true)
-  const featuredPost = blogPosts.find((post: any) => post.featured === true) || blogPosts[0]
+  const featuredPost =
+    blogPosts.find((post: any) => post.featured === true) || blogPosts[0]
 
   return (
     <section
@@ -65,10 +67,8 @@ const BlogContent = ({
         {/* Featured Post */}
         {searchTerm === "" &&
           selectedCategory === "All" &&
-          currentPage === 1 && 
-          featuredPost && (
-            <FeaturedPost post={featuredPost} lang={lang} />
-          )}
+          currentPage === 1 &&
+          featuredPost && <FeaturedPost post={featuredPost} lang={lang} />}
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -90,7 +90,7 @@ const BlogContent = ({
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-slate-600 text-lg">
-              No articles found matching your criteria.
+              {t("blog.noArticlesFound")}
             </p>
           </div>
         )}

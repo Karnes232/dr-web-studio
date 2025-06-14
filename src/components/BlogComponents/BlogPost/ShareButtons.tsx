@@ -1,34 +1,34 @@
-import { Facebook, Link, Linkedin, Share2, Twitter } from 'lucide-react';
-import React, { useState } from 'react'
+import { Facebook, Link, Linkedin, Share2, Twitter } from "lucide-react"
+import React, { useState } from "react"
 
-const ShareButtons = ({post, lang}: {post: any, lang: string}) => {
-    const [showShare, setShowShare] = useState(false);
-    const postUrl = `${window.location.origin}/${lang}/blog/${post.slug.current}`;
- console.log(postUrl)
-    const shareLinks = [
-      {
-        name: 'Facebook',
-        icon: Facebook,
-        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`,
-        color: 'text-blue-600'
-      },
-      {
-        name: 'Twitter',
-        icon: Twitter,
-        url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(post.title)}`,
-        color: 'text-sky-500'
-      },
-      {
-        name: 'LinkedIn',
-        icon: Linkedin,
-        url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`,
-        color: 'text-blue-700'
-      }
-    ];
-  
-    const copyToClipboard = () => {
-      navigator.clipboard.writeText(postUrl);
-    };
+const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
+  const [showShare, setShowShare] = useState(false)
+  const postUrl = `${window.location.origin}/${lang}/blog/${post.slug.current}`
+  console.log(postUrl)
+  const shareLinks = [
+    {
+      name: "Facebook",
+      icon: Facebook,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`,
+      color: "text-blue-600",
+    },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(post.title)}`,
+      color: "text-sky-500",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`,
+      color: "text-blue-700",
+    },
+  ]
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(postUrl)
+  }
   return (
     <div className="relative">
       <button
@@ -38,12 +38,12 @@ const ShareButtons = ({post, lang}: {post: any, lang: string}) => {
         <Share2 className="h-4 w-4" />
         <span>Share</span>
       </button>
-      
+
       {showShare && (
         <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-slate-200 p-4 z-10 min-w-48">
           <div className="space-y-2">
             {shareLinks.map((link, index) => {
-              const Icon = link.icon;
+              const Icon = link.icon
               return (
                 <a
                   key={index}
@@ -55,7 +55,7 @@ const ShareButtons = ({post, lang}: {post: any, lang: string}) => {
                   <Icon className="h-4 w-4" />
                   <span>Share on {link.name}</span>
                 </a>
-              );
+              )
             })}
             <button
               onClick={copyToClipboard}

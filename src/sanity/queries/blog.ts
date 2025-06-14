@@ -105,6 +105,8 @@ export const blogPostBySlugQuery = `
   description
 }`
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getBlogPostBySlug(
+  slug: string,
+): Promise<BlogPost | null> {
   return await client.fetch(blogPostBySlugQuery, { slug })
-} 
+}

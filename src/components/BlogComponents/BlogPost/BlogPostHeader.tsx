@@ -1,26 +1,36 @@
 "use client"
-import { ArrowLeft, Bookmark, Calendar, Clock, Eye, Heart, Tag } from 'lucide-react';
-import Image from 'next/image';
-import React, { useState } from 'react'
-import ShareButtons from './ShareButtons';
-import Link from 'next/link';
-import { useLocale } from '@/i18n/useLocale';
+import {
+  ArrowLeft,
+  Bookmark,
+  Calendar,
+  Clock,
+  Eye,
+  Heart,
+  Tag,
+} from "lucide-react"
+import Image from "next/image"
+import React, { useState } from "react"
+import ShareButtons from "./ShareButtons"
+import Link from "next/link"
+import { useLocale } from "@/i18n/useLocale"
 
-const BlogPostHeader = ({post, lang}: {post: any, lang: string}) => {
+const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
   const { t, getLocalizedPath } = useLocale()
-    const [isLiked, setIsLiked] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false)
+  const [isBookmarked, setIsBookmarked] = useState(false)
   console.log(post)
   return (
     <div className="">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <div className="mb-6">
-          <Link href={getLocalizedPath("/blog")} className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
+          <Link
+            href={getLocalizedPath("/blog")}
+            className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors"
+          >
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t("blog.backToBlog")}
           </Link>
-     
         </div>
 
         {/* Category and Tags */}
@@ -56,21 +66,20 @@ const BlogPostHeader = ({post, lang}: {post: any, lang: string}) => {
               <div className="font-medium">{post.author.name}</div>
             </div>
           </div> */}
-          
+
           <div className="flex items-center">
             <Calendar className="h-4 w-4 mr-2" />
-            {new Date(post.publishedAt).toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
             })}
           </div>
-          
+
           <div className="flex items-center">
             <Clock className="h-4 w-4 mr-2" />
             {post.readTime} min read
           </div>
-          
         </div>
 
         {/* Action Buttons */}
@@ -79,27 +88,29 @@ const BlogPostHeader = ({post, lang}: {post: any, lang: string}) => {
             <button
               onClick={() => setIsLiked(!isLiked)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
-                isLiked 
-                  ? 'bg-red-50 border-red-200 text-red-600' 
-                  : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                isLiked
+                  ? "bg-red-50 border-red-200 text-red-600"
+                  : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
               }`}
             >
-              <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
+              <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
             </button>
-            
+
             <button
               onClick={() => setIsBookmarked(!isBookmarked)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
-                isBookmarked 
-                  ? 'bg-blue-50 border-blue-200 text-blue-600' 
-                  : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                isBookmarked
+                  ? "bg-blue-50 border-blue-200 text-blue-600"
+                  : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
               }`}
             >
-              <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
+              <Bookmark
+                className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
+              />
               <span>Save</span>
             </button>
           </div>
-          
+
           {/* <ShareButtons post={post} lang={lang} /> */}
         </div>
 
