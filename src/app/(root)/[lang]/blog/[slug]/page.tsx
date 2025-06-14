@@ -12,7 +12,7 @@ interface PageProps {
 export default async function BlogPost({ params }: PageProps) {
   const { lang, slug } = await params
   const post = await getBlogPostBySlug(slug)
-  console.log(post)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
       <BlogPostHeader post={post} lang={lang} />

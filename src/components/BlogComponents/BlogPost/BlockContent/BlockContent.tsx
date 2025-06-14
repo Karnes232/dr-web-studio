@@ -5,6 +5,8 @@ import imageUrlBuilder from "@sanity/image-url"
 import Image from "next/image"
 import TextComponentParagraph from "./TextComponentParagraph"
 import TextComponentHeading from "./TextComponentHeading"
+import TextComponentList from "./TextComponentList"
+
 interface LocaleBlockContent {
   _type: string
   en: any[]
@@ -106,6 +108,14 @@ const components = {
         headingNumber="h6"
         HeadingClassName="mb-4 mt-8"
       />
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => (
+      <TextComponentList items={children} listType="bullet" ListClassName="mb-4" />
+    ),
+    number: ({ children }: any) => (
+      <TextComponentList items={children} listType="number" ListClassName="mb-4" />
     ),
   },
 }

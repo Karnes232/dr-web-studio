@@ -18,7 +18,6 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
   const { t, getLocalizedPath } = useLocale()
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
-  console.log(post)
   return (
     <div className="">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

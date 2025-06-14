@@ -22,7 +22,6 @@ export default async function Blog({ params }: PageProps) {
   if (!headerData) {
     throw new Error("Blog header data not found")
   }
-
   return (
     <>
       {seoData?.structuredData?.[lang] && (
