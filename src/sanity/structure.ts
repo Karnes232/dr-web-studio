@@ -50,6 +50,27 @@ export const structure: StructureResolver = S =>
                     .title("Service Sections")
                     .filter('_type == "serviceSection"'),
                 ),
+              S.listItem()
+                .title("Trust Signals")
+                .child(
+                  S.documentList()
+                    .title("Trust Signals")
+                    .filter('_type == "trustSignals"'),
+                ),
+              S.listItem()
+                .title("Previous Clients")
+                .child(
+                  S.documentList()
+                    .title("Previous Clients")
+                    .filter('_type == "previousClients"'),
+                ),
+              S.listItem()
+                .title("Testimonials")
+                .child(
+                  S.documentList()
+                    .title("Testimonials")
+                    .filter('_type == "testimonial"'),
+                ),
             ]),
         ),
 

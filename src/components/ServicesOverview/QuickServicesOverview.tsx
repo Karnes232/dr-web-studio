@@ -18,51 +18,7 @@ const QuickServicesOverview = ({
   lang: string
 }) => {
   const { getLocalizedPath } = useLocale()
-  // const services2 = [
-  //   {
-  //     icon: Code,
-  //     title: "Custom Websites",
-  //     description:
-  //       "Tailored web solutions built with modern technologies for your unique business needs.",
-  //     color: "from-blue-500 to-cyan-500",
-  //   },
-  //   {
-  //     icon: ShoppingCart,
-  //     title: "E-commerce Solutions",
-  //     description:
-  //       "Complete online stores with secure payments and inventory management systems.",
-  //     color: "from-green-500 to-emerald-500",
-  //   },
-  //   {
-  //     icon: Smartphone,
-  //     title: "Mobile-First Design",
-  //     description:
-  //       "Responsive websites that look perfect on all devices and screen sizes.",
-  //     color: "from-purple-500 to-pink-500",
-  //   },
-  //   {
-  //     icon: Zap,
-  //     title: "Fast Performance",
-  //     description:
-  //       "Lightning-fast loading speeds optimized for better user experience and SEO.",
-  //     color: "from-orange-500 to-yellow-500",
-  //   },
-  //   {
-  //     icon: Search,
-  //     title: "SEO Optimized",
-  //     description:
-  //       "Built-in SEO best practices to help your website rank higher in search results.",
-  //     color: "from-red-500 to-pink-500",
-  //   },
-  //   {
-  //     icon: Palette,
-  //     title: "Custom Design",
-  //     description:
-  //       "Unique designs that reflect your brand identity and engage your customers.",
-  //     color: "from-indigo-500 to-purple-500",
-  //   },
-  // ]
-
+  
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

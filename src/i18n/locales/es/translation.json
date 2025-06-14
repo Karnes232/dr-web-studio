@@ -41,5 +41,11 @@
     "rating": "Calificación",
     "customerReviews": "Reseñas de Clientes",
     "acrossDominicanRepublic": "En toda la República Dominicana"
+  },
+  "home": {
+    "proudToWorkWith": "ORGULLOSO DE TRABAJAR CON",
+    "projectsCompleted": "Proyectos Completados",
+    "averageRating": "Calificación Promedio",
+    "supportAvailable": "Soporte Disponible"
   }
 }

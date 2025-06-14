@@ -7,6 +7,9 @@ import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getHomePageService } from "@/sanity/queries/homePageService"
 import { getServices } from "@/sanity/queries/services"
+import { getTrustSignals } from "@/sanity/queries/trustSignals"
+import { getPreviousClients } from "@/sanity/queries/previousClients"
+import { getAllTestimonials } from "@/sanity/queries/testimonials"
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {
@@ -76,14 +79,17 @@ export default async function Home({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("home")
 
-  const [pageData, { t }, serviceData, services] = await Promise.all([
+  const [pageData, { t }, serviceData, services, trustSignals, previousClients, testimonials] = await Promise.all([
     getContent(),
     getTranslation(lang),
     getHomePageService(),
     getServices(),
+    getTrustSignals(),
+    getPreviousClients(),
+    getAllTestimonials(),
   ])
 
-  console.log(pageData)
+
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -110,7 +116,7 @@ export default async function Home({ params }: PageProps) {
           services={services}
           lang={lang}
         />
-        <TrustSignals />
+        <TrustSignals title={trustSignals.title[lang]} subtitle={trustSignals.subtitle[lang]} previousClients={previousClients} testimonials={testimonials} />
       </main>
     </>
   )

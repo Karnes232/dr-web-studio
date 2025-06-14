@@ -9,7 +9,9 @@ import author from "./blog/author"
 import blogPost from "./blog/blogPost"
 import blogCategory from "./blog/blogCategory"
 import blogHeader from "./blog/blogHeader"
-
+import trustSignals from "./home/TrustSignals"
+import previousClients from "./home/PreviousClients"
+import Testimonial from "./home/Testimonial"
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     generalLayout,
@@ -17,6 +19,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     heroVisualElement,
     serviceSection,
     service,
+    trustSignals,
+    previousClients,
+    Testimonial,
     seo,
     author,
     blogPost,

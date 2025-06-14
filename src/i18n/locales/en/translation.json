@@ -41,5 +41,11 @@
     "rating": "Rating",
     "customerReviews": "Customer Reviews",
     "acrossDominicanRepublic": "Across Dominican Republic"
+  },
+  "home": {
+    "proudToWorkWith": "PROUD TO WORK WITH",
+    "projectsCompleted": "Projects Completed",
+    "averageRating": "Average Rating",
+    "supportAvailable": "Support Available"
   }
 }
