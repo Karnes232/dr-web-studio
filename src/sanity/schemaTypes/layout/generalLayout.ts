@@ -83,6 +83,27 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: "footerText",
+      title: "Footer Text",
+      type: "object",
+      fields: [
+        defineField({
+          name: "en",
+          title: "English",
+          type: "text",
+          description: "Text to display in the footer in English",
+          validation: Rule => Rule.required(),
+        }),
+        defineField({
+          name: "es",
+          title: "Spanish",
+          type: "text",
+          description: "Text to display in the footer in Spanish",
+          validation: Rule => Rule.required(),
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

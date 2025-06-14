@@ -1,6 +1,5 @@
 import { client } from "@/sanity/lib/client"
 
-
 interface TrustSignalsData {
   title: {
     en: string
@@ -25,4 +24,4 @@ export const trustSignalsQuery = `*[_type == "trustSignals"][0] {
 
 export async function getTrustSignals(): Promise<TrustSignalsData> {
   return client.fetch(trustSignalsQuery)
-} 
+}

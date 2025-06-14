@@ -76,7 +76,6 @@ export default defineType({
       title: "Icon",
       type: "string",
       description: "Service icon lucide-react code",
-    
     }),
   ],
   preview: {

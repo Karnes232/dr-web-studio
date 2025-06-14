@@ -52,7 +52,30 @@ export default async function RootLayout({
         hotspot,
         crop
       },
-      companyName
+      footerLogo {
+        asset->{
+          url,
+          metadata {
+            dimensions,
+            lqip,
+            palette
+          }
+        },
+        alt,
+        hotspot,
+        crop
+      },
+      companyName,
+      }
+  `)
+  const companyInfo = await client.fetch(`
+    *[_type == "generalLayout"][0] {
+      email,
+      companyName,
+      footerText {
+        en,
+        es  
+      }
     }
   `)
 
@@ -61,7 +84,7 @@ export default async function RootLayout({
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <Navbar logo={logo} />
         {children}
-        <Footer />
+        <Footer logo={logo} companyInfo={companyInfo} />
       </body>
     </html>
   )

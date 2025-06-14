@@ -57,11 +57,7 @@ export default defineType({
       type: "number",
       description: "Rating from 1 to 5",
       validation: (rule: NumberRule) =>
-        rule
-          .required()
-          .min(1)
-          .max(5)
-          .error("Rating must be between 1 and 5"),
+        rule.required().min(1).max(5).error("Rating must be between 1 and 5"),
     }),
   ],
   preview: {
@@ -79,4 +75,4 @@ export default defineType({
       }
     },
   },
-}) 
+})

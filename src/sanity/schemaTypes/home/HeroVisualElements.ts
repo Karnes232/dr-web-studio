@@ -24,7 +24,6 @@ export default defineType({
       title: "Icon",
       type: "string",
       description: "Icon lucide-react code",
-    
     }),
     // defineField({
     //   name: "icon",

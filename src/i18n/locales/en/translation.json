@@ -47,5 +47,13 @@
     "projectsCompleted": "Projects Completed",
     "averageRating": "Average Rating",
     "supportAvailable": "Support Available"
+  },
+  "footer": {
+    "address": "Dominican Republic",
+    "allRightsReserved": "All rights reserved",
+    "readyToStart": "Ready to Start Your Website Project?",
+    "getFreeConsultation": "Get a free consultation and custom quote for your business website.",
+    "startQuestionnaire": "Start Questionnaire",
+    "contactUs": "Contact Us"
   }
 }

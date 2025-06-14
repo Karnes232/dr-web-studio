@@ -47,5 +47,13 @@
     "projectsCompleted": "Proyectos Completados",
     "averageRating": "Calificación Promedio",
     "supportAvailable": "Soporte Disponible"
+  },
+  "footer": {
+    "address": "República Dominicana",
+    "allRightsReserved": "Todos los derechos reservados",
+    "readyToStart": "¿Listo para Iniciar su Proyecto de Sitio Web?",
+    "getFreeConsultation": "Obtenga una consulta gratuita y una cotización personalizada para su negocio.",
+    "startQuestionnaire": "Iniciar Cuestionario",
+    "contactUs": "Contactar"
   }
 }

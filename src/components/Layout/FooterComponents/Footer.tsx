@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import CTASection from "./CTASection"
 import CompanyInfo from "./CompanyInfo"
@@ -7,7 +9,27 @@ import ResourcesLinks from "./ResourcesLinks"
 import SocialMedia from "./SocialMedia"
 import BottomBar from "./BottomBar"
 
-const Footer = () => {
+interface FooterProps {
+  logo: {
+    footerLogo: {
+      asset: {
+        url: string
+      }
+      alt: string
+    }
+    companyName: string
+  }
+  companyInfo: {
+    email: string
+    companyName: string
+    footerText: {
+      en: string
+      es: string
+    }
+  }
+}
+
+const Footer = ({ logo, companyInfo }: FooterProps) => {
   return (
     <footer className="bg-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,7 +38,7 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-8">
-          <CompanyInfo />
+          <CompanyInfo logo={logo} companyInfo={companyInfo} />
           <QuickLinks />
           <ServicesLinks />
           <ResourcesLinks />

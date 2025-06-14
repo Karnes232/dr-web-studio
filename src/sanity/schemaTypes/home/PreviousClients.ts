@@ -90,7 +90,7 @@ export default defineType({
           },
         },
       ],
-      validation: (rule) => rule.min(1),
+      validation: rule => rule.min(1),
       description: "Add at least one previous client",
     }),
   ],
@@ -108,4 +108,4 @@ export default defineType({
       }
     },
   },
-}) 
+})

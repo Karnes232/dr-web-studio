@@ -1,5 +1,12 @@
 "use client"
-import { Code, ShoppingCart, Smartphone, Zap, Palette, Search } from "lucide-react"
+import {
+  Code,
+  ShoppingCart,
+  Smartphone,
+  Zap,
+  Palette,
+  Search,
+} from "lucide-react"
 import React from "react"
 import SanitySvg from "../SanitySvg/SanitySvg"
 

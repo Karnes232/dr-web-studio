@@ -1,25 +1,21 @@
+"use client"
+
 import React from "react"
 import Image from "next/image"
-import { client } from "@/sanity/lib/client"
-const FooterLogo = async () => {
-  const logo = await client.fetch(`
-        *[_type == "generalLayout"][0] {
-          footerLogo {
-            asset->{
-              url,
-              metadata {
-                dimensions,
-                lqip,
-                palette
-              }
-            },
-            alt,
-            hotspot,
-            crop
-          },
-          companyName
-        }
-      `)
+
+interface FooterLogoProps {
+  logo: {
+    footerLogo: {
+      asset: {
+        url: string
+      }
+      alt: string
+    }
+    companyName: string
+  }
+}
+
+const FooterLogo = ({ logo }: FooterLogoProps) => {
   return (
     <div className="flex items-center mb-6">
       <Image

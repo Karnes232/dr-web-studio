@@ -36,4 +36,4 @@ export const previousClientsQuery = `*[_type == "previousClients"][0] {
 
 export async function getPreviousClients(): Promise<PreviousClientsData> {
   return client.fetch(previousClientsQuery)
-} 
+}

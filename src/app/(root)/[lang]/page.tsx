@@ -79,7 +79,15 @@ export default async function Home({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("home")
 
-  const [pageData, { t }, serviceData, services, trustSignals, previousClients, testimonials] = await Promise.all([
+  const [
+    pageData,
+    { t },
+    serviceData,
+    services,
+    trustSignals,
+    previousClients,
+    testimonials,
+  ] = await Promise.all([
     getContent(),
     getTranslation(lang),
     getHomePageService(),
@@ -88,7 +96,6 @@ export default async function Home({ params }: PageProps) {
     getPreviousClients(),
     getAllTestimonials(),
   ])
-
 
   return (
     <>
@@ -116,7 +123,12 @@ export default async function Home({ params }: PageProps) {
           services={services}
           lang={lang}
         />
-        <TrustSignals title={trustSignals.title[lang]} subtitle={trustSignals.subtitle[lang]} previousClients={previousClients} testimonials={testimonials} />
+        <TrustSignals
+          title={trustSignals.title[lang]}
+          subtitle={trustSignals.subtitle[lang]}
+          previousClients={previousClients}
+          testimonials={testimonials}
+        />
       </main>
     </>
   )

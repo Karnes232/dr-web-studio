@@ -31,6 +31,8 @@ export const testimonialByIdQuery = `
   rating
 }`
 
-export async function getTestimonialById(id: string): Promise<Testimonial | null> {
+export async function getTestimonialById(
+  id: string,
+): Promise<Testimonial | null> {
   return await client.fetch(testimonialByIdQuery, { id })
-} 
+}

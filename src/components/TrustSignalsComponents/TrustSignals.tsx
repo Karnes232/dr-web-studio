@@ -4,7 +4,17 @@ import { Star, Quote } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
 import Image from "next/image"
 
-const TrustSignals = ({title, subtitle, previousClients, testimonials}: {title: string, subtitle: string, previousClients: any, testimonials: any}) => {
+const TrustSignals = ({
+  title,
+  subtitle,
+  previousClients,
+  testimonials,
+}: {
+  title: string
+  subtitle: string
+  previousClients: any
+  testimonials: any
+}) => {
   const { t, currentLocale } = useLocale()
 
   return (
@@ -15,9 +25,7 @@ const TrustSignals = ({title, subtitle, previousClients, testimonials}: {title: 
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             {title}
           </h2>
-          <p className="text-xl text-gray-600">
-            {subtitle}
-          </p>
+          <p className="text-xl text-gray-600">{subtitle}</p>
         </div>
 
         {/* Client Logos */}
@@ -27,23 +35,28 @@ const TrustSignals = ({title, subtitle, previousClients, testimonials}: {title: 
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-wrap lg:justify-around gap-8 items-center">
             {previousClients.clients.map((client: any, index: number) => (
-              <div key={index} className="flex flex-col items-center justify-center group">
-                <a href={client.link} target="_blank"> 
-                <div className="w-32 h-32 p-4 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
-                  {client.logo ? (
-                    <Image
-                      src={client.logo.asset.url}
-                      alt={`${client.companyName} logo`}
-                      width={96}
-                      height={96}
-                      className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-                      <span className="text-2xl font-bold">{client.companyName.charAt(0)}</span>
-                    </div>
-                  )}
-                </div>
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center group"
+              >
+                <a href={client.link} target="_blank">
+                  <div className="w-32 h-32 p-4 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
+                    {client.logo ? (
+                      <Image
+                        src={client.logo.asset.url}
+                        alt={`${client.companyName} logo`}
+                        width={96}
+                        height={96}
+                        className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
+                        <span className="text-2xl font-bold">
+                          {client.companyName.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </a>
               </div>
             ))}
