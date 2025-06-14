@@ -15,15 +15,7 @@ subheading,
 visualElements[]-> {
   _id,
   title,
-  icon {
-    asset-> {
-      url,
-      metadata {
-        dimensions
-      }
-    },
-    alt
-  },
+  icon,
   gradientFrom,
   gradientTo,
   heading,
@@ -91,6 +83,7 @@ export default async function Home({ params }: PageProps) {
     getServices(),
   ])
 
+  console.log(pageData)
   return (
     <>
       {seoData?.structuredData?.[lang] && (

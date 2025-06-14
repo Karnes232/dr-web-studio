@@ -21,15 +21,22 @@ export default defineType({
     }),
     defineField({
       name: "icon",
-      title: "Icon SVG",
-      type: "image",
-      description: "Upload an SVG icon (recommended size: 24x24 or 48x48)",
-      options: {
-        accept: "image/svg+xml",
-        storeOriginalFilename: true,
-      },
-      validation: rule => rule.required().error("Icon is required"),
+      title: "Icon",
+      type: "string",
+      description: "Icon lucide-react code",
+    
     }),
+    // defineField({
+    //   name: "icon",
+    //   title: "Icon SVG",
+    //   type: "image",
+    //   description: "Upload an SVG icon (recommended size: 24x24 or 48x48)",
+    //   options: {
+    //     accept: "image/svg+xml",
+    //     storeOriginalFilename: true,
+    //   },
+    //   validation: rule => rule.required().error("Icon is required"),
+    // }),
     defineField({
       name: "gradientFrom",
       title: "Gradient Start Color",

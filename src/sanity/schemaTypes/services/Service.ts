@@ -74,19 +74,9 @@ export default defineType({
     defineField({
       name: "icon",
       title: "Icon",
-      type: "image",
-      description: "Service icon",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alt Text",
-          type: "string",
-          description: "Important for accessibility and SEO",
-        }),
-      ],
+      type: "string",
+      description: "Service icon lucide-react code",
+    
     }),
   ],
   preview: {

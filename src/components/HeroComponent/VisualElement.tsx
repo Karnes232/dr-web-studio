@@ -4,6 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import SanitySvg from "../SanitySvg/SanitySvg"
+import { Code, Palette, Zap } from "lucide-react"
 
 const VisualElement = ({
   visualElements,
@@ -12,6 +13,12 @@ const VisualElement = ({
   visualElements: any
   currentLocale: string
 }) => {
+  const icons = {
+    Code,
+    Palette,
+    Zap,
+  }
+
   return (
     <div className="relative">
       <Swiper
@@ -22,17 +29,16 @@ const VisualElement = ({
         //   autoplay={{ delay: 3000, disableOnInteraction: false }}
         className="w-full"
       >
-        {visualElements?.map((element: any, index: number) => (
+        {visualElements?.map((element: any, index: number) => {
+          const Icon = icons[element.icon as keyof typeof icons]
+          return (
           <SwiperSlide key={element._id}>
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl transform hover:scale-105 transition-transform duration-300">
               <div
                 className={`bg-gradient-to-br from-${element.gradientFrom} to-${element.gradientTo} rounded-xl p-8 text-center shadow-xl h-64`}
               >
                 <div className="w-16 h-16 mx-auto mb-6 text-white">
-                  <SanitySvg
-                    url={element.icon.asset.url}
-                    className="w-full h-full text-white"
-                  />
+                  <Icon className="w-full h-full text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   {element.heading[currentLocale]}
@@ -59,8 +65,9 @@ const VisualElement = ({
                 </div>
               </div>
             </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
     </div>
   )

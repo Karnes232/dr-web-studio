@@ -10,12 +10,7 @@ interface Service {
     es: string
   }
   color: string
-  icon: {
-    asset: {
-      _ref: string
-    }
-    alt: string
-  }
+  icon: string
 }
 
 export const servicesQuery = `*[_type == "service"] {
@@ -28,10 +23,7 @@ export const servicesQuery = `*[_type == "service"] {
     es
   },
   color,
-  icon {
-    asset->,
-    alt
-  }
+  icon,
 }`
 
 export async function getServices(): Promise<Service[]> {
