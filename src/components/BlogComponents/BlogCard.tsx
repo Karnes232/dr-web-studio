@@ -1,5 +1,8 @@
+"use client"
+import { useLocale } from "@/i18n/useLocale"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 
 interface BlogCardProps {
@@ -36,6 +39,7 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, lang }: BlogCardProps) => {
+  const { t } = useLocale()
   return (
     <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       <div className="relative">
@@ -84,13 +88,10 @@ const BlogCard = ({ post, lang }: BlogCardProps) => {
               ))}
           </div>
 
-          <a
-            href={`/blog/${post.slug.current}`}
-            className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors"
-          >
-            Read More
+              <Link href={`/${lang}/blog/${post.slug.current}`} className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors">
+            {t("blog.readMore")}
             <ArrowRight className="ml-1 h-4 w-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </article>

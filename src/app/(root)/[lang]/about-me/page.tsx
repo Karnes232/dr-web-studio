@@ -7,6 +7,8 @@ import SectionHeader from "@/components/AboutUsSectionComponents/SectionHeader"
 import StatsGrid from "@/components/AboutUsSectionComponents/StatsGrid"
 import TechStack from "@/components/AboutUsSectionComponents/TechStack"
 import WhyChooseUs from "@/components/AboutUsSectionComponents/WhyChooseUs"
+import { getPersonalStory } from "@/sanity/queries/personalStory"
+import { getSectionHeader } from "@/sanity/queries/sectionHeader"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import React from "react"
@@ -20,6 +22,8 @@ interface PageProps {
 export default async function AboutUs({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("about")
+  const sectionHeader = await getSectionHeader()
+  const personalStory = await getPersonalStory()
 
   return (
     <>
@@ -33,18 +37,18 @@ export default async function AboutUs({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <SectionHeader
-            title="About DR Web Studio"
-            description="Professional web developer specializing in modern, fast, and SEO-optimized websites for businesses across the Dominican Republic and beyond."
+            title={sectionHeader.title[lang]}
+            description={sectionHeader.description[lang]}
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Personal Information */}
             <div>
               <ProfileCard
-                name="Your Web Developer"
-                location="Based in Dominican Republic"
+                name="James Karnes"
+                location={sectionHeader.basedOutOf[lang]}
               />
-              <PersonalStory />
+              <PersonalStory title={personalStory.title[lang]} story1={personalStory.story1[lang]} story2={personalStory.story2[lang]} />
               <LocationAvailability />
             </div>
 

@@ -74,6 +74,30 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+      // About Me Group
+      S.listItem()
+        .title("About Me")
+        .child(
+          S.list()
+            .title("About Me")
+            .items([
+              S.listItem()
+                .title("Section Header")
+                .child(
+                  S.documentList()
+                    .title("Section Header")
+                    .filter('_type == "sectionHeader"'),
+                ),
+              S.listItem()
+                .title("Personal Story")
+                .child(
+                  S.documentList()
+                    .title("Personal Story")
+                    .filter('_type == "personalStory"'),
+                ),
+            ]),
+        ),
+
       // Services Group
       S.listItem()
         .title("Services")

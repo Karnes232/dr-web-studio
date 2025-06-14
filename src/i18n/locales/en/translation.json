@@ -34,7 +34,8 @@
     "readFullArticle": "Read Full Article",
     "searchPlaceholder": "Search articles...",
     "backToBlog": "Back to Blog",
-    "noArticlesFound": "No articles found matching your criteria."
+    "noArticlesFound": "No articles found matching your criteria.",
+    "readMore": "Read More"
   },
   "hero": {
     "happyClients": "Happy Clients",

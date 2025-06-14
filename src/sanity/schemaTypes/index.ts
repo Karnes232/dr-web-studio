@@ -12,6 +12,8 @@ import blogHeader from "./blog/blogHeader"
 import trustSignals from "./home/TrustSignals"
 import previousClients from "./home/PreviousClients"
 import Testimonial from "./home/Testimonial"
+import sectionHeader from "./about-me/sectionHeader"
+import personalStory from "./about-me/personalStory"
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     generalLayout,
@@ -22,6 +24,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     trustSignals,
     previousClients,
     Testimonial,
+    sectionHeader,
+    personalStory,
     seo,
     author,
     blogPost,

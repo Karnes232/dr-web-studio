@@ -34,7 +34,8 @@
     "readFullArticle": "Leer Artículo Completo",
     "searchPlaceholder": "Buscar artículos...",
     "backToBlog": "Volver al Blog",
-    "noArticlesFound": "No se encontraron artículos que coincidan con tus criterios."
+    "noArticlesFound": "No se encontraron artículos que coincidan con tus criterios.",
+    "readMore": "Leer Más"
   },
   "hero": {
     "happyClients": "Clientes Felices",
