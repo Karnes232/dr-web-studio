@@ -19,6 +19,13 @@ export const structure: StructureResolver = S =>
                     .schemaType("generalLayout")
                     .documentId("generalLayout"),
                 ),
+              S.listItem()
+                .title("Stats")
+                .child(
+                  S.documentList()
+                    .title("Stats")
+                    .filter('_type == "stats"'),
+                ),
             ]),
         ),
 
@@ -94,6 +101,13 @@ export const structure: StructureResolver = S =>
                   S.documentList()
                     .title("Personal Story")
                     .filter('_type == "personalStory"'),
+                ),
+              S.listItem()
+                .title("Location Availability")
+                .child(
+                  S.documentList()
+                    .title("Location Availability")
+                    .filter('_type == "locationAvailability"'),
                 ),
             ]),
         ),

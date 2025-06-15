@@ -1,15 +1,18 @@
+"use client"
 import React from "react"
 import { Clock, Star, Globe, Award } from "lucide-react"
-const StatsGrid = () => {
-  const stats = [
-    { number: "50+", label: "Websites Delivered", icon: Globe },
-    { number: "3+", label: "Years Experience", icon: Award },
-    { number: "24/7", label: "Support Available", icon: Clock },
-    { number: "100%", label: "Client Satisfaction", icon: Star },
+import { useLocale } from "@/i18n/useLocale"
+const StatsGrid = ({ stats }: { stats: { websitesDelivered: number, yearsExperience: number } }) => {
+  const { t } = useLocale()
+  const statsArray = [
+    { number: `${stats.websitesDelivered}+`, label: t("stats.websitesDelivered"), icon: Globe },
+    { number: `${stats.yearsExperience}+`, label: t("stats.yearsExperience"), icon: Award },
+    { number: "24/7", label: t("stats.supportAvailable"), icon: Clock },
+    { number: "100%", label: t("stats.clientSatisfaction"), icon: Star },
   ]
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      {stats.map((stat, index) => {
+      {statsArray.map((stat, index) => {
         const Icon = stat.icon
         return (
           <div key={index} className="text-center">

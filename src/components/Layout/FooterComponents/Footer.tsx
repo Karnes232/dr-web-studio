@@ -26,6 +26,10 @@ interface FooterProps {
       en: string
       es: string
     }
+    socialLinks: {
+      linkedin: string
+      github: string
+    }
   }
 }
 
@@ -45,7 +49,7 @@ const Footer = ({ logo, companyInfo }: FooterProps) => {
         </div>
 
         {/* Social Media */}
-        <SocialMedia />
+        <SocialMedia socialLinks={companyInfo.socialLinks} email={companyInfo.email} />
 
         {/* Bottom Bar */}
         <BottomBar />

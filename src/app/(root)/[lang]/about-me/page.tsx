@@ -7,6 +7,8 @@ import SectionHeader from "@/components/AboutUsSectionComponents/SectionHeader"
 import StatsGrid from "@/components/AboutUsSectionComponents/StatsGrid"
 import TechStack from "@/components/AboutUsSectionComponents/TechStack"
 import WhyChooseUs from "@/components/AboutUsSectionComponents/WhyChooseUs"
+import { getStats } from "@/sanity/queries/layout/stats"
+import { getLocationAvailability } from "@/sanity/queries/locationAvailability"
 import { getPersonalStory } from "@/sanity/queries/personalStory"
 import { getSectionHeader } from "@/sanity/queries/sectionHeader"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
@@ -24,7 +26,10 @@ export default async function AboutUs({ params }: PageProps) {
   const seoData = await getSeoSchema("about")
   const sectionHeader = await getSectionHeader()
   const personalStory = await getPersonalStory()
+  const locationAvailability = await getLocationAvailability()
+  const stats = await getStats()
 
+  console.log(stats)
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -49,12 +54,12 @@ export default async function AboutUs({ params }: PageProps) {
                 location={sectionHeader.basedOutOf[lang]}
               />
               <PersonalStory title={personalStory.title[lang]} story1={personalStory.story1[lang]} story2={personalStory.story2[lang]} />
-              <LocationAvailability />
+              <LocationAvailability availabilityItems={locationAvailability.availabilityItems.map(item => item[lang])} title={locationAvailability.title[lang]} />
             </div>
 
             {/* Right Column - Technical Information */}
             <div>
-              <StatsGrid />
+              <StatsGrid stats={stats} />
               <TechStack />
               <DevelopmentApproach />
               <WhyChooseUs />

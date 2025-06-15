@@ -55,6 +55,13 @@
     "readyToStart": "Ready to Start Your Website Project?",
     "getFreeConsultation": "Get a free consultation and custom quote for your business website.",
     "startQuestionnaire": "Start Questionnaire",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us"
+  },
+  "stats": {
+    "websitesDelivered": "Websites Delivered",
+    "yearsExperience": "Years Experience",
+    "supportAvailable": "Support Available",
+    "clientSatisfaction": "Client Satisfaction"
   }
 }

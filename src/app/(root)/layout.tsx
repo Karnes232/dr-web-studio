@@ -75,6 +75,10 @@ export default async function RootLayout({
       footerText {
         en,
         es  
+      },
+      socialLinks {
+        linkedin,
+        github
       }
     }
   `)

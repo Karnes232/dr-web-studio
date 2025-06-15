@@ -55,6 +55,13 @@
     "readyToStart": "¿Listo para Iniciar su Proyecto de Sitio Web?",
     "getFreeConsultation": "Obtenga una consulta gratuita y una cotización personalizada para su negocio.",
     "startQuestionnaire": "Iniciar Cuestionario",
-    "contactUs": "Contactar"
+    "contactUs": "Contactar",
+    "followUs": "Síguenos"
+  },
+  "stats": {
+    "websitesDelivered": "Sitios Web Entregados",
+    "yearsExperience": "Años de Experiencia",
+    "supportAvailable": "Soporte Disponible",
+    "clientSatisfaction": "Satisfacción del Cliente"
   }
 }
