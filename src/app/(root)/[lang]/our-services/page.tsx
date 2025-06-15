@@ -1,6 +1,9 @@
 import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import ServicesContent from "@/components/ServicesComponents/ServicesContent"
+import { getServicesHeader } from "@/sanity/queries/services/servicesHeader"
+import { getFeaturesStrip } from "@/sanity/queries/services/featuresStrip"
+import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 
 interface PageProps {
   params: Promise<{
@@ -11,7 +14,9 @@ interface PageProps {
 export default async function OurServices({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("services")
-
+  const servicesHeader = await getServicesHeader()
+  const featuresStrip = await getFeaturesStrip()
+  const customSolutionCTA = await getCustomSolutionCTA()
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -20,7 +25,7 @@ export default async function OurServices({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <ServicesContent />
+      <ServicesContent servicesHeader={servicesHeader} featuresStrip={featuresStrip} customSolutionCTA={customSolutionCTA} />
     </>
   )
 }

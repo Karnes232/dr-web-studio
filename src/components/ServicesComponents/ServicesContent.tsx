@@ -13,6 +13,10 @@ import ServiceFilter from "./ServiceFilter"
 import ServicesGrid from "./ServicesGrid"
 import CustomSolutionCTA from "./CustomSolutionCTA"
 import FeaturesStrip from "./FeaturesStrip"
+import { ServicesHeaderData } from "@/sanity/queries/services/servicesHeader"
+import { useLocale } from "@/i18n/useLocale"
+import { FeaturesStripData } from "@/sanity/queries/services/featuresStrip"
+import { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
 
 const useServicesData = () => {
   return [
@@ -133,7 +137,8 @@ const useServicesData = () => {
   ]
 }
 
-export default function ServicesContent() {
+export default function ServicesContent({ servicesHeader, featuresStrip, customSolutionCTA }: { servicesHeader: ServicesHeaderData, featuresStrip: FeaturesStripData, customSolutionCTA: CustomSolutionCTAData }) {
+  const { currentLocale } = useLocale()
   const [activeCategory, setActiveCategory] = useState("All Services")
   const services = useServicesData()
 
@@ -158,7 +163,7 @@ export default function ServicesContent() {
       className="py-20 bg-gradient-to-b from-slate-50 to-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ServicesHeader />
+        <ServicesHeader badge={servicesHeader.badge[currentLocale as keyof typeof servicesHeader.badge]} title={servicesHeader.title[currentLocale as keyof typeof servicesHeader.title]} highlightedText={servicesHeader.highlightedText[currentLocale as keyof typeof servicesHeader.highlightedText]} description={servicesHeader.description[currentLocale as keyof typeof servicesHeader.description]} />
 
         <ServiceFilter
           categories={categories}
@@ -168,9 +173,9 @@ export default function ServicesContent() {
 
         <ServicesGrid services={filteredServices} />
 
-        <CustomSolutionCTA />
+        <CustomSolutionCTA customSolutionCTA={customSolutionCTA} />
 
-        <FeaturesStrip />
+        <FeaturesStrip features={featuresStrip.features} />
       </div>
     </section>
   )

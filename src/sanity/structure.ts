@@ -133,6 +133,37 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+       // Our Services Group
+       S.listItem()
+        .title("Our Services")
+        .child(
+          S.list()
+            .title("Our Services")
+            .items([
+              S.listItem()
+                .title("Services Header")
+                .child(
+                  S.documentList()
+                    .title("Services Header")
+                    .filter('_type == "servicesHeader"'),
+                ),
+              S.listItem()
+                .title("Features Strip")
+                .child(
+                  S.documentList()
+                    .title("Features Strip")
+                    .filter('_type == "featuresStrip"'),
+                ),
+              S.listItem()
+                .title("Custom Solution CTA")
+                .child(
+                  S.documentList()
+                    .title("Custom Solution CTA")
+                    .filter('_type == "customSolutionCTA"'),
+                ),
+            ]),
+        ),
+
       // Services Group
       S.listItem()
         .title("Services")
