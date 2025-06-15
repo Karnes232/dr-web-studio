@@ -1,4 +1,4 @@
-import { client } from "../lib/client"
+import { client } from "../../lib/client"
 
 export const blogHeaderQuery = `
 *[_type == "blogHeader"][0] {

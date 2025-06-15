@@ -1,4 +1,4 @@
-import { client } from "../lib/client"
+import { client } from "../../lib/client"
 
 export const allBlogPostsQuery = `
 *[_type == "blogPost"] | order(publishedAt desc) {

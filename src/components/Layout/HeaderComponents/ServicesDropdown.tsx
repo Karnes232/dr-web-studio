@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react"
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { useLocale } from "@/i18n/useLocale"
 import Link from "next/link"
 
@@ -11,6 +11,25 @@ const ServicesDropdown = ({
   setServicesOpen: any
 }) => {
   const { t, getLocalizedPath } = useLocale()
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!servicesOpen) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setServicesOpen(false)
+      }
+    }
+
+    // Use capture phase to ensure we catch the event before it bubbles
+    document.addEventListener("mousedown", handleClickOutside, true)
+    
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside, true)
+    }
+  }, [servicesOpen, setServicesOpen])
 
   const services = [
     {
@@ -30,7 +49,7 @@ const ServicesDropdown = ({
     { href: getLocalizedPath("/our-services"), label: t("services.seo") },
   ]
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setServicesOpen(!servicesOpen)}
         className="flex items-center text-slate-700 hover:text-orange-500 font-medium transition-colors duration-200"

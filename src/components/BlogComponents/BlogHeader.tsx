@@ -1,5 +1,5 @@
 import React from "react"
-import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blogHeader"
+import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blog/blogHeader"
 
 interface BlogHeaderProps {
   header: BlogHeaderType

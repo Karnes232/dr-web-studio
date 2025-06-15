@@ -1,8 +1,8 @@
 import BlogContent from "@/components/BlogComponents/BlogContent"
-import { getAllBlogPosts } from "@/sanity/queries/blog"
-import { getAllCategories } from "@/sanity/queries/categories"
+import { getAllBlogPosts } from "@/sanity/queries/blog/blog"
+import { getAllCategories } from "@/sanity/queries/blog/categories"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
-import { getBlogHeader } from "@/sanity/queries/blogHeader"
+import { getBlogHeader } from "@/sanity/queries/blog/blogHeader"
 import { Metadata } from "next"
 import React from "react"
 

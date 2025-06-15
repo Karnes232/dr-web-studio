@@ -1,6 +1,6 @@
 import BlogPostContent from "@/components/BlogComponents/BlogPost/BlogPostContent"
 import BlogPostHeader from "@/components/BlogComponents/BlogPost/BlogPostHeader"
-import { getBlogPostBySlug } from "@/sanity/queries/blog"
+import { getBlogPostBySlug } from "@/sanity/queries/blog/blog"
 import React from "react"
 interface PageProps {
   params: Promise<{

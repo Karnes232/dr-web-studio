@@ -1,41 +1,21 @@
 import { Globe, Shield, Smartphone, Zap } from "lucide-react"
 import React from "react"
 
-const DevelopmentApproach = () => {
-  const approaches = [
-    {
-      icon: Zap,
-      title: "Fast & Optimized",
-      description:
-        "Lightning-fast websites that load in under 3 seconds and score 90+ on Google PageSpeed.",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile-First Design",
-      description:
-        "Every website is designed for mobile devices first, ensuring perfect performance on all screens.",
-    },
-    {
-      icon: Shield,
-      title: "SEO-Optimized",
-      description:
-        "Built with SEO best practices to help your business rank higher in Google search results.",
-    },
-    {
-      icon: Globe,
-      title: "Reliable & Secure",
-      description:
-        "Secure, reliable websites with 99.9% uptime and regular backups to protect your business.",
-    },
-  ]
+const DevelopmentApproach = ({ approaches, title }: { approaches: { iconName: string, title: string, description: string }[], title: string }  ) => {
+  const icons = {
+    Zap,
+    Smartphone,
+    Shield,
+    Globe,
+  }
   return (
     <div className="mb-8">
       <h3 className="text-xl font-semibold text-slate-800 mb-6">
-        My Development Approach
+        {title}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {approaches.map((approach, index) => {
-          const Icon = approach.icon
+          const Icon = icons[approach.iconName as keyof typeof icons]
           return (
             <div key={index} className="flex items-start space-x-4">
               <div className="bg-orange-100 p-3 rounded-lg">

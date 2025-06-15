@@ -5,11 +5,11 @@ import TrustSignals from "@/components/TrustSignalsComponents/TrustSignals"
 import { getTranslation } from "@/i18n"
 import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
-import { getHomePageService } from "@/sanity/queries/homePageService"
-import { getServices } from "@/sanity/queries/services"
-import { getTrustSignals } from "@/sanity/queries/trustSignals"
-import { getPreviousClients } from "@/sanity/queries/previousClients"
-import { getAllTestimonials } from "@/sanity/queries/testimonials"
+import { getHomePageService } from "@/sanity/queries/home/homePageService"
+import { getServices } from "@/sanity/queries/services/services"
+import { getTrustSignals } from "@/sanity/queries/home/trustSignals"
+import { getPreviousClients } from "@/sanity/queries/home/previousClients"
+import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {

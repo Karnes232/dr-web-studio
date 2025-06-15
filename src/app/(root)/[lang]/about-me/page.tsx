@@ -8,12 +8,15 @@ import StatsGrid from "@/components/AboutUsSectionComponents/StatsGrid"
 import TechStack from "@/components/AboutUsSectionComponents/TechStack"
 import WhyChooseUs from "@/components/AboutUsSectionComponents/WhyChooseUs"
 import { getStats } from "@/sanity/queries/layout/stats"
-import { getLocationAvailability } from "@/sanity/queries/locationAvailability"
-import { getPersonalStory } from "@/sanity/queries/personalStory"
-import { getSectionHeader } from "@/sanity/queries/sectionHeader"
+import { getLocationAvailability } from "@/sanity/queries/about-me/locationAvailability"
+import { getPersonalStory } from "@/sanity/queries/about-me/personalStory"
+import { getSectionHeader } from "@/sanity/queries/about-me/sectionHeader"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import React from "react"
+import { getTechnologies } from "@/sanity/queries/about-me/technologies"
+import { getDevelopmentApproach } from "@/sanity/queries/about-me/developmentApproach"
+import { getWhyChooseUs } from "@/sanity/queries/about-me/whyChooseUs"
 
 interface PageProps {
   params: Promise<{
@@ -28,8 +31,10 @@ export default async function AboutUs({ params }: PageProps) {
   const personalStory = await getPersonalStory()
   const locationAvailability = await getLocationAvailability()
   const stats = await getStats()
+  const technologies = await getTechnologies()
+  const developmentApproach = await getDevelopmentApproach()
+  const whyChooseUs = await getWhyChooseUs()
 
-  console.log(stats)
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -60,9 +65,16 @@ export default async function AboutUs({ params }: PageProps) {
             {/* Right Column - Technical Information */}
             <div>
               <StatsGrid stats={stats} />
-              <TechStack />
-              <DevelopmentApproach />
-              <WhyChooseUs />
+              <TechStack technologies={technologies.technologies} title={technologies.title[lang]} />
+              <DevelopmentApproach approaches={developmentApproach.approaches.map(approach => ({
+                iconName: approach.iconName,
+                title: approach.title[lang],
+                description: approach.description[lang]
+              }))} title={developmentApproach.title[lang]} />
+              <WhyChooseUs reasons={whyChooseUs.reasons.map(reason => ({
+                title: reason.title[lang],
+                description: reason.description[lang]
+              }))} title={whyChooseUs.title[lang]} />
             </div>
           </div>
 

@@ -109,6 +109,27 @@ export const structure: StructureResolver = S =>
                     .title("Location Availability")
                     .filter('_type == "locationAvailability"'),
                 ),
+              S.listItem()
+                .title("Technologies")
+                .child(
+                  S.documentList()
+                    .title("Technologies")
+                    .filter('_type == "technologies"'),
+                ),
+              S.listItem()
+                .title("Development Approach")
+                .child(
+                  S.documentList()
+                    .title("Development Approach")
+                    .filter('_type == "developmentApproach"'),
+                ),
+              S.listItem()
+                .title("Why Choose Us")
+                .child(
+                  S.documentList()
+                    .title("Why Choose Us")
+                    .filter('_type == "whyChooseUs"'),
+                ),
             ]),
         ),
 

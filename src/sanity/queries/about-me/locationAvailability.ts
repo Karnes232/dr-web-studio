@@ -7,10 +7,18 @@ interface AvailabilityItem {
 
 interface LocationAvailabilityData {
   availabilityItems: AvailabilityItem[]
+  title: {
+    en: string
+    es: string
+  }
 }
 
 export const locationAvailabilityQuery = `*[_type == "locationAvailability"][0] {
   availabilityItems[] {
+    en,
+    es
+  },
+  title {
     en,
     es
   }

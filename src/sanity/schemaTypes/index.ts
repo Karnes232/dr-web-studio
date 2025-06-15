@@ -16,6 +16,9 @@ import sectionHeader from "./about-me/sectionHeader"
 import personalStory from "./about-me/personalStory"
 import locationAvailability from "./about-me/locationAvailability"
 import stats from "./layout/stats"
+import technologies from "./about-me/technologies"
+import developmentApproach from "./about-me/developmentApproach"
+import whyChooseUs from "./about-me/whyChooseUs"
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     generalLayout,
@@ -30,6 +33,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     personalStory,
     locationAvailability,
     stats,
+    technologies,
+    developmentApproach,
+    whyChooseUs,
     seo,
     author,
     blogPost,
