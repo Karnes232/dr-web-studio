@@ -4,6 +4,8 @@ import ServicesContent from "@/components/ServicesComponents/ServicesContent"
 import { getServicesHeader } from "@/sanity/queries/services/servicesHeader"
 import { getFeaturesStrip } from "@/sanity/queries/services/featuresStrip"
 import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
+import { getCategories } from "@/sanity/queries/services/category"
+import { getServiceItems } from "@/sanity/queries/services/serviceItem"
 
 interface PageProps {
   params: Promise<{
@@ -17,6 +19,8 @@ export default async function OurServices({ params }: PageProps) {
   const servicesHeader = await getServicesHeader()
   const featuresStrip = await getFeaturesStrip()
   const customSolutionCTA = await getCustomSolutionCTA()
+  const categories = await getCategories()
+  const serviceItems = await getServiceItems()
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -25,7 +29,7 @@ export default async function OurServices({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <ServicesContent servicesHeader={servicesHeader} featuresStrip={featuresStrip} customSolutionCTA={customSolutionCTA} />
+      <ServicesContent servicesHeader={servicesHeader} featuresStrip={featuresStrip} customSolutionCTA={customSolutionCTA} categories={categories} serviceItems={serviceItems} />
     </>
   )
 }

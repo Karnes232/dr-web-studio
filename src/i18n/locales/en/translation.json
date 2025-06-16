@@ -16,6 +16,17 @@
     "maintenance": "Maintenance",
     "seo": "SEO & Performance"
   },
+  "serviceCard": {
+    "startingFrom": "Starting from",
+    "keyBenefits": "Key Benefits",
+    "timeline": "Timeline",
+    "features": "Features",
+    "included": "included",
+    "timeFrame": "weeks",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "ongoing": "Monthly plan"
+  },
   "resources": {
     "website_questionnaire": "Website Questionnaire",
     "get_free_quote": "Get Free Quote",

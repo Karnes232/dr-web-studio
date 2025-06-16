@@ -17,6 +17,7 @@ import service from "./services/Service"
 import servicesHeader from "./services/servicesHeader"
 import featuresStrip from "./services/featuresStrip"
 import customSolutionCTA from "./services/customSolutionCTA"
+import category from "./services/category"
 
 // About Me Schemas
 import sectionHeader from "./about-me/sectionHeader"
@@ -34,6 +35,7 @@ import blogHeader from "./blog/blogHeader"
 
 // SEO Schema
 import seo from "./seo/seo"
+import serviceItem from "./services/serviceItem"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -54,6 +56,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     servicesHeader,
     featuresStrip,
     customSolutionCTA,
+    serviceItem,
+    category,
     // About Me Schemas
     sectionHeader,
     personalStory,

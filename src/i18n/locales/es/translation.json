@@ -16,6 +16,17 @@
     "maintenance": "Mantenimiento",
     "seo": "SEO y Rendimiento"
   },
+  "serviceCard": {
+    "startingFrom": "Desde",
+    "keyBenefits": "Beneficios",
+    "timeline": "Tiempo",
+    "features": "Características",
+    "included": "incluido",
+    "timeFrame": "semanas",
+    "getStarted": "Comenzar",
+    "learnMore": "Más Información",
+    "ongoing": "Plan mensual"
+  },
   "resources": {
     "website_questionnaire": "Cuestionario de Sitio Web",
     "get_free_quote": "Obtener Cotización Gratis",

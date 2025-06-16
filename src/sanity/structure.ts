@@ -178,6 +178,20 @@ export const structure: StructureResolver = S =>
                     .title("Services")
                     .filter('_type == "service"'),
                 ),
+              S.listItem()
+                .title("Categories")
+                .child(
+                  S.documentList()
+                    .title("Categories")
+                    .filter('_type == "category"'),
+                ),
+              S.listItem()
+                .title("Service Items")
+                .child(
+                  S.documentList()
+                    .title("Service Items")
+                    .filter('_type == "serviceItem"'),
+                ),
             ]),
         ),
 

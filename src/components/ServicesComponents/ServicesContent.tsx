@@ -8,6 +8,7 @@ import {
   FileText,
   Wrench,
   Zap,
+  Briefcase
 } from "lucide-react"
 import ServiceFilter from "./ServiceFilter"
 import ServicesGrid from "./ServicesGrid"
@@ -17,6 +18,8 @@ import { ServicesHeaderData } from "@/sanity/queries/services/servicesHeader"
 import { useLocale } from "@/i18n/useLocale"
 import { FeaturesStripData } from "@/sanity/queries/services/featuresStrip"
 import { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
+import { Category } from "@/sanity/queries/services/category"
+import { ServiceItem } from "@/sanity/queries/services/serviceItem"
 
 const useServicesData = () => {
   return [
@@ -26,7 +29,7 @@ const useServicesData = () => {
       description:
         "Tailored static and dynamic websites built with modern technologies like React and Next.js.",
       icon: Globe,
-      category: "Development",
+      categories: ["Development", "Optimization"],
       priceRange: "500",
       timeline: "2-4 weeks",
       features: "8-12",
@@ -45,7 +48,7 @@ const useServicesData = () => {
       description:
         "Complete online stores with Shopify, WooCommerce, or custom React-based solutions.",
       icon: ShoppingCart,
-      category: "E-commerce",
+      categories: ["E-commerce", "Development"],
       priceRange: "900",
       timeline: "3-6 weeks",
       features: "15-20",
@@ -64,7 +67,7 @@ const useServicesData = () => {
       description:
         "High-conversion landing pages designed for marketing campaigns and lead generation.",
       icon: Target,
-      category: "Marketing",
+      categories: ["Marketing", "Development"],
       priceRange: "300",
       timeline: "1-2 weeks",
       features: "6-8",
@@ -83,7 +86,7 @@ const useServicesData = () => {
       description:
         "Easy-to-manage websites with CMS solutions like Sanity, Contentful, or WordPress.",
       icon: FileText,
-      category: "CMS",
+      categories: ["CMS", "Development"],
       priceRange: "600",
       timeline: "2-4 weeks",
       features: "10-15",
@@ -102,7 +105,7 @@ const useServicesData = () => {
       description:
         "Ongoing website maintenance, updates, bug fixes, and performance monitoring.",
       icon: Wrench,
-      category: "Support",
+      categories: ["Support", "Optimization"],
       priceRange: "100",
       timeline: "Ongoing",
       features: "5-8",
@@ -121,7 +124,7 @@ const useServicesData = () => {
       description:
         "Boost your website's speed, search rankings, and overall performance.",
       icon: Zap,
-      category: "Optimization",
+      categories: ["Optimization", "Marketing"],
       priceRange: "400",
       timeline: "1-3 weeks",
       features: "8-12",
@@ -137,25 +140,28 @@ const useServicesData = () => {
   ]
 }
 
-export default function ServicesContent({ servicesHeader, featuresStrip, customSolutionCTA }: { servicesHeader: ServicesHeaderData, featuresStrip: FeaturesStripData, customSolutionCTA: CustomSolutionCTAData }) {
+export default function ServicesContent({ servicesHeader, featuresStrip, customSolutionCTA, categories, serviceItems }: { servicesHeader: ServicesHeaderData, featuresStrip: FeaturesStripData, customSolutionCTA: CustomSolutionCTAData, categories: Category[], serviceItems: ServiceItem[] }) {
   const { currentLocale } = useLocale()
-  const [activeCategory, setActiveCategory] = useState("All Services")
+  const [activeCategory, setActiveCategory] = useState(currentLocale === "es" ? "Todos los Servicios" : "All Services")
   const services = useServicesData()
 
-  const categories = [
-    "All Services",
-    "Development",
-    "E-commerce",
-    "Marketing",
-    "CMS",
-    "Support",
-    "Optimization",
-  ]
+
+  const categoryArray: string[] = [ currentLocale === "es" ? "Todos los Servicios" : "All Services" ]
+
+  // Sort categories by order field and add them to the array
+  const sortedCategories = [...categories].sort((a, b) => (a.order || 0) - (b.order || 0))
+  sortedCategories.forEach(category => {
+    categoryArray.push(category.name[currentLocale as keyof typeof category.name])
+  })
 
   const filteredServices =
-    activeCategory === "All Services"
-      ? services
-      : services.filter(service => service.category === activeCategory)
+    activeCategory === "All Services" || activeCategory === "Todos los Servicios"
+      ? serviceItems
+      : serviceItems.filter(service => 
+          service.categories.some(cat => 
+            cat.name[currentLocale as keyof typeof cat.name] === activeCategory
+          )
+        )
 
   return (
     <section
@@ -166,7 +172,7 @@ export default function ServicesContent({ servicesHeader, featuresStrip, customS
         <ServicesHeader badge={servicesHeader.badge[currentLocale as keyof typeof servicesHeader.badge]} title={servicesHeader.title[currentLocale as keyof typeof servicesHeader.title]} highlightedText={servicesHeader.highlightedText[currentLocale as keyof typeof servicesHeader.highlightedText]} description={servicesHeader.description[currentLocale as keyof typeof servicesHeader.description]} />
 
         <ServiceFilter
-          categories={categories}
+          categories={categoryArray}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />
