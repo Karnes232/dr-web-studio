@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Star, Quote } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
 import Image from "next/image"
@@ -16,6 +16,56 @@ const TrustSignals = ({
   testimonials: any
 }) => {
   const { t, currentLocale } = useLocale()
+  const [happyClients, setHappyClients] = useState(0)
+  const [projectsCompleted, setProjectsCompleted] = useState(0)
+  const [averageRating, setAverageRating] = useState(0)
+  const statsRef = useRef<HTMLDivElement>(null)
+
+  const targetHappyClients = 50
+  const targetProjectsCompleted = 100
+  const targetAverageRating = 5.0
+  const supportAvailable = "24/7"
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        const [entry] = entries
+        if (entry.isIntersecting) {
+          const animationDuration = 2000 // 2 seconds
+          const framesPerSecond = 60
+          const totalFrames = (animationDuration / 1000) * framesPerSecond
+
+          let frame = 0
+          const timer = setInterval(() => {
+            frame++
+            const progress = frame / totalFrames
+
+            if (frame <= totalFrames) {
+              setHappyClients(Math.ceil(progress * targetHappyClients))
+              setProjectsCompleted(
+                Math.ceil(progress * targetProjectsCompleted),
+              )
+              setAverageRating(Math.ceil(progress * targetAverageRating))
+            } else {
+              clearInterval(timer)
+            }
+          }, 1000 / framesPerSecond)
+
+          // Disconnect observer after animation starts
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      },
+    )
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [targetHappyClients, targetProjectsCompleted, targetAverageRating])
 
   return (
     <section className="py-20">
@@ -97,21 +147,32 @@ const TrustSignals = ({
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          ref={statsRef}
+          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-500 mb-2">50+</div>
+            <div className="text-3xl font-bold text-orange-500 mb-2">
+              {happyClients}+
+            </div>
             <div className="text-gray-600">{t("hero.happyClients")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-teal-500 mb-2">100+</div>
+            <div className="text-3xl font-bold text-teal-500 mb-2">
+              {projectsCompleted}+
+            </div>
             <div className="text-gray-600">{t("home.projectsCompleted")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-yellow-500 mb-2">5.0</div>
+            <div className="text-3xl font-bold text-yellow-500 mb-2">
+              {averageRating.toFixed(1)}
+            </div>
             <div className="text-gray-600">{t("home.averageRating")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-500 mb-2">24/7</div>
+            <div className="text-3xl font-bold text-purple-500 mb-2">
+              {supportAvailable}
+            </div>
             <div className="text-gray-600">{t("home.supportAvailable")}</div>
           </div>
         </div>

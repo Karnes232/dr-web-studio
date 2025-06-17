@@ -1,7 +1,9 @@
 import CustomQuoteCard from "@/components/PricingPageComponents/CustomQuoteCard"
 import PricingCard from "@/components/PricingPageComponents/PricingCard"
 import PricingFAQ from "@/components/PricingPageComponents/PricingFAQ"
+import CustomSolutionCTA from "@/components/ServicesComponents/CustomSolutionCTA"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 import { Globe, MessageCircle, ShoppingCart, Zap } from "lucide-react"
 import { Metadata } from "next"
 import React from "react"
@@ -94,6 +96,7 @@ const pricingData: PricingPackage[] = [
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("pricing")
+  const customSolutionCTA = await getCustomSolutionCTA()
 
   return (
     <>
@@ -129,12 +132,15 @@ export default async function Pricing({ params }: PageProps) {
           </div>
 
           {/* Custom Quote Card */}
-          <div className="max-w-md mx-auto mb-16">
-            <CustomQuoteCard />
+          {/* <div className="max-w-md mx-auto mb-16">
+                <CustomQuoteCard />
+              </div> */}
+          <div className="mb-16">
+            <CustomSolutionCTA customSolutionCTA={customSolutionCTA} />
           </div>
 
           {/* Additional CTA Section */}
-          <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-8 text-center text-white mb-16">
+          {/* <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-8 text-center text-white mb-16">
             <h3 className="text-2xl font-bold mb-4">
               Not sure which package is right for you?
             </h3>
@@ -157,7 +163,7 @@ export default async function Pricing({ params }: PageProps) {
                 WhatsApp Us
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/* FAQ Section */}
           <PricingFAQ />

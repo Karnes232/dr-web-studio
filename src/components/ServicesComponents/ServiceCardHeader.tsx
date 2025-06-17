@@ -46,7 +46,7 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
       <h3 className="text-xl font-bold text-slate-800 mb-2 truncate">
         {service.title[currentLocale as keyof typeof service.title]}
       </h3>
-      <p className="text-slate-600">
+      <p className="text-slate-600 h-16">
         {service.description[currentLocale as keyof typeof service.description]}
       </p>
     </div>

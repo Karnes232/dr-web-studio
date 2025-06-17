@@ -8,6 +8,7 @@ import { useLocale } from "@/i18n/useLocale"
 
 import VisualElement from "./VisualElement"
 import { Trans } from "react-i18next"
+import Link from "next/link"
 
 const HeroSection = ({
   heading,
@@ -67,20 +68,20 @@ const HeroSection = ({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#quote"
+              <Link
+                href={getLocalizedPath("/contact")}
                 className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.get_free_quote")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
+              </Link>
 
-              <a
-                href="#questionnaire"
+              <Link
+                href={getLocalizedPath("/project-planner")}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.start_project")}
-              </a>
+              </Link>
             </div>
 
             {/* Trust indicators */}

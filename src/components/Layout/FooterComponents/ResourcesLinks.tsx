@@ -6,7 +6,10 @@ import { ExternalLink } from "lucide-react"
 const ResourcesLinks = () => {
   const { currentLocale, t, getLocalizedPath } = useLocale()
   const resources = [
-    { href: "#questionnaire", label: t("resources.website_questionnaire") },
+    {
+      href: getLocalizedPath("/project-planner"),
+      label: t("resources.website_questionnaire"),
+    },
     { href: "#quote", label: t("resources.get_free_quote") },
     { href: "#case-studies", label: t("resources.case_studies") },
     { href: "#testimonials", label: t("resources.client_reviews") },
