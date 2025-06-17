@@ -8,7 +8,8 @@ import {
   RefreshCcw,
   Workflow,
   ShieldCheck,
-  Globe
+  Globe,
+  ShoppingCart
 } from "lucide-react"
 
 const ServiceCardHeader = ({ service }: { service: any }) => {
@@ -22,11 +23,12 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
     RefreshCcw,
     Workflow,
     ShieldCheck,
-    Globe
+    Globe,
+    ShoppingCart
   }
   const Icon = icons[service.iconName as keyof typeof icons]
   return (
-    <div className="bg-gradient-to-r from-slate-50 to-orange-50 p-6 border-b border-slate-100">
+    <div className="bg-gradient-to-r from-orange-100 to-yellow-50 p-6 border-b border-slate-100">
       <div className="flex items-center justify-between mb-4">
         <div className="bg-gradient-to-r from-orange-500 to-yellow-500 p-3 rounded-lg">
           <Icon className="h-6 w-6 text-white" />
@@ -39,7 +41,7 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-slate-800 mb-2">{service.title[currentLocale as keyof typeof service.title]}</h3>
+      <h3 className="text-xl font-bold text-slate-800 mb-2 truncate">{service.title[currentLocale as keyof typeof service.title]}</h3>
       <p className="text-slate-600">{service.description[currentLocale as keyof typeof service.description]}</p>
     </div>
   )

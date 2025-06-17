@@ -131,7 +131,7 @@ export default function PortfolioContent({ lang }: PortfolioContentProps) {
   }
 
   return (
-    <section className="py-16 bg-white" id="portfolio">
+    <section className="py-16 bg-gradient-to-br from-slate-50 to-orange-50" id="portfolio">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PortfolioHeader />
 

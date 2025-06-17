@@ -166,7 +166,7 @@ export default function ServicesContent({ servicesHeader, featuresStrip, customS
   return (
     <section
       id="services"
-      className="py-20 bg-gradient-to-b from-slate-50 to-white"
+      className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ServicesHeader badge={servicesHeader.badge[currentLocale as keyof typeof servicesHeader.badge]} title={servicesHeader.title[currentLocale as keyof typeof servicesHeader.title]} highlightedText={servicesHeader.highlightedText[currentLocale as keyof typeof servicesHeader.highlightedText]} description={servicesHeader.description[currentLocale as keyof typeof servicesHeader.description]} />

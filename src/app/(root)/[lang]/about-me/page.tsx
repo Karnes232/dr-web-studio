@@ -43,7 +43,7 @@ export default async function AboutUs({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <section id="about" className="py-16 bg-white">
+      <section id="about" className="py-16 bg-gradient-to-br from-slate-50 to-orange-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <SectionHeader
