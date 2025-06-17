@@ -2,8 +2,13 @@ import { CheckCircle } from "lucide-react"
 import { Star } from "lucide-react"
 import React from "react"
 
-const WhyChooseUs = ({ reasons, title }: { reasons: { title: string, description: string }[], title: string }) => {
-
+const WhyChooseUs = ({
+  reasons,
+  title,
+}: {
+  reasons: { title: string; description: string }[]
+  title: string
+}) => {
   return (
     <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl p-6">
       <h3 className="text-xl font-semibold text-slate-800 mb-4 flex items-center">

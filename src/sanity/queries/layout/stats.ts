@@ -12,4 +12,4 @@ export const statsQuery = `*[_type == "stats"][0] {
 
 export async function getStats(): Promise<StatsData> {
   return client.fetch(statsQuery)
-} 
+}

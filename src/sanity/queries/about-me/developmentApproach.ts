@@ -40,4 +40,4 @@ export const developmentApproachQuery = `*[_type == "developmentApproach"][0] {
 
 export async function getDevelopmentApproach(): Promise<DevelopmentApproachData> {
   return client.fetch(developmentApproachQuery)
-} 
+}

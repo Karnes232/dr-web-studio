@@ -88,7 +88,10 @@ const BlogCard = ({ post, lang }: BlogCardProps) => {
               ))}
           </div>
 
-              <Link href={`/${lang}/blog/${post.slug.current}`} className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors">
+          <Link
+            href={`/${lang}/blog/${post.slug.current}`}
+            className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors"
+          >
             {t("blog.readMore")}
             <ArrowRight className="ml-1 h-4 w-4" />
           </Link>

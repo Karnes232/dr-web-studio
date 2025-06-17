@@ -25,7 +25,7 @@ const ServicesDropdown = ({
 
     // Use capture phase to ensure we catch the event before it bubbles
     document.addEventListener("mousedown", handleClickOutside, true)
-    
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside, true)
     }

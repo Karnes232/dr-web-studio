@@ -112,10 +112,18 @@ const components = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <TextComponentList items={children} listType="bullet" ListClassName="mb-4" />
+      <TextComponentList
+        items={children}
+        listType="bullet"
+        ListClassName="mb-4"
+      />
     ),
     number: ({ children }: any) => (
-      <TextComponentList items={children} listType="number" ListClassName="mb-4" />
+      <TextComponentList
+        items={children}
+        listType="number"
+        ListClassName="mb-4"
+      />
     ),
   },
 }

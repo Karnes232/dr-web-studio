@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 export interface ServiceItem {
   _id: string
@@ -48,4 +48,4 @@ const serviceItemsQuery = `*[_type == "serviceItem"] {
 
 export async function getServiceItems(): Promise<ServiceItem[]> {
   return client.fetch(serviceItemsQuery)
-} 
+}

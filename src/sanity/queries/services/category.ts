@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 export interface Category {
   _id: string
@@ -17,4 +17,4 @@ const categoriesQuery = `*[_type == "category"] | order(order asc) {
 
 export async function getCategories(): Promise<Category[]> {
   return client.fetch(categoriesQuery)
-} 
+}

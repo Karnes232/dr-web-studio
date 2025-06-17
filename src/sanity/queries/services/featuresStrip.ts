@@ -1,7 +1,7 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 interface Feature {
-  iconName: 'Smartphone' | 'Search' | 'Zap'
+  iconName: "Smartphone" | "Search" | "Zap"
   title: {
     en: string
     es: string
@@ -28,4 +28,4 @@ const featuresStripQuery = `*[_type == "featuresStrip"][0] {
 
 export async function getFeaturesStrip(): Promise<FeaturesStripData> {
   return client.fetch(featuresStripQuery)
-} 
+}

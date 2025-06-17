@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 export interface ServicesHeaderData {
   badge: {
@@ -28,4 +28,4 @@ const servicesHeaderQuery = `*[_type == "servicesHeader"][0] {
 
 export async function getServicesHeader(): Promise<ServicesHeaderData> {
   return client.fetch(servicesHeaderQuery)
-} 
+}

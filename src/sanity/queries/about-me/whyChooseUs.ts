@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 interface Reason {
   title: {
@@ -29,4 +29,4 @@ const whyChooseUsQuery = `*[_type == "whyChooseUs"][0] {
 
 export async function getWhyChooseUs(): Promise<WhyChooseUsData> {
   return client.fetch(whyChooseUsQuery)
-} 
+}

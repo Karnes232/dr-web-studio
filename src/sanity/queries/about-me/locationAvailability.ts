@@ -26,4 +26,4 @@ export const locationAvailabilityQuery = `*[_type == "locationAvailability"][0] 
 
 export async function getLocationAvailability(): Promise<LocationAvailabilityData> {
   return client.fetch(locationAvailabilityQuery)
-} 
+}

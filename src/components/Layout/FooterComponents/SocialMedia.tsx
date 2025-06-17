@@ -1,6 +1,6 @@
-import { useLocale } from "@/i18n/useLocale";
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
 
 interface SocialMediaProps {
   socialLinks: {
@@ -19,7 +19,9 @@ const SocialMedia = ({ socialLinks, email }: SocialMediaProps) => {
 
   return (
     <div className="mt-8 mb-4">
-      <h3 className="text-lg font-semibold text-white mb-4">{t("footer.followUs")}</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">
+        {t("footer.followUs")}
+      </h3>
       <div className="flex space-x-4">
         {socialLinksArray.map((social, index) => {
           const Icon = social.icon

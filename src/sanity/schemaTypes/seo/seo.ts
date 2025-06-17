@@ -34,6 +34,7 @@ export default defineType({
           { title: "Contact", value: "contact" },
           { title: "Blog", value: "blog" },
           { title: "Services", value: "services" },
+          { title: "Project Planner", value: "project-planner" },
         ],
         layout: "dropdown",
       },

@@ -1,27 +1,27 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: 'stats',
-  title: 'Stats',
-  type: 'document',
+  name: "stats",
+  title: "Stats",
+  type: "document",
   fields: [
     defineField({
-      name: 'websitesDelivered',
-      title: 'Websites Delivered',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(0),
+      name: "websitesDelivered",
+      title: "Websites Delivered",
+      type: "number",
+      validation: Rule => Rule.required().min(0),
     }),
     defineField({
-      name: 'yearsExperience',
-      title: 'Years Experience',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(0),
+      name: "yearsExperience",
+      title: "Years Experience",
+      type: "number",
+      validation: Rule => Rule.required().min(0),
     }),
   ],
   preview: {
     select: {
-      title: 'websitesDelivered',
-      subtitle: 'yearsExperience',
+      title: "websitesDelivered",
+      subtitle: "yearsExperience",
     },
     prepare({ title, subtitle }) {
       return {
@@ -30,4 +30,4 @@ export default defineType({
       }
     },
   },
-}) 
+})

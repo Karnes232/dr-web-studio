@@ -2,11 +2,23 @@
 import React from "react"
 import { Clock, Star, Globe, Award } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
-const StatsGrid = ({ stats }: { stats: { websitesDelivered: number, yearsExperience: number } }) => {
+const StatsGrid = ({
+  stats,
+}: {
+  stats: { websitesDelivered: number; yearsExperience: number }
+}) => {
   const { t } = useLocale()
   const statsArray = [
-    { number: `${stats.websitesDelivered}+`, label: t("stats.websitesDelivered"), icon: Globe },
-    { number: `${stats.yearsExperience}+`, label: t("stats.yearsExperience"), icon: Award },
+    {
+      number: `${stats.websitesDelivered}+`,
+      label: t("stats.websitesDelivered"),
+      icon: Globe,
+    },
+    {
+      number: `${stats.yearsExperience}+`,
+      label: t("stats.yearsExperience"),
+      icon: Award,
+    },
     { number: "24/7", label: t("stats.supportAvailable"), icon: Clock },
     { number: "100%", label: t("stats.clientSatisfaction"), icon: Star },
   ]

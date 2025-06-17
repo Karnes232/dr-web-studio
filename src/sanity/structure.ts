@@ -22,9 +22,7 @@ export const structure: StructureResolver = S =>
               S.listItem()
                 .title("Stats")
                 .child(
-                  S.documentList()
-                    .title("Stats")
-                    .filter('_type == "stats"'),
+                  S.documentList().title("Stats").filter('_type == "stats"'),
                 ),
             ]),
         ),
@@ -133,8 +131,8 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
-       // Our Services Group
-       S.listItem()
+      // Our Services Group
+      S.listItem()
         .title("Our Services")
         .child(
           S.list()

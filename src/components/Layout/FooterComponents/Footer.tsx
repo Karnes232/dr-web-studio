@@ -49,7 +49,10 @@ const Footer = ({ logo, companyInfo }: FooterProps) => {
         </div>
 
         {/* Social Media */}
-        <SocialMedia socialLinks={companyInfo.socialLinks} email={companyInfo.email} />
+        <SocialMedia
+          socialLinks={companyInfo.socialLinks}
+          email={companyInfo.email}
+        />
 
         {/* Bottom Bar */}
         <BottomBar />

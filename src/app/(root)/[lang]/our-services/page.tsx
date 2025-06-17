@@ -29,7 +29,13 @@ export default async function OurServices({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <ServicesContent servicesHeader={servicesHeader} featuresStrip={featuresStrip} customSolutionCTA={customSolutionCTA} categories={categories} serviceItems={serviceItems} />
+      <ServicesContent
+        servicesHeader={servicesHeader}
+        featuresStrip={featuresStrip}
+        customSolutionCTA={customSolutionCTA}
+        categories={categories}
+        serviceItems={serviceItems}
+      />
     </>
   )
 }

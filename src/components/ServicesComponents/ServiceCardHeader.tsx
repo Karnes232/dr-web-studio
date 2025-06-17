@@ -9,7 +9,7 @@ import {
   Workflow,
   ShieldCheck,
   Globe,
-  ShoppingCart
+  ShoppingCart,
 } from "lucide-react"
 
 const ServiceCardHeader = ({ service }: { service: any }) => {
@@ -24,7 +24,7 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
     Workflow,
     ShieldCheck,
     Globe,
-    ShoppingCart
+    ShoppingCart,
   }
   const Icon = icons[service.iconName as keyof typeof icons]
   return (
@@ -34,15 +34,21 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
           <Icon className="h-6 w-6 text-white" />
         </div>
         <div className="text-right">
-          <div className="text-sm text-slate-500">{t("serviceCard.startingFrom")}</div>
+          <div className="text-sm text-slate-500">
+            {t("serviceCard.startingFrom")}
+          </div>
           <div className="text-2xl font-bold text-slate-800">
             ${service.priceRange}
           </div>
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-slate-800 mb-2 truncate">{service.title[currentLocale as keyof typeof service.title]}</h3>
-      <p className="text-slate-600">{service.description[currentLocale as keyof typeof service.description]}</p>
+      <h3 className="text-xl font-bold text-slate-800 mb-2 truncate">
+        {service.title[currentLocale as keyof typeof service.title]}
+      </h3>
+      <p className="text-slate-600">
+        {service.description[currentLocale as keyof typeof service.description]}
+      </p>
     </div>
   )
 }

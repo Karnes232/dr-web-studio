@@ -1,7 +1,13 @@
 import { Globe, Shield, Smartphone, Zap } from "lucide-react"
 import React from "react"
 
-const DevelopmentApproach = ({ approaches, title }: { approaches: { iconName: string, title: string, description: string }[], title: string }  ) => {
+const DevelopmentApproach = ({
+  approaches,
+  title,
+}: {
+  approaches: { iconName: string; title: string; description: string }[]
+  title: string
+}) => {
   const icons = {
     Zap,
     Smartphone,
@@ -10,9 +16,7 @@ const DevelopmentApproach = ({ approaches, title }: { approaches: { iconName: st
   }
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-semibold text-slate-800 mb-6">
-        {title}
-      </h3>
+      <h3 className="text-xl font-semibold text-slate-800 mb-6">{title}</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {approaches.map((approach, index) => {
           const Icon = icons[approach.iconName as keyof typeof icons]

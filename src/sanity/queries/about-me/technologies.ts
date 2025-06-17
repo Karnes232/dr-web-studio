@@ -1,8 +1,8 @@
 import { client } from "@/sanity/lib/client"
 
 interface Technology {
-      name: string
-      color: string
+  name: string
+  color: string
 }
 
 interface TechnologiesData {
@@ -26,4 +26,4 @@ export const technologiesQuery = `*[_type == "technologies"][0] {
 
 export async function getTechnologies(): Promise<TechnologiesData> {
   return client.fetch(technologiesQuery)
-} 
+}

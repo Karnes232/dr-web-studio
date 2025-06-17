@@ -3,7 +3,16 @@ import React from "react"
 import FeatureHighlight from "./FeatureHighlight"
 import { useLocale } from "@/i18n/useLocale"
 
-const FeaturesStrip = ({ features }: { features: { iconName: string, title: { en: string, es: string }, description: { en: string, es: string }, gradient: string }[] }) => {
+const FeaturesStrip = ({
+  features,
+}: {
+  features: {
+    iconName: string
+    title: { en: string; es: string }
+    description: { en: string; es: string }
+    gradient: string
+  }[]
+}) => {
   const { currentLocale } = useLocale()
   const icons = {
     Smartphone,
@@ -16,14 +25,19 @@ const FeaturesStrip = ({ features }: { features: { iconName: string, title: { en
         {features.map((feature, index) => {
           const Icon = icons[feature.iconName as keyof typeof icons]
           return (
-             <FeatureHighlight
-            key={index}
-            icon={Icon}
-            title={feature.title[currentLocale as keyof typeof feature.title]}
-            description={feature.description[currentLocale as keyof typeof feature.description]}
-            gradient={feature.gradient}
-          />
-        )})}
+            <FeatureHighlight
+              key={index}
+              icon={Icon}
+              title={feature.title[currentLocale as keyof typeof feature.title]}
+              description={
+                feature.description[
+                  currentLocale as keyof typeof feature.description
+                ]
+              }
+              gradient={feature.gradient}
+            />
+          )
+        })}
       </div>
     </div>
   )

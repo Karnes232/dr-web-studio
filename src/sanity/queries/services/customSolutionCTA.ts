@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 export interface CustomSolutionCTAData {
   title: {
@@ -28,4 +28,4 @@ const customSolutionCTAQuery = `*[_type == "customSolutionCTA"][0] {
 
 export async function getCustomSolutionCTA(): Promise<CustomSolutionCTAData> {
   return client.fetch(customSolutionCTAQuery)
-} 
+}

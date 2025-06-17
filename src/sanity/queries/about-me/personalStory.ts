@@ -32,4 +32,4 @@ export const personalStoryQuery = `*[_type == "personalStory"][0] {
 
 export async function getPersonalStory(): Promise<PersonalStoryData> {
   return client.fetch(personalStoryQuery)
-} 
+}

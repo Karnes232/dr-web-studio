@@ -1,7 +1,17 @@
 import React from "react"
 import { Code } from "lucide-react"
 
-const ServicesHeader = ({ badge, title, highlightedText, description }: { badge: string, title: string, highlightedText: string, description: string }) => {
+const ServicesHeader = ({
+  badge,
+  title,
+  highlightedText,
+  description,
+}: {
+  badge: string
+  title: string
+  highlightedText: string
+  description: string
+}) => {
   return (
     <div className="text-center mb-16">
       <div className="inline-flex items-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -16,9 +26,7 @@ const ServicesHeader = ({ badge, title, highlightedText, description }: { badge:
         </span>
       </h2>
 
-      <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-        {description}
-      </p>
+      <p className="text-xl text-slate-600 max-w-3xl mx-auto">{description}</p>
     </div>
   )
 }

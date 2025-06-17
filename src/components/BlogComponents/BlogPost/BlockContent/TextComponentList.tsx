@@ -58,4 +58,4 @@ const TextComponentList: React.FC<TextComponentListProps> = ({
   )
 }
 
-export default TextComponentList 
+export default TextComponentList

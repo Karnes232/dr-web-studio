@@ -1,20 +1,19 @@
 import { client } from "@/sanity/lib/client"
 
 interface SectionHeaderData {
-    title: {
-      en: string
-      es: string
-    }
-    description: {
-      en: string
-      es: string
-    }
-    basedOutOf: {
-      en: string
-      es: string
-    }
+  title: {
+    en: string
+    es: string
   }
-  
+  description: {
+    en: string
+    es: string
+  }
+  basedOutOf: {
+    en: string
+    es: string
+  }
+}
 
 export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
     title {
@@ -31,6 +30,6 @@ export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
     }
   }`
 
-  export async function getSectionHeader(): Promise<SectionHeaderData> {
-    return client.fetch(sectionHeaderQuery)
-  }
+export async function getSectionHeader(): Promise<SectionHeaderData> {
+  return client.fetch(sectionHeaderQuery)
+}

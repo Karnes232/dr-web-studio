@@ -1,6 +1,12 @@
 import React from "react"
 import { Code } from "lucide-react"
-const TechStack = ({ technologies, title }: { technologies: { name: string, color: string }[], title: string }) => {
+const TechStack = ({
+  technologies,
+  title,
+}: {
+  technologies: { name: string; color: string }[]
+  title: string
+}) => {
   return (
     <div className="mb-8">
       <h3 className="text-xl font-semibold text-slate-800 mb-4 flex items-center">

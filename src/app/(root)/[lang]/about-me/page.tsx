@@ -43,7 +43,10 @@ export default async function AboutUs({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <section id="about" className="py-16 bg-gradient-to-br from-slate-50 to-orange-50">
+      <section
+        id="about"
+        className="py-16 bg-gradient-to-br from-slate-50 to-orange-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <SectionHeader
@@ -58,23 +61,41 @@ export default async function AboutUs({ params }: PageProps) {
                 name="James Karnes"
                 location={sectionHeader.basedOutOf[lang]}
               />
-              <PersonalStory title={personalStory.title[lang]} story1={personalStory.story1[lang]} story2={personalStory.story2[lang]} />
-              <LocationAvailability availabilityItems={locationAvailability.availabilityItems.map(item => item[lang])} title={locationAvailability.title[lang]} />
+              <PersonalStory
+                title={personalStory.title[lang]}
+                story1={personalStory.story1[lang]}
+                story2={personalStory.story2[lang]}
+              />
+              <LocationAvailability
+                availabilityItems={locationAvailability.availabilityItems.map(
+                  item => item[lang],
+                )}
+                title={locationAvailability.title[lang]}
+              />
             </div>
 
             {/* Right Column - Technical Information */}
             <div>
               <StatsGrid stats={stats} />
-              <TechStack technologies={technologies.technologies} title={technologies.title[lang]} />
-              <DevelopmentApproach approaches={developmentApproach.approaches.map(approach => ({
-                iconName: approach.iconName,
-                title: approach.title[lang],
-                description: approach.description[lang]
-              }))} title={developmentApproach.title[lang]} />
-              <WhyChooseUs reasons={whyChooseUs.reasons.map(reason => ({
-                title: reason.title[lang],
-                description: reason.description[lang]
-              }))} title={whyChooseUs.title[lang]} />
+              <TechStack
+                technologies={technologies.technologies}
+                title={technologies.title[lang]}
+              />
+              <DevelopmentApproach
+                approaches={developmentApproach.approaches.map(approach => ({
+                  iconName: approach.iconName,
+                  title: approach.title[lang],
+                  description: approach.description[lang],
+                }))}
+                title={developmentApproach.title[lang]}
+              />
+              <WhyChooseUs
+                reasons={whyChooseUs.reasons.map(reason => ({
+                  title: reason.title[lang],
+                  description: reason.description[lang],
+                }))}
+                title={whyChooseUs.title[lang]}
+              />
             </div>
           </div>
 

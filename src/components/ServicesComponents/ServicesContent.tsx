@@ -8,7 +8,7 @@ import {
   FileText,
   Wrench,
   Zap,
-  Briefcase
+  Briefcase,
 } from "lucide-react"
 import ServiceFilter from "./ServiceFilter"
 import ServicesGrid from "./ServicesGrid"
@@ -140,27 +140,49 @@ const useServicesData = () => {
   ]
 }
 
-export default function ServicesContent({ servicesHeader, featuresStrip, customSolutionCTA, categories, serviceItems }: { servicesHeader: ServicesHeaderData, featuresStrip: FeaturesStripData, customSolutionCTA: CustomSolutionCTAData, categories: Category[], serviceItems: ServiceItem[] }) {
+export default function ServicesContent({
+  servicesHeader,
+  featuresStrip,
+  customSolutionCTA,
+  categories,
+  serviceItems,
+}: {
+  servicesHeader: ServicesHeaderData
+  featuresStrip: FeaturesStripData
+  customSolutionCTA: CustomSolutionCTAData
+  categories: Category[]
+  serviceItems: ServiceItem[]
+}) {
   const { currentLocale } = useLocale()
-  const [activeCategory, setActiveCategory] = useState(currentLocale === "es" ? "Todos los Servicios" : "All Services")
+  const [activeCategory, setActiveCategory] = useState(
+    currentLocale === "es" ? "Todos los Servicios" : "All Services",
+  )
   const services = useServicesData()
 
-
-  const categoryArray: string[] = [ currentLocale === "es" ? "Todos los Servicios" : "All Services" ]
+  const categoryArray: string[] = [
+    currentLocale === "es" ? "Todos los Servicios" : "All Services",
+  ]
 
   // Sort categories by order field and add them to the array
-  const sortedCategories = [...categories].sort((a, b) => (a.order || 0) - (b.order || 0))
+  const sortedCategories = [...categories].sort(
+    (a, b) => (a.order || 0) - (b.order || 0),
+  )
   sortedCategories.forEach(category => {
-    categoryArray.push(category.name[currentLocale as keyof typeof category.name])
+    categoryArray.push(
+      category.name[currentLocale as keyof typeof category.name],
+    )
   })
 
   const filteredServices =
-    activeCategory === "All Services" || activeCategory === "Todos los Servicios"
+    activeCategory === "All Services" ||
+    activeCategory === "Todos los Servicios"
       ? serviceItems
-      : serviceItems.filter(service => 
-          service.categories.some(cat => 
-            cat.name[currentLocale as keyof typeof cat.name] === activeCategory
-          )
+      : serviceItems.filter(service =>
+          service.categories.some(
+            cat =>
+              cat.name[currentLocale as keyof typeof cat.name] ===
+              activeCategory,
+          ),
         )
 
   return (
@@ -169,7 +191,28 @@ export default function ServicesContent({ servicesHeader, featuresStrip, customS
       className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ServicesHeader badge={servicesHeader.badge[currentLocale as keyof typeof servicesHeader.badge]} title={servicesHeader.title[currentLocale as keyof typeof servicesHeader.title]} highlightedText={servicesHeader.highlightedText[currentLocale as keyof typeof servicesHeader.highlightedText]} description={servicesHeader.description[currentLocale as keyof typeof servicesHeader.description]} />
+        <ServicesHeader
+          badge={
+            servicesHeader.badge[
+              currentLocale as keyof typeof servicesHeader.badge
+            ]
+          }
+          title={
+            servicesHeader.title[
+              currentLocale as keyof typeof servicesHeader.title
+            ]
+          }
+          highlightedText={
+            servicesHeader.highlightedText[
+              currentLocale as keyof typeof servicesHeader.highlightedText
+            ]
+          }
+          description={
+            servicesHeader.description[
+              currentLocale as keyof typeof servicesHeader.description
+            ]
+          }
+        />
 
         <ServiceFilter
           categories={categoryArray}
