@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react"
 import React from "react"
 import OutcomeMetric from "./OutcomeMetric"
 import { TechBadge } from "./TechBadge"
+import { useLocale } from "@/i18n/useLocale"
 
 const ProjectDetailModal = ({
   project,
@@ -12,6 +13,7 @@ const ProjectDetailModal = ({
   isOpen: boolean
   onClose: () => void
 }) => {
+  const { currentLocale } = useLocale()
   if (!isOpen || !project) return null
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
@@ -20,9 +22,11 @@ const ProjectDetailModal = ({
         <div className="sticky top-0 bg-white border-b border-slate-200 p-6 flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-bold text-slate-800">
-              {project.title}
+              {project.title[currentLocale as keyof typeof project.title]}
             </h2>
-            <p className="text-slate-600">{project.client}</p>
+            <p className="text-slate-600">
+              {project.client}
+            </p>
           </div>
           <button
             onClick={onClose}
@@ -36,8 +40,8 @@ const ProjectDetailModal = ({
         <div className="p-6">
           {/* Project Image */}
           <img
-            src={project.image}
-            alt={project.title}
+            src={project.image.asset.url}
+            alt={project.title[currentLocale as keyof typeof project.title]}
             className="w-full h-64 object-cover rounded-xl mb-6"
           />
 
@@ -47,12 +51,16 @@ const ProjectDetailModal = ({
               <h3 className="text-xl font-bold text-slate-800 mb-4">
                 The Challenge
               </h3>
-              <p className="text-slate-600 mb-6">{project.problem}</p>
+              <p className="text-slate-600 mb-6">
+                {project.problem[currentLocale as keyof typeof project.problem]}
+              </p>
 
               <h3 className="text-xl font-bold text-slate-800 mb-4">
                 Our Solution
               </h3>
-              <p className="text-slate-600">{project.solution}</p>
+              <p className="text-slate-600">
+                {project.solution[currentLocale as keyof typeof project.solution]}
+              </p>
             </div>
 
             <div>
@@ -81,7 +89,7 @@ const ProjectDetailModal = ({
               {project.outcomes.map(
                 (
                   outcome: {
-                    metric: string
+                    metric: { en: string; es: string }
                     value: string
                     improvement: string
                   },

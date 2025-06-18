@@ -27,6 +27,10 @@ import technologies from "./about-me/technologies"
 import developmentApproach from "./about-me/developmentApproach"
 import whyChooseUs from "./about-me/whyChooseUs"
 
+// Portfolio Schemas
+import portfolioHeader from "./portfolio/portfolioHeader"
+import project from "./portfolio/project"
+
 // Blog Schemas
 import author from "./blog/author"
 import blogPost from "./blog/blogPost"
@@ -65,6 +69,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     technologies,
     developmentApproach,
     whyChooseUs,
+
+    // Portfolio Schemas
+    portfolioHeader,
+    project,
 
     // Blog Schemas
     author,

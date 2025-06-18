@@ -4,6 +4,7 @@ import PortfolioCard from "@/components/PortfolioComponents/PortfolioCard"
 import PortfolioFilter from "@/components/PortfolioComponents/PortfolioFilter"
 import PortfolioHeader from "@/components/PortfolioComponents/PortfolioHeader"
 import ProjectDetailModal from "@/components/PortfolioComponents/ProjectDetailModal"
+import { PortfolioHeaderData } from "@/sanity/queries/portfolio/portfolioHeader"
 import React, { useState } from "react"
 
 const portfolioData = [
@@ -101,24 +102,31 @@ const portfolioData = [
 
 interface PortfolioContentProps {
   lang: string
+  portfolioHeader: PortfolioHeaderData
+  projects: any
 }
 
-export default function PortfolioContent({ lang }: PortfolioContentProps) {
-  const [activeFilter, setActiveFilter] = useState("All")
+export default function PortfolioContent({
+  lang,
+  portfolioHeader,
+  projects,
+}: PortfolioContentProps) {
+  const [activeFilter, setActiveFilter] = useState(lang === "es" ? "Todos" : "All")
   const [selectedProject, setSelectedProject] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const categories = [
-    ...new Set(portfolioData.map(project => project.category)),
+    ...new Set(projects.map((project: any) => project.category[lang as keyof typeof project.category])),
   ]
 
   const filteredProjects =
-    activeFilter === "All"
-      ? portfolioData
-      : portfolioData.filter(project => project.category === activeFilter)
+    activeFilter === "All" || activeFilter === "Todos"
+      ? projects
+      : projects.filter((project: any) => project.category[lang as keyof typeof project.category] === activeFilter)
 
-  const featuredProject = portfolioData.find(project => project.featured)
-  const regularProjects = filteredProjects.filter(project => !project.featured)
+  // const featuredProject = portfolioData.find(project => project.featured)
+  const featuredProject = projects[0]
+ // const regularProjects = filteredProjects.filter((project: any) => !project.featured)
 
   const handleViewDetails = (project: any) => {
     setSelectedProject(project)
@@ -129,14 +137,14 @@ export default function PortfolioContent({ lang }: PortfolioContentProps) {
     setIsModalOpen(false)
     setSelectedProject(null)
   }
-
+  console.log(projects)
   return (
     <section
       className="py-16 bg-gradient-to-br from-slate-50 to-orange-50"
       id="portfolio"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <PortfolioHeader />
+        <PortfolioHeader portfolioHeader={portfolioHeader} />
 
         {/* Featured Project */}
         {featuredProject && (
@@ -148,46 +156,23 @@ export default function PortfolioContent({ lang }: PortfolioContentProps) {
 
         {/* Filter */}
         <PortfolioFilter
-          categories={categories}
+          categories={categories as string[]}
           activeFilter={activeFilter}
           onFilterChange={setActiveFilter}
         />
 
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {regularProjects.map(project => (
+          {filteredProjects.map((project: any, index: number) => (
             <PortfolioCard
-              key={project.id}
+              key={index}
               project={project}
               onViewDetails={handleViewDetails}
             />
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-12">
-          <h3 className="text-2xl font-bold text-slate-800 mb-4">
-            Ready to Start Your Project?
-          </h3>
-          <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
-            Let's discuss how we can help transform your business with a custom
-            website that delivers real results.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#questionnaire"
-              className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
-            >
-              Start Your Project
-            </a>
-            <a
-              href="#contact"
-              className="bg-slate-800 text-white px-8 py-3 rounded-lg font-medium hover:bg-slate-700 transition-colors duration-200"
-            >
-              Get Free Consultation
-            </a>
-          </div>
-        </div>
+      
 
         {/* Project Detail Modal */}
         <ProjectDetailModal

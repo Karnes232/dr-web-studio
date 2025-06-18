@@ -1,3 +1,4 @@
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 
 const PortfolioFilter = ({
@@ -9,7 +10,13 @@ const PortfolioFilter = ({
   activeFilter: string
   onFilterChange: (filter: string) => void
 }) => {
-  const allCategories = ["All", ...categories]
+  const { currentLocale } = useLocale()
+  let allCategories = []
+  if (currentLocale === "en") {
+    allCategories = ["All", ...categories]
+  } else {
+    allCategories = ["Todos", ...categories]
+  }
   return (
     <div className="flex flex-wrap justify-center gap-3 mb-8">
       {allCategories.map(category => (

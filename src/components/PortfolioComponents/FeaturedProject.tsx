@@ -1,6 +1,8 @@
 import React from "react"
 import OutcomeMetric from "./OutcomeMetric"
 import { ExternalLink } from "lucide-react"
+import { useLocale } from "@/i18n/useLocale"
+import Image from "next/image"
 
 const FeaturedProject = ({
   project,
@@ -9,13 +11,17 @@ const FeaturedProject = ({
   project: any
   onViewDetails: (project: any) => void
 }) => {
+  const { currentLocale } = useLocale()
   return (
-    <div className="bg-gradient-to-r from-slate-50 to-orange-50 rounded-2xl overflow-hidden shadow-xl mb-12">
-      <div className="grid lg:grid-cols-2 gap-8 p-8">
+    <>
+   <div className="bg-gradient-to-r from-slate-50 to-orange-50 rounded-2xl overflow-hidden shadow-xl mb-12">
+       <div className="grid lg:grid-cols-2 gap-8 p-8">
         {/* Project Image */}
         <div className="relative">
-          <img
-            src={project.image}
+          <Image
+            width={1000}
+            height={1000}
+            src={project.image.asset.url}
             alt={project.title}
             className="w-full h-64 lg:h-full object-cover rounded-xl shadow-lg"
           />
@@ -28,27 +34,27 @@ const FeaturedProject = ({
         <div className="flex flex-col justify-center">
           <div className="mb-4">
             <span className="text-orange-600 font-medium text-sm">
-              {project.category}
+              {project.category[currentLocale as keyof typeof project.category]}
             </span>
-            <h3 className="text-3xl font-bold text-slate-800 mt-2 mb-2">
-              {project.title}
+            <h3 className="text-3xl font-bold text-slate-800 mt-2 mb-2 truncate">
+              {project.title[currentLocale as keyof typeof project.title]}
             </h3>
             <p className="text-slate-600 text-lg">{project.client}</p>
           </div>
 
           <div className="mb-6">
             <h4 className="font-semibold text-slate-800 mb-2">The Challenge</h4>
-            <p className="text-slate-600 mb-4">{project.problem}</p>
+            <p className="text-slate-600 mb-4 line-clamp-3">{project.problem[currentLocale as keyof typeof project.problem]}</p>
 
             <h4 className="font-semibold text-slate-800 mb-2">Our Solution</h4>
-            <p className="text-slate-600">{project.solution}</p>
+            <p className="text-slate-600 line-clamp-3">{project.solution[currentLocale as keyof typeof project.solution]}</p>
           </div>
 
           {/* Key Outcomes */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {project.outcomes.map((outcome: any, index: number) => (
               <OutcomeMetric key={index} {...outcome} />
-            ))}
+            )).slice(0, 2)}
           </div>
 
           {/* CTA Buttons */}
@@ -70,8 +76,9 @@ const FeaturedProject = ({
             </button>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
+    </>
   )
 }
 

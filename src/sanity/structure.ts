@@ -193,6 +193,30 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+      // Portfolio Group
+      S.listItem()
+        .title("Portfolio")
+        .child(
+          S.list()
+            .title("Portfolio")
+            .items([
+              S.listItem()
+                .title("Portfolio Header")
+                .child(
+                  S.documentList()
+                    .title("Portfolio Header")
+                    .filter('_type == "portfolioHeader"'),
+                ),
+              S.listItem()
+                .title("Projects")
+                .child(
+                  S.documentList()
+                    .title("Projects")
+                    .filter('_type == "project"'),
+                ),
+            ]),
+        ),
+
       // Blog Group
       S.listItem()
         .title("Blog")

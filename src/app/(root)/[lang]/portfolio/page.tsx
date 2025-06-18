@@ -1,6 +1,8 @@
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import PortfolioContent from "@/components/PortfolioComponents/PortfolioContent"
+import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
+import { getProjects } from "@/sanity/queries/portfolio/project"
 
 interface PageProps {
   params: Promise<{
@@ -11,6 +13,8 @@ interface PageProps {
 export default async function Portfolio({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("portfolio")
+  const portfolioHeader = await getPortfolioHeader()
+  const projects = await getProjects()
 
   return (
     <>
@@ -20,7 +24,11 @@ export default async function Portfolio({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <PortfolioContent lang={lang} />
+      <PortfolioContent
+        lang={lang}
+        portfolioHeader={portfolioHeader}
+        projects={projects}
+      />
     </>
   )
 }

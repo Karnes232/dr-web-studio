@@ -1,6 +1,8 @@
 import { ExternalLink, Eye } from "lucide-react"
 import React from "react"
 import { TechBadge } from "./TechBadge"
+import { useLocale } from "@/i18n/useLocale"
+import Image from "next/image"
 
 const PortfolioCard = ({
   project,
@@ -9,13 +11,16 @@ const PortfolioCard = ({
   project: any
   onViewDetails: (project: any) => void
 }) => {
+  const { currentLocale } = useLocale()
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
       {/* Project Image */}
       <div className="relative group">
-        <img
-          src={project.image}
-          alt={project.title}
+        <Image
+          src={project.image.asset.url}
+          alt={project.title[currentLocale as keyof typeof project.title]}
+          width={1000}
+          height={1000}
           className="w-full h-48 object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -47,15 +52,15 @@ const PortfolioCard = ({
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-orange-600 font-medium">
-            {project.category}
+            {project.category[currentLocale as keyof typeof project.category]}
           </span>
           <span className="text-sm text-slate-500">{project.year}</span>
         </div>
 
         <h3 className="text-xl font-bold text-slate-800 mb-2">
-          {project.title}
+          {project.title[currentLocale as keyof typeof project.title]}
         </h3>
-        <p className="text-slate-600 mb-4">{project.client}</p>
+        <p className="text-slate-600 mb-4">{project.client[currentLocale as keyof typeof project.client]}</p>
 
         {/* Tech Stack */}
         <div className="mb-4 truncate">
@@ -75,16 +80,16 @@ const PortfolioCard = ({
             <div className="text-lg font-bold text-teal-600">
               {project.outcomes[0]?.value}
             </div>
-            <div className="text-xs text-slate-600">
-              {project.outcomes[0]?.metric}
+            <div className="text-xs text-slate-600 truncate">
+              {project.outcomes[0]?.metric[currentLocale as 'en' | 'es']}
             </div>
           </div>
           <div className="text-center">
             <div className="text-lg font-bold text-orange-600">
               {project.outcomes[1]?.value}
             </div>
-            <div className="text-xs text-slate-600">
-              {project.outcomes[1]?.metric}
+            <div className="text-xs text-slate-600 truncate">
+              {project.outcomes[1]?.metric[currentLocale as 'en' | 'es']}
             </div>
           </div>
         </div>
