@@ -107,7 +107,7 @@ const StepNavigation = ({
                       <Check className="h-3 w-3 absolute -top-1 -right-1 bg-green-500 text-white rounded-full p-0.5" />
                     )}
                   </div>
-                  <span className="text-xs font-medium text-center leading-tight">
+                  <span className="text-xs font-medium text-center leading-tight hidden md:block">
                     {step.title}
                   </span>
                   <span className="text-xs opacity-75">{step.number}</span>
