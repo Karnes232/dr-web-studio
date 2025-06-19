@@ -74,5 +74,16 @@
     "yearsExperience": "Años de Experiencia",
     "supportAvailable": "Soporte Disponible",
     "clientSatisfaction": "Satisfacción del Cliente"
+  },
+  "portfolio": {
+    "featuredProject": "Proyecto Destacado",
+    "viewLiveSite": "Ver Sitio Web",
+    "fullCaseStudy": "Ver Estudio de Caso",
+    "theChallenge": "El Reto",
+    "ourSolution": "Nuestra Solución",
+    "technologiesUsed": "Tecnologías Usadas",
+    "projectTimeline": "Cronograma del Proyecto",
+    "resultsImpact": "Resultados y Impacto",
+    "viewCode": "Ver Código"
   }
 }

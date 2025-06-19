@@ -74,5 +74,16 @@
     "yearsExperience": "Years Experience",
     "supportAvailable": "Support Available",
     "clientSatisfaction": "Client Satisfaction"
+  },
+  "portfolio": {
+    "featuredProject": "Featured Project",
+    "viewLiveSite": "View Live Site",
+    "fullCaseStudy": "Full Case Study",
+    "theChallenge": "The Challenge",
+    "ourSolution": "Our Solution",
+    "technologiesUsed": "Technologies Used",
+    "projectTimeline": "Project Timeline",
+    "resultsImpact": "Results & Impact",
+    "viewCode": "View Code"
   }
 }

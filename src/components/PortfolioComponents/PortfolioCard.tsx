@@ -11,14 +11,14 @@ const PortfolioCard = ({
   project: any
   onViewDetails: (project: any) => void
 }) => {
-  const { currentLocale } = useLocale()
+  const { currentLocale, t } = useLocale()
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
       {/* Project Image */}
       <div className="relative group">
         <Image
-          src={project.image.asset.url}
-          alt={project.title[currentLocale as keyof typeof project.title]}
+          src={project?.image?.asset?.url}
+          alt={project?.title[currentLocale as keyof typeof project.title]}
           width={1000}
           height={1000}
           className="w-full h-48 object-cover"
@@ -43,7 +43,7 @@ const PortfolioCard = ({
         </div>
         {project.featured && (
           <div className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-            Featured
+            {t("portfolio.featuredProject")}
           </div>
         )}
       </div>
@@ -98,7 +98,7 @@ const PortfolioCard = ({
           onClick={() => onViewDetails(project)}
           className="w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors duration-200 font-medium"
         >
-          View Case Study
+          {t("portfolio.fullCaseStudy")}
         </button>
       </div>
     </div>
