@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@botpoison/browser": "^0.1.30",
+    "@formspark/use-formspark": "^0.1.42",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.90.0",
     "i18next": "^25.2.1",
