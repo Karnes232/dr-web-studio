@@ -17,7 +17,7 @@ const ProjectDetailModal = ({
 }) => {
   const { currentLocale, t } = useLocale()
   if (!isOpen || !project) return null
-  
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
       <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden flex flex-col">
@@ -58,14 +58,22 @@ const ProjectDetailModal = ({
                   {t("portfolio.theChallenge")}
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-6">
-                  {project.problem[currentLocale as keyof typeof project.problem]}
+                  {
+                    project.problem[
+                      currentLocale as keyof typeof project.problem
+                    ]
+                  }
                 </p>
 
                 <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4">
                   {t("portfolio.ourSolution")}
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600">
-                  {project.solution[currentLocale as keyof typeof project.solution]}
+                  {
+                    project.solution[
+                      currentLocale as keyof typeof project.solution
+                    ]
+                  }
                 </p>
               </div>
 
@@ -82,7 +90,9 @@ const ProjectDetailModal = ({
                 <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4">
                   {t("portfolio.projectTimeline")}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-600">Completed in {project.year}</p>
+                <p className="text-sm sm:text-base text-slate-600">
+                  Completed in {project.year}
+                </p>
               </div>
             </div>
 

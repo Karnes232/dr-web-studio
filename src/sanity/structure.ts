@@ -217,6 +217,44 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+      // Pricing Group
+      S.listItem()
+        .title("Pricing")
+        .child(
+          S.list()
+            .title("Pricing")
+            .items([
+              S.listItem()
+                .title("Pricing Header")
+                .child(
+                  S.documentList()
+                    .title("Pricing Header")
+                    .filter('_type == "pricingHeader"'),
+                ),
+              S.listItem()
+                .title("Pricing Data")
+                .child(
+                  S.documentList()
+                    .title("Pricing Data")
+                    .filter('_type == "pricingData"'),
+                ),
+              S.listItem()
+                .title("FAQs Header")
+                .child(
+                  S.documentList()
+                    .title("FAQs Header")
+                    .filter('_type == "faqsHeader"'),
+                ),
+              S.listItem()
+                .title("FAQs")
+                .child(
+                  S.documentList()
+                    .title("FAQs")
+                    .filter('_type == "faq"'),
+                ),
+            ]),
+        ),
+
       // Blog Group
       S.listItem()
         .title("Blog")

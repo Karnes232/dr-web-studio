@@ -93,4 +93,4 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     featured,
     year
   }`)
-} 
+}

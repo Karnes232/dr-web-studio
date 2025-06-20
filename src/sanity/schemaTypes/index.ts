@@ -31,6 +31,12 @@ import whyChooseUs from "./about-me/whyChooseUs"
 import portfolioHeader from "./portfolio/portfolioHeader"
 import project from "./portfolio/project"
 
+// Pricing Schemas
+import pricingHeader from "./pricing/pricingHeader"
+import pricingData from "./pricing/pricingData"
+import faqsHeader from "./pricing/faqsHeader"
+import faq from "./pricing/faq"
+
 // Blog Schemas
 import author from "./blog/author"
 import blogPost from "./blog/blogPost"
@@ -73,6 +79,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Portfolio Schemas
     portfolioHeader,
     project,
+
+    // Pricing Schemas
+    pricingHeader,
+    pricingData,
+    faqsHeader,
+    faq,  
 
     // Blog Schemas
     author,

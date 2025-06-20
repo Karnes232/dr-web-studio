@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "portfolioHeader",
-  title: "Portfolio Header",
+  name: "pricingHeader",
+  title: "Pricing Header",
   type: "document",
   fields: [
     defineField({

@@ -38,16 +38,22 @@ const FeaturedProject = ({
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mt-2 mb-2 leading-tight">
               {project.title[currentLocale as keyof typeof project.title]}
             </h3>
-            <p className="text-slate-600 text-base sm:text-lg">{project.client}</p>
+            <p className="text-slate-600 text-base sm:text-lg">
+              {project.client}
+            </p>
           </div>
 
           <div className="mb-4 sm:mb-6">
-            <h4 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">{t("portfolio.theChallenge")}</h4>
+            <h4 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">
+              {t("portfolio.theChallenge")}
+            </h4>
             <p className="text-slate-600 mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base">
               {project.problem[currentLocale as keyof typeof project.problem]}
             </p>
 
-            <h4 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">{t("portfolio.ourSolution")}</h4>
+            <h4 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">
+              {t("portfolio.ourSolution")}
+            </h4>
             <p className="text-slate-600 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base">
               {project.solution[currentLocale as keyof typeof project.solution]}
             </p>
@@ -55,9 +61,11 @@ const FeaturedProject = ({
 
           {/* Key Outcomes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
-            {project.outcomes.map((outcome: any, index: number) => (
-              <OutcomeMetric key={index} {...outcome} />
-            )).slice(0, 2)}
+            {project.outcomes
+              .map((outcome: any, index: number) => (
+                <OutcomeMetric key={index} {...outcome} />
+              ))
+              .slice(0, 2)}
           </div>
 
           {/* CTA Buttons */}
@@ -79,7 +87,7 @@ const FeaturedProject = ({
             </button>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   )
 }

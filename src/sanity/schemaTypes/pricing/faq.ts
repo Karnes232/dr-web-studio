@@ -1,13 +1,13 @@
 import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "portfolioHeader",
-  title: "Portfolio Header",
+  name: "faq",
+  title: "FAQ",
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
+      name: "question",
+      title: "Question",
       type: "object",
       fields: [
         {
@@ -25,8 +25,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "description",
-      title: "Description",
+      name: "answer",
+      title: "Answer",
       type: "object",
       fields: [
         {
@@ -42,11 +42,31 @@ export default defineType({
           validation: Rule => Rule.required(),
         },
       ],
+    }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {
     select: {
-      title: "title.en",
+      title: "question.en",
+      subtitle: "answer.en",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle: subtitle?.substring(0, 100) + (subtitle?.length > 100 ? "..." : ""),
+      }
     },
   },
-})
+  orderings: [
+    {
+      title: "Order",
+      name: "orderAsc",
+      by: [{ field: "order", direction: "asc" }],
+    },
+  ],
+}) 

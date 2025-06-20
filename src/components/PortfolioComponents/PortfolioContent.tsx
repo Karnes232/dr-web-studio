@@ -7,7 +7,6 @@ import ProjectDetailModal from "@/components/PortfolioComponents/ProjectDetailMo
 import { PortfolioHeaderData } from "@/sanity/queries/portfolio/portfolioHeader"
 import React, { useState } from "react"
 
-
 interface PortfolioContentProps {
   lang: string
   portfolioHeader: PortfolioHeaderData
@@ -19,18 +18,29 @@ export default function PortfolioContent({
   portfolioHeader,
   projects,
 }: PortfolioContentProps) {
-  const [activeFilter, setActiveFilter] = useState(lang === "es" ? "Todos" : "All")
+  const [activeFilter, setActiveFilter] = useState(
+    lang === "es" ? "Todos" : "All",
+  )
   const [selectedProject, setSelectedProject] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const categories = [
-    ...new Set(projects.map((project: any) => project.category[lang as keyof typeof project.category])),
+    ...new Set(
+      projects.map(
+        (project: any) =>
+          project.category[lang as keyof typeof project.category],
+      ),
+    ),
   ]
 
   const filteredProjects =
     activeFilter === "All" || activeFilter === "Todos"
       ? projects
-      : projects.filter((project: any) => project.category[lang as keyof typeof project.category] === activeFilter)
+      : projects.filter(
+          (project: any) =>
+            project.category[lang as keyof typeof project.category] ===
+            activeFilter,
+        )
 
   // const featuredProject = portfolioData.find(project => project.featured)
   const featuredProject = projects[0]
@@ -77,8 +87,6 @@ export default function PortfolioContent({
             />
           ))}
         </div>
-
-      
 
         {/* Project Detail Modal */}
         <ProjectDetailModal

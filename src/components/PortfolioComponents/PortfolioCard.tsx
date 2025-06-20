@@ -60,7 +60,9 @@ const PortfolioCard = ({
         <h3 className="text-xl font-bold text-slate-800 mb-2">
           {project.title[currentLocale as keyof typeof project.title]}
         </h3>
-        <p className="text-slate-600 mb-4">{project.client[currentLocale as keyof typeof project.client]}</p>
+        <p className="text-slate-600 mb-4">
+          {project.client[currentLocale as keyof typeof project.client]}
+        </p>
 
         {/* Tech Stack */}
         <div className="mb-4 truncate">
@@ -81,7 +83,7 @@ const PortfolioCard = ({
               {project.outcomes[0]?.value}
             </div>
             <div className="text-xs text-slate-600 truncate">
-              {project.outcomes[0]?.metric[currentLocale as 'en' | 'es']}
+              {project.outcomes[0]?.metric[currentLocale as "en" | "es"]}
             </div>
           </div>
           <div className="text-center">
@@ -89,7 +91,7 @@ const PortfolioCard = ({
               {project.outcomes[1]?.value}
             </div>
             <div className="text-xs text-slate-600 truncate">
-              {project.outcomes[1]?.metric[currentLocale as 'en' | 'es']}
+              {project.outcomes[1]?.metric[currentLocale as "en" | "es"]}
             </div>
           </div>
         </div>

@@ -18,4 +18,4 @@ const portfolioHeaderQuery = `*[_type == "portfolioHeader"][0] {
 
 export async function getPortfolioHeader(): Promise<PortfolioHeaderData> {
   return client.fetch(portfolioHeaderQuery)
-} 
+}

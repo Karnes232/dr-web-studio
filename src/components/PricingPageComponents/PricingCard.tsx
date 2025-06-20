@@ -13,31 +13,11 @@ const iconMap = {
 }
 
 const PricingCard = ({
-  title,
-  price,
-  originalPrice,
-  period = "project",
-  description,
-  features,
-  badge,
-  iconName,
-  ctaText,
-  ctaHref,
-  variant = "default",
-  onCTAClick,
+  pricingData,
+  lang,
 }: {
-  title: string
-  price: string
-  originalPrice: string
-  period?: string
-  description: string
-  features: (string | { text: string; included?: boolean })[]
-  badge?: any
-  iconName: keyof typeof iconMap
-  ctaText: string
-  ctaHref: string
-  variant?: "default" | "popular" | "premium"
-  onCTAClick?: () => void
+  pricingData: any
+  lang: string
 }) => {
   const cardVariants = {
     default: "bg-white border-gray-200 hover:border-orange-200",
@@ -47,14 +27,16 @@ const PricingCard = ({
       "bg-gradient-to-br from-slate-50 to-white border-gray-300 hover:border-purple-300",
   }
 
-  const Icon = iconMap[iconName]
-
+  const Icon = iconMap[pricingData.iconName as keyof typeof iconMap]
+  console.log(pricingData)
   return (
     <div
-      className={`relative border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[variant]}`}
+      className={`relative border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
     >
-      {badge && (
-        <PricingBadge variant={badge.variant}>{badge.text}</PricingBadge>
+      {pricingData.badge.text && (
+        <PricingBadge variant={pricingData.badge.variant}>
+          {pricingData.badge.text[lang as keyof typeof pricingData.badge.text]}
+        </PricingBadge>
       )}
 
       {/* Header */}
@@ -63,44 +45,38 @@ const PricingCard = ({
           <Icon className="h-6 w-6 text-orange-600" />
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4">{description}</p>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{pricingData.title[lang as keyof typeof pricingData.title]}</h3>
+        <p className="text-gray-600 text-sm mb-4">{pricingData.description[lang as keyof typeof pricingData.description]}</p>
 
         {/* Pricing */}
         <div className="mb-4">
           <div className="flex items-center justify-center">
-            <span className="text-3xl font-bold text-gray-900">${price}</span>
-            <span className="text-gray-500 ml-1">/{period}</span>
+            <span className="text-3xl font-bold text-gray-900">${pricingData.price}</span>
           </div>
-          {originalPrice && (
-            <div className="text-sm text-gray-400 line-through">
-              Was ${originalPrice}
-            </div>
-          )}
+
         </div>
       </div>
 
       {/* Features */}
       <div className="space-y-3 mb-8">
-        {features.map((feature, index) => (
+        {pricingData.features.map((feature: any, index: number) => (
           <FeatureItem
             key={index}
             included={
               typeof feature === "string" ? true : feature.included !== false
             }
           >
-            {typeof feature === "string" ? feature : feature.text}
+            {typeof feature === "string" ? feature : feature.text[lang as keyof typeof feature.text]}
           </FeatureItem>
         ))}
       </div>
 
       {/* CTA Button */}
       <PricingCTA
-        href={ctaHref}
-        variant={variant === "popular" ? "primary" : "outline"}
-        onClick={onCTAClick || (() => {})}
+        href={pricingData.ctaHref}
+        variant={pricingData.variant === "popular" ? "primary" : "outline"}
       >
-        {ctaText}
+        {pricingData.ctaText[lang as keyof typeof pricingData.ctaText]}
       </PricingCTA>
     </div>
   )

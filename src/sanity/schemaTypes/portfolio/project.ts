@@ -177,4 +177,4 @@ export default defineType({
       media: "image",
     },
   },
-}) 
+})
