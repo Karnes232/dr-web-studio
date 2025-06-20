@@ -43,6 +43,11 @@ import blogPost from "./blog/blogPost"
 import blogCategory from "./blog/blogCategory"
 import blogHeader from "./blog/blogHeader"
 
+// Contact Schemas
+import contactHero from "./contact/contactHero"
+import locationInfo from "./contact/locationInfo"
+import contactFaq from "./contact/contactFaq"
+
 // SEO Schema
 import seo from "./seo/seo"
 import serviceItem from "./services/serviceItem"
@@ -94,5 +99,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // SEO Schema
     seo,
+
+    // Contact Schemas
+    contactHero,
+    locationInfo,
+    contactFaq,
   ],
 }

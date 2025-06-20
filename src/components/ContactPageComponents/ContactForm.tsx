@@ -1,4 +1,5 @@
 "use client"
+import { useLocale } from "@/i18n/useLocale"
 import {
   Building2,
   CheckCircle,
@@ -11,6 +12,7 @@ import {
 import React, { useState } from "react"
 
 const ContactForm = () => {
+  const { t } = useLocale()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -50,10 +52,10 @@ const ContactForm = () => {
       <div className="bg-white rounded-xl shadow-lg p-8 text-center">
         <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
         <h3 className="text-2xl font-bold text-slate-800 mb-2">
-          Message Sent!
+          {t("contact.form.messageSent")}
         </h3>
         <p className="text-slate-600 mb-6">
-          Thanks for reaching out! We'll get back to you within 24 hours.
+          {t("contact.form.messageSentDescription")}
         </p>
         <button
           onClick={() => {
@@ -71,7 +73,7 @@ const ContactForm = () => {
           }}
           className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200"
         >
-          Send Another Message
+          {t("contact.form.sendAnotherMessage")}
         </button>
       </div>
     )
@@ -83,7 +85,7 @@ const ContactForm = () => {
         <div className="flex items-center mb-6">
           <MessageSquare className="h-6 w-6 text-orange-500 mr-3" />
           <h3 className="text-2xl font-bold text-slate-800">
-            Send us a Message
+            {t("contact.form.sendMessage")}
           </h3>
         </div>
 
@@ -91,7 +93,7 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Full Name *
+                {t("contact.form.fullName")} *
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-3 h-5 w-5 text-slate-400" />
@@ -102,14 +104,14 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  placeholder="Your full name"
+                  placeholder={t("contact.form.fullNamePlaceholder")}
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Email Address *
+                {t("contact.form.email")} *
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-5 w-5 text-slate-400" />
@@ -120,7 +122,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  placeholder="your@email.com"
+                  placeholder={t("contact.form.emailPlaceholder")}
                 />
               </div>
             </div>
@@ -129,7 +131,7 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Company Name
+                {t("contact.form.companyName")}
               </label>
               <div className="relative">
                 <Building2 className="absolute left-3 top-3 h-5 w-5 text-slate-400" />
@@ -139,14 +141,14 @@ const ContactForm = () => {
                   value={formData.company}
                   onChange={handleChange}
                   className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  placeholder="Your company name"
+                  placeholder={t("contact.form.companyNamePlaceholder")}
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Phone Number
+                {t("contact.form.phone")}
               </label>
               <div className="relative">
                 <Phone className="absolute left-3 top-3 h-5 w-5 text-slate-400" />
@@ -165,7 +167,7 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Project Type
+                {t("contact.form.projectType")}
               </label>
               <select
                 name="projectType"
@@ -173,19 +175,19 @@ const ContactForm = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
-                <option value="">Select project type</option>
-                <option value="business-website">Business Website</option>
-                <option value="ecommerce">E-commerce Store</option>
-                <option value="landing-page">Landing Page</option>
-                <option value="portfolio">Portfolio Site</option>
-                <option value="blog">Blog/News Site</option>
-                <option value="other">Other</option>
+                <option value="">{t("contact.form.selectProjectType")}</option>
+                <option value="business-website">{t("contact.form.businessWebsite")}</option>
+                <option value="ecommerce">{t("contact.form.ecommerceStore")}</option>
+                <option value="landing-page">{t("contact.form.landingPage")}</option>
+                <option value="portfolio">{t("contact.form.portfolioSite")}</option>
+                <option value="blog">{t("contact.form.blogNewsSite")}</option>
+                <option value="other">{t("contact.form.other")}</option>
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Budget Range
+                {t("contact.form.budgetRange")}
               </label>
               <select
                 name="budget"
@@ -193,19 +195,19 @@ const ContactForm = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
-                <option value="">Select budget range</option>
+                <option value="">{t("contact.form.selectBudgetRange")}</option>
                 <option value="300-600">$300 - $600</option>
                 <option value="600-1000">$600 - $1,000</option>
                 <option value="1000-2000">$1,000 - $2,000</option>
                 <option value="2000+">$2,000+</option>
-                <option value="discuss">Let's discuss</option>
+                <option value="discuss">{t("contact.form.letsDiscuss")}</option>
               </select>
             </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
-              Timeline
+              {t("contact.form.timeline")}
             </label>
             <select
               name="timeline"
@@ -213,18 +215,18 @@ const ContactForm = () => {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
-              <option value="">When do you need this completed?</option>
-              <option value="asap">ASAP</option>
-              <option value="1-2-weeks">1-2 weeks</option>
-              <option value="1-month">Within 1 month</option>
-              <option value="2-3-months">2-3 months</option>
-              <option value="flexible">I'm flexible</option>
+              <option value="">{t("contact.form.selectTimeline")}</option>
+              <option value="asap">{t("contact.form.asap")}</option>
+              <option value="1-2-weeks">{t("contact.form.oneTwoWeeks")}</option>
+              <option value="1-month">{t("contact.form.oneMonth")}</option>
+              <option value="2-3-months">{t("contact.form.twoThreeMonths")}</option>
+              <option value="flexible">{t("contact.form.flexible")}</option>
             </select>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
-              Project Details *
+              {t("contact.form.projectDetails")} *
             </label>
             <textarea
               name="message"
@@ -233,7 +235,7 @@ const ContactForm = () => {
               required
               rows={5}
               className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              placeholder="Tell us about your project, goals, and any specific requirements..."
+              placeholder={t("contact.form.projectDetailsPlaceholder")}
             />
           </div>
 
@@ -245,12 +247,12 @@ const ContactForm = () => {
             {isSubmitting ? (
               <>
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                Sending Message...
+                {t("contact.form.sendingMessage")}
               </>
             ) : (
               <>
                 <Send className="h-5 w-5 mr-3" />
-                Send Message
+                {t("contact.form.submit")}
               </>
             )}
           </button>

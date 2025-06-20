@@ -85,5 +85,42 @@
     "projectTimeline": "Cronograma del Proyecto",
     "resultsImpact": "Resultados y Impacto",
     "viewCode": "Ver Código"
+  },
+  "contact": {
+    "form": {
+      "messageSent": "Mensaje Enviado!",
+      "messageSentDescription": "Gracias por contactarnos! Nos pondremos en contacto contigo dentro de 24 horas.",
+      "sendAnotherMessage": "Enviar Otro Mensaje",
+      "sendMessage": "Envíanos un Mensaje",
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "projectType": "Tipo de Proyecto",
+      "budgetRange": "Rango de Presupuesto",
+      "projectDetails": "Detalles del Proyecto",
+      "timeline": "Cronograma",
+      "companyName": "Nombre de la Compañía",
+      "submit": "Enviar Mensaje",
+      "sendingMessage": "Enviando Mensaje...",
+      "fullNamePlaceholder": "Tu nombre completo",
+      "emailPlaceholder": "tu@email.com",
+      "companyNamePlaceholder": "Tu nombre de la compañía",
+      "selectProjectType": "Selecciona el tipo de proyecto",
+      "businessWebsite": "Sitio Web de Negocio",
+      "ecommerceStore": "Tienda en Línea",
+      "landingPage": "Página de Aterrizaje",
+      "portfolioSite": "Sitio de Portafolio",
+      "blogNewsSite": "Blog/Noticias",
+      "other": "Otro",
+      "selectBudgetRange": "Selecciona el rango de presupuesto",
+      "letsDiscuss": "Hagamos un discusión",
+      "selectTimeline": "Selecciona el cronograma",
+      "asap": "Lo más pronto posible",
+      "oneTwoWeeks": "1-2 semanas",
+      "oneMonth": "Dentro de 1 mes",
+      "twoThreeMonths": "2-3 meses",
+      "flexible": "Flexible",
+      "projectDetailsPlaceholder": "Cuéntanos sobre tu proyecto, objetivos y cualquier requisito específico..."
+    }
   }
 }

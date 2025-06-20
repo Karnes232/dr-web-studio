@@ -1,40 +1,13 @@
 "use client"
 import React, { useState } from "react"
 
-const faqs = [
-  {
-    question: "How quickly can you respond to my inquiry?",
-    answer:
-      "We typically respond to WhatsApp messages within 1 hour during business hours, and emails within 24 hours. For urgent matters, WhatsApp is your best bet!",
-  },
-  {
-    question: "Do you offer free consultations?",
-    answer:
-      "Yes! We offer a free 30-minute consultation to discuss your project, understand your needs, and provide initial recommendations.",
-  },
-  {
-    question: "What information should I include in my message?",
-    answer:
-      "Tell us about your business, the type of website you need, your timeline, budget range, and any specific features or requirements you have in mind.",
-  },
-  {
-    question: "Do you work with clients outside the Dominican Republic?",
-    answer:
-      "Absolutely! While we're based in the DR, we work with clients throughout the Caribbean, Latin America, and internationally.",
-  },
-  {
-    question: "What's the typical project timeline?",
-    answer:
-      "Simple websites take 1-2 weeks, business websites 2-4 weeks, and complex e-commerce sites 4-8 weeks. Timeline depends on project scope and content readiness.",
-  },
-]
 
-const ContactFAQ = () => {
+const ContactFAQ = ({ title, faqs }: { title: string, faqs: { question: string, answer: string }[] }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <h3 className="text-2xl font-bold text-slate-800 mb-6">
-        Frequently Asked Questions
+        {title}
       </h3>
 
       <div className="space-y-4">

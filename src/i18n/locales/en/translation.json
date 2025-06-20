@@ -85,5 +85,42 @@
     "projectTimeline": "Project Timeline",
     "resultsImpact": "Results & Impact",
     "viewCode": "View Code"
+  },
+  "contact": {
+    "form": {
+      "messageSent": "Message Sent!",
+      "messageSentDescription": "Thanks for reaching out! We'll get back to you within 24 hours.",
+      "sendAnotherMessage": "Send Another Message",
+      "sendMessage": "Send us a Message",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "projectType": "Project Type",
+      "budgetRange": "Budget Range",
+      "companyName": "Company Name",
+      "projectDetails": "Project Details",
+      "timeline": "Timeline",
+      "submit": "Send Message",
+      "sendingMessage": "Sending Message...",
+      "fullNamePlaceholder": "Your full name",
+      "emailPlaceholder": "your@email.com",
+      "companyNamePlaceholder": "Your company name",
+      "selectProjectType": "Select project type",
+      "businessWebsite": "Business Website",
+      "ecommerceStore": "E-commerce Store",
+      "landingPage": "Landing Page",
+      "portfolioSite": "Portfolio Site",
+      "blogNewsSite": "Blog/News Site",
+      "other": "Other",
+      "selectBudgetRange": "Select budget range",
+      "letsDiscuss": "Let's discuss",
+      "selectTimeline": "Select timeline",
+      "asap": "ASAP",
+      "oneTwoWeeks": "1-2 weeks",
+      "oneMonth": "Within 1 month",
+      "twoThreeMonths": "2-3 months",
+      "flexible": "I'm flexible",
+      "projectDetailsPlaceholder": "Tell us about your project, goals, and any specific requirements..."
+    }
   }
 }

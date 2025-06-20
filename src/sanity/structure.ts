@@ -289,6 +289,37 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+      // Contact Group
+      S.listItem()
+        .title("Contact")
+        .child(
+          S.list()
+            .title("Contact")
+            .items([
+              S.listItem()
+                .title("Contact Hero")
+                .child(
+                  S.documentList()
+                    .title("Contact Hero")
+                    .filter('_type == "contactHero"'),
+                ),
+              S.listItem()
+                .title("Location Info")
+                .child(
+                  S.documentList()
+                    .title("Location Info")
+                    .filter('_type == "locationInfo"'),
+                ),
+              S.listItem()
+                .title("Contact FAQ")
+                .child(
+                  S.documentList()
+                    .title("Contact FAQ")
+                    .filter('_type == "contactFaq"'),
+                ),
+            ]), 
+        ),
+
       // SEO Group
       S.listItem()
         .title("SEO")
