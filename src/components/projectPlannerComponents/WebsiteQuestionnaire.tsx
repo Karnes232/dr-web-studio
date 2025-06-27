@@ -11,25 +11,26 @@ import LanguagesStep from "./Steps/LanguagesStep"
 import ContactForm from "./Steps/ContactForm"
 import ProjectSummary from "./ProjectSummary"
 import { FormData } from "@/types/form"
-import { ChevronLeft, Save, Send } from "lucide-react"
-import { ChevronRight } from "lucide-react"
 import ProgressBar from "./ProgressBar"
 import NavigationButtons from "./NavigationButtons"
-import QuestionnaireEnhancements from "./Steps/QuestionnaireEnhancements"
+//import QuestionnaireEnhancements from "./Steps/QuestionnaireEnhancements"
 import StepNavigation from "./StepNavigation"
 import { WebsiteType } from "@/sanity/queries/project-planner/websiteType"
 import { useLocale } from "@/i18n/useLocale"
 import { ProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
 import { PagesCount } from "@/sanity/queries/project-planner/pagesCount"
+import { DesignStyle } from "@/sanity/queries/project-planner/designStyle"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
   websiteType,
   pagesCount,
+  designStyle,
 }: {
   projectPlannerHeader: ProjectPlannerHeader
   websiteType: WebsiteType
   pagesCount: PagesCount
+  designStyle: DesignStyle
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
@@ -144,7 +145,11 @@ const WebsiteQuestionnaire = ({
           />
         )
       case 3:
-        return <DesignStyleStep formData={formData} setFormData={setFormData} />
+        return <DesignStyleStep formData={formData} setFormData={setFormData} title={designStyle.title[currentLocale as keyof typeof designStyle.title]} description={designStyle.description[currentLocale as keyof typeof designStyle.description]} designStyles={designStyle.designStyles.map(style => ({
+          value: style.value,
+          label: style.label[currentLocale as keyof typeof style.label],
+          description: style.description[currentLocale as keyof typeof style.description],
+        }))} />
       case 4:
         return <FeaturesStep formData={formData} setFormData={setFormData} />
       case 5:

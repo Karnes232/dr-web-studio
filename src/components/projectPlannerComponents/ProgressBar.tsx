@@ -1,3 +1,4 @@
+import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 
 const ProgressBar = ({
@@ -7,6 +8,7 @@ const ProgressBar = ({
   currentStep: number
   totalSteps: number
 }) => {
+  const { t } = useLocale()
   const progress = (currentStep / totalSteps) * 100
   return (
     <div className="w-full bg-gray-200 rounded-full h-3 mb-10">
@@ -15,7 +17,8 @@ const ProgressBar = ({
         style={{ width: `${progress}%` }}
       ></div>
       <div className="text-center mt-2 text-sm text-gray-600 ">
-        Step {currentStep} of {totalSteps} ({Math.round(progress)}% Complete)
+        {t("projectPlanner.step")} {currentStep} {t("projectPlanner.of")}{" "}
+        {totalSteps} ({Math.round(progress)}% {t("projectPlanner.complete")})
       </div>
     </div>
   )

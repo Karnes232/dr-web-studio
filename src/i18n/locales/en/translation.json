@@ -103,7 +103,10 @@
     "needHelp": "Need help? Contact us at",
     "pagesCount": "Pages",
     "page": "Page",
-    "tip": "Tip"
+    "tip": "Tip",
+    "step": "Step",
+    "of": "of",
+    "complete": "Complete"
   },
   "contact": {
     "form": {

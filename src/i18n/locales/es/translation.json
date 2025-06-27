@@ -103,7 +103,10 @@
     "needHelp": "¿Necesitas ayuda? Contacta a",
     "pagesCount": "Páginas",
     "page": "Página",
-    "tip": "Consejo"
+    "tip": "Consejo",
+    "step": "Paso",
+    "of": "de",
+    "complete": "Completado"
   },
   "contact": {
     "form": {

@@ -344,6 +344,13 @@ export const structure: StructureResolver = S =>
                     .title("Pages Count")
                     .filter('_type == "pagesCount"'),
                 ),
+              S.listItem()
+                .title("Design Style")
+                .child(
+                  S.documentList()
+                    .title("Design Style")
+                    .filter('_type == "designStyle"'),
+                ),
             ]),
         ),
 
