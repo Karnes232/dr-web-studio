@@ -1,5 +1,6 @@
 import WebsiteQuestionnaire from "@/components/projectPlannerComponents/WebsiteQuestionnaire"
 import { getDesignStyle } from "@/sanity/queries/project-planner/designStyle"
+import { getFeatures } from "@/sanity/queries/project-planner/features"
 import { getPagesCount } from "@/sanity/queries/project-planner/pagesCount"
 import { getProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
 import { getWebsiteType } from "@/sanity/queries/project-planner/websiteType"
@@ -20,6 +21,7 @@ export default async function Pricing({ params }: PageProps) {
   const websiteType = await getWebsiteType()
   const pagesCount = await getPagesCount()
   const designStyle = await getDesignStyle()
+  const features = await getFeatures()
 
   return (
     <>
@@ -38,6 +40,7 @@ export default async function Pricing({ params }: PageProps) {
           websiteType={websiteType}
           pagesCount={pagesCount}
           designStyle={designStyle}
+          features={features}
         />
       </section>
     </>

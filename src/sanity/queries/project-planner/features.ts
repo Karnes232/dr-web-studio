@@ -1,20 +1,22 @@
 import { client } from "@/sanity/lib/client"
 
-export const designStyleQuery = `
-  *[_type == "designStyle"][0] {
-    _id,
+export const featuresQuery = `
+  *[_type == "features"][0] {
     title,
     description,
-    designStyles[] {
+    selectedFeaturesText,
+    features[] {
       value,
       label,
       description
     }
   }
 `
+export async function getFeatures(): Promise<Features> {
+  return client.fetch(featuresQuery)
+}
 
-export interface DesignStyle {
-  _id: string
+export interface Features {
   title: {
     en: string
     es: string
@@ -23,7 +25,11 @@ export interface DesignStyle {
     en: string
     es: string
   }
-  designStyles: {
+  selectedFeaturesText: {
+    en: string
+    es: string
+  }
+  features: {
     value: string
     label: {
       en: string
@@ -34,8 +40,4 @@ export interface DesignStyle {
       es: string
     }
   }[]
-}
-
-export async function getDesignStyle(): Promise<DesignStyle> {
-  return client.fetch(designStyleQuery)
 }

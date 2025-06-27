@@ -20,17 +20,20 @@ import { useLocale } from "@/i18n/useLocale"
 import { ProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
 import { PagesCount } from "@/sanity/queries/project-planner/pagesCount"
 import { DesignStyle } from "@/sanity/queries/project-planner/designStyle"
+import { Features } from "@/sanity/queries/project-planner/features"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
   websiteType,
   pagesCount,
   designStyle,
+  features,
 }: {
   projectPlannerHeader: ProjectPlannerHeader
   websiteType: WebsiteType
   pagesCount: PagesCount
   designStyle: DesignStyle
+  features: Features
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
@@ -101,7 +104,6 @@ const WebsiteQuestionnaire = ({
         return true
     }
   }
-  console.log(pagesCount)
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -145,13 +147,52 @@ const WebsiteQuestionnaire = ({
           />
         )
       case 3:
-        return <DesignStyleStep formData={formData} setFormData={setFormData} title={designStyle.title[currentLocale as keyof typeof designStyle.title]} description={designStyle.description[currentLocale as keyof typeof designStyle.description]} designStyles={designStyle.designStyles.map(style => ({
-          value: style.value,
-          label: style.label[currentLocale as keyof typeof style.label],
-          description: style.description[currentLocale as keyof typeof style.description],
-        }))} />
+        return (
+          <DesignStyleStep
+            formData={formData}
+            setFormData={setFormData}
+            title={
+              designStyle.title[currentLocale as keyof typeof designStyle.title]
+            }
+            description={
+              designStyle.description[
+                currentLocale as keyof typeof designStyle.description
+              ]
+            }
+            designStyles={designStyle.designStyles.map(style => ({
+              value: style.value,
+              label: style.label[currentLocale as keyof typeof style.label],
+              description:
+                style.description[
+                  currentLocale as keyof typeof style.description
+                ],
+            }))}
+          />
+        )
       case 4:
-        return <FeaturesStep formData={formData} setFormData={setFormData} />
+        return (
+          <FeaturesStep
+            formData={formData}
+            setFormData={setFormData}
+            title={features.title[currentLocale as keyof typeof features.title]}
+            description={
+              features.description[currentLocale as keyof typeof features.title]
+            }
+            selectedFeaturesText={
+              features.selectedFeaturesText[
+                currentLocale as keyof typeof features.selectedFeaturesText
+              ]
+            }
+            features={features.features.map(feature => ({
+              value: feature.value,
+              label: feature.label[currentLocale as keyof typeof feature.label],
+              description:
+                feature.description[
+                  currentLocale as keyof typeof feature.description
+                ],
+            }))}
+          />
+        )
       case 5:
         return <BudgetStep formData={formData} setFormData={setFormData} />
       case 6:

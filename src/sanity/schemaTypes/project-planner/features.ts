@@ -1,8 +1,8 @@
 import { defineType, defineField } from "sanity"
 
 export default defineType({
-  name: "designStyle",
-  title: "Design Style",
+  name: "features",
+  title: "Features",
   type: "document",
   preview: {
     select: {
@@ -32,8 +32,18 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "designStyles",
-      title: "Design Styles",
+      name: "selectedFeaturesText",
+      title: "Selected Features Text",
+      type: "object",
+      fields: [
+        { name: "en", title: "English", type: "string" },
+        { name: "es", title: "Spanish", type: "string" },
+      ],
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "features",
+      title: "Features",
       type: "array",
       of: [
         {

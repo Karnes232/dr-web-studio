@@ -10,6 +10,7 @@ const MobileMenuToggle = ({
   return (
     <div className="lg:hidden">
       <button
+        aria-label="Toggle mobile menu"
         onClick={toggleMobileMenu}
         className="text-slate-700 hover:text-orange-500 focus:outline-none focus:text-orange-500 transition-colors duration-200"
       >

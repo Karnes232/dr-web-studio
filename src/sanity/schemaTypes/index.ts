@@ -53,6 +53,7 @@ import websiteType from "./project-planner/websiteType"
 import projectPlannerHeader from "./project-planner/projectPlannerHeader"
 import pagesCount from "./project-planner/pagesCount"
 import designStyle from "./project-planner/designStyle"
+import features from "./project-planner/features"
 
 // SEO Schema
 import seo from "./seo/seo"
@@ -113,6 +114,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     websiteType,
     pagesCount,
     designStyle,
+    features,
 
     // SEO Schema
     seo,

@@ -351,6 +351,13 @@ export const structure: StructureResolver = S =>
                     .title("Design Style")
                     .filter('_type == "designStyle"'),
                 ),
+              S.listItem()
+                .title("Features")
+                .child(
+                  S.documentList()
+                    .title("Features")
+                    .filter('_type == "features"'),
+                ),
             ]),
         ),
 

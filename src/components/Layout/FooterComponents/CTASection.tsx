@@ -17,13 +17,13 @@ const CTASection = () => {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href={getLocalizedPath("/project-planner")}
-            className="bg-white text-orange-600 px-6 py-3 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+            className="bg-white text-orange-700 px-6 py-3 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
           >
             {t("footer.startQuestionnaire")}
           </Link>
           <Link
             href={getLocalizedPath("/contact")}
-            className="bg-teal-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+            className="bg-teal-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-teal-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
           >
             {t("footer.contactUs")}
           </Link>
