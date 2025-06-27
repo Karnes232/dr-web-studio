@@ -1,7 +1,17 @@
 "use client"
 import React, { useState } from "react"
 
-const PricingFAQ = ({ title, subtitle, faqs, lang }: { title: string; subtitle: string; faqs: any; lang: string }) => {
+const PricingFAQ = ({
+  title,
+  subtitle,
+  faqs,
+  lang,
+}: {
+  title: string
+  subtitle: string
+  faqs: any
+  lang: string
+}) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   return (
     <div className="max-w-3xl mx-auto">
@@ -17,7 +27,9 @@ const PricingFAQ = ({ title, subtitle, faqs, lang }: { title: string; subtitle: 
               onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
               className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-gray-900">{faq.question[lang]}</span>
+              <span className="font-medium text-gray-900">
+                {faq.question[lang]}
+              </span>
               <span className="ml-6 flex-shrink-0">
                 {openFAQ === index ? "−" : "+"}
               </span>

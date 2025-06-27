@@ -44,6 +44,12 @@ body {
   opacity: 0.5 !important;
 }
 
+@media (min-width: 1280px) {
+  .swiper-pagination {
+    bottom: var(--swiper-pagination-bottom, 20px) !important;
+  }
+}
+
 .swiper-pagination-bullet-active {
   background: white !important;
   opacity: 1 !important;

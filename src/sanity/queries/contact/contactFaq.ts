@@ -27,4 +27,4 @@ export const getContactFaqs = async (): Promise<ContactFaq[]> => {
   `
 
   return await client.fetch(query)
-} 
+}

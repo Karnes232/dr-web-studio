@@ -3,51 +3,30 @@ import React from "react"
 import QuestionCard from "../QuestionCard"
 import OptionButton from "../OptionButton"
 import { FormData } from "@/types/form"
+import { WebsiteType } from "@/sanity/queries/project-planner/websiteType"
 
 const WebsiteTypeStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  websiteTypes,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  websiteTypes: {
+    value: string
+    label: string
+    description: string
+  }[]
 }) => {
-  const websiteTypes = [
-    {
-      value: "business",
-      label: "Business Website",
-      description: "Professional site for your company",
-    },
-    {
-      value: "ecommerce",
-      label: "E-commerce Store",
-      description: "Online store to sell products",
-    },
-    {
-      value: "portfolio",
-      label: "Portfolio",
-      description: "Showcase your work and skills",
-    },
-    {
-      value: "blog",
-      label: "Blog/News Site",
-      description: "Content-focused website",
-    },
-    {
-      value: "landing",
-      label: "Landing Page",
-      description: "Single page for marketing campaigns",
-    },
-    {
-      value: "nonprofit",
-      label: "Non-Profit",
-      description: "Website for charitable organization",
-    },
-  ]
   return (
     <QuestionCard
       icon={Globe}
-      title="What type of website do you need?"
-      description="Select the option that best describes your project"
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >

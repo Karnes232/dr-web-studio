@@ -1,3 +1,4 @@
+import { useLocale } from "@/i18n/useLocale"
 import { ChevronLeft, ChevronRight, Save, Send } from "lucide-react"
 import React from "react"
 
@@ -18,6 +19,7 @@ const NavigationButtons = ({
   onNext: () => void
   onSubmit: () => void
 }) => {
+  const { t } = useLocale()
   return (
     <div className="flex justify-between items-center">
       <button
@@ -30,14 +32,14 @@ const NavigationButtons = ({
         }`}
       >
         <ChevronLeft className="h-5 w-5 mr-2" />
-        Previous
+        {t("projectPlanner.previous")}
       </button>
 
       <div className="flex space-x-3">
-        <button className="flex items-center px-4 py-3 rounded-lg font-medium bg-teal-100 text-teal-700 hover:bg-teal-200 transition-all duration-200">
+        {/* <button className="flex items-center px-4 py-3 rounded-lg font-medium bg-teal-100 text-teal-700 hover:bg-teal-200 transition-all duration-200">
           <Save className="h-5 w-5 mr-2" />
           Save Progress
-        </button>
+        </button> */}
 
         {currentStep === totalSteps ? (
           <button
@@ -52,12 +54,12 @@ const NavigationButtons = ({
             {isSubmitting ? (
               <>
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Submitting...
+                {t("projectPlanner.submitting")}
               </>
             ) : (
               <>
                 <Send className="h-5 w-5 mr-2" />
-                Submit Project
+                {t("projectPlanner.submitProject")}
               </>
             )}
           </button>
@@ -71,7 +73,7 @@ const NavigationButtons = ({
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
-            Next Step
+            {t("projectPlanner.nextStep")}
             <ChevronRight className="h-5 w-5 ml-2" />
           </button>
         )}

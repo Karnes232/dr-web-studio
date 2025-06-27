@@ -32,8 +32,6 @@ type PricingPackage = {
   ctaHref: string
 }
 
-
-
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("pricing")
@@ -68,7 +66,6 @@ export default async function Pricing({ params }: PageProps) {
             ))}
           </div>
 
-     
           <div className="mb-16">
             <CustomSolutionCTA customSolutionCTA={customSolutionCTA} />
           </div>

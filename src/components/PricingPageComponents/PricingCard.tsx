@@ -45,15 +45,24 @@ const PricingCard = ({
           <Icon className="h-6 w-6 text-orange-600" />
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{pricingData.title[lang as keyof typeof pricingData.title]}</h3>
-        <p className="text-gray-600 text-sm mb-4">{pricingData.description[lang as keyof typeof pricingData.description]}</p>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">
+          {pricingData.title[lang as keyof typeof pricingData.title]}
+        </h3>
+        <p className="text-gray-600 text-sm mb-4">
+          {
+            pricingData.description[
+              lang as keyof typeof pricingData.description
+            ]
+          }
+        </p>
 
         {/* Pricing */}
         <div className="mb-4">
           <div className="flex items-center justify-center">
-            <span className="text-3xl font-bold text-gray-900">${pricingData.price}</span>
+            <span className="text-3xl font-bold text-gray-900">
+              ${pricingData.price}
+            </span>
           </div>
-
         </div>
       </div>
 
@@ -66,7 +75,9 @@ const PricingCard = ({
               typeof feature === "string" ? true : feature.included !== false
             }
           >
-            {typeof feature === "string" ? feature : feature.text[lang as keyof typeof feature.text]}
+            {typeof feature === "string"
+              ? feature
+              : feature.text[lang as keyof typeof feature.text]}
           </FeatureItem>
         ))}
       </div>

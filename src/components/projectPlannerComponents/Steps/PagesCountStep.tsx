@@ -3,36 +3,51 @@ import React from "react"
 import QuestionCard from "../QuestionCard"
 import RangeSlider from "../RangeSlider"
 import { FormData } from "@/types/form"
+import { useLocale } from "@/i18n/useLocale"
 
 const PagesCountStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  rangeConfig,
+  tip,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  rangeConfig: {
+    min: number
+    max: number
+    step: number
+    default: number
+  }
+  tip: string
 }) => {
+  const { t } = useLocale()
   return (
     <QuestionCard
       icon={FileText}
-      title="How many pages will your website need?"
-      description="Include all main pages like Home, About, Services, Contact, etc."
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >
       <div className="space-y-6">
         <RangeSlider
-          label="Number of Pages"
-          value={formData.pages || 0}
+          label={t("projectPlanner.pagesCount")}
+          value={formData.pages || rangeConfig.default}
           onChange={value => setFormData(prev => ({ ...prev, pages: value }))}
-          min={1}
-          max={20}
-          step={1}
-          formatValue={value => `${value} page${value !== 1 ? "s" : ""}`}
+          min={rangeConfig.min}
+          max={rangeConfig.max}
+          step={rangeConfig.step}
+          formatValue={value =>
+            `${value} ${t("projectPlanner.page")}${value !== 1 ? "s" : ""}`
+          }
         />
         <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-          <strong>Tip:</strong> Most business websites have 5-8 pages.
-          E-commerce sites typically need more pages for product categories and
-          individual products.
+          <strong>{t("projectPlanner.tip")}:</strong> {tip}
         </div>
       </div>
     </QuestionCard>

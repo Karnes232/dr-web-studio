@@ -13,7 +13,7 @@ export default defineType({
         { name: "en", type: "string", title: "English" },
         { name: "es", type: "string", title: "Spanish" },
       ],
-      validation: (Rule) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "location",
@@ -23,7 +23,7 @@ export default defineType({
         { name: "en", type: "string", title: "English" },
         { name: "es", type: "string", title: "Spanish" },
       ],
-      validation: (Rule) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "description",
@@ -33,7 +33,7 @@ export default defineType({
         { name: "en", type: "text", title: "English" },
         { name: "es", type: "text", title: "Spanish" },
       ],
-      validation: (Rule) => Rule.required(),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: "localAdvantage",
@@ -98,4 +98,4 @@ export default defineType({
       }
     },
   },
-}) 
+})

@@ -33,7 +33,7 @@ const VisualElement = ({
           const Icon = icons[element.icon as keyof typeof icons]
           return (
             <SwiperSlide key={element._id}>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl transform hover:scale-105 transition-transform duration-300 xl:m-4">
                 <div
                   className={`bg-gradient-to-br from-${element.gradientFrom} to-${element.gradientTo} rounded-xl p-8 text-center shadow-xl h-80 md:h-64 flex flex-col justify-between`}
                 >

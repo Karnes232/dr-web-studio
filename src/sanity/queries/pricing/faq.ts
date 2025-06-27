@@ -22,4 +22,4 @@ const faqsQuery = `*[_type == "faq"] | order(order asc) {
 
 export async function getFAQs(): Promise<FAQ[]> {
   return client.fetch(faqsQuery)
-} 
+}

@@ -17,8 +17,20 @@ import ProgressBar from "./ProgressBar"
 import NavigationButtons from "./NavigationButtons"
 import QuestionnaireEnhancements from "./Steps/QuestionnaireEnhancements"
 import StepNavigation from "./StepNavigation"
+import { WebsiteType } from "@/sanity/queries/project-planner/websiteType"
+import { useLocale } from "@/i18n/useLocale"
+import { ProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
+import { PagesCount } from "@/sanity/queries/project-planner/pagesCount"
 
-const WebsiteQuestionnaire = () => {
+const WebsiteQuestionnaire = ({
+  projectPlannerHeader,
+  websiteType,
+  pagesCount,
+}: {
+  projectPlannerHeader: ProjectPlannerHeader
+  websiteType: WebsiteType
+  pagesCount: PagesCount
+}) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
     websiteType: "",
@@ -38,7 +50,7 @@ const WebsiteQuestionnaire = () => {
     },
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const { currentLocale, t } = useLocale()
   const totalSteps = 9
   const nextStep = () => {
     if (currentStep < totalSteps) {
@@ -88,13 +100,49 @@ const WebsiteQuestionnaire = () => {
         return true
     }
   }
-
+  console.log(pagesCount)
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <WebsiteTypeStep formData={formData} setFormData={setFormData} />
+        return (
+          <WebsiteTypeStep
+            formData={formData}
+            setFormData={setFormData}
+            title={
+              websiteType.title[currentLocale as keyof typeof websiteType.title]
+            }
+            description={
+              websiteType.description[
+                currentLocale as keyof typeof websiteType.description
+              ]
+            }
+            websiteTypes={websiteType.websiteTypes.map(type => ({
+              value: type.value,
+              label: type.label[currentLocale as keyof typeof type.label],
+              description:
+                type.description[
+                  currentLocale as keyof typeof type.description
+                ],
+            }))}
+          />
+        )
       case 2:
-        return <PagesCountStep formData={formData} setFormData={setFormData} />
+        return (
+          <PagesCountStep
+            formData={formData}
+            setFormData={setFormData}
+            title={
+              pagesCount.title[currentLocale as keyof typeof pagesCount.title]
+            }
+            description={
+              pagesCount.description[
+                currentLocale as keyof typeof pagesCount.description
+              ]
+            }
+            rangeConfig={pagesCount.rangeConfig}
+            tip={pagesCount.tip[currentLocale as keyof typeof pagesCount.tip]}
+          />
+        )
       case 3:
         return <DesignStyleStep formData={formData} setFormData={setFormData} />
       case 4:
@@ -126,11 +174,18 @@ const WebsiteQuestionnaire = () => {
     <div className="max-w-4xl mx-auto p-6 min-h-screen">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Website Project Questionnaire
+          {
+            projectPlannerHeader.title[
+              currentLocale as keyof typeof projectPlannerHeader.title
+            ]
+          }
         </h1>
         <p className="text-gray-600">
-          Help us understand your project so we can provide you with the perfect
-          solution
+          {
+            projectPlannerHeader.description[
+              currentLocale as keyof typeof projectPlannerHeader.description
+            ]
+          }
         </p>
       </div>
       <StepNavigation
@@ -157,20 +212,13 @@ const WebsiteQuestionnaire = () => {
       {/* Help Text */}
       <div className="mt-6 text-center text-sm text-gray-500">
         <p>
-          Need help? Contact us at{" "}
+          {t("projectPlanner.needHelp")}{" "}
           <a
             href="mailto:info@drwebstudio.com"
             className="text-orange-500 hover:text-orange-600"
           >
             info@drwebstudio.com
           </a>{" "}
-          or{" "}
-          <a
-            href="https://wa.me/18091234567"
-            className="text-orange-500 hover:text-orange-600"
-          >
-            WhatsApp
-          </a>
         </p>
       </div>
     </div>

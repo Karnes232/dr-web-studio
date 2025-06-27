@@ -58,7 +58,8 @@ export default defineType({
     prepare({ title, subtitle }) {
       return {
         title,
-        subtitle: subtitle?.substring(0, 100) + (subtitle?.length > 100 ? "..." : ""),
+        subtitle:
+          subtitle?.substring(0, 100) + (subtitle?.length > 100 ? "..." : ""),
       }
     },
   },
@@ -69,4 +70,4 @@ export default defineType({
       by: [{ field: "order", direction: "asc" }],
     },
   ],
-}) 
+})

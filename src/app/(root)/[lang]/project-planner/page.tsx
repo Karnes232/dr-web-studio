@@ -1,4 +1,7 @@
 import WebsiteQuestionnaire from "@/components/projectPlannerComponents/WebsiteQuestionnaire"
+import { getPagesCount } from "@/sanity/queries/project-planner/pagesCount"
+import { getProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
+import { getWebsiteType } from "@/sanity/queries/project-planner/websiteType"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import React from "react"
@@ -12,6 +15,9 @@ interface PageProps {
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("project-planner")
+  const projectPlannerHeader = await getProjectPlannerHeader()
+  const websiteType = await getWebsiteType()
+  const pagesCount = await getPagesCount()
 
   return (
     <>
@@ -25,7 +31,11 @@ export default async function Pricing({ params }: PageProps) {
         id="project-planner"
         className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
       >
-        <WebsiteQuestionnaire />
+        <WebsiteQuestionnaire
+          projectPlannerHeader={projectPlannerHeader}
+          websiteType={websiteType}
+          pagesCount={pagesCount}
+        />
       </section>
     </>
   )

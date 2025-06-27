@@ -23,4 +23,4 @@ const contactHeroQuery = `*[_type == "contactHero"][0] {
 
 export async function getContactHero(): Promise<ContactHeroData> {
   return client.fetch(contactHeroQuery)
-} 
+}

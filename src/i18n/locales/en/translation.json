@@ -86,6 +86,25 @@
     "resultsImpact": "Results & Impact",
     "viewCode": "View Code"
   },
+  "projectPlanner": {
+    "websiteType": "Website Type",
+    "pages": "Pages",
+    "designStyle": "Design Style",
+    "features": "Features",
+    "budget": "Budget",
+    "timeline": "Timeline",
+    "content": "Content",
+    "languages": "Languages",
+    "contact": "Contact",
+    "previous": "Previous",
+    "nextStep": "Next Step",
+    "submitProject": "Submit Project",
+    "submitting": "Submitting...",
+    "needHelp": "Need help? Contact us at",
+    "pagesCount": "Pages",
+    "page": "Page",
+    "tip": "Tip"
+  },
   "contact": {
     "form": {
       "messageSent": "Message Sent!",

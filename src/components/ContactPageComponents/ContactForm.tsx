@@ -10,9 +10,9 @@ import {
   User,
 } from "lucide-react"
 import React, { useState } from "react"
-import { useFormspark } from "@formspark/use-formspark";
-import Botpoison from "@botpoison/browser";
-const FORMSPARK_FORM_ID = "eVtqpsKVL";
+import { useFormspark } from "@formspark/use-formspark"
+import Botpoison from "@botpoison/browser"
+const FORMSPARK_FORM_ID = "eVtqpsKVL"
 
 const ContactForm = () => {
   const { t } = useLocale()
@@ -30,11 +30,11 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submit, submitting] = useFormspark({
     formId: FORMSPARK_FORM_ID,
-  });
+  })
 
   const botpoison = new Botpoison({
-    publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702"
-  });
+    publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
+  })
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -49,23 +49,27 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const { solution } = await botpoison.challenge();
+    const { solution } = await botpoison.challenge()
     if (!solution) {
-      return;
+      return
     }
 
     setIsSubmitting(true)
 
-    await submit({ name: formData.name, email: formData.email, company: formData.company, phone: formData.phone, projectType: formData.projectType, budget: `$${formData.budget}`, timeline: formData.timeline, message: formData.message, _botpoison: solution });
+    await submit({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      phone: formData.phone,
+      projectType: formData.projectType,
+      budget: `$${formData.budget}`,
+      timeline: formData.timeline,
+      message: formData.message,
+      _botpoison: solution,
+    })
 
     setIsSubmitting(false)
     setIsSubmitted(true)
-
-    // Simulate form submission
-    // setTimeout(() => {
-    //   setIsSubmitting(false)
-    //   setIsSubmitted(true)
-    // }, 2000)
   }
 
   if (isSubmitted) {
@@ -197,10 +201,18 @@ const ContactForm = () => {
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="">{t("contact.form.selectProjectType")}</option>
-                <option value="business-website">{t("contact.form.businessWebsite")}</option>
-                <option value="ecommerce">{t("contact.form.ecommerceStore")}</option>
-                <option value="landing-page">{t("contact.form.landingPage")}</option>
-                <option value="portfolio">{t("contact.form.portfolioSite")}</option>
+                <option value="business-website">
+                  {t("contact.form.businessWebsite")}
+                </option>
+                <option value="ecommerce">
+                  {t("contact.form.ecommerceStore")}
+                </option>
+                <option value="landing-page">
+                  {t("contact.form.landingPage")}
+                </option>
+                <option value="portfolio">
+                  {t("contact.form.portfolioSite")}
+                </option>
                 <option value="blog">{t("contact.form.blogNewsSite")}</option>
                 <option value="other">{t("contact.form.other")}</option>
               </select>
@@ -240,7 +252,9 @@ const ContactForm = () => {
               <option value="asap">{t("contact.form.asap")}</option>
               <option value="1-2-weeks">{t("contact.form.oneTwoWeeks")}</option>
               <option value="1-month">{t("contact.form.oneMonth")}</option>
-              <option value="2-3-months">{t("contact.form.twoThreeMonths")}</option>
+              <option value="2-3-months">
+                {t("contact.form.twoThreeMonths")}
+              </option>
               <option value="flexible">{t("contact.form.flexible")}</option>
             </select>
           </div>

@@ -48,6 +48,11 @@ import contactHero from "./contact/contactHero"
 import locationInfo from "./contact/locationInfo"
 import contactFaq from "./contact/contactFaq"
 
+// Project Planner Schemas
+import websiteType from "./project-planner/websiteType"
+import projectPlannerHeader from "./project-planner/projectPlannerHeader"
+import pagesCount from "./project-planner/pagesCount"
+
 // SEO Schema
 import seo from "./seo/seo"
 import serviceItem from "./services/serviceItem"
@@ -89,7 +94,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pricingHeader,
     pricingData,
     faqsHeader,
-    faq,  
+    faq,
 
     // Blog Schemas
     author,
@@ -97,12 +102,17 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     blogCategory,
     blogHeader,
 
-    // SEO Schema
-    seo,
-
     // Contact Schemas
     contactHero,
     locationInfo,
     contactFaq,
+
+    // Project Planner Schemas
+    projectPlannerHeader,
+    websiteType,
+    pagesCount,
+
+    // SEO Schema
+    seo,
   ],
 }

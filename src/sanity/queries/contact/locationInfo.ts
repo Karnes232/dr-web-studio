@@ -52,4 +52,4 @@ export const getLocationInfo = async (): Promise<LocationInfo> => {
   `
 
   return await client.fetch(query)
-} 
+}

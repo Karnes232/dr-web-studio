@@ -68,4 +68,4 @@ export default defineType({
       title: "title.en",
     },
   },
-}) 
+})

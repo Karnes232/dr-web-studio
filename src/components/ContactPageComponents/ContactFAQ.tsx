@@ -1,14 +1,17 @@
 "use client"
 import React, { useState } from "react"
 
-
-const ContactFAQ = ({ title, faqs }: { title: string, faqs: { question: string, answer: string }[] }) => {
+const ContactFAQ = ({
+  title,
+  faqs,
+}: {
+  title: string
+  faqs: { question: string; answer: string }[]
+}) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <h3 className="text-2xl font-bold text-slate-800 mb-6">
-        {title}
-      </h3>
+      <h3 className="text-2xl font-bold text-slate-800 mb-6">{title}</h3>
 
       <div className="space-y-4">
         {faqs.map((faq, index) => (

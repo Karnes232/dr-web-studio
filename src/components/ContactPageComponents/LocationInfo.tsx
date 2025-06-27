@@ -1,7 +1,23 @@
 import { Clock, MapPin } from "lucide-react"
 import React from "react"
 
-const LocationInfo = ({ title, location, description, localAdvantageTitle, localAdvantageDescription, emergencySupportTitle, emergencySupportDescription }: { title: string, location: string, description: string, localAdvantageTitle: string, localAdvantageDescription: string, emergencySupportTitle: string, emergencySupportDescription: string }) => {
+const LocationInfo = ({
+  title,
+  location,
+  description,
+  localAdvantageTitle,
+  localAdvantageDescription,
+  emergencySupportTitle,
+  emergencySupportDescription,
+}: {
+  title: string
+  location: string
+  description: string
+  localAdvantageTitle: string
+  localAdvantageDescription: string
+  emergencySupportTitle: string
+  emergencySupportDescription: string
+}) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex items-center mb-6">
@@ -11,12 +27,8 @@ const LocationInfo = ({ title, location, description, localAdvantageTitle, local
 
       <div className="space-y-6">
         <div>
-          <h4 className="font-semibold text-slate-800 mb-2">
-            {location}
-          </h4>
-          <p className="text-slate-600 mb-4">
-            {description}
-          </p>
+          <h4 className="font-semibold text-slate-800 mb-2">{location}</h4>
+          <p className="text-slate-600 mb-4">{description}</p>
 
           <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
             <div className="flex items-center text-orange-700 mb-2">

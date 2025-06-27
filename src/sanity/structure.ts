@@ -247,11 +247,7 @@ export const structure: StructureResolver = S =>
                 ),
               S.listItem()
                 .title("FAQs")
-                .child(
-                  S.documentList()
-                    .title("FAQs")
-                    .filter('_type == "faq"'),
-                ),
+                .child(S.documentList().title("FAQs").filter('_type == "faq"')),
             ]),
         ),
 
@@ -317,7 +313,38 @@ export const structure: StructureResolver = S =>
                     .title("Contact FAQ")
                     .filter('_type == "contactFaq"'),
                 ),
-            ]), 
+            ]),
+        ),
+
+      // Project Planner Group
+      S.listItem()
+        .title("Project Planner")
+        .child(
+          S.list()
+            .title("Project Planner")
+            .items([
+              S.listItem()
+                .title("Project Planner Header")
+                .child(
+                  S.documentList()
+                    .title("Project Planner Header")
+                    .filter('_type == "projectPlannerHeader"'),
+                ),
+              S.listItem()
+                .title("Website Type")
+                .child(
+                  S.documentList()
+                    .title("Website Type")
+                    .filter('_type == "websiteType"'),
+                ),
+              S.listItem()
+                .title("Pages Count")
+                .child(
+                  S.documentList()
+                    .title("Pages Count")
+                    .filter('_type == "pagesCount"'),
+                ),
+            ]),
         ),
 
       // SEO Group

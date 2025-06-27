@@ -37,14 +37,38 @@ export default async function Contact({ params }: PageProps) {
         className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ContactHero title={contactHero.title[lang]} highlightedText={contactHero.highlightedText[lang]} description={contactHero.description[lang]} />
+          <ContactHero
+            title={contactHero.title[lang]}
+            highlightedText={contactHero.highlightedText[lang]}
+            description={contactHero.description[lang]}
+          />
           {/* <ContactMethods /> */}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
             <ContactForm />
             <div className="space-y-8">
-              <LocationInfo title={locationInfo.title[lang]} location={locationInfo.location[lang]} description={locationInfo.description[lang]} localAdvantageTitle={locationInfo.localAdvantage.title[lang]} localAdvantageDescription={locationInfo.localAdvantage.description[lang]} emergencySupportTitle={locationInfo.emergencySupport.title[lang]} emergencySupportDescription={locationInfo.emergencySupport.description[lang]} />
-              <ContactFAQ title={faqsHeader.title[lang]} faqs={contactFaqs.map((faq) => ({ question: faq.question[lang], answer: faq.answer[lang] }))} />
+              <LocationInfo
+                title={locationInfo.title[lang]}
+                location={locationInfo.location[lang]}
+                description={locationInfo.description[lang]}
+                localAdvantageTitle={locationInfo.localAdvantage.title[lang]}
+                localAdvantageDescription={
+                  locationInfo.localAdvantage.description[lang]
+                }
+                emergencySupportTitle={
+                  locationInfo.emergencySupport.title[lang]
+                }
+                emergencySupportDescription={
+                  locationInfo.emergencySupport.description[lang]
+                }
+              />
+              <ContactFAQ
+                title={faqsHeader.title[lang]}
+                faqs={contactFaqs.map(faq => ({
+                  question: faq.question[lang],
+                  answer: faq.answer[lang],
+                }))}
+              />
             </div>
           </div>
         </div>

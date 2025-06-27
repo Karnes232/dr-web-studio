@@ -59,4 +59,4 @@ const pricingDataQuery = `*[_type == "pricingData"] | order(variant asc) {
 
 export async function getPricingData(): Promise<PricingData[]> {
   return client.fetch(pricingDataQuery)
-} 
+}

@@ -50,4 +50,4 @@ export default defineType({
       subtitle: "subtitle.en",
     },
   },
-}) 
+})

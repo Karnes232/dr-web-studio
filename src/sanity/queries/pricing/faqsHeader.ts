@@ -18,4 +18,4 @@ const faqsHeaderQuery = `*[_type == "faqsHeader"][0] {
 
 export async function getFAQsHeader(): Promise<FAQsHeaderData> {
   return client.fetch(faqsHeaderQuery)
-} 
+}

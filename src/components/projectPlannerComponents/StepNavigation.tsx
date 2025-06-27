@@ -1,3 +1,4 @@
+import { useLocale } from "@/i18n/useLocale"
 import { FormData } from "@/types/form"
 import {
   Calendar,
@@ -25,16 +26,62 @@ const StepNavigation = ({
   onStepClick: (step: number) => void
   formData: FormData
 }) => {
+  const { currentLocale, t } = useLocale()
   const stepInfo = [
-    { number: 1, title: "Website Type", icon: Globe, key: "websiteType" },
-    { number: 2, title: "Pages", icon: FileText, key: "pages" },
-    { number: 3, title: "Design Style", icon: Palette, key: "designStyle" },
-    { number: 4, title: "Features", icon: Building, key: "features" },
-    { number: 5, title: "Budget", icon: DollarSign, key: "budget" },
-    { number: 6, title: "Timeline", icon: Calendar, key: "timeline" },
-    { number: 7, title: "Content", icon: Image, key: "contentStatus" },
-    { number: 8, title: "Languages", icon: Languages, key: "languages" },
-    { number: 9, title: "Contact", icon: Mail, key: "contact" },
+    {
+      number: 1,
+      title: t("projectPlanner.websiteType"),
+      icon: Globe,
+      key: "websiteType",
+    },
+    {
+      number: 2,
+      title: t("projectPlanner.pages"),
+      icon: FileText,
+      key: "pages",
+    },
+    {
+      number: 3,
+      title: t("projectPlanner.designStyle"),
+      icon: Palette,
+      key: "designStyle",
+    },
+    {
+      number: 4,
+      title: t("projectPlanner.features"),
+      icon: Building,
+      key: "features",
+    },
+    {
+      number: 5,
+      title: t("projectPlanner.budget"),
+      icon: DollarSign,
+      key: "budget",
+    },
+    {
+      number: 6,
+      title: t("projectPlanner.timeline"),
+      icon: Calendar,
+      key: "timeline",
+    },
+    {
+      number: 7,
+      title: t("projectPlanner.content"),
+      icon: Image,
+      key: "contentStatus",
+    },
+    {
+      number: 8,
+      title: t("projectPlanner.languages"),
+      icon: Languages,
+      key: "languages",
+    },
+    {
+      number: 9,
+      title: t("projectPlanner.contact"),
+      icon: Mail,
+      key: "contact",
+    },
   ]
   const isStepCompleted = (step: any) => {
     switch (step.key) {
@@ -81,7 +128,6 @@ const StepNavigation = ({
         <div className="flex flex-wrap justify-between items-center gap-2">
           {stepInfo.map((step, index) => {
             const Icon = step.icon
-            console.log(step)
             const isCompleted = isStepCompleted(step)
             const isCurrent = currentStep === step.number
             const canAccess = canAccessStep(step.number)
@@ -107,7 +153,7 @@ const StepNavigation = ({
                       <Check className="h-3 w-3 absolute -top-1 -right-1 bg-green-500 text-white rounded-full p-0.5" />
                     )}
                   </div>
-                  <span className="text-xs font-medium text-center leading-tight hidden md:block">
+                  <span className="text-xs font-medium text-center leading-tight hidden h-8 md:flex items-center justify-center">
                     {step.title}
                   </span>
                   <span className="text-xs opacity-75">{step.number}</span>
