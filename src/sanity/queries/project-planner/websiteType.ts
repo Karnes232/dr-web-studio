@@ -27,7 +27,10 @@ export interface WebsiteType {
     es: string
   }
   websiteTypes: {
-    value: string
+    value: {
+      en: string
+      es: string
+    }
     label: {
       en: string
       es: string

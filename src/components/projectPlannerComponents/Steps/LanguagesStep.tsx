@@ -7,18 +7,22 @@ import CheckboxOption from "../CheckboxOption"
 const LanguagesStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  languageOptions,
+  selectedLanguagesText,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  languageOptions: {
+    value: string
+    label: string
+  }[]
+  selectedLanguagesText: string
 }) => {
-  const languageOptions = [
-    { value: "english", label: "English" },
-    { value: "spanish", label: "Spanish (Español)" },
-    { value: "french", label: "French (Français)" },
-    { value: "portuguese", label: "Portuguese (Português)" },
-    { value: "italian", label: "Italian (Italiano)" },
-    { value: "german", label: "German (Deutsch)" },
-  ]
+
   const handleLanguageToggle = (language: any) => {
     setFormData(prev => ({
       ...prev,
@@ -30,8 +34,8 @@ const LanguagesStep = ({
   return (
     <QuestionCard
       icon={Languages}
-      title="What languages do you need?"
-      description="Select all languages your website should support"
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >
@@ -50,7 +54,8 @@ const LanguagesStep = ({
       {formData.languages.length > 0 && (
         <div className="mt-4 p-3 bg-green-50 rounded-lg">
           <div className="text-sm text-green-800">
-            <strong>Selected languages:</strong> {formData.languages.length}
+            <strong>{selectedLanguagesText}:</strong>{" "}
+            {formData.languages.length}
           </div>
         </div>
       )}

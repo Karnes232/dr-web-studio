@@ -24,6 +24,8 @@ import { Features } from "@/sanity/queries/project-planner/features"
 import { Budget } from "@/sanity/queries/project-planner/budget"
 import { Timeline } from "@/sanity/queries/project-planner/timeline"
 import { ContentStatus } from "@/sanity/queries/project-planner/contentStatus"
+import { Languages } from "@/sanity/queries/project-planner/languages"
+import { ContactFormType } from "@/sanity/queries/project-planner/contactForm"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
@@ -34,6 +36,9 @@ const WebsiteQuestionnaire = ({
   budget,
   timeline,
   contentStatus,
+  languages,
+  contactForm,
+  companyEmail,
 }: {
   projectPlannerHeader: ProjectPlannerHeader
   websiteType: WebsiteType
@@ -43,6 +48,9 @@ const WebsiteQuestionnaire = ({
   budget: Budget
   timeline: Timeline
   contentStatus: ContentStatus
+  languages: Languages
+  contactForm: ContactFormType
+  companyEmail: string
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
@@ -88,7 +96,6 @@ const WebsiteQuestionnaire = ({
       )
     }, 2000)
   }
-
   const canProceed = () => {
     switch (currentStep) {
       case 1:
@@ -129,7 +136,7 @@ const WebsiteQuestionnaire = ({
               ]
             }
             websiteTypes={websiteType.websiteTypes.map(type => ({
-              value: type.value,
+              value: type.value[currentLocale as keyof typeof type.value],
               label: type.label[currentLocale as keyof typeof type.label],
               description:
                 type.description[
@@ -169,7 +176,7 @@ const WebsiteQuestionnaire = ({
               ]
             }
             designStyles={designStyle.designStyles.map(style => ({
-              value: style.value,
+              value: style.value[currentLocale as keyof typeof style.value],
               label: style.label[currentLocale as keyof typeof style.label],
               description:
                 style.description[
@@ -193,7 +200,7 @@ const WebsiteQuestionnaire = ({
               ]
             }
             features={features.features.map(feature => ({
-              value: feature.value,
+              value: feature.value[currentLocale as keyof typeof feature.value],
               label: feature.label[currentLocale as keyof typeof feature.label],
               description:
                 feature.description[
@@ -235,7 +242,7 @@ const WebsiteQuestionnaire = ({
               ]
             }
             timelineOptions={timeline.timelineOptions.map(option => ({
-              value: option.value,
+              value: option.value[currentLocale as keyof typeof option.value],
               label: option.label[currentLocale as keyof typeof option.label],
               description:
                 option.description[
@@ -260,7 +267,7 @@ const WebsiteQuestionnaire = ({
               ]
             }
             contentOptions={contentStatus.contentOptions.map(option => ({
-              value: option.value,
+              value: option.value[currentLocale as keyof typeof option.value],
               label: option.label[currentLocale as keyof typeof option.label],
               description:
                 option.description[
@@ -270,13 +277,98 @@ const WebsiteQuestionnaire = ({
           />
         )
       case 8:
-        return <LanguagesStep formData={formData} setFormData={setFormData} />
+        return (
+          <LanguagesStep
+            formData={formData}
+            setFormData={setFormData}
+            title={
+              languages.title[currentLocale as keyof typeof languages.title]
+            }
+            description={
+              languages.description[
+                currentLocale as keyof typeof languages.description
+              ]
+            }
+            languageOptions={languages.languageOptions.map(option => ({
+              value: option.value[currentLocale as keyof typeof option.value],
+              label: option.label[currentLocale as keyof typeof option.label],
+            }))}
+            selectedLanguagesText={
+              languages.selectedLanguagesText[
+                currentLocale as keyof typeof languages.selectedLanguagesText
+              ]
+            }
+          />
+        )
       // case 9:
       //   return <QuestionnaireEnhancements formData={formData} setFormData={setFormData} />
       case 9:
         return (
           <div className="space-y-6">
-            <ContactForm formData={formData} setFormData={setFormData} />
+            <ContactForm
+              formData={formData}
+              setFormData={setFormData}
+              title={
+                contactForm.title[
+                  currentLocale as keyof typeof contactForm.title
+                ]
+              }
+              description={
+                contactForm.description[
+                  currentLocale as keyof typeof contactForm.description
+                ]
+              }
+              fullNameLabel={
+                contactForm.formFields.fullName.label[
+                  currentLocale as keyof typeof contactForm.formFields.fullName.label
+                ]
+              }
+              fullNamePlaceholder={
+                contactForm.formFields.fullName.placeholder[
+                  currentLocale as keyof typeof contactForm.formFields.fullName.placeholder
+                ]
+              }
+              emailLabel={
+                contactForm.formFields.email.label[
+                  currentLocale as keyof typeof contactForm.formFields.email.label
+                ]
+              }
+              emailPlaceholder={
+                contactForm.formFields.email.placeholder[
+                  currentLocale as keyof typeof contactForm.formFields.email.placeholder
+                ]
+              }
+              phoneLabel={
+                contactForm.formFields.phone.label[
+                  currentLocale as keyof typeof contactForm.formFields.phone.label
+                ]
+              }
+              phonePlaceholder={
+                contactForm.formFields.phone.placeholder[
+                  currentLocale as keyof typeof contactForm.formFields.phone.placeholder
+                ]
+              }
+              companyLabel={
+                contactForm.formFields.company.label[
+                  currentLocale as keyof typeof contactForm.formFields.company.label
+                ]
+              }
+              companyPlaceholder={
+                contactForm.formFields.company.placeholder[
+                  currentLocale as keyof typeof contactForm.formFields.company.placeholder
+                ]
+              }
+              messageLabel={
+                contactForm.formFields.message.label[
+                  currentLocale as keyof typeof contactForm.formFields.message.label
+                ]
+              }
+              messagePlaceholder={
+                contactForm.formFields.message.placeholder[
+                  currentLocale as keyof typeof contactForm.formFields.message.placeholder
+                ]
+              }
+            />
             <ProjectSummary formData={formData} />
           </div>
         )
@@ -328,10 +420,10 @@ const WebsiteQuestionnaire = ({
         <p>
           {t("projectPlanner.needHelp")}{" "}
           <a
-            href="mailto:info@drwebstudio.com"
+            href={`mailto:${companyEmail}`}
             className="text-orange-500 hover:text-orange-600"
           >
-            info@drwebstudio.com
+            {companyEmail}
           </a>{" "}
         </p>
       </div>

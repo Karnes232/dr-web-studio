@@ -26,7 +26,10 @@ export interface ContentStatus {
     es: string
   }
   contentOptions: {
-    value: string
+    value: {
+      en: string
+      es: string
+    }
     label: {
       en: string
       es: string

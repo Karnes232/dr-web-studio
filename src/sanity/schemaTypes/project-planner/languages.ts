@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "timeline",
-  title: "Timeline Step",
+  name: "languages",
+  title: "Languages Step",
   type: "document",
   fields: [
     defineField({
@@ -44,8 +44,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "timelineOptions",
-      title: "Timeline Options",
+      name: "languageOptions",
+      title: "Language Options",
       type: "array",
       of: [
         {
@@ -80,29 +80,29 @@ export default defineType({
                 }),
               ],
             }),
-            defineField({
-              name: "description",
-              title: "Description",
-              type: "object",
-              fields: [
-                defineField({
-                  name: "en",
-                  title: "English",
-                  type: "string",
-                  validation: Rule => Rule.required(),
-                }),
-                defineField({
-                  name: "es",
-                  title: "Spanish",
-                  type: "string",
-                  validation: Rule => Rule.required(),
-                }),
-              ],
-            }),
           ],
         },
       ],
       validation: Rule => Rule.required().min(1),
+    }),
+    defineField({
+      name: "selectedLanguagesText",
+      title: "Selected Languages Text",
+      type: "object",
+      fields: [
+        defineField({
+          name: "en",
+          title: "English",
+          type: "string",
+          validation: Rule => Rule.required(),
+        }),
+        defineField({
+          name: "es",
+          title: "Spanish",
+          type: "string",
+          validation: Rule => Rule.required(),
+        }),
+      ],
     }),
   ],
   preview: {

@@ -106,7 +106,11 @@
     "tip": "Tip",
     "step": "Step",
     "of": "of",
-    "complete": "Complete"
+    "complete": "Complete",
+    "numberOfPages": "Number of Pages",
+    "budgetRange": "Budget Range",
+    "contentStatus": "Content Status",
+    "projectSummary": "Project Summary"
   },
   "contact": {
     "form": {

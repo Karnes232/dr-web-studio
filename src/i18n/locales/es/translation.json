@@ -106,7 +106,11 @@
     "tip": "Consejo",
     "step": "Paso",
     "of": "de",
-    "complete": "Completado"
+    "complete": "Completado",
+    "numberOfPages": "Número de Páginas",
+    "budgetRange": "Rango de Presupuesto",
+    "contentStatus": "Estado del Contenido",
+    "projectSummary": "Resumen del Proyecto"
   },
   "contact": {
     "form": {

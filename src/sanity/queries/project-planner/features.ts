@@ -30,7 +30,10 @@ export interface Features {
     es: string
   }
   features: {
-    value: string
+    value: {
+      en: string
+      es: string
+    }
     label: {
       en: string
       es: string

@@ -26,7 +26,10 @@ export interface Timeline {
     es: string
   }
   timelineOptions: {
-    value: string
+    value: {
+      en: string
+      es: string
+    }
     label: {
       en: string
       es: string

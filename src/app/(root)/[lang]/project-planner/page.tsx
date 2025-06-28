@@ -1,8 +1,11 @@
 import WebsiteQuestionnaire from "@/components/projectPlannerComponents/WebsiteQuestionnaire"
+import { client } from "@/sanity/lib/client"
 import { getBudget } from "@/sanity/queries/project-planner/budget"
+import { getContactForm } from "@/sanity/queries/project-planner/contactForm"
 import { getContentStatus } from "@/sanity/queries/project-planner/contentStatus"
 import { getDesignStyle } from "@/sanity/queries/project-planner/designStyle"
 import { getFeatures } from "@/sanity/queries/project-planner/features"
+import { getLanguages } from "@/sanity/queries/project-planner/languages"
 import { getPagesCount } from "@/sanity/queries/project-planner/pagesCount"
 import { getProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
 import { getTimeline } from "@/sanity/queries/project-planner/timeline"
@@ -17,6 +20,15 @@ interface PageProps {
   }>
 }
 
+const getCompanyEmail = async () => {
+  const companyEmail = await client.fetch(`
+    *[_type == "generalLayout"][0] {
+      email
+    }
+  `)
+  return companyEmail.email
+}
+
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("project-planner")
@@ -28,6 +40,9 @@ export default async function Pricing({ params }: PageProps) {
   const budget = await getBudget()
   const timeline = await getTimeline()
   const contentStatus = await getContentStatus()
+  const languages = await getLanguages()
+  const contactForm = await getContactForm()
+  const companyEmail = await getCompanyEmail()
 
   return (
     <>
@@ -50,6 +65,9 @@ export default async function Pricing({ params }: PageProps) {
           budget={budget}
           timeline={timeline}
           contentStatus={contentStatus}
+          languages={languages}
+          contactForm={contactForm}
+          companyEmail={companyEmail}
         />
       </section>
     </>

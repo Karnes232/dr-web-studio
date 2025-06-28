@@ -52,7 +52,11 @@ export default defineType({
             {
               name: "value",
               title: "Value",
-              type: "string",
+              type: "object",
+              fields: [
+                { name: "en", title: "English", type: "string" },
+                { name: "es", title: "Spanish", type: "string" },
+              ],
               validation: Rule => Rule.required(),
             },
             {

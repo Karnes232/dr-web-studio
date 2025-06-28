@@ -57,6 +57,8 @@ import features from "./project-planner/features"
 import budget from "./project-planner/budget"
 import timeline from "./project-planner/timeline"
 import contentStatus from "./project-planner/contentStatus"
+import languages from "./project-planner/languages"
+import contactForm from "./project-planner/contactForm"
 
 // SEO Schema
 import seo from "./seo/seo"
@@ -121,6 +123,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     budget,
     timeline,
     contentStatus,
+    languages,
+    contactForm,
 
     // SEO Schema
     seo,

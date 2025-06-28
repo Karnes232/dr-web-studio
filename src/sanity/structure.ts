@@ -377,6 +377,20 @@ export const structure: StructureResolver = S =>
                     .title("Content Status")
                     .filter('_type == "contentStatus"'),
                 ),
+              S.listItem()
+                .title("Languages")
+                .child(
+                  S.documentList()
+                    .title("Languages")
+                    .filter('_type == "languages"'),
+                ),
+              S.listItem()
+                .title("Contact Form")
+                .child(
+                  S.documentList()
+                    .title("Contact Form")
+                    .filter('_type == "contactForm"'),
+                ),
             ]),
         ),
 
