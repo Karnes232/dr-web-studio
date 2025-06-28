@@ -69,7 +69,7 @@ const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == 
 
 export async function getServiceItemBySlug(
   slug: string,
-): Promise<ServiceItem | null> {
+): Promise<ServiceItemIndividual | null> {
   return client.fetch(serviceItemIndividualQuery, { slug })
 }
 
