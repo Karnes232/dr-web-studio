@@ -7,37 +7,25 @@ import OptionButton from "../OptionButton"
 const ContentStatusStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  contentOptions,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  contentOptions: {
+    value: string
+    label: string
+    description: string
+  }[]
 }) => {
-  const contentOptions = [
-    {
-      value: "ready",
-      label: "Content Ready",
-      description: "I have all text and images prepared",
-    },
-    {
-      value: "partial",
-      label: "Partially Ready",
-      description: "I have some content, need help with the rest",
-    },
-    {
-      value: "need-help",
-      label: "Need Help",
-      description: "I need assistance creating content",
-    },
-    {
-      value: "professional",
-      label: "Professional Writing",
-      description: "I want professional copywriting services",
-    },
-  ]
   return (
     <QuestionCard
       icon={Image}
-      title="What's your content status?"
-      description="Do you have text, images, and other content ready?"
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >

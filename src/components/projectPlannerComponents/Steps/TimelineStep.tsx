@@ -7,43 +7,25 @@ import OptionButton from "../OptionButton"
 const TimelineStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  timelineOptions,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  timelineOptions: {
+    value: string
+    label: string
+    description: string
+  }[]
 }) => {
-  const timelineOptions = [
-    {
-      value: "1-2 weeks",
-      label: "1-2 weeks",
-      description: "Fast turnaround for simple projects",
-    },
-    {
-      value: "2-4 weeks",
-      label: "2-4 weeks",
-      description: "Standard timeline for most projects",
-    },
-    {
-      value: "1-2 months",
-      label: "1-2 months",
-      description: "Complex projects with custom features",
-    },
-    {
-      value: "2-3 months",
-      label: "2-3 months",
-      description: "Large-scale projects with extensive requirements",
-    },
-    {
-      value: "flexible",
-      label: "Flexible",
-      description: "No specific deadline",
-    },
-  ]
-
   return (
     <QuestionCard
       icon={Calendar}
-      title="What's your preferred timeline?"
-      description="When do you need your website to be completed?"
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >

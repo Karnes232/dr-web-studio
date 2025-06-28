@@ -21,6 +21,9 @@ import { ProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPl
 import { PagesCount } from "@/sanity/queries/project-planner/pagesCount"
 import { DesignStyle } from "@/sanity/queries/project-planner/designStyle"
 import { Features } from "@/sanity/queries/project-planner/features"
+import { Budget } from "@/sanity/queries/project-planner/budget"
+import { Timeline } from "@/sanity/queries/project-planner/timeline"
+import { ContentStatus } from "@/sanity/queries/project-planner/contentStatus"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
@@ -28,12 +31,18 @@ const WebsiteQuestionnaire = ({
   pagesCount,
   designStyle,
   features,
+  budget,
+  timeline,
+  contentStatus,
 }: {
   projectPlannerHeader: ProjectPlannerHeader
   websiteType: WebsiteType
   pagesCount: PagesCount
   designStyle: DesignStyle
   features: Features
+  budget: Budget
+  timeline: Timeline
+  contentStatus: ContentStatus
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
@@ -194,12 +203,71 @@ const WebsiteQuestionnaire = ({
           />
         )
       case 5:
-        return <BudgetStep formData={formData} setFormData={setFormData} />
+        return (
+          <BudgetStep
+            formData={formData}
+            setFormData={setFormData}
+            title={budget.title[currentLocale as keyof typeof budget.title]}
+            description={
+              budget.description[
+                currentLocale as keyof typeof budget.description
+              ]
+            }
+            budgetOptions={budget.budgetOptions.map(option => ({
+              value: option.value,
+              label: option.label[currentLocale as keyof typeof option.label],
+              description:
+                option.description[
+                  currentLocale as keyof typeof option.description
+                ],
+            }))}
+          />
+        )
       case 6:
-        return <TimelineStep formData={formData} setFormData={setFormData} />
+        return (
+          <TimelineStep
+            formData={formData}
+            setFormData={setFormData}
+            title={timeline.title[currentLocale as keyof typeof timeline.title]}
+            description={
+              timeline.description[
+                currentLocale as keyof typeof timeline.description
+              ]
+            }
+            timelineOptions={timeline.timelineOptions.map(option => ({
+              value: option.value,
+              label: option.label[currentLocale as keyof typeof option.label],
+              description:
+                option.description[
+                  currentLocale as keyof typeof option.description
+                ],
+            }))}
+          />
+        )
       case 7:
         return (
-          <ContentStatusStep formData={formData} setFormData={setFormData} />
+          <ContentStatusStep
+            formData={formData}
+            setFormData={setFormData}
+            title={
+              contentStatus.title[
+                currentLocale as keyof typeof contentStatus.title
+              ]
+            }
+            description={
+              contentStatus.description[
+                currentLocale as keyof typeof contentStatus.description
+              ]
+            }
+            contentOptions={contentStatus.contentOptions.map(option => ({
+              value: option.value,
+              label: option.label[currentLocale as keyof typeof option.label],
+              description:
+                option.description[
+                  currentLocale as keyof typeof option.description
+                ],
+            }))}
+          />
         )
       case 8:
         return <LanguagesStep formData={formData} setFormData={setFormData} />

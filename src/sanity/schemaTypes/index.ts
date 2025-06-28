@@ -54,6 +54,9 @@ import projectPlannerHeader from "./project-planner/projectPlannerHeader"
 import pagesCount from "./project-planner/pagesCount"
 import designStyle from "./project-planner/designStyle"
 import features from "./project-planner/features"
+import budget from "./project-planner/budget"
+import timeline from "./project-planner/timeline"
+import contentStatus from "./project-planner/contentStatus"
 
 // SEO Schema
 import seo from "./seo/seo"
@@ -115,6 +118,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pagesCount,
     designStyle,
     features,
+    budget,
+    timeline,
+    contentStatus,
 
     // SEO Schema
     seo,

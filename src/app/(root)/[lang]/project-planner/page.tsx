@@ -1,8 +1,11 @@
 import WebsiteQuestionnaire from "@/components/projectPlannerComponents/WebsiteQuestionnaire"
+import { getBudget } from "@/sanity/queries/project-planner/budget"
+import { getContentStatus } from "@/sanity/queries/project-planner/contentStatus"
 import { getDesignStyle } from "@/sanity/queries/project-planner/designStyle"
 import { getFeatures } from "@/sanity/queries/project-planner/features"
 import { getPagesCount } from "@/sanity/queries/project-planner/pagesCount"
 import { getProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
+import { getTimeline } from "@/sanity/queries/project-planner/timeline"
 import { getWebsiteType } from "@/sanity/queries/project-planner/websiteType"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
@@ -22,6 +25,9 @@ export default async function Pricing({ params }: PageProps) {
   const pagesCount = await getPagesCount()
   const designStyle = await getDesignStyle()
   const features = await getFeatures()
+  const budget = await getBudget()
+  const timeline = await getTimeline()
+  const contentStatus = await getContentStatus()
 
   return (
     <>
@@ -41,6 +47,9 @@ export default async function Pricing({ params }: PageProps) {
           pagesCount={pagesCount}
           designStyle={designStyle}
           features={features}
+          budget={budget}
+          timeline={timeline}
+          contentStatus={contentStatus}
         />
       </section>
     </>

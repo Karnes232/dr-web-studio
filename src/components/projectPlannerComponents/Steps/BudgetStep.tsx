@@ -7,42 +7,25 @@ import OptionButton from "../OptionButton"
 const BudgetStep = ({
   formData,
   setFormData,
+  title,
+  description,
+  budgetOptions,
 }: {
   formData: FormData
   setFormData: (data: FormData | ((prev: FormData) => FormData)) => void
+  title: string
+  description: string
+  budgetOptions: {
+    value: string
+    label: string
+    description: string
+  }[]
 }) => {
-  const budgetOptions = [
-    {
-      value: "$300-$500",
-      label: "$300 - $500",
-      description: "Basic website with essential features",
-    },
-    {
-      value: "$500-$1000",
-      label: "$500 - $1,000",
-      description: "Professional website with custom design",
-    },
-    {
-      value: "$1000-$2500",
-      label: "$1,000 - $2,500",
-      description: "Advanced website with premium features",
-    },
-    {
-      value: "$2500-$5000",
-      label: "$2,500 - $5,000",
-      description: "Complex website with custom functionality",
-    },
-    {
-      value: "$5000+",
-      label: "$5,000+",
-      description: "Enterprise-level website with full customization",
-    },
-  ]
   return (
     <QuestionCard
       icon={DollarSign}
-      title="What's your budget range?"
-      description="Select the budget range that fits your project"
+      title={title}
+      description={description}
       isActive={true}
       onClick={() => {}}
     >

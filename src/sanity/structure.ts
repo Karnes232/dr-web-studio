@@ -358,6 +358,25 @@ export const structure: StructureResolver = S =>
                     .title("Features")
                     .filter('_type == "features"'),
                 ),
+              S.listItem()
+                .title("Budget")
+                .child(
+                  S.documentList().title("Budget").filter('_type == "budget"'),
+                ),
+              S.listItem()
+                .title("Timeline")
+                .child(
+                  S.documentList()
+                    .title("Timeline")
+                    .filter('_type == "timeline"'),
+                ),
+              S.listItem()
+                .title("Content Status")
+                .child(
+                  S.documentList()
+                    .title("Content Status")
+                    .filter('_type == "contentStatus"'),
+                ),
             ]),
         ),
 
