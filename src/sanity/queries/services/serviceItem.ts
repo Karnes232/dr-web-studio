@@ -6,6 +6,7 @@ export interface ServiceItem {
     en: string
     es: string
   }
+  slug: string
   description: {
     en: string
     es: string
@@ -33,6 +34,7 @@ export interface ServiceItem {
 const serviceItemsQuery = `*[_type == "serviceItem"] {
   _id,
   title,
+  slug,
   description,
   iconName,
   "categories": categories[]-> {

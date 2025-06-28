@@ -25,6 +25,15 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      validation: Rule => Rule.required(),
+      options: {
+        source: "title.en",
+      },
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "object",

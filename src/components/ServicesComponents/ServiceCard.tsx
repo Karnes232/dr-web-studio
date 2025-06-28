@@ -5,10 +5,6 @@ import ServiceStats from "./ServiceStats"
 import ServiceCardActions from "./ServiceCardActions"
 
 const ServiceCard = ({ service }: { service: any }) => {
-  const handleLearnMore = () => {
-    // Handle learn more action
-    console.log(`Learn more about ${service.title}`)
-  }
   return (
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100">
       <ServiceCardHeader service={service} />
@@ -16,7 +12,7 @@ const ServiceCard = ({ service }: { service: any }) => {
       <div className="p-6">
         <ServiceBenefits benefits={service.benefits} />
         <ServiceStats timeline={service.timeline} features={service.features} />
-        <ServiceCardActions onLearnMore={handleLearnMore} />
+        <ServiceCardActions onLearnMore={service.slug.current} />
       </div>
     </div>
   )

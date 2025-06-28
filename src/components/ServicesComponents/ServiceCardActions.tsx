@@ -14,12 +14,12 @@ const ServiceCardActions = ({ onLearnMore }: { onLearnMore: () => void }) => {
         {t("serviceCard.getStarted")}
         <ArrowRight className="h-4 w-4 ml-1" />
       </Link>
-      <button
-        onClick={onLearnMore}
+      <Link
+        href={getLocalizedPath(`/our-services/${onLearnMore}`)}
         className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
       >
         {t("serviceCard.learnMore")}
-      </button>
+      </Link>
     </div>
   )
 }
