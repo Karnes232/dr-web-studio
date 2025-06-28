@@ -19,19 +19,6 @@ interface PageProps {
   }>
 }
 
-type PricingPackage = {
-  title: string
-  price: string
-  originalPrice: string
-  description: string
-  iconName: "Zap" | "Globe" | "ShoppingCart"
-  variant?: "default" | "popular" | "premium"
-  badge?: { text: string; variant: string }
-  features: (string | { text: string; included?: boolean })[]
-  ctaText: string
-  ctaHref: string
-}
-
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("pricing")

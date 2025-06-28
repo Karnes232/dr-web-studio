@@ -5,11 +5,6 @@ import ServiceStats from "./ServiceStats"
 import ServiceCardActions from "./ServiceCardActions"
 
 const ServiceCard = ({ service }: { service: any }) => {
-  const handleGetStarted = () => {
-    // Handle get started action
-    console.log(`Get started with ${service.title}`)
-  }
-
   const handleLearnMore = () => {
     // Handle learn more action
     console.log(`Learn more about ${service.title}`)
@@ -21,10 +16,7 @@ const ServiceCard = ({ service }: { service: any }) => {
       <div className="p-6">
         <ServiceBenefits benefits={service.benefits} />
         <ServiceStats timeline={service.timeline} features={service.features} />
-        <ServiceCardActions
-          onGetStarted={handleGetStarted}
-          onLearnMore={handleLearnMore}
-        />
+        <ServiceCardActions onLearnMore={handleLearnMore} />
       </div>
     </div>
   )

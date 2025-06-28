@@ -85,6 +85,7 @@ const PricingCard = ({
       <PricingCTA
         href={pricingData.ctaHref}
         variant={pricingData.variant === "popular" ? "primary" : "outline"}
+        data-source={`pricing-${pricingData.title[lang]}`}
       >
         {pricingData.ctaText[lang as keyof typeof pricingData.ctaText]}
       </PricingCTA>
