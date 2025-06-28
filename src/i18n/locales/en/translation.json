@@ -14,7 +14,9 @@
     "landing_pages": "Landing Pages",
     "cms": "CMS Solutions",
     "maintenance": "Maintenance",
-    "seo": "SEO & Performance"
+    "seo": "SEO & Performance",
+    "timeline": "Weeks",
+    "rating": "rating"
   },
   "serviceCard": {
     "startingFrom": "Starting from",
@@ -148,5 +150,9 @@
       "flexible": "I'm flexible",
       "projectDetailsPlaceholder": "Tell us about your project, goals, and any specific requirements..."
     }
+  },
+  "individualService": {
+    "whatIs": "What is"
   }
+  
 }

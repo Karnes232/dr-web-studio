@@ -51,3 +51,51 @@ const serviceItemsQuery = `*[_type == "serviceItem"] {
 export async function getServiceItems(): Promise<ServiceItem[]> {
   return client.fetch(serviceItemsQuery)
 }
+
+const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  description,
+  "categories": categories[]-> {
+    _id,
+    name,
+  },
+  timeline,
+  pageContent {
+    longDescription
+  }
+}`
+
+export async function getServiceItemBySlug(
+  slug: string,
+): Promise<ServiceItem | null> {
+  return client.fetch(serviceItemIndividualQuery, { slug })
+}
+
+export interface ServiceItemIndividual {
+  _id: string
+  title: {
+    en: string
+    es: string
+  }
+  slug: string
+  description: {
+    en: string
+    es: string
+  }
+  categories: {
+    _id: string
+    name: {
+      en: string
+      es: string
+    }
+  }[]
+  timeline: string
+  pageContent: {
+    longDescription: {
+      en: string
+      es: string
+    }
+  }
+}

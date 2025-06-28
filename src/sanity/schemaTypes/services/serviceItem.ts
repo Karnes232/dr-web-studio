@@ -114,6 +114,36 @@ export default defineType({
       ],
       validation: Rule => Rule.required().min(1),
     }),
+    defineField({
+      name: "pageContent",
+      title: "Page Content",
+      type: "object",
+      fields: [
+        defineField({
+          name: "longDescription",
+          title: "Long Description",
+          type: "object",
+          fields: [
+            defineField({
+              name: "en",
+              title: "English",
+              type: "text",
+              rows: 8,
+              description: "Detailed description for the individual service page",
+              validation: Rule => Rule.required(),
+            }),
+            defineField({
+              name: "es",
+              title: "Spanish",
+              type: "text",
+              rows: 8,
+              description: "Descripción detallada para la página del servicio individual",
+              validation: Rule => Rule.required(),
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
@@ -128,3 +158,5 @@ export default defineType({
     },
   },
 })
+
+

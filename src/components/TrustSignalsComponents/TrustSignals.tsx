@@ -21,8 +21,8 @@ const TrustSignals = ({
   const [averageRating, setAverageRating] = useState(0)
   const statsRef = useRef<HTMLDivElement>(null)
 
-  const targetHappyClients = 50
-  const targetProjectsCompleted = 100
+  const targetHappyClients = 20
+  const targetProjectsCompleted = 50
   const targetAverageRating = 5.0
   const supportAvailable = "24/7"
 

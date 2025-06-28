@@ -14,7 +14,9 @@
     "landing_pages": "Páginas de Aterrizaje",
     "cms": "Soluciones CMS",
     "maintenance": "Mantenimiento",
-    "seo": "SEO y Rendimiento"
+    "seo": "SEO y Rendimiento",
+    "timeline": "Semanas",
+    "rating": "calificación"
   },
   "serviceCard": {
     "startingFrom": "Desde",
@@ -148,5 +150,8 @@
       "flexible": "Flexible",
       "projectDetailsPlaceholder": "Cuéntanos sobre tu proyecto, objetivos y cualquier requisito específico..."
     }
+  },
+  "individualService": {
+    "whatIs": "¿Qué es"
   }
 }
