@@ -26,6 +26,11 @@ import { Timeline } from "@/sanity/queries/project-planner/timeline"
 import { ContentStatus } from "@/sanity/queries/project-planner/contentStatus"
 import { Languages } from "@/sanity/queries/project-planner/languages"
 import { ContactFormType } from "@/sanity/queries/project-planner/contactForm"
+import { useFormspark } from "@formspark/use-formspark"
+import Botpoison from "@botpoison/browser"
+import { CheckCircle } from "lucide-react"
+
+const FORMSPARK_FORM_ID = "Lmus2qVYl"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
@@ -71,8 +76,19 @@ const WebsiteQuestionnaire = ({
     },
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submit, submitting] = useFormspark({
+    formId: FORMSPARK_FORM_ID,
+  })
+
+  const botpoison = new Botpoison({
+    publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
+  })
   const { currentLocale, t } = useLocale()
   const totalSteps = 9
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
   const nextStep = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1)
@@ -86,15 +102,32 @@ const WebsiteQuestionnaire = ({
   }
 
   const handleSubmit = async () => {
+    const { solution } = await botpoison.challenge()
+    if (!solution) {
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert(
-        "Thank you! Your project details have been submitted. We'll get back to you within 24 hours.",
-      )
-    }, 2000)
+    await submit({
+      name: formData.contact.name,
+      email: formData.contact.email,
+      company: formData.contact.company,
+      phone: formData.contact.phone,
+      projectType: formData.websiteType,
+      pages: formData.pages,
+      designStyle: formData.designStyle,
+      features: formData.features,
+      budget: formData.budget,
+      timeline: formData.timeline,
+      contentStatus: formData.contentStatus,
+      languages: formData.languages,
+      message: formData.contact.message,
+      _botpoison: solution,
+    })
+    setIsSubmitting(false)
+    setIsSubmitted(true)
+    setCurrentStep(1)
   }
   const canProceed = () => {
     switch (currentStep) {
@@ -115,7 +148,7 @@ const WebsiteQuestionnaire = ({
       case 8:
         return formData.languages.length > 0
       case 9:
-        return formData.contact.name && formData.contact.email
+        return formData.contact.name && isValidEmail(formData.contact.email)
       default:
         return true
     }
@@ -403,7 +436,44 @@ const WebsiteQuestionnaire = ({
 
       <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
 
-      <div className="my-8">{renderStep()}</div>
+      {isSubmitted ? (
+        <div className="bg-white rounded-xl shadow-lg p-8 text-center my-8">
+          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-slate-800 mb-2">
+            {t("contact.form.messageSent")}
+          </h3>
+          <p className="text-slate-600 mb-6">
+            {t("contact.form.messageSentDescription")}
+          </p>
+          <button
+            onClick={() => {
+              setIsSubmitted(false)
+              setFormData({
+                websiteType: "",
+                pages: 5,
+                designStyle: "",
+                features: [] as string[],
+                budget: "",
+                timeline: "",
+                contentStatus: "",
+                languages: [] as string[],
+                contact: {
+                  name: "",
+                  email: "",
+                  phone: "",
+                  company: "",
+                  message: "",
+                },
+              })
+            }}
+            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200"
+          >
+            {t("contact.form.sendAnotherMessage")}
+          </button>
+        </div>
+      ) : (
+        <div className="my-8">{renderStep()}</div>
+      )}
 
       <NavigationButtons
         currentStep={currentStep}

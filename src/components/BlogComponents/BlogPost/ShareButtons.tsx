@@ -4,7 +4,6 @@ import React, { useState } from "react"
 const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
   const [showShare, setShowShare] = useState(false)
   const postUrl = `${window.location.origin}/${lang}/blog/${post.slug.current}`
-  console.log(postUrl)
   const shareLinks = [
     {
       name: "Facebook",

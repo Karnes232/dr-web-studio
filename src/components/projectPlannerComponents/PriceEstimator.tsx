@@ -6,7 +6,6 @@ const PriceEstimator = ({ formData }: { formData: FormData }) => {
   const calculateEstimate = () => {
     let basePrice = 0
     let complexity = 1
-    console.log(formData.languages.length)
     // Base price by website type
     switch (formData.websiteType) {
       case "business":

@@ -28,7 +28,6 @@ const PricingCard = ({
   }
 
   const Icon = iconMap[pricingData.iconName as keyof typeof iconMap]
-  console.log(pricingData)
   return (
     <div
       className={`relative border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}

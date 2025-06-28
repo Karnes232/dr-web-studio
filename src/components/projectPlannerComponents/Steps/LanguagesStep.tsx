@@ -22,7 +22,6 @@ const LanguagesStep = ({
   }[]
   selectedLanguagesText: string
 }) => {
-
   const handleLanguageToggle = (language: any) => {
     setFormData(prev => ({
       ...prev,

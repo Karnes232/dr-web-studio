@@ -84,31 +84,26 @@ const StepNavigation = ({
     },
   ]
   const isStepCompleted = (step: any) => {
-    if (process.env.NODE_ENV === "development") {
-      return true
-    } else {
-      switch (step.key) {
-        case "websiteType":
-          return formData.websiteType
-        case "pages":
-          return formData.pages
-        case "designStyle":
-          return formData.designStyle
-        case "features":
-          return formData.features.length > 0
-        case "budget":
-          return formData.budget
-        case "timeline":
-          return formData.timeline
-        case "contentStatus":
-          return formData.contentStatus
-        case "languages":
-          return formData.languages.length > 0
-        case "contact":
-          return formData.contact.name && formData.contact.email
-        default:
-          return false
-      }
+    switch (step.key) {
+      case "websiteType":
+        return formData.websiteType
+      case "pages":
+        return formData.pages
+      case "designStyle":
+        return formData.designStyle
+      case "features":
+        return formData.features.length > 0
+      case "budget":
+        return formData.budget
+      case "timeline":
+        return formData.timeline
+      case "contentStatus":
+        return formData.contentStatus
+      case "languages":
+        return formData.languages.length > 0
+      case "contact":
+        return formData.contact.name && formData.contact.email
+      default:
     }
   }
   const canAccessStep = (stepNumber: number) => {
