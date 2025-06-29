@@ -8,13 +8,11 @@ const ServiceOverview = ({
   mainDescription,
   beforeState,
   afterState,
-  service,
 }: {
   title: string
   mainDescription: any
   beforeState: string[]
   afterState: string[]
-  service: any
 }) => {
   const { t } = useLocale()
   return (

@@ -158,6 +158,10 @@
     "after": "After",
     "standardFeatures": "Standard Features",
     "optionalAddons": "Optional Add-ons",
-    "startProject": "Start Project"
+    "startProject": "Start Project",
+    "howItWorks": "How It Works",
+    "ourProvenProcess": "Our proven process ensures your project is delivered on time, on budget, and exceeds expectations.",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "gotQuestions": "Got questions? We've got answers."
   }
 }

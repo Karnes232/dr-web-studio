@@ -441,6 +441,127 @@ export default defineType({
             },
           ],
         }),
+        defineField({
+          name: "steps",
+          title: "Steps",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "title",
+                  title: "Title",
+                  type: "object",
+                  validation: Rule => Rule.required(),
+                  fields: [
+                    {
+                      name: "en",
+                      title: "English",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                    {
+                      name: "es",
+                      title: "Spanish",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+                {
+                  name: "description",
+                  title: "Description",
+                  type: "object",
+                  fields: [
+                    {
+                      name: "en",
+                      title: "English",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                    {
+                      name: "es",
+                      title: "Spanish",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+                {
+                  name: "duration",
+                  title: "Duration",
+                  type: "object",
+                  fields: [
+                    {
+                      name: "en",
+                      title: "English",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                    {
+                      name: "es",
+                      title: "Spanish",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }),
+        defineField({
+          name: "faqs",
+          title: "FAQs",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "question",
+                  title: "Question",
+                  type: "object",
+                  fields: [
+                    {
+                      name: "en",
+                      title: "English",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                    {
+                      name: "es",
+                      title: "Spanish",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+                {
+                  name: "answer",
+                  title: "Answer",
+                  type: "object",
+                  fields: [
+                    {
+                      name: "en",
+                      title: "English",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                    {
+                      name: "es",
+                      title: "Spanish",
+                      type: "string",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          validation: Rule => Rule.required().min(1),
+        }),
       ],
     }),
   ],
