@@ -45,7 +45,7 @@ const ServiceHero = ({
                 href={getLocalizedPath("/project-planner")}
                 className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
               >
-                Start Project
+                {t("individualService.startProject")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
 

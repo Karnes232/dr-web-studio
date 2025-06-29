@@ -152,6 +152,12 @@
     }
   },
   "individualService": {
-    "whatIs": "¿Qué es"
+    "whatIs": "¿Qué es",
+    "theTransformation": "La Transformación",
+    "before": "Antes",
+    "after": "Después",
+    "standardFeatures": "Características Estándar",
+    "optionalAddons": "Adiciones Opcionales",
+    "startProject": "Iniciar Proyecto"
   }
 }

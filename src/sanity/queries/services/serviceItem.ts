@@ -73,6 +73,19 @@ const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == 
         title,
         description
       }[]
+    },
+    features {
+      title,
+      description,
+      standardFeatures {
+        name,
+        description
+      }[],
+      optionalFeatures {
+        name,
+        description,
+        price
+      }[]
     }
   }
 }`
@@ -133,6 +146,37 @@ export interface ServiceItemIndividual {
           en: string
           es: string
         }
+      }[]
+    }
+    features: {
+      title: {
+        en: string
+        es: string
+      }
+      description: {
+        en: string
+        es: string
+      }
+      standardFeatures: {
+        name: {
+          en: string
+          es: string
+        }
+        description: {
+          en: string
+          es: string
+        }
+      }[]
+      optionalFeatures: {
+        name: {
+          en: string
+          es: string
+        }
+        description: {
+          en: string
+          es: string
+        }
+        price: number
       }[]
     }
   }

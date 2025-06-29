@@ -5,6 +5,7 @@ import { ServiceItemIndividual } from "@/sanity/queries/services/serviceItem"
 import React from "react"
 import ServiceOverview from "./ServiceOverview"
 import ServiceBenefits from "./ServiceBenefits"
+import ServiceFeatures from "./ServiceFeatures"
 
 const IndividualServiceContent = ({
   service,
@@ -183,7 +184,7 @@ const IndividualServiceContent = ({
       },
     ],
   }
-  console.log(service.pageContent)
+  console.log(service.pageContent.features.optionalFeatures)
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
       <ServiceHero
@@ -239,8 +240,45 @@ const IndividualServiceContent = ({
             }),
           )}
         />
-        {/*<ServiceFeatures features={serviceData.features} />
-    <ServiceProcess steps={serviceData.steps} />
+        <ServiceFeatures
+          title={
+            service.pageContent.features.title[
+              currentLocale as keyof typeof service.pageContent.features.title
+            ]
+          }
+          description={
+            service.pageContent.features.description[
+              currentLocale as keyof typeof service.pageContent.features.description
+            ]
+          }
+          standardFeatures={service.pageContent.features.standardFeatures.map(
+            (feature: {
+              name: { en: string; es: string }
+              description: { en: string; es: string }
+            }) => ({
+              name: feature.name[currentLocale as keyof typeof feature.name],
+              description:
+                feature.description[
+                  currentLocale as keyof typeof feature.description
+                ],
+            }),
+          )}
+          optionalFeatures={service.pageContent.features.optionalFeatures.map(
+            (feature: {
+              name: { en: string; es: string }
+              description: { en: string; es: string }
+              price: number
+            }) => ({
+              name: feature.name[currentLocale as keyof typeof feature.name],
+              description:
+                feature.description[
+                  currentLocale as keyof typeof feature.description
+                ],
+              price: feature.price,
+            }),
+          )}
+        />
+        {/* <ServiceProcess steps={serviceData.steps} />
     <ServiceFAQ faqs={serviceData.faqs} />
     <ServiceCTA service={serviceData} /> */}
       </div>

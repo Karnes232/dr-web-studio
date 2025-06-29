@@ -152,6 +152,12 @@
     }
   },
   "individualService": {
-    "whatIs": "What is"
+    "whatIs": "What is",
+    "theTransformation": "The Transformation",
+    "before": "Before",
+    "after": "After",
+    "standardFeatures": "Standard Features",
+    "optionalAddons": "Optional Add-ons",
+    "startProject": "Start Project"
   }
 }

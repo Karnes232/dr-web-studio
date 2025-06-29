@@ -288,6 +288,159 @@ export default defineType({
             },
           ],
         }),
+        defineField({
+          name: "features",
+          title: "Features",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              title: "Title",
+              type: "object",
+              fields: [
+                {
+                  name: "en",
+                  title: "English",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+                {
+                  name: "es",
+                  title: "Spanish",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+              ],
+            },
+            {
+              name: "description",
+              title: "Description",
+              type: "object",
+              fields: [
+                {
+                  name: "en",
+                  title: "English",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+                {
+                  name: "es",
+                  title: "Spanish",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+              ],
+            },
+            {
+              name: "standardFeatures",
+              title: "Standard Features",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    {
+                      name: "name",
+                      title: "Name",
+                      type: "object",
+                      fields: [
+                        {
+                          name: "en",
+                          title: "English",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                        {
+                          name: "es",
+                          title: "Spanish",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                      ],
+                    },
+                    {
+                      name: "description",
+                      title: "Description",
+                      type: "object",
+                      fields: [
+                        {
+                          name: "en",
+                          title: "English",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                        {
+                          name: "es",
+                          title: "Spanish",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+              validation: Rule => Rule.required().min(1),
+            },
+            {
+              name: "optionalFeatures",
+              title: "Optional Features",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    {
+                      name: "name",
+                      title: "Name",
+                      type: "object",
+                      fields: [
+                        {
+                          name: "en",
+                          title: "English",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                        {
+                          name: "es",
+                          title: "Spanish",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                      ],
+                    },
+                    {
+                      name: "description",
+                      title: "Description",
+                      type: "object",
+                      fields: [
+                        {
+                          name: "en",
+                          title: "English",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                        {
+                          name: "es",
+                          title: "Spanish",
+                          type: "string",
+                          validation: Rule => Rule.required(),
+                        },
+                      ],
+                    },
+                    {
+                      name: "price",
+                      title: "Price",
+                      type: "number",
+                      validation: Rule => Rule.required(),
+                    },
+                  ],
+                },
+              ],
+              validation: Rule => Rule.required().min(1),
+            },
+          ],
+        }),
       ],
     }),
   ],

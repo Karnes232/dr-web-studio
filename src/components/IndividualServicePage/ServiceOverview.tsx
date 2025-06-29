@@ -36,11 +36,13 @@ const ServiceOverview = ({
         {/* Transformation Box */}
         <div className="mt-12 bg-white rounded-2xl p-8 border border-slate-200 shadow-lg">
           <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">
-            The Transformation
+            {t("individualService.theTransformation")}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 className="font-semibold text-red-600 mb-3">Before:</h4>
+              <h4 className="font-semibold text-red-600 mb-3">
+                {t("individualService.before")}:
+              </h4>
               <ul className="space-y-2 text-gray-700">
                 {beforeState.map((item: string, index: number) => (
                   <li key={index} className="flex items-start">
@@ -51,7 +53,9 @@ const ServiceOverview = ({
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-green-600 mb-3">After:</h4>
+              <h4 className="font-semibold text-green-600 mb-3">
+                {t("individualService.after")}:
+              </h4>
               <ul className="space-y-2 text-gray-700">
                 {afterState.map((item: string, index: number) => (
                   <li key={index} className="flex items-start">
