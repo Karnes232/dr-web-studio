@@ -4,6 +4,7 @@ import { useLocale } from "@/i18n/useLocale"
 import { ServiceItemIndividual } from "@/sanity/queries/services/serviceItem"
 import React from "react"
 import ServiceOverview from "./ServiceOverview"
+import ServiceBenefits from "./ServiceBenefits"
 
 const IndividualServiceContent = ({
   service,
@@ -182,9 +183,9 @@ const IndividualServiceContent = ({
       },
     ],
   }
-
+  console.log(service.pageContent)
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
       <ServiceHero
         title={service.title[currentLocale as keyof typeof service.title]}
         categories={service.categories.map(
@@ -196,14 +197,9 @@ const IndividualServiceContent = ({
         }
         timeline={service.timeline}
       />
-      <div className="bg-gradient-to-br from-slate-50 to-orange-50">
+      <div className="">
         <ServiceOverview
           title={service.title[currentLocale as keyof typeof service.title]}
-          longDescription={
-            service.pageContent.longDescription[
-              currentLocale as keyof typeof service.pageContent.longDescription
-            ]
-          }
           mainDescription={
             service.pageContent.mainDescription[
               currentLocale as keyof typeof service.pageContent.mainDescription
@@ -219,8 +215,31 @@ const IndividualServiceContent = ({
           )}
           service={serviceData}
         />
-        {/*<ServiceBenefits benefits={serviceData.benefits} />
-    <ServiceFeatures features={serviceData.features} />
+        <ServiceBenefits
+          title={
+            service.pageContent.benefits.title[
+              currentLocale as keyof typeof service.pageContent.benefits.title
+            ]
+          }
+          description={
+            service.pageContent.benefits.description[
+              currentLocale as keyof typeof service.pageContent.benefits.description
+            ]
+          }
+          benefits={service.pageContent.benefits.benefits.map(
+            (benefit: {
+              title: { en: string; es: string }
+              description: { en: string; es: string }
+            }) => ({
+              title: benefit.title[currentLocale as keyof typeof benefit.title],
+              description:
+                benefit.description[
+                  currentLocale as keyof typeof benefit.description
+                ],
+            }),
+          )}
+        />
+        {/*<ServiceFeatures features={serviceData.features} />
     <ServiceProcess steps={serviceData.steps} />
     <ServiceFAQ faqs={serviceData.faqs} />
     <ServiceCTA service={serviceData} /> */}

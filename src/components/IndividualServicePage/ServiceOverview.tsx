@@ -5,14 +5,12 @@ import BlockContent from "./BlockContent/BlockContent"
 
 const ServiceOverview = ({
   title,
-  longDescription,
   mainDescription,
   beforeState,
   afterState,
   service,
 }: {
   title: string
-  longDescription: string
   mainDescription: any
   beforeState: string[]
   afterState: string[]
@@ -31,17 +29,12 @@ const ServiceOverview = ({
 
         <div className="prose prose-lg max-w-none">
           <div className="text-gray-700 leading-relaxed space-y-6">
-            {/* {longDescription.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="text-lg">
-              {paragraph}
-            </p>
-          ))} */}
             <BlockContent content={mainDescription} />
           </div>
         </div>
 
         {/* Transformation Box */}
-        <div className="mt-12 bg-gradient-to-r from-orange-50 to-teal-50 rounded-2xl p-8 border border-orange-100">
+        <div className="mt-12 bg-white rounded-2xl p-8 border border-slate-200 shadow-lg">
           <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">
             The Transformation
           </h3>

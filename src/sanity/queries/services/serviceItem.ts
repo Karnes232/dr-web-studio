@@ -63,10 +63,17 @@ const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == 
   },
   timeline,
   pageContent {
-    longDescription,
     mainDescription,
     beforeState,
-    afterState
+    afterState,
+    benefits {
+      title,
+      description,
+      benefits {
+        title,
+        description
+      }[]
+    }
   }
 }`
 
@@ -96,10 +103,6 @@ export interface ServiceItemIndividual {
   }[]
   timeline: string
   pageContent: {
-    longDescription: {
-      en: string
-      es: string
-    }
     mainDescription: {
       en: string
       es: string
@@ -112,5 +115,25 @@ export interface ServiceItemIndividual {
       en: string
       es: string
     }[]
+    benefits: {
+      title: {
+        en: string
+        es: string
+      }
+      description: {
+        en: string
+        es: string
+      }
+      benefits: {
+        title: {
+          en: string
+          es: string
+        }
+        description: {
+          en: string
+          es: string
+        }
+      }[]
+    }
   }
 }
