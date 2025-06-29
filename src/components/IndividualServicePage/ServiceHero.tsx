@@ -15,7 +15,7 @@ const ServiceHero = ({
   description: string
   timeline: string
 }) => {
-    const { t, getLocalizedPath } = useLocale()
+  const { t, getLocalizedPath } = useLocale()
   return (
     <section className="relative">
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
@@ -23,11 +23,14 @@ const ServiceHero = ({
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               {categories.map((category: string, index: number) => (
-                <div key={index} className="inline-flex items-center bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div
+                  key={index}
+                  className="inline-flex items-center bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full text-sm font-medium mb-6"
+                >
                   <Award className="w-4 h-4 mr-2" />
                   {category}
                 </div>
-              ))} 
+              ))}
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               {title}
@@ -59,9 +62,9 @@ const ServiceHero = ({
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-sm text-gray-400">
               <div className="flex items-center">
                 <Clock className="w-4 h-4 mr-2 text-orange-400" />
-                {timeline}{" "}{t("services.timeline")}
+                {timeline} {t("services.timeline")}
               </div>
-          
+
               <div className="flex items-center">
                 <Star className="w-4 h-4 mr-2 text-yellow-400" />
                 5.0 {t("services.rating")}

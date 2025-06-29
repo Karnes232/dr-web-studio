@@ -42,12 +42,14 @@ export default defineType({
           name: "en",
           title: "English",
           type: "text",
+          rows: 2,
           validation: Rule => Rule.required(),
         },
         {
           name: "es",
           title: "Spanish",
           type: "text",
+          rows: 2,
           validation: Rule => Rule.required(),
         },
       ],
@@ -129,7 +131,8 @@ export default defineType({
               title: "English",
               type: "text",
               rows: 8,
-              description: "Detailed description for the individual service page",
+              description:
+                "Detailed description for the individual service page",
               validation: Rule => Rule.required(),
             }),
             defineField({
@@ -137,10 +140,82 @@ export default defineType({
               title: "Spanish",
               type: "text",
               rows: 8,
-              description: "Descripción detallada para la página del servicio individual",
+              description:
+                "Descripción detallada para la página del servicio individual",
               validation: Rule => Rule.required(),
             }),
           ],
+        }),
+        defineField({
+          name: "mainDescription",
+          title: "Main Description",
+          type: "object",
+          fields: [
+            {
+              name: "en",
+              title: "English Description",
+              type: "array",
+              of: [{ type: "block" }, { type: "image" }],
+              validation: Rule => Rule.required(),
+            },
+            {
+              name: "es",
+              title: "Spanish Description",
+              type: "array",
+              of: [{ type: "block" }, { type: "image" }],
+              validation: Rule => Rule.required(),
+            },
+          ],
+        }),
+        defineField({
+          name: "beforeState",
+          title: "Before State",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "en",
+                  title: "English",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+                {
+                  name: "es",
+                  title: "Spanish",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+              ],
+            },
+          ],
+          validation: Rule => Rule.required().min(1),
+        }),
+        defineField({
+          name: "afterState",
+          title: "After State",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "en",
+                  title: "English",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+                {
+                  name: "es",
+                  title: "Spanish",
+                  type: "string",
+                  validation: Rule => Rule.required(),
+                },
+              ],
+            },
+          ],
+          validation: Rule => Rule.required().min(1),
         }),
       ],
     }),
@@ -158,5 +233,3 @@ export default defineType({
     },
   },
 })
-
-

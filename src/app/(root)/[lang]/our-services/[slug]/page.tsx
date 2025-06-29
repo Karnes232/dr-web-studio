@@ -12,14 +12,12 @@ interface PageProps {
 
 export default async function IndividualService({ params }: PageProps) {
   const { lang, slug } = await params
-  console.log(slug)
   const service = await getServiceItemBySlug(slug)
-  console.log(service)
-  
+
   if (!service) {
     return <div>Service not found</div>
   }
-  
+
   return (
     <>
       {/* {seoData?.structuredData?.[lang] && (

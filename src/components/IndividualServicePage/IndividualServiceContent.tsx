@@ -5,8 +5,12 @@ import { ServiceItemIndividual } from "@/sanity/queries/services/serviceItem"
 import React from "react"
 import ServiceOverview from "./ServiceOverview"
 
-const IndividualServiceContent = ({ service }: { service: ServiceItemIndividual }) => {
-    const { currentLocale, getLocalizedPath } = useLocale()
+const IndividualServiceContent = ({
+  service,
+}: {
+  service: ServiceItemIndividual
+}) => {
+  const { currentLocale, getLocalizedPath } = useLocale()
   const serviceData = {
     title: "Custom Website Development",
     category: ["Web Development", "Web Design", "Web Applications"],
@@ -179,21 +183,48 @@ const IndividualServiceContent = ({ service }: { service: ServiceItemIndividual 
     ],
   }
 
-console.log(service)
   return (
     <div className="min-h-screen bg-white">
-      <ServiceHero title={service.title[currentLocale as keyof typeof service.title]} categories={service.categories.map((category) => category.name[currentLocale as keyof typeof category.name])} description={service.description[currentLocale as keyof typeof service.description]} timeline={service.timeline} />
-        <div className="bg-gradient-to-br from-slate-50 to-orange-50">
-       <ServiceOverview 
-         title={service.title[currentLocale as keyof typeof service.title]} 
-         longDescription={service.pageContent.longDescription[currentLocale as keyof typeof service.pageContent.longDescription]}
-         service={serviceData} 
-       />
-    {/*<ServiceBenefits benefits={serviceData.benefits} />
+      <ServiceHero
+        title={service.title[currentLocale as keyof typeof service.title]}
+        categories={service.categories.map(
+          category =>
+            category.name[currentLocale as keyof typeof category.name],
+        )}
+        description={
+          service.description[currentLocale as keyof typeof service.description]
+        }
+        timeline={service.timeline}
+      />
+      <div className="bg-gradient-to-br from-slate-50 to-orange-50">
+        <ServiceOverview
+          title={service.title[currentLocale as keyof typeof service.title]}
+          longDescription={
+            service.pageContent.longDescription[
+              currentLocale as keyof typeof service.pageContent.longDescription
+            ]
+          }
+          mainDescription={
+            service.pageContent.mainDescription[
+              currentLocale as keyof typeof service.pageContent.mainDescription
+            ]
+          }
+          beforeState={service.pageContent.beforeState.map(
+            (item: { en: string; es: string }) =>
+              item[currentLocale as keyof typeof item],
+          )}
+          afterState={service.pageContent.afterState.map(
+            (item: { en: string; es: string }) =>
+              item[currentLocale as keyof typeof item],
+          )}
+          service={serviceData}
+        />
+        {/*<ServiceBenefits benefits={serviceData.benefits} />
     <ServiceFeatures features={serviceData.features} />
     <ServiceProcess steps={serviceData.steps} />
     <ServiceFAQ faqs={serviceData.faqs} />
-    <ServiceCTA service={serviceData} /> */}</div>
+    <ServiceCTA service={serviceData} /> */}
+      </div>
     </div>
   )
 }
