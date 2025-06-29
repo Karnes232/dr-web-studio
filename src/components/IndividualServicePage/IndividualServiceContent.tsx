@@ -15,7 +15,7 @@ const IndividualServiceContent = ({
   service: ServiceItemIndividual
 }) => {
   const { currentLocale, getLocalizedPath } = useLocale()
-
+ 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
       <ServiceHero
@@ -45,6 +45,7 @@ const IndividualServiceContent = ({
             (item: { en: string; es: string }) =>
               item[currentLocale as keyof typeof item],
           )}
+
         />
         <ServiceBenefits
           title={
@@ -125,18 +126,15 @@ const IndividualServiceContent = ({
             }),
           )}
         />
-        <ServiceFAQ
-          faqs={service.pageContent.faqs.map(
-            (faq: {
-              question: { en: string; es: string }
-              answer: { en: string; es: string }
-            }) => ({
-              question:
-                faq.question[currentLocale as keyof typeof faq.question],
-              answer: faq.answer[currentLocale as keyof typeof faq.answer],
-            }),
-          )}
-        />
+        <ServiceFAQ faqs={service.pageContent.faqs.map(
+          (faq: {
+            question: { en: string; es: string }
+            answer: { en: string; es: string }
+          }) => ({
+            question: faq.question[currentLocale as keyof typeof faq.question],
+            answer: faq.answer[currentLocale as keyof typeof faq.answer],
+          }),
+        )} />
         {/* <ServiceCTA service={serviceData} /> */}
       </div>
     </div>

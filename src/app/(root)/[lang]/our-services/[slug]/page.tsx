@@ -13,7 +13,7 @@ interface PageProps {
 export default async function IndividualService({ params }: PageProps) {
   const { lang, slug } = await params
   const service = await getServiceItemBySlug(slug)
-
+  console.log(service)
   if (!service) {
     return <div>Service not found</div>
   }
