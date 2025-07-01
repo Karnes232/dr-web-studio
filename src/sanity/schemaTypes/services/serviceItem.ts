@@ -121,7 +121,7 @@ export default defineType({
       title: "Page Content",
       type: "object",
       fields: [
-        defineField({
+        {
           name: "mainDescription",
           title: "Main Description",
           type: "object",
@@ -141,8 +141,8 @@ export default defineType({
               validation: Rule => Rule.required(),
             },
           ],
-        }),
-        defineField({
+        },
+        {
           name: "beforeState",
           title: "Before State",
           type: "array",
@@ -166,8 +166,8 @@ export default defineType({
             },
           ],
           validation: Rule => Rule.required().min(1),
-        }),
-        defineField({
+        },
+        {
           name: "afterState",
           title: "After State",
           type: "array",
@@ -191,8 +191,8 @@ export default defineType({
             },
           ],
           validation: Rule => Rule.required().min(1),
-        }),
-        defineField({
+        },
+        {
           name: "benefits",
           title: "Benefits",
           type: "object",
@@ -287,8 +287,8 @@ export default defineType({
               validation: Rule => Rule.required().min(1),
             },
           ],
-        }),
-        defineField({
+        },
+        {
           name: "features",
           title: "Features",
           type: "object",
@@ -440,8 +440,8 @@ export default defineType({
               validation: Rule => Rule.required().min(1),
             },
           ],
-        }),
-        defineField({
+        },
+        {
           name: "steps",
           title: "Steps",
           type: "array",
@@ -510,8 +510,8 @@ export default defineType({
               ],
             },
           ],
-        }),
-        defineField({
+        },
+        {
           name: "faqs",
           title: "FAQs",
           type: "array",
@@ -561,7 +561,7 @@ export default defineType({
             },
           ],
           validation: Rule => Rule.required().min(1),
-        }),
+        },
       ],
     }),
   ],

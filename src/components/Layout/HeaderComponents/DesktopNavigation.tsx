@@ -2,13 +2,16 @@ import React from "react"
 import ServicesDropdown from "./ServicesDropdown"
 import { useLocale } from "@/i18n/useLocale"
 import Link from "next/link"
+import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const DesktopNavigation = ({
   servicesOpen,
   setServicesOpen,
+  serviceLinks,
 }: {
   servicesOpen: boolean
   setServicesOpen: any
+  serviceLinks: ServiceItemsLinks[]
 }) => {
   const { t, getLocalizedPath } = useLocale()
 
@@ -35,6 +38,7 @@ const DesktopNavigation = ({
       <ServicesDropdown
         servicesOpen={servicesOpen}
         setServicesOpen={setServicesOpen}
+        serviceLinks={serviceLinks}
       />
 
       {navItems.slice(2).map((item, index) => (

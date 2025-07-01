@@ -23,6 +23,8 @@ const config = {
     "from-yellow-600",
     "from-pink-500",
     "from-pink-600",
+    "from-green-500",
+    "to-emerald-500",
     // Gradient to classes
     "to-orange-400",
     "to-orange-500",

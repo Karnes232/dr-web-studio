@@ -215,3 +215,24 @@ export interface ServiceItemIndividual {
     }[]
   }
 }
+
+const serviceItemsLinksQuery = `*[_type == "serviceItem"] {
+_id,
+  title,
+  slug
+}`
+
+export interface ServiceItemsLinks {
+  _id: string
+  title: {
+    en: string
+    es: string
+  }
+  slug: {
+    current: string
+  }
+}
+
+export async function getServiceItemsLinks(): Promise<ServiceItemsLinks[]> {
+  return client.fetch(serviceItemsLinksQuery)
+}

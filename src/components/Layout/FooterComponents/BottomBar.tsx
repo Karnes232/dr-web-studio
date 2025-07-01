@@ -1,5 +1,6 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
+import Link from "next/link"
 import React from "react"
 
 const BottomBar = () => {
@@ -12,24 +13,24 @@ const BottomBar = () => {
           {t("footer.allRightsReserved")}
         </div>
         <div className="flex space-x-6 text-sm">
-          <a
+          <Link
             href="#privacy"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.privacy_policy")}
-          </a>
-          <a
+          </Link>
+          <Link
             href="#terms"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.terms_of_service")}
-          </a>
-          <a
+          </Link>
+          <Link
             href="#sitemap"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.sitemap")}
-          </a>
+          </Link>
         </div>
       </div>
     </div>

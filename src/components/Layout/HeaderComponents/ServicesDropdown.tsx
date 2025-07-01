@@ -2,15 +2,18 @@ import { ChevronDown } from "lucide-react"
 import React, { useRef, useEffect } from "react"
 import { useLocale } from "@/i18n/useLocale"
 import Link from "next/link"
+import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const ServicesDropdown = ({
   servicesOpen,
   setServicesOpen,
+  serviceLinks,
 }: {
   servicesOpen: boolean
   setServicesOpen: any
+  serviceLinks: ServiceItemsLinks[]
 }) => {
-  const { t, getLocalizedPath } = useLocale()
+  const { currentLocale, t, getLocalizedPath } = useLocale()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -48,6 +51,7 @@ const ServicesDropdown = ({
     },
     { href: getLocalizedPath("/our-services"), label: t("services.seo") },
   ]
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -59,15 +63,22 @@ const ServicesDropdown = ({
       </button>
 
       {servicesOpen && (
-        <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
-          {services.map((service, index) => (
+        <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
+          <Link
+            onClick={() => setServicesOpen(false)}
+            href={getLocalizedPath("/our-services")}
+            className="block px-4 py-2 text-slate-700 xl:text-lg hover:bg-orange-50 hover:text-orange-600 transition-colors"
+          >
+            {t("services.all_services")}
+          </Link>
+          {serviceLinks.map((service, index) => (
             <Link
               onClick={() => setServicesOpen(false)}
-              key={index}
-              href={service.href}
-              className="block px-4 py-2 text-slate-700 xl:text-lg hover:bg-orange-50 hover:text-orange-600 transition-colors"
+              key={service._id}
+              href={getLocalizedPath(`/our-services/${service.slug.current}`)}
+              className="block px-4 py-2 text-slate-700 xl:text-lg hover:bg-orange-50 hover:text-orange-600 transition-colors truncate"
             >
-              {service.label}
+              {service.title[currentLocale as keyof typeof service.title]}
             </Link>
           ))}
         </div>

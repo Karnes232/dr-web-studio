@@ -1,5 +1,6 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
+import Link from "next/link"
 import React from "react"
 
 const QuickLinks = () => {
@@ -19,12 +20,12 @@ const QuickLinks = () => {
       <ul className="space-y-2">
         {links.map((link, index) => (
           <li key={index}>
-            <a
+            <Link
               href={link.href}
               className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

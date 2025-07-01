@@ -4,6 +4,7 @@ import "../globals.css"
 import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import { client } from "@/sanity/lib/client"
 import Footer from "@/components/Layout/FooterComponents/Footer"
+import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,12 +84,18 @@ export default async function RootLayout({
     }
   `)
 
+  const serviceLinks = await getServiceItemsLinks()
+
   return (
     <html lang="en">
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
-        <Navbar logo={logo} />
+        <Navbar logo={logo} serviceLinks={serviceLinks} />
         {children}
-        <Footer logo={logo} companyInfo={companyInfo} />
+        <Footer
+          logo={logo}
+          companyInfo={companyInfo}
+          serviceLinks={serviceLinks}
+        />
       </body>
     </html>
   )

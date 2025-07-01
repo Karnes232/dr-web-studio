@@ -2,6 +2,7 @@
 import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 import { ExternalLink } from "lucide-react"
+import Link from "next/link"
 
 const ResourcesLinks = () => {
   const { t, getLocalizedPath } = useLocale()
@@ -25,7 +26,7 @@ const ResourcesLinks = () => {
       <ul className="space-y-2">
         {resources.map((resource, index) => (
           <li key={index}>
-            <a
+            <Link
               href={resource.href}
               className="text-gray-300 hover:text-orange-400 transition-colors duration-200 flex items-center"
             >
@@ -34,7 +35,7 @@ const ResourcesLinks = () => {
                 resource.href === "#quote") && (
                 <ExternalLink className="h-3 w-3 ml-1" />
               )}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

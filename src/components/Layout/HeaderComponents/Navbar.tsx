@@ -7,8 +7,15 @@ import MobileMenu from "./MobileMenu"
 import CTAButtons from "./CTAButtons"
 import DesktopNavigation from "./DesktopNavigation"
 import LanguageSwitcher from "@/components/LanguageSwitcher" // Adjust path as needed
+import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
-const Navbar = ({ logo }: { logo: any }) => {
+const Navbar = ({
+  logo,
+  serviceLinks,
+}: {
+  logo: any
+  serviceLinks: ServiceItemsLinks[]
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
 
@@ -27,6 +34,7 @@ const Navbar = ({ logo }: { logo: any }) => {
           <DesktopNavigation
             servicesOpen={servicesOpen}
             setServicesOpen={setServicesOpen}
+            serviceLinks={serviceLinks}
           />
 
           {/* Desktop: Language Switcher + CTA Buttons */}
@@ -48,7 +56,11 @@ const Navbar = ({ logo }: { logo: any }) => {
           </div>
         </div>
 
-        <MobileMenu isOpen={isOpen} />
+        <MobileMenu
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          serviceLinks={serviceLinks}
+        />
       </div>
     </nav>
   )

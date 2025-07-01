@@ -16,7 +16,8 @@
     "maintenance": "Mantenimiento",
     "seo": "SEO y Rendimiento",
     "timeline": "Semanas",
-    "rating": "calificación"
+    "rating": "calificación",
+    "all_services": "Todo Servicios"
   },
   "serviceCard": {
     "startingFrom": "Desde",

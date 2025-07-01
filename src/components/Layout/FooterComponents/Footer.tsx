@@ -8,6 +8,7 @@ import ServicesLinks from "./ServicesLinks"
 import ResourcesLinks from "./ResourcesLinks"
 import SocialMedia from "./SocialMedia"
 import BottomBar from "./BottomBar"
+import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 interface FooterProps {
   logo: {
@@ -31,9 +32,10 @@ interface FooterProps {
       github: string
     }
   }
+  serviceLinks: ServiceItemsLinks[]
 }
 
-const Footer = ({ logo, companyInfo }: FooterProps) => {
+const Footer = ({ logo, companyInfo, serviceLinks }: FooterProps) => {
   return (
     <footer className="bg-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -44,7 +46,7 @@ const Footer = ({ logo, companyInfo }: FooterProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-8">
           <CompanyInfo logo={logo} companyInfo={companyInfo} />
           <QuickLinks />
-          <ServicesLinks />
+          <ServicesLinks serviceLinks={serviceLinks} />
           <ResourcesLinks />
         </div>
 
