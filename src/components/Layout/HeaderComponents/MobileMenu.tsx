@@ -75,7 +75,7 @@ const MobileMenu = ({
               <Link
                 onClick={() => setIsOpen(!isOpen)}
                 key={index}
-                href={service.slug.current}
+                href={getLocalizedPath(`/our-services/${service.slug.current}`)}
                 className="block py-1 text-sm text-slate-600 hover:text-orange-600 transition-colors"
               >
                 {service.title[currentLocale as keyof typeof service.title]}

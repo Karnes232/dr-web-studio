@@ -34,7 +34,7 @@ const ServicesLinks = ({
         {serviceLinks.map((service, index) => (
           <li key={service._id}>
             <Link
-              href={service.slug.current}
+              href={getLocalizedPath(`/our-services/${service.slug.current}`)}
               className="text-gray-300 hover:text-orange-400 transition-colors duration-200 line-clamp-2"
             >
               {service.title[currentLocale as keyof typeof service.title]}
