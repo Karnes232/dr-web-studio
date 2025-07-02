@@ -27,7 +27,7 @@ const TextComponentParagraph = ({
         className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto"
       >
         <p
-          className={`lg:text-lg text-gray-700 dark:text-white ${ParagraphClassName}`}
+          className={`lg:text-lg text-gray-700 ${ParagraphClassName}`}
         >
           {paragraph}
         </p>
