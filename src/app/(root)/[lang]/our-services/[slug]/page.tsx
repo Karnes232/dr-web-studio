@@ -2,6 +2,7 @@ import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import IndividualServiceContent from "@/components/IndividualServicePage/IndividualServiceContent"
 import { getServiceItemBySlug, getServiceItemSEO } from "@/sanity/queries/services/serviceItem"
+import { headers } from 'next/headers';
 
 interface PageProps {
   params: Promise<{
@@ -10,11 +11,21 @@ interface PageProps {
   }>
 }
 
+export async function getHost() {
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  return `${protocol}://${host}`;
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
+  const host = await getHost()
+
+  const canonicalUrl = serviceSEO?.seo?.canonicalUrl ? `${host}/${lang}/${serviceSEO?.seo?.canonicalUrl}` : `${host}/${lang}/our-services/${slug}`
 
   if (!serviceSEO) return {}
 
@@ -37,9 +48,9 @@ export async function generateMetadata({
       index: !serviceSEO.seo?.noIndex,
       follow: !serviceSEO.seo?.noFollow,
     },
-    ...(serviceSEO.seo?.canonicalUrl && { canonical: serviceSEO.seo.canonicalUrl }),
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
-      canonical: serviceSEO.seo?.canonicalUrl,
+      canonical: canonicalUrl,
     },
   }
 }
@@ -47,7 +58,7 @@ export async function generateMetadata({
 export default async function IndividualService({ params }: PageProps) {
   const { lang, slug } = await params
   const service = await getServiceItemBySlug(slug)
-  console.log(service)
+
   if (!service) {
     return <div>Service not found</div>
   }
