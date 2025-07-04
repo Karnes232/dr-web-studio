@@ -11,21 +11,21 @@ interface PageProps {
   }>
 }
 
-export async function getHost() {
-  const headersList = await headers();
-  const host = headersList.get('host');
-  const protocol = headersList.get('x-forwarded-proto') || 'http';
-  return `${protocol}://${host}`;
-}
-
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
-  const host = await getHost()
-
-  const canonicalUrl = serviceSEO?.seo?.canonicalUrl ? `${host}/${lang}/${serviceSEO?.seo?.canonicalUrl}` : `${host}/${lang}/our-services/${slug}`
+  
+  // Get host information for canonical URL
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const baseUrl = `${protocol}://${host}`;
+  
+  const canonicalUrl = serviceSEO?.seo?.canonicalUrl 
+    ? `${baseUrl}/${lang}/${serviceSEO.seo.canonicalUrl}` 
+    : `${baseUrl}/${lang}/our-services/${slug}`;
 
   if (!serviceSEO) return {}
 
