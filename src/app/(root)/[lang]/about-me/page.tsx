@@ -17,7 +17,7 @@ import React from "react"
 import { getTechnologies } from "@/sanity/queries/about-me/technologies"
 import { getDevelopmentApproach } from "@/sanity/queries/about-me/developmentApproach"
 import { getWhyChooseUs } from "@/sanity/queries/about-me/whyChooseUs"
-
+import { headers } from 'next/headers';
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -113,6 +113,15 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("about")
 
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const baseUrl = `${protocol}://${host}`;
+  
+  const canonicalUrl = seoData?.canonicalUrl 
+    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}` 
+    : `${baseUrl}/${lang}/about-me`;
+
   if (!seoData) return {}
 
   return {
@@ -128,9 +137,9 @@ export async function generateMetadata({
       index: !seoData.noIndex,
       follow: !seoData.noFollow,
     },
-    ...(seoData.canonicalUrl && { canonical: seoData.canonicalUrl }),
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
-      canonical: seoData.canonicalUrl,
+      canonical: canonicalUrl,
     },
   }
 }

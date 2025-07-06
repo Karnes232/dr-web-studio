@@ -9,7 +9,7 @@ import { getFAQsHeader } from "@/sanity/queries/pricing/faqsHeader"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import React from "react"
-
+import { headers } from 'next/headers';
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -83,6 +83,15 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("contact")
 
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const baseUrl = `${protocol}://${host}`;
+  
+  const canonicalUrl = seoData?.canonicalUrl 
+    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}` 
+    : `${baseUrl}/${lang}/contact`;
+
   if (!seoData) return {}
 
   return {
@@ -98,9 +107,9 @@ export async function generateMetadata({
       index: !seoData.noIndex,
       follow: !seoData.noFollow,
     },
-    ...(seoData.canonicalUrl && { canonical: seoData.canonicalUrl }),
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
-      canonical: seoData.canonicalUrl,
+      canonical: canonicalUrl,
     },
   }
 }

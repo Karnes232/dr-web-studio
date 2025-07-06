@@ -231,7 +231,7 @@ export default defineType({
     defineField({
       name: "canonicalUrl",
       title: "Canonical URL",
-      type: "url",
+      type: "string",
       group: "basic",
       description:
         "The preferred version of this page for search engines (optional)",
