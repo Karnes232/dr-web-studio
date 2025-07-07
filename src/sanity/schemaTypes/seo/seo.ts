@@ -35,6 +35,8 @@ export default defineType({
           { title: "Blog", value: "blog" },
           { title: "Services", value: "services" },
           { title: "Project Planner", value: "project-planner" },
+          { title: "Privacy Policy", value: "privacy-policy" },
+          { title: "Terms of Service", value: "terms-of-service" },
         ],
         layout: "dropdown",
       },

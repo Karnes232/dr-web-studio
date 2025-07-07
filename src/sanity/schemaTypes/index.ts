@@ -62,6 +62,7 @@ import contactForm from "./project-planner/contactForm"
 
 // SEO Schema
 import seo from "./seo/seo"
+import legal from "./legal/legal"
 import serviceItem from "./services/serviceItem"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -128,5 +129,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // SEO Schema
     seo,
+
+    // Legal Schema
+    legal,
   ],
 }

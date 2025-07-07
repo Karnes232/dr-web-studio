@@ -1,6 +1,8 @@
 import BlogPostContent from "@/components/BlogComponents/BlogPost/BlogPostContent"
 import BlogPostHeader from "@/components/BlogComponents/BlogPost/BlogPostHeader"
-import { getBlogPostBySlug } from "@/sanity/queries/blog/blog"
+import { getBlogPostBySlug, getBlogPostSEO } from "@/sanity/queries/blog/blog"
+import { Metadata } from "next"
+import { headers } from "next/headers"
 import React from "react"
 interface PageProps {
   params: Promise<{
@@ -23,4 +25,42 @@ export default async function BlogPost({ params }: PageProps) {
       {/* <CommentsSection postId={post.id} comments={comments} /> */}
     </div>
   )
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { lang, slug } = await params
+  const seoData = await getBlogPostSEO(slug)
+
+  const headersList = await headers()
+  const host = headersList.get("host")
+  const protocol = headersList.get("x-forwarded-proto") || "http"
+  const baseUrl = `${protocol}://${host}`
+  const canonicalUrl = seoData?.seo?.canonicalUrl
+    ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
+    : `${baseUrl}/${lang}/blog/`
+
+  if (!seoData) return {}
+
+  return {
+    title: seoData.seo.meta[lang]?.title,
+    description: seoData.seo.meta[lang]?.description,
+    openGraph: {
+      title:
+        seoData.seo.openGraph[lang]?.title || seoData.seo.meta[lang]?.title,
+      description:
+        seoData.seo.openGraph[lang]?.description ||
+        seoData.seo.meta[lang]?.description,
+      images: seoData.seo.openGraph.image ? [seoData.seo.openGraph.image] : [],
+    },
+    robots: {
+      index: !seoData.seo.noIndex,
+      follow: !seoData.seo.noFollow,
+    },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  }
 }

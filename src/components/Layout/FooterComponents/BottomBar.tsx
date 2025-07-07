@@ -14,13 +14,13 @@ const BottomBar = () => {
         </div>
         <div className="flex space-x-6 text-sm">
           <Link
-            href="#privacy"
+            href={getLocalizedPath("/privacy-policy")}
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.privacy_policy")}
           </Link>
           <Link
-            href="#terms"
+            href={getLocalizedPath("/terms-of-service")}
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.terms_of_service")}

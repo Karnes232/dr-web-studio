@@ -110,3 +110,82 @@ export async function getBlogPostBySlug(
 ): Promise<BlogPost | null> {
   return await client.fetch(blogPostBySlugQuery, { slug })
 }
+
+interface BlogPostSEO {
+  title: string
+  seo: {
+    meta: {
+      en: {
+        title: string
+        description: string
+        keywords: string[]
+      }
+      es: {
+        title: string
+        description: string
+        keywords: string[]
+      }
+    }
+    openGraph: {
+      en: {
+        title: string
+        description: string
+      }
+      es: {
+        title: string
+        description: string
+      }
+      image: string
+    }
+    structuredData: {
+      en: string
+      es: string
+    }
+    canonicalUrl: string
+    noIndex: boolean
+    noFollow: boolean
+  }
+}
+
+const blogPostBySlugQuerySeo = `
+*[_type == "blogPost" && slug.current == $slug][0] {
+  title,
+  seo {
+    meta {
+      en {
+        title,
+        description,
+        keywords
+      },
+      es {
+        title,
+        description,
+        keywords
+      }
+    },
+    openGraph {
+      en {
+        title,
+        description
+      },
+      es {
+        title,
+        description
+      },
+      "image": image.asset->url
+    },
+    structuredData {
+      en,
+      es
+    },
+    canonicalUrl,
+    noIndex,
+    noFollow
+  }
+}`
+
+export async function getBlogPostSEO(
+  slug: string,
+): Promise<BlogPostSEO | null> {
+  return await client.fetch(blogPostBySlugQuerySeo, { slug })
+}

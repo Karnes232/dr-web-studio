@@ -775,8 +775,8 @@ export default defineType({
           description: "Tell search engines not to follow links on this page",
           initialValue: false,
         }),
-      ]
-    })
+      ],
+    }),
   ],
   preview: {
     select: {

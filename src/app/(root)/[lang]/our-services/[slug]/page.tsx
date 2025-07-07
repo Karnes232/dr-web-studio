@@ -1,8 +1,11 @@
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import IndividualServiceContent from "@/components/IndividualServicePage/IndividualServiceContent"
-import { getServiceItemBySlug, getServiceItemSEO } from "@/sanity/queries/services/serviceItem"
-import { headers } from 'next/headers';
+import {
+  getServiceItemBySlug,
+  getServiceItemSEO,
+} from "@/sanity/queries/services/serviceItem"
+import { headers } from "next/headers"
 
 interface PageProps {
   params: Promise<{
@@ -16,16 +19,16 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
-  
+
   // Get host information for canonical URL
-  const headersList = await headers();
-  const host = headersList.get('host');
-  const protocol = headersList.get('x-forwarded-proto') || 'http';
-  const baseUrl = `${protocol}://${host}`;
-  
-  const canonicalUrl = serviceSEO?.seo?.canonicalUrl 
-    ? `${baseUrl}/${lang}/${serviceSEO.seo.canonicalUrl}` 
-    : `${baseUrl}/${lang}/our-services/${slug}`;
+  const headersList = await headers()
+  const host = headersList.get("host")
+  const protocol = headersList.get("x-forwarded-proto") || "http"
+  const baseUrl = `${protocol}://${host}`
+
+  const canonicalUrl = serviceSEO?.seo?.canonicalUrl
+    ? `${baseUrl}/${lang}/${serviceSEO.seo.canonicalUrl}`
+    : `${baseUrl}/${lang}/our-services/${slug}`
 
   if (!serviceSEO) return {}
 
@@ -33,7 +36,8 @@ export async function generateMetadata({
   const metaTitle = serviceSEO.seo?.meta[lang]?.title || serviceSEO.title[lang]
   const metaDescription = serviceSEO.seo?.meta[lang]?.description || ""
   const ogTitle = serviceSEO.seo?.openGraph[lang]?.title || metaTitle
-  const ogDescription = serviceSEO.seo?.openGraph[lang]?.description || metaDescription
+  const ogDescription =
+    serviceSEO.seo?.openGraph[lang]?.description || metaDescription
 
   return {
     title: metaTitle,
@@ -42,7 +46,9 @@ export async function generateMetadata({
     openGraph: {
       title: ogTitle,
       description: ogDescription,
-      images: serviceSEO.seo?.openGraph.image ? [serviceSEO.seo.openGraph.image] : [],
+      images: serviceSEO.seo?.openGraph.image
+        ? [serviceSEO.seo.openGraph.image]
+        : [],
     },
     robots: {
       index: !serviceSEO.seo?.noIndex,

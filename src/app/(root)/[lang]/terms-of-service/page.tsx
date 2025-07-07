@@ -1,35 +1,30 @@
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import BlockContent from "@/components/BlogComponents/BlogPost/BlockContent/BlockContent"
+import { getLegal } from "@/sanity/queries/legal/legal"
+import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import PortfolioContent from "@/components/PortfolioComponents/PortfolioContent"
-import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
-import { getProjects } from "@/sanity/queries/portfolio/project"
 import { headers } from "next/headers"
+
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
   }>
 }
 
-export default async function Portfolio({ params }: PageProps) {
+export default async function PrivacyPolicy({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("portfolio")
-  const portfolioHeader = await getPortfolioHeader()
-  const projects = await getProjects()
+  const legalData = await getLegal("terms-of-service")
 
   return (
-    <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
-      <PortfolioContent
-        lang={lang}
-        portfolioHeader={portfolioHeader}
-        projects={projects}
-      />
-    </>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="prose prose-lg prose-slate max-w-none">
+          <BlockContent
+            content={legalData?.content as any}
+            language={lang as "en" | "es"}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -37,7 +32,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { lang } = await params
-  const seoData = await getSEO("portfolio")
+  const seoData = await getSEO("terms-of-service")
 
   const headersList = await headers()
   const host = headersList.get("host")
@@ -46,7 +41,7 @@ export async function generateMetadata({
 
   const canonicalUrl = seoData?.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/portfolio`
+    : `${baseUrl}/${lang}/privacy-policy`
 
   if (!seoData) return {}
 

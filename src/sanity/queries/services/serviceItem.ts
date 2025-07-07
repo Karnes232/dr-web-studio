@@ -2,15 +2,15 @@ import { client } from "@/sanity/lib/client"
 
 /**
  * Service Item SEO Queries
- * 
+ *
  * This file provides queries to fetch service items with their SEO data.
- * 
+ *
  * Available functions:
  * - getServiceItems(): Get all service items (basic data only)
  * - getServiceItemsWithSEO(): Get all service items with SEO data
  * - getServiceItemBySlug(slug): Get individual service item with full content and SEO
  * - getServiceItemSEO(slug): Get only SEO data for a specific service item
- * 
+ *
  * SEO Data includes:
  * - Meta titles and descriptions (English & Spanish)
  * - Keywords
@@ -18,13 +18,13 @@ import { client } from "@/sanity/lib/client"
  * - Structured data (JSON-LD)
  * - Canonical URLs
  * - No-index and no-follow settings
- * 
+ *
  * Usage example:
  * ```typescript
  * // For metadata generation in pages
  * const serviceSEO = await getServiceItemSEO(slug)
  * const metaTitle = serviceSEO.seo?.meta[lang]?.title || serviceSEO.title[lang]
- * 
+ *
  * // For full service data with SEO
  * const service = await getServiceItemBySlug(slug)
  * const structuredData = service.seo?.structuredData[lang]
@@ -385,7 +385,9 @@ export interface ServiceItemSEOData {
   seo?: ServiceItemSEO
 }
 
-export async function getServiceItemSEO(slug: string): Promise<ServiceItemSEOData | null> {
+export async function getServiceItemSEO(
+  slug: string,
+): Promise<ServiceItemSEOData | null> {
   return client.fetch(serviceItemSEOQuery, { slug })
 }
 

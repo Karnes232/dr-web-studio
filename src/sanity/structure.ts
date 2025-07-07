@@ -406,4 +406,21 @@ export const structure: StructureResolver = S =>
                 .child(S.documentList().title("SEO").filter('_type == "seo"')),
             ]),
         ),
+
+      // Legal Group
+      S.listItem()
+        .title("Legal")
+        .child(
+          S.list()
+            .title("Legal")
+            .items([
+              S.listItem()
+                .title("Legal Settings")
+                .child(
+                  S.documentList()
+                    .title("Legal Settings")
+                    .filter('_type == "legal"'),
+                ),
+            ]),
+        ),
     ])
