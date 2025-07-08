@@ -423,4 +423,21 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+
+      // FAQs Group
+      S.listItem()
+        .title("FAQs")
+        .child(
+          S.list()
+            .title("FAQs")
+            .items([
+              S.listItem()
+                .title("FAQs Categories")
+                .child(
+                  S.documentList()
+                    .title("FAQs Categories")
+                    .filter('_type == "faqCategory"'),
+                ),
+            ]),
+        ),
     ])

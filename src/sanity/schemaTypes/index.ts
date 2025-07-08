@@ -60,6 +60,9 @@ import contentStatus from "./project-planner/contentStatus"
 import languages from "./project-planner/languages"
 import contactForm from "./project-planner/contactForm"
 
+// FAQ Schemas
+import faqCategory from "./faqs/faqCategory"
+
 // SEO Schema
 import seo from "./seo/seo"
 import legal from "./legal/legal"
@@ -126,6 +129,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contentStatus,
     languages,
     contactForm,
+
+    // FAQ Schemas
+    faqCategory,
 
     // SEO Schema
     seo,

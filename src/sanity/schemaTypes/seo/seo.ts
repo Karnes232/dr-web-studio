@@ -37,6 +37,7 @@ export default defineType({
           { title: "Project Planner", value: "project-planner" },
           { title: "Privacy Policy", value: "privacy-policy" },
           { title: "Terms of Service", value: "terms-of-service" },
+          { title: "FAQs", value: "faqs" },
         ],
         layout: "dropdown",
       },

@@ -18,7 +18,10 @@ const ResourcesLinks = () => {
     { href: "#case-studies", label: t("resources.case_studies") },
     { href: "#testimonials", label: t("resources.client_reviews") },
     { href: "#faq", label: t("resources.faq") },
-    { href: getLocalizedPath("/privacy-policy"), label: t("resources.privacy_policy") },
+    {
+      href: getLocalizedPath("/privacy-policy"),
+      label: t("resources.privacy_policy"),
+    },
   ]
   return (
     <div>
