@@ -438,6 +438,13 @@ export const structure: StructureResolver = S =>
                     .title("FAQs Categories")
                     .filter('_type == "faqCategory"'),
                 ),
+              S.listItem()
+                .title("FAQs Header")
+                .child(
+                  S.documentList()
+                    .title("FAQs Header")
+                    .filter('_type == "faqsPageHeader"'),
+                ),
             ]),
         ),
     ])

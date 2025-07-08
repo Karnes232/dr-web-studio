@@ -62,6 +62,7 @@ import contactForm from "./project-planner/contactForm"
 
 // FAQ Schemas
 import faqCategory from "./faqs/faqCategory"
+import faqsPageHeader from "./faqs/faqsPageHeader"
 
 // SEO Schema
 import seo from "./seo/seo"
@@ -132,6 +133,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // FAQ Schemas
     faqCategory,
+    faqsPageHeader,
 
     // SEO Schema
     seo,

@@ -5,7 +5,7 @@ import { languages, fallbackLng } from "@/i18n/settings"
 import { useState, useRef, useEffect } from "react"
 import { Globe, ChevronDown } from "lucide-react"
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ color }: { color: string }) {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -69,9 +69,9 @@ export default function LanguageSwitcher() {
       <div className="hidden lg:block">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 text-slate-700 hover:text-orange-500 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-orange-50 border border-transparent hover:border-orange-200"
+          className={`flex items-center space-x-2 text-${color} hover:text-orange-500 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-orange-50 border border-transparent hover:border-orange-200`}
         >
-          <Globe className="h-4 w-4" />
+          <Globe className="h-4 w-4 " />
           <span className="text-lg">{currentLangOption.flag}</span>
           <span className="text-sm font-medium">
             {currentLangOption.code.toUpperCase()}
@@ -86,7 +86,7 @@ export default function LanguageSwitcher() {
       <div className="lg:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-1 text-slate-700 hover:text-orange-500 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50"
+          className={`flex items-center space-x-1 text-${color} hover:text-orange-500 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50`}
         >
           <Globe className="h-5 w-5" />
           <span className="text-lg">{currentLangOption.flag}</span>

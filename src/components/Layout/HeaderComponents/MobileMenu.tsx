@@ -89,7 +89,7 @@ const MobileMenu = ({
             {t("resources.language")}
           </div>
           <div className="pl-1">
-            <LanguageSwitcher />
+            <LanguageSwitcher color="slate-700" />
           </div>
         </div>
 

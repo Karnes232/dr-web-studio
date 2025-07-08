@@ -15,9 +15,9 @@ const ResourcesLinks = () => {
       href: getLocalizedPath("/contact"),
       label: t("resources.get_free_quote"),
     },
-    { href: "#case-studies", label: t("resources.case_studies") },
-    { href: "#testimonials", label: t("resources.client_reviews") },
-    { href: "#faq", label: t("resources.faq") },
+    //{ href: "#case-studies", label: t("resources.case_studies") },
+    //  { href: "#testimonials", label: t("resources.client_reviews") },
+    { href: getLocalizedPath("/faqs"), label: t("resources.faq") },
     {
       href: getLocalizedPath("/privacy-policy"),
       label: t("resources.privacy_policy"),

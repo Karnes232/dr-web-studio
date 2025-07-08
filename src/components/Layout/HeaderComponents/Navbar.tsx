@@ -39,7 +39,7 @@ const Navbar = ({
 
           {/* Desktop: Language Switcher + CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <LanguageSwitcher />
+            <LanguageSwitcher color="slate-700" />
             <div className="w-px h-6 bg-slate-300"></div>
             <CTAButtons />
           </div>

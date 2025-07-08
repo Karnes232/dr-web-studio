@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
@@ -37,6 +38,7 @@ const SocialMedia = ({ socialLinks, email }: SocialMediaProps) => {
             </a>
           )
         })}
+        <LanguageSwitcher color="gray-300" />
       </div>
     </div>
   )

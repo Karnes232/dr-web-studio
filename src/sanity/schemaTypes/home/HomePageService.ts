@@ -124,7 +124,6 @@ export default defineType({
       return {
         title: title || "Service Section",
         subtitle: `EN: "${subtitleEn || "None"}" | ES: "${subtitleEs || "None"}"`,
-        media: () => "📋",
       }
     },
   },

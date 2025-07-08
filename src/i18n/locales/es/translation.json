@@ -164,5 +164,8 @@
     "ourProvenProcess": "Nuestro proceso probado asegura que tu proyecto se entregue a tiempo, dentro del presupuesto y supere expectativas.",
     "frequentlyAskedQuestions": "Preguntas Frecuentes",
     "gotQuestions": "¿Tienes preguntas? Tenemos respuestas."
+  },
+  "faqsPage": {
+    "searchFaqs": "Buscar Preguntas Frecuentes..."
   }
 }

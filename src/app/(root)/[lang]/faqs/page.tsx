@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import { headers } from "next/headers"
 import FaqsContent from "@/components/FaqsComponents/FaqsContent"
 import { getFaqs } from "@/sanity/queries/faqs/faqs"
+import { getFaqsHeader } from "@/sanity/queries/faqs/faqsHeader"
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -13,7 +14,8 @@ export default async function Portfolio({ params }: PageProps) {
   const { lang } = await params
   const seoData = await getSeoSchema("faqs")
   const faqData = await getFaqs()
-  console.log(faqData)
+  const faqsHeaderData = await getFaqsHeader()
+
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -22,7 +24,11 @@ export default async function Portfolio({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <FaqsContent lang={lang} faqData={faqData} />
+      <FaqsContent
+        lang={lang}
+        faqData={faqData}
+        faqsHeaderData={faqsHeaderData}
+      />
     </>
   )
 }

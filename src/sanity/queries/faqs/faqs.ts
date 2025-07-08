@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { client } from "@/sanity/lib/client"
 
 // TypeScript interfaces
 export interface FaqQuestion {
@@ -69,13 +69,15 @@ export async function getFaqs(): Promise<FaqsData> {
   return { categories }
 }
 
-export async function getFaqCategory(categoryId: string): Promise<FaqCategory | null> {
+export async function getFaqCategory(
+  categoryId: string,
+): Promise<FaqCategory | null> {
   const category = await client.fetch<FaqCategory | null>(faqCategoryQuery, {
-    categoryId
+    categoryId,
   })
   return category
 }
 
 export async function getFaqCategories(): Promise<FaqCategory[]> {
   return await client.fetch<FaqCategory[]>(faqsQuery)
-} 
+}

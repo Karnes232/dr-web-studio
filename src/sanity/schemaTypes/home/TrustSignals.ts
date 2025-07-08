@@ -74,7 +74,6 @@ export default defineType({
       return {
         title: titleEn || titleEs || "Trust Signals Section",
         subtitle: `EN: "${subtitleEn || "None"}" | ES: "${subtitleEs || "None"}"`,
-        media: () => "🔒",
       }
     },
   },

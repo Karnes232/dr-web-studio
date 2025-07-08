@@ -164,5 +164,8 @@
     "ourProvenProcess": "Our proven process ensures your project is delivered on time, on budget, and exceeds expectations.",
     "frequentlyAskedQuestions": "Frequently Asked Questions",
     "gotQuestions": "Got questions? We've got answers."
+  },
+  "faqsPage": {
+    "searchFaqs": "Search FAQs..."
   }
 }
