@@ -3,7 +3,7 @@ import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { MetadataRoute } from "next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.webdev-solutions.com"
+  const baseUrl = "https://www.dr-webstudio.com"
   const serviceItems = await getServiceItemsSitemap()
   const blogPosts = await getAllBlogPostsSitemap()
   console.log(blogPosts)

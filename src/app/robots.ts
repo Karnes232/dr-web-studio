@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://esenciasbynancy.com/sitemap.xml",
+    sitemap: "https://www.dr-webstudio.com/sitemap.xml",
   }
 }
