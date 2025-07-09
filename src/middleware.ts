@@ -11,6 +11,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Skip locale redirect for sitemap.xml
+  if (pathname === "/sitemap.xml") {
+    return NextResponse.next()
+  }
+
+  // Skip locale redirect for robots.txt
+  if (pathname === "/robots.txt") {
+    return NextResponse.next()
+  }
+
   const pathnameIsMissingLocale = languages.every(
     locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   )
@@ -27,5 +37,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|studio).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|studio|sitemap.xml).*)",
+  ],
 }

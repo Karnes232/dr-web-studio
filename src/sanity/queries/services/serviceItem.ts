@@ -447,3 +447,24 @@ export interface ServiceItemWithSEO extends ServiceItem {
 export async function getServiceItemsWithSEO(): Promise<ServiceItemWithSEO[]> {
   return client.fetch(serviceItemsWithSEOQuery)
 }
+
+const serviceItemsSitemapQuery = `*[_type == "serviceItem"] {
+  _id,
+  title,
+  slug
+}`
+
+export interface ServiceItemsSitemap {
+  _id: string
+  title: {
+    en: string
+    es: string
+  }
+  slug: {
+    current: string
+  }
+}
+
+export async function getServiceItemsSitemap(): Promise<ServiceItemsSitemap[]> {
+  return client.fetch(serviceItemsSitemapQuery)
+}

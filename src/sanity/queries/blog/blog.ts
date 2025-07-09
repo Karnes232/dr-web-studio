@@ -189,3 +189,23 @@ export async function getBlogPostSEO(
 ): Promise<BlogPostSEO | null> {
   return await client.fetch(blogPostBySlugQuerySeo, { slug })
 }
+
+export const allBlogPostsSitemapQuery = `
+*[_type == "blogPost"] {
+  title,
+  slug
+}`
+
+export interface BlogPostSitemap {
+  title: {
+    en: string
+    es: string
+  }
+  slug: {
+    current: string
+  }
+}
+
+export async function getAllBlogPostsSitemap(): Promise<BlogPostSitemap[]> {
+  return await client.fetch(allBlogPostsSitemapQuery)
+}

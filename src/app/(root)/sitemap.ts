@@ -1,39 +1,94 @@
+import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
+import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { MetadataRoute } from "next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = "https://www.webdev-solutions.com"
+  const baseUrl = "https://www.webdev-solutions.com"
+  const serviceItems = await getServiceItemsSitemap()
+  const blogPosts = await getAllBlogPostsSitemap()
+  console.log(blogPosts)
 
-    const pages = [
-        { url: `${baseUrl}/en`, lastModified: new Date(), priority: 1 },
-        { url: `${baseUrl}/es`, lastModified: new Date(), priority: 1 },
-        { url: `${baseUrl}/en/about-me`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/about-me`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/blog`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/blog`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/contact`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/contact`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/faqs`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/faqs`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/privacy-policy`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/privacy-policy`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/terms-of-service`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/terms-of-service`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/our-services`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/our-services`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/pricing`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/pricing`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/portfolio`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/portfolio`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/en/project-planner`, lastModified: new Date(), priority: 0.8 },
-        { url: `${baseUrl}/es/project-planner`, lastModified: new Date(), priority: 0.8 },
+  const pages = [
+    { url: `${baseUrl}/en`, lastModified: new Date(), priority: 1 },
+    { url: `${baseUrl}/es`, lastModified: new Date(), priority: 1 },
+    { url: `${baseUrl}/en/about-me`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/about-me`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/en/blog`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/blog`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/en/contact`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/contact`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/en/faqs`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/faqs`, lastModified: new Date(), priority: 0.8 },
+    {
+      url: `${baseUrl}/en/privacy-policy`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/es/privacy-policy`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/terms-of-service`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/es/terms-of-service`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/our-services`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/es/our-services`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    { url: `${baseUrl}/en/pricing`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/pricing`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/en/portfolio`, lastModified: new Date(), priority: 0.8 },
+    { url: `${baseUrl}/es/portfolio`, lastModified: new Date(), priority: 0.8 },
+    {
+      url: `${baseUrl}/en/project-planner`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/es/project-planner`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    ...serviceItems.map(item => ({
+      url: `${baseUrl}/en/our-services/${item.slug.current}`,
+      lastModified: new Date(),
+      priority: 0.8,
+    })),
+    ...serviceItems.map(item => ({
+      url: `${baseUrl}/es/our-services/${item.slug.current}`,
+      lastModified: new Date(),
+      priority: 0.8,
+    })),
+    ...blogPosts.map(item => ({
+      url: `${baseUrl}/en/blog/${item.slug.current}`,
+      lastModified: new Date(),
+      priority: 0.8,
+    })),
+    ...blogPosts.map(item => ({
+      url: `${baseUrl}/es/blog/${item.slug.current}`,
+      lastModified: new Date(),
+      priority: 0.8,
+    })),
+  ]
 
-
-    ]
-
-    return pages.map((page) => ({
-        url: page.url,
-        lastModified: page.lastModified,
-        changeFrequency: "monthly",
-        priority: page.priority,
-    }))
+  return pages.map(page => ({
+    url: page.url,
+    lastModified: page.lastModified,
+    changeFrequency: "monthly",
+    priority: page.priority,
+  }))
 }
