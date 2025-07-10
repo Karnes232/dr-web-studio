@@ -5,6 +5,7 @@ import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import { client } from "@/sanity/lib/client"
 import Footer from "@/components/Layout/FooterComponents/Footer"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import Script from "next/script"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,6 +89,18 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=G-Y3DMZHFV9Z`}
+        strategy="lazyOnload"
+      />
+      <Script id="ga-setup" strategy="lazyOnload">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Y3DMZHFV9Z');
+            `}
+      </Script>
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <Navbar logo={logo} serviceLinks={serviceLinks} />
         {children}
