@@ -12,10 +12,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/webhooks/stripe',
-        destination: '/api/webhooks/stripe',
+        source: "/api/webhooks/stripe",
+        destination: "/api/webhooks/stripe",
       },
-    ];
+    ]
   },
 }
 

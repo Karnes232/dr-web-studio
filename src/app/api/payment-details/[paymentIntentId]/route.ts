@@ -1,28 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe';
+import { NextRequest, NextResponse } from "next/server"
+import { stripe } from "@/lib/stripe"
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ paymentIntentId: string }> }
+  { params }: { params: Promise<{ paymentIntentId: string }> },
 ) {
   try {
-    const { paymentIntentId } = await params;
+    const { paymentIntentId } = await params
 
     if (!paymentIntentId) {
       return NextResponse.json(
-        { error: 'Payment Intent ID is required' },
-        { status: 400 }
-      );
+        { error: "Payment Intent ID is required" },
+        { status: 400 },
+      )
     }
 
     // Retrieve payment intent from Stripe
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId)
 
     if (!paymentIntent) {
       return NextResponse.json(
-        { error: 'Payment Intent not found' },
-        { status: 404 }
-      );
+        { error: "Payment Intent not found" },
+        { status: 404 },
+      )
     }
 
     // Return only the necessary details for security
@@ -35,19 +35,18 @@ export async function GET(
       description: paymentIntent.description,
       receipt_email: paymentIntent.receipt_email,
       metadata: paymentIntent.metadata,
-    };
+    }
 
     return NextResponse.json({
       success: true,
       paymentIntent: paymentDetails,
-    });
-
+    })
   } catch (error) {
-    console.error('Error fetching payment details:', error);
-    
+    console.error("Error fetching payment details:", error)
+
     return NextResponse.json(
-      { error: 'Failed to fetch payment details' },
-      { status: 500 }
-    );
+      { error: "Failed to fetch payment details" },
+      { status: 500 },
+    )
   }
-}   
+}

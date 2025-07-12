@@ -94,7 +94,7 @@ export default async function RootLayout({
         strategy="lazyOnload"
       />
       <Script id="ga-setup" strategy="lazyOnload">
-            {`
+        {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());

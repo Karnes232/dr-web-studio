@@ -38,6 +38,7 @@ export default defineType({
           { title: "Privacy Policy", value: "privacy-policy" },
           { title: "Terms of Service", value: "terms-of-service" },
           { title: "FAQs", value: "faqs" },
+          { title: "Custom Payment", value: "custom-payment" },
         ],
         layout: "dropdown",
       },
