@@ -335,12 +335,12 @@ const CheckoutContent = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-slate-500">
+        {/* <div className="mt-8 text-center text-sm text-slate-500">
           <p>
             Powered by{" "}
             <span className="font-semibold text-orange-600">DR Web Studio</span>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   )

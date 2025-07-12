@@ -251,7 +251,7 @@ const PaymentSucessContent = () => {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="mailto:info@drwebstudio.com"
+              href="mailto:james@dr-webstudio.com"
               className="flex items-center justify-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
             >
               <Mail className="h-4 w-4 mr-2" />

@@ -41,7 +41,8 @@
     "sitemap": "Sitemap",
     "start_project": "Start Project",
     "get_quote": "Get Quote",
-    "language": "Language"
+    "language": "Language",
+    "custom_payment": "Custom Payment"
   },
   "blog": {
     "all": "All",

@@ -41,7 +41,8 @@
     "sitemap": "Mapa del Sitio",
     "start_project": "Iniciar Proyecto",
     "get_quote": "Obtener Cotización",
-    "language": "Idioma"
+    "language": "Idioma",
+    "custom_payment": "Pago Personalizado"
   },
   "blog": {
     "all": "Todos",
