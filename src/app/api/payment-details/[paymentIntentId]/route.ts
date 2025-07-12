@@ -3,10 +3,10 @@ import { stripe } from '@/lib/stripe';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { paymentIntentId: string } }
+  { params }: { params: Promise<{ paymentIntentId: string }> }
 ) {
   try {
-    const { paymentIntentId } = params;
+    const { paymentIntentId } = await params;
 
     if (!paymentIntentId) {
       return NextResponse.json(
