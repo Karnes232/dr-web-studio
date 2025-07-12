@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 import { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
 import { useLocale } from "@/i18n/useLocale"
-const PaymentSucessContent = ({ paymentSuccessData }: { paymentSuccessData: PaymentSuccessData }) => {
+const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessData: PaymentSuccessData, email: { email: string } }) => {
   const [message, setMessage] = useState<string>("")
   const [paymentDetails, setPaymentDetails] = useState<any>(null)
   const searchParams = useSearchParams()
@@ -80,7 +80,7 @@ const PaymentSucessContent = ({ paymentSuccessData }: { paymentSuccessData: Paym
     // Redirect to calendar scheduling
     window.location.href = "#calendar"
   }
-
+  console.log(email)
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto">
@@ -126,7 +126,7 @@ const PaymentSucessContent = ({ paymentSuccessData }: { paymentSuccessData: Paym
                 <h2 className="text-lg font-semibold text-teal-800">
                   {t("checkout.payment_details")}
                 </h2>
-              </div>getPaymentSuccess
+              </div>
 
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center">
@@ -204,59 +204,42 @@ const PaymentSucessContent = ({ paymentSuccessData }: { paymentSuccessData: Paym
           <div className="bg-slate-50 px-8 py-6 border-t border-slate-200">
             <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center">
               <Mail className="h-5 w-5 mr-2 text-orange-500" />
-              What's Next?
+              {paymentSuccessData.whatsNext.title[currentLocale as keyof typeof paymentSuccessData.whatsNext.title]}
             </h3>
 
             <div className="space-y-3 text-sm text-slate-600">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
-                  1
-                </div>
-                <p>
-                  You'll receive a confirmation email with your receipt and
-                  payment details within 5 minutes.
-                </p>
-              </div>
+              {paymentSuccessData.whatsNext.steps.map((step, index) => {
 
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
-                  2
+                return (
+                  <div className="flex items-start" key={index}>
+                    <div className={`flex-shrink-0 w-6 h-6 ${step.color} text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5`}>
+                      {step.number}
                 </div>
-                <p>
-                  Our team will contact you within 24 hours to discuss your
-                  project requirements.
-                </p>
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
-                  3
-                </div>
-                <p>
-                  We'll schedule a consultation call to plan your website
-                  development project.
-                </p>
-              </div>
+                <p>{step.description[currentLocale as keyof typeof step.description]}</p>
+                    </div>
+                )
+              })}
             </div>
+
           </div>
         </div>
 
         {/* Contact Information */}
         <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6 text-center">
           <h3 className="text-lg font-semibold text-slate-800 mb-2">
-            Need Help?
+            {t("checkout.need_help")}
           </h3>
           <p className="text-slate-600 mb-4">
-            Have questions about your payment or project? We're here to help!
+            {t("checkout.have_questions")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="mailto:james@dr-webstudio.com"
+              href={`mailto:${email.email}`}
               className="flex items-center justify-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
             >
               <Mail className="h-4 w-4 mr-2" />
-              Email Us
+              {t("checkout.email_us")}
             </a>
             {/*             
             <a

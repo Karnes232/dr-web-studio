@@ -3,6 +3,7 @@ import { getSEO } from "@/sanity/queries/seo"
 import PaymentSucessContent from "@/components/CheckoutComponents/PaymentSucessContent"
 import { headers } from "next/headers"
 import { getPaymentSuccess } from "@/sanity/queries/payment/paymentSuccess"
+import { client } from "@/sanity/lib/client"
 
 interface PageProps {
   params: Promise<{
@@ -11,9 +12,14 @@ interface PageProps {
 }
 export default async function PaymentSuccess() {
   const paymentSuccessData = await getPaymentSuccess()
+  const email = await client.fetch(`
+    *[_type == "generalLayout"][0] {
+      email
+    }
+  `)
   return (
     <>
-      <PaymentSucessContent paymentSuccessData={paymentSuccessData} />
+      <PaymentSucessContent paymentSuccessData={paymentSuccessData} email={email} />
     </>
   )
 }

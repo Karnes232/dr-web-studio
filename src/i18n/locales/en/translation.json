@@ -196,6 +196,9 @@
     "receipt": "Receipt",
     "schedule_call": "Schedule Call",
     "payment_of": "Payment of",
-    "completed_successfully": "completed successfully!"
+    "completed_successfully": "completed successfully!",
+    "need_help": "Need Help?",
+    "have_questions": "Have questions about your payment or project? We're here to help!",
+    "email_us": "Email Us"
   }
 }

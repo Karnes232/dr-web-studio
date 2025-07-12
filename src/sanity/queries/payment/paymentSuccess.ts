@@ -1,5 +1,14 @@
 import { client } from "@/sanity/lib/client"
 
+export interface PaymentSuccessStep {
+  number: number
+  description: {
+    en: string
+    es: string
+  }
+  color: string
+}
+
 export interface PaymentSuccessData {
   title: {
     en: string
@@ -9,11 +18,26 @@ export interface PaymentSuccessData {
     en: string
     es: string
   }
+  whatsNext: {
+    title: {
+      en: string
+      es: string
+    }
+    steps: PaymentSuccessStep[]
+  }
 }
 
 const paymentSuccessQuery = `*[_type == "paymentSuccess"][0] {
   title,
-  subtitle
+  subtitle,
+  whatsNext {
+    title,
+    steps[] {
+      number,
+      description,
+      color
+    }
+  }
 }`
 
 export async function getPaymentSuccess(): Promise<PaymentSuccessData> {
