@@ -168,5 +168,34 @@
   },
   "faqsPage": {
     "searchFaqs": "Buscar Preguntas Frecuentes..."
+  },
+  "checkout": {
+    "full_name": "Nombre Completo",
+    "full_name_placeholder": "Ingresa tu nombre completo",
+    "email_address": "Correo Electrónico",
+    "email_address_placeholder": "Ingresa tu correo electrónico",
+    "payment_amount": "Cantidad de Pago",
+    "processing": "Procesando...",
+    "pay": "Pagar",
+    "ssl_encrypted": "SSL Encriptado",
+    "stripe_secured": "Stripe Seguro",
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "change_details": "Cambiar Detalles",
+    "256_bit_ssl": "256-bit SSL",
+    "pci_compliant": "PCI Compliant",
+    "verified": "Verificado",
+    "pay_now": "Pagar Ahora",
+    "payment_details": "Detalles de Pago",
+    "transaction_id": "ID de Transacción",
+    "amount": "Cantidad",
+    "date": "Fecha",
+    "status": "Estado",
+    "completed": "Completado",
+    "back_to_home": "Volver a Inicio",
+    "receipt": "Recibo",
+    "schedule_call": "Programar Llamada",
+    "payment_of": "Pago de",
+    "completed_successfully": "completado exitosamente!"
   }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import { useRouter } from "next/navigation"
+import { useLocale } from "@/i18n/useLocale"
 
 export default function CheckoutForm({ lang }: { lang: string }) {
   const stripe = useStripe()
@@ -8,7 +9,7 @@ export default function CheckoutForm({ lang }: { lang: string }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
-
+  const { t } = useLocale()
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
@@ -47,7 +48,7 @@ export default function CheckoutForm({ lang }: { lang: string }) {
         disabled={!stripe || loading}
         className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 disabled:opacity-50"
       >
-        {loading ? "Processing..." : "Pay Now"}
+        {loading ? t("checkout.processing") : t("checkout.pay")}
       </button>
       {message && <div className="mt-4 text-red-600 text-sm">{message}</div>}
     </form>

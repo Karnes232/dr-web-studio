@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { getSEO } from "@/sanity/queries/seo"
 import CheckoutContent from "@/components/CheckoutComponents/CheckoutContent"
 import { headers } from "next/headers"
+import { getCustomPayment } from "@/sanity/queries/payment/customPayment"
 
 interface PageProps {
   params: Promise<{
@@ -9,8 +10,9 @@ interface PageProps {
   }>
 }
 
-export default function CustomPaymentPage() {
-  return <CheckoutContent />
+export default async function CustomPaymentPage() {
+    const customPaymentData = await getCustomPayment();
+  return <CheckoutContent customPaymentData={customPaymentData} />
 }
 
 export async function generateMetadata({

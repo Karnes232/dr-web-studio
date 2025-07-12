@@ -447,4 +447,28 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+
+      // Payment Group
+      S.listItem()
+        .title("Payment")
+        .child(
+          S.list()
+            .title("Payment")
+            .items([
+              S.listItem()
+                .title("Custom Payment")
+                .child(
+                  S.documentList()
+                    .title("Custom Payment")
+                    .filter('_type == "customPayment"'),
+                ),
+              S.listItem()
+                .title("Payment Success")
+                .child(
+                  S.documentList()
+                    .title("Payment Success")
+                    .filter('_type == "paymentSuccess"'),
+                ),
+            ]),
+        ),
     ])

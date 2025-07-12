@@ -64,6 +64,10 @@ import contactForm from "./project-planner/contactForm"
 import faqCategory from "./faqs/faqCategory"
 import faqsPageHeader from "./faqs/faqsPageHeader"
 
+// Payment Schemas
+import customPayment from "./payment/customPayment"
+import paymentSuccess from "./payment/paymentSuccess"
+
 // SEO Schema
 import seo from "./seo/seo"
 import legal from "./legal/legal"
@@ -134,6 +138,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // FAQ Schemas
     faqCategory,
     faqsPageHeader,
+
+    // Payment Schemas
+    customPayment,
+    paymentSuccess,
 
     // SEO Schema
     seo,

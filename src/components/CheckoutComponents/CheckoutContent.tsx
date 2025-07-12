@@ -13,10 +13,14 @@ import {
   Mail,
 } from "lucide-react"
 import { useParams } from "next/navigation"
+import { CustomPaymentData } from "@/sanity/queries/payment/customPayment"
+import { useLocale } from "@/i18n/useLocale"
+import { StripeElementLocale } from "@stripe/stripe-js"
+
 
 const stripePromise = getStripe()
 
-const CheckoutContent = () => {
+const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPaymentData }) => {
   const [clientSecret, setClientSecret] = useState("")
   const [loading, setLoading] = useState(false)
   const [amount, setAmount] = useState("")
@@ -24,7 +28,7 @@ const CheckoutContent = () => {
   const [customerEmail, setCustomerEmail] = useState("")
   const [error, setError] = useState("")
   const { lang } = useParams()
-
+  const { t } = useLocale()
   const createPaymentIntent = async (paymentAmount: number) => {
     setLoading(true)
     setError("")
@@ -132,10 +136,10 @@ const CheckoutContent = () => {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            Secure Payment
+            {customPaymentData.title[lang as keyof typeof customPaymentData.title]}
           </h1>
           <p className="text-slate-600">
-            Enter your information and complete your transaction
+            {customPaymentData.subtitle[lang as keyof typeof customPaymentData.subtitle]}
           </p>
         </div>
 
@@ -152,7 +156,7 @@ const CheckoutContent = () => {
                       htmlFor="customerName"
                       className="block text-sm font-medium text-slate-700 mb-2"
                     >
-                      Full Name
+                      {t("checkout.full_name")}
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -163,7 +167,7 @@ const CheckoutContent = () => {
                         id="customerName"
                         value={customerName}
                         onChange={e => setCustomerName(e.target.value)}
-                        placeholder="Enter your full name"
+                        placeholder={t("checkout.full_name_placeholder")}
                         className="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900"
                         disabled={loading}
                       />
@@ -176,7 +180,7 @@ const CheckoutContent = () => {
                       htmlFor="customerEmail"
                       className="block text-sm font-medium text-slate-700 mb-2"
                     >
-                      Email Address
+                      {t("checkout.email_address")}
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -187,7 +191,7 @@ const CheckoutContent = () => {
                         id="customerEmail"
                         value={customerEmail}
                         onChange={e => setCustomerEmail(e.target.value)}
-                        placeholder="Enter your email address"
+                        placeholder={t("checkout.email_address_placeholder")}
                         className="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900"
                         disabled={loading}
                       />
@@ -200,7 +204,7 @@ const CheckoutContent = () => {
                       htmlFor="amount"
                       className="block text-sm font-medium text-slate-700 mb-2"
                     >
-                      Payment Amount
+                      {t("checkout.payment_amount")}
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -235,12 +239,12 @@ const CheckoutContent = () => {
                     {loading ? (
                       <div className="flex items-center justify-center">
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Processing...
+                        {t("checkout.processing")}
                       </div>
                     ) : (
                       <div className="flex items-center justify-center">
                         <Shield className="h-5 w-5 mr-2" />
-                        Pay ${amount || "0.00"}
+                        {t("checkout.pay")} ${amount || "0.00"}
                       </div>
                     )}
                   </button>
@@ -252,11 +256,11 @@ const CheckoutContent = () => {
                 <div className="flex items-center justify-center space-x-6 text-sm text-slate-600">
                   <div className="flex items-center">
                     <Shield className="h-4 w-4 text-teal-500 mr-1" />
-                    <span>SSL Encrypted</span>
+                    <span>{t("checkout.ssl_encrypted")}</span>
                   </div>
                   <div className="flex items-center">
                     <CheckCircle className="h-4 w-4 text-teal-500 mr-1" />
-                    <span>Stripe Secured</span>
+                    <span>{t("checkout.stripe_secured")}</span>
                   </div>
                 </div>
               </div>
@@ -267,14 +271,14 @@ const CheckoutContent = () => {
               <div className="p-8">
                 <div className="text-center mb-6">
                   <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-lg inline-block font-semibold mb-2">
-                    Payment Amount: ${(parseFloat(amount) || 0).toFixed(2)}
+                    {t("checkout.payment_amount")}: ${(parseFloat(amount) || 0).toFixed(2)}
                   </div>
                   <div className="text-sm text-slate-600">
                     <p>
-                      <strong>Name:</strong> {customerName}
+                      <strong>{t("checkout.name")}:</strong> {customerName}
                     </p>
                     <p>
-                      <strong>Email:</strong> {customerEmail}
+                      <strong>{t("checkout.email")}:</strong> {customerEmail}
                     </p>
                   </div>
                 </div>
@@ -283,8 +287,9 @@ const CheckoutContent = () => {
                   stripe={stripePromise}
                   options={{
                     clientSecret,
+                    locale: lang as StripeElementLocale,
                     appearance: {
-                      theme: "stripe",
+                      theme: "stripe",                   
                       variables: {
                         colorPrimary: "#f97316",
                         colorBackground: "#ffffff",
@@ -303,7 +308,7 @@ const CheckoutContent = () => {
                   onClick={resetForm}
                   className="mt-6 w-full bg-slate-100 text-slate-700 py-2 px-4 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
                 >
-                  ← Change Details
+                  ← {t("checkout.change_details")}
                 </button>
               </div>
             </>
@@ -317,19 +322,19 @@ const CheckoutContent = () => {
               <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
                 <Shield className="h-4 w-4 text-slate-600" />
               </div>
-              <span>256-bit SSL</span>
+              <span>{t("checkout.256_bit_ssl")}</span>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
                 <CreditCard className="h-4 w-4 text-slate-600" />
               </div>
-              <span>PCI Compliant</span>
+              <span>{t("checkout.pci_compliant")}</span>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
                 <CheckCircle className="h-4 w-4 text-slate-600" />
               </div>
-              <span>Verified</span>
+              <span>{t("checkout.verified")}</span>
             </div>
           </div>
         </div>

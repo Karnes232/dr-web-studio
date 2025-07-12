@@ -2,16 +2,18 @@ import { Metadata } from "next"
 import { getSEO } from "@/sanity/queries/seo"
 import PaymentSucessContent from "@/components/CheckoutComponents/PaymentSucessContent"
 import { headers } from "next/headers"
+import { getPaymentSuccess } from "@/sanity/queries/payment/paymentSuccess"
 
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
   }>
 }
-export default function PaymentSuccess() {
+export default async function PaymentSuccess() {
+  const paymentSuccessData = await getPaymentSuccess()
   return (
     <>
-      <PaymentSucessContent />
+      <PaymentSucessContent paymentSuccessData={paymentSuccessData} />
     </>
   )
 }

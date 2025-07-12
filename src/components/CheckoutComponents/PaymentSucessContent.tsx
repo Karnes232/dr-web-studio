@@ -14,11 +14,13 @@ import {
   User,
   DollarSign,
 } from "lucide-react"
-const PaymentSucessContent = () => {
+import { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
+import { useLocale } from "@/i18n/useLocale"
+const PaymentSucessContent = ({ paymentSuccessData }: { paymentSuccessData: PaymentSuccessData }) => {
   const [message, setMessage] = useState<string>("")
   const [paymentDetails, setPaymentDetails] = useState<any>(null)
   const searchParams = useSearchParams()
-
+  const { currentLocale, t } = useLocale()
   useEffect(() => {
     const fetchPaymentDetails = async () => {
       const paymentIntentId = searchParams.get("payment_intent")
@@ -36,7 +38,7 @@ const PaymentSucessContent = () => {
           if (data.success) {
             setPaymentDetails(data.paymentIntent)
             setMessage(
-              `Payment of $${(data.paymentIntent.amount / 100).toFixed(2)} completed successfully!`,
+              `${t("checkout.payment_of")} $${(data.paymentIntent.amount / 100).toFixed(2)} ${t("checkout.completed_successfully")}!`,
             )
           }
         } catch (error) {
@@ -53,7 +55,7 @@ const PaymentSucessContent = () => {
               if (paymentIntent) {
                 setPaymentDetails(paymentIntent)
                 setMessage(
-                  `Payment of $${(paymentIntent.amount / 100).toFixed(2)} completed successfully!`,
+                  `${t("checkout.payment_of")} $${(paymentIntent.amount / 100).toFixed(2)} ${t("checkout.completed_successfully")}!`,
                 )
               }
             }
@@ -107,11 +109,10 @@ const PaymentSucessContent = () => {
           </div>
 
           <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            Payment Successful!
+            {paymentSuccessData.title[currentLocale as keyof typeof paymentSuccessData.title]}
           </h1>
           <p className="text-slate-600 text-lg">
-            Thank you for your payment. Your transaction has been completed
-            successfully.
+            {paymentSuccessData.subtitle[currentLocale as keyof typeof paymentSuccessData.subtitle]}
           </p>
         </div>
 
@@ -123,19 +124,19 @@ const PaymentSucessContent = () => {
               <div className="flex items-center mb-4">
                 <CreditCard className="h-6 w-6 text-teal-600 mr-3" />
                 <h2 className="text-lg font-semibold text-teal-800">
-                  Payment Details
+                  {t("checkout.payment_details")}
                 </h2>
-              </div>
+              </div>getPaymentSuccess
 
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-                  <span className="text-slate-600">Transaction ID:</span>
+                  <span className="text-slate-600">{t("checkout.transaction_id")}:</span>
                   <span className="font-mono text-sm text-slate-800 ">
                     #{paymentDetails?.id}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Amount:</span>
+                  <span className="text-slate-600">{t("checkout.amount")}:</span>
                   <span className="font-semibold text-slate-800 flex items-center">
                     <DollarSign className="h-4 w-4 mr-1" />
                     {paymentDetails?.amount
@@ -144,16 +145,16 @@ const PaymentSucessContent = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Date:</span>
+                  <span className="text-slate-600">{t("checkout.date")}:</span>
                   <span className="text-slate-800">
                     {new Date().toLocaleDateString()}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Status:</span>
+                  <span className="text-slate-600">{t("checkout.status")}:</span>
                   <span className="flex items-center text-teal-600">
                     <CheckCircle className="h-4 w-4 mr-1" />
-                    Completed
+                    {t("checkout.completed")}
                   </span>
                 </div>
               </div>
@@ -174,7 +175,7 @@ const PaymentSucessContent = () => {
                 className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
               >
                 <Home className="h-5 w-5 mr-2" />
-                Back to Home
+                {t("checkout.back_to_home")}
                 <ArrowRight className="h-5 w-5 ml-2" />
               </button>
 
@@ -185,7 +186,7 @@ const PaymentSucessContent = () => {
                   className="flex items-center justify-center py-3 px-4 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
                 >
                   <Download className="h-4 w-4 mr-2" />
-                  Receipt
+                  {t("checkout.receipt")}
                 </button>
 
                 <button
@@ -193,7 +194,7 @@ const PaymentSucessContent = () => {
                   className="flex items-center justify-center py-3 px-4 bg-teal-100 text-teal-700 rounded-lg hover:bg-teal-200 transition-colors duration-200 font-medium"
                 >
                   <Calendar className="h-4 w-4 mr-2" />
-                  Schedule Call
+                  {t("checkout.schedule_call")}
                 </button>
               </div>
             </div>
