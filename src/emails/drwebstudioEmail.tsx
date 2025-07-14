@@ -1,0 +1,217 @@
+import React from 'react';
+import {
+  Body,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Section,
+  Text,
+  Hr,
+  Row,
+  Column,
+  Tailwind
+} from '@react-email/components';
+
+const PaymentConfirmationEmail = ({
+  clientName = "John Doe",
+  clientEmail = "john@example.com",
+  paymentAmount = "$150",
+  transactionId = "txn_1234567890",
+}) => {
+  const previewText = `Payment confirmed for your website project - DR Web Studio`;
+
+  return (
+    <Html>
+      <Head />
+      <Preview>{previewText}</Preview>
+      <Tailwind>
+      <Body className="bg-gray-50 font-sans">
+        <Container className="mx-auto py-8 px-4 max-w-2xl">
+          {/* Header */}
+          <Section className="bg-white rounded-lg shadow-lg mb-6 p-6">
+            <div className="flex items-center justify-center mb-4">
+              <Img
+                src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png"
+                alt="DR Web Studio Logo"
+                className="w-16 h-16 rounded-full"
+              />
+              <div className="ml-3">
+                <Heading className="text-2xl font-bold text-gray-800 m-0">
+                  DR WEB
+                </Heading>
+                <Text className="text-sm text-orange-600 m-0 -mt-1">STUDIO</Text>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <Heading className="text-2xl font-bold text-gray-800 mb-2">
+                Payment Confirmed! 🎉
+              </Heading>
+              <Text className="text-gray-600 mb-0">
+                Thank you for choosing DR Web Studio for your website project
+              </Text>
+            </div>
+          </Section>
+
+          {/* Payment Details */}
+          <Section className="bg-white rounded-lg shadow-lg mb-6 px-6 py-4">
+            <div className="rounded-lg p-4 mb-4 bg-orange-600">
+              <Text className="text-white font-semibold text-lg text-center m-0">
+                Payment Successfully Processed
+              </Text> 
+            </div>
+            <Hr className="border-gray-200 mb-4" />
+            <Row>
+            <div>
+                <Text className="text-gray-600 text-sm font-semibold mb-1">Client Information:</Text>
+                <Text className="text-gray-800 mb-2">{clientName}</Text>
+                <Text className="text-gray-600 text-sm mb-4">{clientEmail}</Text>
+              </div>
+            </Row>
+            
+            <Row>
+              <Column className="w-1/2">
+                <Text className="text-gray-600 text-sm mb-1">Amount Paid:</Text>
+                <Text className="text-2xl font-bold text-green-600 mb-4">{paymentAmount}</Text>
+              </Column>
+              <Column className="w-1/2">
+                <Text className="text-gray-600 text-sm mb-1">Transaction ID:</Text>
+                <Text className="text-gray-800 font-mono text-sm mb-4">{transactionId}</Text>
+              </Column>
+            </Row>
+            
+            {/* <Text className="text-gray-600 text-sm mb-1">Project ID:</Text>
+            <Text className="text-gray-800 font-semibold mb-4">{projectId}</Text> */}
+          </Section>
+
+
+          {/* Next Steps */}
+          <Section className="bg-white rounded-lg shadow-lg mb-6 p-6">
+            <Heading className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+              What Happens Next?
+            </Heading>
+            
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
+                  1
+                </div>
+                <div>
+                  <Text className="text-gray-800 font-semibold mb-1">Project Review (Within 24 hours)</Text>
+                  <Text className="text-gray-600 text-sm">
+                    Our team will review your requirements and prepare a detailed project proposal.
+                  </Text>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
+                  2
+                </div>
+                <div>
+                  <Text className="text-gray-800 font-semibold mb-1">Initial Consultation</Text>
+                  <Text className="text-gray-600 text-sm">
+                    We'll schedule a call to discuss your vision, goals, and project timeline in detail.
+                  </Text>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
+                  3
+                </div>
+                <div>
+                  <Text className="text-gray-800 font-semibold mb-1">Project Kickoff</Text>
+                  <Text className="text-gray-600 text-sm">
+                    Once approved, we'll begin the design and development process with regular updates.
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* Contact Information */}
+          <Section className="bg-white rounded-lg shadow-lg mb-6 p-6">
+            <Heading className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+              Need to Get in Touch?
+            </Heading>
+            
+            <Text className="text-gray-600 mb-4">
+              We're here to help! Feel free to reach out if you have any questions or need to make changes to your project.
+            </Text>
+            
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <Text className="text-gray-600 font-semibold mr-2">Email:</Text>
+                <Link href="mailto:info@drwebstudio.com" className="text-orange-600 hover:text-orange-700">
+                  james@drwebstudio.com
+                </Link>
+              </div>
+              
+              {/* <div className="flex items-center">
+                <Text className="text-gray-600 font-semibold mr-2">WhatsApp:</Text>
+                <Link href="https://wa.me/18091234567" className="text-orange-600 hover:text-orange-700">
+                  Message us on WhatsApp
+                </Link>
+              </div> */}
+              
+              {/* <div className="flex items-center">
+                <Text className="text-gray-600 font-semibold mr-2">Schedule a Call:</Text>
+                <Link href="https://calendly.com/drwebstudio" className="text-orange-600 hover:text-orange-700">
+                  Book a consultation
+                </Link>
+              </div> */}
+            </div>
+          </Section>
+
+          {/* Call to Action */}
+          <Section className="bg-orange-500 rounded-lg p-6 text-center mb-6">
+            <Heading className="text-white text-xl font-bold mb-2">
+              Excited to Work With You!
+            </Heading>
+            <Text className="text-orange-100 mb-4">
+              Our team is already preparing to bring your website vision to life. 
+              We'll be in touch within 24 hours with next steps.
+            </Text>
+            {/* <Link 
+              href="https://drwebstudio.com/project-portal"
+              className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 inline-block"
+            >
+              View Project Portal
+            </Link> */}
+          </Section>
+
+          {/* Footer */}
+          <Section className="text-center py-6">
+            <Hr className="border-gray-300 mb-4" />
+            <Text className="text-gray-500 text-sm mb-2">
+              © {new Date().getFullYear()} DR Web Studio. All rights reserved.
+            </Text>
+            <Text className="text-gray-500 text-sm">
+              Professional website development for businesses in the Dominican Republic
+            </Text>
+            
+            <div className="flex justify-around mt-4 space-x-4">
+              <Link href="https://drwebstudio.com" className="text-gray-500 text-sm hover:text-orange-600">
+                DR Web Studio
+              </Link>
+              <Link href="https://www.dr-webstudio.com/en/privacy-policy" className="text-gray-500 text-sm hover:text-orange-600">
+                Privacy Policy
+              </Link>
+              <Link href="https://www.dr-webstudio.com/en/terms-of-service" className="text-gray-500 text-sm text-orange-600">
+                Terms of Service
+              </Link>
+            </div>
+          </Section>
+        </Container>
+      </Body>
+      </Tailwind>
+    </Html>
+  );
+};
+
+export default PaymentConfirmationEmail;

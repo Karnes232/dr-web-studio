@@ -71,16 +71,16 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
     window.location.href = "/"
   }
 
-  const handleDownloadReceipt = () => {
-    // Implement receipt download functionality
-    console.log("Download receipt")
-  }
+  // const handleDownloadReceipt = () => {
+  //   // Implement receipt download functionality
+  //   console.log("Download receipt")
+  // }
 
-  const handleScheduleCall = () => {
-    // Redirect to calendar scheduling
-    window.location.href = "#calendar"
-  }
-  console.log(email)
+  // const handleScheduleCall = () => {
+  //   // Redirect to calendar scheduling
+  //   window.location.href = "#calendar"
+  // }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto">
@@ -180,7 +180,7 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
               </button>
 
               {/* Secondary Actions */}
-              <div className="grid grid-cols-2 gap-3">
+              {/* <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={handleDownloadReceipt}
                   className="flex items-center justify-center py-3 px-4 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
@@ -196,7 +196,7 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
                   <Calendar className="h-4 w-4 mr-2" />
                   {t("checkout.schedule_call")}
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
 
