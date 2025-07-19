@@ -37,22 +37,6 @@ const PaymentConfirmationEmail = ({
   return (
     <Html>
        <Head>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-              @media screen and (max-width: 768px) {
-                .payment-row-tablet {
-                  display: none !important;
-                }
-              }
-              @media screen and (min-width: 768px) {
-                .payment-row-mobile {
-                  display: none !important;
-                }
-              }
-              `,
-            }}
-          />
         </Head>
       <Preview>{previewText}</Preview>
       <Tailwind>
@@ -100,30 +84,20 @@ const PaymentConfirmationEmail = ({
               </div>
             </Row>
             
-            <Row className="payment-row-mobile">
+            <Row className="">
               <Column className="w-full">
                 <Text className="text-gray-600 text-sm mb-1">Amount Paid:</Text>
                 <Text className="text-2xl font-bold text-green-600 mb-4">{USDollar.format(paymentAmount/100)}</Text>
               </Column>
             </Row>
 
-            <Row className="payment-row-mobile">
+            <Row className="">
               <Column className="w-full">
                 <Text className="text-gray-600 text-sm mb-1">Transaction ID:</Text>
                 <Text className="text-gray-800 font-mono text-sm mb-4">{transactionId}</Text>
               </Column>
             </Row>
             
-            <Row className="payment-row-tablet">
-              <Column className="w-1/2">
-                <Text className="text-gray-600 text-sm mb-1">Amount Paid:</Text>
-                <Text className="text-2xl font-bold text-green-600 mb-4">{USDollar.format(paymentAmount/100)}</Text>
-              </Column>
-              <Column className="w-1/2">
-                <Text className="text-gray-600 text-sm mb-1">Transaction ID:</Text>
-                <Text className="text-gray-800 font-mono text-sm mb-4">{transactionId}</Text>
-              </Column>
-            </Row>
             
             {/* <Text className="text-gray-600 text-sm mb-1">Project ID:</Text>
             <Text className="text-gray-800 font-semibold mb-4">{projectId}</Text> */}
