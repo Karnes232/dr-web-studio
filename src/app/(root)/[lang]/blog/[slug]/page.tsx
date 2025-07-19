@@ -32,7 +32,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const seoData = await getBlogPostSEO(slug)
-  console.log(seoData)
+
   const headersList = await headers()
   const host = headersList.get("host")
   const protocol = headersList.get("x-forwarded-proto") || "http"

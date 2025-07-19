@@ -6,7 +6,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.dr-webstudio.com"
   const serviceItems = await getServiceItemsSitemap()
   const blogPosts = await getAllBlogPostsSitemap()
-  console.log(blogPosts)
 
   const pages = [
     { url: `${baseUrl}/en`, lastModified: new Date(), priority: 1 },

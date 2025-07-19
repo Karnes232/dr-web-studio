@@ -47,7 +47,7 @@ export async function generateMetadata({
     },
     robots: {
       index: false,
-      follow: false,
+      follow: true,
     },
     ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
