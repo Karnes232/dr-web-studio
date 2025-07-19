@@ -30,7 +30,7 @@ const PaymentConfirmationEmail = ({
   email?: string;
 }) => {
   const previewText = `Payment confirmed for your website project - DR Web Studio`;
-  let USDollar = new Intl.NumberFormat('en-US', {
+  const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
 });
