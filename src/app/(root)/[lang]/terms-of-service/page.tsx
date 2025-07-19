@@ -41,7 +41,7 @@ export async function generateMetadata({
 
   const canonicalUrl = seoData?.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/privacy-policy`
+    : `${baseUrl}/${lang}/terms-of-service`
 
   if (!seoData) return {}
 

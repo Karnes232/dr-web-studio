@@ -64,7 +64,7 @@ export async function generateMetadata({
     : `${baseUrl}/${lang}`
 
   if (!seoData) return {}
-
+console.log(seoData)
   return {
     title: seoData.meta[lang]?.title,
     description: seoData.meta[lang]?.description,
@@ -72,7 +72,13 @@ export async function generateMetadata({
       title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
       description:
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
-      images: seoData.openGraph.image ? [seoData.openGraph.image] : [],
+      url: canonicalUrl,
+      type: "website",
+      images: seoData.openGraph.image ? [{
+        url: seoData.openGraph.image.url,
+        width: seoData.openGraph.image.width,
+        height: seoData.openGraph.image.height,
+      }] : [],
     },
     robots: {
       index: !seoData.noIndex,
