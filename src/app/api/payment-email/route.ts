@@ -2,6 +2,7 @@ import { client } from "@/sanity/lib/client"
 import { NextRequest, NextResponse } from "next/server"
 import { render } from "@react-email/render"
 import PaymentConfirmationEmail from "@/emails/drwebstudioEmail"
+import PaymentConfirmationEmailSpanish from "@/emails/PaymentConfirmationEmailSpanish"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -18,7 +19,13 @@ export async function POST(request: NextRequest) {
       await request.json()
     console.log(lang)
     const emailHtml = await render(
-      PaymentConfirmationEmail({
+      lang === "es" ? PaymentConfirmationEmailSpanish({
+        clientName,
+        clientEmail,
+        paymentAmount,
+        transactionId,
+        email: emailData.email,
+      }) : PaymentConfirmationEmail({
         clientName,
         clientEmail,
         paymentAmount,
@@ -29,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     const res = await resend.emails.send({
       from: "Dr Web Studio <james@dr-webstudio.com>",
-      to: [clientEmail],
+      to: [clientEmail, "james@dr-webstudio.com"],
       subject: "Payment Confirmation",
       html: emailHtml,
     })
