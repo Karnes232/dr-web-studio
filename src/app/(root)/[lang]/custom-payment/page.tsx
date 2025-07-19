@@ -26,9 +26,7 @@ export async function generateMetadata({
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
 
-  const canonicalUrl = seoData?.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/custom-payment`
+  const canonicalUrl =  `${baseUrl}/${lang}/custom-payment`
 
   if (!seoData) return {}
 

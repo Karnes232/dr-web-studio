@@ -32,27 +32,34 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const seoData = await getBlogPostSEO(slug)
-
+  console.log(seoData)
   const headersList = await headers()
   const host = headersList.get("host")
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
-  const canonicalUrl = seoData?.seo?.canonicalUrl
-    ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
-    : `${baseUrl}/${lang}/blog/`
 
   if (!seoData) return {}
+  const canonicalUrl = seoData?.seo?.canonicalUrl
+  ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
+  : `${baseUrl}/${lang}/blog/`
 
   return {
     title: seoData.seo.meta[lang]?.title,
     description: seoData.seo.meta[lang]?.description,
     openGraph: {
+      
       title:
         seoData.seo.openGraph[lang]?.title || seoData.seo.meta[lang]?.title,
       description:
         seoData.seo.openGraph[lang]?.description ||
         seoData.seo.meta[lang]?.description,
-      images: seoData.seo.openGraph.image ? [seoData.seo.openGraph.image] : [],
+      url: canonicalUrl,
+      type: "website",
+      images: seoData.seo.openGraph.image ? [{
+        url: seoData.seo.openGraph.image.url,
+        width: seoData.seo.openGraph.image.width,
+        height: seoData.seo.openGraph.image.height,
+      }] : [],
     },
     robots: {
       index: !seoData.seo.noIndex,

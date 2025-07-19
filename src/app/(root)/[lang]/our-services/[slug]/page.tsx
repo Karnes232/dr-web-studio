@@ -19,18 +19,17 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
-
   // Get host information for canonical URL
   const headersList = await headers()
   const host = headersList.get("host")
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
-
+  if (!serviceSEO) return {}
   const canonicalUrl = serviceSEO?.seo?.canonicalUrl
     ? `${baseUrl}/${lang}/${serviceSEO.seo.canonicalUrl}`
     : `${baseUrl}/${lang}/our-services/${slug}`
 
-  if (!serviceSEO) return {}
+  
 
   // Use SEO data if available, otherwise fall back to basic service data
   const metaTitle = serviceSEO.seo?.meta[lang]?.title || serviceSEO.title[lang]
@@ -46,8 +45,14 @@ export async function generateMetadata({
     openGraph: {
       title: ogTitle,
       description: ogDescription,
+      url: canonicalUrl,
+      type: "website",
       images: serviceSEO.seo?.openGraph.image
-        ? [serviceSEO.seo.openGraph.image]
+        ? [{
+          url: serviceSEO.seo.openGraph.image.url,
+          width: serviceSEO.seo.openGraph.image.width,
+          height: serviceSEO.seo.openGraph.image.height,
+        }]
         : [],
     },
     robots: {

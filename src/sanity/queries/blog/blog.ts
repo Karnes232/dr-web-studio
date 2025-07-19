@@ -135,7 +135,12 @@ interface BlogPostSEO {
         title: string
         description: string
       }
-      image: string
+      image: {
+        url: string
+        alt?: string
+        width?: number
+        height?: number
+      }
     }
     structuredData: {
       en: string
@@ -172,7 +177,12 @@ const blogPostBySlugQuerySeo = `
         title,
         description
       },
-      "image": image.asset->url
+      "image": {
+        "url": image.asset->url,
+        "alt": image.alt,
+        "width": image.asset->metadata.dimensions.width,
+        "height": image.asset->metadata.dimensions.height
+      }
     },
     structuredData {
       en,

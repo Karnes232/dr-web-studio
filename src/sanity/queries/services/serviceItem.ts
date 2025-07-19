@@ -192,7 +192,12 @@ export interface ServiceItemSEO {
       title?: string
       description?: string
     }
-    image?: string
+    image: {
+      url: string
+      alt?: string
+      width?: number
+      height?: number
+    }
   }
   structuredData: {
     en?: string
@@ -361,7 +366,12 @@ const serviceItemSEOQuery = `*[_type == "serviceItem" && slug.current == $slug][
         title,
         description
       },
-      "image": image.asset->url
+      "image": {
+      "url": image.asset->url,
+      "alt": image.alt,
+      "width": image.asset->metadata.dimensions.width,
+      "height": image.asset->metadata.dimensions.height
+    }
     },
     structuredData {
       en,
