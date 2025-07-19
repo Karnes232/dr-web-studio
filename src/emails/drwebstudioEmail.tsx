@@ -19,14 +19,41 @@ import {
 const PaymentConfirmationEmail = ({
   clientName = "John Doe",
   clientEmail = "john@example.com",
-  paymentAmount = "$150",
+  paymentAmount = 15000,
   transactionId = "txn_1234567890",
+  email = "info@dr-webstudio.com"
+}: {
+  clientName?: string;
+  clientEmail?: string;
+  paymentAmount?: number;
+  transactionId?: string;
+  email?: string;
 }) => {
   const previewText = `Payment confirmed for your website project - DR Web Studio`;
-
+  let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
   return (
     <Html>
-      <Head />
+       <Head>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+              @media screen and (max-width: 768px) {
+                .payment-row-tablet {
+                  display: none !important;
+                }
+              }
+              @media screen and (min-width: 768px) {
+                .payment-row-mobile {
+                  display: none !important;
+                }
+              }
+              `,
+            }}
+          />
+        </Head>
       <Preview>{previewText}</Preview>
       <Tailwind>
       <Body className="bg-gray-50 font-sans">
@@ -73,10 +100,24 @@ const PaymentConfirmationEmail = ({
               </div>
             </Row>
             
-            <Row>
+            <Row className="payment-row-mobile">
+              <Column className="w-full">
+                <Text className="text-gray-600 text-sm mb-1">Amount Paid:</Text>
+                <Text className="text-2xl font-bold text-green-600 mb-4">{USDollar.format(paymentAmount/100)}</Text>
+              </Column>
+            </Row>
+
+            <Row className="payment-row-mobile">
+              <Column className="w-full">
+                <Text className="text-gray-600 text-sm mb-1">Transaction ID:</Text>
+                <Text className="text-gray-800 font-mono text-sm mb-4">{transactionId}</Text>
+              </Column>
+            </Row>
+            
+            <Row className="payment-row-tablet">
               <Column className="w-1/2">
                 <Text className="text-gray-600 text-sm mb-1">Amount Paid:</Text>
-                <Text className="text-2xl font-bold text-green-600 mb-4">{paymentAmount}</Text>
+                <Text className="text-2xl font-bold text-green-600 mb-4">{USDollar.format(paymentAmount/100)}</Text>
               </Column>
               <Column className="w-1/2">
                 <Text className="text-gray-600 text-sm mb-1">Transaction ID:</Text>
@@ -95,11 +136,40 @@ const PaymentConfirmationEmail = ({
               What Happens Next?
             </Heading>
             
-            <div className="space-y-3">
+            <div className="">
               <div className="flex items-start">
-                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
-                  1
-                </div>
+              <table
+                role="presentation"
+                cellPadding="0"
+                cellSpacing="0"
+                style={{
+                  backgroundColor: '#f97316', // orange-500
+                  borderRadius: '9999px',
+                  minWidth: '24px',
+                  height: '24px',
+                  marginRight: '12px',
+                  marginTop: '16px',
+                }}
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      align="center"
+                      valign="middle"
+                      style={{
+                        color: '#ffffff',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        lineHeight: '24px',
+                        textAlign: 'center',
+                        verticalAlign: 'middle',
+                      }}
+                    >
+                      1
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
                 <div>
                   <Text className="text-gray-800 font-semibold mb-1">Project Review (Within 24 hours)</Text>
                   <Text className="text-gray-600 text-sm">
@@ -109,9 +179,38 @@ const PaymentConfirmationEmail = ({
               </div>
               
               <div className="flex items-start">
-                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
-                  2
-                </div>
+              <table
+                role="presentation"
+                cellPadding="0"
+                cellSpacing="0"
+                style={{
+                  backgroundColor: '#f97316', // orange-500
+                  borderRadius: '9999px',
+                  minWidth: '24px',
+                  height: '24px',
+                  marginRight: '12px',
+                  marginTop: '16px',
+                }}
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      align="center"
+                      valign="middle"
+                      style={{
+                        color: '#ffffff',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        lineHeight: '24px',
+                        textAlign: 'center',
+                        verticalAlign: 'middle',
+                      }}
+                    >
+                      2
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
                 <div>
                   <Text className="text-gray-800 font-semibold mb-1">Initial Consultation</Text>
                   <Text className="text-gray-600 text-sm">
@@ -121,9 +220,38 @@ const PaymentConfirmationEmail = ({
               </div>
               
               <div className="flex items-start">
-                <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">
-                  3
-                </div>
+              <table
+                role="presentation"
+                cellPadding="0"
+                cellSpacing="0"
+                style={{
+                  backgroundColor: '#f97316', // orange-500
+                  borderRadius: '9999px',
+                  minWidth: '24px',
+                  height: '24px',
+                  marginRight: '12px',
+                  marginTop: '16px',
+                }}
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      align="center"
+                      valign="middle"
+                      style={{
+                        color: '#ffffff',
+                        fontSize: '12px',
+                        fontWeight: 'bold',
+                        lineHeight: '24px',
+                        textAlign: 'center',
+                        verticalAlign: 'middle',
+                      }}
+                    >
+                      3
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
                 <div>
                   <Text className="text-gray-800 font-semibold mb-1">Project Kickoff</Text>
                   <Text className="text-gray-600 text-sm">
@@ -144,24 +272,24 @@ const PaymentConfirmationEmail = ({
               We're here to help! Feel free to reach out if you have any questions or need to make changes to your project.
             </Text>
             
-            <div className="space-y-2">
+            <div className="">
               <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">Email:</Text>
-                <Link href="mailto:info@drwebstudio.com" className="text-orange-600 hover:text-orange-700">
-                  james@drwebstudio.com
+                <Link href={`mailto:${email}`} className="text-orange-600 ">
+                  {email}
                 </Link>
               </div>
               
               {/* <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">WhatsApp:</Text>
-                <Link href="https://wa.me/18091234567" className="text-orange-600 hover:text-orange-700">
+                <Link href="https://wa.me/18091234567" className="text-orange-600 ">
                   Message us on WhatsApp
                 </Link>
               </div> */}
               
               {/* <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">Schedule a Call:</Text>
-                <Link href="https://calendly.com/drwebstudio" className="text-orange-600 hover:text-orange-700">
+                <Link href="https://calendly.com/drwebstudio" className="text-orange-600 ">
                   Book a consultation
                 </Link>
               </div> */}
@@ -195,14 +323,14 @@ const PaymentConfirmationEmail = ({
               Professional website development for businesses in the Dominican Republic
             </Text>
             
-            <div className="flex justify-around mt-4 space-x-4">
-              <Link href="https://drwebstudio.com" className="text-gray-500 text-sm hover:text-orange-600">
+            <div className="flex justify-around mt-4">
+              <Link href="https://drwebstudio.com" className="text-gray-500 text-sm ">
                 DR Web Studio
               </Link>
-              <Link href="https://www.dr-webstudio.com/en/privacy-policy" className="text-gray-500 text-sm hover:text-orange-600">
+              <Link href="https://www.dr-webstudio.com/en/privacy-policy" className="text-gray-500 text-sm ">
                 Privacy Policy
               </Link>
-              <Link href="https://www.dr-webstudio.com/en/terms-of-service" className="text-gray-500 text-sm text-orange-600">
+              <Link href="https://www.dr-webstudio.com/en/terms-of-service" className="text-gray-500 text-sm ">
                 Terms of Service
               </Link>
             </div>

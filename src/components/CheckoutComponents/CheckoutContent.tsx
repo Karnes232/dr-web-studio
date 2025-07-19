@@ -17,10 +17,13 @@ import { CustomPaymentData } from "@/sanity/queries/payment/customPayment"
 import { useLocale } from "@/i18n/useLocale"
 import { StripeElementLocale } from "@stripe/stripe-js"
 
-
 const stripePromise = getStripe()
 
-const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPaymentData }) => {
+const CheckoutContent = ({
+  customPaymentData,
+}: {
+  customPaymentData: CustomPaymentData
+}) => {
   const [clientSecret, setClientSecret] = useState("")
   const [loading, setLoading] = useState(false)
   const [amount, setAmount] = useState("")
@@ -136,10 +139,18 @@ const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPayme
             </div>
           </div>
           <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            {customPaymentData.title[lang as keyof typeof customPaymentData.title]}
+            {
+              customPaymentData.title[
+                lang as keyof typeof customPaymentData.title
+              ]
+            }
           </h1>
           <p className="text-slate-600">
-            {customPaymentData.subtitle[lang as keyof typeof customPaymentData.subtitle]}
+            {
+              customPaymentData.subtitle[
+                lang as keyof typeof customPaymentData.subtitle
+              ]
+            }
           </p>
         </div>
 
@@ -271,7 +282,8 @@ const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPayme
               <div className="p-8">
                 <div className="text-center mb-6">
                   <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-lg inline-block font-semibold mb-2">
-                    {t("checkout.payment_amount")}: ${(parseFloat(amount) || 0).toFixed(2)}
+                    {t("checkout.payment_amount")}: $
+                    {(parseFloat(amount) || 0).toFixed(2)}
                   </div>
                   <div className="text-sm text-slate-600">
                     <p>
@@ -289,7 +301,7 @@ const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPayme
                     clientSecret,
                     locale: lang as StripeElementLocale,
                     appearance: {
-                      theme: "stripe",                   
+                      theme: "stripe",
                       variables: {
                         colorPrimary: "#f97316",
                         colorBackground: "#ffffff",
@@ -300,7 +312,11 @@ const CheckoutContent = ({ customPaymentData }: { customPaymentData: CustomPayme
                     },
                   }}
                 >
-                  <CheckoutForm lang={lang as string} />
+                  <CheckoutForm
+                    lang={lang as string}
+                    customerEmail={customerEmail}
+                    customerName={customerName}
+                  />
                 </Elements>
 
                 {/* Back Button */}

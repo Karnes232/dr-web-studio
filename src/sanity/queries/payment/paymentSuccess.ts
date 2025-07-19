@@ -42,4 +42,4 @@ const paymentSuccessQuery = `*[_type == "paymentSuccess"][0] {
 
 export async function getPaymentSuccess(): Promise<PaymentSuccessData> {
   return client.fetch(paymentSuccessQuery)
-} 
+}

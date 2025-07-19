@@ -18,4 +18,4 @@ const customPaymentQuery = `*[_type == "customPayment"][0] {
 
 export async function getCustomPayment(): Promise<CustomPaymentData> {
   return client.fetch(customPaymentQuery)
-} 
+}

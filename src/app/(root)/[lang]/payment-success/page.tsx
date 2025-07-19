@@ -19,7 +19,10 @@ export default async function PaymentSuccess() {
   `)
   return (
     <>
-      <PaymentSucessContent paymentSuccessData={paymentSuccessData} email={email} />
+      <PaymentSucessContent
+        paymentSuccessData={paymentSuccessData}
+        email={email}
+      />
     </>
   )
 }

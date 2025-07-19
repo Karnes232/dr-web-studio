@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export default async function CustomPaymentPage() {
-    const customPaymentData = await getCustomPayment();
+  const customPaymentData = await getCustomPayment()
   return <CheckoutContent customPaymentData={customPaymentData} />
 }
 

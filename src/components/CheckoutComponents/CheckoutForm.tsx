@@ -3,7 +3,15 @@ import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import { useRouter } from "next/navigation"
 import { useLocale } from "@/i18n/useLocale"
 
-export default function CheckoutForm({ lang }: { lang: string }) {
+export default function CheckoutForm({
+  lang,
+  customerEmail,
+  customerName,
+}: {
+  lang: string
+  customerEmail: string
+  customerName: string
+}) {
   const stripe = useStripe()
   const elements = useElements()
   const router = useRouter()
@@ -37,6 +45,22 @@ export default function CheckoutForm({ lang }: { lang: string }) {
         status: paymentIntent.status,
       })
 
+      const response = await fetch("/api/payment-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clientName: customerName,
+          clientEmail: customerEmail,
+          paymentAmount: paymentIntent.amount.toString(),
+          transactionId: paymentIntent.id,
+          lang: lang,
+        }),
+      })
+
+      const data = await response.json()
+      
       router.push(`/${lang}/payment-success?${searchParams.toString()}`)
     }
   }

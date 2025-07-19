@@ -16,7 +16,13 @@ import {
 } from "lucide-react"
 import { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
 import { useLocale } from "@/i18n/useLocale"
-const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessData: PaymentSuccessData, email: { email: string } }) => {
+const PaymentSucessContent = ({
+  paymentSuccessData,
+  email,
+}: {
+  paymentSuccessData: PaymentSuccessData
+  email: { email: string }
+}) => {
   const [message, setMessage] = useState<string>("")
   const [paymentDetails, setPaymentDetails] = useState<any>(null)
   const searchParams = useSearchParams()
@@ -37,9 +43,15 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
           const data = await response.json()
           if (data.success) {
             setPaymentDetails(data.paymentIntent)
-            setMessage(
-              `${t("checkout.payment_of")} $${(data.paymentIntent.amount / 100).toFixed(2)} ${t("checkout.completed_successfully")}!`,
-            )
+            if (currentLocale === "en") {
+              setMessage(
+                `Payment of $${(data.paymentIntent.amount / 100).toFixed(2)} completed successfully!`,
+              )
+            } else {
+              setMessage(
+                `Pago de $${(data.paymentIntent.amount / 100).toFixed(2)} completado exitosamente!`,
+              )
+            }
           }
         } catch (error) {
           console.error("Error fetching payment details:", error)
@@ -109,10 +121,18 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
           </div>
 
           <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            {paymentSuccessData.title[currentLocale as keyof typeof paymentSuccessData.title]}
+            {
+              paymentSuccessData.title[
+                currentLocale as keyof typeof paymentSuccessData.title
+              ]
+            }
           </h1>
           <p className="text-slate-600 text-lg">
-            {paymentSuccessData.subtitle[currentLocale as keyof typeof paymentSuccessData.subtitle]}
+            {
+              paymentSuccessData.subtitle[
+                currentLocale as keyof typeof paymentSuccessData.subtitle
+              ]
+            }
           </p>
         </div>
 
@@ -130,13 +150,17 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
 
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-                  <span className="text-slate-600">{t("checkout.transaction_id")}:</span>
+                  <span className="text-slate-600">
+                    {t("checkout.transaction_id")}:
+                  </span>
                   <span className="font-mono text-sm text-slate-800 ">
                     #{paymentDetails?.id}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">{t("checkout.amount")}:</span>
+                  <span className="text-slate-600">
+                    {t("checkout.amount")}:
+                  </span>
                   <span className="font-semibold text-slate-800 flex items-center">
                     <DollarSign className="h-4 w-4 mr-1" />
                     {paymentDetails?.amount
@@ -151,7 +175,9 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">{t("checkout.status")}:</span>
+                  <span className="text-slate-600">
+                    {t("checkout.status")}:
+                  </span>
                   <span className="flex items-center text-teal-600">
                     <CheckCircle className="h-4 w-4 mr-1" />
                     {t("checkout.completed")}
@@ -204,23 +230,33 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
           <div className="bg-slate-50 px-8 py-6 border-t border-slate-200">
             <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center">
               <Mail className="h-5 w-5 mr-2 text-orange-500" />
-              {paymentSuccessData.whatsNext.title[currentLocale as keyof typeof paymentSuccessData.whatsNext.title]}
+              {
+                paymentSuccessData.whatsNext.title[
+                  currentLocale as keyof typeof paymentSuccessData.whatsNext.title
+                ]
+              }
             </h3>
 
             <div className="space-y-3 text-sm text-slate-600">
               {paymentSuccessData.whatsNext.steps.map((step, index) => {
-
                 return (
                   <div className="flex items-start" key={index}>
-                    <div className={`flex-shrink-0 w-6 h-6 ${step.color} text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5`}>
+                    <div
+                      className={`flex-shrink-0 w-6 h-6 ${step.color} text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5`}
+                    >
                       {step.number}
-                </div>
-                <p>{step.description[currentLocale as keyof typeof step.description]}</p>
                     </div>
+                    <p>
+                      {
+                        step.description[
+                          currentLocale as keyof typeof step.description
+                        ]
+                      }
+                    </p>
+                  </div>
                 )
               })}
             </div>
-
           </div>
         </div>
 
@@ -229,9 +265,7 @@ const PaymentSucessContent = ({ paymentSuccessData, email }: { paymentSuccessDat
           <h3 className="text-lg font-semibold text-slate-800 mb-2">
             {t("checkout.need_help")}
           </h3>
-          <p className="text-slate-600 mb-4">
-            {t("checkout.have_questions")}
-          </p>
+          <p className="text-slate-600 mb-4">{t("checkout.have_questions")}</p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a

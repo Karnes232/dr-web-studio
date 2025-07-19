@@ -15,7 +15,10 @@ const ResourcesLinks = () => {
       href: getLocalizedPath("/contact"),
       label: t("resources.get_free_quote"),
     },
-    { href: getLocalizedPath("/custom-payment"), label: t("resources.custom_payment") },
+    {
+      href: getLocalizedPath("/custom-payment"),
+      label: t("resources.custom_payment"),
+    },
     //  { href: "#testimonials", label: t("resources.client_reviews") },
     { href: getLocalizedPath("/faqs"), label: t("resources.faq") },
     {
@@ -29,7 +32,6 @@ const ResourcesLinks = () => {
       <ul className="space-y-2">
         {resources.map((resource, index) => (
           <li key={index}>
-            
             <Link
               href={resource.href}
               className="text-gray-300 hover:text-orange-400 transition-colors duration-200 flex items-center"
