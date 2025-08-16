@@ -46,6 +46,7 @@ export async function generateMetadata({
   return {
     title: seoData.seo.meta[lang]?.title,
     description: seoData.seo.meta[lang]?.description,
+    keywords: seoData.seo.meta[lang]?.keywords.join(", "),
     openGraph: {
       
       title:

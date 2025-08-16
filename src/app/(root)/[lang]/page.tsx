@@ -64,10 +64,11 @@ export async function generateMetadata({
     : `${baseUrl}/${lang}`
 
   if (!seoData) return {}
-
+  console.log(seoData)
   return {
     title: seoData.meta[lang]?.title,
     description: seoData.meta[lang]?.description,
+    keywords: seoData.meta[lang]?.keywords.join(", "),
     openGraph: {
       title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
       description:
