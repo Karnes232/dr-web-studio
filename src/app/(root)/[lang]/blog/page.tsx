@@ -6,18 +6,32 @@ import { getBlogHeader } from "@/sanity/queries/blog/blogHeader"
 import { Metadata } from "next"
 import React from "react"
 import { headers } from "next/headers"
+const POSTS_PER_PAGE = 6
+
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
   }>
+  searchParams: Promise<{ page?: string }>
 }
 
-export default async function Blog({ params }: PageProps) {
+export default async function Blog({ params, searchParams }: PageProps) {
   const { lang } = await params
+  const { page: pageParam } = await searchParams
+  const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1)
+
   const seoData = await getSeoSchema("blog")
   const headerData = await getBlogHeader()
   const blogPosts = await getAllBlogPosts()
   const categories = await getAllCategories()
+
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE)
+  const validPage = Math.min(currentPage, Math.max(1, totalPages))
+  const startIndex = (validPage - 1) * POSTS_PER_PAGE
+  const initialPaginatedPosts = blogPosts.slice(
+    startIndex,
+    startIndex + POSTS_PER_PAGE,
+  )
 
   if (!headerData) {
     throw new Error("Blog header data not found")
@@ -35,6 +49,10 @@ export default async function Blog({ params }: PageProps) {
         lang={lang}
         blogPosts={blogPosts}
         header={headerData}
+        initialPage={validPage}
+        initialPaginatedPosts={initialPaginatedPosts}
+        totalPages={totalPages}
+        postsPerPage={POSTS_PER_PAGE}
       />
     </>
   )

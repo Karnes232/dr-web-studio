@@ -1,9 +1,8 @@
 "use client"
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import BlogHeader from "./BlogHeader"
 import BlogFilters from "./BlogFilters"
 import FeaturedPost from "./FeaturedPost"
-import NewsletterSignup from "./NewsletterSignup"
 import BlogCard from "./BlogCard"
 import Pagination from "./Pagination"
 import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blog/blogHeader"
@@ -14,37 +13,67 @@ const BlogContent = ({
   lang,
   blogPosts,
   header,
+  initialPage = 1,
+  initialPaginatedPosts = [],
+  totalPages: serverTotalPages = 1,
+  postsPerPage = 6,
 }: {
   categories: any
   lang: "en" | "es"
   blogPosts: any
   header: BlogHeaderType
+  initialPage?: number
+  initialPaginatedPosts?: any[]
+  totalPages?: number
+  postsPerPage?: number
 }) => {
-  const { t } = useLocale()
+  const { t, getLocalizedPath } = useLocale()
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 6
-  // Filter posts
-  const filteredPosts = blogPosts.filter((post: any) => {
-    const matchesSearch =
-      post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description[lang].toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory =
-      selectedCategory === "All" ||
-      post.categories.some((cat: any) => cat.title[lang] === selectedCategory)
-    return matchesSearch && matchesCategory
-  })
+  const [clientPage, setClientPage] = useState(1)
 
-  // Pagination
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
-  const startIndex = (currentPage - 1) * postsPerPage
-  const paginatedPosts = filteredPosts.slice(
-    startIndex,
-    startIndex + postsPerPage,
+  const isDefaultView = searchTerm === "" && selectedCategory === "All"
+  const currentPage = isDefaultView ? initialPage : clientPage
+  const displayPosts = useMemo(() => {
+    if (isDefaultView) return initialPaginatedPosts
+    const filtered = blogPosts.filter((post: any) => {
+      const matchesSearch =
+        post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.description[lang].toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesCategory =
+        selectedCategory === "All" ||
+        post.categories.some((cat: any) => cat.title[lang] === selectedCategory)
+      return matchesSearch && matchesCategory
+    })
+    const start = (clientPage - 1) * postsPerPage
+    return filtered.slice(start, start + postsPerPage)
+  }, [
+    isDefaultView,
+    initialPaginatedPosts,
+    blogPosts,
+    lang,
+    searchTerm,
+    selectedCategory,
+    clientPage,
+    postsPerPage,
+  ])
+
+  const filteredPosts = useMemo(
+    () =>
+      blogPosts.filter((post: any) => {
+        const matchesSearch =
+          post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
+          post.description[lang].toLowerCase().includes(searchTerm.toLowerCase())
+        const matchesCategory =
+          selectedCategory === "All" ||
+          post.categories.some((cat: any) => cat.title[lang] === selectedCategory)
+        return matchesSearch && matchesCategory
+      }),
+    [blogPosts, lang, searchTerm, selectedCategory],
   )
+  const clientTotalPages = Math.ceil(filteredPosts.length / postsPerPage)
+  const totalPages = isDefaultView ? serverTotalPages : clientTotalPages
 
-  // Get featured post (first post that has featured = true)
   const featuredPost =
     blogPosts.find((post: any) => post.featured === true) || blogPosts[0]
 
@@ -64,29 +93,26 @@ const BlogContent = ({
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Featured Post */}
-        {searchTerm === "" &&
-          selectedCategory === "All" &&
-          currentPage === 1 &&
+        {isDefaultView &&
+          initialPage === 1 &&
           featuredPost && <FeaturedPost post={featuredPost} lang={lang} />}
 
-        {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedPosts.map((post: any) => (
+          {displayPosts.map((post: any) => (
             <BlogCard key={post.slug.current} post={post} lang={lang} />
           ))}
         </div>
 
-        {/* Pagination */}
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            onPageChange={setClientPage}
+            useLinks={isDefaultView}
+            basePath={getLocalizedPath("/blog")}
           />
         )}
 
-        {/* No Results */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-slate-600 text-lg">

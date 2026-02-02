@@ -111,6 +111,38 @@ export async function getBlogPostBySlug(
   return await client.fetch(blogPostBySlugQuery, { slug })
 }
 
+const relatedBlogPostsQuery = `
+*[_type == "blogPost" && slug.current != $currentSlug && (
+  count($categorySlugs) == 0 ||
+  count((categories[]->slug.current)[@ in $categorySlugs]) > 0
+)] | order(publishedAt desc)[0...$limit] {
+  title,
+  slug,
+  "categories": categories[]-> {
+    title,
+    slug,
+    description
+  },
+  publishedAt,
+  "imageUrl": mainImage.asset->url,
+  readTime,
+  tags,
+  description
+}
+`
+
+export async function getRelatedBlogPosts(
+  currentSlug: string,
+  categorySlugs: string[],
+  limit = 3,
+): Promise<BlogPost[]> {
+  return await client.fetch(relatedBlogPostsQuery, {
+    currentSlug,
+    categorySlugs: categorySlugs ?? [],
+    limit,
+  })
+}
+
 interface BlogPostSEO {
   title: string
   seo: {

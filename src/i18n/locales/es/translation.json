@@ -50,7 +50,10 @@
     "searchPlaceholder": "Buscar artículos...",
     "backToBlog": "Volver al Blog",
     "noArticlesFound": "No se encontraron artículos que coincidan con tus criterios.",
-    "readMore": "Leer Más"
+    "readMore": "Leer Más",
+    "latestFromBlog": "Últimas del Blog",
+    "viewAllPosts": "Ver todas las entradas",
+    "relatedPosts": "Artículos relacionados"
   },
   "hero": {
     "happyClients": "Clientes Felices",

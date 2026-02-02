@@ -50,7 +50,10 @@
     "searchPlaceholder": "Search articles...",
     "backToBlog": "Back to Blog",
     "noArticlesFound": "No articles found matching your criteria.",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "latestFromBlog": "Latest from the Blog",
+    "viewAllPosts": "View all posts",
+    "relatedPosts": "Related posts"
   },
   "hero": {
     "happyClients": "Happy Clients",

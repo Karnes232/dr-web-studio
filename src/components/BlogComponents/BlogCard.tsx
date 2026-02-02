@@ -36,12 +36,13 @@ interface BlogCardProps {
     }
   }
   lang: "en" | "es"
+  shadow?: boolean
 }
 
-const BlogCard = ({ post, lang }: BlogCardProps) => {
+const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
   const { t } = useLocale()
   return (
-    <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <article className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}>
       <div className="relative">
         <Image
           src={post.imageUrl}
@@ -60,7 +61,7 @@ const BlogCard = ({ post, lang }: BlogCardProps) => {
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-slate-800 mb-3 line-clamp-2">
+        <h3 className="text-xl font-bold text-slate-800 mb-3 line-clamp-2 h-16">
           {post.title[lang]}
         </h3>
 

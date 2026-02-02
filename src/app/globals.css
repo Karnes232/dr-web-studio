@@ -54,3 +54,13 @@ body {
   background: white !important;
   opacity: 1 !important;
 }
+
+/* Related posts carousel – visible on light background */
+.related-posts-swiper .swiper-pagination-bullet {
+  background: rgb(203 213 225) !important;
+  opacity: 0.8 !important;
+}
+.related-posts-swiper .swiper-pagination-bullet-active {
+  background: rgb(249 115 22) !important;
+  opacity: 1 !important;
+}
