@@ -1,21 +1,13 @@
 import type { Metadata } from "next"
-import { Crimson_Pro, Geist, Geist_Mono, Inter } from "next/font/google"
+import { Crimson_Pro, Inter } from "next/font/google"
 import "../globals.css"
 import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import { client } from "@/sanity/lib/client"
 import Footer from "@/components/Layout/FooterComponents/Footer"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 import Script from "next/script"
+import { Analytics } from "@vercel/analytics/next"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
 
 const inter = Inter({
   subsets: ["latin"],
@@ -111,6 +103,7 @@ export default async function RootLayout({
           serviceLinks={serviceLinks}
         />
       </body>
+      <Analytics/>
     </html>
   )
 }
