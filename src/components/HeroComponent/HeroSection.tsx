@@ -59,7 +59,7 @@ const HeroSection = ({
                 {" "}
                 {heading.highlightedWord}{" "}
               </span>
-              {heading.afterHighlight}
+              {' '}{heading.afterHighlight}
             </h1>
 
             <h2 className="text-xl lg:text-2xl text-gray-200 leading-relaxed">
