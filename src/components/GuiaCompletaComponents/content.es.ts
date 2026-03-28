@@ -443,12 +443,12 @@ export const comparisonData: ComparisonItem[] = [
   {
     feature: "Costo de Mantenimiento",
     traditional: {
-      value: "$2,000-5,000/mes",
+      value: "$0-400/mes",
       icon: "DollarSign",
       description: "Actualizaciones manuales frecuentes",
     },
     modern: {
-      value: "$500-1,500/mes",
+      value: "$0-400/mes",
       icon: "PiggyBank",
       description: "Actualizaciones automatizadas, menos intervención",
     },
