@@ -10,7 +10,10 @@ interface I18nContextValue {
 
 const I18nContext = createContext<I18nContextValue | null>(null)
 
-function resolveKey(translations: Record<string, unknown>, key: string): string {
+function resolveKey(
+  translations: Record<string, unknown>,
+  key: string,
+): string {
   const parts = key.split(".")
   let val: unknown = translations
   for (const part of parts) {
@@ -33,7 +36,9 @@ export function I18nProvider({
   const getLocalizedPath = (path: string) => `/${locale}${path}`
 
   return (
-    <I18nContext.Provider value={{ currentLocale: locale, t, getLocalizedPath }}>
+    <I18nContext.Provider
+      value={{ currentLocale: locale, t, getLocalizedPath }}
+    >
       {children}
     </I18nContext.Provider>
   )

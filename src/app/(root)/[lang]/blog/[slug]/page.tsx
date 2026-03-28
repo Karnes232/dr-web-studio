@@ -21,8 +21,9 @@ export default async function BlogPost({ params }: PageProps) {
   const { lang, slug } = await params
   const post = await getBlogPostBySlug(slug)
   const categorySlugs =
-    post?.categories?.map((c: { slug: { current: string } }) => c.slug.current) ??
-    []
+    post?.categories?.map(
+      (c: { slug: { current: string } }) => c.slug.current,
+    ) ?? []
   const relatedPosts = await getRelatedBlogPosts(slug, categorySlugs, 10)
 
   return (
@@ -47,15 +48,14 @@ export async function generateMetadata({
 
   if (!seoData) return {}
   const canonicalUrl = seoData?.seo?.canonicalUrl
-  ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
-  : `${baseUrl}/${lang}/blog/`
+    ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
+    : `${baseUrl}/${lang}/blog/`
 
   return {
     title: seoData.seo.meta[lang]?.title,
     description: seoData.seo.meta[lang]?.description,
     keywords: seoData.seo.meta[lang]?.keywords.join(", "),
     openGraph: {
-      
       title:
         seoData.seo.openGraph[lang]?.title || seoData.seo.meta[lang]?.title,
       description:
@@ -63,11 +63,15 @@ export async function generateMetadata({
         seoData.seo.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
-      images: seoData.seo.openGraph.image ? [{
-        url: seoData.seo.openGraph.image.url,
-        width: seoData.seo.openGraph.image.width,
-        height: seoData.seo.openGraph.image.height,
-      }] : [],
+      images: seoData.seo.openGraph.image
+        ? [
+            {
+              url: seoData.seo.openGraph.image.url,
+              width: seoData.seo.openGraph.image.width,
+              height: seoData.seo.openGraph.image.height,
+            },
+          ]
+        : [],
     },
     robots: {
       index: !seoData.seo.noIndex,

@@ -42,7 +42,9 @@ interface BlogCardProps {
 const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
   const { t } = useLocale()
   return (
-    <article className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}>
+    <article
+      className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}
+    >
       <div className="relative">
         <Image
           src={post.imageUrl}

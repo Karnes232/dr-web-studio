@@ -58,8 +58,8 @@ const HeroSection = ({
               <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
                 {" "}
                 {heading.highlightedWord}{" "}
-              </span>
-              {' '}{heading.afterHighlight}
+              </span>{" "}
+              {heading.afterHighlight}
             </h1>
 
             <h2 className="text-xl lg:text-2xl text-gray-200 leading-relaxed">

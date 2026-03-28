@@ -19,19 +19,21 @@ export async function POST(request: NextRequest) {
       await request.json()
     console.log(lang)
     const emailHtml = await render(
-      lang === "es" ? PaymentConfirmationEmailSpanish({
-        clientName,
-        clientEmail,
-        paymentAmount,
-        transactionId,
-        email: emailData.email,
-      }) : PaymentConfirmationEmail({
-        clientName,
-        clientEmail,
-        paymentAmount,
-        transactionId,
-        email: emailData.email,
-      }),
+      lang === "es"
+        ? PaymentConfirmationEmailSpanish({
+            clientName,
+            clientEmail,
+            paymentAmount,
+            transactionId,
+            email: emailData.email,
+          })
+        : PaymentConfirmationEmail({
+            clientName,
+            clientEmail,
+            paymentAmount,
+            transactionId,
+            email: emailData.email,
+          }),
     )
 
     const res = await resend.emails.send({

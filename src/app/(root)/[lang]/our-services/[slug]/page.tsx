@@ -29,8 +29,6 @@ export async function generateMetadata({
     ? `${baseUrl}/${lang}/${serviceSEO.seo.canonicalUrl}`
     : `${baseUrl}/${lang}/our-services/${slug}`
 
-  
-
   // Use SEO data if available, otherwise fall back to basic service data
   const metaTitle = serviceSEO.seo?.meta[lang]?.title || serviceSEO.title[lang]
   const metaDescription = serviceSEO.seo?.meta[lang]?.description || ""
@@ -48,11 +46,13 @@ export async function generateMetadata({
       url: canonicalUrl,
       type: "website",
       images: serviceSEO.seo?.openGraph.image
-        ? [{
-          url: serviceSEO.seo.openGraph.image.url,
-          width: serviceSEO.seo.openGraph.image.width,
-          height: serviceSEO.seo.openGraph.image.height,
-        }]
+        ? [
+            {
+              url: serviceSEO.seo.openGraph.image.url,
+              width: serviceSEO.seo.openGraph.image.width,
+              height: serviceSEO.seo.openGraph.image.height,
+            },
+          ]
         : [],
     },
     robots: {

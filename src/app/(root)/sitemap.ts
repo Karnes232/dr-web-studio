@@ -19,6 +19,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/en/faqs`, lastModified: new Date(), priority: 0.8 },
     { url: `${baseUrl}/es/faqs`, lastModified: new Date(), priority: 0.8 },
     {
+      url: `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/es/guia-completa-desarrollo-web-moderno-negocios`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/en/privacy-policy`,
       lastModified: new Date(),
       priority: 0.8,

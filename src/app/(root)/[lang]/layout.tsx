@@ -61,24 +61,34 @@ interface LangLayoutProps {
   params: Promise<{ lang: string }>
 }
 
-export default async function LangLayout({ children, params }: LangLayoutProps) {
+export default async function LangLayout({
+  children,
+  params,
+}: LangLayoutProps) {
   const { lang: rawLang } = await params
   const lang = languages.includes(rawLang) ? rawLang : fallbackLng
 
   const [translations, logo, companyInfo, serviceLinks] = await Promise.all([
     lang === "es"
-      ? import("@/i18n/locales/es/translation.json").then((m) => m.default)
-      : import("@/i18n/locales/en/translation.json").then((m) => m.default),
+      ? import("@/i18n/locales/es/translation.json").then(m => m.default)
+      : import("@/i18n/locales/en/translation.json").then(m => m.default),
     getLogo(),
     getCompanyInfo(),
     getServiceItemsLinks(),
   ])
 
   return (
-    <I18nProvider locale={lang} translations={translations as Record<string, unknown>}>
+    <I18nProvider
+      locale={lang}
+      translations={translations as Record<string, unknown>}
+    >
       <Navbar logo={logo} serviceLinks={serviceLinks} />
       {children}
-      <Footer logo={logo} companyInfo={companyInfo} serviceLinks={serviceLinks} />
+      <Footer
+        logo={logo}
+        companyInfo={companyInfo}
+        serviceLinks={serviceLinks}
+      />
     </I18nProvider>
   )
 }

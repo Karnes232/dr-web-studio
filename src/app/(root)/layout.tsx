@@ -27,7 +27,11 @@ export default async function RootLayout({
         src={`https://www.googletagmanager.com/gtag/js?id=G-Y3DMZHFV9Z`}
         strategy="lazyOnload"
       />
-      <script src="https://analytics.ahrefs.com/analytics.js" data-key="1+Xtrpxb01gBoWyKHrpzhQ" async></script>
+      <script
+        src="https://analytics.ahrefs.com/analytics.js"
+        data-key="1+Xtrpxb01gBoWyKHrpzhQ"
+        async
+      ></script>
       <Script id="ga-setup" strategy="lazyOnload">
         {`
               window.dataLayer = window.dataLayer || [];

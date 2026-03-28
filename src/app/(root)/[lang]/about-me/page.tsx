@@ -134,11 +134,15 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
-      images: seoData.openGraph.image ? [{
-        url: seoData.openGraph.image.url,
-        width: seoData.openGraph.image.width,
-        height: seoData.openGraph.image.height,
-      }] : [],
+      images: seoData.openGraph.image
+        ? [
+            {
+              url: seoData.openGraph.image.url,
+              width: seoData.openGraph.image.width,
+              height: seoData.openGraph.image.height,
+            },
+          ]
+        : [],
     },
     robots: {
       index: !seoData.noIndex,

@@ -60,7 +60,7 @@ export default function CheckoutForm({
       })
 
       const data = await response.json()
-      
+
       router.push(`/${lang}/payment-success?${searchParams.toString()}`)
     }
   }
