@@ -4,11 +4,15 @@ import {
   Language,
 } from "@/components/GuiaCompletaComponents/pillarPageData"
 
+interface PageProps {
+    params: Promise<{
+      lang: "en" | "es"
+    }>
+  }
+
 export default async function GuiaCompletaDesarrolloWebModernoNegocios({
   params,
-}: {
-  params: { lang: string }
-}) {
+}: PageProps) {
   const { lang } = await params
   const content = await getPillarPageContent(lang as Language)
   return (
