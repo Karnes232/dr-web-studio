@@ -120,7 +120,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
             </p>
 
             <a
-              href="mailto:contacto@tuempresa.com"
+              href="mailto:james@dr-webstudio.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-2xl hover:shadow-indigo-500/30 transition-all transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />

@@ -39,6 +39,10 @@ export default defineType({
           { title: "Terms of Service", value: "terms-of-service" },
           { title: "FAQs", value: "faqs" },
           { title: "Custom Payment", value: "custom-payment" },
+          {
+            title: "Guia Completa Desarrollo Web Moderno Negocios",
+            value: "guia-completa-desarrollo-web-moderno-negocios",
+          },
         ],
         layout: "dropdown",
       },

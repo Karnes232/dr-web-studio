@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Sparkles, TrendingUp, Zap } from "lucide-react"
 import type { HeroData } from "./types"
+import { useLocale } from "@/i18n/useLocale"
+import Link from "next/link"
 
 interface PillarHeroProps {
   data: HeroData
@@ -19,7 +21,7 @@ export function PillarHero({
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { scrollY } = useScroll()
-
+  const { getLocalizedPath } = useLocale()
   // Gentle parallax for text only (not stats)
   const textY = useTransform(scrollY, [0, 500], [0, 100])
   const textOpacity = useTransform(scrollY, [0, 400], [1, 0.3])
@@ -158,23 +160,25 @@ export function PillarHero({
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center mb-16"
             >
-              <motion.button
-                onClick={onCtaClick}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Button shine effect */}
+              <Link href={getLocalizedPath("/contact")}>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
+                  //onClick={onCtaClick}
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Button shine effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
 
-                <span className="relative z-10">{ctaText}</span>
-                <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+                  <span className="relative z-10">{ctaText}</span>
+                  <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.div>
+              </Link>
             </motion.div>
           </motion.div>
 

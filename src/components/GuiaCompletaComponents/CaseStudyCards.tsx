@@ -15,6 +15,7 @@ import {
   CheckCircle2,
 } from "lucide-react"
 import type { CaseStudy } from "./types"
+import Image from "next/image"
 
 interface CaseStudyCardsProps {
   data: CaseStudy[]
@@ -176,29 +177,36 @@ function CaseStudyCard({
         <div className="relative p-8 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 border-b border-slate-200 dark:border-slate-800">
           {/* Client Logo/Icon */}
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-xl bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-                {caseStudy.client.charAt(0)}
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
+                <img
+                  src={caseStudy.logo}
+                  alt={caseStudy.client}
+                  width={48}
+                  height={48}
+                  className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                />
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+              <div className="min-w-0">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight truncate">
                   {caseStudy.client}
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
                   {caseStudy.industry}
                 </p>
               </div>
             </div>
 
             {/* Star Rating */}
-            <div className="flex gap-1">
+            {/* <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
                   className="w-4 h-4 fill-yellow-400 text-yellow-400"
                 />
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Challenge (Brief) */}

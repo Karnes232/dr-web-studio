@@ -61,6 +61,7 @@ export default async function Contact({ params }: PageProps) {
                 emergencySupportDescription={
                   locationInfo.emergencySupport.description[lang]
                 }
+                language={lang}
               />
               <ContactFAQ
                 title={faqsHeader.title[lang]}

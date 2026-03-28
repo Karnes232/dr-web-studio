@@ -58,6 +58,7 @@ export interface CaseStudy {
   id: string
   client: string
   industry: string
+  logo: string
   challenge: string
   solution: string[]
   results: {

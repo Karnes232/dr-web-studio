@@ -12,11 +12,17 @@ const QuickLinks = () => {
     { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
     { href: getLocalizedPath("/blog"), label: t("navigation.blog") },
     { href: getLocalizedPath("/contact"), label: t("navigation.contact") },
+    {
+      href: getLocalizedPath("/guia-completa-desarrollo-web-moderno-negocios"),
+      label: t("navigation.guiaCompleta"),
+    },
   ]
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">
+        {t("navigation.quickLinks")}
+      </h3>
       <ul className="space-y-2">
         {links.map((link, index) => (
           <li key={index}>

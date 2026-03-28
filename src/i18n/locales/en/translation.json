@@ -5,7 +5,9 @@
     "portfolio": "Portfolio",
     "pricing": "Pricing",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "guiaCompleta": "Guia Completa",
+    "quickLinks": "Quick Links"
   },
   "services": {
     "services": "Services",

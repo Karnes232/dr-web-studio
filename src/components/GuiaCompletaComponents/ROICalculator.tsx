@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import {
@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react"
+import { useLocale } from "@/i18n/useLocale"
 
 interface ROICalculatorProps {
   language?: "en" | "es"
@@ -23,6 +24,7 @@ export function ROICalculator({
   language = "es",
   onCtaClick,
 }: ROICalculatorProps) {
+  const { getLocalizedPath } = useLocale()
   // Input values
   const [monthlyVisitors, setMonthlyVisitors] = useState(10000)
   const [conversionRate, setConversionRate] = useState(2)
@@ -444,22 +446,24 @@ export function ROICalculator({
               </div>
 
               {/* CTA Button */}
-              <motion.button
-                onClick={onCtaClick}
-                className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-                <span className="relative z-10">{t.cta}</span>
-                <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
 
+              <Link href={getLocalizedPath("/project-planner")}>
+                <motion.div
+                  //onClick={onCtaClick}
+                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="relative z-10">{t.cta}</span>
+                  <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.div>
+              </Link>
               {/* Disclaimer */}
               <p className="text-xs text-slate-500 dark:text-slate-400 text-center italic">
                 {t.disclaimer}

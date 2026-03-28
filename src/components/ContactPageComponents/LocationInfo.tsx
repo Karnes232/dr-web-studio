@@ -9,6 +9,7 @@ const LocationInfo = ({
   localAdvantageDescription,
   emergencySupportTitle,
   emergencySupportDescription,
+  language,
 }: {
   title: string
   location: string
@@ -17,6 +18,7 @@ const LocationInfo = ({
   localAdvantageDescription: string
   emergencySupportTitle: string
   emergencySupportDescription: string
+  language: string
 }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
@@ -44,20 +46,26 @@ const LocationInfo = ({
         <div>
           <div className="flex items-center mb-3">
             <Clock className="h-5 w-5 text-slate-600 mr-2" />
-            <h4 className="font-semibold text-slate-800">Business Hours</h4>
+            <h4 className="font-semibold text-slate-800">
+              {language === "en" ? "Business Hours" : "Horarios de Negocios"}
+            </h4>
           </div>
           <div className="space-y-2 text-slate-600">
             <div className="flex justify-between">
-              <span>Monday - Friday</span>
+              <span>
+                {language === "en" ? "Monday - Friday" : "Lunes - Viernes"}
+              </span>
               <span className="font-medium">9:00 AM - 6:00 PM</span>
             </div>
             <div className="flex justify-between">
-              <span>Saturday</span>
+              <span>{language === "en" ? "Saturday" : "Sábado"}</span>
               <span className="font-medium">10:00 AM - 2:00 PM</span>
             </div>
             <div className="flex justify-between">
-              <span>Sunday</span>
-              <span className="font-medium">Closed</span>
+              <span>{language === "en" ? "Sunday" : "Domingo"}</span>
+              <span className="font-medium">
+                {language === "en" ? "Closed" : "Cerrado"}
+              </span>
             </div>
           </div>
           {/* <p className="text-sm text-slate-500 mt-3">

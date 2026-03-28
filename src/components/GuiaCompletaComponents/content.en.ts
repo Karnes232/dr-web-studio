@@ -63,6 +63,7 @@ export interface CaseStudy {
   id: string
   client: string
   industry: string
+  logo: string
   challenge: string
   solution: string[]
   results: {
@@ -957,160 +958,167 @@ export const costBreakdown = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "ecommerce-fashion",
-    client: "Premium Fashion Boutique",
-    industry: "E-commerce / Fashion",
+    id: "wedding-photography-portfolio",
+    client: "Punta Cana Photo Edition",
+    industry: "Wedding & Event Photography",
+    logo: "https://puntacanaphotoedition.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fno36dddd%2Fproduction%2Fa8a75b81c462bef9dbe1fbbabf732c22a927a4ae-500x500.png&w=256&q=75",
     challenge:
-      "Online store with 68% bounce rate, 8-second mobile load time, and only 1.8% conversion. Legacy platform difficult to update.",
+      "The client needed a modern, SEO-friendly website to showcase their wedding and event photography services in Punta Cana. Their previous site lacked visual impact, multilingual support, and a streamlined way to present their portfolio to international clients.",
     solution: [
-      "Migration to Next.js 14 with App Router",
-      "Stripe implementation for optimized checkout",
-      "PWA with offline functionality for catalog",
-      "Image optimization with Sharp and CDN",
-      "Smart search implementation with Algolia",
+      "Custom-built multilingual portfolio using Next.js",
+      "Responsive design with Tailwind CSS",
+      "Sanity CMS integration for content management",
+      "Optimized galleries with smooth navigation",
+      "SEO-optimized structure for both languages (EN/ES)",
     ],
     results: [
       {
-        metric: "Conversion",
-        before: "1.8%",
-        after: "5.2%",
-        improvement: "+189%",
+        metric: "Session Duration",
+        before: "1.2 min",
+        after: "2.8 min",
+        improvement: "+2.3x",
+      },
+      {
+        metric: "Form Submissions",
+        before: "15/mo",
+        after: "24/mo",
+        improvement: "+60%",
+      },
+      {
+        metric: "International Reach",
+        before: "Spanish only",
+        after: "EN + ES",
+        improvement: "+100%",
       },
       {
         metric: "Load Time",
-        before: "8.3 sec",
-        after: "1.6 sec",
-        improvement: "-81%",
-      },
-      {
-        metric: "Revenue",
-        before: "$52k/mo",
-        after: "$167k/mo",
-        improvement: "+221%",
-      },
-      {
-        metric: "Mobile Sales",
-        before: "23%",
-        after: "61%",
-        improvement: "+165%",
+        before: "4.8 sec",
+        after: "1.4 sec",
+        improvement: "-71%",
       },
     ],
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Vercel"],
-    timeline: "12 weeks",
+    technologies: ["Next.js", "Tailwind CSS", "Sanity CMS", "TypeScript"],
+    timeline: "6 weeks",
     testimonial: {
       quote:
-        "In 3 months we recovered the investment. Now we can update products in minutes instead of days, and our mobile sales tripled.",
-      author: "María Rodríguez",
-      role: "CEO, Premium Boutique",
+        "The new site has transformed how we present our work. Clients spend twice as long viewing our portfolio and we've seen a significant increase in inquiries.",
+      author: "Punta Cana Photo Team",
+      role: "Wedding & Event Photography",
     },
   },
   {
-    id: "saas-platform",
-    client: "SaaS Management Platform",
-    industry: "SaaS / B2B",
+    id: "event-planning-webapp",
+    client: "Sertuin Events",
+    industry: "Event Planning",
+    logo: "https://sertuinevents.com/_gatsby/image/7e80b5ffc02630f8b0579099aa029a11/aadda68e70952a77b95097eb6e8d4a1d/logotipo%20sertuin%20events.webp?u=https%3A%2F%2Fimages.ctfassets.net%2Fvpskymlp6aa0%2FpKzEbbiqIVQrzq8SeaxPy%2F8fe23dd9429e712b8c681cb2d287056b%2Flogotipo_sertuin_events.png&a=w%3D500%26h%3D516%26fm%3Dwebp%26q%3D75&cd=2026-01-12T20%3A32%3A07.841Z",
     challenge:
-      "Slow dashboard with 12+ second load, difficult to scale beyond 500 concurrent users. High server costs ($8k/mo).",
+      "A complete new build from scratch. The client wanted a multilingual website for events in Punta Cana with sections for equipment rental and floral arrangements. They also needed the ability to generate contracts and quotes via the website and send them directly to customers.",
     solution: [
-      "Complete rewrite in React 18 with Server Components",
-      "Migration to serverless architecture on AWS",
-      "Strategic caching implementation with Redis",
-      "GraphQL API to reduce overfetching",
-      "Real-time updates with WebSockets",
+      "Admin dashboard restricted via Firebase Auth",
+      "Interactive wedding questionnaire for budget calculation",
+      "Dynamic forms to send quotes and contracts",
+      "Automated email system with react-email and nodemailer",
+      "Complete multilingual support with react-i18next",
+      "PDF generation for contracts using react-pdf",
     ],
     results: [
       {
-        metric: "Dashboard Load",
-        before: "12.4 sec",
-        after: "2.1 sec",
-        improvement: "-83%",
+        metric: "Page Load Speed",
+        before: "N/A (new)",
+        after: "1.9 sec",
+        improvement: "Ultra fast",
       },
       {
-        metric: "Concurrent Users",
-        before: "500",
-        after: "15,000",
-        improvement: "+2900%",
+        metric: "Automation",
+        before: "100% manual",
+        after: "100% digital",
+        improvement: "No paper",
       },
       {
-        metric: "Server Costs",
-        before: "$8,000/mo",
-        after: "$2,100/mo",
-        improvement: "-74%",
+        metric: "Market Reach",
+        before: "Spanish only",
+        after: "EN + ES",
+        improvement: "+2x",
       },
       {
-        metric: "Customer Satisfaction",
-        before: "6.8/10",
-        after: "9.3/10",
-        improvement: "+37%",
+        metric: "Sales",
+        before: "Baseline",
+        after: "+150%",
+        improvement: "+150%",
       },
     ],
     technologies: [
-      "React 18",
-      "Node.js",
-      "GraphQL",
-      "PostgreSQL",
-      "AWS Lambda",
-      "Redis",
+      "Gatsby.js",
+      "Tailwind CSS",
+      "Contentful",
+      "Firebase",
+      "nodemailer",
+      "react-pdf",
+      "react-email",
+      "react-i18next",
     ],
-    timeline: "16 weeks",
+    timeline: "12 weeks",
     testimonial: {
       quote:
-        "The new platform allowed us to scale from 500 to 15,000 concurrent users while reducing costs by 74%. ROI was 420% in the first year.",
-      author: "Carlos Méndez",
-      role: "CTO, SaaS Platform",
+        "DR Web Studio transformed our online presence completely. Our sales increased by 150% in just 3 months!",
+      author: "Grecia Mejía",
+      role: "Sertuin Events",
     },
   },
   {
-    id: "corporate-website",
-    client: "Professional Services Firm",
-    industry: "Corporate Services",
+    id: "scuba-diving-ecommerce",
+    client: "Grand Bay of the Sea",
+    logo: "https://www.grandbay-puntacana.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fiqfmqk4smewk%2F4AKIgOA6drFSpgIoRpPPu3%2F6b8b92af64259355d55d245dbe71b0cc%2Flogo.png&w=640&q=75",
+    industry: "Tourism / E-commerce",
     challenge:
-      "Outdated corporate site, generating only 3-5 qualified leads per month. No mobile strategy, declining SEO ranking.",
+      "Build a website for a Punta Cana scuba diving business that allows clients to explore available excursions, pay online, and receive email confirmations after booking.",
     solution: [
-      "Next.js site with SSG for maximum SEO",
-      "Mobile-first design with Tailwind CSS",
-      "Headless CMS (Sanity) for content management",
-      "Optimized forms with advanced validation",
-      "Integrated blog with SEO content strategy",
+      "Development with Next.js and Netlify hosting",
+      "Contentful integration for easy content management",
+      "PayPal implementation for online payments",
+      "Automated booking confirmations via email",
+      "Responsive design with Tailwind CSS",
     ],
     results: [
       {
-        metric: "Monthly Leads",
-        before: "4 leads",
-        after: "47 leads",
-        improvement: "+1075%",
+        metric: "Booking Conversions",
+        before: "Offline",
+        after: "+200%",
+        improvement: "+200%",
       },
       {
-        metric: "Organic Traffic",
-        before: "1,200/mo",
-        after: "8,900/mo",
-        improvement: "+642%",
+        metric: "Payment Flow",
+        before: "Manual",
+        after: "Fully online",
+        improvement: "0 manual steps",
       },
       {
-        metric: "Keyword Rankings",
-        before: "23 top 10",
-        after: "187 top 10",
-        improvement: "+713%",
+        metric: "Confirmations",
+        before: "Manual/slow",
+        after: "Instant",
+        improvement: "+100% reliable",
       },
       {
         metric: "Load Time",
-        before: "7.2 sec",
-        after: "1.3 sec",
-        improvement: "-82%",
+        before: "N/A",
+        after: "1.8 sec",
+        improvement: "Excellent",
       },
     ],
     technologies: [
       "Next.js",
-      "Sanity CMS",
+      "Contentful",
+      "PayPal",
+      "Netlify",
+      "React Email",
       "Tailwind CSS",
-      "TypeScript",
-      "Vercel",
     ],
     timeline: "8 weeks",
     testimonial: {
       quote:
-        "We went from 4 leads a month to over 45. The site became our best sales tool. The investment paid off in less than 2 months.",
-      author: "Ana Martínez",
-      role: "Marketing Director",
+        "The website eliminated the entire manual booking process. Now everything is automated and our clients can pay and book instantly.",
+      author: "Franklin Santos",
+      role: "Owner of Grand Bay of the Sea",
     },
   },
 ]
@@ -1323,6 +1331,84 @@ export const statistics = {
   ],
 }
 
+export const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.dr-webstudio.com/en/modern-web-development#faq",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How long does it take to develop a website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "It depends on the project type. A landing page takes 2-3 weeks, a custom business website 6-8 weeks, and complex web applications 5-8 weeks. We use an agile process that allows you to see progress each week and make adjustments as needed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the cost of a professional website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our projects start from $400 for landing pages up to $1,250+ for custom web applications. Complete business websites from $950. We offer payment plans (50% upfront, 50% on completion) and free hosting for 1 year included in all projects.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if I need to make changes to the site?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We include up to 2 revision rounds during development to ensure the site is perfect. After launch, we offer 30 days of free support for minor adjustments. We also implement a CMS (Sanity) that allows you to update content without coding.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you include hosting and domain?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. All our projects include professional hosting free for 1 year. We also help with domain registration and business email setup if needed. We recommend reliable services and guide you through the entire process.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What kind of maintenance do you offer after launch?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We offer maintenance plans from $95/month that include: regular security updates, speed optimizations, quick bug fixes, security monitoring, and uptime monitoring. All projects also include 30 days of free post-launch support.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What technologies do you use to develop sites?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We use modern, proven technologies: Next.js for the framework, TypeScript for robust code, Tailwind CSS for responsive design, and Sanity CMS for easy content management. This ensures fast, secure, and easy-to-maintain websites.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will I receive training to manage my site?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely! We provide complete training on how to update content, add pages, upload images, and more. We also include detailed documentation and 30 days of free support after launch for any questions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can you integrate my site with other tools (email, payments, CRM)?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We have experience integrating payment systems (Stripe, PayPal), email marketing platforms, CRMs, Google Analytics, and more. Our API integrations service from $500 connects your site with the tools you already use to automate your business.",
+      },
+    },
+  ],
+  inLanguage: "en-US",
+  publisher: {
+    "@type": "Organization",
+    name: "DR Web Studio",
+    url: "https://www.dr-webstudio.com",
+  },
+}
+
 // ============================================
 // EXPORT DEFAULT
 // ============================================
@@ -1341,4 +1427,5 @@ export default {
   leadMagnet,
   ctas,
   statistics,
+  structuredData,
 }
