@@ -29,7 +29,7 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-teal-900/60">
         <Image
           src={backgroundImage.asset.url}
-          alt="Hero background"
+          alt="Custom website development services in the Dominican Republic"
           fill
           priority
           quality={90}

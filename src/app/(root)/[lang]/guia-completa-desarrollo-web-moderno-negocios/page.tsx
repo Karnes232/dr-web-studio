@@ -46,7 +46,7 @@ export async function generateMetadata({
 
   const canonicalUrl = seoData?.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/about-me`
+    : `${baseUrl}/${lang}/guia-completa-desarrollo-web-moderno-negocios`
 
   if (!seoData) return {}
 
@@ -74,9 +74,21 @@ export async function generateMetadata({
       index: !seoData.noIndex,
       follow: !seoData.noFollow,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
+      description:
+        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
+      images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
+    },
     ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
+        es: `${baseUrl}/es/guia-completa-desarrollo-web-moderno-negocios`,
+        "x-default": `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
+      },
     },
   }
 }

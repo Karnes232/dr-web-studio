@@ -74,9 +74,21 @@ export async function generateMetadata({
       index: !seoData.noIndex,
       follow: !seoData.noFollow,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
+      description:
+        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
+      images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
+    },
     ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/portfolio`,
+        es: `${baseUrl}/es/portfolio`,
+        "x-default": `${baseUrl}/en/portfolio`,
+      },
     },
   }
 }

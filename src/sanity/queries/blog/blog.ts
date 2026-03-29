@@ -71,6 +71,12 @@ export interface BlogPost {
     en: string
     es: string
   }
+  seo: {
+    structuredData: {
+      en: string
+      es: string
+    }
+  }
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
@@ -102,7 +108,13 @@ export const blogPostBySlugQuery = `
   readTime,
   tags,
   featured,
-  description
+  description,
+  seo {
+    structuredData {
+      en,
+      es
+    }
+  }
 }`
 
 export async function getBlogPostBySlug(

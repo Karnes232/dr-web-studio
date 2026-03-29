@@ -59,9 +59,22 @@ export async function generateMetadata({
       index: !serviceSEO.seo?.noIndex,
       follow: !serviceSEO.seo?.noFollow,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: serviceSEO.seo?.openGraph.image
+        ? [serviceSEO.seo.openGraph.image.url]
+        : [],
+    },
     ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/our-services/${slug}`,
+        es: `${baseUrl}/es/our-services/${slug}`,
+        "x-default": `${baseUrl}/en/our-services/${slug}`,
+      },
     },
   }
 }

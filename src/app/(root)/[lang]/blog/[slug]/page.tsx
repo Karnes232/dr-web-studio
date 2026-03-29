@@ -28,6 +28,14 @@ export default async function BlogPost({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+      {post?.seo?.structuredData?.[lang] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: post.seo.structuredData[lang],
+          }}
+        />
+      )}
       <BlogPostHeader post={post} lang={lang} />
       <BlogPostContent body={post?.body} lang={lang} />
       <RelatedPosts posts={relatedPosts} lang={lang} />
@@ -49,7 +57,7 @@ export async function generateMetadata({
   if (!seoData) return {}
   const canonicalUrl = seoData?.seo?.canonicalUrl
     ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
-    : `${baseUrl}/${lang}/blog/`
+    : `${baseUrl}/${lang}/blog/${slug}`
 
   return {
     title: seoData.seo.meta[lang]?.title,
@@ -62,7 +70,7 @@ export async function generateMetadata({
         seoData.seo.openGraph[lang]?.description ||
         seoData.seo.meta[lang]?.description,
       url: canonicalUrl,
-      type: "website",
+      type: "article",
       images: seoData.seo.openGraph.image
         ? [
             {
@@ -73,6 +81,17 @@ export async function generateMetadata({
           ]
         : [],
     },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        seoData.seo.openGraph[lang]?.title || seoData.seo.meta[lang]?.title,
+      description:
+        seoData.seo.openGraph[lang]?.description ||
+        seoData.seo.meta[lang]?.description,
+      images: seoData.seo.openGraph.image
+        ? [seoData.seo.openGraph.image.url]
+        : [],
+    },
     robots: {
       index: !seoData.seo.noIndex,
       follow: !seoData.seo.noFollow,
@@ -80,6 +99,11 @@ export async function generateMetadata({
     ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        en: `${baseUrl}/en/blog/${slug}`,
+        es: `${baseUrl}/es/blog/${slug}`,
+        "x-default": `${baseUrl}/en/blog/${slug}`,
+      },
     },
   }
 }

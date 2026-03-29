@@ -3,21 +3,13 @@ import type { NextRequest } from "next/server"
 import { fallbackLng, languages } from "./i18n/settings"
 
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
 
-  // Check if the pathname starts with /studio
   if (pathname.startsWith("/studio")) {
     return NextResponse.next()
   }
 
-  // Skip locale redirect for sitemap.xml
-  if (pathname === "/sitemap.xml") {
-    return NextResponse.next()
-  }
-
-  // Skip locale redirect for robots.txt
-  if (pathname === "/robots.txt") {
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
     return NextResponse.next()
   }
 
@@ -25,19 +17,24 @@ export function middleware(request: NextRequest) {
     locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   )
 
-  // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    const locale = fallbackLng
-
-    // e.g. incoming request is /products
-    // The new URL is now /en/products
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+    return NextResponse.redirect(
+      new URL(`/${fallbackLng}${pathname}`, request.url),
+    )
   }
+
+  const locale =
+    languages.find(
+      l => pathname.startsWith(`/${l}/`) || pathname === `/${l}`,
+    ) || fallbackLng
+
+  const response = NextResponse.next()
+  response.headers.set("x-locale", locale)
+  return response
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|studio|sitemap.xml).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|studio|sitemap.xml|robots.txt).*)",
   ],
 }
