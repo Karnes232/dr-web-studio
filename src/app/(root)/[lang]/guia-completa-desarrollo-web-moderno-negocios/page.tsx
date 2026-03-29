@@ -1,8 +1,6 @@
 import PageClientComponent from "@/components/GuiaCompletaComponents/PageClientComponent"
-import {
-  getPillarPageContent,
-  Language,
-} from "@/components/GuiaCompletaComponents/pillarPageData"
+import type { Language } from "@/components/GuiaCompletaComponents/types"
+import { getPillarPageContent } from "@/sanity/queries/pillarPage"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { headers } from "next/headers"
@@ -19,6 +17,8 @@ export default async function GuiaCompletaDesarrolloWebModernoNegocios({
 }: PageProps) {
   const { lang } = await params
   const content = await getPillarPageContent(lang as Language)
+
+  if (!content) return null
 
   return (
     <main>

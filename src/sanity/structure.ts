@@ -394,6 +394,15 @@ export const structure: StructureResolver = S =>
             ]),
         ),
 
+      // Pillar Page
+      S.listItem()
+        .title("Pillar Page")
+        .child(
+          S.documentList()
+            .title("Pillar Page")
+            .filter('_type == "pillarPage"'),
+        ),
+
       // SEO Group
       S.listItem()
         .title("SEO")

@@ -68,6 +68,9 @@ import faqsPageHeader from "./faqs/faqsPageHeader"
 import customPayment from "./payment/customPayment"
 import paymentSuccess from "./payment/paymentSuccess"
 
+// Pillar Page Schema
+import pillarPage from "./pillar-page/pillarPage"
+
 // SEO Schema
 import seo from "./seo/seo"
 import legal from "./legal/legal"
@@ -142,6 +145,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Payment Schemas
     customPayment,
     paymentSuccess,
+
+    // Pillar Page Schema
+    pillarPage,
 
     // SEO Schema
     seo,

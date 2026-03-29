@@ -20,6 +20,9 @@
 # production
 /build
 
+# sanity build artifacts
+/dist
+
 # misc
 .DS_Store
 *.pem
