@@ -1,11 +1,6 @@
 import { Metadata } from "next"
 import { getSEO } from "@/sanity/queries/seo"
-import dynamic from "next/dynamic"
-
-const CheckoutContent = dynamic(
-  () => import("@/components/CheckoutComponents/CheckoutContent"),
-  { ssr: false },
-)
+import CheckoutContentDynamic from "@/components/CheckoutComponents/CheckoutContentDynamic"
 import { headers } from "next/headers"
 import { getCustomPayment } from "@/sanity/queries/payment/customPayment"
 
@@ -17,7 +12,7 @@ interface PageProps {
 
 export default async function CustomPaymentPage() {
   const customPaymentData = await getCustomPayment()
-  return <CheckoutContent customPaymentData={customPaymentData} />
+  return <CheckoutContentDynamic customPaymentData={customPaymentData} />
 }
 
 export async function generateMetadata({
