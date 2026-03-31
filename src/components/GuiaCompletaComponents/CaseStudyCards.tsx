@@ -179,7 +179,7 @@ function CaseStudyCard({
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
-                <img
+                <Image
                   src={caseStudy.logo}
                   alt={caseStudy.client}
                   width={48}
