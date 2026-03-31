@@ -1,11 +1,6 @@
 import React from "react"
 import * as motion from "motion/react-client"
-import { Playfair_Display } from "next/font/google"
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-})
+import { playfairDisplay } from "@/lib/fonts"
 
 const TextComponentHeading = ({
   heading,

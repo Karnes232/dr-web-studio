@@ -1,9 +1,18 @@
 import { Facebook, Link, Linkedin, Share2, Twitter } from "lucide-react"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
   const [showShare, setShowShare] = useState(false)
-  const postUrl = `${window.location.origin}/${lang}/blog/${post.slug.current}`
+  const [postUrl, setPostUrl] = useState(
+    `https://www.dr-webstudio.com/${lang}/blog/${post.slug.current}`,
+  )
+
+  useEffect(() => {
+    setPostUrl(
+      `${window.location.origin}/${lang}/blog/${post.slug.current}`,
+    )
+  }, [lang, post.slug.current])
+
   const shareLinks = [
     {
       name: "Facebook",

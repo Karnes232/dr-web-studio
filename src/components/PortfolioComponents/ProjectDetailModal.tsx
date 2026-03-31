@@ -44,8 +44,9 @@ const ProjectDetailModal = ({
           <div className="p-4 sm:p-6">
             {/* Project Image */}
             <Image
-              width={1000}
-              height={1000}
+              width={800}
+              height={500}
+              sizes="(max-width: 768px) 100vw, 80vw"
               src={project.image.asset.url}
               alt={project.title[currentLocale as keyof typeof project.title]}
               className="w-full h-48 sm:h-64 md:h-96 object-cover rounded-xl mb-4 sm:mb-6"

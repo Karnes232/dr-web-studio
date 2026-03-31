@@ -1,6 +1,11 @@
 import { Metadata } from "next"
 import { getSEO } from "@/sanity/queries/seo"
-import CheckoutContent from "@/components/CheckoutComponents/CheckoutContent"
+import dynamic from "next/dynamic"
+
+const CheckoutContent = dynamic(
+  () => import("@/components/CheckoutComponents/CheckoutContent"),
+  { ssr: false },
+)
 import { headers } from "next/headers"
 import { getCustomPayment } from "@/sanity/queries/payment/customPayment"
 

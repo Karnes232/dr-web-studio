@@ -15,12 +15,21 @@ interface PageProps {
 
 export default async function OurServices({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("services")
-  const servicesHeader = await getServicesHeader()
-  const featuresStrip = await getFeaturesStrip()
-  const customSolutionCTA = await getCustomSolutionCTA()
-  const categories = await getCategories()
-  const serviceItems = await getServiceItems()
+  const [
+    seoData,
+    servicesHeader,
+    featuresStrip,
+    customSolutionCTA,
+    categories,
+    serviceItems,
+  ] = await Promise.all([
+    getSeoSchema("services"),
+    getServicesHeader(),
+    getFeaturesStrip(),
+    getCustomSolutionCTA(),
+    getCategories(),
+    getServiceItems(),
+  ])
   return (
     <>
       {seoData?.structuredData?.[lang] && (

@@ -119,8 +119,10 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
             src={post.imageUrl}
             alt={post.title[lang]}
             className="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg"
-            width={1000}
-            height={1000}
+            width={1200}
+            height={600}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 960px"
+            priority
           />
         </div>
       </div>

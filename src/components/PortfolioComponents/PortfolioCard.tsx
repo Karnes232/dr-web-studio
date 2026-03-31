@@ -19,8 +19,9 @@ const PortfolioCard = ({
         <Image
           src={project?.image?.asset?.url}
           alt={project?.title[currentLocale as keyof typeof project.title]}
-          width={1000}
-          height={1000}
+          width={600}
+          height={400}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-48 object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

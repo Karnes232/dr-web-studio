@@ -18,8 +18,9 @@ const FeaturedProject = ({
         {/* Project Image */}
         <div className="relative order-1 lg:order-none">
           <Image
-            width={1000}
-            height={1000}
+            width={800}
+            height={500}
+            sizes="(max-width: 1024px) 100vw, 50vw"
             src={project.image.asset.url}
             alt={project.title}
             className="w-full h-48 sm:h-56 lg:h-full object-cover rounded-xl shadow-lg"

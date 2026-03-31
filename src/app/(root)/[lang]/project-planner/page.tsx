@@ -1,4 +1,9 @@
-import WebsiteQuestionnaire from "@/components/projectPlannerComponents/WebsiteQuestionnaire"
+import dynamic from "next/dynamic"
+
+const WebsiteQuestionnaire = dynamic(
+  () => import("@/components/projectPlannerComponents/WebsiteQuestionnaire"),
+  { ssr: true },
+)
 import { client } from "@/sanity/lib/client"
 import { getBudget } from "@/sanity/queries/project-planner/budget"
 import { getContactForm } from "@/sanity/queries/project-planner/contactForm"
@@ -32,18 +37,33 @@ const getCompanyEmail = async () => {
 
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("project-planner")
-  const projectPlannerHeader = await getProjectPlannerHeader()
-  const websiteType = await getWebsiteType()
-  const pagesCount = await getPagesCount()
-  const designStyle = await getDesignStyle()
-  const features = await getFeatures()
-  const budget = await getBudget()
-  const timeline = await getTimeline()
-  const contentStatus = await getContentStatus()
-  const languages = await getLanguages()
-  const contactForm = await getContactForm()
-  const companyEmail = await getCompanyEmail()
+  const [
+    seoData,
+    projectPlannerHeader,
+    websiteType,
+    pagesCount,
+    designStyle,
+    features,
+    budget,
+    timeline,
+    contentStatus,
+    languages,
+    contactForm,
+    companyEmail,
+  ] = await Promise.all([
+    getSeoSchema("project-planner"),
+    getProjectPlannerHeader(),
+    getWebsiteType(),
+    getPagesCount(),
+    getDesignStyle(),
+    getFeatures(),
+    getBudget(),
+    getTimeline(),
+    getContentStatus(),
+    getLanguages(),
+    getContactForm(),
+    getCompanyEmail(),
+  ])
 
   return (
     <>

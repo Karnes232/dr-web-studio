@@ -1,11 +1,5 @@
 import React from "react"
 import * as motion from "motion/react-client"
-import { Playfair_Display } from "next/font/google"
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-})
 
 interface TextComponentListProps {
   items: React.ReactNode[]
@@ -18,6 +12,9 @@ const TextComponentList: React.FC<TextComponentListProps> = ({
   listType,
   ListClassName = "",
 }) => {
+  const Tag = listType === "bullet" ? "ul" : "ol"
+  const listStyle = listType === "bullet" ? "list-disc" : "list-decimal"
+
   return (
     <div className="">
       <motion.div
@@ -30,29 +27,9 @@ const TextComponentList: React.FC<TextComponentListProps> = ({
         }}
         className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto"
       >
-        {listType === "bullet" ? (
-          <ul className={`list-disc pl-6 space-y-2 ${ListClassName}`}>
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className={`${playfairDisplay.className} text-gray-700 dark:text-white`}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <ol className={`list-decimal pl-6 space-y-2 ${ListClassName}`}>
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className={`${playfairDisplay.className} text-gray-700 dark:text-white`}
-              >
-                {item}
-              </li>
-            ))}
-          </ol>
-        )}
+        <Tag className={`${listStyle} pl-6 space-y-2 ${ListClassName}`}>
+          {items}
+        </Tag>
       </motion.div>
     </div>
   )

@@ -110,9 +110,8 @@ export async function generateMetadata({
 
 export default async function Home({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("home")
-
   const [
+    seoData,
     pageData,
     { t },
     serviceData,
@@ -121,6 +120,7 @@ export default async function Home({ params }: PageProps) {
     previousClients,
     testimonials,
   ] = await Promise.all([
+    getSeoSchema("home"),
     getContent(),
     getTranslation(lang),
     getHomePageService(),

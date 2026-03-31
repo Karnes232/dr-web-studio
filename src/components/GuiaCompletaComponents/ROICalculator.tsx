@@ -241,7 +241,7 @@ export function ROICalculator({
                       className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
                     />
                     <span className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 min-w-[120px] text-right">
-                      {monthlyVisitors.toLocaleString()}
+                      {monthlyVisitors.toLocaleString("en-US")}
                     </span>
                   </div>
                 </div>

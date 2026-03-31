@@ -20,10 +20,12 @@ export default async function Blog({ params, searchParams }: PageProps) {
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1)
 
-  const seoData = await getSeoSchema("blog")
-  const headerData = await getBlogHeader()
-  const blogPosts = await getAllBlogPosts()
-  const categories = await getAllCategories()
+  const [seoData, headerData, blogPosts, categories] = await Promise.all([
+    getSeoSchema("blog"),
+    getBlogHeader(),
+    getAllBlogPosts(),
+    getAllCategories(),
+  ])
 
   const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE)
   const validPage = Math.min(currentPage, Math.max(1, totalPages))

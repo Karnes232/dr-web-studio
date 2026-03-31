@@ -20,12 +20,15 @@ interface PageProps {
 
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("pricing")
-  const customSolutionCTA = await getCustomSolutionCTA()
-  const pricingHeader = await getPricingHeader()
-  const faqsHeader = await getFAQsHeader()
-  const faqs = await getFAQs()
-  const pricingData = await getPricingData()
+  const [seoData, customSolutionCTA, pricingHeader, faqsHeader, faqs, pricingData] =
+    await Promise.all([
+      getSeoSchema("pricing"),
+      getCustomSolutionCTA(),
+      getPricingHeader(),
+      getFAQsHeader(),
+      getFAQs(),
+      getPricingData(),
+    ])
   return (
     <>
       {seoData?.structuredData?.[lang] && (

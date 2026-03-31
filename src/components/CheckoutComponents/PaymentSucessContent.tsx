@@ -171,7 +171,11 @@ const PaymentSucessContent = ({
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600">{t("checkout.date")}:</span>
                   <span className="text-slate-800">
-                    {new Date().toLocaleDateString()}
+                    {new Date().toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">

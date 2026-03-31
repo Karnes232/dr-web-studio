@@ -18,11 +18,14 @@ interface PageProps {
 
 export default async function Contact({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("contact")
-  const contactHero = await getContactHero()
-  const locationInfo = await getLocationInfo()
-  const faqsHeader = await getFAQsHeader()
-  const contactFaqs = await getContactFaqs()
+  const [seoData, contactHero, locationInfo, faqsHeader, contactFaqs] =
+    await Promise.all([
+      getSeoSchema("contact"),
+      getContactHero(),
+      getLocationInfo(),
+      getFAQsHeader(),
+      getContactFaqs(),
+    ])
 
   return (
     <>

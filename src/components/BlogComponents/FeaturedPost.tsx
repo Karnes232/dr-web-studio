@@ -47,8 +47,9 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
           <Image
             src={post.imageUrl}
             alt={post.title[lang]}
-            width={500}
-            height={500}
+            width={600}
+            height={400}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="h-64 md:h-full w-full object-cover"
           />
         </div>
@@ -75,7 +76,11 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center text-sm text-slate-500">
               <Calendar className="h-4 w-4 mr-2" />
-              {new Date(post.publishedAt).toLocaleDateString()}
+              {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
               <Clock className="h-4 w-4 mr-2 ml-4" />
               {post.readTime} min read
             </div>

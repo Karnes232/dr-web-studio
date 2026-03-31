@@ -26,14 +26,25 @@ interface PageProps {
 
 export default async function AboutUs({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("about")
-  const sectionHeader = await getSectionHeader()
-  const personalStory = await getPersonalStory()
-  const locationAvailability = await getLocationAvailability()
-  const stats = await getStats()
-  const technologies = await getTechnologies()
-  const developmentApproach = await getDevelopmentApproach()
-  const whyChooseUs = await getWhyChooseUs()
+  const [
+    seoData,
+    sectionHeader,
+    personalStory,
+    locationAvailability,
+    stats,
+    technologies,
+    developmentApproach,
+    whyChooseUs,
+  ] = await Promise.all([
+    getSeoSchema("about"),
+    getSectionHeader(),
+    getPersonalStory(),
+    getLocationAvailability(),
+    getStats(),
+    getTechnologies(),
+    getDevelopmentApproach(),
+    getWhyChooseUs(),
+  ])
 
   return (
     <>

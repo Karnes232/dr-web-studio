@@ -12,9 +12,11 @@ interface PageProps {
 
 export default async function Portfolio({ params }: PageProps) {
   const { lang } = await params
-  const seoData = await getSeoSchema("portfolio")
-  const portfolioHeader = await getPortfolioHeader()
-  const projects = await getProjects()
+  const [seoData, portfolioHeader, projects] = await Promise.all([
+    getSeoSchema("portfolio"),
+    getPortfolioHeader(),
+    getProjects(),
+  ])
 
   return (
     <>

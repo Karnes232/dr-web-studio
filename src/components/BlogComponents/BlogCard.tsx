@@ -50,7 +50,8 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
           src={post.imageUrl}
           alt={post.title[lang]}
           width={500}
-          height={500}
+          height={300}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-48 object-cover"
         />
         {post.categories[0] && (
@@ -70,7 +71,11 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center text-sm text-slate-500">
             <Calendar className="h-4 w-4 mr-2" />
-            {new Date(post.publishedAt).toLocaleDateString()}
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
           </div>
           <div className="flex items-center text-sm text-slate-500">
             <Clock className="h-4 w-4 mr-2" />

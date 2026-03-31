@@ -30,7 +30,7 @@ export default async function RootLayout({
   const lang = headersList.get("x-locale") || "en"
 
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Y3DMZHFV9Z"
