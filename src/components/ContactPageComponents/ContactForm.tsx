@@ -10,9 +10,7 @@ import {
   User,
 } from "lucide-react"
 import React, { useState } from "react"
-import { useFormspark } from "@formspark/use-formspark"
 import Botpoison from "@botpoison/browser"
-const FORMSPARK_FORM_ID = "eVtqpsKVL"
 
 const ContactForm = () => {
   const { t } = useLocale()
@@ -28,9 +26,7 @@ const ContactForm = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [submit, submitting] = useFormspark({
-    formId: FORMSPARK_FORM_ID,
-  })
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const botpoison = new Botpoison({
     publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
@@ -49,27 +45,49 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setSubmitError(null)
     const { solution } = await botpoison.challenge()
     if (!solution) {
+      setSubmitError(t("contact.form.submitFailed"))
       return
     }
 
     setIsSubmitting(true)
 
-    await submit({
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-      projectType: formData.projectType,
-      budget: `$${formData.budget}`,
-      timeline: formData.timeline,
-      message: formData.message,
-      _botpoison: solution,
-    })
+    try {
+      const budgetPayload = formData.budget
+        ? formData.budget.startsWith("$")
+          ? formData.budget
+          : `$${formData.budget}`
+        : ""
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          projectType: formData.projectType,
+          budget: budgetPayload,
+          timeline: formData.timeline,
+          message: formData.message,
+          _botpoison: solution,
+        }),
+      })
+
+      if (!res.ok) {
+        setSubmitError(t("contact.form.submitFailed"))
+        return
+      }
+
+      setIsSubmitted(true)
+    } catch {
+      setSubmitError(t("contact.form.submitFailed"))
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -85,6 +103,7 @@ const ContactForm = () => {
         <button
           onClick={() => {
             setIsSubmitted(false)
+            setSubmitError(null)
             setFormData({
               name: "",
               email: "",
@@ -273,6 +292,12 @@ const ContactForm = () => {
               placeholder={t("contact.form.projectDetailsPlaceholder")}
             />
           </div>
+
+          {submitError ? (
+            <p className="text-sm text-red-600" role="alert">
+              {submitError}
+            </p>
+          ) : null}
 
           <button
             type="submit"

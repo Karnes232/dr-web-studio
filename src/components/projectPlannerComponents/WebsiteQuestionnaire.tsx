@@ -26,11 +26,8 @@ import { Timeline } from "@/sanity/queries/project-planner/timeline"
 import { ContentStatus } from "@/sanity/queries/project-planner/contentStatus"
 import { Languages } from "@/sanity/queries/project-planner/languages"
 import { ContactFormType } from "@/sanity/queries/project-planner/contactForm"
-import { useFormspark } from "@formspark/use-formspark"
 import Botpoison from "@botpoison/browser"
 import { CheckCircle } from "lucide-react"
-
-const FORMSPARK_FORM_ID = "Lmus2qVYl"
 
 const WebsiteQuestionnaire = ({
   projectPlannerHeader,
@@ -77,9 +74,7 @@ const WebsiteQuestionnaire = ({
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [submit, submitting] = useFormspark({
-    formId: FORMSPARK_FORM_ID,
-  })
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const botpoison = new Botpoison({
     publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
@@ -102,32 +97,49 @@ const WebsiteQuestionnaire = ({
   }
 
   const handleSubmit = async () => {
+    setSubmitError(null)
     const { solution } = await botpoison.challenge()
     if (!solution) {
+      setSubmitError(t("projectPlanner.submitFailed"))
       return
     }
 
     setIsSubmitting(true)
 
-    await submit({
-      name: formData.contact.name,
-      email: formData.contact.email,
-      company: formData.contact.company,
-      phone: formData.contact.phone,
-      projectType: formData.websiteType,
-      pages: formData.pages,
-      designStyle: formData.designStyle,
-      features: formData.features,
-      budget: formData.budget,
-      timeline: formData.timeline,
-      contentStatus: formData.contentStatus,
-      languages: formData.languages,
-      message: formData.contact.message,
-      _botpoison: solution,
-    })
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setCurrentStep(1)
+    try {
+      const res = await fetch("/api/project-planner", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.contact.name,
+          email: formData.contact.email,
+          company: formData.contact.company,
+          phone: formData.contact.phone,
+          websiteType: formData.websiteType,
+          pages: formData.pages,
+          designStyle: formData.designStyle,
+          features: formData.features,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          contentStatus: formData.contentStatus,
+          languages: formData.languages,
+          message: formData.contact.message,
+          _botpoison: solution,
+        }),
+      })
+
+      if (!res.ok) {
+        setSubmitError(t("projectPlanner.submitFailed"))
+        return
+      }
+
+      setIsSubmitted(true)
+      setCurrentStep(1)
+    } catch {
+      setSubmitError(t("projectPlanner.submitFailed"))
+    } finally {
+      setIsSubmitting(false)
+    }
   }
   const canProceed = () => {
     switch (currentStep) {
@@ -448,6 +460,7 @@ const WebsiteQuestionnaire = ({
           <button
             onClick={() => {
               setIsSubmitted(false)
+              setSubmitError(null)
               setFormData({
                 websiteType: "",
                 pages: 5,
@@ -474,6 +487,12 @@ const WebsiteQuestionnaire = ({
       ) : (
         <div className="my-8">{renderStep()}</div>
       )}
+
+      {submitError && !isSubmitted && currentStep === totalSteps ? (
+        <p className="text-sm text-red-600 text-center mb-4" role="alert">
+          {submitError}
+        </p>
+      ) : null}
 
       <NavigationButtons
         currentStep={currentStep}
