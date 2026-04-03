@@ -46,7 +46,17 @@ interface RawPillarPage {
     caseId: string
     client: string
     industry: Localized<string>
-    logo: string
+    logo: {
+      asset: {
+        url: string
+        metadata: {
+          dimensions: {
+            width: number
+            height: number
+          }
+        }
+      }
+    }
     challenge: Localized<string>
     solution: Localized<string[]>
     results: {
@@ -117,7 +127,17 @@ export const pillarPageQuery = `
     caseId,
     client,
     industry { en, es },
-    logo,
+    logo {
+      asset -> {
+        url,
+        metadata {
+          dimensions {
+            width,
+            height
+          }
+        }
+      }
+    },
     challenge { en, es },
     solution { en, es },
     results[] {
@@ -196,7 +216,7 @@ function transformToContent(
       id: cs.caseId,
       client: cs.client,
       industry: pick(cs.industry, lang),
-      logo: cs.logo,
+      logo: cs.logo.asset.url,
       challenge: pick(cs.challenge, lang),
       solution: pick(cs.solution, lang) || [],
       results: (cs.results || []).map((r) => ({

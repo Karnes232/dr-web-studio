@@ -253,8 +253,8 @@ export default defineType({
             localizedString("industry", "Industry"),
             defineField({
               name: "logo",
-              title: "Logo URL",
-              type: "url",
+              title: "Logo",
+              type: "image",
             }),
             localizedText("challenge", "Challenge", 4),
             localizedStringArray("solution", "Solution Points"),

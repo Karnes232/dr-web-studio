@@ -138,6 +138,7 @@ function CaseStudyCard({
   onToggle: () => void
   labels: any
 }) {
+  console.log(caseStudy)
   // Icon mapping for metrics based on metric name
   const getMetricIcon = (metric: string) => {
     const lower = metric.toLowerCase()
@@ -330,9 +331,9 @@ function CaseStudyCard({
                   "{caseStudy.testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center text-white font-bold text-sm">
+                  {/* <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center text-white font-bold text-sm">
                     {caseStudy.testimonial.author.charAt(0)}
-                  </div>
+                  </div> */}
                   <div>
                     <div className="text-sm font-semibold text-slate-900 dark:text-white">
                       {caseStudy.testimonial.author}
