@@ -1,3 +1,9 @@
+import {
+  blogAuthorAvatarUrl,
+  blogHeroImageUrl,
+  blogListingImageUrl,
+  blogOgImageUrl,
+} from "../../lib/blogImageUrls"
 import { client } from "../../lib/client"
 
 export const allBlogPostsQuery = `
@@ -7,8 +13,7 @@ export const allBlogPostsQuery = `
   "author": author->{
     name,
     slug,
-    image,
-    "imageUrl": image.asset->url
+    image
   },
   "categories": categories[]-> {
     title,
@@ -17,7 +22,6 @@ export const allBlogPostsQuery = `
   },
   publishedAt,
   mainImage,
-  "imageUrl": mainImage.asset->url,
   body,
   readTime,
   tags,
@@ -56,7 +60,7 @@ export interface BlogPost {
   }>
   publishedAt: string
   mainImage: any
-  imageUrl: string
+  imageUrl?: string
   body: {
     en: any[]
     es: any[]
@@ -79,8 +83,22 @@ export interface BlogPost {
   }
 }
 
+function mapBlogPostListItem(post: BlogPost): BlogPost {
+  return {
+    ...post,
+    imageUrl: blogListingImageUrl(post.mainImage),
+    author: post.author
+      ? {
+          ...post.author,
+          imageUrl: blogAuthorAvatarUrl(post.author.image),
+        }
+      : post.author,
+  }
+}
+
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  return await client.fetch(allBlogPostsQuery)
+  const posts = await client.fetch(allBlogPostsQuery)
+  return posts.map(mapBlogPostListItem)
 }
 
 // Query for fetching a single blog post by slug
@@ -92,7 +110,6 @@ export const blogPostBySlugQuery = `
     name,
     slug,
     image,
-    "imageUrl": image.asset->url,
     bio,
     socialLinks
   },
@@ -103,7 +120,6 @@ export const blogPostBySlugQuery = `
   },
   publishedAt,
   mainImage,
-  "imageUrl": mainImage.asset->url,
   body,
   readTime,
   tags,
@@ -117,10 +133,25 @@ export const blogPostBySlugQuery = `
   }
 }`
 
+function mapBlogPostFull(post: BlogPost | null): BlogPost | null {
+  if (!post) return null
+  return {
+    ...post,
+    imageUrl: blogHeroImageUrl(post.mainImage),
+    author: post.author
+      ? {
+          ...post.author,
+          imageUrl: blogAuthorAvatarUrl(post.author.image),
+        }
+      : post.author,
+  }
+}
+
 export async function getBlogPostBySlug(
   slug: string,
 ): Promise<BlogPost | null> {
-  return await client.fetch(blogPostBySlugQuery, { slug })
+  const post = await client.fetch(blogPostBySlugQuery, { slug })
+  return mapBlogPostFull(post)
 }
 
 const relatedBlogPostsQuery = `
@@ -136,7 +167,7 @@ const relatedBlogPostsQuery = `
     description
   },
   publishedAt,
-  "imageUrl": mainImage.asset->url,
+  mainImage,
   readTime,
   tags,
   description
@@ -148,11 +179,12 @@ export async function getRelatedBlogPosts(
   categorySlugs: string[],
   limit = 3,
 ): Promise<BlogPost[]> {
-  return await client.fetch(relatedBlogPostsQuery, {
+  const posts = await client.fetch(relatedBlogPostsQuery, {
     currentSlug,
     categorySlugs: categorySlugs ?? [],
     limit,
   })
+  return posts.map(mapBlogPostListItem)
 }
 
 interface BlogPostSEO {
@@ -221,11 +253,11 @@ const blogPostBySlugQuerySeo = `
         title,
         description
       },
-      "image": {
-        "url": image.asset->url,
-        "alt": image.alt,
-        "width": image.asset->metadata.dimensions.width,
-        "height": image.asset->metadata.dimensions.height
+      "image": image {
+        asset,
+        crop,
+        hotspot,
+        alt
       }
     },
     structuredData {
@@ -241,7 +273,23 @@ const blogPostBySlugQuerySeo = `
 export async function getBlogPostSEO(
   slug: string,
 ): Promise<BlogPostSEO | null> {
-  return await client.fetch(blogPostBySlugQuerySeo, { slug })
+  const data = await client.fetch(blogPostBySlugQuerySeo, { slug })
+  if (!data) return null
+  const rawImage = data.seo?.openGraph?.image as
+    | { asset?: unknown; alt?: string }
+    | undefined
+  if (rawImage?.asset && data.seo?.openGraph) {
+    const url = blogOgImageUrl(rawImage)
+    if (url) {
+      data.seo.openGraph.image = {
+        url,
+        alt: rawImage.alt,
+        width: 1200,
+        height: 630,
+      }
+    }
+  }
+  return data
 }
 
 export const allBlogPostsSitemapQuery = `

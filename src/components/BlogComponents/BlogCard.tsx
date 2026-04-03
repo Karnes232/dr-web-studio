@@ -29,7 +29,7 @@ interface BlogCardProps {
     }>
     publishedAt: string
     readTime: number
-    imageUrl: string
+    imageUrl?: string
     tags: {
       en: string[]
       es: string[]
@@ -46,14 +46,21 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
       className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}
     >
       <div className="relative">
-        <Image
-          src={post.imageUrl}
-          alt={post.title[lang]}
-          width={500}
-          height={300}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="w-full h-48 object-cover"
-        />
+        {post.imageUrl ? (
+          <Image
+            src={post.imageUrl}
+            alt={post.title[lang]}
+            width={500}
+            height={300}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="w-full h-48 object-cover"
+          />
+        ) : (
+          <div
+            className="w-full h-48 bg-slate-200"
+            aria-hidden
+          />
+        )}
         {post.categories[0] && (
           <div className="absolute top-4 left-4">
             <span className="bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-medium px-3 py-1 rounded-full">

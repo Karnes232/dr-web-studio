@@ -1,3 +1,4 @@
+import { blogListingImageUrl } from "../../lib/blogImageUrls"
 import { client } from "../../lib/client"
 
 export const allCategoriesQuery = `
@@ -33,8 +34,7 @@ export const postsByCategoryQuery = `
   "author": author->{
     name,
     slug,
-    image,
-    "imageUrl": image.asset->url
+    image
   },
   "categories": categories[]-> {
     title,
@@ -43,14 +43,17 @@ export const postsByCategoryQuery = `
   },
   publishedAt,
   mainImage,
-  "imageUrl": mainImage.asset->url,
   readTime,
   tags,
   featured
 }`
 
 export async function getPostsByCategory(categorySlug: string) {
-  return await client.fetch(postsByCategoryQuery, { categorySlug })
+  const posts = await client.fetch(postsByCategoryQuery, { categorySlug })
+  return posts.map((post: { mainImage?: unknown }) => ({
+    ...post,
+    imageUrl: blogListingImageUrl(post.mainImage),
+  }))
 }
 
 export const categoryWithPostsQuery = `
@@ -64,12 +67,19 @@ export const categoryWithPostsQuery = `
     description,
     publishedAt,
     mainImage,
-    "imageUrl": mainImage.asset->url,
     readTime,
     featured
   }
 }`
 
 export async function getCategoryWithPosts(slug: string) {
-  return await client.fetch(categoryWithPostsQuery, { slug })
+  const data = await client.fetch(categoryWithPostsQuery, { slug })
+  if (!data?.posts?.length) return data
+  return {
+    ...data,
+    posts: data.posts.map((post: { mainImage?: unknown }) => ({
+      ...post,
+      imageUrl: blogListingImageUrl(post.mainImage),
+    })),
+  }
 }

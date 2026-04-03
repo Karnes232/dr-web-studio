@@ -1,6 +1,5 @@
-import { client } from "@/sanity/lib/client"
+import { urlFor } from "@/sanity/lib/image"
 import { PortableText } from "@portabletext/react"
-import imageUrlBuilder from "@sanity/image-url"
 
 import Image from "next/image"
 import TextComponentParagraph from "./TextComponentParagraph"
@@ -17,11 +16,15 @@ interface Props {
   content: LocaleBlockContent
   language?: "en" | "es"
 }
-const builder = imageUrlBuilder(client)
 const components = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = builder.image(value).url()
+      const imageUrl = urlFor(value)
+        .width(1100)
+        .fit("max")
+        .auto("format")
+        .quality(82)
+        .url()
 
       // Sanity images usually need to be accessed via .asset.url
 

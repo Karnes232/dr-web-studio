@@ -28,7 +28,7 @@ interface FeaturedPostProps {
     }>
     publishedAt: string
     readTime: number
-    imageUrl: string
+    imageUrl?: string
     tags: {
       en: string[]
       es: string[]
@@ -44,14 +44,21 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
     <div className="relative bg-white rounded-xl shadow-lg overflow-hidden mb-12">
       <div className="md:flex">
         <div className="md:w-1/2">
-          <Image
-            src={post.imageUrl}
-            alt={post.title[lang]}
-            width={600}
-            height={400}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="h-64 md:h-full w-full object-cover"
-          />
+          {post.imageUrl ? (
+            <Image
+              src={post.imageUrl}
+              alt={post.title[lang]}
+              width={600}
+              height={400}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="h-64 md:h-full w-full object-cover"
+            />
+          ) : (
+            <div
+              className="h-64 md:min-h-full w-full bg-slate-200 md:h-full"
+              aria-hidden
+            />
+          )}
         </div>
         <div className="md:w-1/2 p-8">
           <div className="flex items-center mb-4">
