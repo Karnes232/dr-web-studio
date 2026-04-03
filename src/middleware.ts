@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  if (pathname === "/sitemap.xml" || pathname === "/robots.txt" || pathname === "/mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt") {
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
     return NextResponse.next()
   }
 
@@ -35,6 +35,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|studio|sitemap.xml|robots.txt).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|studio|sitemap.xml|robots.txt|mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt).*)",
   ],
 }
