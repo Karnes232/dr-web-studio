@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt" || pathname === "/mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt") {
     return NextResponse.next()
   }
 
