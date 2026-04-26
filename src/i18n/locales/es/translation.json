@@ -44,7 +44,8 @@
     "start_project": "Iniciar Proyecto",
     "get_quote": "Obtener Cotización",
     "language": "Idioma",
-    "custom_payment": "Pago Personalizado"
+    "custom_payment": "Pago Personalizado",
+    "resources": "Recursos"
   },
   "blog": {
     "all": "Todos",

@@ -16,21 +16,27 @@ const TrustSignals = ({
   testimonials: any
 }) => {
   const { t, currentLocale } = useLocale()
-  const [happyClients, setHappyClients] = useState(0)
-  const [projectsCompleted, setProjectsCompleted] = useState(0)
-  const [averageRating, setAverageRating] = useState(0)
-  const statsRef = useRef<HTMLDivElement>(null)
-
   const targetHappyClients = 20
   const targetProjectsCompleted = 50
   const targetAverageRating = 5.0
   const supportAvailable = "24/7"
+
+  const [happyClients, setHappyClients] = useState(targetHappyClients)
+  const [projectsCompleted, setProjectsCompleted] = useState(
+    targetProjectsCompleted,
+  )
+  const [averageRating, setAverageRating] = useState(targetAverageRating)
+  const statsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
         const [entry] = entries
         if (entry.isIntersecting) {
+          setHappyClients(0)
+          setProjectsCompleted(0)
+          setAverageRating(0)
+
           const animationDuration = 2000 // 2 seconds
           const framesPerSecond = 60
           const totalFrames = (animationDuration / 1000) * framesPerSecond

@@ -29,7 +29,7 @@ const ServicesLinks = ({
   ]
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">{t("services.services")}</h3>
       <ul className="space-y-2">
         {serviceLinks.map((service, index) => (
           <li key={service._id}>

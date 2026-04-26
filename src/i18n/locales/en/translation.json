@@ -6,7 +6,7 @@
     "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
-    "guiaCompleta": "Guia Completa",
+    "guiaCompleta": "Complete Guide",
     "quickLinks": "Quick Links"
   },
   "services": {
@@ -44,7 +44,8 @@
     "start_project": "Start Project",
     "get_quote": "Get Quote",
     "language": "Language",
-    "custom_payment": "Custom Payment"
+    "custom_payment": "Custom Payment",
+    "resources": "Resources"
   },
   "blog": {
     "all": "All",

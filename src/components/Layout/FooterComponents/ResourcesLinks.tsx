@@ -28,7 +28,7 @@ const ResourcesLinks = () => {
   ]
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">{t("resources.resources")}</h3>
       <ul className="space-y-2">
         {resources.map((resource, index) => (
           <li key={index}>
