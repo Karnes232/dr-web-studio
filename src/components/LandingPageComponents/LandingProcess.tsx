@@ -46,7 +46,7 @@ export function LandingProcess({ sectionTitle, sectionSubtitle, steps }: Landing
           {/* Connecting line (desktop only) */}
           <div className="hidden lg:block absolute top-14 left-[10%] right-[10%] h-px bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 z-0" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 relative z-10">
             {steps.map((step, i) => {
               const Icon = ICON_MAP[step.icon] ?? Rocket
               return (
@@ -70,8 +70,10 @@ export function LandingProcess({ sectionTitle, sectionSubtitle, steps }: Landing
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{step.stepTitle}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-2">{step.description}</p>
+                  <div className="min-h-14 flex justify-center mb-2">
+                    <h3 className="text-lg font-semibold text-slate-900 text-center">{step.stepTitle}</h3>
+                  </div>
+                  <p className="flex-1 text-slate-500 text-sm leading-relaxed mb-5">{step.description}</p>
                   {step.duration && (
                     <span className="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
                       {step.duration}
