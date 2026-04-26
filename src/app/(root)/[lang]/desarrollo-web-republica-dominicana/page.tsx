@@ -24,7 +24,7 @@ export default async function DesarrolloWebRepublicaDominicana({ params }: PageP
   const data = await getLandingPage(PAGE_SLUG, lang)
 
   if (!data) return null
-console.log(data.structuredData)
+
   return (
     <main>
       <LandingHero data={data.hero} lang={lang} />
