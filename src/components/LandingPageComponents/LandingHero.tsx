@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, Star } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import type { HeroData } from "./types"
 
@@ -13,8 +14,20 @@ interface LandingHeroProps {
 export function LandingHero({ data, lang }: LandingHeroProps) {
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-slate-950">
-      {/* Background gradient mesh */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+      {/* Background image (when provided) */}
+      {data.backgroundImage && (
+        <Image
+          src={data.backgroundImage}
+          alt={data.headline}
+          fill
+          className="object-cover object-center"
+          priority
+          aria-hidden
+        />
+      )}
+
+      {/* Background gradient mesh — darkens image or stands alone */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/90 to-slate-950" />
       <div className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `radial-gradient(ellipse at 20% 50%, rgba(201,150,58,0.3) 0%, transparent 60%),
