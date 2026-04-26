@@ -62,9 +62,9 @@ const HeroSection = ({
               {heading.afterHighlight}
             </h1>
 
-            <h2 className="text-xl lg:text-2xl text-gray-200 leading-relaxed">
+            <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed">
               {subheading}
-            </h2>
+            </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -1,4 +1,4 @@
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { headers } from "next/headers"
 import FaqsContent from "@/components/FaqsComponents/FaqsContent"
@@ -12,20 +12,32 @@ interface PageProps {
 
 export default async function Portfolio({ params }: PageProps) {
   const { lang } = await params
-  const [seoData, faqData, faqsHeaderData] = await Promise.all([
-    getSeoSchema("faqs"),
+  const [faqData, faqsHeaderData] = await Promise.all([
     getFaqs(),
     getFaqsHeader(),
   ])
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqData.categories.flatMap(category =>
+      category.questions.map(q => ({
+        "@type": "Question",
+        name: q.question[lang],
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: q.answer[lang],
+        },
+      })),
+    ),
+  }
+
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <FaqsContent
         lang={lang}
         faqData={faqData}
