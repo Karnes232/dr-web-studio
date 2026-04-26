@@ -54,7 +54,7 @@ export function LandingHero({ data, lang }: LandingHeroProps) {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium"
           >
-            <Star size={14} className="fill-amber-400" />
+         {/*   <Star size={14} className="fill-amber-400" />*/}
             {data.badge}
           </motion.div>
         )}
