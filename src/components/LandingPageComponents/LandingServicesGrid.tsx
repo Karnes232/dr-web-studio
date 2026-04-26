@@ -55,13 +55,13 @@ export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang
                 initial={{ opacity: 0, y: 32 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group bg-white rounded-2xl p-8 border border-slate-100 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col h-full bg-white rounded-2xl p-8 border border-slate-100 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 rounded-xl bg-amber-50 group-hover:bg-amber-100 flex items-center justify-center mb-6 transition-colors duration-200">
                   <Icon size={24} className="text-amber-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                <p className="flex-1 text-slate-500 text-sm leading-relaxed">{item.description}</p>
                 {item.linkSlug && (
                   <div className="mt-6 text-amber-600 text-sm font-medium group-hover:text-amber-700 transition-colors">
                     {lang === "es" ? "Ver más →" : "Learn more →"}
@@ -71,11 +71,13 @@ export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang
             )
 
             return item.linkSlug ? (
-              <Link key={i} href={`/${lang}/our-services/${item.linkSlug}`}>
+              <Link key={i} href={`/${lang}/our-services/${item.linkSlug}`} className="flex">
                 {card}
               </Link>
             ) : (
-              <div key={i}>{card}</div>
+              <div key={i} className="flex">
+                {card}
+              </div>
             )
           })}
         </div>
