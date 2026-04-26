@@ -208,5 +208,13 @@
     "need_help": "Need Help?",
     "have_questions": "Have questions about your payment or project? We're here to help!",
     "email_us": "Email Us"
+  },
+  "landingPage": {
+    "learnMore": "Learn more →",
+    "viewPortfolio": "View Full Portfolio",
+    "getQuote": "Get Free Quote",
+    "startProject": "Start Your Project",
+    "whatsapp": "WhatsApp",
+    "viewAll": "View All"
   }
 }

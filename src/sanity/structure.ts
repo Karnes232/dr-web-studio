@@ -403,6 +403,15 @@ export const structure: StructureResolver = S =>
             .filter('_type == "pillarPage"'),
         ),
 
+      // Landing Pages
+      S.listItem()
+        .title("Landing Pages")
+        .child(
+          S.documentList()
+            .title("Landing Pages")
+            .filter('_type == "landingPage"'),
+        ),
+
       // SEO Group
       S.listItem()
         .title("SEO")

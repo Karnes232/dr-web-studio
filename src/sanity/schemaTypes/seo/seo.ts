@@ -43,6 +43,26 @@ export default defineType({
             title: "Guia Completa Desarrollo Web Moderno Negocios",
             value: "guia-completa-desarrollo-web-moderno-negocios",
           },
+          {
+            title: "Desarrollo Web República Dominicana (Landing)",
+            value: "desarrollo-web-republica-dominicana",
+          },
+          {
+            title: "Diseño Web República Dominicana (Landing)",
+            value: "diseno-web-republica-dominicana",
+          },
+          {
+            title: "Desarrollo Web Punta Cana (Landing)",
+            value: "desarrollo-web-punta-cana",
+          },
+          {
+            title: "Desarrollo E-commerce República Dominicana (Landing)",
+            value: "desarrollo-ecommerce-republica-dominicana",
+          },
+          {
+            title: "Mantenimiento Web República Dominicana (Landing)",
+            value: "mantenimiento-web-republica-dominicana",
+          },
         ],
         layout: "dropdown",
       },

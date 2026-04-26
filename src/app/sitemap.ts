@@ -29,6 +29,58 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/en/desarrollo-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/es/desarrollo-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/diseno-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/es/diseno-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/desarrollo-web-punta-cana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/es/desarrollo-web-punta-cana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/desarrollo-ecommerce-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/es/desarrollo-ecommerce-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/mantenimiento-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/es/mantenimiento-web-republica-dominicana`,
+      lastModified: new Date(),
+      priority: 0.9,
+    },
+    { url: `${baseUrl}/en/sitemap`, lastModified: new Date(), priority: 0.5 },
+    { url: `${baseUrl}/es/sitemap`, lastModified: new Date(), priority: 0.5 },
+    {
       url: `${baseUrl}/en/privacy-policy`,
       lastModified: new Date(),
       priority: 0.8,

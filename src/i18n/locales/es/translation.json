@@ -208,5 +208,13 @@
     "need_help": "¿Necesitas Ayuda?",
     "have_questions": "¿Tienes preguntas sobre tu pago o proyecto? Estamos aquí para ayudarte!",
     "email_us": "Envíanos un Correo"
+  },
+  "landingPage": {
+    "learnMore": "Ver más →",
+    "viewPortfolio": "Ver Portafolio Completo",
+    "getQuote": "Obtener Cotización Gratis",
+    "startProject": "Empieza Tu Proyecto",
+    "whatsapp": "WhatsApp",
+    "viewAll": "Ver Todo"
   }
 }

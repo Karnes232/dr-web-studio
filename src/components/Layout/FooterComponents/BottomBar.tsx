@@ -26,7 +26,7 @@ const BottomBar = () => {
             {t("resources.terms_of_service")}
           </Link>
           <Link
-            href="/sitemap.xml"
+            href={getLocalizedPath("/sitemap")}
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.sitemap")}

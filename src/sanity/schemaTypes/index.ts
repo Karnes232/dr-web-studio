@@ -71,6 +71,9 @@ import paymentSuccess from "./payment/paymentSuccess"
 // Pillar Page Schema
 import pillarPage from "./pillar-page/pillarPage"
 
+// Landing Pages Schema
+import landingPage from "./landing-pages/landingPage"
+
 // SEO Schema
 import seo from "./seo/seo"
 import legal from "./legal/legal"
@@ -148,6 +151,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Pillar Page Schema
     pillarPage,
+
+    // Landing Pages Schema
+    landingPage,
 
     // SEO Schema
     seo,
