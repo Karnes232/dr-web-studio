@@ -1,6 +1,6 @@
 "use client"
 import React, { useMemo, useState } from "react"
-import { HelpCircle, Code, DollarSign, Shield } from "lucide-react"
+import { HelpCircle, Code, DollarSign, ShieldCheck, Palette, ShoppingCart, Search } from "lucide-react"
 import FaqsHeader from "./FaqsHeader"
 import SearchBar from "./SearchBar"
 import QuickStats from "./QuickStats"
@@ -12,7 +12,10 @@ const iconMap = {
   HelpCircle,
   Code,
   DollarSign,
-  Shield,
+  ShieldCheck,
+  Palette,
+  ShoppingCart,
+  Search,
 } as const
 
 const FaqsContent = ({
