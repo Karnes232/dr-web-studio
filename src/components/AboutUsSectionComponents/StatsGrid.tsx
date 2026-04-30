@@ -8,9 +8,9 @@ const StatsGrid = ({
   stats: { websitesDelivered: number; yearsExperience: number }
 }) => {
   const { t } = useLocale()
-  const [websitesDelivered, setWebsitesDelivered] = useState(0)
-  const [yearsExperience, setYearsExperience] = useState(0)
-  const [clientSatisfaction, setClientSatisfaction] = useState(0)
+  const [websitesDelivered, setWebsitesDelivered] = useState(25)
+  const [yearsExperience, setYearsExperience] = useState(6)
+  const [clientSatisfaction, setClientSatisfaction] = useState(100)
   const statsRef = useRef<HTMLDivElement>(null)
 
   const targetClientSatisfaction = 100
