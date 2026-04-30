@@ -9,6 +9,7 @@ import {
 import { Metadata } from "next"
 import { headers } from "next/headers"
 import React from "react"
+import { notFound } from "next/navigation"
 
 interface PageProps {
   params: Promise<{
@@ -20,6 +21,9 @@ interface PageProps {
 export default async function BlogPost({ params }: PageProps) {
   const { lang, slug } = await params
   const post = await getBlogPostBySlug(slug)
+  if (!post) {
+    return notFound()
+  }
   const categorySlugs =
     post?.categories?.map(
       (c: { slug: { current: string } }) => c.slug.current,
