@@ -8,6 +8,7 @@ import {
 } from "@/sanity/queries/blog/blog"
 import { Metadata } from "next"
 import { headers } from "next/headers"
+import { notFound } from "next/navigation"
 import React from "react"
 
 interface PageProps {
@@ -20,6 +21,9 @@ interface PageProps {
 export default async function BlogPost({ params }: PageProps) {
   const { lang, slug } = await params
   const post = await getBlogPostBySlug(slug)
+  if (!post) {
+    notFound()
+  }
   const categorySlugs =
     post?.categories?.map(
       (c: { slug: { current: string } }) => c.slug.current,
