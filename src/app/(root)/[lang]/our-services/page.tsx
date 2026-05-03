@@ -44,6 +44,7 @@ export default async function OurServices({ params }: PageProps) {
         customSolutionCTA={customSolutionCTA}
         categories={categories}
         serviceItems={serviceItems}
+        faqs={servicesHeader.faq}
       />
     </>
   )

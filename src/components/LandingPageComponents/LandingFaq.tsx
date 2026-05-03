@@ -9,6 +9,7 @@ interface LandingFaqProps {
   sectionTitle: string
   sectionSubtitle: string
   items: FaqItem[]
+  bgColor?: string
 }
 
 function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
@@ -50,14 +51,14 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
   )
 }
 
-export function LandingFaq({ sectionTitle, sectionSubtitle, items }: LandingFaqProps) {
+export function LandingFaq({ sectionTitle, sectionSubtitle, items, bgColor }: LandingFaqProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   if (!items.length) return null
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section className={`${bgColor ? bgColor : "bg-white"} py-24 px-6`}>
       <div className="max-w-3xl mx-auto">
         <motion.div
           ref={ref}
@@ -81,7 +82,7 @@ export function LandingFaq({ sectionTitle, sectionSubtitle, items }: LandingFaqP
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-slate-50 rounded-2xl px-8 py-2"
+          className={`${bgColor ? bgColor : "bg-slate-50"} rounded-2xl px-8 py-2`}
         >
           {items.map((item, i) => (
             <FaqAccordionItem key={i} item={item} index={i} />

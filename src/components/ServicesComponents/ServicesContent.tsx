@@ -20,6 +20,7 @@ import { FeaturesStripData } from "@/sanity/queries/services/featuresStrip"
 import { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
 import { Category } from "@/sanity/queries/services/category"
 import { ServiceItem } from "@/sanity/queries/services/serviceItem"
+import { LandingFaq } from "../LandingPageComponents/LandingFaq"
 
 export default function ServicesContent({
   servicesHeader,
@@ -27,12 +28,33 @@ export default function ServicesContent({
   customSolutionCTA,
   categories,
   serviceItems,
+  faqs,
 }: {
   servicesHeader: ServicesHeaderData
   featuresStrip: FeaturesStripData
   customSolutionCTA: CustomSolutionCTAData
   categories: Category[]
   serviceItems: ServiceItem[]
+  faqs: {
+    sectionTitle: {
+      en: string
+      es: string
+    }
+    sectionSubtitle: {
+      en: string
+      es: string
+    }
+    items: {
+      question: {
+        en: string
+        es: string
+      }
+      answer: {
+        en: string
+        es: string
+      }
+    }[]
+  }
 }) {
   const { currentLocale } = useLocale()
   const [activeCategory, setActiveCategory] = useState(
@@ -105,6 +127,18 @@ export default function ServicesContent({
         <CustomSolutionCTA customSolutionCTA={customSolutionCTA} />
 
         <FeaturesStrip features={featuresStrip.features} />
+
+        {faqs.items.length > 0 && (
+        <LandingFaq
+          sectionTitle={faqs.sectionTitle[currentLocale as keyof typeof faqs.sectionTitle]}
+          sectionSubtitle={faqs.sectionSubtitle[currentLocale as keyof typeof faqs.sectionSubtitle]}
+          items={faqs.items.map(item => ({
+            question: item.question[currentLocale as keyof typeof item.question],
+            answer: item.answer[currentLocale as keyof typeof item.answer],
+          }))}
+          bgColor="bg-transparent"
+        />
+      )}
       </div>
     </section>
   )
