@@ -23,6 +23,8 @@
 # sanity build artifacts
 /dist
 
+/graphify-out
+
 # misc
 .DS_Store
 *.pem

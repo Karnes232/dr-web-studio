@@ -19,12 +19,12 @@ const ServicesHeader = ({
         {badge}
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+      <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
         {title}
         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500">
           {highlightedText}
         </span>
-      </h2>
+      </h1>
 
       <p className="text-xl text-slate-600 max-w-3xl mx-auto">{description}</p>
     </div>
