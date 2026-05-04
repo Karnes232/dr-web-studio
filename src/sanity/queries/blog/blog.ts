@@ -189,6 +189,9 @@ export async function getRelatedBlogPosts(
 
 interface BlogPostSEO {
   title: string
+  publishedAt?: string
+  _updatedAt?: string
+  author?: { name: string }
   seo: {
     meta: {
       en: {
@@ -231,6 +234,9 @@ interface BlogPostSEO {
 const blogPostBySlugQuerySeo = `
 *[_type == "blogPost" && slug.current == $slug][0] {
   title,
+  publishedAt,
+  _updatedAt,
+  author-> { name },
   seo {
     meta {
       en {
@@ -295,7 +301,8 @@ export async function getBlogPostSEO(
 export const allBlogPostsSitemapQuery = `
 *[_type == "blogPost"] {
   title,
-  slug
+  slug,
+  _updatedAt
 }`
 
 export interface BlogPostSitemap {
@@ -306,6 +313,7 @@ export interface BlogPostSitemap {
   slug: {
     current: string
   }
+  _updatedAt: string
 }
 
 export async function getAllBlogPostsSitemap(): Promise<BlogPostSitemap[]> {

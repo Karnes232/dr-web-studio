@@ -1,7 +1,5 @@
 import { Metadata } from "next"
-import { getSEO } from "@/sanity/queries/seo"
 import PaymentSucessContent from "@/components/CheckoutComponents/PaymentSucessContent"
-import { headers } from "next/headers"
 import { getPaymentSuccess } from "@/sanity/queries/payment/paymentSuccess"
 import { client } from "@/sanity/lib/client"
 
@@ -31,56 +29,9 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { lang } = await params
-  const seoData = await getSEO("services")
-
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
-  const canonicalUrl = `${baseUrl}/${lang}/payment-success`
-
-  if (!seoData) return {}
-
   return {
-    title: seoData.meta[lang]?.title,
-    description: seoData.meta[lang]?.description,
-    keywords: seoData.meta[lang]?.keywords.join(", "),
-    openGraph: {
-      title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
-      description:
-        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
-      url: canonicalUrl,
-      type: "website",
-      images: seoData.openGraph.image
-        ? [
-            {
-              url: seoData.openGraph.image.url,
-              width: seoData.openGraph.image.width,
-              height: seoData.openGraph.image.height,
-            },
-          ]
-        : [],
-    },
-    robots: {
-      index: false,
-      follow: true,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
-      description:
-        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
-      images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
-    },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}/en/payment-success`,
-        es: `${baseUrl}/es/payment-success`,
-        "x-default": `${baseUrl}/en/payment-success`,
-      },
-    },
+    title: lang === "es" ? "Pago Exitoso | DR Web Studio" : "Payment Successful | DR Web Studio",
+    description: lang === "es" ? "Tu pago ha sido procesado exitosamente." : "Your payment has been processed successfully.",
+    robots: { index: false, follow: false },
   }
 }

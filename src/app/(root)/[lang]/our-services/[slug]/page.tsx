@@ -6,6 +6,7 @@ import {
   getServiceItemSEO,
 } from "@/sanity/queries/services/serviceItem"
 import { headers } from "next/headers"
+import { notFound } from "next/navigation"
 
 interface PageProps {
   params: Promise<{
@@ -45,6 +46,7 @@ export async function generateMetadata({
       description: ogDescription,
       url: canonicalUrl,
       type: "website",
+      locale: lang === "es" ? "es_ES" : "en_US",
       images: serviceSEO.seo?.openGraph.image
         ? [
             {
@@ -84,7 +86,7 @@ export default async function IndividualService({ params }: PageProps) {
   const service = await getServiceItemBySlug(slug)
 
   if (!service) {
-    return <div>Service not found</div>
+    notFound()
   }
 
   return (

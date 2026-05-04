@@ -461,7 +461,8 @@ export async function getServiceItemsWithSEO(): Promise<ServiceItemWithSEO[]> {
 const serviceItemsSitemapQuery = `*[_type == "serviceItem"] {
   _id,
   title,
-  slug
+  slug,
+  _updatedAt
 }`
 
 export interface ServiceItemsSitemap {
@@ -473,6 +474,7 @@ export interface ServiceItemsSitemap {
   slug: {
     current: string
   }
+  _updatedAt: string
 }
 
 export async function getServiceItemsSitemap(): Promise<ServiceItemsSitemap[]> {

@@ -87,6 +87,7 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
+      locale: lang === "es" ? "es_ES" : "en_US",
       images: seoData.openGraph.image
         ? [
             {

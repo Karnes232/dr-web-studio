@@ -11,7 +11,6 @@ import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
 import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
 import { headers } from "next/headers"
-import Script from "next/script"
 
 const PAGE_SLUG = "desarrollo-web-republica-dominicana"
 
@@ -76,9 +75,7 @@ export default async function DesarrolloWebRepublicaDominicana({ params }: PageP
       )}
 
       {data.structuredData && (
-        <Script
-          id="landing-structured-data"
-          strategy="afterInteractive"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: data.structuredData }}
         />
@@ -96,11 +93,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
 
-  const canonicalUrl = seoData?.canonicalUrl
+  if (!seoData) return {}
+
+  const canonicalUrl = seoData.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
     : `${baseUrl}/${lang}/${PAGE_SLUG}`
-
-  if (!seoData) return {}
 
   return {
     title: seoData.meta[lang]?.title,
@@ -112,6 +109,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
+      locale: lang === "es" ? "es_ES" : "en_US",
       images: seoData.openGraph.image
         ? [
             {

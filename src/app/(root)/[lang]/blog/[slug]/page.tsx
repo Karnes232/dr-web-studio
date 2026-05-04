@@ -75,6 +75,10 @@ export async function generateMetadata({
         seoData.seo.meta[lang]?.description,
       url: canonicalUrl,
       type: "article",
+      locale: lang === "es" ? "es_ES" : "en_US",
+      ...(seoData.publishedAt && { publishedTime: seoData.publishedAt }),
+      ...(seoData._updatedAt && { modifiedTime: seoData._updatedAt }),
+      ...(seoData.author?.name && { authors: [seoData.author.name] }),
       images: seoData.seo.openGraph.image
         ? [
             {

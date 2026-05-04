@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/studio", "/api/"],
     },
     sitemap: "https://www.dr-webstudio.com/sitemap.xml",
   }

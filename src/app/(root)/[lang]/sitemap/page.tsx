@@ -226,7 +226,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       lang === "es"
         ? "Una lista completa de todas las páginas del sitio web de DR Web Studio."
         : "A complete list of all pages on the DR Web Studio website.",
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: false },
     alternates: {
       canonical: `${baseUrl}/${lang}/sitemap`,
       languages: {
@@ -237,3 +237,4 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
   }
 }
+

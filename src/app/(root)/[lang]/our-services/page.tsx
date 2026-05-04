@@ -61,11 +61,11 @@ export async function generateMetadata({
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
 
-  const canonicalUrl = seoData?.canonicalUrl
+  if (!seoData) return {}
+
+  const canonicalUrl = seoData.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
     : `${baseUrl}/${lang}/our-services`
-
-  if (!seoData) return {}
 
   return {
     title: seoData.meta[lang]?.title,
@@ -77,6 +77,7 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
+      locale: lang === "es" ? "es_ES" : "en_US",
       images: seoData.openGraph.image
         ? [
             {

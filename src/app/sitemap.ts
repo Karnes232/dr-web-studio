@@ -78,8 +78,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.9,
     },
-    { url: `${baseUrl}/en/sitemap`, lastModified: new Date(), priority: 0.5 },
-    { url: `${baseUrl}/es/sitemap`, lastModified: new Date(), priority: 0.5 },
     {
       url: `${baseUrl}/en/privacy-policy`,
       lastModified: new Date(),
@@ -126,22 +124,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...serviceItems.map(item => ({
       url: `${baseUrl}/en/our-services/${item.slug.current}`,
-      lastModified: new Date(),
+      lastModified: new Date(item._updatedAt),
       priority: 0.8,
     })),
     ...serviceItems.map(item => ({
       url: `${baseUrl}/es/our-services/${item.slug.current}`,
-      lastModified: new Date(),
+      lastModified: new Date(item._updatedAt),
       priority: 0.8,
     })),
     ...blogPosts.map(item => ({
       url: `${baseUrl}/en/blog/${item.slug.current}`,
-      lastModified: new Date(),
+      lastModified: new Date(item._updatedAt),
       priority: 0.8,
     })),
     ...blogPosts.map(item => ({
       url: `${baseUrl}/es/blog/${item.slug.current}`,
-      lastModified: new Date(),
+      lastModified: new Date(item._updatedAt),
       priority: 0.8,
     })),
   ]

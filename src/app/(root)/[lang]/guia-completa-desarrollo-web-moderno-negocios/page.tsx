@@ -9,7 +9,6 @@ import { getPillarPageContent } from "@/sanity/queries/pillarPage"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { headers } from "next/headers"
-import Script from "next/script"
 
 interface PageProps {
   params: Promise<{
@@ -28,12 +27,12 @@ export default async function GuiaCompletaDesarrolloWebModernoNegocios({
   return (
     <main>
       <PageClientComponent content={content} lang={lang as Language} />
-      <Script
-        id="structured-data"
-        strategy="afterInteractive"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: content.structuredData || "" }}
-      />
+      {content.structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: content.structuredData }}
+        />
+      )}
     </main>
   )
 }
@@ -49,11 +48,11 @@ export async function generateMetadata({
   const protocol = headersList.get("x-forwarded-proto") || "http"
   const baseUrl = `${protocol}://${host}`
 
-  const canonicalUrl = seoData?.canonicalUrl
+  if (!seoData) return {}
+
+  const canonicalUrl = seoData.canonicalUrl
     ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
     : `${baseUrl}/${lang}/guia-completa-desarrollo-web-moderno-negocios`
-
-  if (!seoData) return {}
 
   return {
     title: seoData.meta[lang]?.title,
@@ -65,6 +64,7 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
+      locale: lang === "es" ? "es_ES" : "en_US",
       images: seoData.openGraph.image
         ? [
             {
