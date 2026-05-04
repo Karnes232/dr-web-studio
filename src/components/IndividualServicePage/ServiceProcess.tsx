@@ -25,12 +25,12 @@ const ServiceProcess = ({ steps }: { steps: any }) => {
 
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-orange-500 transition-all duration-200">
                 <div className="flex items-center mb-4">
-                  <div className="bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
+                  <div className="bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-full w-12 h-12 shrink-0 flex items-center justify-center font-bold text-lg">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-semibold ml-4">{step.title}</h3>
+                  <h3 className="text-xl flex justify-center items-center font-semibold ml-4 h-24">{step.title}</h3>
                 </div>
-                <p className="text-gray-300 leading-relaxed md:h-24 lg:h-40">
+                <p className="text-gray-300 leading-relaxed md:h-40 lg:h-60">
                   {step.description}
                 </p>
                 <div className="mt-4 text-sm text-orange-400">
