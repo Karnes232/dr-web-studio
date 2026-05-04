@@ -1,27 +1,26 @@
-"use client"
 import React from "react"
 import { ArrowRight, Star } from "lucide-react"
 
 import Image from "next/image"
-import { useLocale } from "@/i18n/useLocale"
-// Import Swiper React components
-
 import VisualElement from "./VisualElement"
-import { Trans } from "react-i18next"
 import Link from "next/link"
+import { getTranslation } from "@/i18n"
 
-const HeroSection = ({
+const HeroSection = async ({
   heading,
   subheading,
   backgroundImage,
   visualElements,
+  lang,
 }: {
   heading: any
   subheading: string
   backgroundImage: any
   visualElements: any[]
+  lang: string
 }) => {
-  const { currentLocale, t, getLocalizedPath } = useLocale()
+  const { t } = await getTranslation(lang)
+  const lqip = backgroundImage?.asset?.metadata?.lqip
 
   return (
     <section className="relative text-white overflow-hidden min-h-screen flex items-center">
@@ -32,9 +31,11 @@ const HeroSection = ({
           alt="Custom website development services in the Dominican Republic"
           fill
           priority
-          quality={90}
+          fetchPriority="high"
+          quality={85}
           className="object-cover"
           sizes="100vw"
+          {...(lqip ? { placeholder: "blur" as const, blurDataURL: lqip } : {})}
         />
       </div>
 
@@ -69,7 +70,7 @@ const HeroSection = ({
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
-                href={getLocalizedPath("/contact")}
+                href={`/${lang}/contact`}
                 className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.get_free_quote")}
@@ -77,7 +78,7 @@ const HeroSection = ({
               </Link>
 
               <Link
-                href={getLocalizedPath("/project-planner")}
+                href={`/${lang}/project-planner`}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.start_project")}
@@ -123,7 +124,7 @@ const HeroSection = ({
           {/* Visual Element */}
           <VisualElement
             visualElements={visualElements}
-            currentLocale={currentLocale}
+            currentLocale={lang}
           />
         </div>
       </div>

@@ -1,8 +1,8 @@
+import { Suspense } from "react"
 import { client } from "@/sanity/lib/client"
 import HeroSection from "@/components/HeroComponent/HeroSection"
 import QuickServicesOverview from "@/components/ServicesOverview/QuickServicesOverview"
 import TrustSignals from "@/components/TrustSignalsComponents/TrustSignals"
-import { getTranslation } from "@/i18n"
 import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getHomePageService } from "@/sanity/queries/home/homePageService"
@@ -114,7 +114,6 @@ export default async function Home({ params }: PageProps) {
   const [
     seoData,
     pageData,
-    { t },
     serviceData,
     services,
     trustSignals,
@@ -123,7 +122,6 @@ export default async function Home({ params }: PageProps) {
   ] = await Promise.all([
     getSeoSchema("home"),
     getContent(),
-    getTranslation(lang),
     getHomePageService(),
     getServices(),
     getTrustSignals(),
@@ -149,6 +147,7 @@ export default async function Home({ params }: PageProps) {
           }
           backgroundImage={pageData.backgroundImage}
           visualElements={pageData.visualElements}
+          lang={lang}
         />
         <QuickServicesOverview
           title={serviceData.title[lang]}
@@ -157,12 +156,14 @@ export default async function Home({ params }: PageProps) {
           services={services}
           lang={lang}
         />
-        <TrustSignals
-          title={trustSignals.title[lang]}
-          subtitle={trustSignals.subtitle[lang]}
-          previousClients={previousClients}
-          testimonials={testimonials}
-        />
+        <Suspense fallback={null}>
+          <TrustSignals
+            title={trustSignals.title[lang]}
+            subtitle={trustSignals.subtitle[lang]}
+            previousClients={previousClients}
+            testimonials={testimonials}
+          />
+        </Suspense>
       </main>
     </>
   )

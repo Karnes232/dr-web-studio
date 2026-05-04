@@ -1,9 +1,8 @@
-"use client"
 import React from "react"
 import { ArrowRight } from "lucide-react"
 import IndividualService from "./IndividualService"
 import Link from "next/link"
-import { useLocale } from "@/i18n/useLocale"
+
 const QuickServicesOverview = ({
   title,
   subtitle,
@@ -17,8 +16,6 @@ const QuickServicesOverview = ({
   services: any
   lang: string
 }) => {
-  const { getLocalizedPath } = useLocale()
-
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +37,7 @@ const QuickServicesOverview = ({
         {/* Bottom CTA */}
         <div className="text-center mt-12">
           <Link
-            href={getLocalizedPath("/our-services")}
+            href={`/${lang}/our-services`}
             className="inline-flex items-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             {ctaText}
