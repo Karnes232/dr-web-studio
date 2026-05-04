@@ -29,6 +29,7 @@ visualElements[]-> {
 },
 backgroundImage {
   asset->{
+    _id,
     url,
     metadata {
       dimensions,

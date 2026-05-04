@@ -5,6 +5,7 @@ import Image from "next/image"
 import VisualElement from "./VisualElement"
 import Link from "next/link"
 import { getTranslation } from "@/i18n"
+import { urlFor } from "@/sanity/lib/image"
 
 const HeroSection = async ({
   heading,
@@ -21,18 +22,23 @@ const HeroSection = async ({
 }) => {
   const { t } = await getTranslation(lang)
   const lqip = backgroundImage?.asset?.metadata?.lqip
+  const heroSrc = urlFor(backgroundImage)
+    .width(1920)
+    .quality(80)
+    .auto("format")
+    .url()
 
   return (
     <section className="relative text-white overflow-hidden min-h-screen flex items-center">
       {/* Background Image with Fallback */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-teal-900/60">
         <Image
-          src={backgroundImage.asset.url}
+          src={heroSrc}
           alt="Custom website development services in the Dominican Republic"
           fill
           priority
           fetchPriority="high"
-          quality={85}
+          unoptimized
           className="object-cover"
           sizes="100vw"
           {...(lqip ? { placeholder: "blur" as const, blurDataURL: lqip } : {})}
