@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { Crimson_Pro, Inter } from "next/font/google"
 import "./globals.css"
-import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { headers } from "next/headers"
+import DeferredAnalytics from "@/components/Analytics/DeferredAnalytics"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,25 +31,13 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+      </head>
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Y3DMZHFV9Z"
-          strategy="lazyOnload"
-        />
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="1+Xtrpxb01gBoWyKHrpzhQ"
-          strategy="lazyOnload"
-        />
-        <Script id="ga-setup" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Y3DMZHFV9Z');
-          `}
-        </Script>
         {children}
+        <DeferredAnalytics />
         <Analytics />
       </body>
     </html>

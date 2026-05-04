@@ -2,7 +2,7 @@ import React from "react"
 import { ArrowRight, Star } from "lucide-react"
 
 import Image from "next/image"
-import VisualElement from "./VisualElement"
+import VisualElement from "./VisualElementLazy"
 import Link from "next/link"
 import { getTranslation } from "@/i18n"
 import { urlFor } from "@/sanity/lib/image"
