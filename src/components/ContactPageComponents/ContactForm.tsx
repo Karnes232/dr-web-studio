@@ -101,6 +101,7 @@ const ContactForm = () => {
           {t("contact.form.messageSentDescription")}
         </p>
         <button
+        disabled={isSubmitting}
           onClick={() => {
             setIsSubmitted(false)
             setSubmitError(null)
