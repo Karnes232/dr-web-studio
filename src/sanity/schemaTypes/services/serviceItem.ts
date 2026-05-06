@@ -282,6 +282,16 @@ export default defineType({
                       ],
                     },
                   ],
+                  preview: {
+                    select: {
+                      title: "title.en",
+                    },
+                    prepare(selection) {
+                      return {
+                        title: selection.title || "Untitled Benefit",
+                      }
+                    },
+                  },
                 },
               ],
               validation: Rule => Rule.required().min(1),
@@ -338,6 +348,12 @@ export default defineType({
               of: [
                 {
                   type: "object",
+                  preview: {
+                    select: {
+                      title: "name.en",
+                      subtitle: "description.en",
+                    },
+                  },
                   fields: [
                     {
                       name: "name",
@@ -389,6 +405,12 @@ export default defineType({
               of: [
                 {
                   type: "object",
+                  preview: {
+                    select: {
+                      title: "name.en",
+                      subtitle: "description.en",
+                    },
+                  },
                   fields: [
                     {
                       name: "name",
@@ -448,6 +470,12 @@ export default defineType({
           of: [
             {
               type: "object",
+              preview: {
+                select: {
+                  title: "title.en",
+                  subtitle: "description.en",
+                },
+              },
               fields: [
                 {
                   name: "title",
@@ -518,6 +546,12 @@ export default defineType({
           of: [
             {
               type: "object",
+              preview: {
+                select: {
+                  title: "question.en",
+                  subtitle: "answer.en",
+                },
+              },
               fields: [
                 {
                   name: "question",
