@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface Reason {
@@ -27,6 +28,6 @@ const whyChooseUsQuery = `*[_type == "whyChooseUs"][0] {
   }
 }`
 
-export async function getWhyChooseUs(): Promise<WhyChooseUsData> {
+export const getWhyChooseUs = cache(async (): Promise<WhyChooseUsData> => {
   return client.fetch(whyChooseUsQuery)
-}
+})

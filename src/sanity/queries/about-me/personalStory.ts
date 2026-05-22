@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface PersonalStoryData {
@@ -30,6 +31,8 @@ export const personalStoryQuery = `*[_type == "personalStory"][0] {
   }
 }`
 
-export async function getPersonalStory(): Promise<PersonalStoryData> {
-  return client.fetch(personalStoryQuery)
-}
+export const getPersonalStory = cache(
+  async (): Promise<PersonalStoryData> => {
+    return client.fetch(personalStoryQuery)
+  },
+)

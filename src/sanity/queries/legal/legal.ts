@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const legalQuery = `*[_type == "legal" && pageName == $pageName][0] {
@@ -16,6 +17,8 @@ export interface LegalData {
   }
 }
 
-export async function getLegal(pageName: string): Promise<LegalData | null> {
-  return client.fetch(legalQuery, { pageName })
-}
+export const getLegal = cache(
+  async (pageName: string): Promise<LegalData | null> => {
+    return client.fetch(legalQuery, { pageName })
+  },
+)

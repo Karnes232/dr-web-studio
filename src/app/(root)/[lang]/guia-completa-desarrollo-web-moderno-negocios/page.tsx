@@ -8,7 +8,9 @@ const PageClientComponent = dynamic(
 import { getPillarPageContent } from "@/sanity/queries/pillarPage"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
 
 interface PageProps {
   params: Promise<{
@@ -43,16 +45,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("guia-completa-desarrollo-web-moderno-negocios")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/guia-completa-desarrollo-web-moderno-negocios`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/guia-completa-desarrollo-web-moderno-negocios`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -90,9 +87,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
-        es: `${baseUrl}/es/guia-completa-desarrollo-web-moderno-negocios`,
-        "x-default": `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
+        en: `${SITE_URL}/en/guia-completa-desarrollo-web-moderno-negocios`,
+        es: `${SITE_URL}/es/guia-completa-desarrollo-web-moderno-negocios`,
+        "x-default": `${SITE_URL}/en/guia-completa-desarrollo-web-moderno-negocios`,
       },
     },
   }

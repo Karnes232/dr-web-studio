@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface Feature {
@@ -26,6 +27,6 @@ const featuresStripQuery = `*[_type == "featuresStrip"][0] {
   }
 }`
 
-export async function getFeaturesStrip(): Promise<FeaturesStripData> {
+export const getFeaturesStrip = cache(async (): Promise<FeaturesStripData> => {
   return client.fetch(featuresStripQuery)
-}
+})

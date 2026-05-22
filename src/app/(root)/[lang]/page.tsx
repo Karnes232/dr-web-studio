@@ -10,7 +10,9 @@ import { getServices } from "@/sanity/queries/services/services"
 import { getTrustSignals } from "@/sanity/queries/home/trustSignals"
 import { getPreviousClients } from "@/sanity/queries/home/previousClients"
 import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {
@@ -55,16 +57,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("home")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -102,9 +99,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en`,
-        es: `${baseUrl}/es`,
-        "x-default": `${baseUrl}/en`,
+        en: `${SITE_URL}/en`,
+        es: `${SITE_URL}/es`,
+        "x-default": `${SITE_URL}/en`,
       },
     },
   }

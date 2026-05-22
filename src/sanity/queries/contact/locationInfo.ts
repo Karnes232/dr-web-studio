@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { groq } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 
@@ -38,7 +39,7 @@ export interface LocationInfo {
   }
 }
 
-export const getLocationInfo = async (): Promise<LocationInfo> => {
+export const getLocationInfo = cache(async (): Promise<LocationInfo> => {
   const query = groq`
     *[_type == "locationInfo"][0] {
       _id,
@@ -52,4 +53,4 @@ export const getLocationInfo = async (): Promise<LocationInfo> => {
   `
 
   return await client.fetch(query)
-}
+})

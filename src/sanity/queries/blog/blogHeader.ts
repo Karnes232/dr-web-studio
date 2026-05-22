@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "../../lib/client"
 
 export const blogHeaderQuery = `
@@ -23,6 +24,8 @@ export interface BlogHeader {
   }
 }
 
-export async function getBlogHeader(): Promise<BlogHeader | null> {
-  return await client.fetch(blogHeaderQuery)
-}
+export const getBlogHeader = cache(
+  async (): Promise<BlogHeader | null> => {
+    return await client.fetch(blogHeaderQuery)
+  },
+)

@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const languagesQuery = `
@@ -12,9 +13,9 @@ export const languagesQuery = `
   }
 `
 
-export async function getLanguages(): Promise<Languages> {
+export const getLanguages = cache(async (): Promise<Languages> => {
   return client.fetch(languagesQuery)
-}
+})
 
 export interface Languages {
   title: {

@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface CustomSolutionCTAData {
@@ -26,6 +27,8 @@ const customSolutionCTAQuery = `*[_type == "customSolutionCTA"][0] {
   quoteButton
 }`
 
-export async function getCustomSolutionCTA(): Promise<CustomSolutionCTAData> {
-  return client.fetch(customSolutionCTAQuery)
-}
+export const getCustomSolutionCTA = cache(
+  async (): Promise<CustomSolutionCTAData> => {
+    return client.fetch(customSolutionCTAQuery)
+  },
+)

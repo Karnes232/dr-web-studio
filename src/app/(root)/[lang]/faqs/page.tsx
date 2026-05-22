@@ -1,9 +1,12 @@
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import { headers } from "next/headers"
 import FaqsContent from "@/components/FaqsComponents/FaqsContent"
 import { getFaqs } from "@/sanity/queries/faqs/faqs"
 import { getFaqsHeader } from "@/sanity/queries/faqs/faqsHeader"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
+
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -53,16 +56,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("faqs")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/faqs`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/faqs`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -100,9 +98,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/faqs`,
-        es: `${baseUrl}/es/faqs`,
-        "x-default": `${baseUrl}/en/faqs`,
+        en: `${SITE_URL}/en/faqs`,
+        es: `${SITE_URL}/es/faqs`,
+        "x-default": `${SITE_URL}/en/faqs`,
       },
     },
   }

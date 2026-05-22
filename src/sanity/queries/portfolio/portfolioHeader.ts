@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface PortfolioHeaderData {
@@ -16,6 +17,8 @@ const portfolioHeaderQuery = `*[_type == "portfolioHeader"][0] {
   description
 }`
 
-export async function getPortfolioHeader(): Promise<PortfolioHeaderData> {
-  return client.fetch(portfolioHeaderQuery)
-}
+export const getPortfolioHeader = cache(
+  async (): Promise<PortfolioHeaderData> => {
+    return client.fetch(portfolioHeaderQuery)
+  },
+)

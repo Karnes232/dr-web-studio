@@ -2,7 +2,9 @@ import BlockContent from "@/components/BlogComponents/BlogPost/BlockContent/Bloc
 import { getLegal } from "@/sanity/queries/legal/legal"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{
@@ -34,16 +36,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("terms-of-service")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
+  if (!seoData) return {}
 
   const canonicalUrl = seoData?.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/terms-of-service`
-
-  if (!seoData) return {}
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/terms-of-service`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -81,9 +78,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/terms-of-service`,
-        es: `${baseUrl}/es/terms-of-service`,
-        "x-default": `${baseUrl}/en/terms-of-service`,
+        en: `${SITE_URL}/en/terms-of-service`,
+        es: `${SITE_URL}/es/terms-of-service`,
+        "x-default": `${SITE_URL}/en/terms-of-service`,
       },
     },
   }

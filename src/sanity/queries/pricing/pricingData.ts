@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface PricingFeature {
@@ -57,6 +58,6 @@ const pricingDataQuery = `*[_type == "pricingData"] | order(variant asc) {
   }
 }`
 
-export async function getPricingData(): Promise<PricingData[]> {
+export const getPricingData = cache(async (): Promise<PricingData[]> => {
   return client.fetch(pricingDataQuery)
-}
+})

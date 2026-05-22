@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Crimson_Pro, Inter } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
-import { headers } from "next/headers"
 import DeferredAnalytics from "@/components/Analytics/DeferredAnalytics"
+import HtmlLangSync from "@/components/Layout/HtmlLangSync"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,21 +21,19 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.dr-webstudio.com"),
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const headersList = await headers()
-  const lang = headersList.get("x-locale") || "en"
-
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
+        <HtmlLangSync />
         {children}
         <DeferredAnalytics />
         <Analytics />

@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const budgetQuery = `
@@ -12,9 +13,9 @@ export const budgetQuery = `
   }
 `
 
-export async function getBudget(): Promise<Budget> {
+export const getBudget = cache(async (): Promise<Budget> => {
   return client.fetch(budgetQuery)
-}
+})
 
 export interface Budget {
   title: {

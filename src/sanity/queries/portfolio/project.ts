@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface Outcome {
@@ -65,11 +66,11 @@ const projectsQuery = `*[_type == "project"] | order(year desc) {
   year
 }`
 
-export async function getProjects(): Promise<Project[]> {
+export const getProjects = cache(async (): Promise<Project[]> => {
   return client.fetch(projectsQuery)
-}
+})
 
-export async function getFeaturedProjects(): Promise<Project[]> {
+export const getFeaturedProjects = cache(async (): Promise<Project[]> => {
   return client.fetch(`*[_type == "project" && featured == true] | order(year desc) {
     _id,
     title,
@@ -93,4 +94,4 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     featured,
     year
   }`)
-}
+})

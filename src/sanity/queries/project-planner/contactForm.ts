@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const contactFormQuery = `
@@ -29,9 +30,9 @@ export const contactFormQuery = `
   }
 `
 
-export async function getContactForm(): Promise<ContactFormType> {
+export const getContactForm = cache(async (): Promise<ContactFormType> => {
   return client.fetch(contactFormQuery)
-}
+})
 
 export interface ContactFormType {
   title: {

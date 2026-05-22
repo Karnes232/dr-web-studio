@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 // TypeScript interfaces
@@ -64,20 +65,20 @@ export const faqCategoryQuery = `
 `
 
 // Fetch functions
-export async function getFaqs(): Promise<FaqsData> {
+export const getFaqs = cache(async (): Promise<FaqsData> => {
   const categories = await client.fetch<FaqCategory[]>(faqsQuery)
   return { categories }
-}
+})
 
-export async function getFaqCategory(
-  categoryId: string,
-): Promise<FaqCategory | null> {
-  const category = await client.fetch<FaqCategory | null>(faqCategoryQuery, {
-    categoryId,
-  })
-  return category
-}
+export const getFaqCategory = cache(
+  async (categoryId: string): Promise<FaqCategory | null> => {
+    const category = await client.fetch<FaqCategory | null>(faqCategoryQuery, {
+      categoryId,
+    })
+    return category
+  },
+)
 
-export async function getFaqCategories(): Promise<FaqCategory[]> {
+export const getFaqCategories = cache(async (): Promise<FaqCategory[]> => {
   return await client.fetch<FaqCategory[]>(faqsQuery)
-}
+})

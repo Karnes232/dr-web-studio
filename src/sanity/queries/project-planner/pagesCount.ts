@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const pagesCountQuery = `
@@ -30,6 +31,6 @@ export interface PagesCount {
   }
 }
 
-export async function getPagesCount(): Promise<PagesCount> {
+export const getPagesCount = cache(async (): Promise<PagesCount> => {
   return client.fetch(pagesCountQuery)
-}
+})

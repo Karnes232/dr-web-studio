@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const timelineQuery = `
@@ -12,9 +13,9 @@ export const timelineQuery = `
   }
 `
 
-export async function getTimeline(): Promise<Timeline> {
+export const getTimeline = cache(async (): Promise<Timeline> => {
   return client.fetch(timelineQuery)
-}
+})
 
 export interface Timeline {
   title: {

@@ -1,8 +1,10 @@
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { Metadata } from "next"
-import { headers } from "next/headers"
 import Link from "next/link"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
 
 interface PageProps {
   params: Promise<{ lang: "en" | "es" }>
@@ -215,10 +217,6 @@ export default async function SitemapPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
 
   return {
     title: lang === "es" ? "Mapa del Sitio | DR Web Studio" : "Sitemap | DR Web Studio",
@@ -228,11 +226,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : "A complete list of all pages on the DR Web Studio website.",
     robots: { index: false, follow: false },
     alternates: {
-      canonical: `${baseUrl}/${lang}/sitemap`,
+      canonical: `${SITE_URL}/${lang}/sitemap`,
       languages: {
-        en: `${baseUrl}/en/sitemap`,
-        es: `${baseUrl}/es/sitemap`,
-        "x-default": `${baseUrl}/en/sitemap`,
+        en: `${SITE_URL}/en/sitemap`,
+        es: `${SITE_URL}/es/sitemap`,
+        "x-default": `${SITE_URL}/en/sitemap`,
       },
     },
   }

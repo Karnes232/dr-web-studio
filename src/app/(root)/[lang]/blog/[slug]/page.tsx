@@ -7,9 +7,20 @@ import {
   getRelatedBlogPosts,
 } from "@/sanity/queries/blog/blog"
 import { Metadata } from "next"
-import { headers } from "next/headers"
 import React from "react"
 import { notFound } from "next/navigation"
+import { SITE_URL } from "@/lib/site"
+import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const posts = await getAllBlogPostsSitemap()
+  return posts.flatMap(post => [
+    { lang: "en", slug: post.slug.current },
+    { lang: "es", slug: post.slug.current },
+  ])
+}
 
 interface PageProps {
   params: Promise<{
@@ -53,15 +64,10 @@ export async function generateMetadata({
   const { lang, slug } = await params
   const seoData = await getBlogPostSEO(slug)
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
   const canonicalUrl = seoData?.seo?.canonicalUrl
-    ? `${baseUrl}/${lang}/blog/${seoData.seo.canonicalUrl}`
-    : `${baseUrl}/${lang}/blog/${slug}`
+    ? `${SITE_URL}/${lang}/blog/${seoData.seo.canonicalUrl}`
+    : `${SITE_URL}/${lang}/blog/${slug}`
 
   return {
     title: seoData.seo.meta[lang]?.title,
@@ -108,9 +114,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/blog/${slug}`,
-        es: `${baseUrl}/es/blog/${slug}`,
-        "x-default": `${baseUrl}/en/blog/${slug}`,
+        en: `${SITE_URL}/en/blog/${slug}`,
+        es: `${SITE_URL}/es/blog/${slug}`,
+        "x-default": `${SITE_URL}/en/blog/${slug}`,
       },
     },
   }

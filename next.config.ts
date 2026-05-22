@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2_678_400, // 31 days — Sanity assets are immutable per URL
   },
   async headers() {
     return [

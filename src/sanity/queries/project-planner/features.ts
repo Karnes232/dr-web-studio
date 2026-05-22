@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const featuresQuery = `
@@ -12,9 +13,9 @@ export const featuresQuery = `
     }
   }
 `
-export async function getFeatures(): Promise<Features> {
+export const getFeatures = cache(async (): Promise<Features> => {
   return client.fetch(featuresQuery)
-}
+})
 
 export interface Features {
   title: {

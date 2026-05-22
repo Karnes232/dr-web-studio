@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const contentStatusQuery = `
@@ -12,9 +13,9 @@ export const contentStatusQuery = `
   }
 `
 
-export async function getContentStatus(): Promise<ContentStatus> {
+export const getContentStatus = cache(async (): Promise<ContentStatus> => {
   return client.fetch(contentStatusQuery)
-}
+})
 
 export interface ContentStatus {
   title: {

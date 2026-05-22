@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 // ──────────────────────────────────────────
@@ -343,11 +344,15 @@ function transformLandingPage(raw: RawLandingPage, lang: "en" | "es"): LandingPa
 // Public Fetch Function
 // ──────────────────────────────────────────
 
-export async function getLandingPage(
-  slug: string,
-  lang: "en" | "es",
-): Promise<LandingPageData | null> {
-  const raw: RawLandingPage | null = await client.fetch(landingPageQuery, { slug })
-  if (!raw) return null
-  return transformLandingPage(raw, lang)
-}
+export const getLandingPage = cache(
+  async (
+    slug: string,
+    lang: "en" | "es",
+  ): Promise<LandingPageData | null> => {
+    const raw: RawLandingPage | null = await client.fetch(landingPageQuery, {
+      slug,
+    })
+    if (!raw) return null
+    return transformLandingPage(raw, lang)
+  },
+)

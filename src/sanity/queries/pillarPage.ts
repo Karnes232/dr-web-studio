@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "../lib/client"
 import type { PillarPageContent } from "@/components/GuiaCompletaComponents/types"
 
@@ -258,10 +259,12 @@ function transformToContent(
   }
 }
 
-export async function getPillarPageContent(
-  lang: Lang,
-): Promise<(PillarPageContent & { structuredData: string }) | null> {
-  const raw = await client.fetch<RawPillarPage | null>(pillarPageQuery)
-  if (!raw) return null
-  return transformToContent(raw, lang)
-}
+export const getPillarPageContent = cache(
+  async (
+    lang: Lang,
+  ): Promise<(PillarPageContent & { structuredData: string }) | null> => {
+    const raw = await client.fetch<RawPillarPage | null>(pillarPageQuery)
+    if (!raw) return null
+    return transformToContent(raw, lang)
+  },
+)

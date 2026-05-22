@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "../../lib/client"
 
 export const allTestimonialsQuery = `
@@ -18,9 +19,9 @@ export interface Testimonial {
   rating: number
 }
 
-export async function getAllTestimonials(): Promise<Testimonial[]> {
+export const getAllTestimonials = cache(async (): Promise<Testimonial[]> => {
   return await client.fetch(allTestimonialsQuery)
-}
+})
 
 // Query for fetching a single testimonial by ID
 export const testimonialByIdQuery = `
@@ -31,8 +32,8 @@ export const testimonialByIdQuery = `
   rating
 }`
 
-export async function getTestimonialById(
-  id: string,
-): Promise<Testimonial | null> {
-  return await client.fetch(testimonialByIdQuery, { id })
-}
+export const getTestimonialById = cache(
+  async (id: string): Promise<Testimonial | null> => {
+    return await client.fetch(testimonialByIdQuery, { id })
+  },
+)

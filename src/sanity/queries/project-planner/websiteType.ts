@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const websiteTypeQuery = `
@@ -12,9 +13,9 @@ export const websiteTypeQuery = `
   }
 }
 `
-export async function getWebsiteType(): Promise<WebsiteType> {
+export const getWebsiteType = cache(async (): Promise<WebsiteType> => {
   return client.fetch(websiteTypeQuery)
-}
+})
 
 export interface WebsiteType {
   _id: string

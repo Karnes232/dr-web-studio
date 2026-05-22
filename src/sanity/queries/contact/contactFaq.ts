@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { groq } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 
@@ -15,7 +16,7 @@ export interface ContactFaq {
   order: number
 }
 
-export const getContactFaqs = async (): Promise<ContactFaq[]> => {
+export const getContactFaqs = cache(async (): Promise<ContactFaq[]> => {
   const query = groq`
     *[_type == "contactFaq"] | order(order asc) {
       _id,
@@ -27,4 +28,4 @@ export const getContactFaqs = async (): Promise<ContactFaq[]> => {
   `
 
   return await client.fetch(query)
-}
+})

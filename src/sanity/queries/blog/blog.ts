@@ -1,3 +1,4 @@
+import { cache } from "react"
 import {
   blogAuthorAvatarUrl,
   blogHeroImageUrl,
@@ -96,10 +97,37 @@ function mapBlogPostListItem(post: BlogPost): BlogPost {
   }
 }
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
+export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
   const posts = await client.fetch(allBlogPostsQuery)
   return posts.map(mapBlogPostListItem)
-}
+})
+
+export const blogPostsForListingQuery = `
+*[_type == "blogPost"] | order(publishedAt desc) {
+  title,
+  slug,
+  "author": author->{
+    name,
+    slug,
+    image
+  },
+  "categories": categories[]-> {
+    title,
+    slug,
+    description
+  },
+  publishedAt,
+  mainImage,
+  readTime,
+  tags,
+  featured,
+  description
+}`
+
+export const getBlogPostsForListing = cache(async (): Promise<BlogPost[]> => {
+  const posts = await client.fetch(blogPostsForListingQuery)
+  return posts.map(mapBlogPostListItem)
+})
 
 // Query for fetching a single blog post by slug
 export const blogPostBySlugQuery = `
@@ -147,12 +175,12 @@ function mapBlogPostFull(post: BlogPost | null): BlogPost | null {
   }
 }
 
-export async function getBlogPostBySlug(
-  slug: string,
-): Promise<BlogPost | null> {
-  const post = await client.fetch(blogPostBySlugQuery, { slug })
-  return mapBlogPostFull(post)
-}
+export const getBlogPostBySlug = cache(
+  async (slug: string): Promise<BlogPost | null> => {
+    const post = await client.fetch(blogPostBySlugQuery, { slug })
+    return mapBlogPostFull(post)
+  },
+)
 
 const relatedBlogPostsQuery = `
 *[_type == "blogPost" && slug.current != $currentSlug && (
@@ -174,18 +202,20 @@ const relatedBlogPostsQuery = `
 }
 `
 
-export async function getRelatedBlogPosts(
-  currentSlug: string,
-  categorySlugs: string[],
-  limit = 3,
-): Promise<BlogPost[]> {
-  const posts = await client.fetch(relatedBlogPostsQuery, {
-    currentSlug,
-    categorySlugs: categorySlugs ?? [],
-    limit,
-  })
-  return posts.map(mapBlogPostListItem)
-}
+export const getRelatedBlogPosts = cache(
+  async (
+    currentSlug: string,
+    categorySlugs: string[],
+    limit = 3,
+  ): Promise<BlogPost[]> => {
+    const posts = await client.fetch(relatedBlogPostsQuery, {
+      currentSlug,
+      categorySlugs: categorySlugs ?? [],
+      limit,
+    })
+    return posts.map(mapBlogPostListItem)
+  },
+)
 
 interface BlogPostSEO {
   title: string
@@ -276,27 +306,27 @@ const blogPostBySlugQuerySeo = `
   }
 }`
 
-export async function getBlogPostSEO(
-  slug: string,
-): Promise<BlogPostSEO | null> {
-  const data = await client.fetch(blogPostBySlugQuerySeo, { slug })
-  if (!data) return null
-  const rawImage = data.seo?.openGraph?.image as
-    | { asset?: unknown; alt?: string }
-    | undefined
-  if (rawImage?.asset && data.seo?.openGraph) {
-    const url = blogOgImageUrl(rawImage)
-    if (url) {
-      data.seo.openGraph.image = {
-        url,
-        alt: rawImage.alt,
-        width: 1200,
-        height: 630,
+export const getBlogPostSEO = cache(
+  async (slug: string): Promise<BlogPostSEO | null> => {
+    const data = await client.fetch(blogPostBySlugQuerySeo, { slug })
+    if (!data) return null
+    const rawImage = data.seo?.openGraph?.image as
+      | { asset?: unknown; alt?: string }
+      | undefined
+    if (rawImage?.asset && data.seo?.openGraph) {
+      const url = blogOgImageUrl(rawImage)
+      if (url) {
+        data.seo.openGraph.image = {
+          url,
+          alt: rawImage.alt,
+          width: 1200,
+          height: 630,
+        }
       }
     }
-  }
-  return data
-}
+    return data
+  },
+)
 
 export const allBlogPostsSitemapQuery = `
 *[_type == "blogPost"] {
@@ -316,6 +346,8 @@ export interface BlogPostSitemap {
   _updatedAt: string
 }
 
-export async function getAllBlogPostsSitemap(): Promise<BlogPostSitemap[]> {
-  return await client.fetch(allBlogPostsSitemapQuery)
-}
+export const getAllBlogPostsSitemap = cache(
+  async (): Promise<BlogPostSitemap[]> => {
+    return await client.fetch(allBlogPostsSitemapQuery)
+  },
+)

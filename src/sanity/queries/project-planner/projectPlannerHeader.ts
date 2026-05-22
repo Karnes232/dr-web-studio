@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const projectPlannerHeaderQuery = `
@@ -18,6 +19,8 @@ export interface ProjectPlannerHeader {
   }
 }
 
-export async function getProjectPlannerHeader(): Promise<ProjectPlannerHeader> {
-  return client.fetch(projectPlannerHeaderQuery)
-}
+export const getProjectPlannerHeader = cache(
+  async (): Promise<ProjectPlannerHeader> => {
+    return client.fetch(projectPlannerHeaderQuery)
+  },
+)

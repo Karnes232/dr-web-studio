@@ -1,59 +1,17 @@
 import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import Footer from "@/components/Layout/FooterComponents/Footer"
-import { client } from "@/sanity/lib/client"
+import {
+  getCompanyInfo,
+  getLogo,
+} from "@/sanity/queries/layout/generalLayout"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 import { I18nProvider } from "@/i18n/I18nContext"
 import { languages, fallbackLng } from "@/i18n/settings"
 
-async function getLogo() {
-  return client.fetch(`
-    *[_type == "generalLayout"][0] {
-      logo {
-        asset->{
-          url,
-          metadata {
-            dimensions,
-            lqip,
-            palette
-          }
-        },
-        alt,
-        hotspot,
-        crop
-      },
-      footerLogo {
-        asset->{
-          url,
-          metadata {
-            dimensions,
-            lqip,
-            palette
-          }
-        },
-        alt,
-        hotspot,
-        crop
-      },
-      companyName,
-    }
-  `)
-}
+export const revalidate = 3600
 
-async function getCompanyInfo() {
-  return client.fetch(`
-    *[_type == "generalLayout"][0] {
-      email,
-      companyName,
-      footerText {
-        en,
-        es
-      },
-      socialLinks {
-        linkedin,
-        github
-      }
-    }
-  `)
+export async function generateStaticParams() {
+  return languages.map(lang => ({ lang }))
 }
 
 interface LangLayoutProps {

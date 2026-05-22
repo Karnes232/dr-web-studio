@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { stripe } from "@/lib/stripe"
 import { headers } from "next/headers"
+import { serverClient } from "@/sanity/lib/serverClient"
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
@@ -19,17 +20,31 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 })
   }
 
+  const docId = `webhookEvent.${event.id}`
+  try {
+    await serverClient.create({
+      _id: docId,
+      _type: "webhookEvent",
+      eventId: event.id,
+      type: event.type,
+      receivedAt: new Date().toISOString(),
+    })
+  } catch {
+    // _id collision means we've already processed this event — safe to return 200.
+    return NextResponse.json({ received: true, duplicate: true })
+  }
+
   switch (event.type) {
-    case "payment_intent.succeeded":
+    case "payment_intent.succeeded": {
       const paymentIntent = event.data.object
       console.log("Payment succeeded:", paymentIntent.id)
-      // Handle successful payment
       break
-    case "payment_intent.payment_failed":
+    }
+    case "payment_intent.payment_failed": {
       const failedPayment = event.data.object
       console.log("Payment failed:", failedPayment.id)
-      // Handle failed payment
       break
+    }
     default:
       console.log(`Unhandled event type ${event.type}`)
   }

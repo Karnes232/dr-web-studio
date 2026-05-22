@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import PaymentSucessContent from "@/components/CheckoutComponents/PaymentSucessContent"
 import { getPaymentSuccess } from "@/sanity/queries/payment/paymentSuccess"
-import { client } from "@/sanity/lib/client"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 
 interface PageProps {
   params: Promise<{
@@ -9,17 +9,15 @@ interface PageProps {
   }>
 }
 export default async function PaymentSuccess() {
-  const paymentSuccessData = await getPaymentSuccess()
-  const email = await client.fetch(`
-    *[_type == "generalLayout"][0] {
-      email
-    }
-  `)
+  const [paymentSuccessData, email] = await Promise.all([
+    getPaymentSuccess(),
+    getContactEmail(),
+  ])
   return (
     <>
       <PaymentSucessContent
         paymentSuccessData={paymentSuccessData}
-        email={email}
+        email={{ email: email ?? "james@dr-webstudio.com" }}
       />
     </>
   )

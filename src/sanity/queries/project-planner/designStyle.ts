@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export const designStyleQuery = `
@@ -39,6 +40,6 @@ export interface DesignStyle {
   }[]
 }
 
-export async function getDesignStyle(): Promise<DesignStyle> {
+export const getDesignStyle = cache(async (): Promise<DesignStyle> => {
   return client.fetch(designStyleQuery)
-}
+})

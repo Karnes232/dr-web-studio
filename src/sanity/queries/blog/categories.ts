@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { blogListingImageUrl } from "../../lib/blogImageUrls"
 import { client } from "../../lib/client"
 
@@ -22,9 +23,9 @@ export interface Category {
   }
 }
 
-export async function getAllCategories(): Promise<Category[]> {
+export const getAllCategories = cache(async (): Promise<Category[]> => {
   return await client.fetch(allCategoriesQuery)
-}
+})
 
 export const postsByCategoryQuery = `
 *[_type == "blogPost" && references(*[_type == "blogCategory" && slug.current == $categorySlug]._id)] | order(publishedAt desc) {
@@ -48,13 +49,13 @@ export const postsByCategoryQuery = `
   featured
 }`
 
-export async function getPostsByCategory(categorySlug: string) {
+export const getPostsByCategory = cache(async (categorySlug: string) => {
   const posts = await client.fetch(postsByCategoryQuery, { categorySlug })
   return posts.map((post: { mainImage?: unknown }) => ({
     ...post,
     imageUrl: blogListingImageUrl(post.mainImage),
   }))
-}
+})
 
 export const categoryWithPostsQuery = `
 *[_type == "blogCategory" && slug.current == $slug][0] {
@@ -72,7 +73,7 @@ export const categoryWithPostsQuery = `
   }
 }`
 
-export async function getCategoryWithPosts(slug: string) {
+export const getCategoryWithPosts = cache(async (slug: string) => {
   const data = await client.fetch(categoryWithPostsQuery, { slug })
   if (!data?.posts?.length) return data
   return {
@@ -82,4 +83,4 @@ export async function getCategoryWithPosts(slug: string) {
       imageUrl: blogListingImageUrl(post.mainImage),
     })),
   }
-}
+})

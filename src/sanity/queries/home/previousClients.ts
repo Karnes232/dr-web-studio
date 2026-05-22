@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface Client {
@@ -34,6 +35,8 @@ export const previousClientsQuery = `*[_type == "previousClients"][0] {
   }
 }`
 
-export async function getPreviousClients(): Promise<PreviousClientsData> {
-  return client.fetch(previousClientsQuery)
-}
+export const getPreviousClients = cache(
+  async (): Promise<PreviousClientsData> => {
+    return client.fetch(previousClientsQuery)
+  },
+)

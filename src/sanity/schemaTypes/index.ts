@@ -79,6 +79,9 @@ import seo from "./seo/seo"
 import legal from "./legal/legal"
 import serviceItem from "./services/serviceItem"
 
+// System Schemas
+import webhookEvent from "./system/webhookEvent"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Layout Schemas
@@ -160,5 +163,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Legal Schema
     legal,
+
+    // System Schemas
+    webhookEvent,
   ],
 }

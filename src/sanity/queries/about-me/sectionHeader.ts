@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface SectionHeaderData {
@@ -30,6 +31,8 @@ export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
     }
   }`
 
-export async function getSectionHeader(): Promise<SectionHeaderData> {
-  return client.fetch(sectionHeaderQuery)
-}
+export const getSectionHeader = cache(
+  async (): Promise<SectionHeaderData> => {
+    return client.fetch(sectionHeaderQuery)
+  },
+)

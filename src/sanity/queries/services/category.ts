@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface Category {
@@ -15,6 +16,6 @@ const categoriesQuery = `*[_type == "category"] | order(order asc) {
   order
 }`
 
-export async function getCategories(): Promise<Category[]> {
+export const getCategories = cache(async (): Promise<Category[]> => {
   return client.fetch(categoriesQuery)
-}
+})

@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "../lib/client"
 
 export const seoSchema = `
@@ -98,12 +99,14 @@ export interface SEOData {
   noFollow: boolean
 }
 
-export async function getSEO(pageName: string): Promise<SEOData | null> {
-  return await client.fetch(seoQuery, { pageName })
-}
+export const getSEO = cache(
+  async (pageName: string): Promise<SEOData | null> => {
+    return await client.fetch(seoQuery, { pageName })
+  },
+)
 
-export async function getSeoSchema(
-  pageName: string,
-): Promise<seoSchemaData | null> {
-  return await client.fetch(seoSchema, { pageName })
-}
+export const getSeoSchema = cache(
+  async (pageName: string): Promise<seoSchemaData | null> => {
+    return await client.fetch(seoSchema, { pageName })
+  },
+)

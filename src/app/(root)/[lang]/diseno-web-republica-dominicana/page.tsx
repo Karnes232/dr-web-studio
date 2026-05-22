@@ -10,7 +10,9 @@ import { LandingTestimonials } from "@/components/LandingPageComponents/LandingT
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
 import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
 
 const PAGE_SLUG = "diseno-web-republica-dominicana"
 
@@ -88,16 +90,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { lang } = await params
   const seoData = await getSEO(PAGE_SLUG)
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/${PAGE_SLUG}`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/${PAGE_SLUG}`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -123,9 +120,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/${PAGE_SLUG}`,
-        es: `${baseUrl}/es/${PAGE_SLUG}`,
-        "x-default": `${baseUrl}/en/${PAGE_SLUG}`,
+        en: `${SITE_URL}/en/${PAGE_SLUG}`,
+        es: `${SITE_URL}/es/${PAGE_SLUG}`,
+        "x-default": `${SITE_URL}/en/${PAGE_SLUG}`,
       },
     },
   }

@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { NextRequest, NextResponse } from "next/server"
 import { render } from "@react-email/render"
 import PaymentConfirmationEmail from "@/emails/drwebstudioEmail"
@@ -9,15 +9,11 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
-    const emailData = await client.fetch(`
-      *[_type == "generalLayout"][0] {
-        email
-      }
-    `)
+    const cachedEmail = await getContactEmail()
+    const supportEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
 
     const { clientName, clientEmail, paymentAmount, transactionId, lang } =
       await request.json()
-    console.log(lang)
     const emailHtml = await render(
       lang === "es"
         ? PaymentConfirmationEmailSpanish({
@@ -25,14 +21,14 @@ export async function POST(request: NextRequest) {
             clientEmail,
             paymentAmount,
             transactionId,
-            email: emailData.email,
+            email: supportEmail,
           })
         : PaymentConfirmationEmail({
             clientName,
             clientEmail,
             paymentAmount,
             transactionId,
-            email: emailData.email,
+            email: supportEmail,
           }),
     )
 

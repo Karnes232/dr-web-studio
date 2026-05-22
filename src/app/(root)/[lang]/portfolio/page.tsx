@@ -3,7 +3,10 @@ import { Metadata } from "next"
 import PortfolioContent from "@/components/PortfolioComponents/PortfolioContent"
 import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
 import { getProjects } from "@/sanity/queries/portfolio/project"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
+
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -41,16 +44,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("portfolio")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/portfolio`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/portfolio`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -88,9 +86,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/portfolio`,
-        es: `${baseUrl}/es/portfolio`,
-        "x-default": `${baseUrl}/en/portfolio`,
+        en: `${SITE_URL}/en/portfolio`,
+        es: `${SITE_URL}/es/portfolio`,
+        "x-default": `${SITE_URL}/en/portfolio`,
       },
     },
   }

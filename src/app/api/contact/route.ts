@@ -1,6 +1,6 @@
 import ContactFormEmail from "@/emails/ContactFormEmail"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
-import { client } from "@/sanity/lib/client"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { render } from "@react-email/render"
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
@@ -51,14 +51,8 @@ export async function POST(request: NextRequest) {
     const budget = budgetRaw.startsWith("$") ? budgetRaw : budgetRaw ? `$${budgetRaw}` : ""
     const timeline = clampString(body.timeline, MAX_FIELD_LENGTH)
 
-    const emailData = await client.fetch<{ email?: string }>(`
-      *[_type == "generalLayout"][0] {
-        email
-      }
-    `)
-
-    const toEmail =
-      emailData?.email?.trim() || "james@dr-webstudio.com"
+    const cachedEmail = await getContactEmail()
+    const toEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
 
     const emailHtml = await render(
       ContactFormEmail({

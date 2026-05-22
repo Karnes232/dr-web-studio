@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 /**
@@ -79,9 +80,9 @@ const serviceItemsQuery = `*[_type == "serviceItem"] {
   benefits
 }`
 
-export async function getServiceItems(): Promise<ServiceItem[]> {
+export const getServiceItems = cache(async (): Promise<ServiceItem[]> => {
   return client.fetch(serviceItemsQuery)
-}
+})
 
 const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == $slug][0] {
   _id,
@@ -164,11 +165,11 @@ const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == 
   }
 }`
 
-export async function getServiceItemBySlug(
-  slug: string,
-): Promise<ServiceItemIndividual | null> {
-  return client.fetch(serviceItemIndividualQuery, { slug })
-}
+export const getServiceItemBySlug = cache(
+  async (slug: string): Promise<ServiceItemIndividual | null> => {
+    return client.fetch(serviceItemIndividualQuery, { slug })
+  },
+)
 
 export interface ServiceItemSEO {
   meta: {
@@ -336,9 +337,11 @@ export interface ServiceItemsLinks {
   }
 }
 
-export async function getServiceItemsLinks(): Promise<ServiceItemsLinks[]> {
-  return client.fetch(serviceItemsLinksQuery)
-}
+export const getServiceItemsLinks = cache(
+  async (): Promise<ServiceItemsLinks[]> => {
+    return client.fetch(serviceItemsLinksQuery)
+  },
+)
 
 const serviceItemSEOQuery = `*[_type == "serviceItem" && slug.current == $slug][0] {
   _id,
@@ -395,11 +398,11 @@ export interface ServiceItemSEOData {
   seo?: ServiceItemSEO
 }
 
-export async function getServiceItemSEO(
-  slug: string,
-): Promise<ServiceItemSEOData | null> {
-  return client.fetch(serviceItemSEOQuery, { slug })
-}
+export const getServiceItemSEO = cache(
+  async (slug: string): Promise<ServiceItemSEOData | null> => {
+    return client.fetch(serviceItemSEOQuery, { slug })
+  },
+)
 
 const serviceItemsWithSEOQuery = `*[_type == "serviceItem"] {
   _id,
@@ -454,9 +457,11 @@ export interface ServiceItemWithSEO extends ServiceItem {
   seo?: ServiceItemSEO
 }
 
-export async function getServiceItemsWithSEO(): Promise<ServiceItemWithSEO[]> {
-  return client.fetch(serviceItemsWithSEOQuery)
-}
+export const getServiceItemsWithSEO = cache(
+  async (): Promise<ServiceItemWithSEO[]> => {
+    return client.fetch(serviceItemsWithSEOQuery)
+  },
+)
 
 const serviceItemsSitemapQuery = `*[_type == "serviceItem"] {
   _id,
@@ -477,6 +482,8 @@ export interface ServiceItemsSitemap {
   _updatedAt: string
 }
 
-export async function getServiceItemsSitemap(): Promise<ServiceItemsSitemap[]> {
-  return client.fetch(serviceItemsSitemapQuery)
-}
+export const getServiceItemsSitemap = cache(
+  async (): Promise<ServiceItemsSitemap[]> => {
+    return client.fetch(serviceItemsSitemapQuery)
+  },
+)

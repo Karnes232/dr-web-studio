@@ -4,7 +4,7 @@ const WebsiteQuestionnaire = dynamic(
   () => import("@/components/projectPlannerComponents/WebsiteQuestionnaire"),
   { ssr: true },
 )
-import { client } from "@/sanity/lib/client"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { getBudget } from "@/sanity/queries/project-planner/budget"
 import { getContactForm } from "@/sanity/queries/project-planner/contactForm"
 import { getContentStatus } from "@/sanity/queries/project-planner/contentStatus"
@@ -18,21 +18,14 @@ import { getWebsiteType } from "@/sanity/queries/project-planner/websiteType"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import React from "react"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
 
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
   }>
-}
-
-const getCompanyEmail = async () => {
-  const companyEmail = await client.fetch(`
-    *[_type == "generalLayout"][0] {
-      email
-    }
-  `)
-  return companyEmail.email
 }
 
 export default async function Pricing({ params }: PageProps) {
@@ -62,7 +55,7 @@ export default async function Pricing({ params }: PageProps) {
     getContentStatus(),
     getLanguages(),
     getContactForm(),
-    getCompanyEmail(),
+    getContactEmail(),
   ])
 
   return (
@@ -88,7 +81,7 @@ export default async function Pricing({ params }: PageProps) {
           contentStatus={contentStatus}
           languages={languages}
           contactForm={contactForm}
-          companyEmail={companyEmail}
+          companyEmail={companyEmail ?? "james@dr-webstudio.com"}
         />
       </section>
     </>
@@ -101,16 +94,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("project-planner")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/project-planner`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/project-planner`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -148,9 +136,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/project-planner`,
-        es: `${baseUrl}/es/project-planner`,
-        "x-default": `${baseUrl}/en/project-planner`,
+        en: `${SITE_URL}/en/project-planner`,
+        es: `${SITE_URL}/es/project-planner`,
+        "x-default": `${SITE_URL}/en/project-planner`,
       },
     },
   }

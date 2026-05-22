@@ -1,11 +1,14 @@
 import BlogContent from "@/components/BlogComponents/BlogContent"
-import { getAllBlogPosts } from "@/sanity/queries/blog/blog"
+import { getBlogPostsForListing } from "@/sanity/queries/blog/blog"
 import { getAllCategories } from "@/sanity/queries/blog/categories"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getBlogHeader } from "@/sanity/queries/blog/blogHeader"
 import { Metadata } from "next"
 import React from "react"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
+
 const POSTS_PER_PAGE = 6
 
 interface PageProps {
@@ -23,7 +26,7 @@ export default async function Blog({ params, searchParams }: PageProps) {
   const [seoData, headerData, blogPosts, categories] = await Promise.all([
     getSeoSchema("blog"),
     getBlogHeader(),
-    getAllBlogPosts(),
+    getBlogPostsForListing(),
     getAllCategories(),
   ])
 
@@ -66,14 +69,9 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("blog")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   const canonicalUrl = seoData?.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/blog`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/blog`
 
   if (!seoData) return {}
 
@@ -113,9 +111,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/blog`,
-        es: `${baseUrl}/es/blog`,
-        "x-default": `${baseUrl}/en/blog`,
+        en: `${SITE_URL}/en/blog`,
+        es: `${SITE_URL}/es/blog`,
+        "x-default": `${SITE_URL}/en/blog`,
       },
     },
   }

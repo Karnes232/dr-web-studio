@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface TrustSignalsData {
@@ -22,6 +23,6 @@ export const trustSignalsQuery = `*[_type == "trustSignals"][0] {
   },
 }`
 
-export async function getTrustSignals(): Promise<TrustSignalsData> {
+export const getTrustSignals = cache(async (): Promise<TrustSignalsData> => {
   return client.fetch(trustSignalsQuery)
-}
+})

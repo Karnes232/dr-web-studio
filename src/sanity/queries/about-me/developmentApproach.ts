@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 interface Approach {
@@ -38,6 +39,8 @@ export const developmentApproachQuery = `*[_type == "developmentApproach"][0] {
   }
 }`
 
-export async function getDevelopmentApproach(): Promise<DevelopmentApproachData> {
-  return client.fetch(developmentApproachQuery)
-}
+export const getDevelopmentApproach = cache(
+  async (): Promise<DevelopmentApproachData> => {
+    return client.fetch(developmentApproachQuery)
+  },
+)

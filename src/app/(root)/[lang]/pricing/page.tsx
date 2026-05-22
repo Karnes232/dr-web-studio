@@ -11,7 +11,10 @@ import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 import { Metadata } from "next"
 import React from "react"
-import { headers } from "next/headers"
+import { SITE_URL } from "@/lib/site"
+
+export const revalidate = 3600
+
 interface PageProps {
   params: Promise<{
     lang: "en" | "es"
@@ -78,16 +81,11 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("pricing")
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "http"
-  const baseUrl = `${protocol}://${host}`
-
   if (!seoData) return {}
 
   const canonicalUrl = seoData.canonicalUrl
-    ? `${baseUrl}/${lang}/${seoData.canonicalUrl}`
-    : `${baseUrl}/${lang}/pricing`
+    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
+    : `${SITE_URL}/${lang}/pricing`
 
   return {
     title: seoData.meta[lang]?.title,
@@ -125,9 +123,9 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `${baseUrl}/en/pricing`,
-        es: `${baseUrl}/es/pricing`,
-        "x-default": `${baseUrl}/en/pricing`,
+        en: `${SITE_URL}/en/pricing`,
+        es: `${SITE_URL}/es/pricing`,
+        "x-default": `${SITE_URL}/en/pricing`,
       },
     },
   }

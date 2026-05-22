@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
 export interface PaymentSuccessStep {
@@ -40,6 +41,8 @@ const paymentSuccessQuery = `*[_type == "paymentSuccess"][0] {
   }
 }`
 
-export async function getPaymentSuccess(): Promise<PaymentSuccessData> {
-  return client.fetch(paymentSuccessQuery)
-}
+export const getPaymentSuccess = cache(
+  async (): Promise<PaymentSuccessData> => {
+    return client.fetch(paymentSuccessQuery)
+  },
+)
