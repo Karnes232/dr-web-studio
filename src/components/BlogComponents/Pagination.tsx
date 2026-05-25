@@ -12,6 +12,24 @@ interface PaginationProps {
   basePath?: string
 }
 
+const getPageList = (
+  current: number,
+  total: number,
+  siblingCount = 2,
+): (number | "...")[] => {
+  const maxSlots = 3 + siblingCount * 2
+  if (total <= maxSlots)
+    return Array.from({ length: total }, (_, i) => i + 1)
+  const pages: (number | "...")[] = [1]
+  const left = Math.max(2, current - siblingCount)
+  const right = Math.min(total - 1, current + siblingCount)
+  if (left > 2) pages.push("...")
+  for (let i = left; i <= right; i++) pages.push(i)
+  if (right < total - 1) pages.push("...")
+  pages.push(total)
+  return pages
+}
+
 const Pagination = ({
   currentPage,
   totalPages,
@@ -22,8 +40,46 @@ const Pagination = ({
   const pageHref = (page: number) =>
     page === 1 ? basePath : `${basePath}?page=${page}`
 
+  const renderPage = (page: number | "...", idx: number) => {
+    if (page === "...") {
+      return (
+        <span
+          key={`ellipsis-${idx}`}
+          className="px-2 py-1.5 sm:py-2 text-slate-400 select-none"
+        >
+          …
+        </span>
+      )
+    }
+    return useLinks ? (
+      <Link
+        key={page}
+        href={pageHref(page)}
+        className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg ${
+          currentPage === page
+            ? "bg-orange-500 text-white"
+            : "border border-slate-300 hover:bg-slate-50 hover:no-underline"
+        }`}
+      >
+        {page}
+      </Link>
+    ) : (
+      <button
+        key={page}
+        onClick={() => onPageChange(page)}
+        className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg ${
+          currentPage === page
+            ? "bg-orange-500 text-white"
+            : "border border-slate-300 hover:bg-slate-50"
+        }`}
+      >
+        {page}
+      </button>
+    )
+  }
+
   return (
-    <div className="flex items-center justify-center space-x-2 mt-12">
+    <div className="flex items-center justify-center space-x-1 sm:space-x-2 mt-12">
       {useLinks && currentPage > 1 ? (
         <Link
           href={pageHref(currentPage - 1)}
@@ -43,33 +99,12 @@ const Pagination = ({
         </button>
       )}
 
-      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page =>
-        useLinks ? (
-          <Link
-            key={page}
-            href={pageHref(page)}
-            className={`px-4 py-2 rounded-lg ${
-              currentPage === page
-                ? "bg-orange-500 text-white"
-                : "border border-slate-300 hover:bg-slate-50 hover:no-underline"
-            }`}
-          >
-            {page}
-          </Link>
-        ) : (
-          <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            className={`px-4 py-2 rounded-lg ${
-              currentPage === page
-                ? "bg-orange-500 text-white"
-                : "border border-slate-300 hover:bg-slate-50"
-            }`}
-          >
-            {page}
-          </button>
-        ),
-      )}
+      <div className="flex lg:hidden items-center space-x-1 sm:space-x-2">
+        {getPageList(currentPage, totalPages, 1).map(renderPage)}
+      </div>
+      <div className="hidden lg:flex items-center space-x-2">
+        {getPageList(currentPage, totalPages, 2).map(renderPage)}
+      </div>
 
       {useLinks && currentPage < totalPages ? (
         <Link
