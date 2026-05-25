@@ -138,7 +138,7 @@ function CaseStudyCard({
   onToggle: () => void
   labels: any
 }) {
-  console.log(caseStudy)
+
   // Icon mapping for metrics based on metric name
   const getMetricIcon = (metric: string) => {
     const lower = metric.toLowerCase()
