@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import FaqsContent from "@/components/FaqsComponents/FaqsContent"
 import { getFaqs } from "@/sanity/queries/faqs/faqs"
 import { getFaqsHeader } from "@/sanity/queries/faqs/faqsHeader"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -58,9 +58,10 @@ export async function generateMetadata({
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/faqs`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/faqs",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -94,14 +95,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/faqs`,
-        es: `${SITE_URL}/es/faqs`,
-        "x-default": `${SITE_URL}/en/faqs`,
-      },
+      languages,
     },
   }
 }

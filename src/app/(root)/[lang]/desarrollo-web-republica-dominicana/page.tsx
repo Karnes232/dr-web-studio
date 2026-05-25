@@ -10,7 +10,7 @@ import { LandingTestimonials } from "@/components/LandingPageComponents/LandingT
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
 import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -20,7 +20,9 @@ interface PageProps {
   params: Promise<{ lang: "en" | "es" }>
 }
 
-export default async function DesarrolloWebRepublicaDominicana({ params }: PageProps) {
+export default async function DesarrolloWebRepublicaDominicana({
+  params,
+}: PageProps) {
   const { lang } = await params
   const data = await getLandingPage(PAGE_SLUG, lang)
 
@@ -86,15 +88,18 @@ export default async function DesarrolloWebRepublicaDominicana({ params }: PageP
   )
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { lang } = await params
   const seoData = await getSEO(PAGE_SLUG)
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/${PAGE_SLUG}`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/desarrollo-web-republica-dominicana",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -128,14 +133,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/${PAGE_SLUG}`,
-        es: `${SITE_URL}/es/${PAGE_SLUG}`,
-        "x-default": `${SITE_URL}/en/${PAGE_SLUG}`,
-      },
+      languages,
     },
   }
 }

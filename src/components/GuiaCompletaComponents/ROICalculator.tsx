@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import {
@@ -13,7 +13,6 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react"
-import { useLocale } from "@/i18n/useLocale"
 
 interface ROICalculatorProps {
   language?: "en" | "es"
@@ -24,7 +23,6 @@ export function ROICalculator({
   language = "es",
   onCtaClick,
 }: ROICalculatorProps) {
-  const { getLocalizedPath } = useLocale()
   // Input values
   const [monthlyVisitors, setMonthlyVisitors] = useState(10000)
   const [conversionRate, setConversionRate] = useState(2)
@@ -447,7 +445,7 @@ export function ROICalculator({
 
               {/* CTA Button */}
 
-              <Link href={getLocalizedPath("/project-planner")}>
+              <Link href="/project-planner">
                 <motion.div
                   //onClick={onCtaClick}
                   className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"

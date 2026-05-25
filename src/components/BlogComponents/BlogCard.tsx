@@ -2,7 +2,7 @@
 import { useLocale } from "@/i18n/useLocale"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
 
 interface BlogCardProps {
@@ -12,6 +12,9 @@ interface BlogCardProps {
       es: string
     }
     slug: {
+      current: string
+    }
+    slugEs?: {
       current: string
     }
     description: {
@@ -40,7 +43,7 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
-  const { t } = useLocale()
+  const { t, getBlogHref } = useLocale()
   return (
     <article
       className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}
@@ -56,10 +59,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
             className="w-full h-48 object-cover"
           />
         ) : (
-          <div
-            className="w-full h-48 bg-slate-200"
-            aria-hidden
-          />
+          <div className="w-full h-48 bg-slate-200" aria-hidden />
         )}
         {post.categories[0] && (
           <div className="absolute top-4 left-4">
@@ -104,7 +104,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
           </div>
 
           <Link
-            href={`/${lang}/blog/${post.slug.current}`}
+            href={getBlogHref(post)}
             className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors"
           >
             {t("blog.readMore")}

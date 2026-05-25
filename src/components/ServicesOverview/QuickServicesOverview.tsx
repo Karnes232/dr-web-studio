@@ -1,7 +1,7 @@
 import React from "react"
 import { ArrowRight } from "lucide-react"
 import IndividualService from "./IndividualService"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 const QuickServicesOverview = ({
   title,
@@ -37,7 +37,7 @@ const QuickServicesOverview = ({
         {/* Bottom CTA */}
         <div className="text-center mt-12">
           <Link
-            href={`/${lang}/our-services`}
+            href="/our-services"
             className="inline-flex items-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             {ctaText}

@@ -6,17 +6,21 @@ import {
   getServiceItemSEO,
 } from "@/sanity/queries/services/serviceItem"
 import { notFound } from "next/navigation"
-import { SITE_URL } from "@/lib/site"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
+import { buildAlternates } from "@/lib/urls"
+import { slugPair } from "@/lib/slugs"
 
 export const revalidate = 3600
 
 export async function generateStaticParams() {
   const items = await getServiceItemsSitemap()
-  return items.flatMap(item => [
-    { lang: "en", slug: item.slug.current },
-    { lang: "es", slug: item.slug.current },
-  ])
+  return items.flatMap(item => {
+    const pair = slugPair(item)
+    return [
+      { lang: "en", slug: pair.en },
+      { lang: "es", slug: pair.es },
+    ]
+  })
 }
 
 interface PageProps {
@@ -32,9 +36,14 @@ export async function generateMetadata({
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
   if (!serviceSEO) return {}
-  const canonicalUrl = serviceSEO?.seo?.canonicalUrl
-    ? `${SITE_URL}/${lang}/${serviceSEO.seo.canonicalUrl}`
-    : `${SITE_URL}/${lang}/our-services/${slug}`
+  const pair = slugPair(serviceSEO)
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: l => ({
+      pathname: "/our-services/[slug]",
+      params: { slug: pair[l] },
+    }),
+  })
 
   // Use SEO data if available, otherwise fall back to basic service data
   const metaTitle = serviceSEO.seo?.meta[lang]?.title || serviceSEO.title[lang]
@@ -75,14 +84,9 @@ export async function generateMetadata({
         ? [serviceSEO.seo.openGraph.image.url]
         : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/our-services/${slug}`,
-        es: `${SITE_URL}/es/our-services/${slug}`,
-        "x-default": `${SITE_URL}/en/our-services/${slug}`,
-      },
+      languages,
     },
   }
 }

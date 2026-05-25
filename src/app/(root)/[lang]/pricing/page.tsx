@@ -11,7 +11,7 @@ import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 import { Metadata } from "next"
 import React from "react"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -23,15 +23,21 @@ interface PageProps {
 
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
-  const [seoData, customSolutionCTA, pricingHeader, faqsHeader, faqs, pricingData] =
-    await Promise.all([
-      getSeoSchema("pricing"),
-      getCustomSolutionCTA(),
-      getPricingHeader(),
-      getFAQsHeader(),
-      getFAQs(),
-      getPricingData(),
-    ])
+  const [
+    seoData,
+    customSolutionCTA,
+    pricingHeader,
+    faqsHeader,
+    faqs,
+    pricingData,
+  ] = await Promise.all([
+    getSeoSchema("pricing"),
+    getCustomSolutionCTA(),
+    getPricingHeader(),
+    getFAQsHeader(),
+    getFAQs(),
+    getPricingData(),
+  ])
   return (
     <>
       {seoData?.structuredData?.[lang] && (
@@ -83,9 +89,10 @@ export async function generateMetadata({
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/pricing`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/pricing",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -119,14 +126,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/pricing`,
-        es: `${SITE_URL}/es/pricing`,
-        "x-default": `${SITE_URL}/en/pricing`,
-      },
+      languages,
     },
   }
 }

@@ -3,7 +3,7 @@ import { Metadata } from "next"
 import PortfolioContent from "@/components/PortfolioComponents/PortfolioContent"
 import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
 import { getProjects } from "@/sanity/queries/portfolio/project"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -46,9 +46,10 @@ export async function generateMetadata({
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/portfolio`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/portfolio",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -82,14 +83,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/portfolio`,
-        es: `${SITE_URL}/es/portfolio`,
-        "x-default": `${SITE_URL}/en/portfolio`,
-      },
+      languages,
     },
   }
 }

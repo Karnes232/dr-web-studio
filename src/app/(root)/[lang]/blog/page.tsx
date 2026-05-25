@@ -5,7 +5,7 @@ import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getBlogHeader } from "@/sanity/queries/blog/blogHeader"
 import { Metadata } from "next"
 import React from "react"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -69,11 +69,12 @@ export async function generateMetadata({
   const { lang } = await params
   const seoData = await getSEO("blog")
 
-  const canonicalUrl = seoData?.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/blog`
-
   if (!seoData) return {}
+
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/blog",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -107,14 +108,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/blog`,
-        es: `${SITE_URL}/es/blog`,
-        "x-default": `${SITE_URL}/en/blog`,
-      },
+      languages,
     },
   }
 }

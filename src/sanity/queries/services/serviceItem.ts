@@ -67,6 +67,7 @@ const serviceItemsQuery = `*[_type == "serviceItem"] {
   _id,
   title,
   slug,
+  slugEs,
   description,
   iconName,
   "categories": categories[]-> {
@@ -84,10 +85,11 @@ export const getServiceItems = cache(async (): Promise<ServiceItem[]> => {
   return client.fetch(serviceItemsQuery)
 })
 
-const serviceItemIndividualQuery = `*[_type == "serviceItem" && slug.current == $slug][0] {
+const serviceItemIndividualQuery = `*[_type == "serviceItem" && (slug.current == $slug || slugEs.current == $slug)][0] {
   _id,
   title,
   slug,
+  slugEs,
   description,
   "categories": categories[]-> {
     _id,
@@ -216,6 +218,9 @@ export interface ServiceItemIndividual {
     es: string
   }
   slug: string
+  slugEs?: {
+    current: string
+  }
   description: {
     en: string
     es: string
@@ -323,7 +328,8 @@ export interface ServiceItemIndividual {
 const serviceItemsLinksQuery = `*[_type == "serviceItem"] {
 _id,
   title,
-  slug
+  slug,
+  slugEs
 }`
 
 export interface ServiceItemsLinks {
@@ -335,6 +341,9 @@ export interface ServiceItemsLinks {
   slug: {
     current: string
   }
+  slugEs?: {
+    current: string
+  }
 }
 
 export const getServiceItemsLinks = cache(
@@ -343,10 +352,11 @@ export const getServiceItemsLinks = cache(
   },
 )
 
-const serviceItemSEOQuery = `*[_type == "serviceItem" && slug.current == $slug][0] {
+const serviceItemSEOQuery = `*[_type == "serviceItem" && (slug.current == $slug || slugEs.current == $slug)][0] {
   _id,
   title,
   slug,
+  slugEs,
   seo {
     meta {
       en {
@@ -395,6 +405,9 @@ export interface ServiceItemSEOData {
   slug: {
     current: string
   }
+  slugEs?: {
+    current: string
+  }
   seo?: ServiceItemSEO
 }
 
@@ -408,6 +421,7 @@ const serviceItemsWithSEOQuery = `*[_type == "serviceItem"] {
   _id,
   title,
   slug,
+  slugEs,
   description,
   iconName,
   "categories": categories[]-> {
@@ -467,6 +481,7 @@ const serviceItemsSitemapQuery = `*[_type == "serviceItem"] {
   _id,
   title,
   slug,
+  slugEs,
   _updatedAt
 }`
 
@@ -477,6 +492,9 @@ export interface ServiceItemsSitemap {
     es: string
   }
   slug: {
+    current: string
+  }
+  slugEs?: {
     current: string
   }
   _updatedAt: string

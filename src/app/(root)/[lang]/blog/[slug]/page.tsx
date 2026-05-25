@@ -9,17 +9,21 @@ import {
 import { Metadata } from "next"
 import React from "react"
 import { notFound } from "next/navigation"
-import { SITE_URL } from "@/lib/site"
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
+import { buildAlternates } from "@/lib/urls"
+import { slugPair } from "@/lib/slugs"
 
 export const revalidate = 3600
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPostsSitemap()
-  return posts.flatMap(post => [
-    { lang: "en", slug: post.slug.current },
-    { lang: "es", slug: post.slug.current },
-  ])
+  return posts.flatMap(post => {
+    const pair = slugPair(post)
+    return [
+      { lang: "en", slug: pair.en },
+      { lang: "es", slug: pair.es },
+    ]
+  })
 }
 
 interface PageProps {
@@ -39,7 +43,11 @@ export default async function BlogPost({ params }: PageProps) {
     post?.categories?.map(
       (c: { slug: { current: string } }) => c.slug.current,
     ) ?? []
-  const relatedPosts = await getRelatedBlogPosts(slug, categorySlugs, 10)
+  const relatedPosts = await getRelatedBlogPosts(
+    post.slug.current,
+    categorySlugs,
+    10,
+  )
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
@@ -65,9 +73,11 @@ export async function generateMetadata({
   const seoData = await getBlogPostSEO(slug)
 
   if (!seoData) return {}
-  const canonicalUrl = seoData?.seo?.canonicalUrl
-    ? `${SITE_URL}/${lang}/blog/${seoData.seo.canonicalUrl}`
-    : `${SITE_URL}/${lang}/blog/${slug}`
+  const pair = slugPair(seoData)
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: l => ({ pathname: "/blog/[slug]", params: { slug: pair[l] } }),
+  })
 
   return {
     title: seoData.seo.meta[lang]?.title,
@@ -110,14 +120,9 @@ export async function generateMetadata({
       index: !seoData.seo.noIndex,
       follow: !seoData.seo.noFollow,
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/blog/${slug}`,
-        es: `${SITE_URL}/es/blog/${slug}`,
-        "x-default": `${SITE_URL}/en/blog/${slug}`,
-      },
+      languages,
     },
   }
 }

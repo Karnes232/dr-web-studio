@@ -1,22 +1,22 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
 
 const QuickLinks = () => {
-  const { t, getLocalizedPath } = useLocale()
+  const { t } = useLocale()
   const links = [
-    { href: getLocalizedPath("/"), label: t("navigation.home") },
-    { href: getLocalizedPath("/about-me"), label: t("navigation.about") },
-    { href: getLocalizedPath("/portfolio"), label: t("navigation.portfolio") },
-    { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
-    { href: getLocalizedPath("/blog"), label: t("navigation.blog") },
-    { href: getLocalizedPath("/contact"), label: t("navigation.contact") },
+    { href: "/", label: t("navigation.home") },
+    { href: "/about-me", label: t("navigation.about") },
+    { href: "/portfolio", label: t("navigation.portfolio") },
+    { href: "/pricing", label: t("navigation.pricing") },
+    { href: "/blog", label: t("navigation.blog") },
+    { href: "/contact", label: t("navigation.contact") },
     {
-      href: getLocalizedPath("/guia-completa-desarrollo-web-moderno-negocios"),
+      href: "/guia-completa-desarrollo-web-moderno-negocios",
       label: t("navigation.guiaCompleta"),
     },
-  ]
+  ] as const
 
   return (
     <div>

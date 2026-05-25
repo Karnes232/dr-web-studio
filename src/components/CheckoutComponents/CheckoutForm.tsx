@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import { useRouter } from "next/navigation"
 import { useLocale } from "@/i18n/useLocale"
+import { getPathname } from "@/i18n/navigation"
+import type { Locale } from "@/lib/slugs"
 
 export default function CheckoutForm({
   lang,
@@ -61,7 +63,11 @@ export default function CheckoutForm({
 
       const data = await response.json()
 
-      router.push(`/${lang}/payment-success?${searchParams.toString()}`)
+      const successPath = getPathname({
+        locale: lang as Locale,
+        href: "/payment-success",
+      })
+      router.push(`${successPath}?${searchParams.toString()}`)
     }
   }
 

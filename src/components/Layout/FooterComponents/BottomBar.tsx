@@ -1,10 +1,10 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
 
 const BottomBar = () => {
-  const { currentLocale, t, getLocalizedPath } = useLocale()
+  const { currentLocale, t } = useLocale()
   return (
     <div className="border-t border-slate-700 pt-6">
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -14,19 +14,19 @@ const BottomBar = () => {
         </div>
         <div className="flex space-x-6 text-sm">
           <Link
-            href={getLocalizedPath("/privacy-policy")}
+            href="/privacy-policy"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.privacy_policy")}
           </Link>
           <Link
-            href={getLocalizedPath("/terms-of-service")}
+            href="/terms-of-service"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.terms_of_service")}
           </Link>
           <Link
-            href={getLocalizedPath("/sitemap")}
+            href="/sitemap"
             className="text-gray-400 hover:text-orange-400 transition-colors"
           >
             {t("resources.sitemap")}

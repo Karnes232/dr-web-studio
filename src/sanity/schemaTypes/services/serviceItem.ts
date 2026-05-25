@@ -26,11 +26,22 @@ export default defineType({
     }),
     defineField({
       name: "slug",
-      title: "Slug",
+      title: "Slug (English)",
       type: "slug",
       validation: Rule => Rule.required(),
       options: {
         source: "title.en",
+      },
+    }),
+    defineField({
+      name: "slugEs",
+      title: "Slug (Spanish)",
+      type: "slug",
+      description:
+        "Spanish URL slug, e.g. 'paginas-de-aterrizaje'. Falls back to the English slug until set.",
+      options: {
+        source: "title.es",
+        maxLength: 96,
       },
     }),
     defineField({

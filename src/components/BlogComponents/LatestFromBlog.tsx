@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
+import { slugForLocale } from "@/lib/slugs"
 
 /** Recent blog posts with links – gives every post an incoming link from the homepage (fixes orphan pages in Ahrefs). */
 const LatestFromBlog = ({
@@ -12,6 +13,7 @@ const LatestFromBlog = ({
   posts: Array<{
     title: { en: string; es: string }
     slug: { current: string }
+    slugEs?: { current: string }
     description?: { en: string; es: string }
   }>
   lang: "en" | "es"
@@ -28,7 +30,7 @@ const LatestFromBlog = ({
             {title}
           </h2>
           <Link
-            href={`/${lang}/blog`}
+            href="/blog"
             className="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium"
           >
             {viewAllLabel}
@@ -39,7 +41,10 @@ const LatestFromBlog = ({
           {posts.map(post => (
             <li key={post.slug.current}>
               <Link
-                href={`/${lang}/blog/${post.slug.current}`}
+                href={{
+                  pathname: "/blog/[slug]",
+                  params: { slug: slugForLocale(post, lang) },
+                }}
                 className="block group p-4 rounded-xl border border-slate-200 hover:border-orange-300 hover:shadow-md transition-all"
               >
                 <h3 className="text-lg font-semibold text-slate-800 group-hover:text-orange-600 mb-2">

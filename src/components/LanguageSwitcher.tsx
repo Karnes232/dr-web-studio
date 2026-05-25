@@ -1,13 +1,19 @@
 "use client"
 
-import { useRouter, usePathname } from "next/navigation"
-import { languages, fallbackLng } from "@/i18n/settings"
+import { useRouter, usePathname } from "@/i18n/navigation"
+import { useLocale } from "next-intl"
+import { useParams } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import { Globe, ChevronDown } from "lucide-react"
 
 export default function LanguageSwitcher({ color }: { color: string }) {
   const router = useRouter()
+  // pathname here is the internal (locale-stripped) template, e.g. "/about-me"
+  // or "/blog/[slug]". Combined with route params, router.replace rebuilds the
+  // correct localized URL for the target locale.
   const pathname = usePathname()
+  const params = useParams()
+  const currentLocale = useLocale()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -17,29 +23,13 @@ export default function LanguageSwitcher({ color }: { color: string }) {
   ]
 
   const handleLanguageChange = (newLocale: string) => {
-    const segments = pathname.split("/")
-
-    // If current path starts with a language code, remove it
-    if (languages.includes(segments[1])) {
-      segments.splice(1, 1)
-    }
-
-    // For non-default language, add the language code
-    if (newLocale !== fallbackLng) {
-      segments.splice(1, 0, newLocale)
-    }
-
-    const newPath = segments.join("/") || "/"
     setIsOpen(false)
-    router.push(newPath)
-  }
-
-  const getCurrentLocale = () => {
-    const segments = pathname.split("/")
-    if (languages.includes(segments[1])) {
-      return segments[1]
-    }
-    return fallbackLng
+    router.replace(
+      // @ts-expect-error -- params always match the current pathname template,
+      // so passing them through to the localized router is safe.
+      { pathname, params },
+      { locale: newLocale },
+    )
   }
 
   // Close dropdown when clicking outside
@@ -60,7 +50,7 @@ export default function LanguageSwitcher({ color }: { color: string }) {
   }, [])
 
   const currentLangOption =
-    languageOptions.find(lang => lang.code === getCurrentLocale()) ||
+    languageOptions.find(lang => lang.code === currentLocale) ||
     languageOptions[0]
 
   return (
@@ -100,7 +90,7 @@ export default function LanguageSwitcher({ color }: { color: string }) {
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
           {languageOptions.map(lng => {
-            const isActive = getCurrentLocale() === lng.code
+            const isActive = currentLocale === lng.code
             return (
               <button
                 key={lng.code}

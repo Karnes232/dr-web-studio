@@ -11,6 +11,7 @@ export const allBlogPostsQuery = `
 *[_type == "blogPost"] | order(publishedAt desc) {
   title,
   slug,
+  slugEs,
   "author": author->{
     name,
     slug,
@@ -36,6 +37,9 @@ export interface BlogPost {
     es: string
   }
   slug: {
+    current: string
+  }
+  slugEs?: {
     current: string
   }
   author: {
@@ -106,6 +110,7 @@ export const blogPostsForListingQuery = `
 *[_type == "blogPost"] | order(publishedAt desc) {
   title,
   slug,
+  slugEs,
   "author": author->{
     name,
     slug,
@@ -131,9 +136,10 @@ export const getBlogPostsForListing = cache(async (): Promise<BlogPost[]> => {
 
 // Query for fetching a single blog post by slug
 export const blogPostBySlugQuery = `
-*[_type == "blogPost" && slug.current == $slug][0] {
+*[_type == "blogPost" && (slug.current == $slug || slugEs.current == $slug)][0] {
   title,
   slug,
+  slugEs,
   "author": author->{
     name,
     slug,
@@ -189,6 +195,7 @@ const relatedBlogPostsQuery = `
 )] | order(publishedAt desc)[0...$limit] {
   title,
   slug,
+  slugEs,
   "categories": categories[]-> {
     title,
     slug,
@@ -219,6 +226,8 @@ export const getRelatedBlogPosts = cache(
 
 interface BlogPostSEO {
   title: string
+  slug: { current: string }
+  slugEs?: { current: string }
   publishedAt?: string
   _updatedAt?: string
   author?: { name: string }
@@ -262,8 +271,10 @@ interface BlogPostSEO {
 }
 
 const blogPostBySlugQuerySeo = `
-*[_type == "blogPost" && slug.current == $slug][0] {
+*[_type == "blogPost" && (slug.current == $slug || slugEs.current == $slug)][0] {
   title,
+  slug,
+  slugEs,
   publishedAt,
   _updatedAt,
   author-> { name },
@@ -332,6 +343,7 @@ export const allBlogPostsSitemapQuery = `
 *[_type == "blogPost"] {
   title,
   slug,
+  slugEs,
   _updatedAt
 }`
 
@@ -341,6 +353,9 @@ export interface BlogPostSitemap {
     es: string
   }
   slug: {
+    current: string
+  }
+  slugEs?: {
     current: string
   }
   _updatedAt: string

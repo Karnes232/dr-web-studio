@@ -3,8 +3,8 @@ import { ArrowRight, Star } from "lucide-react"
 
 import Image from "next/image"
 import VisualElement from "./VisualElementLazy"
-import Link from "next/link"
-import { getTranslation } from "@/i18n"
+import { Link } from "@/i18n/navigation"
+import { getTranslations } from "next-intl/server"
 import { urlFor } from "@/sanity/lib/image"
 
 const HeroSection = async ({
@@ -20,7 +20,7 @@ const HeroSection = async ({
   visualElements: any[]
   lang: string
 }) => {
-  const { t } = await getTranslation(lang)
+  const t = await getTranslations()
   const lqip = backgroundImage?.asset?.metadata?.lqip
   const heroSrc = urlFor(backgroundImage)
     .width(1920)
@@ -76,7 +76,7 @@ const HeroSection = async ({
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
-                href={`/${lang}/contact`}
+                href="/contact"
                 className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.get_free_quote")}
@@ -84,7 +84,7 @@ const HeroSection = async ({
               </Link>
 
               <Link
-                href={`/${lang}/project-planner`}
+                href="/project-planner"
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.start_project")}
@@ -128,10 +128,7 @@ const HeroSection = async ({
           </div>
 
           {/* Visual Element */}
-          <VisualElement
-            visualElements={visualElements}
-            currentLocale={lang}
-          />
+          <VisualElement visualElements={visualElements} currentLocale={lang} />
         </div>
       </div>
     </section>

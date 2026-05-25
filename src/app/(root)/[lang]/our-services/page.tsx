@@ -6,7 +6,7 @@ import { getFeaturesStrip } from "@/sanity/queries/services/featuresStrip"
 import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 import { getCategories } from "@/sanity/queries/services/category"
 import { getServiceItems } from "@/sanity/queries/services/serviceItem"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -61,9 +61,10 @@ export async function generateMetadata({
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/our-services`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/our-services",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -97,14 +98,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/our-services`,
-        es: `${SITE_URL}/es/our-services`,
-        "x-default": `${SITE_URL}/en/our-services`,
-      },
+      languages,
     },
   }
 }

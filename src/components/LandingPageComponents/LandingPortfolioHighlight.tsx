@@ -2,9 +2,10 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import Link from "next/link"
+import NextLink from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowRight } from "lucide-react"
+import { Link } from "@/i18n/navigation"
 import type { PortfolioProject } from "./types"
 
 interface LandingPortfolioHighlightProps {
@@ -46,7 +47,9 @@ export function LandingPortfolioHighlight({
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{sectionSubtitle}</p>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              {sectionSubtitle}
+            </p>
           )}
         </motion.div>
 
@@ -59,7 +62,7 @@ export function LandingPortfolioHighlight({
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Link
-                href={`/${lang}/portfolio`}
+                href="/portfolio"
                 className="group block bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-amber-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Project image */}
@@ -94,7 +97,10 @@ export function LandingPortfolioHighlight({
                   {project.tags && project.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {project.tags.slice(0, 3).map((tag, j) => (
-                        <span key={j} className="px-2 py-1 bg-slate-100 text-slate-500 text-xs rounded-md">
+                        <span
+                          key={j}
+                          className="px-2 py-1 bg-slate-100 text-slate-500 text-xs rounded-md"
+                        >
                           {tag}
                         </span>
                       ))}
@@ -113,13 +119,16 @@ export function LandingPortfolioHighlight({
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center"
         >
-          <Link
+          <NextLink
             href={ctaHref}
             className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-900 text-slate-900 font-semibold rounded-xl hover:bg-slate-900 hover:text-white transition-all duration-200"
           >
-            {ctaText || (lang === "es" ? "Ver Portafolio Completo" : "View Full Portfolio")}
+            {ctaText ||
+              (lang === "es"
+                ? "Ver Portafolio Completo"
+                : "View Full Portfolio")}
             <ArrowRight size={18} />
-          </Link>
+          </NextLink>
         </motion.div>
       </div>
     </section>

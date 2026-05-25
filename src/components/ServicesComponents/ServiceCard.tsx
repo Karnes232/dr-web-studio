@@ -12,7 +12,7 @@ const ServiceCard = ({ service }: { service: any }) => {
       <div className="p-6">
         <ServiceBenefits benefits={service.benefits} />
         <ServiceStats timeline={service.timeline} features={service.features} />
-        <ServiceCardActions onLearnMore={service.slug.current} />
+        <ServiceCardActions service={service} />
       </div>
     </div>
   )

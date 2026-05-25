@@ -2,7 +2,7 @@ import React from "react"
 import { useLocale } from "@/i18n/useLocale"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 const MobileMenu = ({
   isOpen,
@@ -13,34 +13,16 @@ const MobileMenu = ({
   setIsOpen: any
   serviceLinks: ServiceItemsLinks[]
 }) => {
-  const { currentLocale, t, getLocalizedPath } = useLocale()
+  const { currentLocale, t, getServiceHref } = useLocale()
 
   const navItems = [
-    { href: getLocalizedPath("/"), label: t("navigation.home") },
-    { href: getLocalizedPath("/about-me"), label: t("navigation.about") },
-    { href: getLocalizedPath("/portfolio"), label: t("navigation.portfolio") },
-    { href: getLocalizedPath("/pricing"), label: t("navigation.pricing") },
-    { href: getLocalizedPath("/blog"), label: t("navigation.blog") },
-    { href: getLocalizedPath("/contact"), label: t("navigation.contact") },
-  ]
-
-  const services = [
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.custom_websites"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.ecommerce") },
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.landing_pages"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.cms") },
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.maintenance"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.seo") },
-  ]
+    { href: "/", label: t("navigation.home") },
+    { href: "/about-me", label: t("navigation.about") },
+    { href: "/portfolio", label: t("navigation.portfolio") },
+    { href: "/pricing", label: t("navigation.pricing") },
+    { href: "/blog", label: t("navigation.blog") },
+    { href: "/contact", label: t("navigation.contact") },
+  ] as const
 
   return (
     <div
@@ -64,7 +46,7 @@ const MobileMenu = ({
         {/* Mobile Services */}
         <div className="px-3 py-2">
           <Link
-            href={getLocalizedPath("/our-services")}
+            href="/our-services"
             className="text-slate-700 font-medium mb-2"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -75,7 +57,7 @@ const MobileMenu = ({
               <Link
                 onClick={() => setIsOpen(!isOpen)}
                 key={index}
-                href={getLocalizedPath(`/our-services/${service.slug.current}`)}
+                href={getServiceHref(service)}
                 className="block py-1 text-sm text-slate-600 hover:text-orange-600 transition-colors"
               >
                 {service.title[currentLocale as keyof typeof service.title]}
@@ -96,14 +78,14 @@ const MobileMenu = ({
         {/* Mobile CTA Buttons */}
         <div className="px-3 pt-4 space-y-2">
           <Link
-            href={getLocalizedPath("/project-planner")}
+            href="/project-planner"
             onClick={() => setIsOpen(!isOpen)}
             className="block w-full text-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md"
           >
             {t("resources.start_project")}
           </Link>
           <Link
-            href={getLocalizedPath("/contact")}
+            href="/contact"
             onClick={() => setIsOpen(!isOpen)}
             className="block w-full text-center bg-teal-500 text-white px-4 py-3 rounded-lg font-medium hover:bg-teal-600 transition-all duration-200 shadow-md"
           >

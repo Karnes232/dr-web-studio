@@ -1,17 +1,23 @@
 import { Facebook, Link, Linkedin, Share2, Twitter } from "lucide-react"
 import React, { useState, useEffect } from "react"
+import { getPathname } from "@/i18n/navigation"
+import { slugForLocale, type Locale } from "@/lib/slugs"
+import { SITE_URL } from "@/lib/site"
 
 const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
   const [showShare, setShowShare] = useState(false)
-  const [postUrl, setPostUrl] = useState(
-    `https://www.dr-webstudio.com/${lang}/blog/${post.slug.current}`,
-  )
+  const path = getPathname({
+    locale: lang as Locale,
+    href: {
+      pathname: "/blog/[slug]",
+      params: { slug: slugForLocale(post, lang as Locale) },
+    },
+  })
+  const [postUrl, setPostUrl] = useState(`${SITE_URL}${path}`)
 
   useEffect(() => {
-    setPostUrl(
-      `${window.location.origin}/${lang}/blog/${post.slug.current}`,
-    )
-  }, [lang, post.slug.current])
+    setPostUrl(`${window.location.origin}${path}`)
+  }, [path])
 
   const shareLinks = [
     {

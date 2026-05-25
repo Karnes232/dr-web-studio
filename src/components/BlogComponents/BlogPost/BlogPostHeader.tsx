@@ -11,11 +11,11 @@ import {
 import Image from "next/image"
 import React, { useState } from "react"
 import ShareButtons from "./ShareButtons"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useLocale } from "@/i18n/useLocale"
 
 const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
-  const { t, getLocalizedPath } = useLocale()
+  const { t } = useLocale()
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
   return (
@@ -24,7 +24,7 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
         {/* Back Button */}
         <div className="mb-6">
           <Link
-            href={getLocalizedPath("/blog")}
+            href="/blog"
             className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />

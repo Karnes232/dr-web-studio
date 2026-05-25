@@ -1,10 +1,10 @@
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import Footer from "@/components/Layout/FooterComponents/Footer"
 import { client } from "@/sanity/lib/client"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
-import { I18nProvider } from "@/i18n/I18nContext"
-import { fallbackLng } from "@/i18n/settings"
+import { NextIntlClientProvider } from "next-intl"
+import { routing } from "@/i18n/routing"
 
 async function getLogo() {
   return client.fetch(`
@@ -58,9 +58,9 @@ async function getCompanyInfo() {
 }
 
 export default async function NotFound() {
-  const lang = fallbackLng
+  const lang = routing.defaultLocale
 
-  const [translations, logo, companyInfo, serviceLinks] = await Promise.all([
+  const [messages, logo, companyInfo, serviceLinks] = await Promise.all([
     import("@/i18n/locales/en/translation.json").then(m => m.default),
     getLogo(),
     getCompanyInfo(),
@@ -68,10 +68,7 @@ export default async function NotFound() {
   ])
 
   return (
-    <I18nProvider
-      locale={lang}
-      translations={translations as Record<string, unknown>}
-    >
+    <NextIntlClientProvider locale={lang} messages={messages}>
       <Navbar logo={logo} serviceLinks={serviceLinks} />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 flex items-center justify-center px-4">
         <div className="max-w-xl mx-auto text-center">
@@ -85,13 +82,15 @@ export default async function NotFound() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/en"
+              href="/"
+              locale="en"
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold hover:bg-orange-600 transition-colors"
             >
               Go to Homepage
             </Link>
             <Link
-              href="/en/contact"
+              href="/contact"
+              locale="en"
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors"
             >
               Contact Us
@@ -99,25 +98,29 @@ export default async function NotFound() {
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
             <Link
-              href="/en/our-services"
+              href="/our-services"
+              locale="en"
               className="text-slate-500 hover:text-orange-500 transition-colors"
             >
               Services
             </Link>
             <Link
-              href="/en/portfolio"
+              href="/portfolio"
+              locale="en"
               className="text-slate-500 hover:text-orange-500 transition-colors"
             >
               Portfolio
             </Link>
             <Link
-              href="/en/blog"
+              href="/blog"
+              locale="en"
               className="text-slate-500 hover:text-orange-500 transition-colors"
             >
               Blog
             </Link>
             <Link
-              href="/en/pricing"
+              href="/pricing"
+              locale="en"
               className="text-slate-500 hover:text-orange-500 transition-colors"
             >
               Pricing
@@ -130,6 +133,6 @@ export default async function NotFound() {
         companyInfo={companyInfo}
         serviceLinks={serviceLinks}
       />
-    </I18nProvider>
+    </NextIntlClientProvider>
   )
 }

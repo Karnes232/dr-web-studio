@@ -1,155 +1,84 @@
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { MetadataRoute } from "next"
+import { localizedUrl } from "@/lib/urls"
+import { slugPair } from "@/lib/slugs"
+import { routing } from "@/i18n/routing"
 
 export const revalidate = 3600
 
+type Href = Parameters<typeof localizedUrl>[0]
+
+// Internal pathname keys included in the sitemap (both locales). Intentionally
+// excludes /sitemap, /custom-payment, /payment-success (noindex / utility).
+const STATIC_ROUTES: { key: Href; priority: number }[] = [
+  { key: "/", priority: 1 },
+  { key: "/about-me", priority: 0.8 },
+  { key: "/blog", priority: 0.8 },
+  { key: "/contact", priority: 0.8 },
+  { key: "/faqs", priority: 0.8 },
+  { key: "/guia-completa-desarrollo-web-moderno-negocios", priority: 0.8 },
+  { key: "/desarrollo-web-republica-dominicana", priority: 0.9 },
+  { key: "/diseno-web-republica-dominicana", priority: 0.9 },
+  { key: "/desarrollo-web-punta-cana", priority: 0.9 },
+  { key: "/desarrollo-ecommerce-republica-dominicana", priority: 0.9 },
+  { key: "/mantenimiento-web-republica-dominicana", priority: 0.9 },
+  { key: "/privacy-policy", priority: 0.8 },
+  { key: "/terms-of-service", priority: 0.8 },
+  { key: "/our-services", priority: 0.8 },
+  { key: "/pricing", priority: 0.8 },
+  { key: "/portfolio", priority: 0.8 },
+  { key: "/project-planner", priority: 0.8 },
+]
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.dr-webstudio.com"
-  const serviceItems = await getServiceItemsSitemap()
-  const blogPosts = await getAllBlogPostsSitemap()
+  const [serviceItems, blogPosts] = await Promise.all([
+    getServiceItemsSitemap(),
+    getAllBlogPostsSitemap(),
+  ])
+  const now = new Date()
+  const entries: MetadataRoute.Sitemap = []
 
-  const pages = [
-    { url: `${baseUrl}/en`, lastModified: new Date(), priority: 1 },
-    { url: `${baseUrl}/es`, lastModified: new Date(), priority: 1 },
-    { url: `${baseUrl}/en/about-me`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/about-me`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/en/blog`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/blog`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/en/contact`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/contact`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/en/faqs`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/faqs`, lastModified: new Date(), priority: 0.8 },
-    {
-      url: `${baseUrl}/en/guia-completa-desarrollo-web-moderno-negocios`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/es/guia-completa-desarrollo-web-moderno-negocios`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/desarrollo-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/es/desarrollo-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/diseno-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/es/diseno-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/desarrollo-web-punta-cana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/es/desarrollo-web-punta-cana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/desarrollo-ecommerce-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/es/desarrollo-ecommerce-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/mantenimiento-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/es/mantenimiento-web-republica-dominicana`,
-      lastModified: new Date(),
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/privacy-policy`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/es/privacy-policy`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/terms-of-service`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/es/terms-of-service`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/our-services`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/es/our-services`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    { url: `${baseUrl}/en/pricing`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/pricing`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/en/portfolio`, lastModified: new Date(), priority: 0.8 },
-    { url: `${baseUrl}/es/portfolio`, lastModified: new Date(), priority: 0.8 },
-    {
-      url: `${baseUrl}/en/project-planner`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/es/project-planner`,
-      lastModified: new Date(),
-      priority: 0.8,
-    },
-    ...serviceItems.map(item => ({
-      url: `${baseUrl}/en/our-services/${item.slug.current}`,
-      lastModified: new Date(item._updatedAt),
-      priority: 0.8,
-    })),
-    ...serviceItems.map(item => ({
-      url: `${baseUrl}/es/our-services/${item.slug.current}`,
-      lastModified: new Date(item._updatedAt),
-      priority: 0.8,
-    })),
-    ...blogPosts.map(item => ({
-      url: `${baseUrl}/en/blog/${item.slug.current}`,
-      lastModified: new Date(item._updatedAt),
-      priority: 0.8,
-    })),
-    ...blogPosts.map(item => ({
-      url: `${baseUrl}/es/blog/${item.slug.current}`,
-      lastModified: new Date(item._updatedAt),
-      priority: 0.8,
-    })),
-  ]
+  for (const { key, priority } of STATIC_ROUTES) {
+    for (const locale of routing.locales) {
+      entries.push({
+        url: localizedUrl(key, locale),
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority,
+      })
+    }
+  }
 
-  return pages.map(page => ({
-    url: page.url,
-    lastModified: page.lastModified,
-    changeFrequency: "monthly",
-    priority: page.priority,
-  }))
+  for (const item of serviceItems) {
+    const pair = slugPair(item)
+    for (const locale of routing.locales) {
+      entries.push({
+        url: localizedUrl(
+          { pathname: "/our-services/[slug]", params: { slug: pair[locale] } },
+          locale,
+        ),
+        lastModified: new Date(item._updatedAt),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      })
+    }
+  }
+
+  for (const item of blogPosts) {
+    const pair = slugPair(item)
+    for (const locale of routing.locales) {
+      entries.push({
+        url: localizedUrl(
+          { pathname: "/blog/[slug]", params: { slug: pair[locale] } },
+          locale,
+        ),
+        lastModified: new Date(item._updatedAt),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      })
+    }
+  }
+
+  return entries
 }

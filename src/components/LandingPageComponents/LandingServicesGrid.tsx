@@ -3,15 +3,38 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import {
-  Globe, ShoppingCart, Layout, Database, Wrench, TrendingUp,
-  Code, Layers, Monitor, Smartphone, Zap, Search,
+  Globe,
+  ShoppingCart,
+  Layout,
+  Database,
+  Wrench,
+  TrendingUp,
+  Code,
+  Layers,
+  Monitor,
+  Smartphone,
+  Zap,
+  Search,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import type { ServiceItem } from "./types"
 
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Globe, ShoppingCart, Layout, Database, Wrench, TrendingUp,
-  Code, Layers, Monitor, Smartphone, Zap, Search,
+const ICON_MAP: Record<
+  string,
+  React.ComponentType<{ size?: number; className?: string }>
+> = {
+  Globe,
+  ShoppingCart,
+  Layout,
+  Database,
+  Wrench,
+  TrendingUp,
+  Code,
+  Layers,
+  Monitor,
+  Smartphone,
+  Zap,
+  Search,
 }
 
 interface LandingServicesGridProps {
@@ -21,7 +44,12 @@ interface LandingServicesGridProps {
   lang: "en" | "es"
 }
 
-export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang }: LandingServicesGridProps) {
+export function LandingServicesGrid({
+  sectionTitle,
+  sectionSubtitle,
+  items,
+  lang,
+}: LandingServicesGridProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
@@ -42,7 +70,9 @@ export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{sectionSubtitle}</p>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              {sectionSubtitle}
+            </p>
           )}
         </motion.div>
 
@@ -60,8 +90,12 @@ export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang
                 <div className="w-12 h-12 rounded-xl bg-amber-50 group-hover:bg-amber-100 flex items-center justify-center mb-6 transition-colors duration-200">
                   <Icon size={24} className="text-amber-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{item.title}</h3>
-                <p className="flex-1 text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="flex-1 text-slate-500 text-sm leading-relaxed">
+                  {item.description}
+                </p>
                 {item.linkSlug && (
                   <div className="mt-6 text-amber-600 text-sm font-medium group-hover:text-amber-700 transition-colors">
                     {lang === "es" ? "Ver más →" : "Learn more →"}
@@ -71,7 +105,17 @@ export function LandingServicesGrid({ sectionTitle, sectionSubtitle, items, lang
             )
 
             return item.linkSlug ? (
-              <Link key={i} href={`/${lang}/our-services/${item.linkSlug}`} className="flex">
+              <Link
+                key={i}
+                // linkSlug is the English service slug from landing content.
+                // next-intl localizes the prefix; for /es the slug stays English
+                // and is 301'd to the Spanish slug (see next.config redirects).
+                href={{
+                  pathname: "/our-services/[slug]",
+                  params: { slug: item.linkSlug },
+                }}
+                className="flex"
+              >
                 {card}
               </Link>
             ) : (

@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react"
 import React, { useRef, useEffect } from "react"
 import { useLocale } from "@/i18n/useLocale"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const ServicesDropdown = ({
@@ -13,7 +13,7 @@ const ServicesDropdown = ({
   setServicesOpen: any
   serviceLinks: ServiceItemsLinks[]
 }) => {
-  const { currentLocale, t, getLocalizedPath } = useLocale()
+  const { currentLocale, t, getServiceHref } = useLocale()
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -34,24 +34,6 @@ const ServicesDropdown = ({
     }
   }, [servicesOpen, setServicesOpen])
 
-  const services = [
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.custom_websites"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.ecommerce") },
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.landing_pages"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.cms") },
-    {
-      href: getLocalizedPath("/our-services"),
-      label: t("services.maintenance"),
-    },
-    { href: getLocalizedPath("/our-services"), label: t("services.seo") },
-  ]
-
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -66,7 +48,7 @@ const ServicesDropdown = ({
         <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
           <Link
             onClick={() => setServicesOpen(false)}
-            href={getLocalizedPath("/our-services")}
+            href="/our-services"
             className="block px-4 py-2 text-slate-700 xl:text-lg hover:bg-orange-50 hover:text-orange-600 transition-colors"
           >
             {t("services.all_services")}
@@ -75,7 +57,7 @@ const ServicesDropdown = ({
             <Link
               onClick={() => setServicesOpen(false)}
               key={service._id}
-              href={getLocalizedPath(`/our-services/${service.slug.current}`)}
+              href={getServiceHref(service)}
               className="block px-4 py-2 text-slate-700 xl:text-lg hover:bg-orange-50 hover:text-orange-600 transition-colors truncate"
             >
               {service.title[currentLocale as keyof typeof service.title]}

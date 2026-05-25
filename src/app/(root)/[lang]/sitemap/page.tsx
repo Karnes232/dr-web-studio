@@ -1,8 +1,11 @@
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { Metadata } from "next"
-import Link from "next/link"
-import { SITE_URL } from "@/lib/site"
+import { Link } from "@/i18n/navigation"
+import { buildAlternates } from "@/lib/urls"
+import { slugForLocale } from "@/lib/slugs"
+
+type Href = Parameters<typeof Link>[0]["href"]
 
 export const revalidate = 3600
 
@@ -36,11 +39,14 @@ const labels = {
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
     landingPageLabels: {
-      "desarrollo-web-republica-dominicana": "Web Development — Dominican Republic",
+      "desarrollo-web-republica-dominicana":
+        "Web Development — Dominican Republic",
       "diseno-web-republica-dominicana": "Web Design — Dominican Republic",
       "desarrollo-web-punta-cana": "Web Development — Punta Cana",
-      "desarrollo-ecommerce-republica-dominicana": "E-commerce Development — Dominican Republic",
-      "mantenimiento-web-republica-dominicana": "Website Maintenance — Dominican Republic",
+      "desarrollo-ecommerce-republica-dominicana":
+        "E-commerce Development — Dominican Republic",
+      "mantenimiento-web-republica-dominicana":
+        "Website Maintenance — Dominican Republic",
     },
   },
   es: {
@@ -64,11 +70,14 @@ const labels = {
     privacyPolicy: "Política de Privacidad",
     termsOfService: "Términos de Servicio",
     landingPageLabels: {
-      "desarrollo-web-republica-dominicana": "Desarrollo Web — República Dominicana",
+      "desarrollo-web-republica-dominicana":
+        "Desarrollo Web — República Dominicana",
       "diseno-web-republica-dominicana": "Diseño Web — República Dominicana",
       "desarrollo-web-punta-cana": "Desarrollo Web — Punta Cana",
-      "desarrollo-ecommerce-republica-dominicana": "Desarrollo E-commerce — República Dominicana",
-      "mantenimiento-web-republica-dominicana": "Mantenimiento Web — República Dominicana",
+      "desarrollo-ecommerce-republica-dominicana":
+        "Desarrollo E-commerce — República Dominicana",
+      "mantenimiento-web-republica-dominicana":
+        "Mantenimiento Web — República Dominicana",
     },
   },
 }
@@ -102,7 +111,7 @@ function SitemapSection({
   )
 }
 
-function SitemapLink({ href, label }: { href: string; label: string }) {
+function SitemapLink({ href, label }: { href: Href; label: string }) {
   return (
     <li>
       <Link
@@ -147,19 +156,21 @@ export default async function SitemapPage({ params }: PageProps) {
       {/* Grid */}
       <div className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
           {/* Main Pages */}
           <SitemapSection title={l.mainPages}>
-            <SitemapLink href={`/${lang}`} label={l.home} />
-            <SitemapLink href={`/${lang}/about-me`} label={l.about} />
-            <SitemapLink href={`/${lang}/our-services`} label={l.servicesOverview} />
-            <SitemapLink href={`/${lang}/portfolio`} label={l.portfolio} />
-            <SitemapLink href={`/${lang}/pricing`} label={l.pricing} />
-            <SitemapLink href={`/${lang}/blog`} label={l.blog} />
-            <SitemapLink href={`/${lang}/contact`} label={l.contact} />
-            <SitemapLink href={`/${lang}/project-planner`} label={l.projectPlanner} />
-            <SitemapLink href={`/${lang}/faqs`} label={l.faqs} />
-            <SitemapLink href={`/${lang}/guia-completa-desarrollo-web-moderno-negocios`} label={l.guide} />
+            <SitemapLink href="/" label={l.home} />
+            <SitemapLink href="/about-me" label={l.about} />
+            <SitemapLink href="/our-services" label={l.servicesOverview} />
+            <SitemapLink href="/portfolio" label={l.portfolio} />
+            <SitemapLink href="/pricing" label={l.pricing} />
+            <SitemapLink href="/blog" label={l.blog} />
+            <SitemapLink href="/contact" label={l.contact} />
+            <SitemapLink href="/project-planner" label={l.projectPlanner} />
+            <SitemapLink href="/faqs" label={l.faqs} />
+            <SitemapLink
+              href="/guia-completa-desarrollo-web-moderno-negocios"
+              label={l.guide}
+            />
           </SitemapSection>
 
           {/* Service Pages */}
@@ -168,7 +179,10 @@ export default async function SitemapPage({ params }: PageProps) {
               {serviceItems.map(item => (
                 <SitemapLink
                   key={item._id}
-                  href={`/${lang}/our-services/${item.slug.current}`}
+                  href={{
+                    pathname: "/our-services/[slug]",
+                    params: { slug: slugForLocale(item, lang) },
+                  }}
                   label={item.title[lang] ?? item.title.en}
                 />
               ))}
@@ -180,7 +194,7 @@ export default async function SitemapPage({ params }: PageProps) {
             {LANDING_PAGE_SLUGS.map(slug => (
               <SitemapLink
                 key={slug}
-                href={`/${lang}/${slug}`}
+                href={`/${slug}` as Href}
                 label={l.landingPageLabels[slug]}
               />
             ))}
@@ -192,7 +206,10 @@ export default async function SitemapPage({ params }: PageProps) {
               {blogPosts.map((post, i) => (
                 <SitemapLink
                   key={i}
-                  href={`/${lang}/blog/${post.slug.current}`}
+                  href={{
+                    pathname: "/blog/[slug]",
+                    params: { slug: slugForLocale(post, lang) },
+                  }}
                   label={post.title[lang] ?? post.title.en}
                 />
               ))}
@@ -201,10 +218,9 @@ export default async function SitemapPage({ params }: PageProps) {
 
           {/* Legal */}
           <SitemapSection title={l.legal}>
-            <SitemapLink href={`/${lang}/privacy-policy`} label={l.privacyPolicy} />
-            <SitemapLink href={`/${lang}/terms-of-service`} label={l.termsOfService} />
+            <SitemapLink href="/privacy-policy" label={l.privacyPolicy} />
+            <SitemapLink href="/terms-of-service" label={l.termsOfService} />
           </SitemapSection>
-
         </div>
       </div>
     </main>
@@ -215,24 +231,29 @@ export default async function SitemapPage({ params }: PageProps) {
 // Metadata
 // ─────────────────────────────────────────────────────────────────────────────
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { lang } = await params
 
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/sitemap",
+  })
+
   return {
-    title: lang === "es" ? "Mapa del Sitio | DR Web Studio" : "Sitemap | DR Web Studio",
+    title:
+      lang === "es"
+        ? "Mapa del Sitio | DR Web Studio"
+        : "Sitemap | DR Web Studio",
     description:
       lang === "es"
         ? "Una lista completa de todas las páginas del sitio web de DR Web Studio."
         : "A complete list of all pages on the DR Web Studio website.",
     robots: { index: false, follow: false },
     alternates: {
-      canonical: `${SITE_URL}/${lang}/sitemap`,
-      languages: {
-        en: `${SITE_URL}/en/sitemap`,
-        es: `${SITE_URL}/es/sitemap`,
-        "x-default": `${SITE_URL}/en/sitemap`,
-      },
+      canonical: canonicalUrl,
+      languages,
     },
   }
 }
-

@@ -2,7 +2,7 @@ import BlockContent from "@/components/BlogComponents/BlogPost/BlockContent/Bloc
 import { getLegal } from "@/sanity/queries/legal/legal"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 86400
 
@@ -38,9 +38,10 @@ export async function generateMetadata({
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData?.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/privacy-policy`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/privacy-policy",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -74,14 +75,9 @@ export async function generateMetadata({
         seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/privacy-policy`,
-        es: `${SITE_URL}/es/privacy-policy`,
-        "x-default": `${SITE_URL}/en/privacy-policy`,
-      },
+      languages,
     },
   }
 }

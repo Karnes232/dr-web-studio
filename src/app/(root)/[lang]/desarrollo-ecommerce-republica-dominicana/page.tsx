@@ -10,7 +10,7 @@ import { LandingTestimonials } from "@/components/LandingPageComponents/LandingT
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
 import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
-import { SITE_URL } from "@/lib/site"
+import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 3600
 
@@ -20,7 +20,9 @@ interface PageProps {
   params: Promise<{ lang: "en" | "es" }>
 }
 
-export default async function DisenoWebRepublicaDominicana({ params }: PageProps) {
+export default async function DisenoWebRepublicaDominicana({
+  params,
+}: PageProps) {
   const { lang } = await params
   const data = await getLandingPage(PAGE_SLUG, lang)
 
@@ -86,15 +88,18 @@ export default async function DisenoWebRepublicaDominicana({ params }: PageProps
   )
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { lang } = await params
   const seoData = await getSEO(PAGE_SLUG)
 
   if (!seoData) return {}
 
-  const canonicalUrl = seoData.canonicalUrl
-    ? `${SITE_URL}/${lang}/${seoData.canonicalUrl}`
-    : `${SITE_URL}/${lang}/${PAGE_SLUG}`
+  const { canonical: canonicalUrl, languages } = buildAlternates({
+    currentLocale: lang,
+    hrefFor: () => "/desarrollo-ecommerce-republica-dominicana",
+  })
 
   return {
     title: seoData.meta[lang]?.title,
@@ -102,28 +107,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: seoData.meta[lang]?.keywords.join(", "),
     openGraph: {
       title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
-      description: seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
+      description:
+        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       url: canonicalUrl,
       type: "website",
       locale: lang === "es" ? "es_ES" : "en_US",
       images: seoData.openGraph.image
-        ? [{ url: seoData.openGraph.image.url, width: seoData.openGraph.image.width, height: seoData.openGraph.image.height }]
+        ? [
+            {
+              url: seoData.openGraph.image.url,
+              width: seoData.openGraph.image.width,
+              height: seoData.openGraph.image.height,
+            },
+          ]
         : [],
     },
     robots: { index: !seoData.noIndex, follow: !seoData.noFollow },
     twitter: {
       card: "summary_large_image",
       title: seoData.openGraph[lang]?.title || seoData.meta[lang]?.title,
-      description: seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
+      description:
+        seoData.openGraph[lang]?.description || seoData.meta[lang]?.description,
       images: seoData.openGraph.image ? [seoData.openGraph.image.url] : [],
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${SITE_URL}/en/${PAGE_SLUG}`,
-        es: `${SITE_URL}/es/${PAGE_SLUG}`,
-        "x-default": `${SITE_URL}/en/${PAGE_SLUG}`,
-      },
+      languages,
     },
   }
 }

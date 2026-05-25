@@ -1,17 +1,15 @@
 import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import Footer from "@/components/Layout/FooterComponents/Footer"
-import {
-  getCompanyInfo,
-  getLogo,
-} from "@/sanity/queries/layout/generalLayout"
+import { getCompanyInfo, getLogo } from "@/sanity/queries/layout/generalLayout"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
-import { I18nProvider } from "@/i18n/I18nContext"
-import { languages, fallbackLng } from "@/i18n/settings"
+import { NextIntlClientProvider, hasLocale } from "next-intl"
+import { getMessages, setRequestLocale } from "next-intl/server"
+import { routing } from "@/i18n/routing"
 
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  return languages.map(lang => ({ lang }))
+export function generateStaticParams() {
+  return routing.locales.map(locale => ({ lang: locale }))
 }
 
 interface LangLayoutProps {
@@ -24,22 +22,22 @@ export default async function LangLayout({
   params,
 }: LangLayoutProps) {
   const { lang: rawLang } = await params
-  const lang = languages.includes(rawLang) ? rawLang : fallbackLng
+  const lang = hasLocale(routing.locales, rawLang)
+    ? rawLang
+    : routing.defaultLocale
 
-  const [translations, logo, companyInfo, serviceLinks] = await Promise.all([
-    lang === "es"
-      ? import("@/i18n/locales/es/translation.json").then(m => m.default)
-      : import("@/i18n/locales/en/translation.json").then(m => m.default),
+  // Enables static rendering and scopes server-side translations to this locale.
+  setRequestLocale(lang)
+
+  const [logo, companyInfo, serviceLinks, messages] = await Promise.all([
     getLogo(),
     getCompanyInfo(),
     getServiceItemsLinks(),
+    getMessages(),
   ])
 
   return (
-    <I18nProvider
-      locale={lang}
-      translations={translations as Record<string, unknown>}
-    >
+    <NextIntlClientProvider locale={lang} messages={messages}>
       <Navbar logo={logo} serviceLinks={serviceLinks} />
       {children}
       <Footer
@@ -47,6 +45,6 @@ export default async function LangLayout({
         companyInfo={companyInfo}
         serviceLinks={serviceLinks}
       />
-    </I18nProvider>
+    </NextIntlClientProvider>
   )
 }

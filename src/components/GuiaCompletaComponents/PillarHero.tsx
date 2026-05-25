@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Sparkles, TrendingUp, Zap } from "lucide-react"
 import type { HeroData } from "./types"
-import { useLocale } from "@/i18n/useLocale"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 interface PillarHeroProps {
   data: HeroData
@@ -21,7 +20,6 @@ export function PillarHero({
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { scrollY } = useScroll()
-  const { getLocalizedPath } = useLocale()
   // Gentle parallax for text only (not stats)
   const textY = useTransform(scrollY, [0, 500], [0, 100])
   const textOpacity = useTransform(scrollY, [0, 400], [1, 0.3])
@@ -160,7 +158,7 @@ export function PillarHero({
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center mb-16"
             >
-              <Link href={getLocalizedPath("/contact")}>
+              <Link href="/contact">
                 <motion.div
                   //onClick={onCtaClick}
                   className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"

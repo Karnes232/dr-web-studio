@@ -1,7 +1,7 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
 import { ArrowRight, Award, MessageCircle, Clock, Star } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
 
 const ServiceHero = ({
@@ -15,7 +15,7 @@ const ServiceHero = ({
   description: string
   timeline: string
 }) => {
-  const { t, getLocalizedPath } = useLocale()
+  const { t } = useLocale()
   return (
     <section className="relative">
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
@@ -42,7 +42,7 @@ const ServiceHero = ({
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
-                href={getLocalizedPath("/project-planner")}
+                href="/project-planner"
                 className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("individualService.startProject")}
@@ -50,7 +50,7 @@ const ServiceHero = ({
               </Link>
 
               <Link
-                href={getLocalizedPath("/contact")}
+                href="/contact"
                 className="bg-teal-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
               >
                 <MessageCircle className="mr-2 w-5 h-5" />
