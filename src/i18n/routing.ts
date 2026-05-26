@@ -10,6 +10,13 @@ export const routing = defineRouting({
   // UX change from the old "bare path always → /en" behavior. Don't disable it
   // without revisiting that decision.
 
+  // Disable next-intl's automatic hreflang `Link` HTTP header. Its `x-default`
+  // points at the un-prefixed root (e.g. "/", "/blog"), which 307-redirects —
+  // Ahrefs flags that as "hreflang to redirect / non-canonical / duplicate
+  // language". We emit our own correct on-page <link rel="alternate"> tags via
+  // buildAlternates() (src/lib/urls.ts), so the header is redundant.
+  alternateLinks: false,
+
   // Localized URL pathnames. KEY = internal app-router folder name (do NOT
   // rename the folders); VALUE = per-locale external slug. next-intl rewrites
   // the localized prefix; the [slug] token is passed through unchanged and the
