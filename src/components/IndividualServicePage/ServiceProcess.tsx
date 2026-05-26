@@ -28,7 +28,9 @@ const ServiceProcess = ({ steps }: { steps: any }) => {
                   <div className="bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-full w-12 h-12 shrink-0 flex items-center justify-center font-bold text-lg">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl flex justify-center items-center font-semibold ml-4 h-24">{step.title}</h3>
+                  <h3 className="text-xl flex justify-center items-center font-semibold ml-4 h-24">
+                    {step.title}
+                  </h3>
                 </div>
                 <p className="text-gray-300 leading-relaxed md:h-40 lg:h-60">
                   {step.description}

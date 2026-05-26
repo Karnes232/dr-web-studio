@@ -129,16 +129,23 @@ export default function ServicesContent({
         <FeaturesStrip features={featuresStrip.features} />
 
         {faqs.items.length > 0 && (
-        <LandingFaq
-          sectionTitle={faqs.sectionTitle[currentLocale as keyof typeof faqs.sectionTitle]}
-          sectionSubtitle={faqs.sectionSubtitle[currentLocale as keyof typeof faqs.sectionSubtitle]}
-          items={faqs.items.map(item => ({
-            question: item.question[currentLocale as keyof typeof item.question],
-            answer: item.answer[currentLocale as keyof typeof item.answer],
-          }))}
-          bgColor="bg-transparent"
-        />
-      )}
+          <LandingFaq
+            sectionTitle={
+              faqs.sectionTitle[currentLocale as keyof typeof faqs.sectionTitle]
+            }
+            sectionSubtitle={
+              faqs.sectionSubtitle[
+                currentLocale as keyof typeof faqs.sectionSubtitle
+              ]
+            }
+            items={faqs.items.map(item => ({
+              question:
+                item.question[currentLocale as keyof typeof item.question],
+              answer: item.answer[currentLocale as keyof typeof item.answer],
+            }))}
+            bgColor="bg-transparent"
+          />
+        )}
       </div>
     </section>
   )

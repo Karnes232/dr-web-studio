@@ -73,7 +73,8 @@ export default defineType({
       title: "Slug",
       type: "slug",
       group: "meta",
-      description: "Must match the URL path segment exactly (e.g. desarrollo-web-republica-dominicana)",
+      description:
+        "Must match the URL path segment exactly (e.g. desarrollo-web-republica-dominicana)",
       options: { source: "title", maxLength: 96 },
       validation: Rule => Rule.required(),
     }),
@@ -202,7 +203,11 @@ export default defineType({
             {
               type: "object",
               fields: [
-                defineField({ name: "icon", title: "Lucide Icon Name", type: "string" }),
+                defineField({
+                  name: "icon",
+                  title: "Lucide Icon Name",
+                  type: "string",
+                }),
                 localizedString("title", "Title"),
                 localizedText("description", "Description", 2),
               ],
@@ -237,15 +242,29 @@ export default defineType({
             {
               type: "object",
               fields: [
-                defineField({ name: "number", title: "Step Number", type: "number" }),
-                defineField({ name: "icon", title: "Lucide Icon Name", type: "string" }),
+                defineField({
+                  name: "number",
+                  title: "Step Number",
+                  type: "number",
+                }),
+                defineField({
+                  name: "icon",
+                  title: "Lucide Icon Name",
+                  type: "string",
+                }),
                 localizedString("stepTitle", "Title"),
                 localizedText("description", "Description", 2),
                 localizedString("duration", "Duration"),
               ],
               preview: {
                 select: { number: "number", title: "stepTitle.en" },
-                prepare({ number, title }: { number?: number; title?: string }) {
+                prepare({
+                  number,
+                  title,
+                }: {
+                  number?: number
+                  title?: string
+                }) {
                   return { title: `Step ${number ?? "?"}: ${title ?? ""}` }
                 },
               },
@@ -297,19 +316,37 @@ export default defineType({
               type: "object",
               fields: [
                 localizedText("quote", "Quote", 3),
-                defineField({ name: "author", title: "Author Name", type: "string" }),
-                defineField({ name: "company", title: "Company / Role", type: "string" }),
+                defineField({
+                  name: "author",
+                  title: "Author Name",
+                  type: "string",
+                }),
+                defineField({
+                  name: "company",
+                  title: "Company / Role",
+                  type: "string",
+                }),
                 defineField({
                   name: "rating",
                   title: "Rating (1-5)",
                   type: "number",
                   validation: Rule => Rule.min(1).max(5),
                 }),
-                defineField({ name: "avatar", title: "Avatar Image", type: "image" }),
+                defineField({
+                  name: "avatar",
+                  title: "Avatar Image",
+                  type: "image",
+                }),
               ],
               preview: {
                 select: { author: "author", company: "company" },
-                prepare({ author, company }: { author?: string; company?: string }) {
+                prepare({
+                  author,
+                  company,
+                }: {
+                  author?: string
+                  company?: string
+                }) {
                   return { title: author ?? "Testimonial", subtitle: company }
                 },
               },
@@ -352,7 +389,6 @@ export default defineType({
         }),
       ],
     }),
-
 
     // ──────────────────────────────────────────
     // STRUCTURED DATA (JSON-LD)

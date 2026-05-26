@@ -78,7 +78,8 @@ const PriceEstimator = ({ formData }: { formData: FormData }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="text-center p-4 bg-white rounded-lg shadow-sm">
           <div className="text-2xl font-bold text-teal-600">
-            ${estimate.min.toLocaleString("en-US")} - ${estimate.max.toLocaleString("en-US")}
+            ${estimate.min.toLocaleString("en-US")} - $
+            {estimate.max.toLocaleString("en-US")}
           </div>
           <div className="text-sm text-gray-600 mt-1">Estimated Range</div>
         </div>

@@ -203,7 +203,7 @@ export default defineType({
               title: "Popularity Score",
               type: "number",
               description: "Score from 0 to 100",
-              validation: (rule) => rule.min(0).max(100),
+              validation: rule => rule.min(0).max(100),
             }),
           ],
           preview: {
@@ -243,7 +243,8 @@ export default defineType({
               name: "caseId",
               title: "Case Study ID",
               type: "string",
-              description: "Slug-like identifier (e.g. wedding-photography-portfolio)",
+              description:
+                "Slug-like identifier (e.g. wedding-photography-portfolio)",
             }),
             defineField({
               name: "client",

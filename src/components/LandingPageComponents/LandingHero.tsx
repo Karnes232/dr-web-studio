@@ -28,7 +28,8 @@ export function LandingHero({ data, lang }: LandingHeroProps) {
 
       {/* Background gradient mesh — darkens image or stands alone */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/90 to-slate-950" />
-      <div className="absolute inset-0 opacity-20"
+      <div
+        className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `radial-gradient(ellipse at 20% 50%, rgba(201,150,58,0.3) 0%, transparent 60%),
                            radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.15) 0%, transparent 60%)`,
@@ -54,7 +55,7 @@ export function LandingHero({ data, lang }: LandingHeroProps) {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium"
           >
-         {/*   <Star size={14} className="fill-amber-400" />*/}
+            {/*   <Star size={14} className="fill-amber-400" />*/}
             {data.badge}
           </motion.div>
         )}

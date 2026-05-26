@@ -47,9 +47,7 @@ const companyInfoQuery = `*[_type == "generalLayout"][0] {
 
 export const getLogo = cache(async () => client.fetch(logoQuery))
 
-export const getCompanyInfo = cache(async () =>
-  client.fetch(companyInfoQuery),
-)
+export const getCompanyInfo = cache(async () => client.fetch(companyInfoQuery))
 
 const contactEmailQuery = `*[_type == "generalLayout"][0] { email }`
 

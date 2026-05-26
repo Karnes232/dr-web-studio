@@ -38,7 +38,8 @@ export function LandingCta({
   return (
     <section className="relative bg-slate-950 py-28 px-6 overflow-hidden">
       {/* Background accent */}
-      <div className="absolute inset-0 opacity-15"
+      <div
+        className="absolute inset-0 opacity-15"
         style={{
           backgroundImage: `radial-gradient(ellipse at 50% 50%, rgba(201,150,58,0.4) 0%, transparent 70%)`,
         }}

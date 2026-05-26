@@ -18,8 +18,7 @@ const getPageList = (
   siblingCount = 2,
 ): (number | "...")[] => {
   const maxSlots = 3 + siblingCount * 2
-  if (total <= maxSlots)
-    return Array.from({ length: total }, (_, i) => i + 1)
+  if (total <= maxSlots) return Array.from({ length: total }, (_, i) => i + 1)
   const pages: (number | "...")[] = [1]
   const left = Math.max(2, current - siblingCount)
   const right = Math.min(total - 1, current + siblingCount)

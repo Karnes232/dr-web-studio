@@ -17,14 +17,19 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={i}
           size={14}
-          className={i < rating ? "text-amber-400 fill-amber-400" : "text-slate-600"}
+          className={
+            i < rating ? "text-amber-400 fill-amber-400" : "text-slate-600"
+          }
         />
       ))}
     </div>
   )
 }
 
-export function LandingTestimonials({ sectionTitle, items }: LandingTestimonialsProps) {
+export function LandingTestimonials({
+  sectionTitle,
+  items,
+}: LandingTestimonialsProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
@@ -69,7 +74,9 @@ export function LandingTestimonials({ sectionTitle, items }: LandingTestimonials
                   </span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">{item.author}</p>
+                  <p className="text-white font-semibold text-sm">
+                    {item.author}
+                  </p>
                   <p className="text-slate-400 text-xs">{item.company}</p>
                 </div>
               </div>

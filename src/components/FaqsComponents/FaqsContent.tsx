@@ -1,6 +1,14 @@
 "use client"
 import React, { useMemo, useState } from "react"
-import { HelpCircle, Code, DollarSign, ShieldCheck, Palette, ShoppingCart, Search } from "lucide-react"
+import {
+  HelpCircle,
+  Code,
+  DollarSign,
+  ShieldCheck,
+  Palette,
+  ShoppingCart,
+  Search,
+} from "lucide-react"
 import FaqsHeader from "./FaqsHeader"
 import SearchBar from "./SearchBar"
 import QuickStats from "./QuickStats"

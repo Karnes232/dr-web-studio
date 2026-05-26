@@ -46,7 +46,10 @@ export async function POST(request: NextRequest) {
 
     const verified = await verifyBotpoisonSolution(botpoisonSolution)
     if (!verified) {
-      return NextResponse.json({ error: "Verification failed" }, { status: 403 })
+      return NextResponse.json(
+        { error: "Verification failed" },
+        { status: 403 },
+      )
     }
 
     const name = clampString(body.name, MAX_FIELD)
@@ -66,13 +69,19 @@ export async function POST(request: NextRequest) {
 
     const pages = parsePages(body.pages)
     if (pages === null) {
-      return NextResponse.json({ error: "Invalid pages value" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Invalid pages value" },
+        { status: 400 },
+      )
     }
 
     const company = clampString(body.company, MAX_FIELD)
     const phone = clampString(body.phone, MAX_FIELD)
     const message = clampString(body.message, MAX_MESSAGE)
-    const websiteType = clampString(body.websiteType ?? body.projectType, MAX_FIELD)
+    const websiteType = clampString(
+      body.websiteType ?? body.projectType,
+      MAX_FIELD,
+    )
     const designStyle = clampString(body.designStyle, MAX_FIELD)
     const budget = clampString(body.budget, MAX_FIELD)
     const timeline = clampString(body.timeline, MAX_FIELD)
@@ -84,7 +93,13 @@ export async function POST(request: NextRequest) {
       MAX_FIELD,
     )
 
-    if (!websiteType || !designStyle || !budget || !timeline || !contentStatus) {
+    if (
+      !websiteType ||
+      !designStyle ||
+      !budget ||
+      !timeline ||
+      !contentStatus
+    ) {
       return NextResponse.json(
         { error: "Incomplete project details" },
         { status: 400 },

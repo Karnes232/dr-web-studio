@@ -28,8 +28,14 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang } = await params
   return {
-    title: lang === "es" ? "Pago Exitoso | DR Web Studio" : "Payment Successful | DR Web Studio",
-    description: lang === "es" ? "Tu pago ha sido procesado exitosamente." : "Your payment has been processed successfully.",
+    title:
+      lang === "es"
+        ? "Pago Exitoso | DR Web Studio"
+        : "Payment Successful | DR Web Studio",
+    description:
+      lang === "es"
+        ? "Tu pago ha sido procesado exitosamente."
+        : "Your payment has been processed successfully.",
     robots: { index: false, follow: false },
   }
 }

@@ -8,7 +8,15 @@ interface LandingStatsBarProps {
   stats: StatItem[]
 }
 
-function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: number }) {
+function AnimatedStat({
+  value,
+  label,
+  delay,
+}: {
+  value: string
+  label: string
+  delay: number
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
   const [displayed, setDisplayed] = useState("0")
@@ -17,7 +25,10 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
     if (!isInView) return
     const num = parseFloat(value.replace(/[^0-9.]/g, ""))
     const suffix = value.replace(/[0-9.]/g, "")
-    if (isNaN(num)) { setDisplayed(value); return }
+    if (isNaN(num)) {
+      setDisplayed(value)
+      return
+    }
 
     let start = 0
     const duration = 1800
@@ -26,10 +37,14 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
     const timer = setInterval(() => {
       start += increment
       if (start >= num) {
-        setDisplayed(`${num % 1 === 0 ? Math.round(num) : num.toFixed(1)}${suffix}`)
+        setDisplayed(
+          `${num % 1 === 0 ? Math.round(num) : num.toFixed(1)}${suffix}`,
+        )
         clearInterval(timer)
       } else {
-        setDisplayed(`${num % 1 === 0 ? Math.round(start) : start.toFixed(1)}${suffix}`)
+        setDisplayed(
+          `${num % 1 === 0 ? Math.round(start) : start.toFixed(1)}${suffix}`,
+        )
       }
     }, step)
     return () => clearInterval(timer)
@@ -49,7 +64,9 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
       >
         {displayed}
       </span>
-      <span className="text-sm text-slate-500 font-medium uppercase tracking-wide">{label}</span>
+      <span className="text-sm text-slate-500 font-medium uppercase tracking-wide">
+        {label}
+      </span>
     </motion.div>
   )
 }
@@ -62,7 +79,12 @@ export function LandingStatsBar({ stats }: LandingStatsBarProps) {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100">
           {stats.map((stat, i) => (
-            <AnimatedStat key={i} value={stat.value} label={stat.label} delay={i * 0.1} />
+            <AnimatedStat
+              key={i}
+              value={stat.value}
+              label={stat.label}
+              delay={i * 0.1}
+            />
           ))}
         </div>
       </div>

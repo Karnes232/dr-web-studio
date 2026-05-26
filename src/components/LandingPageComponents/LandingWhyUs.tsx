@@ -3,14 +3,37 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import {
-  Globe, Languages, Clock, Rocket, Check, Shield, Heart, Users,
-  Star, Award, Lightbulb, MessageCircle,
+  Globe,
+  Languages,
+  Clock,
+  Rocket,
+  Check,
+  Shield,
+  Heart,
+  Users,
+  Star,
+  Award,
+  Lightbulb,
+  MessageCircle,
 } from "lucide-react"
 import type { WhyUsItem } from "./types"
 
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Globe, Languages, Clock, Rocket, Check, Shield, Heart, Users,
-  Star, Award, Lightbulb, MessageCircle,
+const ICON_MAP: Record<
+  string,
+  React.ComponentType<{ size?: number; className?: string }>
+> = {
+  Globe,
+  Languages,
+  Clock,
+  Rocket,
+  Check,
+  Shield,
+  Heart,
+  Users,
+  Star,
+  Award,
+  Lightbulb,
+  MessageCircle,
 }
 
 interface LandingWhyUsProps {
@@ -19,7 +42,11 @@ interface LandingWhyUsProps {
   items: WhyUsItem[]
 }
 
-export function LandingWhyUs({ sectionTitle, sectionSubtitle, items }: LandingWhyUsProps) {
+export function LandingWhyUs({
+  sectionTitle,
+  sectionSubtitle,
+  items,
+}: LandingWhyUsProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
@@ -40,7 +67,9 @@ export function LandingWhyUs({ sectionTitle, sectionSubtitle, items }: LandingWh
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">{sectionSubtitle}</p>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              {sectionSubtitle}
+            </p>
           )}
         </motion.div>
 
@@ -61,8 +90,12 @@ export function LandingWhyUs({ sectionTitle, sectionSubtitle, items }: LandingWh
                 <div className="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-500/20 flex items-center justify-center mb-6 transition-colors duration-200">
                   <Icon size={22} className="text-amber-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             )
           })}

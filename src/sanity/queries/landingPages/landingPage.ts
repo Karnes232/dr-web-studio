@@ -216,7 +216,12 @@ export interface LandingPageData {
   servicesGrid: {
     sectionTitle: string
     sectionSubtitle: string
-    items: { icon: string; title: string; description: string; linkSlug?: string }[]
+    items: {
+      icon: string
+      title: string
+      description: string
+      linkSlug?: string
+    }[]
   }
   whyUs: {
     sectionTitle: string
@@ -226,18 +231,37 @@ export interface LandingPageData {
   process: {
     sectionTitle: string
     sectionSubtitle: string
-    steps: { number: number; icon: string; stepTitle: string; description: string; duration: string }[]
+    steps: {
+      number: number
+      icon: string
+      stepTitle: string
+      description: string
+      duration: string
+    }[]
   }
   portfolioHighlight: {
     sectionTitle: string
     sectionSubtitle: string
-    projects: { title: string; slug: string; client: string; category: string; imageUrl?: string; tags?: string[] }[]
+    projects: {
+      title: string
+      slug: string
+      client: string
+      category: string
+      imageUrl?: string
+      tags?: string[]
+    }[]
     ctaText: string
     ctaHref: string
   }
   testimonials: {
     sectionTitle: string
-    items: { quote: string; author: string; company: string; rating: number; avatarUrl?: string }[]
+    items: {
+      quote: string
+      author: string
+      company: string
+      rating: number
+      avatarUrl?: string
+    }[]
   }
   faq: {
     sectionTitle: string
@@ -256,7 +280,10 @@ function pick(obj: LocalizedString | undefined, lang: "en" | "es"): string {
   return obj?.[lang] ?? obj?.en ?? ""
 }
 
-function transformLandingPage(raw: RawLandingPage, lang: "en" | "es"): LandingPageData {
+function transformLandingPage(
+  raw: RawLandingPage,
+  lang: "en" | "es",
+): LandingPageData {
   return {
     title: raw.title ?? "",
     slug: raw.slug ?? "",
@@ -345,10 +372,7 @@ function transformLandingPage(raw: RawLandingPage, lang: "en" | "es"): LandingPa
 // ──────────────────────────────────────────
 
 export const getLandingPage = cache(
-  async (
-    slug: string,
-    lang: "en" | "es",
-  ): Promise<LandingPageData | null> => {
+  async (slug: string, lang: "en" | "es"): Promise<LandingPageData | null> => {
     const raw: RawLandingPage | null = await client.fetch(landingPageQuery, {
       slug,
     })

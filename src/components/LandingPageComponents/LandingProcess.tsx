@@ -3,12 +3,29 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import {
-  Search, Palette, Code, Rocket, MessageCircle, CheckCircle, Settings, Send,
+  Search,
+  Palette,
+  Code,
+  Rocket,
+  MessageCircle,
+  CheckCircle,
+  Settings,
+  Send,
 } from "lucide-react"
 import type { ProcessStep } from "./types"
 
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Search, Palette, Code, Rocket, MessageCircle, CheckCircle, Settings, Send,
+const ICON_MAP: Record<
+  string,
+  React.ComponentType<{ size?: number; className?: string }>
+> = {
+  Search,
+  Palette,
+  Code,
+  Rocket,
+  MessageCircle,
+  CheckCircle,
+  Settings,
+  Send,
 }
 
 interface LandingProcessProps {
@@ -17,7 +34,11 @@ interface LandingProcessProps {
   steps: ProcessStep[]
 }
 
-export function LandingProcess({ sectionTitle, sectionSubtitle, steps }: LandingProcessProps) {
+export function LandingProcess({
+  sectionTitle,
+  sectionSubtitle,
+  steps,
+}: LandingProcessProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
@@ -38,7 +59,9 @@ export function LandingProcess({ sectionTitle, sectionSubtitle, steps }: Landing
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">{sectionSubtitle}</p>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              {sectionSubtitle}
+            </p>
           )}
         </motion.div>
 
@@ -71,9 +94,13 @@ export function LandingProcess({ sectionTitle, sectionSubtitle, steps }: Landing
                   </div>
 
                   <div className="min-h-14 flex justify-center mb-2">
-                    <h3 className="text-lg font-semibold text-slate-900 text-center">{step.stepTitle}</h3>
+                    <h3 className="text-lg font-semibold text-slate-900 text-center">
+                      {step.stepTitle}
+                    </h3>
                   </div>
-                  <p className="flex-1 text-slate-500 text-sm leading-relaxed mb-5">{step.description}</p>
+                  <p className="flex-1 text-slate-500 text-sm leading-relaxed mb-5">
+                    {step.description}
+                  </p>
                   {step.duration && (
                     <span className="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
                       {step.duration}

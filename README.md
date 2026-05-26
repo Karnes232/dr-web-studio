@@ -4,18 +4,18 @@ A full-stack freelance web development portfolio built with Next.js 15, Sanity C
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 15 (App Router, Turbopack) |
-| Language | TypeScript |
-| Styling | Tailwind CSS v4 |
-| CMS | Sanity v3 (embedded Studio at `/studio`) |
-| Payments | Stripe (Payment Intents + Webhooks) |
-| Email | Resend + React Email |
-| i18n | i18next (English / Spanish) |
-| Animation | Motion |
-| Monitoring | Sentry, Vercel Analytics |
-| Deployment | Vercel |
+| Layer      | Technology                               |
+| ---------- | ---------------------------------------- |
+| Framework  | Next.js 15 (App Router, Turbopack)       |
+| Language   | TypeScript                               |
+| Styling    | Tailwind CSS v4                          |
+| CMS        | Sanity v3 (embedded Studio at `/studio`) |
+| Payments   | Stripe (Payment Intents + Webhooks)      |
+| Email      | Resend + React Email                     |
+| i18n       | i18next (English / Spanish)              |
+| Animation  | Motion                                   |
+| Monitoring | Sentry, Vercel Analytics                 |
+| Deployment | Vercel                                   |
 
 ## Features
 

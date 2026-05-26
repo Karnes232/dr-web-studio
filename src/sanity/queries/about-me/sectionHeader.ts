@@ -31,8 +31,6 @@ export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
     }
   }`
 
-export const getSectionHeader = cache(
-  async (): Promise<SectionHeaderData> => {
-    return client.fetch(sectionHeaderQuery)
-  },
-)
+export const getSectionHeader = cache(async (): Promise<SectionHeaderData> => {
+  return client.fetch(sectionHeaderQuery)
+})

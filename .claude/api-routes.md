@@ -14,17 +14,18 @@ Handles the contact form submission.
 **Input limits**: name/email/company/phone/projectType/budget/timeline → 500 chars max; message → 10,000 chars max.
 
 **Body**:
+
 ```json
 {
   "_botpoison": "<solution-token>",
   "name": "Jane Smith",
   "email": "jane@example.com",
   "message": "Hello...",
-  "company": "Acme",          // optional
-  "phone": "+1 555 0000",     // optional
+  "company": "Acme", // optional
+  "phone": "+1 555 0000", // optional
   "projectType": "E-commerce", // optional
-  "budget": "$5,000",          // optional
-  "timeline": "3 months"       // optional
+  "budget": "$5,000", // optional
+  "timeline": "3 months" // optional
 }
 ```
 
@@ -44,6 +45,7 @@ Handles multi-step project brief form submission.
 **Input limits**: most string fields → 500 chars; message → 10,000 chars; features/languages arrays → 40 items max; pages → 1–500.
 
 **Body**:
+
 ```json
 {
   "_botpoison": "<solution-token>",
@@ -57,11 +59,12 @@ Handles multi-step project brief form submission.
   "timeline": "3 months",
   "contentStatus": "Have content ready",
   "languages": ["en", "es"],
-  "company": "Acme",   // optional
-  "phone": "...",      // optional
-  "message": "..."     // optional
+  "company": "Acme", // optional
+  "phone": "...", // optional
+  "message": "..." // optional
 }
 ```
+
 Note: `projectType` is accepted as an alias for `websiteType` for backwards compatibility.
 
 **Success** `200`: `{ "message": "Sent" }`  
@@ -79,6 +82,7 @@ Creates a Stripe PaymentIntent for the custom checkout.
 **Security**: none — public endpoint. Amount is validated client-side ($1–$10,000) before calling this route.
 
 **Body**:
+
 ```json
 {
   "amount": 15000,
@@ -87,6 +91,7 @@ Creates a Stripe PaymentIntent for the custom checkout.
   "customerEmail": "jane@example.com"
 }
 ```
+
 - `amount` must be in **cents** (integer)
 - `currency` defaults to `"usd"`
 
@@ -102,6 +107,7 @@ Retrieves a PaymentIntent from Stripe by ID. Used on the payment-success page to
 **Security**: none — only safe fields are returned (no sensitive payment method details).
 
 **Response** `200`:
+
 ```json
 {
   "success": true,
@@ -113,7 +119,10 @@ Retrieves a PaymentIntent from Stripe by ID. Used on the payment-success page to
     "created": 1700000000,
     "description": "Payment from Jane Smith",
     "receipt_email": "jane@example.com",
-    "metadata": { "customer_name": "Jane Smith", "customer_email": "jane@example.com" }
+    "metadata": {
+      "customer_name": "Jane Smith",
+      "customer_email": "jane@example.com"
+    }
   }
 }
 ```
@@ -127,6 +136,7 @@ Sends a payment confirmation email to the client and to `james@dr-webstudio.com`
 **Security**: none — called client-side immediately after `stripe.confirmPayment` succeeds.
 
 **Body**:
+
 ```json
 {
   "clientName": "Jane Smith",
@@ -136,6 +146,7 @@ Sends a payment confirmation email to the client and to `james@dr-webstudio.com`
   "lang": "en"
 }
 ```
+
 - `lang: "es"` → Spanish template; any other value → English template
 - `paymentAmount` is the raw cents string as received from Stripe
 
@@ -160,6 +171,7 @@ Receives Stripe webhook events.
 **Response**: always `200 { received: true }` on success; `400 { error: "Invalid signature" }` on signature failure.
 
 **Local testing**:
+
 ```bash
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```

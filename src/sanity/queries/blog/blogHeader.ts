@@ -24,8 +24,6 @@ export interface BlogHeader {
   }
 }
 
-export const getBlogHeader = cache(
-  async (): Promise<BlogHeader | null> => {
-    return await client.fetch(blogHeaderQuery)
-  },
-)
+export const getBlogHeader = cache(async (): Promise<BlogHeader | null> => {
+  return await client.fetch(blogHeaderQuery)
+})

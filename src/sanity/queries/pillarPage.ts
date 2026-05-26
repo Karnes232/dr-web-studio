@@ -182,7 +182,7 @@ function transformToContent(
     heroData: {
       headline: pick(raw.hero?.headline, lang),
       subheadline: pick(raw.hero?.subheadline, lang),
-      stats: (raw.hero?.stats || []).map((s) => ({
+      stats: (raw.hero?.stats || []).map(s => ({
         value: s.value,
         label: pick(s.label, lang),
       })),
@@ -190,7 +190,7 @@ function transformToContent(
       lastUpdated: pick(raw.hero?.lastUpdated, lang),
     },
     tableOfContents: [],
-    comparisonData: (raw.comparisonData || []).map((c) => ({
+    comparisonData: (raw.comparisonData || []).map(c => ({
       feature: pick(c.feature, lang),
       traditional: {
         value: pick(c.traditional?.value, lang),
@@ -203,7 +203,7 @@ function transformToContent(
         description: pick(c.modern?.description, lang),
       },
     })),
-    techStack: (raw.techStack || []).map((t) => ({
+    techStack: (raw.techStack || []).map(t => ({
       name: t.name,
       category: t.category,
       description: pick(t.description, lang),
@@ -213,14 +213,14 @@ function transformToContent(
       popularity: t.popularity,
     })),
     roiMetrics: [],
-    caseStudies: (raw.caseStudies || []).map((cs) => ({
+    caseStudies: (raw.caseStudies || []).map(cs => ({
       id: cs.caseId,
       client: cs.client,
       industry: pick(cs.industry, lang),
       logo: cs.logo.asset.url,
       challenge: pick(cs.challenge, lang),
       solution: pick(cs.solution, lang) || [],
-      results: (cs.results || []).map((r) => ({
+      results: (cs.results || []).map(r => ({
         metric: pick(r.metric, lang),
         before: pick(r.before, lang),
         after: pick(r.after, lang),
@@ -236,7 +236,7 @@ function transformToContent(
           }
         : undefined,
     })),
-    processSteps: (raw.processSteps || []).map((p) => ({
+    processSteps: (raw.processSteps || []).map(p => ({
       step: p.step,
       title: pick(p.stepTitle, lang),
       description: pick(p.description, lang),
@@ -244,7 +244,7 @@ function transformToContent(
       deliverables: pick(p.deliverables, lang) || [],
       icon: p.icon,
     })),
-    faqs: (raw.faqs || []).map((f) => ({
+    faqs: (raw.faqs || []).map(f => ({
       question: pick(f.question, lang),
       answer: pick(f.answer, lang),
     })),

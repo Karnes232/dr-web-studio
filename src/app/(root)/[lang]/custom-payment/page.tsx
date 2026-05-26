@@ -18,8 +18,14 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang } = await params
   return {
-    title: lang === "es" ? "Pago Personalizado | DR Web Studio" : "Custom Payment | DR Web Studio",
-    description: lang === "es" ? "Completa tu pago personalizado de forma segura." : "Complete your custom payment securely.",
+    title:
+      lang === "es"
+        ? "Pago Personalizado | DR Web Studio"
+        : "Custom Payment | DR Web Studio",
+    description:
+      lang === "es"
+        ? "Completa tu pago personalizado de forma segura."
+        : "Complete your custom payment securely.",
     robots: { index: false, follow: false },
   }
 }

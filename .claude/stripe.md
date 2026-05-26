@@ -35,25 +35,27 @@ The site uses **Stripe Payment Intents** with a custom checkout UI (not Stripe C
 
 ## Files
 
-| File | Role |
-|---|---|
-| `src/lib/stripe.ts` | Server-side `Stripe` instance (uses `STRIPE_SECRET_KEY`) |
-| `src/lib/stripe-client.ts` | Client-side `loadStripe()` (uses `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`) |
-| `src/app/api/create-payment-intent/route.ts` | Creates PaymentIntent, returns `clientSecret` |
-| `src/app/api/payment-details/[paymentIntentId]/route.ts` | Retrieves sanitised PaymentIntent details |
-| `src/app/api/payment-email/route.ts` | Sends confirmation email via Resend |
-| `src/app/api/webhooks/stripe/route.ts` | Handles Stripe webhook events |
-| `src/components/CheckoutComponents/CheckoutContent.tsx` | Full checkout UI (Client Component) |
-| `src/components/CheckoutComponents/CheckoutForm.tsx` | Stripe `<PaymentElement>` + confirm logic |
-| `src/components/CheckoutComponents/PaymentSucessContent.tsx` | Post-payment success UI |
+| File                                                         | Role                                                                   |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| `src/lib/stripe.ts`                                          | Server-side `Stripe` instance (uses `STRIPE_SECRET_KEY`)               |
+| `src/lib/stripe-client.ts`                                   | Client-side `loadStripe()` (uses `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`) |
+| `src/app/api/create-payment-intent/route.ts`                 | Creates PaymentIntent, returns `clientSecret`                          |
+| `src/app/api/payment-details/[paymentIntentId]/route.ts`     | Retrieves sanitised PaymentIntent details                              |
+| `src/app/api/payment-email/route.ts`                         | Sends confirmation email via Resend                                    |
+| `src/app/api/webhooks/stripe/route.ts`                       | Handles Stripe webhook events                                          |
+| `src/components/CheckoutComponents/CheckoutContent.tsx`      | Full checkout UI (Client Component)                                    |
+| `src/components/CheckoutComponents/CheckoutForm.tsx`         | Stripe `<PaymentElement>` + confirm logic                              |
+| `src/components/CheckoutComponents/PaymentSucessContent.tsx` | Post-payment success UI                                                |
 
 ---
 
 ## API Route Contracts
 
 ### `POST /api/create-payment-intent`
+
 **Auth**: none (public)  
 **Body**:
+
 ```json
 {
   "amount": 15000,
@@ -62,10 +64,12 @@ The site uses **Stripe Payment Intents** with a custom checkout UI (not Stripe C
   "customerEmail": "jane@example.com"
 }
 ```
+
 - `amount` is in **cents** (multiply dollars × 100 before sending)
 - `currency` defaults to `"usd"` if omitted
 
 **Response** `200`:
+
 ```json
 { "clientSecret": "pi_xxx_secret_xxx" }
 ```
@@ -73,8 +77,10 @@ The site uses **Stripe Payment Intents** with a custom checkout UI (not Stripe C
 ---
 
 ### `GET /api/payment-details/[paymentIntentId]`
+
 **Auth**: none (public, but returns only safe fields)  
 **Response** `200`:
+
 ```json
 {
   "success": true,
@@ -88,8 +94,10 @@ The site uses **Stripe Payment Intents** with a custom checkout UI (not Stripe C
 ---
 
 ### `POST /api/payment-email`
+
 **Auth**: none  
 **Body**:
+
 ```json
 {
   "clientName": "Jane Smith",
@@ -99,14 +107,17 @@ The site uses **Stripe Payment Intents** with a custom checkout UI (not Stripe C
   "lang": "en"
 }
 ```
+
 - `lang` selects the email template: `"es"` → `PaymentConfirmationEmailSpanish`, otherwise English template
 - Sends to both `clientEmail` and `james@dr-webstudio.com`
 
 ---
 
 ### `POST /api/webhooks/stripe`
+
 **Auth**: Stripe-Signature header verified with `STRIPE_WEBHOOK_SECRET`  
 Handled events:
+
 - `payment_intent.succeeded`
 - `payment_intent.payment_failed`
 

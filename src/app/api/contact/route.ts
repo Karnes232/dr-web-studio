@@ -25,7 +25,10 @@ export async function POST(request: NextRequest) {
 
     const verified = await verifyBotpoisonSolution(botpoisonSolution)
     if (!verified) {
-      return NextResponse.json({ error: "Verification failed" }, { status: 403 })
+      return NextResponse.json(
+        { error: "Verification failed" },
+        { status: 403 },
+      )
     }
 
     const name = clampString(body.name, MAX_FIELD_LENGTH)
@@ -48,7 +51,11 @@ export async function POST(request: NextRequest) {
     const phone = clampString(body.phone, MAX_FIELD_LENGTH)
     const projectType = clampString(body.projectType, MAX_FIELD_LENGTH)
     const budgetRaw = clampString(body.budget, MAX_FIELD_LENGTH)
-    const budget = budgetRaw.startsWith("$") ? budgetRaw : budgetRaw ? `$${budgetRaw}` : ""
+    const budget = budgetRaw.startsWith("$")
+      ? budgetRaw
+      : budgetRaw
+        ? `$${budgetRaw}`
+        : ""
     const timeline = clampString(body.timeline, MAX_FIELD_LENGTH)
 
     const cachedEmail = await getContactEmail()

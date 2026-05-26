@@ -6,6 +6,7 @@ Freelance web development portfolio and client-facing site for **DR Web Studio**
 Live domain: `https://www.dr-webstudio.com`
 
 Full-stack Next.js 15 app with:
+
 - Sanity v3 as headless CMS (Studio embedded at `/studio`)
 - Stripe payment processing
 - Resend transactional email
@@ -16,51 +17,56 @@ Full-stack Next.js 15 app with:
 
 ## Tech Stack
 
-| Concern | Tool |
-|---|---|
-| Framework | Next.js 15, App Router, Turbopack |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 + CSS variables |
-| CMS | Sanity v3 (`next-sanity`) |
-| Payments | Stripe (Payment Intents + Webhooks) |
-| Email | Resend + React Email |
-| i18n | i18next, `react-i18next` (en + es) |
-| Animation | Motion (Framer Motion v12) |
-| Spam protection | BotPoison |
-| Icons | `lucide-react`, `react-icons` |
-| Carousel | Swiper |
-| Monitoring | Sentry `@sentry/nextjs`, Vercel Analytics |
-| Deployment | Vercel |
-| Formatting | Prettier |
-| Linting | ESLint (Next.js config) |
+| Concern         | Tool                                      |
+| --------------- | ----------------------------------------- |
+| Framework       | Next.js 15, App Router, Turbopack         |
+| Language        | TypeScript (strict)                       |
+| Styling         | Tailwind CSS v4 + CSS variables           |
+| CMS             | Sanity v3 (`next-sanity`)                 |
+| Payments        | Stripe (Payment Intents + Webhooks)       |
+| Email           | Resend + React Email                      |
+| i18n            | i18next, `react-i18next` (en + es)        |
+| Animation       | Motion (Framer Motion v12)                |
+| Spam protection | BotPoison                                 |
+| Icons           | `lucide-react`, `react-icons`             |
+| Carousel        | Swiper                                    |
+| Monitoring      | Sentry `@sentry/nextjs`, Vercel Analytics |
+| Deployment      | Vercel                                    |
+| Formatting      | Prettier                                  |
+| Linting         | ESLint (Next.js config)                   |
 
 ---
 
 ## Key Conventions
 
 ### TypeScript
+
 - Strict mode enabled. All props should be typed.
 - Prefer `interface` for component props, `type` for unions/aliases.
 - Path alias `@/` maps to `src/`.
 
 ### Components
+
 - Components are grouped by **feature/page** inside `src/components/` — not by type (no global `ui/` folder).
 - Server Components are the default. Add `"use client"` only when needed (event handlers, hooks, browser APIs).
 - Each page's components live in a dedicated folder: `BlogComponents/`, `CheckoutComponents/`, etc.
 
 ### Styling
+
 - Tailwind CSS v4. No `cn()` utility — use template literals directly.
 - Font variables: `--font-inter` (body), `--font-crimson-pro` (serif headings).
 - Gradient classes used dynamically from Sanity data — kept in the Tailwind `safelist` in `tailwind.config.ts`.
 - Color tokens `background` / `foreground` map to CSS variables.
 
 ### Data Fetching
+
 - All Sanity data is fetched in Server Components using `client.fetch()` from `@/sanity/lib/client`.
 - Queries live in `src/sanity/queries/<section>/` — one file per query.
 - Use `Promise.all([...])` when a page needs multiple queries in parallel.
 - SEO metadata is fetched via `getSEO()` / `getSeoSchema()` inside `generateMetadata()` on every page.
 
 ### i18n
+
 - Two locales: `en` (default/fallback), `es`.
 - All public routes are prefixed: `/{lang}/...`. Middleware in `src/middleware.ts` redirects bare paths.
 - Translations live in `src/i18n/locales/{en,es}/translation.json`.
@@ -69,12 +75,15 @@ Full-stack Next.js 15 app with:
 - Sanity fields store localised strings as `{ en: "...", es: "..." }` objects — access with `field[lang]`.
 
 ### Routing
+
 - Route group `(root)` wraps all public pages. Each page is at `src/app/(root)/[lang]/<page>/page.tsx`.
 - Middleware passes the detected locale via the `x-locale` response header; root layout reads it to set `<html lang>`.
 - `/studio` and static files (`/sitemap.xml`, `/robots.txt`) bypass locale middleware.
 
 ### API Routes
+
 All under `src/app/api/`:
+
 - `contact/` — contact form → Resend email (BotPoison verified)
 - `create-payment-intent/` — creates Stripe PaymentIntent
 - `payment-details/[paymentIntentId]/` — retrieves payment info post-checkout
@@ -83,15 +92,18 @@ All under `src/app/api/`:
 - `webhooks/stripe/` — handles Stripe webhook events (signature verified)
 
 ### Email Templates
+
 React Email templates in `src/emails/`. Rendered server-side via `@react-email/render` then sent through Resend.
 
 ### Sanity Studio
+
 - Embedded at `/studio` (not locale-prefixed, bypasses middleware).
 - Config: `sanity.config.ts` (root). Plugins: `structureTool`, `media`, `visionTool`.
 - Custom studio structure in `src/sanity/structure.ts`.
 - Schema types in `src/sanity/schemaTypes/<section>/`.
 
 ### Security
+
 - Security headers set in `next.config.ts` (HSTS, X-Frame-Options, CSP etc.).
 - Stripe webhooks verified with `STRIPE_WEBHOOK_SECRET`.
 - Contact/project-planner forms use BotPoison for spam protection.
@@ -128,6 +140,7 @@ NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=
 ## Common Tasks
 
 ### Add a new page
+
 1. Create `src/app/(root)/[lang]/<page-name>/page.tsx`.
 2. Add Sanity schema types under `src/sanity/schemaTypes/<page-name>/`.
 3. Add GROQ queries under `src/sanity/queries/<page-name>/`.
@@ -137,20 +150,25 @@ NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=
 7. Add the route to `src/app/sitemap.ts`.
 
 ### Add a new translation key
+
 Edit both `src/i18n/locales/en/translation.json` and `src/i18n/locales/es/translation.json` simultaneously.
 
 ### Add a new Sanity schema type
+
 1. Create the schema file in `src/sanity/schemaTypes/<section>/`.
 2. Export it from `src/sanity/schemaTypes/index.ts`.
 3. If it needs a studio section, update `src/sanity/structure.ts`.
 
 ### Run Stripe webhooks locally
+
 ```bash
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
+
 Copy the printed signing secret into `STRIPE_WEBHOOK_SECRET` in `.env.local`.
 
 ### Format code
+
 ```bash
 npm run format
 ```
@@ -158,6 +176,7 @@ npm run format
 ---
 
 ## File Reference
+
 - `file-structure.md` — annotated directory tree
 - `sanity.md` — Sanity schema catalogue and GROQ patterns
 - `i18n.md` — i18n architecture and usage patterns

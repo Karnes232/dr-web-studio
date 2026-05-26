@@ -29,7 +29,10 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
           {open ? (
             <Minus size={14} className="text-amber-600" />
           ) : (
-            <Plus size={14} className="text-slate-400 group-hover:text-amber-600" />
+            <Plus
+              size={14}
+              className="text-slate-400 group-hover:text-amber-600"
+            />
           )}
         </span>
       </button>
@@ -43,7 +46,9 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-slate-500 leading-relaxed text-sm">{item.answer}</p>
+            <p className="pb-5 text-slate-500 leading-relaxed text-sm">
+              {item.answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -51,7 +56,12 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
   )
 }
 
-export function LandingFaq({ sectionTitle, sectionSubtitle, items, bgColor }: LandingFaqProps) {
+export function LandingFaq({
+  sectionTitle,
+  sectionSubtitle,
+  items,
+  bgColor,
+}: LandingFaqProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 

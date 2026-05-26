@@ -31,8 +31,6 @@ export const personalStoryQuery = `*[_type == "personalStory"][0] {
   }
 }`
 
-export const getPersonalStory = cache(
-  async (): Promise<PersonalStoryData> => {
-    return client.fetch(personalStoryQuery)
-  },
-)
+export const getPersonalStory = cache(async (): Promise<PersonalStoryData> => {
+  return client.fetch(personalStoryQuery)
+})

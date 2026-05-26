@@ -136,6 +136,7 @@ The `x-default` should always point to the English (`/en/...`) URL.
 ## Sitemap
 
 `src/app/sitemap.ts` generates the XML sitemap dynamically. When adding a new page:
+
 1. Add a static entry for both `/en/page` and `/es/page`.
 2. For content-driven pages (blog, services), extend the dynamic queries in the file.
 
@@ -152,6 +153,7 @@ Common schemas used: `Organization`, `WebPage`, `BlogPosting`, `Service`, `FAQPa
 ## Analytics & Tracking
 
 Loaded in root `src/app/layout.tsx` with `strategy="lazyOnload"` (does not block render):
+
 - **Google Analytics 4**: Tag `G-Y3DMZHFV9Z`
 - **Ahrefs Analytics**: `analytics.ahrefs.com/analytics.js`
 - **Vercel Analytics**: `<Analytics />` component from `@vercel/analytics/next`

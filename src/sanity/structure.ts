@@ -398,9 +398,7 @@ export const structure: StructureResolver = S =>
       S.listItem()
         .title("Pillar Page")
         .child(
-          S.documentList()
-            .title("Pillar Page")
-            .filter('_type == "pillarPage"'),
+          S.documentList().title("Pillar Page").filter('_type == "pillarPage"'),
         ),
 
       // Landing Pages
