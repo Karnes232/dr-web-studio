@@ -49,8 +49,10 @@ async function dynamicSlugRedirects() {
       sanity.fetch<{ en: string | null; es: string | null }[]>(
         `*[_type == "serviceItem"]{ "en": slug.current, "es": slugEs.current }`,
       ),
-      sanity.fetch<{ en: string | null; es: string | null }[]>(
-        `*[_type == "blogPost"]{ "en": slug.current, "es": slugEs.current }`,
+      sanity.fetch<
+        { en: string | null; es: string | null; previous: string[] | null }[]
+      >(
+        `*[_type == "blogPost"]{ "en": slug.current, "es": slugEs.current, "previous": previousSlugs }`,
       ),
     ])
 
@@ -74,13 +76,41 @@ async function dynamicSlugRedirects() {
     }
 
     for (const p of posts) {
-      // blog prefix is unchanged; only translate the es slug value when it differs
-      if (!p.en || !p.es || p.es === p.en) continue
-      out.push({
-        source: `/es/blog/${p.en}`,
-        destination: `/es/blog/${p.es}`,
-        permanent: true,
-      })
+      if (!p.en) continue
+
+      // The /blog prefix is identical in both locales; only the slug value
+      // localizes. Redirect each locale's path that carries the OTHER locale's
+      // slug to that locale's canonical slug (when the two slugs differ).
+      if (p.es && p.es !== p.en) {
+        // es path on the en slug → es slug
+        out.push({
+          source: `/es/blog/${p.en}`,
+          destination: `/es/blog/${p.es}`,
+          permanent: true,
+        })
+        // en path on the es slug → en slug (covers recent posts whose old /en
+        // URL was the Spanish slug, now preserved as slugEs)
+        out.push({
+          source: `/en/blog/${p.es}`,
+          destination: `/en/blog/${p.en}`,
+          permanent: true,
+        })
+      }
+
+      // Retired slugs: 301 any old slug to the current canonical for each locale.
+      for (const prev of p.previous ?? []) {
+        if (!prev || prev === p.en || prev === p.es) continue
+        out.push({
+          source: `/en/blog/${prev}`,
+          destination: `/en/blog/${p.en}`,
+          permanent: true,
+        })
+        out.push({
+          source: `/es/blog/${prev}`,
+          destination: `/es/blog/${p.es ?? p.en}`,
+          permanent: true,
+        })
+      }
     }
   } catch (err) {
     console.warn(

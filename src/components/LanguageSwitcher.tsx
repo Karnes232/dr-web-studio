@@ -5,15 +5,21 @@ import { useLocale } from "next-intl"
 import { useParams } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import { Globe, ChevronDown } from "lucide-react"
+import { useLocalizedHrefs } from "@/i18n/localizedSlugs"
 
 export default function LanguageSwitcher({ color }: { color: string }) {
   const router = useRouter()
-  // pathname here is the internal (locale-stripped) template, e.g. "/about-me"
-  // or "/blog/[slug]". Combined with route params, router.replace rebuilds the
-  // correct localized URL for the target locale.
+  // pathname is the de-localized internal path. For static routes it's a
+  // pathnames key (e.g. "/about-me") that router.replace re-localizes correctly.
+  // For dynamic [slug] routes it's the resolved path (the slug value doesn't
+  // localize itself), which is why detail pages publish per-locale hrefs below.
   const pathname = usePathname()
   const params = useParams()
   const currentLocale = useLocale()
+  // On /blog/[slug] & /our-services/[slug] the slug value localizes per locale,
+  // which next-intl can't derive on its own — the detail page publishes the
+  // correct per-locale hrefs here. Null elsewhere (falls back to prefix swap).
+  const localizedHrefs = useLocalizedHrefs()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -24,10 +30,15 @@ export default function LanguageSwitcher({ color }: { color: string }) {
 
   const handleLanguageChange = (newLocale: string) => {
     setIsOpen(false)
+    // Prefer the detail page's per-locale href (correct localized slug); fall
+    // back to the current pathname+params for static / non-[slug] routes.
+    const target = localizedHrefs?.[newLocale as "en" | "es"] ?? {
+      pathname,
+      params,
+    }
     router.replace(
-      // @ts-expect-error -- params always match the current pathname template,
-      // so passing them through to the localized router is safe.
-      { pathname, params },
+      // @ts-expect-error -- pathname+params always match a valid localized route.
+      target,
       { locale: newLocale },
     )
   }

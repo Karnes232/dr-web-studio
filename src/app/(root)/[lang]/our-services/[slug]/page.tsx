@@ -8,7 +8,8 @@ import {
 import { notFound } from "next/navigation"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import { buildAlternates } from "@/lib/urls"
-import { slugPair } from "@/lib/slugs"
+import { slugPair, type LocalizedSlugDoc } from "@/lib/slugs"
+import SetLocalizedHrefs from "@/i18n/SetLocalizedHrefs"
 
 export const revalidate = 3600
 
@@ -99,8 +100,17 @@ export default async function IndividualService({ params }: PageProps) {
     notFound()
   }
 
+  // `service.slug` is the slug object at runtime (the type understates it as a
+  // string); cast so slugPair can read both locale slugs for the switcher.
+  const slugs = slugPair(service as unknown as LocalizedSlugDoc)
+
   return (
     <>
+      <SetLocalizedHrefs
+        pathname="/our-services/[slug]"
+        enSlug={slugs.en}
+        esSlug={slugs.es}
+      />
       {service.seo?.structuredData?.[lang] && (
         <script
           type="application/ld+json"

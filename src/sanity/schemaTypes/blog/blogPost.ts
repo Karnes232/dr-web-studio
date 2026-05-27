@@ -107,6 +107,14 @@ export default defineType({
       },
     }),
     defineField({
+      name: "previousSlugs",
+      title: "Previous slugs (retired URLs)",
+      type: "array",
+      of: [{ type: "string" }],
+      description:
+        "When you change this post's English or Spanish slug, paste the OLD slug value here so its old URL 301-redirects to the new one. One entry per retired slug.",
+    }),
+    defineField({
       name: "author",
       title: "Author",
       type: "reference",

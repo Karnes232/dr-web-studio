@@ -12,6 +12,7 @@ import { notFound } from "next/navigation"
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { buildAlternates } from "@/lib/urls"
 import { slugPair } from "@/lib/slugs"
+import SetLocalizedHrefs from "@/i18n/SetLocalizedHrefs"
 
 export const revalidate = 3600
 
@@ -49,8 +50,15 @@ export default async function BlogPost({ params }: PageProps) {
     10,
   )
 
+  const slugs = slugPair(post)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+      <SetLocalizedHrefs
+        pathname="/blog/[slug]"
+        enSlug={slugs.en}
+        esSlug={slugs.es}
+      />
       {post?.seo?.structuredData?.[lang] && (
         <script
           type="application/ld+json"
