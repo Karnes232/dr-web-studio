@@ -505,3 +505,44 @@ export const getServiceItemsSitemap = cache(
     return client.fetch(serviceItemsSitemapQuery)
   },
 )
+
+// All services with their full localized body — used by the /llms-full.txt
+// routes to inline complete service descriptions (one query, not N per-slug).
+const allServiceItemsFullQuery = `*[_type == "serviceItem"] {
+  title,
+  slug,
+  slugEs,
+  description,
+  pageContent {
+    mainDescription
+  }
+}`
+
+export interface ServiceItemFull {
+  title: {
+    en: string
+    es: string
+  }
+  slug: {
+    current: string
+  }
+  slugEs?: {
+    current: string
+  }
+  description: {
+    en: string
+    es: string
+  }
+  pageContent?: {
+    mainDescription?: {
+      en: unknown[]
+      es: unknown[]
+    }
+  }
+}
+
+export const getAllServiceItemsFull = cache(
+  async (): Promise<ServiceItemFull[]> => {
+    return client.fetch(allServiceItemsFullQuery)
+  },
+)
