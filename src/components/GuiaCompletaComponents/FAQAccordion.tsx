@@ -48,8 +48,8 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
     <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-indigo-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -59,7 +59,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
           >
             <HelpCircle className="w-4 h-4" />
             FAQ
@@ -70,7 +70,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
           >
             {t.title}
           </motion.h2>
@@ -108,8 +108,8 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 rounded-3xl border-2 border-indigo-200 dark:border-indigo-800 p-8 md:p-12 text-center">
-            <MessageCircle className="w-12 h-12 mx-auto mb-4 text-indigo-600 dark:text-indigo-400" />
+          <div className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/50 dark:to-yellow-950/50 rounded-3xl border-2 border-orange-200 dark:border-orange-800 p-8 md:p-12 text-center">
+            <MessageCircle className="w-12 h-12 mx-auto mb-4 text-orange-700 dark:text-orange-400" />
 
             <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">
               {t.stillHaveQuestions}
@@ -121,7 +121,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
 
             <a
               href="mailto:james@dr-webstudio.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:shadow-2xl hover:shadow-indigo-500/30 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold hover:shadow-2xl hover:shadow-orange-500/30 transition-all transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />
               {t.contactUs}
@@ -156,8 +156,8 @@ function FAQItem({
       <div
         className={`bg-white dark:bg-slate-900 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
           isActive
-            ? "border-indigo-500 shadow-2xl shadow-indigo-500/10"
-            : "border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700"
+            ? "border-orange-500 shadow-2xl shadow-orange-500/10"
+            : "border-slate-200 dark:border-slate-800 hover:border-orange-300 dark:hover:border-orange-700"
         }`}
       >
         {/* Question */}
@@ -177,8 +177,8 @@ function FAQItem({
             <ChevronDown
               className={`w-6 h-6 transition-colors ${
                 isActive
-                  ? "text-indigo-600 dark:text-indigo-400"
-                  : "text-slate-400 group-hover:text-indigo-500"
+                  ? "text-orange-700 dark:text-orange-400"
+                  : "text-slate-400 group-hover:text-orange-500"
               }`}
             />
           </motion.div>

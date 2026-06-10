@@ -16,13 +16,9 @@ import {
 
 interface ROICalculatorProps {
   language?: "en" | "es"
-  onCtaClick?: () => void
 }
 
-export function ROICalculator({
-  language = "es",
-  onCtaClick,
-}: ROICalculatorProps) {
+export function ROICalculator({ language = "es" }: ROICalculatorProps) {
   // Input values
   const [monthlyVisitors, setMonthlyVisitors] = useState(10000)
   const [conversionRate, setConversionRate] = useState(2)
@@ -155,7 +151,7 @@ export function ROICalculator({
       optimized: `${newConversionRate.toFixed(1)}%`,
       improvement: `+${conversionImprovement.toFixed(1)}%`,
       icon: ShoppingCart,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-teal-500 to-teal-400",
     },
     {
       label: t.improvements.seo,
@@ -163,7 +159,7 @@ export function ROICalculator({
       optimized: "115%",
       improvement: "+15%",
       icon: Users,
-      color: "from-purple-500 to-pink-500",
+      color: "from-yellow-500 to-orange-500",
     },
   ]
 
@@ -176,7 +172,7 @@ export function ROICalculator({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
           >
             <Calculator className="w-4 h-4" />
             {language === "es"
@@ -189,7 +185,7 @@ export function ROICalculator({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
           >
             {t.title}
           </motion.h2>
@@ -238,7 +234,7 @@ export function ROICalculator({
                       onChange={e => setMonthlyVisitors(Number(e.target.value))}
                       className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
                     />
-                    <span className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 min-w-[120px] text-right">
+                    <span className="text-2xl font-bold text-orange-700 dark:text-orange-400 min-w-[120px] text-right">
                       {monthlyVisitors.toLocaleString("en-US")}
                     </span>
                   </div>
@@ -282,7 +278,7 @@ export function ROICalculator({
                       }
                       className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
                     />
-                    <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 min-w-[120px] text-right">
+                    <span className="text-2xl font-bold text-teal-700 dark:text-teal-400 min-w-[120px] text-right">
                       ${averageOrderValue}
                     </span>
                   </div>
@@ -305,7 +301,7 @@ export function ROICalculator({
                       }
                       className="flex-1 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
                     />
-                    <span className="text-2xl font-bold text-orange-600 dark:text-orange-400 min-w-[120px] text-right">
+                    <span className="text-2xl font-bold text-orange-700 dark:text-orange-400 min-w-[120px] text-right">
                       {currentBounceRate}%
                     </span>
                   </div>
@@ -313,9 +309,9 @@ export function ROICalculator({
               </div>
 
               {/* Improvements Card */}
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 rounded-3xl border-2 border-indigo-200 dark:border-indigo-800 p-8">
+              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/50 dark:to-yellow-950/50 rounded-3xl border-2 border-orange-200 dark:border-orange-800 p-8">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+                  <CheckCircle2 className="w-6 h-6 text-orange-700 dark:text-orange-400" />
                   {t.improvements.title}
                 </h3>
 
@@ -384,9 +380,9 @@ export function ROICalculator({
                     <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">
                       {t.results.annual}
                     </span>
-                    <Calendar className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                    <Calendar className="w-5 h-5 text-orange-700 dark:text-orange-400" />
                   </div>
-                  <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
+                  <div className="text-3xl font-bold text-orange-700 dark:text-orange-400">
                     $
                     {additionalAnnualRevenue.toLocaleString("en-US", {
                       maximumFractionDigits: 0,
@@ -403,9 +399,9 @@ export function ROICalculator({
                     <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">
                       {t.results.newCustomers}
                     </span>
-                    <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <Users className="w-5 h-5 text-teal-700 dark:text-teal-400" />
                   </div>
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="text-3xl font-bold text-teal-700 dark:text-teal-400">
                     +{Math.round(newCustomersPerMonth)}
                   </div>
                   <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -444,11 +440,9 @@ export function ROICalculator({
               </div>
 
               {/* CTA Button */}
-
               <Link href="/project-planner">
                 <motion.div
-                  //onClick={onCtaClick}
-                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
+                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -477,19 +471,19 @@ export function ROICalculator({
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background: linear-gradient(to right, #6366f1, #8b5cf6);
+          background: linear-gradient(to right, #f97316, #eab308);
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
         }
 
         .slider::-moz-range-thumb {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background: linear-gradient(to right, #6366f1, #8b5cf6);
+          background: linear-gradient(to right, #f97316, #eab308);
           cursor: pointer;
           border: none;
-          box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
         }
 
         .slider::-webkit-slider-thumb:hover {

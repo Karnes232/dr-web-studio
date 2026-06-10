@@ -92,7 +92,7 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
           >
             {t.title}
           </motion.h2>
@@ -128,8 +128,8 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
                   group relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300
                   ${
                     isActive
-                      ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/30"
-                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700"
+                      ? "bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/30"
+                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-700"
                   }
                 `}
                 whileHover={{ scale: 1.05 }}
@@ -216,10 +216,10 @@ function TechCard({
   // Category colors
   const categoryColors = {
     frontend: {
-      bg: "from-blue-500/10 to-cyan-500/10",
-      border: "border-blue-500/20",
-      text: "text-blue-600 dark:text-blue-400",
-      badge: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+      bg: "from-teal-500/10 to-teal-500/10",
+      border: "border-teal-500/20",
+      text: "text-teal-700 dark:text-teal-400",
+      badge: "bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300",
     },
     backend: {
       bg: "from-green-500/10 to-emerald-500/10",
@@ -229,25 +229,25 @@ function TechCard({
         "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
     },
     database: {
-      bg: "from-purple-500/10 to-pink-500/10",
-      border: "border-purple-500/20",
-      text: "text-purple-600 dark:text-purple-400",
+      bg: "from-yellow-500/10 to-yellow-500/10",
+      border: "border-yellow-500/20",
+      text: "text-yellow-700 dark:text-yellow-400",
       badge:
-        "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
+        "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300",
     },
     devops: {
       bg: "from-orange-500/10 to-red-500/10",
       border: "border-orange-500/20",
-      text: "text-orange-600 dark:text-orange-400",
+      text: "text-orange-700 dark:text-orange-400",
       badge:
         "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
     },
     tools: {
-      bg: "from-indigo-500/10 to-violet-500/10",
-      border: "border-indigo-500/20",
-      text: "text-indigo-600 dark:text-indigo-400",
+      bg: "from-orange-500/10 to-amber-500/10",
+      border: "border-orange-500/20",
+      text: "text-orange-700 dark:text-orange-400",
       badge:
-        "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300",
+        "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
     },
   }
 

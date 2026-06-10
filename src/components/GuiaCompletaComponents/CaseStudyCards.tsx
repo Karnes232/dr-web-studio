@@ -8,10 +8,7 @@ import {
   ShoppingCart,
   Zap,
   Clock,
-  Star,
   Quote,
-  ArrowRight,
-  ExternalLink,
   CheckCircle2,
 } from "lucide-react"
 import type { CaseStudy } from "./types"
@@ -88,7 +85,7 @@ export function CaseStudyCards({ data, language = "es" }: CaseStudyCardsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
           >
             {t.title}
           </motion.h2>
@@ -170,11 +167,11 @@ function CaseStudyCard({
       className="group relative h-full"
     >
       {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/20 to-yellow-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <div className="relative h-full bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
         {/* Header with Client Info */}
-        <div className="relative p-8 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 border-b border-slate-200 dark:border-slate-800">
+        <div className="relative p-8 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/50 dark:to-yellow-950/50 border-b border-slate-200 dark:border-slate-800">
           {/* Client Logo/Icon */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
@@ -192,21 +189,11 @@ function CaseStudyCard({
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight truncate">
                   {caseStudy.client}
                 </h3>
-                <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
+                <p className="text-sm text-orange-700 dark:text-orange-400 font-medium mt-0.5">
                   {caseStudy.industry}
                 </p>
               </div>
             </div>
-
-            {/* Star Rating */}
-            {/* <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                />
-              ))}
-            </div> */}
           </div>
 
           {/* Challenge (Brief) */}
@@ -267,7 +254,7 @@ function CaseStudyCard({
                 {/* Solution */}
                 <div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                    <Zap className="w-4 h-4 text-orange-700 dark:text-orange-400" />
                     {labels.solution}
                   </h4>
                   <ul className="space-y-2">
@@ -294,7 +281,7 @@ function CaseStudyCard({
                         {caseStudy.technologies.map((tech, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-xs font-medium text-indigo-700 dark:text-indigo-300"
+                            className="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-xs font-medium text-orange-700 dark:text-orange-300"
                           >
                             {tech}
                           </span>
@@ -324,15 +311,12 @@ function CaseStudyCard({
         {caseStudy.testimonial && (
           <div className="p-6 bg-slate-50 dark:bg-slate-900/50">
             <div className="flex items-start gap-3">
-              <Quote className="w-6 h-6 text-indigo-400 dark:text-indigo-500 flex-shrink-0 mt-1" />
+              <Quote className="w-6 h-6 text-orange-400 dark:text-orange-500 flex-shrink-0 mt-1" />
               <div className="flex-1">
                 <p className="text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed mb-3">
                   "{caseStudy.testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-3">
-                  {/* <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center text-white font-bold text-sm">
-                    {caseStudy.testimonial.author.charAt(0)}
-                  </div> */}
                   <div>
                     <div className="text-sm font-semibold text-slate-900 dark:text-white">
                       {caseStudy.testimonial.author}
@@ -351,7 +335,7 @@ function CaseStudyCard({
         <div className="p-6 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
           <button
             onClick={onToggle}
-            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium text-sm hover:shadow-lg hover:shadow-indigo-500/30 transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-medium text-sm hover:shadow-lg hover:shadow-orange-500/30 transition-all"
           >
             {isActive ? labels.readLess : labels.readMore}
           </button>

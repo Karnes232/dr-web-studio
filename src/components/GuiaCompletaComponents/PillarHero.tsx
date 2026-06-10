@@ -1,31 +1,35 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion"
 import { ArrowRight, Sparkles, TrendingUp, Zap } from "lucide-react"
 import type { HeroData } from "./types"
 import { Link } from "@/i18n/navigation"
 
 interface PillarHeroProps {
   data: HeroData
-  onCtaClick?: () => void
   language?: "en" | "es"
 }
 
-export function PillarHero({
-  data,
-  onCtaClick,
-  language = "es",
-}: PillarHeroProps) {
+export function PillarHero({ data, language = "es" }: PillarHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const prefersReducedMotion = useReducedMotion()
   const { scrollY } = useScroll()
-  // Gentle parallax for text only (not stats)
-  const textY = useTransform(scrollY, [0, 500], [0, 100])
-  const textOpacity = useTransform(scrollY, [0, 400], [1, 0.3])
+  // Gentle parallax for text only (not stats); disabled when motion is reduced.
+  const rawTextY = useTransform(scrollY, [0, 500], [0, 100])
+  const rawTextOpacity = useTransform(scrollY, [0, 400], [1, 0.3])
+  const textY = prefersReducedMotion ? 0 : rawTextY
+  const textOpacity = prefersReducedMotion ? 1 : rawTextOpacity
 
-  // Mouse move effect for gradient
+  // Mouse move effect for gradient (skipped entirely when motion is reduced)
   useEffect(() => {
+    if (prefersReducedMotion) return
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect()
@@ -38,7 +42,7 @@ export function PillarHero({
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+  }, [prefersReducedMotion])
 
   const ctaText =
     language === "es" ? "Solicitar Auditoría Gratuita" : "Request Free Audit"
@@ -52,7 +56,7 @@ export function PillarHero({
       <div
         className="absolute inset-0 opacity-30 transition-all duration-700"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(99, 102, 241, 0.3) 0%, transparent 50%)`,
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(249, 115, 22, 0.25) 0%, transparent 50%)`,
         }}
       />
 
@@ -80,7 +84,7 @@ export function PillarHero({
 
       {/* Floating orbs */}
       <motion.div
-        className="absolute top-20 left-[10%] w-72 h-72 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-3xl"
+        className="absolute top-20 left-[10%] w-72 h-72 rounded-full bg-gradient-to-br from-orange-500/20 to-yellow-500/20 blur-3xl"
         animate={{
           y: [0, 30, 0],
           x: [0, 20, 0],
@@ -92,7 +96,7 @@ export function PillarHero({
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-[15%] w-96 h-96 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 blur-3xl"
+        className="absolute bottom-20 right-[15%] w-96 h-96 rounded-full bg-gradient-to-br from-teal-500/20 to-teal-400/20 blur-3xl"
         animate={{
           y: [0, -40, 0],
           x: [0, -30, 0],
@@ -117,7 +121,7 @@ export function PillarHero({
               className="flex justify-center mb-8"
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 text-indigo-400" />
+                <Sparkles className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-medium text-white/90">
                   {data.lastUpdated} • {data.readingTime}
                 </span>
@@ -129,14 +133,7 @@ export function PillarHero({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-center mb-6 leading-[1.1]"
-              style={{
-                background:
-                  "linear-gradient(to bottom, #ffffff 30%, #94a3b8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-center text-white mb-6 leading-[1.1] text-balance"
             >
               {data.headline}
             </motion.h1>
@@ -160,8 +157,7 @@ export function PillarHero({
             >
               <Link href="/contact">
                 <motion.div
-                  //onClick={onCtaClick}
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-indigo-500/30"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -240,7 +236,7 @@ function StatCard({
       className="group relative"
     >
       {/* Card background with gradient border effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/20 via-amber-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
 
       <div className="relative h-full p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-white/20">
         {/* Animated background gradient on hover */}
@@ -248,7 +244,7 @@ function StatCard({
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background:
-              "radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%)",
+              "radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 50%)",
           }}
         />
 
@@ -258,21 +254,13 @@ function StatCard({
             isHovered ? { rotate: 360, scale: 1.1 } : { rotate: 0, scale: 1 }
           }
           transition={{ duration: 0.6 }}
-          className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 mb-4"
+          className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-yellow-500/20 mb-4"
         >
-          <Icon className="w-6 h-6 text-indigo-400" />
+          <Icon className="w-6 h-6 text-orange-400" />
         </motion.div>
 
         {/* Value */}
-        <motion.div
-          className="relative z-10 text-5xl md:text-6xl font-bold mb-2"
-          style={{
-            background: "linear-gradient(to bottom, #ffffff 0%, #818cf8 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
+        <motion.div className="relative z-10 text-5xl md:text-6xl font-bold mb-2 text-white">
           {stat.value}
         </motion.div>
 
@@ -282,7 +270,7 @@ function StatCard({
         </p>
 
         {/* Decorative corner accent */}
-        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </motion.div>
   )

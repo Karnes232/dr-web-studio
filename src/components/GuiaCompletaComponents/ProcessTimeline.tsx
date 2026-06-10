@@ -66,8 +66,8 @@ export function ProcessTimeline({
     <section className="py-20 bg-gradient-to-br from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -77,7 +77,7 @@ export function ProcessTimeline({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
           >
             <Rocket className="w-4 h-4" />
             {language === "es"
@@ -90,7 +90,7 @@ export function ProcessTimeline({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
           >
             {t.title}
           </motion.h2>
@@ -113,7 +113,7 @@ export function ProcessTimeline({
             {/* Steps Container */}
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900" />
+              <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-orange-200 via-yellow-200 to-yellow-200 dark:from-orange-900 dark:via-yellow-900 dark:to-yellow-900" />
 
               {/* Progress Line */}
               <motion.div
@@ -121,7 +121,7 @@ export function ProcessTimeline({
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 2, ease: "easeOut" }}
-                className="absolute top-20 left-0 h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"
+                className="absolute top-20 left-0 h-1 bg-gradient-to-r from-orange-600 via-yellow-600 to-yellow-600"
               />
 
               {/* Steps */}
@@ -151,22 +151,22 @@ export function ProcessTimeline({
                           whileHover={{ scale: 1.1 }}
                           className={`relative z-10 mx-auto w-40 h-40 rounded-full flex items-center justify-center ${
                             isActive
-                              ? "bg-gradient-to-br from-indigo-500 to-purple-500 shadow-2xl shadow-indigo-500/50"
-                              : "bg-white dark:bg-slate-800 border-4 border-indigo-200 dark:border-indigo-900"
+                              ? "bg-gradient-to-br from-orange-600 to-amber-600 shadow-2xl shadow-orange-500/50"
+                              : "bg-white dark:bg-slate-800 border-4 border-orange-200 dark:border-orange-900"
                           } transition-all duration-300`}
                         >
                           <Icon
                             className={`w-16 h-16 ${
                               isActive
                                 ? "text-white"
-                                : "text-indigo-600 dark:text-indigo-400"
+                                : "text-orange-700 dark:text-orange-400"
                             }`}
                           />
                         </motion.div>
 
                         {/* Step Info */}
                         <div className="mt-6 text-center">
-                          <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
+                          <div className="text-sm font-semibold text-orange-700 dark:text-orange-400 mb-1">
                             {t.step} {step.step}
                           </div>
                           <h3 className="font-bold text-slate-900 dark:text-white mb-2 text-sm">
@@ -222,7 +222,7 @@ export function ProcessTimeline({
 // Step Details Component
 function StepDetails({ step, labels }: { step: ProcessStep; labels: any }) {
   return (
-    <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 rounded-3xl border-2 border-indigo-200 dark:border-indigo-800 p-8">
+    <div className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/50 dark:to-yellow-950/50 rounded-3xl border-2 border-orange-200 dark:border-orange-800 p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Column */}
         <div>
@@ -246,9 +246,9 @@ function StepDetails({ step, labels }: { step: ProcessStep; labels: any }) {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800"
+                className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-900 border border-orange-200 dark:border-orange-800"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-600 to-amber-600 flex items-center justify-center">
                   <CheckCircle2 className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
@@ -289,13 +289,13 @@ function MobileStepCard({
     >
       {/* Connector Line */}
       {index < 5 && (
-        <div className="absolute left-10 top-20 bottom-0 w-1 bg-gradient-to-b from-indigo-200 to-purple-200 dark:from-indigo-900 dark:to-purple-900" />
+        <div className="absolute left-10 top-20 bottom-0 w-1 bg-gradient-to-b from-orange-200 to-yellow-200 dark:from-orange-900 dark:to-yellow-900" />
       )}
 
       <div
         className={`relative bg-white dark:bg-slate-900 rounded-2xl border-2 ${
           isActive
-            ? "border-indigo-500 shadow-2xl shadow-indigo-500/20"
+            ? "border-orange-500 shadow-2xl shadow-orange-500/20"
             : "border-slate-200 dark:border-slate-800"
         } overflow-hidden transition-all duration-300`}
       >
@@ -306,15 +306,15 @@ function MobileStepCard({
             <div
               className={`relative z-10 flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center ${
                 isActive
-                  ? "bg-gradient-to-br from-indigo-500 to-purple-500"
-                  : "bg-indigo-100 dark:bg-indigo-900/30"
+                  ? "bg-gradient-to-br from-orange-600 to-amber-600"
+                  : "bg-orange-100 dark:bg-orange-900/30"
               } transition-all duration-300`}
             >
               <Icon
                 className={`w-10 h-10 ${
                   isActive
                     ? "text-white"
-                    : "text-indigo-600 dark:text-indigo-400"
+                    : "text-orange-700 dark:text-orange-400"
                 }`}
               />
             </div>
@@ -322,7 +322,7 @@ function MobileStepCard({
             {/* Content */}
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 px-2 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30">
+                <span className="text-xs font-bold text-orange-700 dark:text-orange-400 px-2 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30">
                   {labels.step} {step.step}
                 </span>
                 <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">

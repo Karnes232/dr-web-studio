@@ -84,7 +84,7 @@ export function ComparisonTable({
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900">
             {t.title}
           </h2>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -150,9 +150,9 @@ export function ComparisonTable({
                       key={index}
                       onMouseEnter={() => setActiveRow(index)}
                       onMouseLeave={() => setActiveRow(null)}
-                      className={`border-b border-slate-100 dark:border-slate-800 transition-all duration-300 ${
+                      className={`border-b border-slate-100 dark:border-slate-800 transition-all duration-300 motion-reduce:transition-none ${
                         activeRow === index
-                          ? "bg-slate-50 dark:bg-slate-900/50 scale-[1.01]"
+                          ? "bg-slate-50 dark:bg-slate-900/50 scale-[1.01] motion-reduce:scale-100"
                           : "hover:bg-slate-50/50 dark:hover:bg-slate-900/30"
                       }`}
                     >
