@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-09T00:00:00Z",
+  "title": "Design System: DR Web Studio",
+  "extensions": {
+    "colorMeta": {
+      "brand-orange": { "role": "primary", "displayName": "Brand Orange", "canonical": "#f97316", "tonalRamp": ["#7c2d12", "#9a3412", "#c2410c", "#ea580c", "#f97316", "#fdba74", "#fed7aa", "#ffedd5"] },
+      "brand-yellow": { "role": "primary", "displayName": "Brand Yellow", "canonical": "#eab308", "tonalRamp": ["#713f12", "#854d0e", "#a16207", "#ca8a04", "#eab308", "#facc15", "#fde047", "#fef9c3"] },
+      "signal-teal": { "role": "secondary", "displayName": "Signal Teal", "canonical": "#14b8a6", "tonalRamp": ["#134e4a", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4", "#ccfbf1"] },
+      "slate-muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#64748b", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#171717", "tonalRamp": ["#0a0a0a", "#171717", "#404040", "#737373", "#a3a3a3", "#d4d4d4", "#e5e5e5", "#fafafa"] },
+      "confirm": { "role": "status", "displayName": "Confirm Green", "canonical": "#16a34a", "tonalRamp": ["#14532d", "#166534", "#15803d", "#16a34a", "#22c55e", "#4ade80", "#86efac", "#dcfce7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Crimson Pro serif. Page and section headlines only, never UI labels or body." },
+      "title": { "displayName": "Title", "purpose": "Inter 600. Card titles and sub-section headings." },
+      "body": { "displayName": "Body", "purpose": "Inter 400. Paragraphs, capped at 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Inter 500, slight tracking. Small metadata and badges; uppercase only for <=4-word labels." }
+    },
+    "shadows": [
+      { "name": "resting-card", "value": "0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04)", "purpose": "Default subtle card shadow at rest. Tinted toward slate, never pure black." },
+      { "name": "lift-hover", "value": "0 10px 25px rgba(15,23,42,.10)", "purpose": "Interactive card lift on hover, paired with translateY(-2px)." },
+      { "name": "overlay", "value": "0 20px 40px rgba(15,23,42,.16)", "purpose": "Modals and dialogs only." }
+    ],
+    "motion": [
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Default easing for state transitions and reveals. No bounce, no elastic." },
+      { "name": "duration-fast", "value": "200ms", "purpose": "Button and hover feedback." },
+      { "name": "duration-reveal", "value": "600ms", "purpose": "Scroll-in reveals (Motion useInView, opacity + y:24)." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ],
+    "containers": [
+      { "name": "prose", "value": "max-w-3xl" },
+      { "name": "content", "value": "max-w-6xl" },
+      { "name": "full", "value": "max-w-7xl" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Highest-emphasis action. The brand gradient, rationed to one or two moments per screen.",
+      "html": "<button class=\"ds-btn-primary\">Get a quote</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; color: #ffffff; background: linear-gradient(to right, #f97316, #eab308); border: none; border-radius: 8px; padding: 12px 24px; cursor: pointer; transition: background 200ms cubic-bezier(0.25,1,0.5,1), transform 200ms cubic-bezier(0.25,1,0.5,1), box-shadow 200ms; } .ds-btn-primary:hover { background: linear-gradient(to right, #ea580c, #ca8a04); transform: translateY(-1px); box-shadow: 0 10px 25px rgba(15,23,42,.10); } .ds-btn-primary:focus-visible { outline: 3px solid rgba(249,115,22,.5); outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-btn-primary { transition: background 200ms; } .ds-btn-primary:hover { transform: none; } }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action. Orange stroke that inverts to a fill on hover.",
+      "html": "<button class=\"ds-btn-outline\">Start your project</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 8px; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; color: #ea580c; background: #ffffff; border: 2px solid #f97316; border-radius: 8px; padding: 10px 22px; cursor: pointer; transition: background 200ms cubic-bezier(0.25,1,0.5,1), color 200ms; } .ds-btn-outline:hover { background: #f97316; color: #ffffff; } .ds-btn-outline:focus-visible { outline: 3px solid rgba(249,115,22,.5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat at rest, lifts on hover. Standard service / feature container.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-chip\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"#ea580c\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"16 18 22 12 16 6\"></polyline><polyline points=\"8 6 2 12 8 18\"></polyline></svg></div><h3 class=\"ds-card-title\">Custom websites</h3><p class=\"ds-card-body\">Hand-built sites that load fast and convert, tailored to your business.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04); transition: box-shadow 300ms cubic-bezier(0.25,1,0.5,1), transform 300ms cubic-bezier(0.25,1,0.5,1); } .ds-card:hover { box-shadow: 0 10px 25px rgba(15,23,42,.10); transform: translateY(-2px); } .ds-card-chip { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 8px; background: linear-gradient(to right, #ffedd5, #fef9c3); margin-bottom: 16px; } .ds-card-title { font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1.25rem; color: #1e293b; margin: 0 0 8px; } .ds-card-body { font-family: Inter, system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #4b5563; margin: 0; } @media (prefers-reduced-motion: reduce) { .ds-card { transition: box-shadow 300ms; } .ds-card:hover { transform: none; } }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Label-above field with an accessible focus ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@business.com\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font-family: Inter, system-ui, sans-serif; } .ds-field-label { font-size: 0.875rem; font-weight: 500; color: #1e293b; } .ds-input { font-size: 1rem; color: #171717; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px; transition: border-color 200ms, box-shadow 200ms; } .ds-input::placeholder { color: #64748b; } .ds-input:focus-visible { outline: none; border-color: #14b8a6; box-shadow: 0 0 0 3px rgba(20,184,166,.25); }"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Single-line nav, ink links shifting to brand orange on hover/active.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">DR Web Studio</span><ul class=\"ds-nav-links\"><li><a href=\"#\" class=\"ds-nav-link ds-nav-link--active\">Services</a></li><li><a href=\"#\" class=\"ds-nav-link\">Portfolio</a></li><li><a href=\"#\" class=\"ds-nav-link\">Pricing</a></li><li><a href=\"#\" class=\"ds-nav-link\">Contact</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; height: 72px; padding: 0 24px; font-family: Inter, system-ui, sans-serif; } .ds-nav-brand { font-family: 'Crimson Pro', Georgia, serif; font-weight: 700; font-size: 1.25rem; color: #171717; } .ds-nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-size: 0.95rem; font-weight: 500; color: #1e293b; text-decoration: none; transition: color 200ms; } .ds-nav-link:hover { color: #ea580c; } .ds-nav-link--active { color: #ea580c; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; } .ds-nav-link:focus-visible { outline: 3px solid rgba(249,115,22,.5); outline-offset: 4px; border-radius: 4px; }"
+    },
+    {
+      "name": "Pill Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Full-pill label for small metadata. The one place uppercase + tracking is allowed.",
+      "html": "<span class=\"ds-badge\">Most popular</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; color: #ffffff; background: linear-gradient(to right, #f97316, #eab308); border-radius: 9999px; padding: 4px 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Proof of Craft",
+    "overview": "DR Web Studio sells web design and development, so the site itself is the single strongest case study in the portfolio. Every surface has one job: demonstrate the quality being sold. The system today is a competent, friendly, conversion-focused base built on Tailwind defaults: a white canvas, near-black ink, a warm orange-to-yellow gradient accent, teal as a secondary signal, Crimson Pro serif headlines over Inter body, and rounded-xl cards with a soft shadow lift on hover. It converts, and it is also close to the freelance-web-studio category default, which is what this brand is moving away from. The system steers those real tokens toward bold and modern, confident through restraint: the gradient stays but stops being the only color move; the serif carries real hierarchy; the repeated card grid, per-section eyebrow, and gradient-text hero are retired. New work should look hand-built and intentional, never templated, sterile, loud, or cluttered.",
+    "keyCharacteristics": [
+      "White canvas, near-black ink; warmth carried by accent and type, not by a tinted background.",
+      "One signature accent (orange to yellow), one secondary signal (teal). Used deliberately, not everywhere.",
+      "Serif display (Crimson Pro) paired with humanist sans (Inter): contrast pairing, not two similar sans.",
+      "Flat at rest, soft lift on interaction. Depth is a response to state, not decoration.",
+      "Bilingual-safe: layouts, headlines, and labels must hold at Spanish copy lengths."
+    ],
+    "rules": [
+      { "name": "The Earned Accent Rule", "body": "The orange to yellow gradient is the brand's loudest move, so it is rationed: primary action plus one or two genuine moments per screen, never the default treatment for every card, icon, and heading.", "section": "colors" },
+      { "name": "The Warmth-From-Type Rule", "body": "Warmth comes from the accent and the serif display, never from tinting the canvas. Background stays true white (#ffffff); cream/sand/beige backgrounds are prohibited.", "section": "colors" },
+      { "name": "The Hierarchy-By-Scale Rule", "body": "Establish hierarchy with size and weight contrast (>=1.25 ratio between steps), not with color or all-caps.", "section": "typography" },
+      { "name": "The No-Eyebrow-Reflex Rule", "body": "A tiny uppercase tracked label above every section is the category tell this brand rejects. A kicker is a rare deliberate device, never the default scaffold.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Cards are flat at rest; shadow appears as hover/focus feedback then settles back. Never pair a 1px border with a >=16px soft drop shadow on the same element.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the canvas a true white (#ffffff) and carry warmth through the accent and Crimson Pro display type.",
+      "Do ration the orange to yellow gradient: primary action plus one or two real moments per screen.",
+      "Do build hierarchy from scale and weight (>=1.25 step ratio), with text-wrap: balance on headings.",
+      "Do keep cards flat at rest and let shadow appear as hover/focus feedback only.",
+      "Do verify body text >=4.5:1 and large text >=3:1, and re-check at Spanish copy lengths (es runs longer).",
+      "Do give every animation a prefers-reduced-motion alternative."
+    ],
+    "donts": [
+      "Don't ship the generic SaaS/Squarespace/Wix-template look: identical icon-title-text card grids, gradient CTAs as the only color move, or a tiny uppercase tracked eyebrow above every section.",
+      "Don't go corporate and sterile: cold faceless agency layouts, stock photography, zero personality.",
+      "Don't go loud and flashy: over-animation, neon, gimmicky effects that distract from the work.",
+      "Don't go cluttered and busy: too much on screen, weak hierarchy, everything competing for attention.",
+      "Don't use gradient text (background-clip: text) on headlines; use a single solid color.",
+      "Don't use a tinted cream/sand/beige body background.",
+      "Don't round cards past 16px, or pair a 1px border with a >=16px soft drop shadow.",
+      "Don't use em dashes in copy; use commas, colons, or periods.",
+      "Don't set Crimson Pro on body or UI labels; the serif is for display only."
+    ]
+  }
+}

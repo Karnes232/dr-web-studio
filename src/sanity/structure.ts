@@ -324,72 +324,46 @@ export const structure: StructureResolver = S =>
             .title("Project Planner")
             .items([
               S.listItem()
-                .title("Project Planner Header")
+                .title("Config")
                 .child(
-                  S.documentList()
-                    .title("Project Planner Header")
-                    .filter('_type == "projectPlannerHeader"'),
+                  S.editor()
+                    .schemaType("plannerConfig")
+                    .documentId("plannerConfig"),
                 ),
               S.listItem()
-                .title("Website Type")
+                .title("Services")
                 .child(
                   S.documentList()
-                    .title("Website Type")
-                    .filter('_type == "websiteType"'),
+                    .title("Services")
+                    .filter('_type == "plannerService"')
+                    .defaultOrdering([{ field: "order", direction: "asc" }]),
                 ),
               S.listItem()
-                .title("Pages Count")
+                .title("Add-ons")
                 .child(
                   S.documentList()
-                    .title("Pages Count")
-                    .filter('_type == "pagesCount"'),
+                    .title("Add-ons")
+                    .filter('_type == "plannerAddon"')
+                    .defaultOrdering([
+                      { field: "service", direction: "asc" },
+                      { field: "order", direction: "asc" },
+                    ]),
                 ),
               S.listItem()
-                .title("Design Style")
+                .title("Design Styles")
                 .child(
                   S.documentList()
-                    .title("Design Style")
-                    .filter('_type == "designStyle"'),
+                    .title("Design Styles")
+                    .filter('_type == "plannerDesignStyle"')
+                    .defaultOrdering([{ field: "order", direction: "asc" }]),
                 ),
               S.listItem()
-                .title("Features")
+                .title("Size Tiers")
                 .child(
                   S.documentList()
-                    .title("Features")
-                    .filter('_type == "features"'),
-                ),
-              S.listItem()
-                .title("Budget")
-                .child(
-                  S.documentList().title("Budget").filter('_type == "budget"'),
-                ),
-              S.listItem()
-                .title("Timeline")
-                .child(
-                  S.documentList()
-                    .title("Timeline")
-                    .filter('_type == "timeline"'),
-                ),
-              S.listItem()
-                .title("Content Status")
-                .child(
-                  S.documentList()
-                    .title("Content Status")
-                    .filter('_type == "contentStatus"'),
-                ),
-              S.listItem()
-                .title("Languages")
-                .child(
-                  S.documentList()
-                    .title("Languages")
-                    .filter('_type == "languages"'),
-                ),
-              S.listItem()
-                .title("Contact Form")
-                .child(
-                  S.documentList()
-                    .title("Contact Form")
-                    .filter('_type == "contactForm"'),
+                    .title("Size Tiers")
+                    .filter('_type == "plannerSizeTier"')
+                    .defaultOrdering([{ field: "order", direction: "asc" }]),
                 ),
             ]),
         ),

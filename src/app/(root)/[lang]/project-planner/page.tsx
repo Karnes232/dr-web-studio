@@ -1,24 +1,13 @@
-import dynamic from "next/dynamic"
-
-const WebsiteQuestionnaire = dynamic(
-  () => import("@/components/projectPlannerComponents/WebsiteQuestionnaire"),
-  { ssr: true },
-)
-import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
-import { getBudget } from "@/sanity/queries/project-planner/budget"
-import { getContactForm } from "@/sanity/queries/project-planner/contactForm"
-import { getContentStatus } from "@/sanity/queries/project-planner/contentStatus"
-import { getDesignStyle } from "@/sanity/queries/project-planner/designStyle"
-import { getFeatures } from "@/sanity/queries/project-planner/features"
-import { getLanguages } from "@/sanity/queries/project-planner/languages"
-import { getPagesCount } from "@/sanity/queries/project-planner/pagesCount"
-import { getProjectPlannerHeader } from "@/sanity/queries/project-planner/projectPlannerHeader"
-import { getTimeline } from "@/sanity/queries/project-planner/timeline"
-import { getWebsiteType } from "@/sanity/queries/project-planner/websiteType"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
-import React from "react"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
+import { getPlannerConfig } from "@/sanity/queries/project-planner/plannerConfig"
+import { getPlannerServices } from "@/sanity/queries/project-planner/plannerServices"
+import { getPlannerAddons } from "@/sanity/queries/project-planner/plannerAddons"
+import { getPlannerDesignStyles } from "@/sanity/queries/project-planner/plannerDesignStyles"
+import { getPlannerSizeTiers } from "@/sanity/queries/project-planner/plannerSizeTiers"
+import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { buildAlternates } from "@/lib/urls"
+import ProjectPlanner from "@/components/projectPlannerComponents/ProjectPlanner"
 
 export const revalidate = 3600
 
@@ -28,35 +17,23 @@ interface PageProps {
   }>
 }
 
-export default async function Pricing({ params }: PageProps) {
+export default async function ProjectPlannerPage({ params }: PageProps) {
   const { lang } = await params
-  const [
-    seoData,
-    projectPlannerHeader,
-    websiteType,
-    pagesCount,
-    designStyle,
-    features,
-    budget,
-    timeline,
-    contentStatus,
-    languages,
-    contactForm,
-    companyEmail,
-  ] = await Promise.all([
-    getSeoSchema("project-planner"),
-    getProjectPlannerHeader(),
-    getWebsiteType(),
-    getPagesCount(),
-    getDesignStyle(),
-    getFeatures(),
-    getBudget(),
-    getTimeline(),
-    getContentStatus(),
-    getLanguages(),
-    getContactForm(),
-    getContactEmail(),
-  ])
+  const [seoData, config, services, addons, designStyles, sizeTiers, companyEmail] =
+    await Promise.all([
+      getSeoSchema("project-planner"),
+      getPlannerConfig(),
+      getPlannerServices(),
+      getPlannerAddons(),
+      getPlannerDesignStyles(),
+      getPlannerSizeTiers(),
+      getContactEmail(),
+    ])
+
+  const contactEmail =
+    config?.contactEmail?.trim() ||
+    companyEmail?.trim() ||
+    "james@dr-webstudio.com"
 
   return (
     <>
@@ -66,23 +43,18 @@ export default async function Pricing({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <section
-        id="project-planner"
-        className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
-      >
-        <WebsiteQuestionnaire
-          projectPlannerHeader={projectPlannerHeader}
-          websiteType={websiteType}
-          pagesCount={pagesCount}
-          designStyle={designStyle}
-          features={features}
-          budget={budget}
-          timeline={timeline}
-          contentStatus={contentStatus}
-          languages={languages}
-          contactForm={contactForm}
-          companyEmail={companyEmail ?? "james@dr-webstudio.com"}
-        />
+      <section id="project-planner" className="bg-slate-50 py-10 lg:py-16">
+        {config ? (
+          <ProjectPlanner
+            data={{ config, services, addons, designStyles, sizeTiers }}
+            locale={lang}
+            contactEmail={contactEmail}
+          />
+        ) : (
+          <div className="mx-auto max-w-xl px-6 py-20 text-center text-slate-500">
+            The project planner is being set up. Please check back shortly.
+          </div>
+        )}
       </section>
     </>
   )

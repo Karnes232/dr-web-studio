@@ -1,4 +1,6 @@
-import ProjectPlannerSubmissionEmail from "@/emails/ProjectPlannerSubmissionEmail"
+import ProjectPlannerSubmissionEmail, {
+  type PlannerEstimateItem,
+} from "@/emails/ProjectPlannerSubmissionEmail"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { render } from "@react-email/render"
@@ -10,7 +12,6 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const MAX_FIELD = 500
 const MAX_MESSAGE = 10_000
 const MAX_ARRAY_ITEMS = 40
-const MAX_PAGES = 500
 
 function clampStringArray(
   arr: unknown,
@@ -25,10 +26,25 @@ function clampStringArray(
     .slice(0, maxItems)
 }
 
-function parsePages(value: unknown): number | null {
-  const n = typeof value === "number" ? value : parseInt(String(value), 10)
-  if (!Number.isFinite(n) || n < 1 || n > MAX_PAGES) return null
-  return n
+function toNumber(value: unknown): number {
+  const n = typeof value === "number" ? value : Number(value)
+  return Number.isFinite(n) ? n : 0
+}
+
+function parseItems(arr: unknown): PlannerEstimateItem[] {
+  if (!Array.isArray(arr)) return []
+  return arr
+    .filter(
+      (x): x is { key?: unknown; label?: unknown; amount?: unknown } =>
+        !!x && typeof x === "object",
+    )
+    .map((x, i) => ({
+      key: clampString(x.key, 60) || `item-${i}`,
+      label: clampString(x.label, MAX_FIELD),
+      amount: toNumber(x.amount),
+    }))
+    .filter(it => !!it.label)
+    .slice(0, MAX_ARRAY_ITEMS)
 }
 
 export async function POST(request: NextRequest) {
@@ -46,10 +62,7 @@ export async function POST(request: NextRequest) {
 
     const verified = await verifyBotpoisonSolution(botpoisonSolution)
     if (!verified) {
-      return NextResponse.json(
-        { error: "Verification failed" },
-        { status: 403 },
-      )
+      return NextResponse.json({ error: "Verification failed" }, { status: 403 })
     }
 
     const name = clampString(body.name, MAX_FIELD)
@@ -67,51 +80,28 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 })
     }
 
-    const pages = parsePages(body.pages)
-    if (pages === null) {
-      return NextResponse.json(
-        { error: "Invalid pages value" },
-        { status: 400 },
-      )
-    }
-
     const company = clampString(body.company, MAX_FIELD)
-    const phone = clampString(body.phone, MAX_FIELD)
     const message = clampString(body.message, MAX_MESSAGE)
-    const websiteType = clampString(
-      body.websiteType ?? body.projectType,
-      MAX_FIELD,
-    )
-    const designStyle = clampString(body.designStyle, MAX_FIELD)
-    const budget = clampString(body.budget, MAX_FIELD)
+    const service = clampString(body.service, MAX_FIELD)
     const timeline = clampString(body.timeline, MAX_FIELD)
-    const contentStatus = clampString(body.contentStatus, MAX_FIELD)
-    const features = clampStringArray(body.features, MAX_ARRAY_ITEMS, MAX_FIELD)
-    const languages = clampStringArray(
-      body.languages,
-      MAX_ARRAY_ITEMS,
-      MAX_FIELD,
-    )
+    const rush = body.rush === true
+    const addons = clampStringArray(body.addons, MAX_ARRAY_ITEMS, MAX_FIELD)
+    const design = clampString(body.design, MAX_FIELD)
+    const size = clampString(body.size, MAX_FIELD)
+    const content = clampString(body.content, MAX_FIELD)
+    const references = clampStringArray(body.references, MAX_ARRAY_ITEMS, MAX_FIELD)
 
-    if (
-      !websiteType ||
-      !designStyle ||
-      !budget ||
-      !timeline ||
-      !contentStatus
-    ) {
+    if (!service) {
       return NextResponse.json(
-        { error: "Incomplete project details" },
+        { error: "A service is required" },
         { status: 400 },
       )
     }
 
-    if (features.length === 0 || languages.length === 0) {
-      return NextResponse.json(
-        { error: "Features and languages are required" },
-        { status: 400 },
-      )
-    }
+    const estimate = (body.estimate ?? {}) as Record<string, unknown>
+    const estimateTotal = toNumber(estimate.total)
+    const currencySymbol = clampString(estimate.currencySymbol, 8) || "$"
+    const items = parseItems(estimate.items)
 
     const cachedEmail = await getContactEmail()
     const toEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
@@ -121,16 +111,18 @@ export async function POST(request: NextRequest) {
         name,
         email,
         company,
-        phone,
-        websiteType,
-        pages,
-        designStyle,
-        features,
-        budget,
-        timeline,
-        contentStatus,
-        languages,
         message,
+        service,
+        addons,
+        design,
+        references,
+        size,
+        content,
+        rush,
+        timeline,
+        estimateTotal,
+        currencySymbol,
+        items,
       }),
     )
 

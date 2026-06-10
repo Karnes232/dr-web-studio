@@ -13,20 +13,32 @@ import {
   Tailwind,
 } from "@react-email/components"
 
+export type PlannerEstimateItem = {
+  key: string
+  label: string
+  amount: number
+}
+
 export type ProjectPlannerSubmissionEmailProps = {
   name: string
   email: string
   company?: string
-  phone?: string
-  websiteType: string
-  pages: number
-  designStyle: string
-  features: string[]
-  budget: string
+  message?: string
+  service: string
+  addons: string[]
+  design?: string
+  references?: string[]
+  size?: string
+  content?: string
+  rush: boolean
   timeline: string
-  contentStatus: string
-  languages: string[]
-  message: string
+  estimateTotal: number
+  currencySymbol: string
+  items: PlannerEstimateItem[]
+}
+
+function money(n: number, symbol: string) {
+  return `${symbol}${Math.round(n).toLocaleString("en-US")}`
 }
 
 function FieldRow({ label, value }: { label: string; value: string }) {
@@ -47,20 +59,31 @@ const ProjectPlannerSubmissionEmail = ({
   name,
   email,
   company = "",
-  phone = "",
-  websiteType,
-  pages,
-  designStyle,
-  features,
-  budget,
+  message = "",
+  service,
+  addons,
+  design = "",
+  references = [],
+  size = "",
+  content = "",
+  rush,
   timeline,
-  contentStatus,
-  languages,
-  message,
+  estimateTotal,
+  currencySymbol,
+  items,
 }: ProjectPlannerSubmissionEmailProps) => {
-  const previewText = `Project planner submission from ${name}`
-  const featuresText = features.filter(Boolean).join("\n• ")
-  const languagesText = languages.filter(Boolean).join(", ")
+  const previewText = `Project planner submission from ${name} · from ${money(
+    estimateTotal,
+    currencySymbol,
+  )}`
+  const addonsText = addons.filter(Boolean).join("\n• ")
+  const referencesText = references.filter(Boolean).join("\n")
+  const contentLabel =
+    content === "need"
+      ? "Needs copywriting"
+      : content === "ready"
+        ? "Content ready"
+        : ""
 
   return (
     <Html>
@@ -93,6 +116,29 @@ const ProjectPlannerSubmissionEmail = ({
               </Text>
             </Section>
 
+            {/* Estimate */}
+            <Section className="bg-white rounded-lg shadow-lg p-6 mb-4">
+              <Text className="text-gray-500 text-xs font-semibold uppercase tracking-wide m-0 mb-1">
+                Estimated investment (starting from)
+              </Text>
+              <Heading className="text-2xl font-bold text-gray-900 m-0 mb-3">
+                {money(estimateTotal, currencySymbol)}
+              </Heading>
+              {items
+                .filter(it => !!it?.label)
+                .map(it => (
+                  <Section key={it.key} className="mb-1">
+                    <Text className="text-gray-700 text-sm m-0">
+                      {it.label}
+                      {"  "}
+                      <span className="text-gray-900 font-semibold">
+                        {`+${money(it.amount, currencySymbol)}`}
+                      </span>
+                    </Text>
+                  </Section>
+                ))}
+            </Section>
+
             <Section className="bg-white rounded-lg shadow-lg p-6">
               <Text className="text-gray-500 text-xs font-semibold uppercase tracking-wide m-0 mb-1">
                 Contact
@@ -100,28 +146,36 @@ const ProjectPlannerSubmissionEmail = ({
               <FieldRow label="Name" value={name} />
               <FieldRow label="Email" value={email} />
               <FieldRow label="Company" value={company} />
-              <FieldRow label="Phone" value={phone} />
               <Hr className="border-gray-200 my-4" />
               <Text className="text-gray-500 text-xs font-semibold uppercase tracking-wide m-0 mb-1">
                 Project details
               </Text>
-              <FieldRow label="Website type" value={websiteType} />
-              <FieldRow label="Number of pages" value={String(pages)} />
-              <FieldRow label="Design style" value={designStyle} />
-              {featuresText ? (
+              <FieldRow label="Service" value={service} />
+              {addonsText ? (
                 <Section className="mb-3">
                   <Text className="text-gray-500 text-xs font-semibold uppercase tracking-wide m-0 mb-1">
-                    Features
+                    Add-ons
                   </Text>
                   <Text className="text-gray-900 text-sm m-0 whitespace-pre-wrap">
-                    {`• ${featuresText}`}
+                    {`• ${addonsText}`}
                   </Text>
                 </Section>
               ) : null}
-              <FieldRow label="Budget" value={budget} />
+              <FieldRow label="Design style" value={design} />
+              <FieldRow label="Size" value={size} />
+              <FieldRow label="Content" value={contentLabel} />
+              {referencesText ? (
+                <Section className="mb-3">
+                  <Text className="text-gray-500 text-xs font-semibold uppercase tracking-wide m-0 mb-1">
+                    Reference sites
+                  </Text>
+                  <Text className="text-gray-900 text-sm m-0 whitespace-pre-wrap">
+                    {referencesText}
+                  </Text>
+                </Section>
+              ) : null}
+              <FieldRow label="Rush delivery" value={rush ? "Yes" : "No"} />
               <FieldRow label="Timeline" value={timeline} />
-              <FieldRow label="Content status" value={contentStatus} />
-              <FieldRow label="Languages" value={languagesText} />
               <Hr className="border-gray-200 my-4" />
               <FieldRow label="Additional notes" value={message} />
             </Section>

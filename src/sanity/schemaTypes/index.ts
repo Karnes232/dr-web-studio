@@ -49,16 +49,11 @@ import locationInfo from "./contact/locationInfo"
 import contactFaq from "./contact/contactFaq"
 
 // Project Planner Schemas
-import websiteType from "./project-planner/websiteType"
-import projectPlannerHeader from "./project-planner/projectPlannerHeader"
-import pagesCount from "./project-planner/pagesCount"
-import designStyle from "./project-planner/designStyle"
-import features from "./project-planner/features"
-import budget from "./project-planner/budget"
-import timeline from "./project-planner/timeline"
-import contentStatus from "./project-planner/contentStatus"
-import languages from "./project-planner/languages"
-import contactForm from "./project-planner/contactForm"
+import plannerConfig from "./project-planner/plannerConfig"
+import plannerService from "./project-planner/plannerService"
+import plannerAddon from "./project-planner/plannerAddon"
+import plannerDesignStyle from "./project-planner/plannerDesignStyle"
+import plannerSizeTier from "./project-planner/plannerSizeTier"
 
 // FAQ Schemas
 import faqCategory from "./faqs/faqCategory"
@@ -133,16 +128,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contactFaq,
 
     // Project Planner Schemas
-    projectPlannerHeader,
-    websiteType,
-    pagesCount,
-    designStyle,
-    features,
-    budget,
-    timeline,
-    contentStatus,
-    languages,
-    contactForm,
+    plannerConfig,
+    plannerService,
+    plannerAddon,
+    plannerDesignStyle,
+    plannerSizeTier,
 
     // FAQ Schemas
     faqCategory,

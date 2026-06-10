@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs"
   },
   "dependencies": {
     "@botpoison/browser": "^0.1.30",
@@ -45,6 +47,7 @@
     "postcss": "^8.5.4",
     "prettier": "3.5.3",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.9"
   }
 }
