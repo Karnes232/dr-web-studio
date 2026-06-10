@@ -76,7 +76,7 @@ export default function CheckoutForm({
       <PaymentElement />
       <button
         disabled={!stripe || loading}
-        className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 disabled:opacity-50"
+        className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 disabled:opacity-50"
       >
         {loading ? t("checkout.processing") : t("checkout.pay")}
       </button>

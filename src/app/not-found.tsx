@@ -78,7 +78,7 @@ export default async function NotFound() {
           <Navbar logo={logo} serviceLinks={serviceLinks} />
           <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 flex items-center justify-center px-4">
             <div className="max-w-xl mx-auto text-center">
-              <p className="text-6xl font-bold text-orange-500 mb-4">404</p>
+              <p className="text-6xl font-bold text-orange-600 mb-4">404</p>
               <h1 className="text-3xl font-bold text-slate-900 mb-4">
                 Page Not Found
               </h1>
@@ -97,7 +97,7 @@ export default async function NotFound() {
                 <Link
                   href="/contact"
                   locale="en"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:border-orange-500 hover:text-orange-600 transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -106,28 +106,28 @@ export default async function NotFound() {
                 <Link
                   href="/our-services"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-500 transition-colors"
+                  className="text-slate-500 hover:text-orange-600 transition-colors"
                 >
                   Services
                 </Link>
                 <Link
                   href="/portfolio"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-500 transition-colors"
+                  className="text-slate-500 hover:text-orange-600 transition-colors"
                 >
                   Portfolio
                 </Link>
                 <Link
                   href="/blog"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-500 transition-colors"
+                  className="text-slate-500 hover:text-orange-600 transition-colors"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/pricing"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-500 transition-colors"
+                  className="text-slate-500 hover:text-orange-600 transition-colors"
                 >
                   Pricing
                 </Link>

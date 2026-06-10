@@ -35,7 +35,7 @@ const ServiceProcess = ({ steps }: { steps: any }) => {
                 <p className="text-gray-300 leading-relaxed md:h-40 lg:h-60">
                   {step.description}
                 </p>
-                <div className="mt-4 text-sm text-orange-400">
+                <div className="mt-4 text-sm text-orange-700">
                   Duration: {step.duration}
                 </div>
               </div>

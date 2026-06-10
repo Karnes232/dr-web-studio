@@ -25,7 +25,7 @@ const FeaturedProject = ({
             alt={project.title}
             className="w-full h-48 sm:h-56 lg:h-full object-cover rounded-xl shadow-lg"
           />
-          <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold">
+          <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-2 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold">
             🌟 {t("portfolio.featuredProject")}
           </div>
         </div>
@@ -33,7 +33,7 @@ const FeaturedProject = ({
         {/* Project Details */}
         <div className="flex flex-col justify-center order-2 lg:order-none">
           <div className="mb-4 sm:mb-6">
-            <span className="text-orange-600 font-medium text-sm">
+            <span className="text-orange-700 font-medium text-sm">
               {project.category[currentLocale as keyof typeof project.category]}
             </span>
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mt-2 mb-2 leading-tight">
@@ -73,7 +73,7 @@ const FeaturedProject = ({
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a
               href={project.liveUrl}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-4 sm:px-6 rounded-lg font-medium text-center hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
+              className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 py-3 px-4 sm:px-6 rounded-lg font-medium text-center hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
               target="_blank"
               rel="noopener noreferrer"
             >

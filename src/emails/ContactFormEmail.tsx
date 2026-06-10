@@ -68,7 +68,7 @@ const ContactFormEmail = ({
                   <Heading className="text-2xl font-bold text-gray-800 m-0">
                     DR WEB
                   </Heading>
-                  <Text className="text-sm text-orange-600 m-0 -mt-1">
+                  <Text className="text-sm text-orange-700 m-0 -mt-1">
                     STUDIO
                   </Text>
                 </div>

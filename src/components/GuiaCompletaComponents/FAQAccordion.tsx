@@ -121,7 +121,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
 
             <a
               href="mailto:james@dr-webstudio.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold hover:shadow-2xl hover:shadow-orange-500/30 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-semibold hover:shadow-2xl hover:shadow-orange-500/30 transition-all transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />
               {t.contactUs}

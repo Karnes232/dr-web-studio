@@ -41,7 +41,7 @@ const CustomQuoteCard = () => {
         <div className="space-y-3">
           <a
             href="#questionnaire"
-            className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+            className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
           >
             Start Questionnaire
             <ArrowRight className="ml-2 h-4 w-4" />

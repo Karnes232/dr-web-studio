@@ -10,7 +10,7 @@ const ServiceCardActions = ({ service }: { service: LocalizedSlugDoc }) => {
     <div className="flex gap-3">
       <Link
         href="/project-planner"
-        className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center"
+        className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center"
       >
         {t("serviceCard.getStarted")}
         <ArrowRight className="h-4 w-4 ml-1" />

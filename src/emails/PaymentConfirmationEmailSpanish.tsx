@@ -53,7 +53,7 @@ const PaymentConfirmationEmailSpanish = ({
                   <Heading className="text-2xl font-bold text-gray-800 m-0">
                     DR WEB
                   </Heading>
-                  <Text className="text-sm text-orange-600 m-0 -mt-1">
+                  <Text className="text-sm text-orange-700 m-0 -mt-1">
                     STUDIO
                   </Text>
                 </div>
@@ -183,7 +183,7 @@ const PaymentConfirmationEmailSpanish = ({
                   <Text className="text-gray-600 font-semibold mr-2">
                     Correo:
                   </Text>
-                  <Link href={`mailto:${email}`} className="text-orange-600">
+                  <Link href={`mailto:${email}`} className="text-orange-700">
                     {email}
                   </Link>
                 </div>

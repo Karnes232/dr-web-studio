@@ -38,7 +38,7 @@ const QuickServicesOverview = ({
         <div className="text-center mt-12">
           <Link
             href="/our-services"
-            className="inline-flex items-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             {ctaText}
             <ArrowRight className="ml-2 w-5 h-5" />

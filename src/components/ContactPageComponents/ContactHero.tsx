@@ -13,10 +13,7 @@ const ContactHero = ({
     <div className="text-center mb-12">
       <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
         {title}
-        <span className="bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
-          {" "}
-          {highlightedText}
-        </span>
+        <span className="text-orange-600"> {highlightedText}</span>
       </h1>
       <p className="text-xl text-slate-600 max-w-2xl mx-auto">{description}</p>
     </div>

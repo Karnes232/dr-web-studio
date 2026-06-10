@@ -17,7 +17,7 @@ const ServiceFilter = ({
           onClick={() => onCategoryChange(category)}
           className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
             activeCategory === category
-              ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-lg"
+              ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg"
               : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"
           }`}
         >

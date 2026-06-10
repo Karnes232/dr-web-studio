@@ -157,7 +157,7 @@ export function PillarHero({ data, language = "es" }: PillarHeroProps) {
             >
               <Link href="/contact">
                 <motion.div
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

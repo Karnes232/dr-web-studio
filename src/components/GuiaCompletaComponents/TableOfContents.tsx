@@ -124,7 +124,7 @@ export function TableOfContents({
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-20 right-4 z-50 p-3 rounded-full bg-gradient-to-br from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/30 hover:scale-110 transition-transform"
+        className="lg:hidden fixed top-20 right-4 z-50 p-3 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 text-slate-950 shadow-lg shadow-orange-500/30 hover:scale-110 transition-transform"
         aria-label={isMobileOpen ? "Close menu" : "Open menu"}
       >
         {isMobileOpen ? (
@@ -167,7 +167,7 @@ export function TableOfContents({
               </div>
               <div className="relative h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                 <div
-                  className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-600 to-amber-600 rounded-full transition-all duration-300 ease-out"
+                  className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${scrollProgress}%` }}
                 />
               </div>
@@ -191,7 +191,7 @@ export function TableOfContents({
                     transition-all duration-200
                     ${
                       activeSection === item.id
-                        ? "bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/30"
+                        ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg shadow-orange-500/30"
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }
                   `}

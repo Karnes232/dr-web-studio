@@ -32,7 +32,7 @@ const CustomSolutionCTA = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/project-planner"
-            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
+            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-4 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
           >
             <Target className="h-5 w-5 mr-2" />
             {

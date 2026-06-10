@@ -23,7 +23,7 @@ const LocationInfo = ({
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
       <div className="flex items-center mb-6">
-        <MapPin className="h-6 w-6 text-orange-500 mr-3" />
+        <MapPin className="h-6 w-6 text-orange-600 mr-3" />
         <h3 className="text-2xl font-bold text-slate-800">{title}</h3>
       </div>
 
@@ -37,7 +37,7 @@ const LocationInfo = ({
               <MapPin className="h-4 w-4 mr-2" />
               <span className="font-medium">{localAdvantageTitle}</span>
             </div>
-            <p className="text-orange-600 text-sm">
+            <p className="text-orange-700 text-sm">
               {localAdvantageDescription}
             </p>
           </div>

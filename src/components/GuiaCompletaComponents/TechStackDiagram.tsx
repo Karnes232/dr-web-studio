@@ -128,7 +128,7 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
                   group relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300
                   ${
                     isActive
-                      ? "bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/30"
+                      ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg shadow-orange-500/30"
                       : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-700"
                   }
                 `}

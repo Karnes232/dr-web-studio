@@ -326,7 +326,7 @@ export function ROICalculator({ language = "es" }: ROICalculatorProps) {
                         <div
                           className={`inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r ${item.color} mb-3`}
                         >
-                          <Icon className="w-5 h-5 text-white" />
+                          <Icon className="w-5 h-5 text-slate-950" />
                         </div>
                         <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">
                           {item.label}
@@ -442,7 +442,7 @@ export function ROICalculator({ language = "es" }: ROICalculatorProps) {
               {/* CTA Button */}
               <Link href="/project-planner">
                 <motion.div
-                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
+                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

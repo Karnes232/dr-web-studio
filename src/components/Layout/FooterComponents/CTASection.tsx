@@ -8,12 +8,10 @@ const CTASection = () => {
   return (
     <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-lg p-6 mb-8">
       <div className="text-center">
-        <h3 className="text-xl font-bold text-white mb-2">
+        <h3 className="text-xl font-bold text-slate-950 mb-2">
           {t("footer.readyToStart")}
         </h3>
-        <p className="text-orange-100 mb-4">
-          {t("footer.getFreeConsultation")}
-        </p>
+        <p className="text-slate-800 mb-4">{t("footer.getFreeConsultation")}</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/project-planner"

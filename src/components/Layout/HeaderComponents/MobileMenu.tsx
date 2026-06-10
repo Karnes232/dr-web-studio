@@ -80,14 +80,14 @@ const MobileMenu = ({
           <Link
             href="/project-planner"
             onClick={() => setIsOpen(!isOpen)}
-            className="block w-full text-center bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md"
+            className="block w-full text-center bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-4 py-3 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-md"
           >
             {t("resources.start_project")}
           </Link>
           <Link
             href="/contact"
             onClick={() => setIsOpen(!isOpen)}
-            className="block w-full text-center bg-teal-500 text-white px-4 py-3 rounded-lg font-medium hover:bg-teal-600 transition-all duration-200 shadow-md"
+            className="block w-full text-center bg-teal-700 text-white px-4 py-3 rounded-lg font-medium hover:bg-teal-800 transition-all duration-200 shadow-md"
           >
             {t("resources.get_quote")}
           </Link>

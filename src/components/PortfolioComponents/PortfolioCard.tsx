@@ -43,7 +43,7 @@ const PortfolioCard = ({
           </div>
         </div>
         {project.featured && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-3 py-1 rounded-full text-sm font-medium">
             {t("portfolio.featuredProject")}
           </div>
         )}
@@ -52,7 +52,7 @@ const PortfolioCard = ({
       {/* Project Info */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-orange-600 font-medium">
+          <span className="text-sm text-orange-700 font-medium">
             {project.category[currentLocale as keyof typeof project.category]}
           </span>
           <span className="text-sm text-slate-500">{project.year}</span>
@@ -88,7 +88,7 @@ const PortfolioCard = ({
             </div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-orange-600">
+            <div className="text-lg font-bold text-orange-700">
               {project.outcomes[1]?.value}
             </div>
             <div className="text-xs text-slate-600 truncate">

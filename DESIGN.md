@@ -55,12 +55,12 @@ spacing:
 components:
   button-primary:
     backgroundColor: "linear-gradient(to right, {colors.brand-orange}, {colors.brand-yellow})"
-    textColor: "{colors.canvas}"
+    textColor: "{colors.ink}" # near-black ink (slate-950) — white fails WCAG AA on the yellow end
     rounded: "{rounded.lg}"
     padding: "12px 24px"
   button-primary-hover:
     backgroundColor: "linear-gradient(to right, {colors.brand-orange-deep}, {colors.brand-yellow-deep})"
-    textColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
   button-outline:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.brand-orange}"
@@ -152,9 +152,9 @@ The system is flat at rest and lifts on interaction. Surfaces sit directly on th
 
 ### Buttons
 - **Shape:** gently rounded, `rounded-lg` (8px). Pills (`rounded-full`) reserved for tags/badges.
-- **Primary:** the brand gradient `linear-gradient(to right, #f97316, #eab308)`, white text, `padding: 12px 24px`. The single highest-emphasis action on a screen.
+- **Primary:** the brand gradient `linear-gradient(to right, #f97316, #eab308)`, **near-black ink label (`text-slate-950`)**, `padding: 12px 24px`. The single highest-emphasis action on a screen. Ink (not white) because white text fails WCAG AA on the bright yellow end (~1.9:1); dark ink hits 7–10:1 and keeps the gradient vivid.
 - **Hover / Focus:** gradient deepens to `#ea580c → #ca8a04`; subtle `scale`/lift. Provide a visible `:focus-visible` ring (do not rely on scale alone). Honor `prefers-reduced-motion`.
-- **Outline / Secondary:** 2px Brand Orange border, orange text on white, inverts to orange fill + white text on hover. Teal is the alternate secondary in footer contexts.
+- **Outline / Secondary:** 2px `orange-600` border, `orange-700` text on white, inverts to orange fill + ink text on hover. Teal secondary uses `teal-700` + white (white passes on `teal-700`, not on `teal-500/600`).
 - **Label:** verb + object ("Get a quote", "Start your project"), never "OK"/"Submit". Must fit one line at desktop in both en and es.
 
 ### Cards / Containers

@@ -62,7 +62,7 @@ const HeroSection = async ({
           <div className="text-center lg:text-left space-y-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               {heading.beforeHighlight}
-              <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+              <span className="text-orange-400">
                 {" "}
                 {heading.highlightedWord}{" "}
               </span>{" "}
@@ -77,7 +77,7 @@ const HeroSection = async ({
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
                 href="/contact"
-                className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
+                className="group bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.get_free_quote")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />

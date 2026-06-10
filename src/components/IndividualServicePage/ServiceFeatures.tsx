@@ -60,7 +60,7 @@ const ServiceFeatures = ({
               {optionalFeatures.map((feature: any, index: any) => (
                 <div key={index} className="flex items-start justify-between">
                   <div className="flex items-start">
-                    <Star className="w-5 h-5 text-orange-500 mt-1 mr-3 flex-shrink-0" />
+                    <Star className="w-5 h-5 text-orange-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-slate-800">
                         {feature.name}
@@ -70,7 +70,7 @@ const ServiceFeatures = ({
                       </p>
                     </div>
                   </div>
-                  <span className="text-orange-600 font-semibold text-sm ml-4">
+                  <span className="text-orange-700 font-semibold text-sm ml-4">
                     +${feature.price}
                   </span>
                 </div>

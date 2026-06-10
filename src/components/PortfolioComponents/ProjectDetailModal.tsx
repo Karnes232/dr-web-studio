@@ -122,7 +122,7 @@ const ProjectDetailModal = ({
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href={project.liveUrl}
-                className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-4 sm:px-6 rounded-lg font-medium text-center hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 text-sm sm:text-base"
+                className="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 py-3 px-4 sm:px-6 rounded-lg font-medium text-center hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 text-sm sm:text-base"
                 target="_blank"
                 rel="noopener noreferrer"
               >

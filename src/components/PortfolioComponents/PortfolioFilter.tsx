@@ -25,7 +25,7 @@ const PortfolioFilter = ({
           onClick={() => onFilterChange(category)}
           className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
             activeFilter === category
-              ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-lg"
+              ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg"
               : "bg-white text-slate-600 border border-slate-300 hover:border-orange-400 hover:text-orange-600"
           }`}
         >

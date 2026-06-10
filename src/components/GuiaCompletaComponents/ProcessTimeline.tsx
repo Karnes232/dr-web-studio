@@ -151,14 +151,14 @@ export function ProcessTimeline({
                           whileHover={{ scale: 1.1 }}
                           className={`relative z-10 mx-auto w-40 h-40 rounded-full flex items-center justify-center ${
                             isActive
-                              ? "bg-gradient-to-br from-orange-600 to-amber-600 shadow-2xl shadow-orange-500/50"
+                              ? "bg-gradient-to-br from-orange-500 to-yellow-500 shadow-2xl shadow-orange-500/50"
                               : "bg-white dark:bg-slate-800 border-4 border-orange-200 dark:border-orange-900"
                           } transition-all duration-300`}
                         >
                           <Icon
                             className={`w-16 h-16 ${
                               isActive
-                                ? "text-white"
+                                ? "text-slate-950"
                                 : "text-orange-700 dark:text-orange-400"
                             }`}
                           />
@@ -248,8 +248,8 @@ function StepDetails({ step, labels }: { step: ProcessStep; labels: any }) {
                 transition={{ delay: idx * 0.1 }}
                 className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-900 border border-orange-200 dark:border-orange-800"
               >
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-600 to-amber-600 flex items-center justify-center">
-                  <CheckCircle2 className="w-4 h-4 text-white" />
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center">
+                  <CheckCircle2 className="w-4 h-4 text-slate-950" />
                 </div>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                   {deliverable}
@@ -306,14 +306,14 @@ function MobileStepCard({
             <div
               className={`relative z-10 flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center ${
                 isActive
-                  ? "bg-gradient-to-br from-orange-600 to-amber-600"
+                  ? "bg-gradient-to-br from-orange-500 to-yellow-500"
                   : "bg-orange-100 dark:bg-orange-900/30"
               } transition-all duration-300`}
             >
               <Icon
                 className={`w-10 h-10 ${
                   isActive
-                    ? "text-white"
+                    ? "text-slate-950"
                     : "text-orange-700 dark:text-orange-400"
                 }`}
               />

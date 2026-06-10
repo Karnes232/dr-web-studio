@@ -53,7 +53,7 @@ const PaymentConfirmationEmail = ({
                   <Heading className="text-2xl font-bold text-gray-800 m-0">
                     DR WEB
                   </Heading>
-                  <Text className="text-sm text-orange-600 m-0 -mt-1">
+                  <Text className="text-sm text-orange-700 m-0 -mt-1">
                     STUDIO
                   </Text>
                 </div>
@@ -272,21 +272,21 @@ const PaymentConfirmationEmail = ({
                   <Text className="text-gray-600 font-semibold mr-2">
                     Email:
                   </Text>
-                  <Link href={`mailto:${email}`} className="text-orange-600 ">
+                  <Link href={`mailto:${email}`} className="text-orange-700 ">
                     {email}
                   </Link>
                 </div>
 
                 {/* <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">WhatsApp:</Text>
-                <Link href="https://wa.me/18091234567" className="text-orange-600 ">
+                <Link href="https://wa.me/18091234567" className="text-orange-700 ">
                   Message us on WhatsApp
                 </Link>
               </div> */}
 
                 {/* <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">Schedule a Call:</Text>
-                <Link href="https://calendly.com/drwebstudio" className="text-orange-600 ">
+                <Link href="https://calendly.com/drwebstudio" className="text-orange-700 ">
                   Book a consultation
                 </Link>
               </div> */}
@@ -304,7 +304,7 @@ const PaymentConfirmationEmail = ({
               </Text>
               {/* <Link 
               href="https://drwebstudio.com/project-portal"
-              className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 inline-block"
+              className="bg-white text-orange-700 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 inline-block"
             >
               View Project Portal
             </Link> */}

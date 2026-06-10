@@ -335,7 +335,7 @@ function CaseStudyCard({
         <div className="p-6 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
           <button
             onClick={onToggle}
-            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 text-white font-medium text-sm hover:shadow-lg hover:shadow-orange-500/30 transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-medium text-sm hover:shadow-lg hover:shadow-orange-500/30 transition-all"
           >
             {isActive ? labels.readLess : labels.readMore}
           </button>

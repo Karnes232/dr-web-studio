@@ -7,7 +7,7 @@ interface StepHeadProps {
 export default function StepHead({ kicker, title, sub }: StepHeadProps) {
   return (
     <div className="mb-6">
-      <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-600">
+      <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-700">
         {kicker}
       </div>
       <h2

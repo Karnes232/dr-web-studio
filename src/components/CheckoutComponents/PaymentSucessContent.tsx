@@ -192,7 +192,7 @@ const PaymentSucessContent = ({
 
             {/* Success Message */}
             <div className="text-center mb-6">
-              <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-4 py-3 rounded-lg inline-block">
+              <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-4 py-3 rounded-lg inline-block">
                 <p className="font-medium">{message}</p>
               </div>
             </div>
@@ -202,7 +202,7 @@ const PaymentSucessContent = ({
               {/* Primary Action */}
               <button
                 onClick={handleContinue}
-                className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
+                className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
               >
                 <Home className="h-5 w-5 mr-2" />
                 {t("checkout.back_to_home")}
