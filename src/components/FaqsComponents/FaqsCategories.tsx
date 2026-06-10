@@ -99,8 +99,8 @@ const FaqsCategories = ({
 
                           {isQuestionActive && (
                             <div className="px-2 sm:px-4 py-3">
-                              <div className="border-l-4 border-orange-200 pl-4">
-                                <p className="text-gray-600 leading-relaxed">
+                              <div className="rounded-lg bg-slate-50 p-4">
+                                <p className="text-slate-700 leading-relaxed">
                                   {faq.answer}
                                 </p>
                               </div>

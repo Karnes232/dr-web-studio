@@ -96,8 +96,8 @@ const HeroSection = async ({
               <div className="flex items-center space-x-3">
                 <div className="flex -space-x-2">
                   <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full border-2 border-white shadow-lg"></div>
-                  <div className="w-10 h-10 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full border-2 border-white shadow-lg"></div>
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-white shadow-lg"></div>
+                  <div className="w-10 h-10 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full border-2 border-white shadow-lg"></div>
+                  <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full border-2 border-white shadow-lg"></div>
                 </div>
                 <div>
                   <div className="font-semibold text-white">

@@ -158,25 +158,25 @@ const TrustSignals = ({
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-500 mb-2">
+            <div className="text-3xl font-bold text-orange-600 mb-2">
               {happyClients}+
             </div>
             <div className="text-gray-600">{t("hero.happyClients")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-teal-500 mb-2">
+            <div className="text-3xl font-bold text-teal-700 mb-2">
               {projectsCompleted}+
             </div>
             <div className="text-gray-600">{t("home.projectsCompleted")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-yellow-500 mb-2">
+            <div className="text-3xl font-bold text-amber-600 mb-2">
               {averageRating.toFixed(1)}
             </div>
             <div className="text-gray-600">{t("home.averageRating")}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-500 mb-2">
+            <div className="text-3xl font-bold text-slate-900 mb-2">
               {supportAvailable}
             </div>
             <div className="text-gray-600">{t("home.supportAvailable")}</div>

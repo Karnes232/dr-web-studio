@@ -24,7 +24,7 @@ const PricingCard = ({
     popular:
       "bg-white border-orange-300 hover:border-orange-400 shadow-lg transform scale-105",
     premium:
-      "bg-gradient-to-br from-slate-50 to-white border-gray-300 hover:border-purple-300",
+      "bg-gradient-to-br from-slate-50 to-white border-gray-300 hover:border-teal-300",
   }
 
   const Icon = iconMap[pricingData.iconName as keyof typeof iconMap]

@@ -15,12 +15,12 @@ const QuickStats = () => {
         <div className="text-sm text-gray-600">Happy Clients</div>
       </div>
       <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-        <Globe className="h-8 w-8 text-blue-500 mx-auto mb-2" />
+        <Globe className="h-8 w-8 text-teal-600 mx-auto mb-2" />
         <div className="text-2xl font-bold text-gray-900">2</div>
         <div className="text-sm text-gray-600">Languages</div>
       </div>
       <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-        <Shield className="h-8 w-8 text-purple-500 mx-auto mb-2" />
+        <Shield className="h-8 w-8 text-amber-600 mx-auto mb-2" />
         <div className="text-2xl font-bold text-gray-900">24/7</div>
         <div className="text-sm text-gray-600">Support</div>
       </div>

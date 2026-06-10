@@ -100,8 +100,8 @@ const PaymentSucessContent = ({
         <div className="text-center mb-8">
           <div className="relative">
             {/* Animated Success Icon */}
-            <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 mb-4 shadow-lg animate-pulse">
-              <CheckCircle className="h-12 w-12 text-white animate-bounce" />
+            <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-teal-600 to-teal-700 mb-4 shadow-lg animate-pulse motion-reduce:animate-none">
+              <CheckCircle className="h-12 w-12 text-white" />
             </div>
 
             {/* Confetti-like decoration */}

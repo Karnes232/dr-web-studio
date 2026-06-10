@@ -10,8 +10,8 @@ const PricingBadge = ({
 }) => {
   const variants = {
     popular: "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950",
-    recommended: "bg-gradient-to-r from-teal-500 to-blue-500 text-white",
-    premium: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
+    recommended: "bg-teal-700 text-white",
+    premium: "bg-slate-900 text-amber-300",
   }
   return (
     <div

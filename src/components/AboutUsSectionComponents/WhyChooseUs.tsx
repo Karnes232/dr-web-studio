@@ -10,7 +10,7 @@ const WhyChooseUs = ({
   title: string
 }) => {
   return (
-    <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl p-6">
+    <div className="bg-gradient-to-br from-teal-50 to-orange-50 rounded-xl p-6">
       <h3 className="text-xl font-semibold text-slate-800 mb-4 flex items-center">
         <Star className="h-6 w-6 text-teal-600 mr-2" />
         {title}
