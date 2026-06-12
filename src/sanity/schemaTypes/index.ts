@@ -8,6 +8,7 @@ import stats from "./layout/stats"
 import heroSection from "./home/HomePageHero"
 import heroVisualElement from "./home/HeroVisualElements"
 import serviceSection from "./home/HomePageService"
+import homeFeaturedWork from "./home/HomeFeaturedWork"
 import trustSignals from "./home/TrustSignals"
 import previousClients from "./home/PreviousClients"
 import Testimonial from "./home/Testimonial"
@@ -87,6 +88,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     heroSection,
     heroVisualElement,
     serviceSection,
+    homeFeaturedWork,
     trustSignals,
     previousClients,
     Testimonial,

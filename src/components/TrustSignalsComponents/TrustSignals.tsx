@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Star, Quote } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
-import Image from "next/image"
+import ClientLogosMarquee from "./ClientLogosMarquee"
 
 const TrustSignals = ({
   title,
@@ -89,34 +89,7 @@ const TrustSignals = ({
           <h3 className="text-center text-lg font-semibold text-gray-500 mb-8">
             {previousClients.title[currentLocale]}
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-wrap lg:justify-around gap-8 items-center">
-            {previousClients.clients.map((client: any, index: number) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center group"
-              >
-                <a href={client.link} target="_blank">
-                  <div className="w-32 h-32 p-4 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
-                    {client.logo ? (
-                      <Image
-                        src={client.logo.asset.url}
-                        alt={`${client.companyName} logo`}
-                        width={96}
-                        height={96}
-                        className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-                        <span className="text-2xl font-bold">
-                          {client.companyName.charAt(0)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
+          <ClientLogosMarquee clients={previousClients.clients} />
         </div>
 
         {/* Testimonials */}
@@ -138,8 +111,8 @@ const TrustSignals = ({
                 </div>
               </div>
 
-              <p className="text-gray-700 mb-6 leading-relaxed italic">
-                "{testimonial.quote[currentLocale]}"
+              <p className="text-gray-700 mb-6 leading-relaxed italic line-clamp-3">
+                &ldquo;{testimonial.quote[currentLocale]}&rdquo;
               </p>
 
               <div className="border-t pt-4">

@@ -81,3 +81,55 @@ body {
     animation: planner-card-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 }
+
+/* Logo marquee — continuous, single-row auto-scroll (two identical copies) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.logo-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track,
+.logo-marquee:focus-within .logo-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee {
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .logo-marquee-track {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: none;
+  }
+  .logo-marquee-dup {
+    display: none;
+  }
+}

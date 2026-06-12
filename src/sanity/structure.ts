@@ -56,6 +56,13 @@ export const structure: StructureResolver = S =>
                     .filter('_type == "serviceSection"'),
                 ),
               S.listItem()
+                .title("Featured Work")
+                .child(
+                  S.editor()
+                    .schemaType("homeFeaturedWork")
+                    .documentId("homeFeaturedWork"),
+                ),
+              S.listItem()
                 .title("Trust Signals")
                 .child(
                   S.documentList()

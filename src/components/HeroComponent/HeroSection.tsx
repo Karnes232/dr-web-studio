@@ -6,18 +6,19 @@ import VisualElement from "./VisualElementLazy"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import { urlFor } from "@/sanity/lib/image"
+import type { Project } from "@/sanity/queries/portfolio/project"
 
 const HeroSection = async ({
   heading,
   subheading,
   backgroundImage,
-  visualElements,
+  projects,
   lang,
 }: {
   heading: any
   subheading: string
   backgroundImage: any
-  visualElements: any[]
+  projects: Project[]
   lang: string
 }) => {
   const t = await getTranslations()
@@ -84,10 +85,10 @@ const HeroSection = async ({
               </Link>
 
               <Link
-                href="/project-planner"
+                href="/portfolio"
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
-                {t("resources.start_project")}
+                {t("resources.see_our_work")}
               </Link>
             </div>
 
@@ -127,8 +128,8 @@ const HeroSection = async ({
             </div>
           </div>
 
-          {/* Visual Element */}
-          <VisualElement visualElements={visualElements} currentLocale={lang} />
+          {/* Visual Element — real project screenshots */}
+          <VisualElement projects={projects} currentLocale={lang} />
         </div>
       </div>
     </section>

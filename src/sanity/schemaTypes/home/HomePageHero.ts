@@ -204,13 +204,22 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "heroProjects",
+      title: "Hero Projects",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "project" }] }],
+      validation: rule => rule.min(1).max(3),
+      description:
+        "Choose 1-3 projects to feature in the hero slider. Their screenshots are shown beside the headline.",
+    }),
+    defineField({
       name: "visualElements",
-      title: "Visual Elements",
+      title: "Visual Elements (deprecated)",
       type: "array",
       of: [{ type: "reference", to: [{ type: "heroVisualElement" }] }],
       validation: rule => rule.min(1).max(3),
       description:
-        "Add between 1 and 3 visual elements to display in the slider",
+        "Deprecated — the hero now shows real project screenshots via Hero Projects above.",
     }),
     defineField({
       name: "textAlignment",

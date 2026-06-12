@@ -1,74 +1,85 @@
 "use client"
 import React from "react"
+import Image from "next/image"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination, Autoplay } from "swiper/modules"
+import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
-import SanitySvg from "../SanitySvg/SanitySvg"
-import { Code, Palette, Zap } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import { Link } from "@/i18n/navigation"
+import { useLocale } from "@/i18n/useLocale"
+import type { Project } from "@/sanity/queries/portfolio/project"
 
 const VisualElement = ({
-  visualElements,
+  projects,
   currentLocale,
 }: {
-  visualElements: any
+  projects: Project[]
   currentLocale: string
 }) => {
-  const icons = {
-    Code,
-    Palette,
-    Zap,
-  }
+  const { t } = useLocale()
+  const locale = currentLocale as "en" | "es"
+
+  if (!projects?.length) return null
 
   return (
     <div className="relative">
       <Swiper
-        modules={[Pagination, Autoplay]}
-        spaceBetween={30}
+        modules={[Pagination]}
+        spaceBetween={24}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        //   autoplay={{ delay: 3000, disableOnInteraction: false }}
-        className="w-full"
+        className="w-full xl:px-4"
       >
-        {visualElements?.map((element: any, index: number) => {
-          const Icon = icons[element.icon as keyof typeof icons]
-          return (
-            <SwiperSlide key={element._id}>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl transform hover:scale-105 transition-transform duration-300 xl:m-4">
-                <div
-                  className={`bg-gradient-to-br from-${element.gradientFrom} to-${element.gradientTo} rounded-xl p-8 text-center shadow-xl h-80 md:h-64 flex flex-col justify-between`}
-                >
-                  <div className="w-16 h-16 mx-auto mb-6 text-white">
-                    <Icon className="w-full h-full text-white" />
+        {projects.map((project, index) => (
+          <SwiperSlide key={project._id}>
+            <Link
+              href="/portfolio"
+              className="group block rounded-2xl border border-white/15 bg-white/10 p-2.5 shadow-2xl backdrop-blur-lg transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            >
+              {/* Real project screenshot */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-900">
+                <Image
+                  src={project.image.asset.url}
+                  alt={project.title[locale]}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 1024px) 90vw, 40vw"
+                  className="object-cover object-top"
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="px-2 pb-1 pt-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium uppercase tracking-wide text-orange-300">
+                      {project.category[locale]}
+                    </p>
+                    <h3 className="mt-1 truncate text-lg font-semibold text-white">
+                      {project.title[locale]}
+                    </h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">
-                    {element.heading[currentLocale]}
-                  </h3>
-                  <p className="text-orange-100 text-lg">
-                    {element.description[currentLocale]}
-                  </p>
-                  <div className="mt-4 flex  justify-center space-x-2">
-                    <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-white/70 rounded-full animate-pulse delay-75"></div>
-                    <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse delay-150"></div>
-                  </div>
+                  <span className="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-white/90 transition-colors group-hover:text-orange-300">
+                    {t("resources.view_project")}
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
                 </div>
-                <div className="h-20">
-                  <div className="mt-6 flex flex-wrap justify-center gap-3">
-                    {element.badges.map((badge: any, badgeIndex: number) => (
-                      <span
-                        key={badgeIndex}
-                        className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white border border-white/20"
-                      >
-                        {badge[currentLocale]}
-                      </span>
-                    ))}
-                  </div>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 3).map(tech => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/90"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </SwiperSlide>
-          )
-        })}
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

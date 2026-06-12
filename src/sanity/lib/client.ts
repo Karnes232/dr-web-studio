@@ -6,5 +6,5 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: true, // CDN read; pages use short ISR (revalidate) so Studio edits still appear within ~1 min
 })

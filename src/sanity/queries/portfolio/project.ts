@@ -42,7 +42,8 @@ export interface Project {
   year: string
 }
 
-const projectsQuery = `*[_type == "project"] | order(year desc) {
+// Shared projection so hero / featured-work / portfolio queries return the same shape.
+export const projectProjection = `{
   _id,
   title,
   client,
@@ -65,6 +66,8 @@ const projectsQuery = `*[_type == "project"] | order(year desc) {
   featured,
   year
 }`
+
+const projectsQuery = `*[_type == "project"] | order(year desc) ${projectProjection}`
 
 export const getProjects = cache(async (): Promise<Project[]> => {
   return client.fetch(projectsQuery)

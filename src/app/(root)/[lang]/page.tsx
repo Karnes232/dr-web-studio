@@ -2,11 +2,17 @@ import { Suspense } from "react"
 import { client } from "@/sanity/lib/client"
 import HeroSection from "@/components/HeroComponent/HeroSection"
 import QuickServicesOverview from "@/components/ServicesOverview/QuickServicesOverview"
+import HomeFeaturedWork from "@/components/HomeFeaturedWorkComponents/HomeFeaturedWork"
 import TrustSignals from "@/components/TrustSignalsComponents/TrustSignals"
 import { Metadata } from "next"
 import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { getHomePageService } from "@/sanity/queries/home/homePageService"
 import { getServices } from "@/sanity/queries/services/services"
+import {
+  getProjects,
+  projectProjection,
+} from "@/sanity/queries/portfolio/project"
+import { getHomeFeaturedWork } from "@/sanity/queries/home/homeFeaturedWork"
 import { getTrustSignals } from "@/sanity/queries/home/trustSignals"
 import { getPreviousClients } from "@/sanity/queries/home/previousClients"
 import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
@@ -18,17 +24,7 @@ async function getContent() {
   const query = `*[_type == "heroSection"][0] {
 heading,
 subheading,
-visualElements[]-> {
-  _id,
-  title,
-  icon,
-  gradientFrom,
-  gradientTo,
-  heading,
-  description,
-  badges,
-  order
-},
+heroProjects[]-> ${projectProjection},
 backgroundImage {
   asset->{
     _id,
@@ -113,6 +109,8 @@ export default async function Home({ params }: PageProps) {
     trustSignals,
     previousClients,
     testimonials,
+    projects,
+    featuredWork,
   ] = await Promise.all([
     getSeoSchema("home"),
     getContent(),
@@ -121,7 +119,23 @@ export default async function Home({ params }: PageProps) {
     getTrustSignals(),
     getPreviousClients(),
     getAllTestimonials(),
+    getProjects(),
+    getHomeFeaturedWork(),
   ])
+
+  // Fallback when an editor hasn't picked projects yet: featured-first, then latest.
+  const latestProjects = [
+    ...projects.filter(p => p.featured),
+    ...projects.filter(p => !p.featured),
+  ].slice(0, 3)
+
+  // Editor-selected projects (Sanity) win; otherwise fall back to latest.
+  const heroProjects = pageData?.heroProjects?.length
+    ? pageData.heroProjects
+    : latestProjects
+  const recentWorkProjects = featuredWork?.projects?.length
+    ? featuredWork.projects
+    : latestProjects
 
   return (
     <>
@@ -131,7 +145,7 @@ export default async function Home({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <main className="bg-gradient-to-br from-slate-50 to-orange-50">
+      <main className="bg-white">
         <HeroSection
           heading={pageData.heading ? pageData.heading[lang] : pageData.heading}
           subheading={
@@ -140,7 +154,7 @@ export default async function Home({ params }: PageProps) {
               : pageData.subheading
           }
           backgroundImage={pageData.backgroundImage}
-          visualElements={pageData.visualElements}
+          projects={heroProjects}
           lang={lang}
         />
         <QuickServicesOverview
@@ -150,6 +164,14 @@ export default async function Home({ params }: PageProps) {
           services={services}
           lang={lang}
         />
+        {recentWorkProjects.length > 0 && (
+          <HomeFeaturedWork
+            projects={recentWorkProjects}
+            title={featuredWork?.title?.[lang]}
+            subtitle={featuredWork?.subtitle?.[lang]}
+            lang={lang}
+          />
+        )}
         <Suspense fallback={null}>
           <TrustSignals
             title={trustSignals.title[lang]}
