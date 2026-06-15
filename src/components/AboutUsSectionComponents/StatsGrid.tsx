@@ -82,10 +82,12 @@ const StatsGrid = ({
             <div className="bg-gradient-to-r from-orange-500 to-yellow-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
               <Icon className="h-6 w-6 text-white" />
             </div>
-            <div className="text-2xl font-bold text-slate-800">
+            <div className="text-2xl font-bold text-slate-800 dark:text-slate-100">
               {stat.number}
             </div>
-            <div className="text-sm text-slate-600">{stat.label}</div>
+            <div className="text-sm text-slate-600 dark:text-slate-400">
+              {stat.label}
+            </div>
           </div>
         )
       })}

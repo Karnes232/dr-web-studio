@@ -40,12 +40,12 @@ const FaqsCategories = ({
           return (
             <div
               key={category.id}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+              className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden"
             >
               {/* Category Header */}
               <button
                 onClick={() => toggleAccordion(category.id)}
-                className="w-full px-4 sm:px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                className="w-full px-4 sm:px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
               >
                 <div className="flex items-center flex-1 min-w-0">
                   <div
@@ -54,19 +54,19 @@ const FaqsCategories = ({
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 truncate">
+                    <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white truncate">
                       {category.title}
                     </h2>
-                    <span className="text-xs sm:text-sm text-gray-500 block sm:inline sm:ml-2">
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-slate-400 block sm:inline sm:ml-2">
                       ({category.questions.length} questions)
                     </span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 ml-2">
                   {isActive ? (
-                    <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
+                    <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500 dark:text-slate-400" />
                   ) : (
-                    <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
+                    <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500 dark:text-slate-400" />
                   )}
                 </div>
               </button>
@@ -81,26 +81,26 @@ const FaqsCategories = ({
                       return (
                         <div
                           key={faq.id}
-                          className="border border-gray-200 rounded-lg overflow-hidden"
+                          className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden"
                         >
                           <button
                             onClick={() => toggleQuestion(faq.id)}
-                            className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                            className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
                           >
-                            <h3 className="font-medium text-gray-900 pr-4">
+                            <h3 className="font-medium text-gray-900 dark:text-white pr-4">
                               {faq.question}
                             </h3>
                             {isQuestionActive ? (
-                              <ChevronUp className="h-4 w-4 text-gray-500 flex-shrink-0" />
+                              <ChevronUp className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
                             ) : (
-                              <ChevronDown className="h-4 w-4 text-gray-500 flex-shrink-0" />
+                              <ChevronDown className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
                             )}
                           </button>
 
                           {isQuestionActive && (
                             <div className="px-2 sm:px-4 py-3">
-                              <div className="rounded-lg bg-slate-50 p-4">
-                                <p className="text-slate-700 leading-relaxed">
+                              <div className="rounded-lg bg-slate-50 dark:bg-slate-900 p-4">
+                                <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
                                   {faq.answer}
                                 </p>
                               </div>
@@ -119,10 +119,10 @@ const FaqsCategories = ({
       {filteredFAQs.length === 0 && (
         <div className="text-center py-12">
           <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
             No results found
           </h3>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-slate-400">
             Try adjusting your search terms or browse all categories above.
           </p>
         </div>

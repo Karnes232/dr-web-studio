@@ -32,7 +32,7 @@ const components = {
               className="w-full rounded-lg"
             /> */}
           {value.caption && (
-            <figcaption className="mt-2 text-center text-sm text-gray-600">
+            <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-slate-400">
               {value.caption}
             </figcaption>
           )}
@@ -46,7 +46,7 @@ const components = {
         <a
           href={value.href}
           rel="noopener noreferrer"
-          className="text-teal-700 underline"
+          className="text-teal-700 dark:text-teal-400 underline"
         >
           {children}
         </a>

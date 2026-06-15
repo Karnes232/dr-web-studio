@@ -17,7 +17,7 @@ const IndividualServiceContent = ({
   const { currentLocale, getLocalizedPath } = useLocale()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-900">
       <ServiceHero
         title={service.title[currentLocale as keyof typeof service.title]}
         categories={service.categories.map(

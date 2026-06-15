@@ -54,7 +54,7 @@ export function LandingServicesGrid({
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section className="bg-slate-50 py-24 px-6">
+    <section className="bg-slate-50 dark:bg-slate-950 py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -64,13 +64,13 @@ export function LandingServicesGrid({
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
           >
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
               {sectionSubtitle}
             </p>
           )}
@@ -85,15 +85,15 @@ export function LandingServicesGrid({
                 initial={{ opacity: 0, y: 32 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group flex flex-col h-full bg-white rounded-2xl p-8 border border-slate-100 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col h-full bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-100 dark:border-slate-700 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-12 h-12 rounded-xl bg-amber-50 group-hover:bg-amber-100 flex items-center justify-center mb-6 transition-colors duration-200">
+                <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-500/10 group-hover:bg-amber-100 dark:group-hover:bg-amber-500/20 flex items-center justify-center mb-6 transition-colors duration-200">
                   <Icon size={24} className="text-amber-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="flex-1 text-slate-500 text-sm leading-relaxed">
+                <p className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                   {item.description}
                 </p>
                 {item.linkSlug && (

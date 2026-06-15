@@ -22,7 +22,7 @@ const PricingCTA = ({
       "bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-slate-950",
     secondary: "bg-teal-700 hover:bg-teal-800 text-white",
     outline:
-      "border-2 border-orange-600 text-orange-700 hover:bg-orange-500 hover:text-slate-950",
+      "border-2 border-orange-600 text-orange-700 dark:text-orange-400 hover:bg-orange-500 hover:text-slate-950",
   }
   return (
     <Link

@@ -44,7 +44,7 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
   const { t, getBlogHref } = useLocale()
 
   return (
-    <div className="relative bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+    <div className="relative bg-white dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden mb-12">
       <div className="md:flex">
         <div className="md:w-1/2">
           {post.imageUrl ? (
@@ -58,33 +58,33 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
             />
           ) : (
             <div
-              className="h-64 md:min-h-full w-full bg-slate-200 md:h-full"
+              className="h-64 md:min-h-full w-full bg-slate-200 dark:bg-slate-700 md:h-full"
               aria-hidden
             />
           )}
         </div>
         <div className="md:w-1/2 p-8">
           <div className="flex items-center mb-4">
-            <span className="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">
+            <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-medium px-3 py-1 rounded-full">
               Featured
             </span>
             {post.categories[0] && (
-              <span className="bg-slate-100 text-slate-700 text-xs font-medium px-3 py-1 rounded-full ml-2">
+              <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium px-3 py-1 rounded-full ml-2">
                 {post.categories[0].title[lang]}
               </span>
             )}
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4">
             {post.title[lang]}
           </h2>
 
-          <p className="text-slate-600 mb-6 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
             {post.description[lang]}
           </p>
 
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center text-sm text-slate-500">
+            <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
               <Calendar className="h-4 w-4 mr-2" />
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -101,7 +101,7 @@ const FeaturedPost = ({ post, lang }: FeaturedPostProps) => {
               post.tags[lang]?.map((tag: string, index: number) => (
                 <span
                   key={index}
-                  className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded"
+                  className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded"
                 >
                   {tag}
                 </span>

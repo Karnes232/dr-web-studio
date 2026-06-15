@@ -145,7 +145,7 @@ export default async function Home({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <main className="bg-white">
+      <main className="bg-white dark:bg-slate-900">
         <HeroSection
           heading={pageData.heading ? pageData.heading[lang] : pageData.heading}
           subheading={

@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-orange-50 animate-pulse">
+    <div className="bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950 animate-pulse">
       {/* Hero skeleton */}
       <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 px-4">
         <div className="h-10 w-2/3 max-w-lg rounded-xl bg-slate-200" />

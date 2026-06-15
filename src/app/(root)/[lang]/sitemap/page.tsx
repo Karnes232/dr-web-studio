@@ -103,7 +103,7 @@ function SitemapSection({
 }) {
   return (
     <div>
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4 pb-2 border-b border-slate-100">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-4 pb-2 border-b border-slate-100 dark:border-slate-700">
         {title}
       </h2>
       <ul className="space-y-2">{children}</ul>
@@ -116,7 +116,7 @@ function SitemapLink({ href, label }: { href: Href; label: string }) {
     <li>
       <Link
         href={href}
-        className="group flex items-center gap-2 text-slate-600 hover:text-amber-700 transition-colors duration-150 text-sm"
+        className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-amber-700 transition-colors duration-150 text-sm"
       >
         <span className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-amber-400 transition-colors flex-shrink-0" />
         {label}
@@ -139,7 +139,7 @@ export default async function SitemapPage({ params }: PageProps) {
   ])
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-slate-900">
       {/* Header */}
       <div className="bg-slate-950 py-20 px-6">
         <div className="max-w-5xl mx-auto">

@@ -13,7 +13,7 @@ const PortfolioCard = ({
 }) => {
   const { currentLocale, t } = useLocale()
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
       {/* Project Image */}
       <div className="relative group">
         <Image
@@ -52,16 +52,18 @@ const PortfolioCard = ({
       {/* Project Info */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-orange-700 font-medium">
+          <span className="text-sm text-orange-700 dark:text-orange-400 font-medium">
             {project.category[currentLocale as keyof typeof project.category]}
           </span>
-          <span className="text-sm text-slate-500">{project.year}</span>
+          <span className="text-sm text-slate-500 dark:text-slate-400">
+            {project.year}
+          </span>
         </div>
 
-        <h3 className="text-xl font-bold text-slate-800 mb-2">
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
           {project.title[currentLocale as keyof typeof project.title]}
         </h3>
-        <p className="text-slate-600 mb-4">
+        <p className="text-slate-600 dark:text-slate-400 mb-4">
           {project.client[currentLocale as keyof typeof project.client]}
         </p>
 
@@ -71,7 +73,7 @@ const PortfolioCard = ({
             <TechBadge key={index} tech={tech} />
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-sm text-slate-500">
+            <span className="text-sm text-slate-500 dark:text-slate-400">
               +{project.technologies.length - 3} more
             </span>
           )}
@@ -80,18 +82,18 @@ const PortfolioCard = ({
         {/* Quick Stats */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="text-center">
-            <div className="text-lg font-bold text-teal-600">
+            <div className="text-lg font-bold text-teal-600 dark:text-teal-400">
               {project.outcomes[0]?.value}
             </div>
-            <div className="text-xs text-slate-600 truncate">
+            <div className="text-xs text-slate-600 dark:text-slate-400 truncate">
               {project.outcomes[0]?.metric[currentLocale as "en" | "es"]}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-orange-700">
+            <div className="text-lg font-bold text-orange-700 dark:text-orange-400">
               {project.outcomes[1]?.value}
             </div>
-            <div className="text-xs text-slate-600 truncate">
+            <div className="text-xs text-slate-600 dark:text-slate-400 truncate">
               {project.outcomes[1]?.metric[currentLocale as "en" | "es"]}
             </div>
           </div>

@@ -85,7 +85,7 @@ export function CaseStudyCards({ data, language = "es" }: CaseStudyCardsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
           </motion.h2>
@@ -175,7 +175,7 @@ function CaseStudyCard({
           {/* Client Logo/Icon */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300">
                 <Image
                   src={caseStudy.logo}
                   alt={caseStudy.client}

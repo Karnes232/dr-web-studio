@@ -15,12 +15,12 @@ function LogoMark({ client }: { client: Client }) {
         alt={`${client.companyName} logo`}
         width={150}
         height={56}
-        className="h-12 w-auto max-w-[150px] object-contain grayscale opacity-80 transition duration-300 hover:opacity-100 hover:grayscale-0 md:h-14"
+        className="h-12 w-auto max-w-[150px] object-contain grayscale opacity-80 transition duration-300 hover:opacity-100 hover:grayscale-0 dark:grayscale-0 dark:opacity-100 md:h-14"
       />
     )
   }
   return (
-    <div className="flex h-12 w-32 items-center justify-center rounded-lg bg-slate-100 text-slate-500 md:h-14">
+    <div className="flex h-12 w-32 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 md:h-14">
       <span className="text-2xl font-bold">{client.companyName.charAt(0)}</span>
     </div>
   )

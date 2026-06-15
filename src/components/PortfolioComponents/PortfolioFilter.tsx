@@ -26,7 +26,7 @@ const PortfolioFilter = ({
           className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
             activeFilter === category
               ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg"
-              : "bg-white text-slate-600 border border-slate-300 hover:border-orange-400 hover:text-orange-600"
+              : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-slate-700 hover:border-orange-400 hover:text-orange-600 dark:hover:text-orange-400"
           }`}
         >
           {category}

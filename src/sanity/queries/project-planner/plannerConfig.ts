@@ -87,6 +87,8 @@ export interface PlannerConfig {
 
 export const plannerConfigQuery = `*[_id == "plannerConfig"][0]`
 
-export const getPlannerConfig = cache(async (): Promise<PlannerConfig | null> => {
-  return client.fetch(plannerConfigQuery)
-})
+export const getPlannerConfig = cache(
+  async (): Promise<PlannerConfig | null> => {
+    return client.fetch(plannerConfigQuery)
+  },
+)

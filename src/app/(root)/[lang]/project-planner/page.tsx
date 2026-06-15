@@ -19,16 +19,23 @@ interface PageProps {
 
 export default async function ProjectPlannerPage({ params }: PageProps) {
   const { lang } = await params
-  const [seoData, config, services, addons, designStyles, sizeTiers, companyEmail] =
-    await Promise.all([
-      getSeoSchema("project-planner"),
-      getPlannerConfig(),
-      getPlannerServices(),
-      getPlannerAddons(),
-      getPlannerDesignStyles(),
-      getPlannerSizeTiers(),
-      getContactEmail(),
-    ])
+  const [
+    seoData,
+    config,
+    services,
+    addons,
+    designStyles,
+    sizeTiers,
+    companyEmail,
+  ] = await Promise.all([
+    getSeoSchema("project-planner"),
+    getPlannerConfig(),
+    getPlannerServices(),
+    getPlannerAddons(),
+    getPlannerDesignStyles(),
+    getPlannerSizeTiers(),
+    getContactEmail(),
+  ])
 
   const contactEmail =
     config?.contactEmail?.trim() ||
@@ -43,7 +50,10 @@ export default async function ProjectPlannerPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
         />
       )}
-      <section id="project-planner" className="bg-slate-50 py-10 lg:py-16">
+      <section
+        id="project-planner"
+        className="bg-slate-50 dark:bg-slate-950 py-10 lg:py-16"
+      >
         {config ? (
           <ProjectPlanner
             data={{ config, services, addons, designStyles, sizeTiers }}
@@ -51,7 +61,7 @@ export default async function ProjectPlannerPage({ params }: PageProps) {
             contactEmail={contactEmail}
           />
         ) : (
-          <div className="mx-auto max-w-xl px-6 py-20 text-center text-slate-500">
+          <div className="mx-auto max-w-xl px-6 py-20 text-center text-slate-500 dark:text-slate-400">
             The project planner is being set up. Please check back shortly.
           </div>
         )}

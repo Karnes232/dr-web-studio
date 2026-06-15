@@ -7,6 +7,7 @@ import MobileMenu from "./MobileMenu"
 import CTAButtons from "./CTAButtons"
 import DesktopNavigation from "./DesktopNavigation"
 import LanguageSwitcher from "@/components/LanguageSwitcher" // Adjust path as needed
+import ThemeToggle from "@/components/theme/ThemeToggle"
 import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const Navbar = ({
@@ -25,7 +26,7 @@ const Navbar = ({
 
   return (
     <nav
-      className={`bg-white shadow-lg ${isOpen ? "sticky" : "md:sticky"} top-0 z-50`}
+      className={`bg-white dark:bg-slate-900 shadow-lg ${isOpen ? "sticky" : "md:sticky"} top-0 z-50`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-28 md:h-36">
@@ -37,18 +38,17 @@ const Navbar = ({
             serviceLinks={serviceLinks}
           />
 
-          {/* Desktop: Language Switcher + CTA Buttons */}
+          {/* Desktop: Theme Toggle + Language Switcher + CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
+            <ThemeToggle color="slate-700" />
             <LanguageSwitcher color="slate-700" />
-            <div className="w-px h-6 bg-slate-300"></div>
+            <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
             <CTAButtons />
           </div>
 
-          {/* Mobile: Language Switcher + Menu Toggle */}
+          {/* Mobile: Theme Toggle + Menu Toggle */}
           <div className="lg:hidden flex items-center space-x-3">
-            {/* <div className="sm:block hidden">
-              <LanguageSwitcher />
-            </div> */}
+            <ThemeToggle color="slate-700" />
             <MobileMenuToggle
               isOpen={isOpen}
               toggleMobileMenu={toggleMobileMenu}

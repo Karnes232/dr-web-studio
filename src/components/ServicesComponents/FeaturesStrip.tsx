@@ -20,7 +20,7 @@ const FeaturesStrip = ({
     Zap,
   }
   return (
-    <div className="mt-16 bg-white rounded-xl shadow-lg p-8">
+    <div className="mt-16 bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         {features.map((feature, index) => {
           const Icon = icons[feature.iconName as keyof typeof icons]

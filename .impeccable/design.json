@@ -4,28 +4,148 @@
   "title": "Design System: DR Web Studio",
   "extensions": {
     "colorMeta": {
-      "brand-orange": { "role": "primary", "displayName": "Brand Orange", "canonical": "#f97316", "tonalRamp": ["#7c2d12", "#9a3412", "#c2410c", "#ea580c", "#f97316", "#fdba74", "#fed7aa", "#ffedd5"] },
-      "brand-yellow": { "role": "primary", "displayName": "Brand Yellow", "canonical": "#eab308", "tonalRamp": ["#713f12", "#854d0e", "#a16207", "#ca8a04", "#eab308", "#facc15", "#fde047", "#fef9c3"] },
-      "signal-teal": { "role": "secondary", "displayName": "Signal Teal", "canonical": "#14b8a6", "tonalRamp": ["#134e4a", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4", "#ccfbf1"] },
-      "slate-muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#64748b", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1", "#f1f5f9"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#171717", "tonalRamp": ["#0a0a0a", "#171717", "#404040", "#737373", "#a3a3a3", "#d4d4d4", "#e5e5e5", "#fafafa"] },
-      "confirm": { "role": "status", "displayName": "Confirm Green", "canonical": "#16a34a", "tonalRamp": ["#14532d", "#166534", "#15803d", "#16a34a", "#22c55e", "#4ade80", "#86efac", "#dcfce7"] }
+      "brand-orange": {
+        "role": "primary",
+        "displayName": "Brand Orange",
+        "canonical": "#f97316",
+        "tonalRamp": [
+          "#7c2d12",
+          "#9a3412",
+          "#c2410c",
+          "#ea580c",
+          "#f97316",
+          "#fdba74",
+          "#fed7aa",
+          "#ffedd5"
+        ]
+      },
+      "brand-yellow": {
+        "role": "primary",
+        "displayName": "Brand Yellow",
+        "canonical": "#eab308",
+        "tonalRamp": [
+          "#713f12",
+          "#854d0e",
+          "#a16207",
+          "#ca8a04",
+          "#eab308",
+          "#facc15",
+          "#fde047",
+          "#fef9c3"
+        ]
+      },
+      "signal-teal": {
+        "role": "secondary",
+        "displayName": "Signal Teal",
+        "canonical": "#14b8a6",
+        "tonalRamp": [
+          "#134e4a",
+          "#115e59",
+          "#0f766e",
+          "#0d9488",
+          "#14b8a6",
+          "#2dd4bf",
+          "#5eead4",
+          "#ccfbf1"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "#64748b",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#171717",
+        "tonalRamp": [
+          "#0a0a0a",
+          "#171717",
+          "#404040",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#fafafa"
+        ]
+      },
+      "confirm": {
+        "role": "status",
+        "displayName": "Confirm Green",
+        "canonical": "#16a34a",
+        "tonalRamp": [
+          "#14532d",
+          "#166534",
+          "#15803d",
+          "#16a34a",
+          "#22c55e",
+          "#4ade80",
+          "#86efac",
+          "#dcfce7"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Crimson Pro serif. Page and section headlines only, never UI labels or body." },
-      "title": { "displayName": "Title", "purpose": "Inter 600. Card titles and sub-section headings." },
-      "body": { "displayName": "Body", "purpose": "Inter 400. Paragraphs, capped at 65-75ch." },
-      "label": { "displayName": "Label", "purpose": "Inter 500, slight tracking. Small metadata and badges; uppercase only for <=4-word labels." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Crimson Pro serif. Page and section headlines only, never UI labels or body."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Inter 600. Card titles and sub-section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Inter 400. Paragraphs, capped at 65-75ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Inter 500, slight tracking. Small metadata and badges; uppercase only for <=4-word labels."
+      }
     },
     "shadows": [
-      { "name": "resting-card", "value": "0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04)", "purpose": "Default subtle card shadow at rest. Tinted toward slate, never pure black." },
-      { "name": "lift-hover", "value": "0 10px 25px rgba(15,23,42,.10)", "purpose": "Interactive card lift on hover, paired with translateY(-2px)." },
-      { "name": "overlay", "value": "0 20px 40px rgba(15,23,42,.16)", "purpose": "Modals and dialogs only." }
+      {
+        "name": "resting-card",
+        "value": "0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04)",
+        "purpose": "Default subtle card shadow at rest. Tinted toward slate, never pure black."
+      },
+      {
+        "name": "lift-hover",
+        "value": "0 10px 25px rgba(15,23,42,.10)",
+        "purpose": "Interactive card lift on hover, paired with translateY(-2px)."
+      },
+      {
+        "name": "overlay",
+        "value": "0 20px 40px rgba(15,23,42,.16)",
+        "purpose": "Modals and dialogs only."
+      }
     ],
     "motion": [
-      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Default easing for state transitions and reveals. No bounce, no elastic." },
-      { "name": "duration-fast", "value": "200ms", "purpose": "Button and hover feedback." },
-      { "name": "duration-reveal", "value": "600ms", "purpose": "Scroll-in reveals (Motion useInView, opacity + y:24)." }
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+        "purpose": "Default easing for state transitions and reveals. No bounce, no elastic."
+      },
+      {
+        "name": "duration-fast",
+        "value": "200ms",
+        "purpose": "Button and hover feedback."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "600ms",
+        "purpose": "Scroll-in reveals (Motion useInView, opacity + y:24)."
+      }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
@@ -100,11 +220,31 @@
       "Bilingual-safe: layouts, headlines, and labels must hold at Spanish copy lengths."
     ],
     "rules": [
-      { "name": "The Earned Accent Rule", "body": "The orange to yellow gradient is the brand's loudest move, so it is rationed: primary action plus one or two genuine moments per screen, never the default treatment for every card, icon, and heading.", "section": "colors" },
-      { "name": "The Warmth-From-Type Rule", "body": "Warmth comes from the accent and the serif display, never from tinting the canvas. Background stays true white (#ffffff); cream/sand/beige backgrounds are prohibited.", "section": "colors" },
-      { "name": "The Hierarchy-By-Scale Rule", "body": "Establish hierarchy with size and weight contrast (>=1.25 ratio between steps), not with color or all-caps.", "section": "typography" },
-      { "name": "The No-Eyebrow-Reflex Rule", "body": "A tiny uppercase tracked label above every section is the category tell this brand rejects. A kicker is a rare deliberate device, never the default scaffold.", "section": "typography" },
-      { "name": "The Flat-By-Default Rule", "body": "Cards are flat at rest; shadow appears as hover/focus feedback then settles back. Never pair a 1px border with a >=16px soft drop shadow on the same element.", "section": "elevation" }
+      {
+        "name": "The Earned Accent Rule",
+        "body": "The orange to yellow gradient is the brand's loudest move, so it is rationed: primary action plus one or two genuine moments per screen, never the default treatment for every card, icon, and heading.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warmth-From-Type Rule",
+        "body": "Warmth comes from the accent and the serif display, never from tinting the canvas. Background stays true white (#ffffff); cream/sand/beige backgrounds are prohibited.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hierarchy-By-Scale Rule",
+        "body": "Establish hierarchy with size and weight contrast (>=1.25 ratio between steps), not with color or all-caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow-Reflex Rule",
+        "body": "A tiny uppercase tracked label above every section is the category tell this brand rejects. A kicker is a rare deliberate device, never the default scaffold.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Cards are flat at rest; shadow appears as hover/focus feedback then settles back. Never pair a 1px border with a >=16px soft drop shadow on the same element.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do keep the canvas a true white (#ffffff) and carry warmth through the accent and Crimson Pro display type.",

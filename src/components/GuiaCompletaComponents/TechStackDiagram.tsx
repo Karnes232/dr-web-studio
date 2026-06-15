@@ -92,7 +92,7 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
           </motion.h2>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import Botpoison from "@botpoison/browser"
 import {
   ArrowLeft,
@@ -57,9 +57,19 @@ export default function ProjectPlanner({
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [s, setS] = useState<PlannerState>(initialPlannerState)
 
-  const set = (patch: Partial<PlannerState>) => setS(prev => ({ ...prev, ...patch }))
+  // Root of the planner; we scroll back to it on every step change so the user
+  // isn't left at the bottom of a long step after advancing.
+  const topRef = useRef<HTMLDivElement>(null)
+  const scrollToTop = () =>
+    topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 
-  const est = useMemo(() => computeEstimate(s, pricing, locale), [s, pricing, locale])
+  const set = (patch: Partial<PlannerState>) =>
+    setS(prev => ({ ...prev, ...patch }))
+
+  const est = useMemo(
+    () => computeEstimate(s, pricing, locale),
+    [s, pricing, locale],
+  )
   const service = data.services.find(x => x.key === s.service)
   const hasService = !!service
   const total = useCountUp(est.total)
@@ -115,10 +125,17 @@ export default function ProjectPlanner({
       return
     }
     setStepIndex(idx + 1)
+    scrollToTop()
   }
-  const back = () => setStepIndex(Math.max(0, idx - 1))
+  const back = () => {
+    setStepIndex(Math.max(0, idx - 1))
+    scrollToTop()
+  }
   const goto = (i: number) => {
-    if (i < idx) setStepIndex(i)
+    if (i < idx) {
+      setStepIndex(i)
+      scrollToTop()
+    }
   }
 
   const restart = () => {
@@ -142,7 +159,8 @@ export default function ProjectPlanner({
       const addonTitles = s.addons
         .map(k => serviceAddons.find(a => a.key === k)?.title.en)
         .filter((x): x is string => !!x)
-      const designStyle = data.designStyles.find(d => d.key === s.design)?.title.en
+      const designStyle = data.designStyles.find(d => d.key === s.design)?.title
+        .en
       const sizeTier = service?.pageBased
         ? data.sizeTiers.find(t => t.key === s.sizeTier)?.label.en
         : undefined
@@ -208,7 +226,10 @@ export default function ProjectPlanner({
   /* -------------------------------- render -------------------------------- */
 
   return (
-    <div className="mx-auto max-w-[1120px] px-4 pb-28 sm:px-6 lg:px-8 lg:pb-0">
+    <div
+      ref={topRef}
+      className="mx-auto max-w-[1120px] scroll-mt-32 px-4 pb-28 sm:px-6 md:scroll-mt-40 lg:px-8 lg:pb-0"
+    >
       <header className="flex items-center justify-between gap-4 py-4">
         <div className="flex items-center gap-3">
           <span
@@ -217,7 +238,7 @@ export default function ProjectPlanner({
           >
             DR
           </span>
-          <span className="text-[15px] font-semibold text-slate-900">
+          <span className="text-[15px] font-semibold text-slate-900 dark:text-white">
             {config.intro.title[locale]}{" "}
             <span className="font-medium text-slate-400">
               · {config.intro.kicker[locale]}
@@ -225,7 +246,7 @@ export default function ProjectPlanner({
           </span>
         </div>
         {!done && (
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] text-slate-500">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-[12.5px] text-slate-500 dark:text-slate-400">
             <Clock size={13} strokeWidth={2.1} aria-hidden="true" />
             {config.intro.timeLabel[locale]}
           </div>
@@ -248,7 +269,11 @@ export default function ProjectPlanner({
             <div className="flex flex-1 gap-1.5">
               {stepKeys.map((_, i) => {
                 const state =
-                  i < idx ? "bg-teal-500" : i === idx ? "bg-orange-500" : "bg-slate-200"
+                  i < idx
+                    ? "bg-teal-500"
+                    : i === idx
+                      ? "bg-orange-500"
+                      : "bg-slate-200"
                 return (
                   <button
                     key={i}
@@ -265,7 +290,7 @@ export default function ProjectPlanner({
                 )
               })}
             </div>
-            <div className="text-[12px] whitespace-nowrap text-slate-500 tabular-nums">
+            <div className="text-[12px] whitespace-nowrap text-slate-500 dark:text-slate-400 tabular-nums">
               {config.nav.progressTemplate[locale]
                 .replace("{current}", String(idx + 1))
                 .replace("{total}", String(totalSteps))}
@@ -276,7 +301,7 @@ export default function ProjectPlanner({
             <main className="min-w-0">
               <div
                 key={stepKey}
-                className="planner-card-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+                className="planner-card-in rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm sm:p-8"
               >
                 {/* Service */}
                 {stepKey === "service" && (
@@ -296,7 +321,12 @@ export default function ProjectPlanner({
                           desc={svc.description[locale]}
                           tag={fmt(svc.basePrice)}
                           onClick={() =>
-                            set({ service: svc.key, addons: [], sizeTier: "", content: "" })
+                            set({
+                              service: svc.key,
+                              addons: [],
+                              sizeTier: "",
+                              content: "",
+                            })
                           }
                         />
                       ))}
@@ -327,7 +357,7 @@ export default function ProjectPlanner({
                         ))}
                       </div>
                     ) : (
-                      <p className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-5 text-[14px] text-slate-500">
+                      <p className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-4 py-5 text-[14px] text-slate-500 dark:text-slate-400">
                         {config.steps.addons.emptyNote?.[locale]}
                       </p>
                     )}
@@ -357,11 +387,15 @@ export default function ProjectPlanner({
                       <Field
                         id="planner-references"
                         label={config.steps.design.referencesLabel[locale]}
-                        placeholder={config.steps.design.referencesPlaceholder[locale]}
+                        placeholder={
+                          config.steps.design.referencesPlaceholder[locale]
+                        }
                         value={s.references}
                         onChange={v => set({ references: v })}
                         multiline
-                        optionalLabel={config.contactFields.company.placeholder[locale]}
+                        optionalLabel={
+                          config.contactFields.company.placeholder[locale]
+                        }
                       />
                     </div>
                   </>
@@ -375,7 +409,7 @@ export default function ProjectPlanner({
                       title={config.steps.size.title[locale]}
                       sub={config.steps.size.subtitle[locale]}
                     />
-                    <div className="mb-3 text-[15px] font-semibold text-slate-900">
+                    <div className="mb-3 text-[15px] font-semibold text-slate-900 dark:text-white">
                       {config.steps.size.sizeHeading[locale]}
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -394,7 +428,7 @@ export default function ProjectPlanner({
                       ))}
                     </div>
 
-                    <div className="mt-6 mb-3 text-[15px] font-semibold text-slate-900">
+                    <div className="mt-6 mb-3 text-[15px] font-semibold text-slate-900 dark:text-white">
                       {config.steps.size.contentHeading[locale]}
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -425,12 +459,17 @@ export default function ProjectPlanner({
                       title={config.steps.timeline.title[locale]}
                       sub={config.steps.timeline.subtitle[locale]}
                     />
-                    <div className="mb-4 flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5">
-                      <Clock size={18} strokeWidth={2} className="text-slate-500" aria-hidden="true" />
-                      <span className="text-[13px] text-slate-500">
+                    <div className="mb-4 flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-4 py-3.5">
+                      <Clock
+                        size={18}
+                        strokeWidth={2}
+                        className="text-slate-500 dark:text-slate-400"
+                        aria-hidden="true"
+                      />
+                      <span className="text-[13px] text-slate-500 dark:text-slate-400">
                         {config.steps.timeline.estimatedTimelineLabel[locale]}:
                       </span>
-                      <span className="text-[15px] font-semibold text-slate-900">
+                      <span className="text-[15px] font-semibold text-slate-900 dark:text-white">
                         {service?.timeline[locale]}
                       </span>
                     </div>
@@ -459,7 +498,9 @@ export default function ProjectPlanner({
                       <Field
                         id="planner-name"
                         label={config.contactFields.name.label[locale]}
-                        placeholder={config.contactFields.name.placeholder[locale]}
+                        placeholder={
+                          config.contactFields.name.placeholder[locale]
+                        }
                         value={s.name}
                         onChange={v => set({ name: v })}
                         required
@@ -467,25 +508,33 @@ export default function ProjectPlanner({
                       <Field
                         id="planner-email"
                         label={config.contactFields.email.label[locale]}
-                        placeholder={config.contactFields.email.placeholder[locale]}
+                        placeholder={
+                          config.contactFields.email.placeholder[locale]
+                        }
                         value={s.email}
                         onChange={v => set({ email: v })}
                         required
                         note={config.contactFields.email.note[locale]}
                         invalid={s.email.length > 0 && !isEmail(s.email)}
-                        invalidMessage={config.contactFields.nameInvalid[locale]}
+                        invalidMessage={
+                          config.contactFields.nameInvalid[locale]
+                        }
                       />
                       <Field
                         id="planner-company"
                         label={config.contactFields.company.label[locale]}
-                        placeholder={config.contactFields.company.placeholder[locale]}
+                        placeholder={
+                          config.contactFields.company.placeholder[locale]
+                        }
                         value={s.company}
                         onChange={v => set({ company: v })}
                       />
                       <Field
                         id="planner-message"
                         label={config.contactFields.message.label[locale]}
-                        placeholder={config.contactFields.message.placeholder[locale]}
+                        placeholder={
+                          config.contactFields.message.placeholder[locale]
+                        }
                         value={s.message}
                         onChange={v => set({ message: v })}
                         multiline
@@ -505,12 +554,12 @@ export default function ProjectPlanner({
                 )}
 
                 {/* nav */}
-                <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200 pt-5">
+                <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-700 pt-5">
                   <button
                     type="button"
                     onClick={back}
                     disabled={idx === 0}
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-5 py-3 text-[14.5px] font-semibold text-slate-600 transition outline-none hover:border-slate-300 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-orange-500/40 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 px-5 py-3 text-[14.5px] font-semibold text-slate-600 dark:text-slate-400 transition outline-none hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500/40 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     <ArrowLeft size={16} strokeWidth={2.2} aria-hidden="true" />
                     {config.nav.backLabel[locale]}
@@ -527,7 +576,11 @@ export default function ProjectPlanner({
                       : idx === totalSteps - 1
                         ? config.nav.submitLabel[locale]
                         : config.nav.continueLabel[locale]}
-                    <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
+                    <ArrowRight
+                      size={16}
+                      strokeWidth={2.2}
+                      aria-hidden="true"
+                    />
                   </button>
                 </div>
               </div>

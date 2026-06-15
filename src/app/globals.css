@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (Tailwind v4): `dark:` utilities respond to the `.dark`
+   class that next-themes toggles on <html>, not the OS media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,12 +15,10 @@
   --font-crimson-pro: var(--font-crimson-pro);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+.dark {
+  --background: #020617; /* slate-950 */
+  --foreground: #e2e8f0; /* slate-200 */
+}
 
 body {
   background: var(--background);
@@ -63,6 +65,10 @@ body {
 .related-posts-swiper .swiper-pagination-bullet-active {
   background: rgb(249 115 22) !important;
   opacity: 1 !important;
+}
+/* Inactive bullets sit on a slate-900 surface in dark mode — lighten them. */
+.dark .related-posts-swiper .swiper-pagination-bullet {
+  background: rgb(71 85 105) !important; /* slate-600 */
 }
 
 /* Project Planner — step card entrance (motion-safe only) */

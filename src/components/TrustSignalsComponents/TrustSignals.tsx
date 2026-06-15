@@ -78,15 +78,17 @@ const TrustSignals = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">
             {title}
           </h2>
-          <p className="text-xl text-gray-600">{subtitle}</p>
+          <p className="text-xl text-gray-600 dark:text-slate-400">
+            {subtitle}
+          </p>
         </div>
 
         {/* Client Logos */}
         <div className="mb-16">
-          <h3 className="text-center text-lg font-semibold text-gray-500 mb-8">
+          <h3 className="text-center text-lg font-semibold text-gray-500 dark:text-slate-400 mb-8">
             {previousClients.title[currentLocale]}
           </h3>
           <ClientLogosMarquee clients={previousClients.clients} />
@@ -97,7 +99,7 @@ const TrustSignals = ({
           {testimonials.map((testimonial: any, index: number) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-gray-50 dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center mb-4">
                 <Quote className="w-8 h-8 text-orange-400" />
@@ -111,15 +113,17 @@ const TrustSignals = ({
                 </div>
               </div>
 
-              <p className="text-gray-700 mb-6 leading-relaxed italic line-clamp-3">
+              <p className="text-gray-700 dark:text-slate-200 mb-6 leading-relaxed italic line-clamp-3">
                 &ldquo;{testimonial.quote[currentLocale]}&rdquo;
               </p>
 
-              <div className="border-t pt-4">
-                <p className="font-semibold text-slate-800">
+              <div className="border-t dark:border-slate-700 pt-4">
+                <p className="font-semibold text-slate-800 dark:text-slate-100">
                   {testimonial.author}
                 </p>
-                <p className="text-sm text-gray-600">{testimonial.company}</p>
+                <p className="text-sm text-gray-600 dark:text-slate-400">
+                  {testimonial.company}
+                </p>
               </div>
             </div>
           ))}
@@ -131,28 +135,36 @@ const TrustSignals = ({
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-2">
+            <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2">
               {happyClients}+
             </div>
-            <div className="text-gray-600">{t("hero.happyClients")}</div>
+            <div className="text-gray-600 dark:text-slate-400">
+              {t("hero.happyClients")}
+            </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-teal-700 mb-2">
+            <div className="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-2">
               {projectsCompleted}+
             </div>
-            <div className="text-gray-600">{t("home.projectsCompleted")}</div>
+            <div className="text-gray-600 dark:text-slate-400">
+              {t("home.projectsCompleted")}
+            </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600 mb-2">
+            <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">
               {averageRating.toFixed(1)}
             </div>
-            <div className="text-gray-600">{t("home.averageRating")}</div>
+            <div className="text-gray-600 dark:text-slate-400">
+              {t("home.averageRating")}
+            </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-2">
+            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
               {supportAvailable}
             </div>
-            <div className="text-gray-600">{t("home.supportAvailable")}</div>
+            <div className="text-gray-600 dark:text-slate-400">
+              {t("home.supportAvailable")}
+            </div>
           </div>
         </div>
       </div>

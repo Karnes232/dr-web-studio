@@ -44,7 +44,7 @@ const CustomSolutionCTA = ({
 
           <Link
             href="/contact"
-            className="bg-white text-slate-800 px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
+            className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
           >
             <ArrowRight className="h-5 w-5 mr-2" />
             {

@@ -86,7 +86,10 @@ export default defineType({
             localeString("title", "Title"),
             localeText("subtitle", "Subtitle"),
             localeString("referencesLabel", "Reference sites label"),
-            localeString("referencesPlaceholder", "Reference sites placeholder"),
+            localeString(
+              "referencesPlaceholder",
+              "Reference sites placeholder",
+            ),
           ],
         }),
         defineField({

@@ -53,7 +53,7 @@ export default async function BlogPost({ params }: PageProps) {
   const slugs = slugPair(post)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950">
       <SetLocalizedHrefs
         pathname="/blog/[slug]"
         enSlug={slugs.en}

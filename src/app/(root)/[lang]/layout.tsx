@@ -7,6 +7,7 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredAnalytics from "@/components/Analytics/DeferredAnalytics"
+import ThemeProvider from "@/components/theme/ThemeProvider"
 import { crimsonPro, inter } from "@/app/fonts"
 
 export const revalidate = 3600
@@ -48,15 +49,17 @@ export default async function LangLayout({
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
-        <NextIntlClientProvider locale={lang} messages={messages}>
-          <Navbar logo={logo} serviceLinks={serviceLinks} />
-          {children}
-          <Footer
-            logo={logo}
-            companyInfo={companyInfo}
-            serviceLinks={serviceLinks}
-          />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider locale={lang} messages={messages}>
+            <Navbar logo={logo} serviceLinks={serviceLinks} />
+            {children}
+            <Footer
+              logo={logo}
+              companyInfo={companyInfo}
+              serviceLinks={serviceLinks}
+            />
+          </NextIntlClientProvider>
+        </ThemeProvider>
         <DeferredAnalytics />
         <Analytics />
       </body>

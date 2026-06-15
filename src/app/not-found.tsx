@@ -76,13 +76,15 @@ export default async function NotFound() {
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider locale={lang} messages={messages}>
           <Navbar logo={logo} serviceLinks={serviceLinks} />
-          <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 flex items-center justify-center px-4">
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-900 flex items-center justify-center px-4">
             <div className="max-w-xl mx-auto text-center">
-              <p className="text-6xl font-bold text-orange-600 mb-4">404</p>
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">
+              <p className="text-6xl font-bold text-orange-600 dark:text-orange-400 mb-4">
+                404
+              </p>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
                 Page Not Found
               </h1>
-              <p className="text-lg text-slate-600 mb-8">
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
                 The page you are looking for does not exist or has been moved.
                 Let us help you find what you need.
               </p>
@@ -97,7 +99,7 @@ export default async function NotFound() {
                 <Link
                   href="/contact"
                   locale="en"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-slate-300 text-slate-700 font-semibold hover:border-orange-500 hover:text-orange-600 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold hover:border-orange-500 hover:text-orange-600 transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -106,28 +108,28 @@ export default async function NotFound() {
                 <Link
                   href="/our-services"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-600 transition-colors"
+                  className="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors"
                 >
                   Services
                 </Link>
                 <Link
                   href="/portfolio"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-600 transition-colors"
+                  className="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors"
                 >
                   Portfolio
                 </Link>
                 <Link
                   href="/blog"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-600 transition-colors"
+                  className="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/pricing"
                   locale="en"
-                  className="text-slate-500 hover:text-orange-600 transition-colors"
+                  className="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors"
                 >
                   Pricing
                 </Link>

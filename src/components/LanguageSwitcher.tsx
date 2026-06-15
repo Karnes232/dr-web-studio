@@ -70,7 +70,7 @@ export default function LanguageSwitcher({ color }: { color: string }) {
       <div className="hidden lg:block">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center space-x-2 text-${color} hover:text-orange-500 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-orange-50 border border-transparent hover:border-orange-200`}
+          className={`flex items-center space-x-2 text-${color} dark:text-slate-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-orange-50 dark:hover:bg-slate-800 border border-transparent hover:border-orange-200 dark:hover:border-slate-700`}
         >
           <Globe className="h-4 w-4 " />
           <span className="text-lg">{currentLangOption.flag}</span>
@@ -87,7 +87,7 @@ export default function LanguageSwitcher({ color }: { color: string }) {
       <div className="lg:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center space-x-1 text-${color} hover:text-orange-500 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50`}
+          className={`flex items-center space-x-1 text-${color} dark:text-slate-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-slate-800`}
         >
           <Globe className="h-5 w-5" />
           <span className="text-lg">{currentLangOption.flag}</span>
@@ -99,15 +99,17 @@ export default function LanguageSwitcher({ color }: { color: string }) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
+        <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 py-2 z-50">
           {languageOptions.map(lng => {
             const isActive = currentLocale === lng.code
             return (
               <button
                 key={lng.code}
                 onClick={() => handleLanguageChange(lng.code)}
-                className={`w-full text-left px-4 py-2 flex items-center space-x-3 hover:bg-orange-50 hover:text-orange-600 transition-colors ${
-                  isActive ? "bg-orange-50 text-orange-600" : "text-slate-700"
+                className={`w-full text-left px-4 py-2 flex items-center space-x-3 hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 transition-colors ${
+                  isActive
+                    ? "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400"
+                    : "text-slate-700 dark:text-slate-200"
                 }`}
               >
                 <span className="text-lg">{lng.flag}</span>

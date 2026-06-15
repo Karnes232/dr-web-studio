@@ -62,7 +62,10 @@ export async function POST(request: NextRequest) {
 
     const verified = await verifyBotpoisonSolution(botpoisonSolution)
     if (!verified) {
-      return NextResponse.json({ error: "Verification failed" }, { status: 403 })
+      return NextResponse.json(
+        { error: "Verification failed" },
+        { status: 403 },
+      )
     }
 
     const name = clampString(body.name, MAX_FIELD)
@@ -89,7 +92,11 @@ export async function POST(request: NextRequest) {
     const design = clampString(body.design, MAX_FIELD)
     const size = clampString(body.size, MAX_FIELD)
     const content = clampString(body.content, MAX_FIELD)
-    const references = clampStringArray(body.references, MAX_ARRAY_ITEMS, MAX_FIELD)
+    const references = clampStringArray(
+      body.references,
+      MAX_ARRAY_ITEMS,
+      MAX_FIELD,
+    )
 
     if (!service) {
       return NextResponse.json(

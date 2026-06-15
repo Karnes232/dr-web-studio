@@ -46,7 +46,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
   const { t, getBlogHref } = useLocale()
   return (
     <article
-      className={`bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}
+      className={`bg-white dark:bg-slate-900 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 ${shadow ? "shadow-lg" : ""}`}
     >
       <div className="relative">
         {post.imageUrl ? (
@@ -59,7 +59,10 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
             className="w-full h-48 object-cover"
           />
         ) : (
-          <div className="w-full h-48 bg-slate-200" aria-hidden />
+          <div
+            className="w-full h-48 bg-slate-200 dark:bg-slate-700"
+            aria-hidden
+          />
         )}
         {post.categories[0] && (
           <div className="absolute top-4 left-4">
@@ -71,12 +74,12 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-slate-800 mb-3 line-clamp-2 h-16">
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3 line-clamp-2 h-16">
           {post.title[lang]}
         </h3>
 
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center text-sm text-slate-500">
+          <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
             <Calendar className="h-4 w-4 mr-2" />
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
               year: "numeric",
@@ -84,7 +87,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
               day: "numeric",
             })}
           </div>
-          <div className="flex items-center text-sm text-slate-500">
+          <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
             <Clock className="h-4 w-4 mr-2" />
             {post.readTime} min read
           </div>
@@ -96,7 +99,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
               post.tags[lang]?.slice(0, 2).map((tag: string, index: number) => (
                 <span
                   key={index}
-                  className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded"
+                  className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded"
                 >
                   {tag}
                 </span>
@@ -105,7 +108,7 @@ const BlogCard = ({ post, lang, shadow = true }: BlogCardProps) => {
 
           <Link
             href={getBlogHref(post)}
-            className="text-orange-500 hover:text-orange-600 font-medium flex items-center transition-colors"
+            className="text-orange-500 dark:text-orange-400 hover:text-orange-600 font-medium flex items-center transition-colors"
           >
             {t("blog.readMore")}
             <ArrowRight className="ml-1 h-4 w-4" />

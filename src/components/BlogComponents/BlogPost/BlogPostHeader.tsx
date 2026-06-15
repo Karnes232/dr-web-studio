@@ -25,7 +25,7 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
         <div className="mb-6">
           <Link
             href="/blog"
-            className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors"
+            className="inline-flex items-center text-slate-600 dark:text-slate-400 hover:text-orange-500 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t("blog.backToBlog")}
@@ -49,12 +49,12 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-6 leading-tight">
           {post.title[lang]}
         </h1>
 
         {/* Meta Information */}
-        <div className="flex flex-wrap items-center gap-6 text-slate-600 mb-8">
+        <div className="flex flex-wrap items-center gap-6 text-slate-600 dark:text-slate-400 mb-8">
           {/* <div className="flex items-center">
             <img 
               src={post.author.avatar} 
@@ -88,8 +88,8 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
               onClick={() => setIsLiked(!isLiked)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
                 isLiked
-                  ? "bg-red-50 border-red-200 text-red-600"
-                  : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+                  ? "bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-600 dark:text-red-300"
+                  : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
@@ -99,8 +99,8 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
               onClick={() => setIsBookmarked(!isBookmarked)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
                 isBookmarked
-                  ? "bg-blue-50 border-blue-200 text-blue-600"
-                  : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+                  ? "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-300"
+                  : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <Bookmark

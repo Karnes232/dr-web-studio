@@ -92,12 +92,12 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8 text-center">
         <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-slate-800 mb-2">
+        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
           {t("contact.form.messageSent")}
         </h3>
-        <p className="text-slate-600 mb-6">
+        <p className="text-slate-600 dark:text-slate-400 mb-6">
           {t("contact.form.messageSentDescription")}
         </p>
         <button
@@ -125,11 +125,11 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8">
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
       <form onSubmit={handleSubmit}>
         <div className="flex items-center mb-6">
           <MessageSquare className="h-6 w-6 text-orange-500 mr-3" />
-          <h3 className="text-2xl font-bold text-slate-800">
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
             {t("contact.form.sendMessage")}
           </h3>
         </div>
@@ -137,7 +137,7 @@ const ContactForm = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.fullName")} *
               </label>
               <div className="relative">
@@ -148,14 +148,14 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder={t("contact.form.fullNamePlaceholder")}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.email")} *
               </label>
               <div className="relative">
@@ -166,7 +166,7 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder={t("contact.form.emailPlaceholder")}
                 />
               </div>
@@ -175,7 +175,7 @@ const ContactForm = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.companyName")}
               </label>
               <div className="relative">
@@ -185,14 +185,14 @@ const ContactForm = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder={t("contact.form.companyNamePlaceholder")}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.phone")}
               </label>
               <div className="relative">
@@ -202,7 +202,7 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="+1 (809) 123-4567"
                 />
               </div>
@@ -211,14 +211,14 @@ const ContactForm = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.projectType")}
               </label>
               <select
                 name="projectType"
                 value={formData.projectType}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="">{t("contact.form.selectProjectType")}</option>
                 <option value="business-website">
@@ -239,14 +239,14 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                 {t("contact.form.budgetRange")}
               </label>
               <select
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="">{t("contact.form.selectBudgetRange")}</option>
                 <option value="300-600">$300 - $600</option>
@@ -259,14 +259,14 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
               {t("contact.form.timeline")}
             </label>
             <select
               name="timeline"
               value={formData.timeline}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
               <option value="">{t("contact.form.selectTimeline")}</option>
               <option value="asap">{t("contact.form.asap")}</option>
@@ -280,7 +280,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
               {t("contact.form.projectDetails")} *
             </label>
             <textarea
@@ -289,7 +289,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               placeholder={t("contact.form.projectDetailsPlaceholder")}
             />
           </div>

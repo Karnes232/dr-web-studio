@@ -6,7 +6,7 @@ import ServiceCardActions from "./ServiceCardActions"
 
 const ServiceCard = ({ service }: { service: any }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100">
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 dark:border-slate-700">
       <ServiceCardHeader service={service} />
 
       <div className="p-6">

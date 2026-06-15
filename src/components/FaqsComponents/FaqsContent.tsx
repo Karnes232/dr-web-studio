@@ -69,7 +69,7 @@ const FaqsContent = ({
     setActiveAccordion(activeAccordion === categoryId ? null : categoryId)
   }
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-orange-50 pt-12 pb-24">
+    <div className="bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950 pt-12 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <FaqsHeader
           title={

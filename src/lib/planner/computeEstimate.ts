@@ -38,7 +38,11 @@ export function computeEstimate(
       a => a.service === service.key && a.key === addonKey,
     )
     if (addon) {
-      items.push({ key: addon.key, label: addon.title[locale], amount: addon.price })
+      items.push({
+        key: addon.key,
+        label: addon.title[locale],
+        amount: addon.price,
+      })
     }
   }
 
@@ -46,7 +50,11 @@ export function computeEstimate(
   if (service.pageBased) {
     const tier = pricing.sizeTiers.find(t => t.key === s.sizeTier)
     if (tier) {
-      items.push({ key: "size", label: tier.label[locale], amount: tier.priceModifier })
+      items.push({
+        key: "size",
+        label: tier.label[locale],
+        amount: tier.priceModifier,
+      })
       if (s.content === "need") {
         items.push({
           key: "content",
@@ -62,7 +70,10 @@ export function computeEstimate(
   let rushSurcharge = 0
   let total = subtotal
   if (s.rush) {
-    rushSurcharge = roundTo(subtotal * pricing.settings.rushPct, pricing.settings.rounding)
+    rushSurcharge = roundTo(
+      subtotal * pricing.settings.rushPct,
+      pricing.settings.rounding,
+    )
     const pct = Math.round(pricing.settings.rushPct * 100)
     items.push({
       key: "rush",

@@ -26,14 +26,17 @@ export default function Field({
   multiline,
 }: FieldProps) {
   const ring =
-    "w-full rounded-lg border bg-white px-3.5 py-3 text-[15px] text-slate-900 outline-none transition placeholder:text-slate-400 focus-visible:ring-2"
+    "w-full rounded-lg border bg-white dark:bg-slate-800 px-3.5 py-3 text-[15px] text-slate-900 dark:text-slate-100 outline-none transition placeholder:text-slate-400 focus-visible:ring-2"
   const state = invalid
     ? "border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/25"
-    : "border-slate-200 focus-visible:border-orange-500 focus-visible:ring-orange-500/30"
+    : "border-slate-200 dark:border-slate-700 focus-visible:border-orange-500 focus-visible:ring-orange-500/30"
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-[13px] font-semibold text-slate-800">
+      <label
+        htmlFor={id}
+        className="text-[13px] font-semibold text-slate-800 dark:text-slate-100"
+      >
         {label}{" "}
         {required ? (
           <span className="text-orange-600">*</span>
@@ -65,7 +68,11 @@ export default function Field({
           className={`${ring} ${state}`}
           aria-invalid={invalid || undefined}
           aria-describedby={
-            invalid && invalidMessage ? `${id}-err` : note ? `${id}-note` : undefined
+            invalid && invalidMessage
+              ? `${id}-err`
+              : note
+                ? `${id}-note`
+                : undefined
           }
         />
       )}

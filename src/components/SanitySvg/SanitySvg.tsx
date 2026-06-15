@@ -59,7 +59,11 @@ const SanitySvg = ({
   }, [url])
 
   if (loading) {
-    return <div className={`${className} animate-pulse bg-gray-200`} />
+    return (
+      <div
+        className={`${className} animate-pulse bg-gray-200 dark:bg-slate-700`}
+      />
+    )
   }
 
   return (

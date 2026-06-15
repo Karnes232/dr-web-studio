@@ -11,13 +11,13 @@ export default function StepHead({ kicker, title, sub }: StepHeadProps) {
         {kicker}
       </div>
       <h2
-        className="text-2xl leading-tight font-bold text-slate-900 md:text-[1.7rem]"
+        className="text-2xl leading-tight font-bold text-slate-900 dark:text-white md:text-[1.7rem]"
         style={{ fontFamily: "var(--font-crimson-pro)" }}
       >
         {title}
       </h2>
       {sub && (
-        <p className="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-slate-500">
+        <p className="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">
           {sub}
         </p>
       )}

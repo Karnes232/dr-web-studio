@@ -94,7 +94,7 @@ const PaymentSucessContent = ({
   // }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto">
         {/* Success Animation Container */}
         <div className="text-center mb-8">
@@ -120,14 +120,14 @@ const PaymentSucessContent = ({
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-2">
             {
               paymentSuccessData.title[
                 currentLocale as keyof typeof paymentSuccessData.title
               ]
             }
           </h1>
-          <p className="text-slate-600 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             {
               paymentSuccessData.subtitle[
                 currentLocale as keyof typeof paymentSuccessData.subtitle
@@ -137,7 +137,7 @@ const PaymentSucessContent = ({
         </div>
 
         {/* Main Success Card */}
-        <div className="bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden mb-6">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
           {/* Payment Details Section */}
           <div className="p-8">
             <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-lg p-6 mb-6">
@@ -221,7 +221,7 @@ const PaymentSucessContent = ({
 
                 <button
                   onClick={handleScheduleCall}
-                  className="flex items-center justify-center py-3 px-4 bg-teal-100 text-teal-700 rounded-lg hover:bg-teal-200 transition-colors duration-200 font-medium"
+                  className="flex items-center justify-center py-3 px-4 bg-teal-100 dark:bg-teal-500/15 text-teal-700 dark:text-teal-300 rounded-lg hover:bg-teal-200 dark:hover:bg-teal-500/25 transition-colors duration-200 font-medium"
                 >
                   <Calendar className="h-4 w-4 mr-2" />
                   {t("checkout.schedule_call")}
@@ -231,8 +231,8 @@ const PaymentSucessContent = ({
           </div>
 
           {/* Next Steps Section */}
-          <div className="bg-slate-50 px-8 py-6 border-t border-slate-200">
-            <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+          <div className="bg-slate-50 dark:bg-slate-900 px-8 py-6 border-t border-slate-200 dark:border-slate-700">
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
               <Mail className="h-5 w-5 mr-2 text-orange-500" />
               {
                 paymentSuccessData.whatsNext.title[
@@ -241,7 +241,7 @@ const PaymentSucessContent = ({
               }
             </h3>
 
-            <div className="space-y-3 text-sm text-slate-600">
+            <div className="space-y-3 text-sm text-slate-600 dark:text-slate-400">
               {paymentSuccessData.whatsNext.steps.map((step, index) => {
                 return (
                   <div className="flex items-start" key={index}>
@@ -265,16 +265,18 @@ const PaymentSucessContent = ({
         </div>
 
         {/* Contact Information */}
-        <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6 text-center">
-          <h3 className="text-lg font-semibold text-slate-800 mb-2">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 text-center">
+          <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">
             {t("checkout.need_help")}
           </h3>
-          <p className="text-slate-600 mb-4">{t("checkout.have_questions")}</p>
+          <p className="text-slate-600 dark:text-slate-400 mb-4">
+            {t("checkout.have_questions")}
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={`mailto:${email.email}`}
-              className="flex items-center justify-center px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
+              className="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200 font-medium"
             >
               <Mail className="h-4 w-4 mr-2" />
               {t("checkout.email_us")}
@@ -282,7 +284,7 @@ const PaymentSucessContent = ({
             {/*             
             <a
               href="https://wa.me/18091234567"
-              className="flex items-center justify-center px-4 py-2 bg-teal-100 text-teal-700 rounded-lg hover:bg-teal-200 transition-colors duration-200 font-medium"
+              className="flex items-center justify-center px-4 py-2 bg-teal-100 dark:bg-teal-500/15 text-teal-700 dark:text-teal-300 rounded-lg hover:bg-teal-200 dark:hover:bg-teal-500/25 transition-colors duration-200 font-medium"
             >
               <User className="h-4 w-4 mr-2" />
               WhatsApp

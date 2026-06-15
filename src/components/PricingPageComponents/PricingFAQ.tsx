@@ -16,18 +16,23 @@ const PricingFAQ = ({
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
-        <p className="text-gray-600">{subtitle}</p>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          {title}
+        </h3>
+        <p className="text-gray-600 dark:text-slate-400">{subtitle}</p>
       </div>
 
       <div className="space-y-4">
         {faqs.map((faq: any, index: number) => (
-          <div key={index} className="border border-gray-200 rounded-lg">
+          <div
+            key={index}
+            className="border border-gray-200 dark:border-slate-700 rounded-lg"
+          >
             <button
               onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-              className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+              className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
             >
-              <span className="font-medium text-gray-900">
+              <span className="font-medium text-gray-900 dark:text-white">
                 {faq.question[lang]}
               </span>
               <span className="ml-6 flex-shrink-0">
@@ -36,7 +41,9 @@ const PricingFAQ = ({
             </button>
             {openFAQ === index && (
               <div className="px-6 pb-4">
-                <p className="text-gray-600">{faq.answer[lang]}</p>
+                <p className="text-gray-600 dark:text-slate-400">
+                  {faq.answer[lang]}
+                </p>
               </div>
             )}
           </div>

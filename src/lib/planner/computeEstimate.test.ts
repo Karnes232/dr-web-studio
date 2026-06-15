@@ -30,12 +30,36 @@ const pricing: PlannerPricing = {
     },
   ],
   addons: [
-    { key: "blog-system", service: "custom-business", title: ls("Blog System"), price: 200, order: 1 },
+    {
+      key: "blog-system",
+      service: "custom-business",
+      title: ls("Blog System"),
+      price: 200,
+      order: 1,
+    },
   ],
   sizeTiers: [
-    { key: "up-to-5", label: ls("Up to 5 pages"), priceModifier: 0, pages: 5, order: 1 },
-    { key: "6-10", label: ls("6–10 pages"), priceModifier: 200, pages: 10, order: 2 },
-    { key: "11-20", label: ls("11–20 pages"), priceModifier: 500, pages: 20, order: 3 },
+    {
+      key: "up-to-5",
+      label: ls("Up to 5 pages"),
+      priceModifier: 0,
+      pages: 5,
+      order: 1,
+    },
+    {
+      key: "6-10",
+      label: ls("6–10 pages"),
+      priceModifier: 200,
+      pages: 10,
+      order: 2,
+    },
+    {
+      key: "11-20",
+      label: ls("11–20 pages"),
+      priceModifier: 500,
+      pages: 20,
+      order: 3,
+    },
   ],
   contentPerPagePrice: 30,
   contentLine: ls("Content & copywriting"),
@@ -68,14 +92,24 @@ describe("computeEstimate", () => {
   })
 
   it("service base only", () => {
-    const r = computeEstimate({ ...base, service: "landing-pages" }, pricing, "en")
+    const r = computeEstimate(
+      { ...base, service: "landing-pages" },
+      pricing,
+      "en",
+    )
     expect(r.subtotal).toBe(400)
     expect(r.items).toHaveLength(1)
   })
 
   it("page-based: base + add-on + size tier", () => {
     const r = computeEstimate(
-      { service: "custom-business", addons: ["blog-system"], sizeTier: "6-10", content: "ready", rush: false },
+      {
+        service: "custom-business",
+        addons: ["blog-system"],
+        sizeTier: "6-10",
+        content: "ready",
+        rush: false,
+      },
       pricing,
       "en",
     )
@@ -86,7 +120,13 @@ describe("computeEstimate", () => {
 
   it("content = representative pages × per-page rate", () => {
     const r = computeEstimate(
-      { service: "custom-business", addons: [], sizeTier: "11-20", content: "need", rush: false },
+      {
+        service: "custom-business",
+        addons: [],
+        sizeTier: "11-20",
+        content: "need",
+        rush: false,
+      },
       pricing,
       "en",
     )
@@ -100,7 +140,13 @@ describe("computeEstimate", () => {
 
   it("content 'ready' adds no content line", () => {
     const r = computeEstimate(
-      { service: "custom-business", addons: [], sizeTier: "6-10", content: "ready", rush: false },
+      {
+        service: "custom-business",
+        addons: [],
+        sizeTier: "6-10",
+        content: "ready",
+        rush: false,
+      },
       pricing,
       "en",
     )
@@ -109,7 +155,13 @@ describe("computeEstimate", () => {
 
   it("non-page-based service ignores size & content even if provided", () => {
     const r = computeEstimate(
-      { service: "landing-pages", addons: [], sizeTier: "11-20", content: "need", rush: false },
+      {
+        service: "landing-pages",
+        addons: [],
+        sizeTier: "11-20",
+        content: "need",
+        rush: false,
+      },
       pricing,
       "en",
     )
@@ -119,7 +171,13 @@ describe("computeEstimate", () => {
 
   it("rush applies on the full subtotal (incl. size + content)", () => {
     const r = computeEstimate(
-      { service: "custom-business", addons: [], sizeTier: "6-10", content: "need", rush: true },
+      {
+        service: "custom-business",
+        addons: [],
+        sizeTier: "6-10",
+        content: "need",
+        rush: true,
+      },
       pricing,
       "en",
     )
@@ -127,16 +185,29 @@ describe("computeEstimate", () => {
     expect(r.subtotal).toBe(1450)
     expect(r.rushSurcharge).toBe(300)
     expect(r.total).toBe(1750)
-    expect(r.items.map(i => i.key)).toEqual(["service", "size", "content", "rush"])
+    expect(r.items.map(i => i.key)).toEqual([
+      "service",
+      "size",
+      "content",
+      "rush",
+    ])
   })
 
   it("localizes labels by locale", () => {
     const pr: PlannerPricing = {
       ...pricing,
-      sizeTiers: [{ ...pricing.sizeTiers[0], label: { en: "Up to 5", es: "Hasta 5" } }],
+      sizeTiers: [
+        { ...pricing.sizeTiers[0], label: { en: "Up to 5", es: "Hasta 5" } },
+      ],
     }
     const r = computeEstimate(
-      { service: "custom-business", addons: [], sizeTier: "up-to-5", content: "", rush: false },
+      {
+        service: "custom-business",
+        addons: [],
+        sizeTier: "up-to-5",
+        content: "",
+        rush: false,
+      },
       pr,
       "es",
     )

@@ -84,7 +84,7 @@ const BlogContent = ({
   return (
     <section
       id="blogSection"
-      className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50"
+      className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-900"
     >
       <BlogHeader header={header} lang={lang} />
       <BlogFilters
@@ -119,7 +119,7 @@ const BlogContent = ({
 
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-slate-600 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 text-lg">
               {t("blog.noArticlesFound")}
             </p>
           </div>

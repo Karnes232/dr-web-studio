@@ -59,12 +59,12 @@ function AnimatedStat({
       className="flex flex-col items-center text-center px-6 py-6"
     >
       <span
-        className="text-4xl font-bold text-slate-900 mb-1"
+        className="text-4xl font-bold text-slate-900 dark:text-white mb-1"
         style={{ fontFamily: "var(--font-crimson-pro)" }}
       >
         {displayed}
       </span>
-      <span className="text-sm text-slate-500 font-medium uppercase tracking-wide">
+      <span className="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">
         {label}
       </span>
     </motion.div>
@@ -75,9 +75,9 @@ export function LandingStatsBar({ stats }: LandingStatsBarProps) {
   if (!stats.length) return null
 
   return (
-    <section className="bg-white border-y border-slate-100">
+    <section className="bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-700">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100 dark:divide-slate-700">
           {stats.map((stat, i) => (
             <AnimatedStat
               key={i}

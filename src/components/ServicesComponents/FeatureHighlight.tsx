@@ -16,8 +16,12 @@ const FeatureHighlight = ({
       <div className={`${gradient} p-3 rounded-full mb-4`}>
         <Icon className="h-6 w-6 text-white" />
       </div>
-      <h4 className="font-semibold text-slate-800 mb-2">{title}</h4>
-      <p className="text-slate-600 text-sm">{description}</p>
+      <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
+        {title}
+      </h4>
+      <p className="text-slate-600 dark:text-slate-400 text-sm">
+        {description}
+      </p>
     </div>
   )
 }

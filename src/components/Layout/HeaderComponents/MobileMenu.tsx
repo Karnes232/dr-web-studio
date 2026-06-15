@@ -32,13 +32,13 @@ const MobileMenu = ({
                 ${isOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-10 opacity-0 invisible"}
             `}
     >
-      <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-200 max-h-[calc(100vh-7rem)] md:max-h-[calc(100vh-9rem)] overflow-y-auto">
+      <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 max-h-[calc(100vh-7rem)] md:max-h-[calc(100vh-9rem)] overflow-y-auto">
         {navItems.map((item, index) => (
           <Link
             onClick={() => setIsOpen(!isOpen)}
             key={index}
             href={item.href}
-            className="block px-3 py-2 text-slate-700 hover:bg-orange-50 hover:text-orange-600 rounded-md font-medium transition-colors"
+            className="block px-3 py-2 text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 dark:hover:text-orange-400 rounded-md font-medium transition-colors"
           >
             {item.label}
           </Link>
@@ -47,7 +47,7 @@ const MobileMenu = ({
         <div className="px-3 py-2">
           <Link
             href="/our-services"
-            className="text-slate-700 font-medium mb-2"
+            className="text-slate-700 dark:text-slate-200 font-medium mb-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             {t("services.services")}
@@ -58,7 +58,7 @@ const MobileMenu = ({
                 onClick={() => setIsOpen(!isOpen)}
                 key={index}
                 href={getServiceHref(service)}
-                className="block py-1 text-sm text-slate-600 hover:text-orange-600 transition-colors"
+                className="block py-1 text-sm text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
               >
                 {service.title[currentLocale as keyof typeof service.title]}
               </Link>
@@ -66,8 +66,8 @@ const MobileMenu = ({
           </div>
         </div>
 
-        <div className="px-3 py-2 border-t border-slate-100 mt-2 pt-4">
-          <div className="text-slate-700 font-medium mb-3">
+        <div className="px-3 py-2 border-t border-slate-100 dark:border-slate-700 mt-2 pt-4">
+          <div className="text-slate-700 dark:text-slate-200 font-medium mb-3">
             {t("resources.language")}
           </div>
           <div className="pl-1">

@@ -8,6 +8,8 @@ export const plannerSizeTiersQuery = `
 }
 `
 
-export const getPlannerSizeTiers = cache(async (): Promise<PlannerSizeTier[]> => {
-  return client.fetch(plannerSizeTiersQuery)
-})
+export const getPlannerSizeTiers = cache(
+  async (): Promise<PlannerSizeTier[]> => {
+    return client.fetch(plannerSizeTiersQuery)
+  },
+)

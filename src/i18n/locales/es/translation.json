@@ -219,5 +219,9 @@
     "startProject": "Empieza Tu Proyecto",
     "whatsapp": "WhatsApp",
     "viewAll": "Ver Todo"
+  },
+  "theme": {
+    "toLight": "Cambiar a modo claro",
+    "toDark": "Cambiar a modo oscuro"
   }
 }

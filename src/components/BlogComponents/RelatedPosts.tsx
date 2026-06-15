@@ -22,21 +22,21 @@ const RelatedPosts = ({ posts, lang }: RelatedPostsProps) => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-bold text-slate-800">
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
           {t("blog.relatedPosts")}
         </h2>
         <div className="flex items-center gap-2">
           <button
             type="button"
             aria-label="Previous posts"
-            className="related-posts-prev flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:border-orange-400 hover:text-orange-600 disabled:opacity-40 disabled:pointer-events-none"
+            className="related-posts-prev flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 shadow-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-orange-400 hover:text-orange-600 disabled:opacity-40 disabled:pointer-events-none"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             type="button"
             aria-label="Next posts"
-            className="related-posts-next flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:border-orange-400 hover:text-orange-600 disabled:opacity-40 disabled:pointer-events-none"
+            className="related-posts-next flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 shadow-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-orange-400 hover:text-orange-600 disabled:opacity-40 disabled:pointer-events-none"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

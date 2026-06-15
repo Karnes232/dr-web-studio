@@ -27,16 +27,16 @@ const IndividualService = ({
   }
   const Icon = icons[service.icon as keyof typeof icons]
   return (
-    <div className="group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+    <div className="group bg-white dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-slate-700">
       <div
         className={`w-14 h-14 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
       >
         <Icon className="w-7 h-7 text-slate-950" />
       </div>
-      <h3 className="text-xl font-semibold text-slate-800 mb-3">
+      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-3">
         {service.title[lang]}
       </h3>
-      <p className="text-gray-600 leading-relaxed">
+      <p className="text-gray-600 dark:text-slate-400 leading-relaxed">
         {service.description[lang]}
       </p>
     </div>

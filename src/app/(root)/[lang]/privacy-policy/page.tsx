@@ -17,7 +17,7 @@ export default async function PrivacyPolicy({ params }: PageProps) {
   const legalData = await getLegal("privacy-policy")
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="prose prose-lg prose-slate max-w-none">
           <BlockContent

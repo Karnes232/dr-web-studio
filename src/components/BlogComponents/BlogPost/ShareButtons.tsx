@@ -47,14 +47,14 @@ const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
     <div className="relative">
       <button
         onClick={() => setShowShare(!showShare)}
-        className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors"
+        className="flex items-center space-x-2 px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
       >
         <Share2 className="h-4 w-4" />
         <span>Share</span>
       </button>
 
       {showShare && (
-        <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-xl border border-slate-200 p-4 z-10 min-w-48">
+        <div className="absolute right-0 top-full mt-2 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4 z-10 min-w-48">
           <div className="space-y-2">
             {shareLinks.map((link, index) => {
               const Icon = link.icon
@@ -64,7 +64,7 @@ const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50 transition-colors ${link.color}`}
+                  className={`flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors ${link.color}`}
                 >
                   <Icon className="h-4 w-4" />
                   <span>Share on {link.name}</span>
@@ -73,7 +73,7 @@ const ShareButtons = ({ post, lang }: { post: any; lang: string }) => {
             })}
             <button
               onClick={copyToClipboard}
-              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50 transition-colors text-slate-600 w-full"
+              className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300 w-full"
             >
               <Link className="h-4 w-4" />
               <span>Copy Link</span>

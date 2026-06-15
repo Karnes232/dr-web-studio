@@ -43,7 +43,7 @@ export function LandingProcess({
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white dark:bg-slate-900 py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -53,13 +53,13 @@ export function LandingProcess({
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
           >
             {sectionTitle}
           </h2>
           {sectionSubtitle && (
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
               {sectionSubtitle}
             </p>
           )}
@@ -82,8 +82,8 @@ export function LandingProcess({
                 >
                   {/* Step circle */}
                   <div className="relative mb-6">
-                    <div className="w-28 h-28 rounded-full border-2 border-amber-200 bg-white flex items-center justify-center shadow-sm">
-                      <div className="w-20 h-20 rounded-full bg-amber-50 flex items-center justify-center">
+                    <div className="w-28 h-28 rounded-full border-2 border-amber-200 bg-white dark:bg-slate-900 flex items-center justify-center shadow-sm">
+                      <div className="w-20 h-20 rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center">
                         <Icon size={32} className="text-amber-600" />
                       </div>
                     </div>
@@ -94,15 +94,15 @@ export function LandingProcess({
                   </div>
 
                   <div className="min-h-14 flex justify-center mb-2">
-                    <h3 className="text-lg font-semibold text-slate-900 text-center">
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white text-center">
                       {step.stepTitle}
                     </h3>
                   </div>
-                  <p className="flex-1 text-slate-500 text-sm leading-relaxed mb-5">
+                  <p className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">
                     {step.description}
                   </p>
                   {step.duration && (
-                    <span className="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
+                    <span className="inline-block px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-medium">
                       {step.duration}
                     </span>
                   )}

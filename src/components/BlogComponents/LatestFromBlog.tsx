@@ -23,15 +23,15 @@ const LatestFromBlog = ({
   if (!posts.length) return null
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-800">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-100">
             {title}
           </h2>
           <Link
             href="/blog"
-            className="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium"
+            className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 font-medium"
           >
             {viewAllLabel}
             <ArrowRight className="ml-1 h-4 w-4" />
@@ -45,13 +45,13 @@ const LatestFromBlog = ({
                   pathname: "/blog/[slug]",
                   params: { slug: slugForLocale(post, lang) },
                 }}
-                className="block group p-4 rounded-xl border border-slate-200 hover:border-orange-300 hover:shadow-md transition-all"
+                className="block group p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 hover:shadow-md transition-all"
               >
-                <h3 className="text-lg font-semibold text-slate-800 group-hover:text-orange-600 mb-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 group-hover:text-orange-600 mb-2">
                   {post.title[lang]}
                 </h3>
                 {post.description?.[lang] && (
-                  <p className="text-slate-600 text-sm line-clamp-2">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">
                     {post.description[lang]}
                   </p>
                 )}

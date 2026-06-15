@@ -12,7 +12,7 @@ const NewsletterSignup = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          className="flex-1 px-4 py-3 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-white"
+          className="flex-1 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-white"
         />
         <button className="bg-white text-teal-700 px-6 py-3 rounded-lg font-medium hover:bg-teal-50 transition-colors">
           Subscribe

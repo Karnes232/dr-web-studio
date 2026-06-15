@@ -18,7 +18,7 @@ const ServiceFilter = ({
           className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
             activeCategory === category
               ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg"
-              : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"
+              : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700"
           }`}
         >
           {category}

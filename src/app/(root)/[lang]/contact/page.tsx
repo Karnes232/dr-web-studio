@@ -40,7 +40,7 @@ export default async function Contact({ params }: PageProps) {
       )}
       <section
         id="contact"
-        className="py-20 bg-gradient-to-br from-slate-50 to-orange-50"
+        className="py-20 bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ContactHero

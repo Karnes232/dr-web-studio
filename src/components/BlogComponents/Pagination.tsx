@@ -44,7 +44,7 @@ const Pagination = ({
       return (
         <span
           key={`ellipsis-${idx}`}
-          className="px-2 py-1.5 sm:py-2 text-slate-400 select-none"
+          className="px-2 py-1.5 sm:py-2 text-slate-400 dark:text-slate-500 select-none"
         >
           …
         </span>
@@ -57,7 +57,7 @@ const Pagination = ({
         className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg ${
           currentPage === page
             ? "bg-orange-500 text-white"
-            : "border border-slate-300 hover:bg-slate-50 hover:no-underline"
+            : "border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:no-underline"
         }`}
       >
         {page}
@@ -69,7 +69,7 @@ const Pagination = ({
         className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg ${
           currentPage === page
             ? "bg-orange-500 text-white"
-            : "border border-slate-300 hover:bg-slate-50"
+            : "border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
         }`}
       >
         {page}
@@ -82,7 +82,7 @@ const Pagination = ({
       {useLinks && currentPage > 1 ? (
         <Link
           href={pageHref(currentPage - 1)}
-          className="p-2 rounded-lg border border-slate-300 hover:bg-slate-50"
+          className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
           aria-label="Previous page"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -91,7 +91,7 @@ const Pagination = ({
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 rounded-lg border border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Previous page"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -108,7 +108,7 @@ const Pagination = ({
       {useLinks && currentPage < totalPages ? (
         <Link
           href={pageHref(currentPage + 1)}
-          className="p-2 rounded-lg border border-slate-300 hover:bg-slate-50"
+          className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
           aria-label="Next page"
         >
           <ChevronRight className="h-4 w-4" />
@@ -117,7 +117,7 @@ const Pagination = ({
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="p-2 rounded-lg border border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Next page"
         >
           <ChevronRight className="h-4 w-4" />

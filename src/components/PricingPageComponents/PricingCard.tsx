@@ -20,11 +20,12 @@ const PricingCard = ({
   lang: string
 }) => {
   const cardVariants = {
-    default: "bg-white border-gray-200 hover:border-orange-200",
+    default:
+      "bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-700 hover:border-orange-200",
     popular:
-      "bg-white border-orange-300 hover:border-orange-400 shadow-lg transform scale-105",
+      "bg-white dark:bg-slate-900 border-orange-300 hover:border-orange-400 shadow-lg transform scale-105",
     premium:
-      "bg-gradient-to-br from-slate-50 to-white border-gray-300 hover:border-teal-300",
+      "bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border-gray-300 dark:border-slate-700 hover:border-teal-300",
   }
 
   const Icon = iconMap[pricingData.iconName as keyof typeof iconMap]
@@ -44,10 +45,10 @@ const PricingCard = ({
           <Icon className="h-6 w-6 text-orange-600" />
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {pricingData.title[lang as keyof typeof pricingData.title]}
         </h3>
-        <p className="text-gray-600 text-sm mb-4">
+        <p className="text-gray-600 dark:text-slate-400 text-sm mb-4">
           {
             pricingData.description[
               lang as keyof typeof pricingData.description
@@ -58,7 +59,7 @@ const PricingCard = ({
         {/* Pricing */}
         <div className="mb-4">
           <div className="flex items-center justify-center">
-            <span className="text-3xl font-bold text-gray-900">
+            <span className="text-3xl font-bold text-gray-900 dark:text-white">
               ${pricingData.price}
             </span>
           </div>

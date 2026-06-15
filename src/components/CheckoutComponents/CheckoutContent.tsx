@@ -129,7 +129,7 @@ const CheckoutContent = ({
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -138,14 +138,14 @@ const CheckoutContent = ({
               <CreditCard className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-2">
             {
               customPaymentData.title[
                 lang as keyof typeof customPaymentData.title
               ]
             }
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 dark:text-slate-400">
             {
               customPaymentData.subtitle[
                 lang as keyof typeof customPaymentData.subtitle
@@ -155,7 +155,7 @@ const CheckoutContent = ({
         </div>
 
         {/* Main Payment Card */}
-        <div className="bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           {!clientSecret ? (
             <>
               {/* Payment Form */}
@@ -165,7 +165,7 @@ const CheckoutContent = ({
                   <div>
                     <label
                       htmlFor="customerName"
-                      className="block text-sm font-medium text-slate-700 mb-2"
+                      className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2"
                     >
                       {t("checkout.full_name")}
                     </label>
@@ -179,7 +179,7 @@ const CheckoutContent = ({
                         value={customerName}
                         onChange={e => setCustomerName(e.target.value)}
                         placeholder={t("checkout.full_name_placeholder")}
-                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900"
+                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900 dark:text-white"
                         disabled={loading}
                       />
                     </div>
@@ -189,7 +189,7 @@ const CheckoutContent = ({
                   <div>
                     <label
                       htmlFor="customerEmail"
-                      className="block text-sm font-medium text-slate-700 mb-2"
+                      className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2"
                     >
                       {t("checkout.email_address")}
                     </label>
@@ -203,7 +203,7 @@ const CheckoutContent = ({
                         value={customerEmail}
                         onChange={e => setCustomerEmail(e.target.value)}
                         placeholder={t("checkout.email_address_placeholder")}
-                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900"
+                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-slate-900 dark:text-white"
                         disabled={loading}
                       />
                     </div>
@@ -213,7 +213,7 @@ const CheckoutContent = ({
                   <div>
                     <label
                       htmlFor="amount"
-                      className="block text-sm font-medium text-slate-700 mb-2"
+                      className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2"
                     >
                       {t("checkout.payment_amount")}
                     </label>
@@ -227,7 +227,7 @@ const CheckoutContent = ({
                         value={amount}
                         onChange={handleAmountChange}
                         placeholder="0.00"
-                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-lg font-semibold text-slate-900"
+                        className="block w-full pl-10 pr-3 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-lg font-semibold text-slate-900 dark:text-white"
                         disabled={loading}
                       />
                     </div>
@@ -263,8 +263,8 @@ const CheckoutContent = ({
               </div>
 
               {/* Security Features */}
-              <div className="bg-slate-50 px-8 py-6 border-t border-slate-200">
-                <div className="flex items-center justify-center space-x-6 text-sm text-slate-600">
+              <div className="bg-slate-50 dark:bg-slate-900 px-8 py-6 border-t border-slate-200 dark:border-slate-700">
+                <div className="flex items-center justify-center space-x-6 text-sm text-slate-600 dark:text-slate-400">
                   <div className="flex items-center">
                     <Shield className="h-4 w-4 text-teal-500 mr-1" />
                     <span>{t("checkout.ssl_encrypted")}</span>
@@ -285,7 +285,7 @@ const CheckoutContent = ({
                     {t("checkout.payment_amount")}: $
                     {(parseFloat(amount) || 0).toFixed(2)}
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-slate-600 dark:text-slate-400">
                     <p>
                       <strong>{t("checkout.name")}:</strong> {customerName}
                     </p>
@@ -322,7 +322,7 @@ const CheckoutContent = ({
                 {/* Back Button */}
                 <button
                   onClick={resetForm}
-                  className="mt-6 w-full bg-slate-100 text-slate-700 py-2 px-4 rounded-lg hover:bg-slate-200 transition-colors duration-200 font-medium"
+                  className="mt-6 w-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 px-4 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200 font-medium"
                 >
                   ← {t("checkout.change_details")}
                 </button>
@@ -335,20 +335,20 @@ const CheckoutContent = ({
         <div className="mt-8 text-center">
           <div className="flex justify-center space-x-8 text-xs text-slate-500">
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
-                <Shield className="h-4 w-4 text-slate-600" />
+              <div className="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-1">
+                <Shield className="h-4 w-4 text-slate-600 dark:text-slate-400" />
               </div>
               <span>{t("checkout.256_bit_ssl")}</span>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
-                <CreditCard className="h-4 w-4 text-slate-600" />
+              <div className="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-1">
+                <CreditCard className="h-4 w-4 text-slate-600 dark:text-slate-400" />
               </div>
               <span>{t("checkout.pci_compliant")}</span>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mb-1">
-                <CheckCircle className="h-4 w-4 text-slate-600" />
+              <div className="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-1">
+                <CheckCircle className="h-4 w-4 text-slate-600 dark:text-slate-400" />
               </div>
               <span>{t("checkout.verified")}</span>
             </div>

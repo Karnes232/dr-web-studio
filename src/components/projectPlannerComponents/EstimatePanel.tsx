@@ -45,7 +45,8 @@ export default function EstimatePanel({
       />
       <div className="relative p-6">
         <div className="mb-3.5 inline-flex items-center gap-2 text-[10.5px] font-semibold tracking-[0.12em] text-orange-300 uppercase">
-          <Layers size={13} strokeWidth={2.2} aria-hidden="true" /> {panel.kicker[locale]}
+          <Layers size={13} strokeWidth={2.2} aria-hidden="true" />{" "}
+          {panel.kicker[locale]}
         </div>
 
         {hasService ? (
@@ -75,7 +76,9 @@ export default function EstimatePanel({
                       isRush ? "text-amber-300" : ""
                     }`}
                   >
-                    <span className={isRush ? "" : "text-slate-300"}>{it.label}</span>
+                    <span className={isRush ? "" : "text-slate-300"}>
+                      {it.label}
+                    </span>
                     <span
                       className={`tabular-nums whitespace-nowrap ${
                         isRush ? "text-amber-300" : "font-semibold text-white"
@@ -91,7 +94,9 @@ export default function EstimatePanel({
             {timeline && (
               <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-[12.5px] text-slate-200">
                 <Clock size={13} strokeWidth={2.1} aria-hidden="true" />
-                <span className="text-slate-400">{panel.timelineLabel[locale]}:</span>
+                <span className="text-slate-400">
+                  {panel.timelineLabel[locale]}:
+                </span>
                 <span className="font-medium text-white">{timeline}</span>
               </div>
             )}
@@ -103,7 +108,10 @@ export default function EstimatePanel({
                 </div>
                 <ul className="flex flex-col gap-1.5">
                   {included.map((inc, i) => (
-                    <li key={i} className="flex items-start gap-2 text-[12.5px] text-slate-300">
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-[12.5px] text-slate-300"
+                    >
                       <Check
                         size={13}
                         strokeWidth={2.6}

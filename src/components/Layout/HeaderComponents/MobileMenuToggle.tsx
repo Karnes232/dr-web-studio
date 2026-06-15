@@ -12,7 +12,7 @@ const MobileMenuToggle = ({
       <button
         aria-label="Toggle mobile menu"
         onClick={toggleMobileMenu}
-        className="text-slate-700 hover:text-orange-500 focus:outline-none focus:text-orange-500 transition-colors duration-200"
+        className="text-slate-700 dark:text-slate-200 hover:text-orange-500 focus:outline-none focus:text-orange-500 transition-colors duration-200"
       >
         {isOpen ? (
           <X className="h-6 md:h-8 w-6 md:w-8" />

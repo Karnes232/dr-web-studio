@@ -28,7 +28,7 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
   }
   const Icon = icons[service.iconName as keyof typeof icons]
   return (
-    <div className="bg-gradient-to-r from-orange-100 to-yellow-50 p-6 border-b border-slate-100">
+    <div className="bg-gradient-to-r from-orange-100 to-yellow-50 p-6 border-b border-slate-100 dark:border-slate-700">
       <div className="flex items-center justify-between mb-4">
         <div className="bg-gradient-to-r from-orange-500 to-yellow-500 p-3 rounded-lg">
           <Icon className="h-6 w-6 text-white" />
