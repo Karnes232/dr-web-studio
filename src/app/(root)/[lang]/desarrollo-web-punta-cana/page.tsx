@@ -12,7 +12,7 @@ import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 const PAGE_SLUG = "desarrollo-web-punta-cana"
 

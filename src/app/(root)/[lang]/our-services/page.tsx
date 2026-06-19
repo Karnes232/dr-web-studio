@@ -8,7 +8,7 @@ import { getCategories } from "@/sanity/queries/services/category"
 import { getServiceItems } from "@/sanity/queries/services/serviceItem"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{

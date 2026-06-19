@@ -14,7 +14,7 @@ import { buildAlternates } from "@/lib/urls"
 import { slugPair } from "@/lib/slugs"
 import SetLocalizedHrefs from "@/i18n/SetLocalizedHrefs"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPostsSitemap()

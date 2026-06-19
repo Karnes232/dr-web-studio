@@ -5,7 +5,7 @@ import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
 import { getProjects } from "@/sanity/queries/portfolio/project"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{

@@ -9,7 +9,7 @@ import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { buildAlternates } from "@/lib/urls"
 import ProjectPlanner from "@/components/projectPlannerComponents/ProjectPlanner"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{

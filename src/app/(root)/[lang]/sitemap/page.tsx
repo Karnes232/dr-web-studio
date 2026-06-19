@@ -7,7 +7,7 @@ import { slugForLocale } from "@/lib/slugs"
 
 type Href = Parameters<typeof Link>[0]["href"]
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{ lang: "en" | "es" }>

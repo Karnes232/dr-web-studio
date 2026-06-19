@@ -13,7 +13,7 @@ import { Metadata } from "next"
 import React from "react"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{

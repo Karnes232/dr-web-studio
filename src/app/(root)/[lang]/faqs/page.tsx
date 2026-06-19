@@ -5,7 +5,7 @@ import { getFaqs } from "@/sanity/queries/faqs/faqs"
 import { getFaqsHeader } from "@/sanity/queries/faqs/faqsHeader"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{

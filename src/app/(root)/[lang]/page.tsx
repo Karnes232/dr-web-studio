@@ -18,7 +18,7 @@ import { getPreviousClients } from "@/sanity/queries/home/previousClients"
 import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {

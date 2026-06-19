@@ -19,7 +19,7 @@ import { getDevelopmentApproach } from "@/sanity/queries/about-me/developmentApp
 import { getWhyChooseUs } from "@/sanity/queries/about-me/whyChooseUs"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 interface PageProps {
   params: Promise<{
