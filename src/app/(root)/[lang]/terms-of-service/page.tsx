@@ -4,7 +4,7 @@ import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
 
-export const revalidate = 86400 * 7 // 7 days
+export const revalidate = 604800
 
 interface PageProps {
   params: Promise<{
