@@ -60,7 +60,7 @@ const PortfolioCard = ({
           </span>
         </div>
 
-        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 h-14 line-clamp-2">
           {project.title[currentLocale as keyof typeof project.title]}
         </h3>
         <p className="text-slate-600 dark:text-slate-400 mb-4">
