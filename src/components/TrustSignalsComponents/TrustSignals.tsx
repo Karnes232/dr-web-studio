@@ -27,7 +27,6 @@ const TrustSignals = ({
   )
   const [averageRating, setAverageRating] = useState(targetAverageRating)
   const statsRef = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
