@@ -5,12 +5,13 @@ import PortfolioFilter from "@/components/PortfolioComponents/PortfolioFilter"
 import PortfolioHeader from "@/components/PortfolioComponents/PortfolioHeader"
 import ProjectDetailModal from "@/components/PortfolioComponents/ProjectDetailModal"
 import { PortfolioHeaderData } from "@/sanity/queries/portfolio/portfolioHeader"
+import type { Project } from "@/sanity/queries/portfolio/project"
 import React, { useState } from "react"
 
 interface PortfolioContentProps {
   lang: string
   portfolioHeader: PortfolioHeaderData
-  projects: any
+  projects: Project[]
 }
 
 export default function PortfolioContent({
@@ -21,14 +22,13 @@ export default function PortfolioContent({
   const [activeFilter, setActiveFilter] = useState(
     lang === "es" ? "Todos" : "All",
   )
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const categories = [
     ...new Set(
       projects.map(
-        (project: any) =>
-          project.category[lang as keyof typeof project.category],
+        project => project.category[lang as keyof typeof project.category],
       ),
     ),
   ]
@@ -37,15 +37,15 @@ export default function PortfolioContent({
     activeFilter === "All" || activeFilter === "Todos"
       ? projects
       : projects.filter(
-          (project: any) =>
+          project =>
             project.category[lang as keyof typeof project.category] ===
             activeFilter,
         )
 
-  // const featuredProject = portfolioData.find(project => project.featured)
-  const featuredProject = projects[0]
+  const featuredProject = projects.find(project => project.featured)
+  // const featuredProject = projects[0]
 
-  const handleViewDetails = (project: any) => {
+  const handleViewDetails = (project: Project) => {
     setSelectedProject(project)
     setIsModalOpen(true)
   }
@@ -79,7 +79,7 @@ export default function PortfolioContent({
 
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project: any, index: number) => (
+          {filteredProjects.map((project, index) => (
             <PortfolioCard
               key={index}
               project={project}
