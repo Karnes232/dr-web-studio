@@ -41,7 +41,7 @@ const HeroSection = async ({
           fill
           priority
           fetchPriority="high"
-          unoptimized
+          quality={70}
           className="object-cover"
           sizes="100vw"
           {...(lqip ? { placeholder: "blur" as const, blurDataURL: lqip } : {})}

@@ -24,6 +24,9 @@ export interface Project {
   image: {
     asset: {
       url: string
+      metadata?: {
+        lqip?: string
+      }
     }
   }
   technologies: string[]
@@ -51,6 +54,9 @@ export const projectProjection = `{
   image {
     asset-> {
       url,
+      metadata {
+        lqip
+      }
     }
   },
   technologies,

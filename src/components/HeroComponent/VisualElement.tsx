@@ -31,7 +31,7 @@ const VisualElement = ({
         pagination={{ clickable: true }}
         className="w-full xl:px-4"
       >
-        {projects.map((project, index) => (
+        {projects.map(project => (
           <SwiperSlide key={project._id}>
             <Link
               href="/portfolio"
@@ -40,12 +40,18 @@ const VisualElement = ({
               {/* Real project screenshot */}
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-900">
                 <Image
-                  src={project.image.asset.url}
+                  src={`${project.image.asset.url}?w=1200&q=70&auto=format&fit=max`}
                   alt={project.title[locale]}
                   fill
-                  priority={index === 0}
+                  loading="lazy"
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   className="object-cover object-top"
+                  {...(project.image.asset.metadata?.lqip
+                    ? {
+                        placeholder: "blur" as const,
+                        blurDataURL: project.image.asset.metadata.lqip,
+                      }
+                    : {})}
                 />
               </div>
 

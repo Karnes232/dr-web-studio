@@ -12,7 +12,6 @@ const Logo = ({ logo }: { logo: any }) => {
           width={400}
           height={400}
           className="w-full h-full object-contain dark:hidden"
-          priority
           sizes="(max-width: 640px) 100px,
              (max-width: 768px) 150px,
              (max-width: 1024px) 150px,
@@ -25,7 +24,6 @@ const Logo = ({ logo }: { logo: any }) => {
           width={400}
           height={400}
           className="w-full h-full object-contain hidden dark:block"
-          priority
           sizes="(max-width: 640px) 100px,
              (max-width: 768px) 150px,
              (max-width: 1024px) 150px,

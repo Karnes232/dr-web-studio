@@ -24,7 +24,7 @@ const FooterLogo = ({ logo }: FooterLogoProps) => {
         width={120}
         height={120}
         className=""
-        priority
+        loading="lazy"
         sizes="(max-width: 640px) 100px,
            (max-width: 768px) 100px,
            (max-width: 1024px) 100px,
