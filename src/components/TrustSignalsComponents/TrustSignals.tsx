@@ -3,23 +3,28 @@ import React, { useEffect, useState, useRef } from "react"
 import { Star, Quote } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
 import ClientLogosMarquee from "./ClientLogosMarquee"
+import type { TrustStats } from "@/sanity/queries/home/trustSignals"
 
 const TrustSignals = ({
   title,
   subtitle,
   previousClients,
   testimonials,
+  stats,
 }: {
   title: string
   subtitle: string
   previousClients: any
   testimonials: any
+  stats?: TrustStats
 }) => {
   const { t, currentLocale } = useLocale()
-  const targetHappyClients = 20
-  const targetProjectsCompleted = 50
-  const targetAverageRating = 5.0
-  const supportAvailable = "24/7"
+  // Single source of truth: numbers come from the trustSignals Sanity doc
+  // (shared with the hero indicator). Fallbacks keep SSR safe if unset.
+  const targetHappyClients = stats?.happyClients ?? 20
+  const targetProjectsCompleted = stats?.projectsCompleted ?? 50
+  const targetAverageRating = stats?.averageRating ?? 5.0
+  const supportAvailable = stats?.supportAvailable ?? "24/7"
 
   const [happyClients, setHappyClients] = useState(targetHappyClients)
   const [projectsCompleted, setProjectsCompleted] = useState(

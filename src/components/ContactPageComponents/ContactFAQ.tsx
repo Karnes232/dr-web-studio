@@ -46,13 +46,21 @@ const ContactFAQ = ({
                 </svg>
               </div>
             </button>
-            {openFAQ === index && (
-              <div className="px-4 pb-3">
-                <p className="text-slate-600 dark:text-slate-400">
-                  {faq.answer}
-                </p>
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                openFAQ === index
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-4 pb-3">
+                  <p className="text-slate-600 dark:text-slate-400">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

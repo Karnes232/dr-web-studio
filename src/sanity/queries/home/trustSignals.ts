@@ -1,6 +1,13 @@
 import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 
+export interface TrustStats {
+  happyClients: number
+  projectsCompleted: number
+  averageRating: number
+  supportAvailable: string
+}
+
 interface TrustSignalsData {
   title: {
     en: string
@@ -10,6 +17,7 @@ interface TrustSignalsData {
     en: string
     es: string
   }
+  stats?: TrustStats
 }
 
 export const trustSignalsQuery = `*[_type == "trustSignals"][0] {
@@ -21,6 +29,12 @@ export const trustSignalsQuery = `*[_type == "trustSignals"][0] {
     en,
     es
   },
+  stats {
+    happyClients,
+    projectsCompleted,
+    averageRating,
+    supportAvailable
+  }
 }`
 
 export const getTrustSignals = cache(async (): Promise<TrustSignalsData> => {

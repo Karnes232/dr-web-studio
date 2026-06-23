@@ -61,6 +61,40 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: "stats",
+      title: "Stats",
+      type: "object",
+      description:
+        "Trust numbers shown in the hero indicator AND the stats grid — single source so they always match.",
+      options: { collapsed: false, collapsible: true },
+      fields: [
+        defineField({
+          name: "happyClients",
+          title: "Happy Clients",
+          type: "number",
+          initialValue: 20,
+        }),
+        defineField({
+          name: "projectsCompleted",
+          title: "Projects Completed",
+          type: "number",
+          initialValue: 50,
+        }),
+        defineField({
+          name: "averageRating",
+          title: "Average Rating",
+          type: "number",
+          initialValue: 5,
+        }),
+        defineField({
+          name: "supportAvailable",
+          title: "Support Available",
+          type: "string",
+          initialValue: "24/7",
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

@@ -39,13 +39,21 @@ const PricingFAQ = ({
                 {openFAQ === index ? "−" : "+"}
               </span>
             </button>
-            {openFAQ === index && (
-              <div className="px-6 pb-4">
-                <p className="text-gray-600 dark:text-slate-400">
-                  {faq.answer[lang]}
-                </p>
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                openFAQ === index
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-4">
+                  <p className="text-gray-600 dark:text-slate-400">
+                    {faq.answer[lang]}
+                  </p>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

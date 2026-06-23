@@ -14,12 +14,14 @@ const HeroSection = async ({
   backgroundImage,
   projects,
   lang,
+  happyClients = 20,
 }: {
   heading: any
   subheading: string
   backgroundImage: any
   projects: Project[]
   lang: string
+  happyClients?: number
 }) => {
   const t = await getTranslations()
   const lqip = backgroundImage?.asset?.metadata?.lqip
@@ -102,7 +104,7 @@ const HeroSection = async ({
                 </div>
                 <div>
                   <div className="font-semibold text-white">
-                    50+ {t("hero.happyClients")}
+                    {happyClients}+ {t("hero.happyClients")}
                   </div>
                   <div className="text-sm text-gray-400">
                     {t("hero.acrossDominicanRepublic")}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { ChevronDown, HelpCircle, MessageCircle, Mail } from "lucide-react"
 
 interface FAQ {
@@ -184,29 +184,20 @@ function FAQItem({
           </motion.div>
         </button>
 
-        {/* Answer */}
-        <AnimatePresence>
-          {isActive && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-slate-100 dark:border-slate-800">
-                <motion.p
-                  initial={{ y: -10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-slate-600 dark:text-slate-400 leading-relaxed pt-6"
-                >
-                  {faq.answer}
-                </motion.p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Answer — always rendered (collapsed via CSS) so it ships in SSR HTML. */}
+        <div
+          className={`grid transition-all duration-300 ease-in-out ${
+            isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-slate-100 dark:border-slate-800">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed pt-6">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
   )

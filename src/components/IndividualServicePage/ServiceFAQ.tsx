@@ -39,13 +39,21 @@ const ServiceFAQ = ({ faqs }: { faqs: any }) => {
                   <ChevronDown className="w-5 h-5 text-gray-500 dark:text-slate-400" />
                 )}
               </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-700 dark:text-slate-200 leading-relaxed">
-                    {faq.answer}
-                  </p>
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  openIndex === index
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-700 dark:text-slate-200 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

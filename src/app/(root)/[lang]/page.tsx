@@ -153,6 +153,7 @@ export default async function Home({ params }: PageProps) {
           backgroundImage={pageData.backgroundImage}
           projects={heroProjects}
           lang={lang}
+          happyClients={trustSignals.stats?.happyClients ?? 20}
         />
         <QuickServicesOverview
           title={serviceData.title[lang]}
@@ -175,6 +176,7 @@ export default async function Home({ params }: PageProps) {
             subtitle={trustSignals.subtitle[lang]}
             previousClients={previousClients}
             testimonials={testimonials}
+            stats={trustSignals.stats}
           />
         </Suspense>
       </main>

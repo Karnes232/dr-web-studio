@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
 import type { FaqItem } from "./types"
 
@@ -36,22 +36,18 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
           )}
         </span>
       </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="answer"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <p className="pb-5 text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-              {item.answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Always rendered (collapsed via CSS) so the answer ships in SSR HTML. */}
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <p className="pb-5 text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            {item.answer}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

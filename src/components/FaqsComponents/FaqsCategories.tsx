@@ -71,47 +71,64 @@ const FaqsCategories = ({
                 </div>
               </button>
 
-              {/* Questions */}
-              {isActive && (
-                <div className="px-2 sm:px-6 pb-4">
-                  <div className="space-y-2">
-                    {category.questions.map(faq => {
-                      const isQuestionActive = activeQuestion === faq.id
+              {/* Questions — always rendered (collapsed via CSS) so all Q&A
+                  ships in the server HTML and is crawlable by AI/search. */}
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  isActive
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-2 sm:px-6 pb-4">
+                    <div className="space-y-2">
+                      {category.questions.map(faq => {
+                        const isQuestionActive = activeQuestion === faq.id
 
-                      return (
-                        <div
-                          key={faq.id}
-                          className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden"
-                        >
-                          <button
-                            onClick={() => toggleQuestion(faq.id)}
-                            className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+                        return (
+                          <div
+                            key={faq.id}
+                            className="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden"
                           >
-                            <h3 className="font-medium text-gray-900 dark:text-white pr-4">
-                              {faq.question}
-                            </h3>
-                            {isQuestionActive ? (
-                              <ChevronUp className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
-                            ) : (
-                              <ChevronDown className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
-                            )}
-                          </button>
+                            <button
+                              onClick={() => toggleQuestion(faq.id)}
+                              className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+                            >
+                              <h3 className="font-medium text-gray-900 dark:text-white pr-4">
+                                {faq.question}
+                              </h3>
+                              {isQuestionActive ? (
+                                <ChevronUp className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
+                              ) : (
+                                <ChevronDown className="h-4 w-4 text-gray-500 dark:text-slate-400 flex-shrink-0" />
+                              )}
+                            </button>
 
-                          {isQuestionActive && (
-                            <div className="px-2 sm:px-4 py-3">
-                              <div className="rounded-lg bg-slate-50 dark:bg-slate-900 p-4">
-                                <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
-                                  {faq.answer}
-                                </p>
+                            <div
+                              className={`grid transition-all duration-300 ease-in-out ${
+                                isQuestionActive
+                                  ? "grid-rows-[1fr] opacity-100"
+                                  : "grid-rows-[0fr] opacity-0"
+                              }`}
+                            >
+                              <div className="overflow-hidden">
+                                <div className="px-2 sm:px-4 py-3">
+                                  <div className="rounded-lg bg-slate-50 dark:bg-slate-900 p-4">
+                                    <p className="text-slate-700 dark:text-slate-200 leading-relaxed">
+                                      {faq.answer}
+                                    </p>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          )}
-                        </div>
-                      )
-                    })}
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           )
         })}
