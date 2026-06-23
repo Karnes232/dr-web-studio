@@ -4,6 +4,8 @@ import FaqsContent from "@/components/FaqsComponents/FaqsContent"
 import { getFaqs } from "@/sanity/queries/faqs/faqs"
 import { getFaqsHeader } from "@/sanity/queries/faqs/faqsHeader"
 import { buildAlternates } from "@/lib/urls"
+import { getFaqsGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 
 export const revalidate = 86400
 
@@ -20,27 +22,29 @@ export default async function Portfolio({ params }: PageProps) {
     getFaqsHeader(),
   ])
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.categories.flatMap(category =>
-      category.questions.map(q => ({
-        "@type": "Question",
-        name: q.question[lang],
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: q.answer[lang],
-        },
-      })),
-    ),
-  }
+  const faqItems = faqData.categories.flatMap(category =>
+    category.questions.map(q => ({
+      question: q.question[lang],
+      answer: q.answer[lang],
+    })),
+  )
+
+  const graph = await getFaqsGraph({
+    lang,
+    href: "/faqs",
+    faqItems,
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      {
+        name: lang === "es" ? "Preguntas Frecuentes" : "FAQs",
+        href: "/faqs",
+      },
+    ],
+  })
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={graph} />
       <FaqsContent
         lang={lang}
         faqData={faqData}

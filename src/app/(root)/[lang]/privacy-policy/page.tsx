@@ -3,6 +3,8 @@ import { getLegal } from "@/sanity/queries/legal/legal"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 
 export const revalidate = 604800
 
@@ -14,10 +16,25 @@ interface PageProps {
 
 export default async function PrivacyPolicy({ params }: PageProps) {
   const { lang } = await params
-  const legalData = await getLegal("privacy-policy")
+  const [legalData, graph] = await Promise.all([
+    getLegal("privacy-policy"),
+    getStandardGraph({
+      lang,
+      pageName: "privacy-policy",
+      href: "/privacy-policy",
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        {
+          name: lang === "es" ? "Política de Privacidad" : "Privacy Policy",
+          href: "/privacy-policy",
+        },
+      ],
+    }),
+  ])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950">
+      <JsonLd data={graph} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="prose prose-lg prose-slate max-w-none">
           <BlockContent

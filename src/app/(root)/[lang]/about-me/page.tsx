@@ -11,7 +11,9 @@ import { getStats } from "@/sanity/queries/layout/stats"
 import { getLocationAvailability } from "@/sanity/queries/about-me/locationAvailability"
 import { getPersonalStory } from "@/sanity/queries/about-me/personalStory"
 import { getSectionHeader } from "@/sanity/queries/about-me/sectionHeader"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { Metadata } from "next"
 import React from "react"
 import { getTechnologies } from "@/sanity/queries/about-me/technologies"
@@ -30,7 +32,7 @@ interface PageProps {
 export default async function AboutUs({ params }: PageProps) {
   const { lang } = await params
   const [
-    seoData,
+    graph,
     sectionHeader,
     personalStory,
     locationAvailability,
@@ -39,7 +41,16 @@ export default async function AboutUs({ params }: PageProps) {
     developmentApproach,
     whyChooseUs,
   ] = await Promise.all([
-    getSeoSchema("about"),
+    getStandardGraph({
+      lang,
+      pageName: "about",
+      href: "/about-me",
+      includePerson: true,
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        { name: lang === "es" ? "Sobre mí" : "About", href: "/about-me" },
+      ],
+    }),
     getSectionHeader(),
     getPersonalStory(),
     getLocationAvailability(),
@@ -51,12 +62,7 @@ export default async function AboutUs({ params }: PageProps) {
 
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <section
         id="about"
         className="py-16 bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950"

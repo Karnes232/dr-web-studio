@@ -64,6 +64,7 @@ export interface BlogPost {
     }
   }>
   publishedAt: string
+  _updatedAt?: string
   mainImage: any
   imageUrl?: string
   body: {
@@ -153,6 +154,7 @@ export const blogPostBySlugQuery = `
     description
   },
   publishedAt,
+  _updatedAt,
   mainImage,
   body,
   readTime,

@@ -9,6 +9,10 @@ import { getPillarPageContent } from "@/sanity/queries/pillarPage"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
+
+const PAGE_SLUG = "guia-completa-desarrollo-web-moderno-negocios"
 
 export const revalidate = 86400
 
@@ -26,15 +30,23 @@ export default async function GuiaCompletaDesarrolloWebModernoNegocios({
 
   if (!content) return null
 
+  const graph = await getStandardGraph({
+    lang,
+    pageName: PAGE_SLUG,
+    href: "/guia-completa-desarrollo-web-moderno-negocios",
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      {
+        name: lang === "es" ? "Guía Completa" : "Complete Guide",
+        href: "/guia-completa-desarrollo-web-moderno-negocios",
+      },
+    ],
+  })
+
   return (
     <main>
       <PageClientComponent content={content} lang={lang as Language} />
-      {content.structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: content.structuredData }}
-        />
-      )}
+      <JsonLd data={graph} />
     </main>
   )
 }

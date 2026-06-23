@@ -7,7 +7,9 @@ import { getFAQs } from "@/sanity/queries/pricing/faq"
 import { getFAQsHeader } from "@/sanity/queries/pricing/faqsHeader"
 import { getPricingData } from "@/sanity/queries/pricing/pricingData"
 import { getPricingHeader } from "@/sanity/queries/pricing/pricingHeader"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { getCustomSolutionCTA } from "@/sanity/queries/services/customSolutionCTA"
 import { Metadata } from "next"
 import React from "react"
@@ -24,14 +26,23 @@ interface PageProps {
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const [
-    seoData,
+    graph,
     customSolutionCTA,
     pricingHeader,
     faqsHeader,
     faqs,
     pricingData,
   ] = await Promise.all([
-    getSeoSchema("pricing"),
+    getStandardGraph({
+      lang,
+      pageName: "pricing",
+      href: "/pricing",
+      withOffers: true,
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        { name: lang === "es" ? "Precios" : "Pricing", href: "/pricing" },
+      ],
+    }),
     getCustomSolutionCTA(),
     getPricingHeader(),
     getFAQsHeader(),
@@ -40,12 +51,7 @@ export default async function Pricing({ params }: PageProps) {
   ])
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <section
         id="pricing"
         className="py-20 bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950"

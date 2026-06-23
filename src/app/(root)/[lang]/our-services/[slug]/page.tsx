@@ -1,6 +1,8 @@
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
 import { Metadata } from "next"
 import IndividualServiceContent from "@/components/IndividualServicePage/IndividualServiceContent"
+import { getServiceGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
+import { SERVICE_PRICES } from "@/lib/schema/config"
 import {
   getServiceItemBySlug,
   getServiceItemSEO,
@@ -104,6 +106,37 @@ export default async function IndividualService({ params }: PageProps) {
   // string); cast so slugPair can read both locale slugs for the switcher.
   const slugs = slugPair(service as unknown as LocalizedSlugDoc)
 
+  const ogImg = service.seo?.openGraph?.image as unknown
+  const image =
+    typeof ogImg === "string" ? ogImg : (ogImg as { url?: string })?.url
+  const name = service.seo?.meta?.[lang]?.title || service.title[lang]
+  const description =
+    service.seo?.meta?.[lang]?.description || service.description?.[lang]
+  const priceInfo = SERVICE_PRICES[slugs.en]
+  const serviceHref = {
+    pathname: "/our-services/[slug]" as const,
+    params: { slug: slugs[lang] },
+  }
+
+  const graph = await getServiceGraph({
+    lang,
+    href: serviceHref,
+    enSlug: slugs.en,
+    name,
+    description,
+    image,
+    price: priceInfo?.price,
+    unit: priceInfo?.unit,
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      {
+        name: lang === "es" ? "Servicios" : "Services",
+        href: "/our-services",
+      },
+      { name, href: serviceHref },
+    ],
+  })
+
   return (
     <>
       <SetLocalizedHrefs
@@ -111,12 +144,7 @@ export default async function IndividualService({ params }: PageProps) {
         enSlug={slugs.en}
         esSlug={slugs.es}
       />
-      {service.seo?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: service.seo.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <IndividualServiceContent
         // lang={lang}
         service={service}

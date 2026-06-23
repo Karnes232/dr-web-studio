@@ -1,5 +1,7 @@
 import { Metadata } from "next"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import ServicesContent from "@/components/ServicesComponents/ServicesContent"
 import { getServicesHeader } from "@/sanity/queries/services/servicesHeader"
 import { getFeaturesStrip } from "@/sanity/queries/services/featuresStrip"
@@ -19,14 +21,26 @@ interface PageProps {
 export default async function OurServices({ params }: PageProps) {
   const { lang } = await params
   const [
-    seoData,
+    graph,
     servicesHeader,
     featuresStrip,
     customSolutionCTA,
     categories,
     serviceItems,
   ] = await Promise.all([
-    getSeoSchema("services"),
+    getStandardGraph({
+      lang,
+      pageName: "services",
+      href: "/our-services",
+      withOffers: true,
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        {
+          name: lang === "es" ? "Servicios" : "Services",
+          href: "/our-services",
+        },
+      ],
+    }),
     getServicesHeader(),
     getFeaturesStrip(),
     getCustomSolutionCTA(),
@@ -35,12 +49,7 @@ export default async function OurServices({ params }: PageProps) {
   ])
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <ServicesContent
         servicesHeader={servicesHeader}
         featuresStrip={featuresStrip}

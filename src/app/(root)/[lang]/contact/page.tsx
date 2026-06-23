@@ -6,7 +6,9 @@ import { getContactFaqs } from "@/sanity/queries/contact/contactFaq"
 import { getContactHero } from "@/sanity/queries/contact/contactHero"
 import { getLocationInfo } from "@/sanity/queries/contact/locationInfo"
 import { getFAQsHeader } from "@/sanity/queries/pricing/faqsHeader"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { Metadata } from "next"
 import React from "react"
 import { buildAlternates } from "@/lib/urls"
@@ -21,9 +23,17 @@ interface PageProps {
 
 export default async function Contact({ params }: PageProps) {
   const { lang } = await params
-  const [seoData, contactHero, locationInfo, faqsHeader, contactFaqs] =
+  const [graph, contactHero, locationInfo, faqsHeader, contactFaqs] =
     await Promise.all([
-      getSeoSchema("contact"),
+      getStandardGraph({
+        lang,
+        pageName: "contact",
+        href: "/contact",
+        crumbs: [
+          { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+          { name: lang === "es" ? "Contacto" : "Contact", href: "/contact" },
+        ],
+      }),
       getContactHero(),
       getLocationInfo(),
       getFAQsHeader(),
@@ -32,12 +42,7 @@ export default async function Contact({ params }: PageProps) {
 
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <section
         id="contact"
         className="py-20 bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950"

@@ -13,6 +13,8 @@ import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { buildAlternates } from "@/lib/urls"
 import { slugPair } from "@/lib/slugs"
 import SetLocalizedHrefs from "@/i18n/SetLocalizedHrefs"
+import { getArticleGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 
 export const revalidate = 86400
 
@@ -52,6 +54,24 @@ export default async function BlogPost({ params }: PageProps) {
 
   const slugs = slugPair(post)
 
+  const graph = await getArticleGraph({
+    lang,
+    href: { pathname: "/blog/[slug]", params: { slug: slugs[lang] } },
+    title: post.title[lang],
+    description: post.description?.[lang],
+    image: post.imageUrl,
+    datePublished: post.publishedAt,
+    dateModified: post._updatedAt,
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      { name: "Blog", href: "/blog" },
+      {
+        name: post.title[lang],
+        href: { pathname: "/blog/[slug]", params: { slug: slugs[lang] } },
+      },
+    ],
+  })
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950">
       <SetLocalizedHrefs
@@ -59,14 +79,7 @@ export default async function BlogPost({ params }: PageProps) {
         enSlug={slugs.en}
         esSlug={slugs.es}
       />
-      {post?.seo?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: post.seo.structuredData[lang],
-          }}
-        />
-      )}
+      <JsonLd data={graph} />
       <BlogPostHeader post={post} lang={lang} />
       <BlogPostContent body={post?.body} lang={lang} />
       <RelatedPosts posts={relatedPosts} lang={lang} />

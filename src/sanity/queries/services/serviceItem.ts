@@ -506,6 +506,25 @@ export const getServiceItemsSitemap = cache(
   },
 )
 
+// Minimal projection for building the Organization OfferCatalog JSON-LD.
+const serviceOffersQuery = `*[_type == "serviceItem"] {
+  title,
+  description,
+  slug,
+  slugEs
+}`
+
+export interface ServiceOffer {
+  title: { en: string; es: string }
+  description?: { en: string; es: string }
+  slug: { current: string }
+  slugEs?: { current: string } | null
+}
+
+export const getServiceOffers = cache(async (): Promise<ServiceOffer[]> => {
+  return client.fetch(serviceOffersQuery)
+})
+
 // All services with their full localized body — used by the /llms-full.txt
 // routes to inline complete service descriptions (one query, not N per-slug).
 const allServiceItemsFullQuery = `*[_type == "serviceItem"] {

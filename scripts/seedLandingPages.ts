@@ -90,44 +90,14 @@ const sharedTestimonials = [
   },
 ]
 
+// NOTE: finalCta phone/WhatsApp intentionally omitted — the site contacts via
+// email/forms only (no public phone). Structured data (LocalBusiness etc.) is
+// now generated in code from the `generalLayout` singleton (src/lib/schema),
+// NOT seeded here, so there's a single source of truth and no stale JSON.
 const sharedFinalCta = {
   primaryCtaHref: "/contact",
   secondaryCtaHref: "/project-planner",
-  whatsappNumber: "+18098671234",
-  phone: "+1 (809) 867-1234",
 }
-
-const localBusinessSchema = (lang: "en" | "es") =>
-  JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    name: "DR Web Studio",
-    description:
-      lang === "es"
-        ? "Agencia de desarrollo web profesional en República Dominicana. Creamos sitios web modernos, rápidos y optimizados para negocios dominicanos."
-        : "Professional web development agency in the Dominican Republic. We build modern, fast, and optimized websites for Dominican businesses.",
-    url: "https://www.dr-webstudio.com",
-    telephone: "+18098671234",
-    email: "hello@dr-webstudio.com",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "DO",
-      addressRegion: "Distrito Nacional",
-      addressLocality: "Santo Domingo",
-    },
-    areaServed: { "@type": "Country", name: "Dominican Republic" },
-    priceRange: "$$",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-    sameAs: [
-      "https://www.instagram.com/drwebstudio",
-      "https://www.linkedin.com/company/drwebstudio",
-    ],
-  })
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PAGE 1 — desarrollo-web-republica-dominicana  (Hub)
@@ -1787,10 +1757,6 @@ const seoDocuments = [
           "Sitios web rápidos, modernos y bilingüe para negocios dominicanos. +50 proyectos entregados. Consulta gratuita disponible.",
       },
     },
-    structuredData: {
-      en: localBusinessSchema("en"),
-      es: localBusinessSchema("es"),
-    },
     canonicalUrl: "desarrollo-web-republica-dominicana",
     noIndex: false,
     noFollow: false,
@@ -1837,10 +1803,6 @@ const seoDocuments = [
           "Diseño web estratégico para negocios dominicanos. Mobile-first, optimizado para conversiones y único para tu marca.",
       },
     },
-    structuredData: {
-      en: localBusinessSchema("en"),
-      es: localBusinessSchema("es"),
-    },
     canonicalUrl: "diseno-web-republica-dominicana",
     noIndex: false,
     noFollow: false,
@@ -1886,10 +1848,6 @@ const seoDocuments = [
         description:
           "Sitios web multilingüe para hoteles, restaurantes y tours en Punta Cana. Construidos para atraer visitantes internacionales.",
       },
-    },
-    structuredData: {
-      en: localBusinessSchema("en"),
-      es: localBusinessSchema("es"),
     },
     canonicalUrl: "desarrollo-web-punta-cana",
     noIndex: false,
@@ -1938,10 +1896,6 @@ const seoDocuments = [
           "Configuración completa de tienda online para negocios dominicanos. Soporte de pago Azul, PayPal e internacional incluido.",
       },
     },
-    structuredData: {
-      en: localBusinessSchema("en"),
-      es: localBusinessSchema("es"),
-    },
     canonicalUrl: "desarrollo-ecommerce-republica-dominicana",
     noIndex: false,
     noFollow: false,
@@ -1987,10 +1941,6 @@ const seoDocuments = [
         description:
           "Mantén tu sitio rápido, seguro y siempre en línea. Respaldos diarios, monitoreo de seguridad y soporte prioritario desde $150/mes.",
       },
-    },
-    structuredData: {
-      en: localBusinessSchema("en"),
-      es: localBusinessSchema("es"),
     },
     canonicalUrl: "mantenimiento-web-republica-dominicana",
     noIndex: false,

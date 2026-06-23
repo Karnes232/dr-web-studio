@@ -5,7 +5,9 @@ import QuickServicesOverview from "@/components/ServicesOverview/QuickServicesOv
 import HomeFeaturedWork from "@/components/HomeFeaturedWorkComponents/HomeFeaturedWork"
 import TrustSignals from "@/components/TrustSignalsComponents/TrustSignals"
 import { Metadata } from "next"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getHomeGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { getHomePageService } from "@/sanity/queries/home/homePageService"
 import { getServices } from "@/sanity/queries/services/services"
 import {
@@ -102,7 +104,7 @@ export async function generateMetadata({
 export default async function Home({ params }: PageProps) {
   const { lang } = await params
   const [
-    seoData,
+    graph,
     pageData,
     serviceData,
     services,
@@ -112,7 +114,7 @@ export default async function Home({ params }: PageProps) {
     projects,
     featuredWork,
   ] = await Promise.all([
-    getSeoSchema("home"),
+    getHomeGraph(lang),
     getContent(),
     getHomePageService(),
     getServices(),
@@ -139,12 +141,7 @@ export default async function Home({ params }: PageProps) {
 
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <main className="bg-white dark:bg-slate-900">
         <HeroSection
           heading={pageData.heading ? pageData.heading[lang] : pageData.heading}

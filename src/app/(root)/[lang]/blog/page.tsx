@@ -1,7 +1,9 @@
 import BlogContent from "@/components/BlogComponents/BlogContent"
 import { getBlogPostsForListing } from "@/sanity/queries/blog/blog"
 import { getAllCategories } from "@/sanity/queries/blog/categories"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { getBlogHeader } from "@/sanity/queries/blog/blogHeader"
 import { Metadata } from "next"
 import React from "react"
@@ -23,8 +25,16 @@ export default async function Blog({ params, searchParams }: PageProps) {
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1)
 
-  const [seoData, headerData, blogPosts, categories] = await Promise.all([
-    getSeoSchema("blog"),
+  const [graph, headerData, blogPosts, categories] = await Promise.all([
+    getStandardGraph({
+      lang,
+      pageName: "blog",
+      href: "/blog",
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        { name: "Blog", href: "/blog" },
+      ],
+    }),
     getBlogHeader(),
     getBlogPostsForListing(),
     getAllCategories(),
@@ -43,12 +53,7 @@ export default async function Blog({ params, searchParams }: PageProps) {
   }
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <BlogContent
         categories={categories}
         lang={lang}

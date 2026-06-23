@@ -1,4 +1,6 @@
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { Metadata } from "next"
 import PortfolioContent from "@/components/PortfolioComponents/PortfolioContent"
 import { getPortfolioHeader } from "@/sanity/queries/portfolio/portfolioHeader"
@@ -15,20 +17,26 @@ interface PageProps {
 
 export default async function Portfolio({ params }: PageProps) {
   const { lang } = await params
-  const [seoData, portfolioHeader, projects] = await Promise.all([
-    getSeoSchema("portfolio"),
+  const [graph, portfolioHeader, projects] = await Promise.all([
+    getStandardGraph({
+      lang,
+      pageName: "portfolio",
+      href: "/portfolio",
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        {
+          name: lang === "es" ? "Portafolio" : "Portfolio",
+          href: "/portfolio",
+        },
+      ],
+    }),
     getPortfolioHeader(),
     getProjects(),
   ])
 
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <PortfolioContent
         lang={lang}
         portfolioHeader={portfolioHeader}

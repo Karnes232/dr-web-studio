@@ -8,13 +8,15 @@ import { LandingProcess } from "@/components/LandingPageComponents/LandingProces
 import { LandingPortfolioHighlight } from "@/components/LandingPageComponents/LandingPortfolioHighlight"
 import { LandingTestimonials } from "@/components/LandingPageComponents/LandingTestimonials"
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
-import { LandingCta } from "@/components/LandingPageComponents/LandingCta"
 import type { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
+import { getLandingGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 
 export const revalidate = 86400
 
 const PAGE_SLUG = "diseno-web-republica-dominicana"
+const PAGE_HREF = "/diseno-web-republica-dominicana"
 
 interface PageProps {
   params: Promise<{ lang: "en" | "es" }>
@@ -27,6 +29,19 @@ export default async function DisenoWebRepublicaDominicana({
   const data = await getLandingPage(PAGE_SLUG, lang)
 
   if (!data) return null
+
+  const graph = await getLandingGraph({
+    lang,
+    pageName: PAGE_SLUG,
+    href: PAGE_HREF,
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      { name: data.hero.headline, href: PAGE_HREF },
+    ],
+    serviceName: data.hero.headline,
+    serviceDescription: data.hero.subheadline,
+    faqItems: data.faq.items,
+  })
 
   return (
     <main>
@@ -78,12 +93,7 @@ export default async function DisenoWebRepublicaDominicana({
         />
       )}
 
-      {data.structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: data.structuredData }}
-        />
-      )}
+      <JsonLd data={graph} />
     </main>
   )
 }

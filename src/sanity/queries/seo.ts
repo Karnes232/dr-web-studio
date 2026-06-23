@@ -1,21 +1,6 @@
 import { cache } from "react"
 import { client } from "../lib/client"
 
-export const seoSchema = `
-*[_type == "seo" && pageName == $pageName][0] {
-  structuredData {
-    en,
-    es
-  }
-}`
-
-export interface seoSchemaData {
-  structuredData: {
-    en: string
-    es: string
-  }
-}
-
 export const seoQuery = `
 *[_type == "seo" && pageName == $pageName][0] {
   pageName,
@@ -102,11 +87,5 @@ export interface SEOData {
 export const getSEO = cache(
   async (pageName: string): Promise<SEOData | null> => {
     return await client.fetch(seoQuery, { pageName })
-  },
-)
-
-export const getSeoSchema = cache(
-  async (pageName: string): Promise<seoSchemaData | null> => {
-    return await client.fetch(seoSchema, { pageName })
   },
 )

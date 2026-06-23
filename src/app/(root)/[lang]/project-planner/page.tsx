@@ -5,7 +5,9 @@ import { getPlannerServices } from "@/sanity/queries/project-planner/plannerServ
 import { getPlannerAddons } from "@/sanity/queries/project-planner/plannerAddons"
 import { getPlannerDesignStyles } from "@/sanity/queries/project-planner/plannerDesignStyles"
 import { getPlannerSizeTiers } from "@/sanity/queries/project-planner/plannerSizeTiers"
-import { getSEO, getSeoSchema } from "@/sanity/queries/seo"
+import { getSEO } from "@/sanity/queries/seo"
+import { getStandardGraph } from "@/lib/schema/graph"
+import { JsonLd } from "@/components/seo/JsonLd"
 import { buildAlternates } from "@/lib/urls"
 import ProjectPlanner from "@/components/projectPlannerComponents/ProjectPlanner"
 
@@ -20,7 +22,7 @@ interface PageProps {
 export default async function ProjectPlannerPage({ params }: PageProps) {
   const { lang } = await params
   const [
-    seoData,
+    graph,
     config,
     services,
     addons,
@@ -28,7 +30,18 @@ export default async function ProjectPlannerPage({ params }: PageProps) {
     sizeTiers,
     companyEmail,
   ] = await Promise.all([
-    getSeoSchema("project-planner"),
+    getStandardGraph({
+      lang,
+      pageName: "project-planner",
+      href: "/project-planner",
+      crumbs: [
+        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+        {
+          name: lang === "es" ? "Planificador de Proyectos" : "Project Planner",
+          href: "/project-planner",
+        },
+      ],
+    }),
     getPlannerConfig(),
     getPlannerServices(),
     getPlannerAddons(),
@@ -44,12 +57,7 @@ export default async function ProjectPlannerPage({ params }: PageProps) {
 
   return (
     <>
-      {seoData?.structuredData?.[lang] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: seoData.structuredData[lang] }}
-        />
-      )}
+      <JsonLd data={graph} />
       <section
         id="project-planner"
         className="bg-slate-50 dark:bg-slate-950 py-10 lg:py-16"
