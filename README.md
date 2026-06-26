@@ -14,7 +14,7 @@ A full-stack freelance web development portfolio built with Next.js 15, Sanity C
 | Email      | Resend + React Email                     |
 | i18n       | i18next (English / Spanish)              |
 | Animation  | Motion                                   |
-| Monitoring | Sentry, Vercel Analytics                 |
+| Monitoring | Vercel Analytics                         |
 | Deployment | Vercel                                   |
 
 ## Features
@@ -67,7 +67,6 @@ src/
 - A [Sanity](https://sanity.io) project
 - A [Stripe](https://stripe.com) account
 - A [Resend](https://resend.com) account
-- A [Sentry](https://sentry.io) project (optional but configured)
 
 ### Install dependencies
 
@@ -92,10 +91,6 @@ STRIPE_WEBHOOK_SECRET=
 
 # Resend
 RESEND_API_KEY=
-
-# Sentry
-SENTRY_AUTH_TOKEN=
-NEXT_PUBLIC_SENTRY_DSN=
 
 # BotPoison (spam protection)
 NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=
@@ -134,4 +129,4 @@ Copy the webhook signing secret printed by the CLI into `STRIPE_WEBHOOK_SECRET` 
 
 ## Deployment
 
-The project is deployed on Vercel. Set all environment variables listed above in the Vercel project dashboard. The Sentry auth token also needs to be available at build time for source map uploads.
+The project is deployed on Vercel. Set all environment variables listed above in the Vercel project dashboard.

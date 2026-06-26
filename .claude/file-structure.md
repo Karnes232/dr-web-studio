@@ -18,7 +18,7 @@ james-portfolio/
 │   │   ├── robots.ts                 # robots.txt rules
 │   │   ├── manifest.json             # PWA manifest
 │   │   ├── not-found.tsx             # 404 page
-│   │   ├── global-error.tsx          # Global error boundary (Sentry)
+│   │   ├── global-error.tsx          # Global error boundary
 │   │   │
 │   │   ├── (root)/                   # Route group for all public pages
 │   │   │   ├── layout.tsx            # Shared layout: Navbar + Footer (fetches logo, company info)
@@ -141,12 +141,11 @@ james-portfolio/
 │   ├── types/
 │   │   └── form.ts                   # Shared form type definitions
 │   │
-│   ├── middleware.ts                 # Locale detection + redirect logic
-│   └── instrumentation.ts            # Sentry server instrumentation
+│   └── middleware.ts                 # Locale detection + redirect logic
 │
 ├── sanity.config.ts                  # Sanity Studio config (plugins, schema, basePath)
 ├── sanity.cli.ts                     # Sanity CLI config
-├── next.config.ts                    # Next.js config (Sentry, security headers, images)
+├── next.config.ts                    # Next.js config (security headers, images)
 ├── tailwind.config.ts                # Tailwind (safelist for dynamic gradient classes)
 ├── tsconfig.json                     # TypeScript config
 ├── eslint.config.mjs                 # ESLint config

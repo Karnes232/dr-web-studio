@@ -11,7 +11,7 @@ Full-stack Next.js 15 app with:
 - Stripe payment processing
 - Resend transactional email
 - English / Spanish i18n
-- Sentry error monitoring + Vercel Analytics
+- Vercel Analytics
 
 ---
 
@@ -30,7 +30,7 @@ Full-stack Next.js 15 app with:
 | Spam protection | BotPoison                                 |
 | Icons           | `lucide-react`, `react-icons`             |
 | Carousel        | Swiper                                    |
-| Monitoring      | Sentry `@sentry/nextjs`, Vercel Analytics |
+| Monitoring      | Vercel Analytics                          |
 | Deployment      | Vercel                                    |
 | Formatting      | Prettier                                  |
 | Linting         | ESLint (Next.js config)                   |
@@ -126,10 +126,6 @@ STRIPE_WEBHOOK_SECRET=
 
 # Resend
 RESEND_API_KEY=
-
-# Sentry
-SENTRY_AUTH_TOKEN=
-NEXT_PUBLIC_SENTRY_DSN=
 
 # BotPoison
 NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=

@@ -137,7 +137,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://cdn.sanity.io https://*.stripe.com https://www.googletagmanager.com https://www.google-analytics.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://cdn.sanity.io https://api.stripe.com https://*.sentry.io https://vercel.live https://www.google-analytics.com https://*.analytics.google.com https://analytics.ahrefs.com",
+  "connect-src 'self' https://cdn.sanity.io https://api.stripe.com https://vercel.live https://www.google-analytics.com https://*.analytics.google.com https://analytics.ahrefs.com",
   "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://vercel.live",
   "worker-src 'self' blob:",
   "upgrade-insecure-requests",
