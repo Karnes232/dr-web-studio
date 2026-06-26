@@ -54,9 +54,25 @@ export async function buildLlmsFull(locale: Locale): Promise<string> {
   ).trim()
   const labels = HEADINGS[locale]
 
-  const sections: string[] = [
-    `# DR Web Studio — Full Content (${LOCALE_LABEL[locale]})\n\n> ${summary}\n\n${CROSS_LINKS[locale]}`,
+  // Content-derived freshness signal for AI crawlers. Posts are ordered by
+  // publishedAt desc, so the newest post's date is a stable Last-Updated (it
+  // only moves when content actually changes — no per-request churn).
+  const lastUpdated = posts[0]?.publishedAt
+    ? `> Last-Updated: ${new Date(posts[0].publishedAt)
+        .toISOString()
+        .slice(0, 10)}`
+    : null
+
+  const header = [
+    `# DR Web Studio — Full Content (${LOCALE_LABEL[locale]})`,
+    `> ${summary}`,
+    lastUpdated,
+    CROSS_LINKS[locale],
   ]
+    .filter(Boolean)
+    .join("\n\n")
+
+  const sections: string[] = [header]
 
   // Services
   if (services.length > 0) {

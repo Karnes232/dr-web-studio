@@ -128,18 +128,21 @@ export async function getServiceGraph(args: {
   href: Href
   enSlug: string
   name: string
+  /** Plain service category for schema `serviceType` (no SEO-title suffix). */
+  serviceType?: string
   description?: string
   image?: string
   crumbs: Crumb[]
   price?: number
   unit?: "MONTH"
 }): Promise<JsonObject> {
-  const { lang, href, name, description, image, crumbs, price, unit } = args
+  const { lang, href, name, serviceType, description, image, crumbs, price, unit } =
+    args
   const { layout, org } = await buildOrg(lang, { withOffers: true })
   return buildGraph([
     org,
     webSiteNode(layout),
-    serviceNode({ lang, name, description, href, price, unit }),
+    serviceNode({ lang, name, serviceType, description, href, price, unit }),
     webPageNode({ lang, href, name, description, image, breadcrumb: true }),
     breadcrumbNode({ lang, pageHref: href, items: crumbs }),
   ])

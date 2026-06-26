@@ -1,5 +1,6 @@
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import { getSEO } from "@/sanity/queries/seo"
+import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { localizedUrl } from "@/lib/urls"
 import { slugPair } from "@/lib/slugs"
 import { SITE_URL } from "@/lib/site"
@@ -291,19 +292,30 @@ function languageSection(
 }
 
 export async function GET() {
-  const [home, services] = await Promise.all([
+  const [home, services, contactEmail] = await Promise.all([
     getSEO("home"),
     getServiceItemsSitemap(),
+    getContactEmail(),
   ])
 
   const summaryEn = (home?.meta.en.description ?? FALLBACK_SUMMARY.en).trim()
   const summaryEs = (home?.meta.es.description ?? FALLBACK_SUMMARY.es).trim()
+
+  // Machine-readable metadata block (llms.txt convention) so AI agents can
+  // resolve authorship, contact, licensing, and available languages.
+  const metadata = [
+    `> Author: James Karnes (DR Web Studio)`,
+    `> Contact: ${contactEmail ?? `${SITE_URL}/en/contact`}`,
+    `> License: RSL 1.0 — citation with attribution permitted`,
+    `> Language: en, es`,
+  ].join("\n")
 
   const body =
     [
       `# DR Web Studio`,
       `> ${summaryEn}`,
       `> ${summaryEs}`,
+      metadata,
       languageSection("en", services),
       languageSection("es", services),
     ].join("\n\n") + "\n"

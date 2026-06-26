@@ -36,6 +36,19 @@ function formatPhone(raw?: string): string | undefined {
   return digits ? `+${digits}` : undefined
 }
 
+/**
+ * Sanity asset URLs encode the source dimensions as `-{w}x{h}.{ext}`.
+ * Returns them so ImageObject nodes can declare width/height for crawlers.
+ */
+function sanityImageDimensions(
+  url?: string,
+): { width: number; height: number } | undefined {
+  if (!url) return undefined
+  const m = url.match(/-(\d+)x(\d+)\.[a-z]+(?:\?|$)/i)
+  if (!m) return undefined
+  return { width: Number(m[1]), height: Number(m[2]) }
+}
+
 type JsonObject = Record<string, unknown>
 
 // ── Organization / LocalBusiness ────────────────────────────────────────────
@@ -59,7 +72,7 @@ export function organizationNode(
   const logoUrl = layout.logo
 
   const node: JsonObject = {
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": ORG_ID,
     name: layout.companyName ?? "DR Web Studio",
     alternateName: "DR Web Development Studio",
@@ -75,7 +88,12 @@ export function organizationNode(
   }
 
   if (logoUrl) {
-    node.logo = { "@type": "ImageObject", url: logoUrl }
+    const dims = sanityImageDimensions(logoUrl)
+    node.logo = {
+      "@type": "ImageObject",
+      url: logoUrl,
+      ...(dims ?? {}),
+    }
     node.image = logoUrl
   }
 
@@ -232,6 +250,9 @@ export function breadcrumbNode(args: {
 export function serviceNode(args: {
   lang: Locale
   name: string
+  /** Plain service category (e.g. "Landing Pages"). Falls back to `name`.
+   *  Keep this free of SEO-title cruft like brand/geo suffixes. */
+  serviceType?: string
   description?: string
   href: Href
   price?: number
@@ -240,7 +261,7 @@ export function serviceNode(args: {
   const node: JsonObject = {
     "@type": "Service",
     name: args.name,
-    serviceType: args.name,
+    serviceType: args.serviceType ?? args.name,
     url: abs(args.href, args.lang),
     provider: { "@id": ORG_ID },
     areaServed: AREA_SERVED,
@@ -303,7 +324,6 @@ export function offerCatalogNode(
             : "PriceSpecification",
           price: String(priceInfo.price),
           priceCurrency: CURRENCIES_ACCEPTED,
-          minPrice: String(priceInfo.price),
           ...(priceInfo.unit ? { unitText: priceInfo.unit } : {}),
         }
       }

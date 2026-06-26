@@ -123,6 +123,8 @@ export default async function IndividualService({ params }: PageProps) {
     href: serviceHref,
     enSlug: slugs.en,
     name,
+    // schema serviceType wants the plain category, not the SEO meta title.
+    serviceType: service.title[lang],
     description,
     image,
     price: priceInfo?.price,

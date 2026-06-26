@@ -121,6 +121,28 @@ async function dynamicSlugRedirects() {
   return out
 }
 
+// Content-Security-Policy. Shipped in Report-Only mode first: violations surface
+// in the browser console (and any report endpoint) without breaking the page.
+// Once the console is clean across checkout/Studio/analytics flows, switch the
+// header key below to "Content-Security-Policy" to enforce.
+// 'unsafe-inline' on script-src is required by Next.js RSC inline bootstrap and
+// the next/font + next/image inline styles (no nonce pipeline in use).
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "script-src 'self' 'unsafe-inline' https://js.stripe.com https://vercel.live https://www.googletagmanager.com https://analytics.ahrefs.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://cdn.sanity.io https://*.stripe.com https://www.googletagmanager.com https://www.google-analytics.com",
+  "font-src 'self' data:",
+  "connect-src 'self' https://cdn.sanity.io https://api.stripe.com https://*.sentry.io https://vercel.live https://www.google-analytics.com https://*.analytics.google.com https://analytics.ahrefs.com",
+  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://vercel.live",
+  "worker-src 'self' blob:",
+  "upgrade-insecure-requests",
+].join("; ")
+
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
@@ -134,9 +156,14 @@ const securityHeaders = [
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
+  {
+    key: "Content-Security-Policy-Report-Only",
+    value: contentSecurityPolicy,
+  },
 ]
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {

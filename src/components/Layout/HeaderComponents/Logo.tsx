@@ -5,12 +5,15 @@ const Logo = ({ logo }: { logo: any }) => {
   return (
     <div className="flex-shrink-0 flex items-center">
       <Link href="/" className="no-underline">
-        {/* Light-mode brand logo */}
+        {/* Light-mode brand logo. Above the fold — load eagerly (not lazy, the
+            next/image default) so the header paints without deferral. `eager`
+            over `priority` avoids preload links competing with the hero LCP. */}
         <Image
           src={logo.logo.asset.url}
           alt={logo.logo.alt}
           width={400}
           height={400}
+          loading="eager"
           className="w-full h-full object-contain dark:hidden"
           sizes="(max-width: 640px) 100px,
              (max-width: 768px) 150px,
@@ -23,6 +26,7 @@ const Logo = ({ logo }: { logo: any }) => {
           alt={logo.footerLogo.alt}
           width={400}
           height={400}
+          loading="eager"
           className="w-full h-full object-contain hidden dark:block"
           sizes="(max-width: 640px) 100px,
              (max-width: 768px) 150px,

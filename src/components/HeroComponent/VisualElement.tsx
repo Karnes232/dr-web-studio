@@ -31,7 +31,7 @@ const VisualElement = ({
         pagination={{ clickable: true }}
         className="w-full xl:px-4"
       >
-        {projects.map(project => (
+        {projects.map((project, i) => (
           <SwiperSlide key={project._id}>
             <Link
               href="/portfolio"
@@ -43,7 +43,11 @@ const VisualElement = ({
                   src={`${project.image.asset.url}?w=1200&q=70&auto=format&fit=max`}
                   alt={project.title[locale]}
                   fill
-                  loading="lazy"
+                  // First slide is above the fold on desktop — load it eagerly
+                  // so it doesn't lose the LCP race; defer the rest.
+                  {...(i === 0
+                    ? { priority: true }
+                    : { loading: "lazy" as const })}
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   className="object-cover object-top"
                   {...(project.image.asset.metadata?.lqip
