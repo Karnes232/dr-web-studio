@@ -7,6 +7,7 @@ import {
   Eye,
   Heart,
   Tag,
+  User,
 } from "lucide-react"
 import Image from "next/image"
 import React, { useState } from "react"
@@ -55,24 +56,28 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
 
         {/* Meta Information */}
         <div className="flex flex-wrap items-center gap-6 text-slate-600 dark:text-slate-400 mb-8">
-          {/* <div className="flex items-center">
-            <img 
-              src={post.author.avatar} 
-              alt={post.author.name}
-              className="w-10 h-10 rounded-full mr-3"
-            />
-            <div>
-              <div className="font-medium">{post.author.name}</div>
+          {post.author?.name ? (
+            <div className="flex items-center">
+              <User className="h-4 w-4 mr-2" />
+              <span>
+                {t("blog.by")}{" "}
+                <span className="font-medium text-slate-800 dark:text-slate-200">
+                  {post.author.name}
+                </span>
+              </span>
             </div>
-          </div> */}
+          ) : null}
 
           <div className="flex items-center">
             <Calendar className="h-4 w-4 mr-2" />
-            {new Date(post.publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {new Date(post.publishedAt).toLocaleDateString(
+              lang === "es" ? "es-ES" : "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              },
+            )}
           </div>
 
           <div className="flex items-center">

@@ -31,6 +31,6 @@ export const config = {
   // favicon, the Google verification file, etc.). These must be excluded so the
   // locale middleware doesn't redirect e.g. /llms.txt → /en/llms.txt.
   matcher: [
-    "/((?!api|_next/static|_next/image|_vercel|favicon.ico|studio|sitemap.xml|robots.txt|llms.txt|llms-full.txt|llms-full-es.txt|mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt).*)",
+    "/((?!api|_next/static|_next/image|_vercel|favicon.ico|studio|sitemap.xml|robots.txt|llms.txt|llms-full.txt|llms-full-es.txt|indexnow-key.txt|mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt).*)",
   ],
 }
