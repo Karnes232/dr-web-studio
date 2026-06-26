@@ -12,7 +12,7 @@ const AI_SEARCH_BOTS = [
 ]
 
 // Training-only / bulk-scrape crawlers that add no search visibility — denied.
-const TRAINING_BOTS = ["CCBot", "anthropic-ai", "cohere-ai"]
+const TRAINING_BOTS = ["CCBot", "anthropic-ai", "cohere-ai", "Applebot-Extended"]
 
 const DISALLOW = ["/studio/", "/api/"]
 

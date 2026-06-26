@@ -19,7 +19,7 @@ export const WEBSITE_ID = `${SITE_URL}/#website`
 export const FOUNDING_DATE = "2023-01-01"
 export const PRICE_RANGE = "$400 - $1,250"
 export const CURRENCIES_ACCEPTED = "USD"
-export const PAYMENT_ACCEPTED = "Bank Transfer, PayPal"
+export const PAYMENT_ACCEPTED = "Credit Card, Bank Transfer, PayPal"
 
 export const ORG_DESCRIPTION = {
   en: "Custom website development agency in Punta Cana, Dominican Republic. We build fast, modern, multilingual websites using Next.js, Sanity CMS, and Tailwind CSS for tourism, e-commerce, and local businesses.",

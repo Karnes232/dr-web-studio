@@ -109,14 +109,17 @@ export function organizationNode(
   }
 
   if (layout.address) {
-    node.address = {
-      "@type": "PostalAddress",
-      streetAddress: layout.address.streetAddress,
-      addressLocality: layout.address.addressLocality,
-      addressRegion: layout.address.addressRegion,
-      postalCode: layout.address.postalCode,
-      addressCountry: layout.address.addressCountry,
-    }
+    // Build from only the populated subfields — the GROQ projection returns
+    // `null` for empty CMS fields, and emitting `"streetAddress": null` is a
+    // structured-data validator warning.
+    const a = layout.address
+    const address: JsonObject = { "@type": "PostalAddress" }
+    if (a.streetAddress) address.streetAddress = a.streetAddress
+    if (a.addressLocality) address.addressLocality = a.addressLocality
+    if (a.addressRegion) address.addressRegion = a.addressRegion
+    if (a.postalCode) address.postalCode = a.postalCode
+    if (a.addressCountry) address.addressCountry = a.addressCountry
+    node.address = address
   }
 
   if (layout.geo?.latitude != null && layout.geo?.longitude != null) {
@@ -258,11 +261,15 @@ export function serviceNode(args: {
   price?: number
   unit?: "MONTH"
 }): JsonObject {
+  const url = abs(args.href, args.lang)
   const node: JsonObject = {
     "@type": "Service",
+    // Stable @id (shared with the homepage OfferCatalog entry for the same
+    // service) so both resolve to one entity within the locale's graph.
+    "@id": `${url}#service`,
     name: args.name,
     serviceType: args.serviceType ?? args.name,
-    url: abs(args.href, args.lang),
+    url,
     provider: { "@id": ORG_ID },
     areaServed: AREA_SERVED,
   }
@@ -309,10 +316,13 @@ export function offerCatalogNode(
           slug: lang === "es" ? (svc.slugEs?.current ?? enSlug) : enSlug,
         },
       }
+      const serviceUrl = abs(href, lang)
       const itemOffered: JsonObject = {
         "@type": "Service",
+        // Matches the `@id` on the service-detail page's Service node.
+        "@id": `${serviceUrl}#service`,
         name: svc.title[lang],
-        url: abs(href, lang),
+        url: serviceUrl,
         provider: { "@id": ORG_ID },
       }
       if (svc.description) itemOffered.description = svc.description[lang]
