@@ -14,6 +14,7 @@ import React, { useState } from "react"
 import ShareButtons from "./ShareButtons"
 import { Link } from "@/i18n/navigation"
 import { useLocale } from "@/i18n/useLocale"
+import { type Locale } from "@/lib/slugs"
 
 const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
   const { t } = useLocale()
@@ -88,7 +89,7 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
 
         {/* Action Buttons */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center space-x-4">
+          {/* <div className="flex items-center space-x-4">
             <button
               onClick={() => setIsLiked(!isLiked)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg border transition-colors ${
@@ -113,9 +114,9 @@ const BlogPostHeader = ({ post, lang }: { post: any; lang: string }) => {
               />
               <span>Save</span>
             </button>
-          </div>
+          </div> */}
 
-          {/* <ShareButtons post={post} lang={lang} /> */}
+          <ShareButtons post={post} lang={lang as Locale} />
         </div>
 
         {/* Featured Image */}

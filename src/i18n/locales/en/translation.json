@@ -60,7 +60,13 @@
     "readMore": "Read More",
     "latestFromBlog": "Latest from the Blog",
     "viewAllPosts": "View all posts",
-    "relatedPosts": "Related posts"
+    "relatedPosts": "Related posts",
+    "share": {
+      "share": "Share",
+      "shareOn": "Share on",
+      "copyLink": "Copy Link",
+      "copied": "Link copied"
+    }
   },
   "hero": {
     "happyClients": "Happy Clients",
