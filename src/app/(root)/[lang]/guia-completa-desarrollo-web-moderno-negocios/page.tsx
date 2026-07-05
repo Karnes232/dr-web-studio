@@ -41,6 +41,7 @@ export default async function GuiaCompletaDesarrolloWebModernoNegocios({
         href: "/guia-completa-desarrollo-web-moderno-negocios",
       },
     ],
+    structuredData: content.structuredData,
   })
 
   return (

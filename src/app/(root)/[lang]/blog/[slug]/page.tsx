@@ -62,6 +62,7 @@ export default async function BlogPost({ params }: PageProps) {
     image: post.imageUrl,
     datePublished: post.publishedAt,
     dateModified: post._updatedAt,
+    structuredData: post.seo?.structuredData?.[lang],
     crumbs: [
       { name: lang === "es" ? "Inicio" : "Home", href: "/" },
       { name: "Blog", href: "/blog" },

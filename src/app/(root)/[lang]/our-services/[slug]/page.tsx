@@ -137,6 +137,7 @@ export default async function IndividualService({ params }: PageProps) {
       },
       { name, href: serviceHref },
     ],
+    structuredData: service.seo?.structuredData?.[lang],
   })
 
   return (

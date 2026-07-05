@@ -24,10 +24,90 @@ type JsonObject = Record<string, unknown>
 
 const HOME_LABEL: Record<Locale, string> = { en: "Home", es: "Inicio" }
 
-function buildGraph(nodes: (JsonObject | null | undefined)[]): JsonObject {
+// ── CMS structured data (Sanity `structuredData` fields) ─────────────────────
+
+// Site-identity nodes stay auto-generated: they're built live from layout data
+// (with offers/ratings/reviews on home) and CMS copies are stale snapshots of
+// the same @id.
+const SITE_IDENTITY_TYPES = new Set([
+  "Organization",
+  "LocalBusiness",
+  "ProfessionalService",
+  "WebSite",
+])
+
+// Treat the Article family as one type when detecting collisions: stored blog
+// structured data says "Article" while the auto node is "BlogPosting".
+const TYPE_EQUIVALENCE: Record<string, string> = {
+  BlogPosting: "Article",
+  NewsArticle: "Article",
+  TechArticle: "Article",
+}
+
+const canonType = (t: string) => TYPE_EQUIVALENCE[t] ?? t
+
+function typesOf(node: JsonObject): string[] {
+  const t = node["@type"]
+  if (typeof t === "string") return [canonType(t)]
+  if (Array.isArray(t)) {
+    return t
+      .filter((x): x is string => typeof x === "string")
+      .map(canonType)
+  }
+  return []
+}
+
+/** Parse a CMS structuredData JSON string into graph nodes. Returns null on
+ *  empty/invalid input so a bad paste in Studio can never break a page. */
+function parseCustomNodes(json?: string | null): JsonObject[] | null {
+  if (!json?.trim()) return null
+  try {
+    const parsed: unknown = JSON.parse(json)
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return null
+    }
+    const obj = parsed as JsonObject
+    const rawNodes = Array.isArray(obj["@graph"]) ? obj["@graph"] : [obj]
+    const nodes = rawNodes
+      .filter(
+        (n): n is JsonObject =>
+          Boolean(n) && typeof n === "object" && !Array.isArray(n),
+      )
+      .map(({ ["@context"]: _context, ...node }) => node)
+    return nodes.length ? nodes : null
+  } catch {
+    return null
+  }
+}
+
+/** Merge CMS nodes into the auto-generated node list: custom nodes win for
+ *  page-content types (colliding auto nodes are dropped, e.g. a stored Article
+ *  replaces the auto BlogPosting), non-colliding ones are appended, and
+ *  site-identity types are discarded in favor of the auto versions. */
+function mergeCustomNodes(
+  autoNodes: (JsonObject | null | undefined)[],
+  customJson?: string | null,
+): (JsonObject | null | undefined)[] {
+  const custom = parseCustomNodes(customJson)?.filter(
+    n => !typesOf(n).some(t => SITE_IDENTITY_TYPES.has(t)),
+  )
+  if (!custom?.length) return autoNodes
+  const customTypes = new Set(custom.flatMap(typesOf))
+  const kept = autoNodes.filter(
+    n => !n || !typesOf(n).some(t => customTypes.has(t)),
+  )
+  return [...kept, ...custom]
+}
+
+function buildGraph(
+  nodes: (JsonObject | null | undefined)[],
+  customJson?: string | null,
+): JsonObject {
   return {
     "@context": "https://schema.org",
-    "@graph": nodes.filter((n): n is JsonObject => Boolean(n)),
+    "@graph": mergeCustomNodes(nodes, customJson).filter(
+      (n): n is JsonObject => Boolean(n),
+    ),
   }
 }
 
@@ -53,13 +133,14 @@ async function buildOrg(
   return { layout, org }
 }
 
-/** Pull localized name/description/image from a page's Sanity SEO doc. */
+/** Pull localized name/description/image/structuredData from a page's Sanity SEO doc. */
 async function seoMeta(pageName: string, lang: Locale) {
   const seo = await getSEO(pageName)
   return {
     name: seo?.meta?.[lang]?.title ?? "",
     description: seo?.meta?.[lang]?.description,
     image: seo?.openGraph?.image?.url,
+    structuredData: seo?.structuredData?.[lang],
   }
 }
 
@@ -87,7 +168,7 @@ export async function getHomeGraph(lang: Locale): Promise<JsonObject> {
       pageHref: "/",
       items: [{ name: HOME_LABEL[lang], href: "/" }],
     }),
-  ])
+  ], meta.structuredData)
 }
 
 // ── Standard content pages (about, pricing, portfolio, contact, etc.) ────────
@@ -99,6 +180,8 @@ export async function getStandardGraph(args: {
   crumbs: Crumb[]
   includePerson?: boolean
   withOffers?: boolean
+  /** CMS structuredData JSON string; falls back to the page's seo doc. */
+  structuredData?: string
 }): Promise<JsonObject> {
   const { lang, pageName, href, crumbs, includePerson, withOffers } = args
   const [{ layout, org }, meta] = await Promise.all([
@@ -118,7 +201,7 @@ export async function getStandardGraph(args: {
       breadcrumb: true,
     }),
     breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ])
+  ], args.structuredData || meta.structuredData)
 }
 
 // ── Individual service page ──────────────────────────────────────────────────
@@ -135,6 +218,8 @@ export async function getServiceGraph(args: {
   crumbs: Crumb[]
   price?: number
   unit?: "MONTH"
+  /** CMS structuredData JSON string from the serviceItem's seo object. */
+  structuredData?: string
 }): Promise<JsonObject> {
   const { lang, href, name, serviceType, description, image, crumbs, price, unit } =
     args
@@ -145,7 +230,7 @@ export async function getServiceGraph(args: {
     serviceNode({ lang, name, serviceType, description, href, price, unit }),
     webPageNode({ lang, href, name, description, image, breadcrumb: true }),
     breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ])
+  ], args.structuredData)
 }
 
 // ── SEO landing pages (location/service) ─────────────────────────────────────
@@ -158,6 +243,8 @@ export async function getLandingGraph(args: {
   serviceName: string
   serviceDescription?: string
   faqItems?: { question: string; answer: string }[]
+  /** CMS structuredData JSON string; falls back to the page's seo doc. */
+  structuredData?: string
 }): Promise<JsonObject> {
   const { lang, pageName, href, crumbs, serviceName, serviceDescription } = args
   const [{ layout, org }, meta] = await Promise.all([
@@ -178,7 +265,7 @@ export async function getLandingGraph(args: {
     }),
     faqPageNode(args.faqItems ?? []),
     breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ])
+  ], args.structuredData || meta.structuredData)
 }
 
 // ── Blog post ────────────────────────────────────────────────────────────────
@@ -192,6 +279,8 @@ export async function getArticleGraph(args: {
   datePublished?: string
   dateModified?: string
   crumbs: Crumb[]
+  /** CMS structuredData JSON string from the blog post's seo object. */
+  structuredData?: string
 }): Promise<JsonObject> {
   const { lang, href, title, description, image, datePublished, dateModified } =
     args
@@ -209,7 +298,7 @@ export async function getArticleGraph(args: {
       dateModified,
     }),
     breadcrumbNode({ lang, pageHref: href, items: args.crumbs }),
-  ])
+  ], args.structuredData)
 }
 
 // ── FAQs page (standard page + a real FAQPage from the Q&A content) ──────────
@@ -238,5 +327,5 @@ export async function getFaqsGraph(args: {
     }),
     faqPageNode(faqItems),
     breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ])
+  ], meta.structuredData)
 }

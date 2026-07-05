@@ -41,6 +41,7 @@ export default async function DisenoWebRepublicaDominicana({
     serviceName: data.hero.headline,
     serviceDescription: data.hero.subheadline,
     faqItems: data.faq.items,
+    structuredData: data.structuredData,
   })
 
   return (
