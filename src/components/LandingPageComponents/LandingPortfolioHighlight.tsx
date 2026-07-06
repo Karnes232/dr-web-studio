@@ -6,11 +6,12 @@ import NextLink from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
-import type { PortfolioProject } from "./types"
+import { RichText } from "./RichText"
+import type { PortfolioProject, PortableBlocks } from "./types"
 
 interface LandingPortfolioHighlightProps {
   sectionTitle: string
-  sectionSubtitle: string
+  sectionSubtitle: PortableBlocks | string
   projects: PortfolioProject[]
   ctaText: string
   ctaHref: string
@@ -46,11 +47,10 @@ export function LandingPortfolioHighlight({
           >
             {sectionTitle}
           </h2>
-          {sectionSubtitle && (
-            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              {sectionSubtitle}
-            </p>
-          )}
+          <RichText
+            value={sectionSubtitle}
+            className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

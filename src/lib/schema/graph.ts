@@ -50,9 +50,7 @@ function typesOf(node: JsonObject): string[] {
   const t = node["@type"]
   if (typeof t === "string") return [canonType(t)]
   if (Array.isArray(t)) {
-    return t
-      .filter((x): x is string => typeof x === "string")
-      .map(canonType)
+    return t.filter((x): x is string => typeof x === "string").map(canonType)
   }
   return []
 }
@@ -105,8 +103,8 @@ function buildGraph(
 ): JsonObject {
   return {
     "@context": "https://schema.org",
-    "@graph": mergeCustomNodes(nodes, customJson).filter(
-      (n): n is JsonObject => Boolean(n),
+    "@graph": mergeCustomNodes(nodes, customJson).filter((n): n is JsonObject =>
+      Boolean(n),
     ),
   }
 }
@@ -151,24 +149,27 @@ export async function getHomeGraph(lang: Locale): Promise<JsonObject> {
     buildOrg(lang, { withOffers: true, withReviews: true }),
     seoMeta("home", lang),
   ])
-  return buildGraph([
-    personNode(layout, lang),
-    org,
-    webSiteNode(layout),
-    webPageNode({
-      lang,
-      href: "/",
-      name: meta.name || "DR Web Studio",
-      description: meta.description,
-      image: meta.image,
-      breadcrumb: true,
-    }),
-    breadcrumbNode({
-      lang,
-      pageHref: "/",
-      items: [{ name: HOME_LABEL[lang], href: "/" }],
-    }),
-  ], meta.structuredData)
+  return buildGraph(
+    [
+      personNode(layout, lang),
+      org,
+      webSiteNode(layout),
+      webPageNode({
+        lang,
+        href: "/",
+        name: meta.name || "DR Web Studio",
+        description: meta.description,
+        image: meta.image,
+        breadcrumb: true,
+      }),
+      breadcrumbNode({
+        lang,
+        pageHref: "/",
+        items: [{ name: HOME_LABEL[lang], href: "/" }],
+      }),
+    ],
+    meta.structuredData,
+  )
 }
 
 // ── Standard content pages (about, pricing, portfolio, contact, etc.) ────────
@@ -180,6 +181,8 @@ export async function getStandardGraph(args: {
   crumbs: Crumb[]
   includePerson?: boolean
   withOffers?: boolean
+  /** Localized FAQ items; emits a FAQPage node when present. */
+  faqItems?: { question: string; answer: string }[]
   /** CMS structuredData JSON string; falls back to the page's seo doc. */
   structuredData?: string
 }): Promise<JsonObject> {
@@ -188,20 +191,24 @@ export async function getStandardGraph(args: {
     buildOrg(lang, { withOffers }),
     seoMeta(pageName, lang),
   ])
-  return buildGraph([
-    includePerson ? personNode(layout, lang) : null,
-    org,
-    webSiteNode(layout),
-    webPageNode({
-      lang,
-      href,
-      name: meta.name,
-      description: meta.description,
-      image: meta.image,
-      breadcrumb: true,
-    }),
-    breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ], args.structuredData || meta.structuredData)
+  return buildGraph(
+    [
+      includePerson ? personNode(layout, lang) : null,
+      org,
+      webSiteNode(layout),
+      webPageNode({
+        lang,
+        href,
+        name: meta.name,
+        description: meta.description,
+        image: meta.image,
+        breadcrumb: true,
+      }),
+      faqPageNode(args.faqItems ?? []),
+      breadcrumbNode({ lang, pageHref: href, items: crumbs }),
+    ],
+    args.structuredData || meta.structuredData,
+  )
 }
 
 // ── Individual service page ──────────────────────────────────────────────────
@@ -218,19 +225,34 @@ export async function getServiceGraph(args: {
   crumbs: Crumb[]
   price?: number
   unit?: "MONTH"
+  /** Localized FAQ items; emits a FAQPage node when present. */
+  faqItems?: { question: string; answer: string }[]
   /** CMS structuredData JSON string from the serviceItem's seo object. */
   structuredData?: string
 }): Promise<JsonObject> {
-  const { lang, href, name, serviceType, description, image, crumbs, price, unit } =
-    args
+  const {
+    lang,
+    href,
+    name,
+    serviceType,
+    description,
+    image,
+    crumbs,
+    price,
+    unit,
+  } = args
   const { layout, org } = await buildOrg(lang, { withOffers: true })
-  return buildGraph([
-    org,
-    webSiteNode(layout),
-    serviceNode({ lang, name, serviceType, description, href, price, unit }),
-    webPageNode({ lang, href, name, description, image, breadcrumb: true }),
-    breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ], args.structuredData)
+  return buildGraph(
+    [
+      org,
+      webSiteNode(layout),
+      serviceNode({ lang, name, serviceType, description, href, price, unit }),
+      webPageNode({ lang, href, name, description, image, breadcrumb: true }),
+      faqPageNode(args.faqItems ?? []),
+      breadcrumbNode({ lang, pageHref: href, items: crumbs }),
+    ],
+    args.structuredData,
+  )
 }
 
 // ── SEO landing pages (location/service) ─────────────────────────────────────
@@ -251,21 +273,29 @@ export async function getLandingGraph(args: {
     buildOrg(lang, { withOffers: true }),
     seoMeta(pageName, lang),
   ])
-  return buildGraph([
-    org,
-    webSiteNode(layout),
-    serviceNode({ lang, name: serviceName, description: serviceDescription, href }),
-    webPageNode({
-      lang,
-      href,
-      name: meta.name,
-      description: meta.description,
-      image: meta.image,
-      breadcrumb: true,
-    }),
-    faqPageNode(args.faqItems ?? []),
-    breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ], args.structuredData || meta.structuredData)
+  return buildGraph(
+    [
+      org,
+      webSiteNode(layout),
+      serviceNode({
+        lang,
+        name: serviceName,
+        description: serviceDescription,
+        href,
+      }),
+      webPageNode({
+        lang,
+        href,
+        name: meta.name,
+        description: meta.description,
+        image: meta.image,
+        breadcrumb: true,
+      }),
+      faqPageNode(args.faqItems ?? []),
+      breadcrumbNode({ lang, pageHref: href, items: crumbs }),
+    ],
+    args.structuredData || meta.structuredData,
+  )
 }
 
 // ── Blog post ────────────────────────────────────────────────────────────────
@@ -285,20 +315,23 @@ export async function getArticleGraph(args: {
   const { lang, href, title, description, image, datePublished, dateModified } =
     args
   const { layout, org } = await buildOrg(lang)
-  return buildGraph([
-    org,
-    webSiteNode(layout),
-    articleNode({
-      lang,
-      href,
-      title,
-      description,
-      image,
-      datePublished,
-      dateModified,
-    }),
-    breadcrumbNode({ lang, pageHref: href, items: args.crumbs }),
-  ], args.structuredData)
+  return buildGraph(
+    [
+      org,
+      webSiteNode(layout),
+      articleNode({
+        lang,
+        href,
+        title,
+        description,
+        image,
+        datePublished,
+        dateModified,
+      }),
+      breadcrumbNode({ lang, pageHref: href, items: args.crumbs }),
+    ],
+    args.structuredData,
+  )
 }
 
 // ── FAQs page (standard page + a real FAQPage from the Q&A content) ──────────
@@ -314,18 +347,21 @@ export async function getFaqsGraph(args: {
     buildOrg(lang),
     seoMeta("faqs", lang),
   ])
-  return buildGraph([
-    org,
-    webSiteNode(layout),
-    webPageNode({
-      lang,
-      href,
-      name: meta.name,
-      description: meta.description,
-      image: meta.image,
-      breadcrumb: true,
-    }),
-    faqPageNode(faqItems),
-    breadcrumbNode({ lang, pageHref: href, items: crumbs }),
-  ], meta.structuredData)
+  return buildGraph(
+    [
+      org,
+      webSiteNode(layout),
+      webPageNode({
+        lang,
+        href,
+        name: meta.name,
+        description: meta.description,
+        image: meta.image,
+        breadcrumb: true,
+      }),
+      faqPageNode(faqItems),
+      breadcrumbNode({ lang, pageHref: href, items: crumbs }),
+    ],
+    meta.structuredData,
+  )
 }

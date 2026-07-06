@@ -8,6 +8,15 @@ interface LandingStatsBarProps {
   stats: StatItem[]
 }
 
+/** Final, formatted display string for a stat value. Seeds SSR/hydration with
+ *  the real number so it lands in the indexed HTML (not a literal "0"). */
+function formatStat(value: string): string {
+  const num = parseFloat(value.replace(/[^0-9.]/g, ""))
+  const suffix = value.replace(/[0-9.]/g, "")
+  if (isNaN(num)) return value
+  return `${num % 1 === 0 ? Math.round(num) : num.toFixed(1)}${suffix}`
+}
+
 function AnimatedStat({
   value,
   label,
@@ -19,7 +28,9 @@ function AnimatedStat({
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const [displayed, setDisplayed] = useState("0")
+  // Seed with the real value so the server-rendered HTML shows the true number;
+  // the count-up (reset to 0 below) only runs client-side once in view.
+  const [displayed, setDisplayed] = useState(() => formatStat(value))
 
   useEffect(() => {
     if (!isInView) return
@@ -30,6 +41,7 @@ function AnimatedStat({
       return
     }
 
+    setDisplayed("0")
     let start = 0
     const duration = 1800
     const step = 16

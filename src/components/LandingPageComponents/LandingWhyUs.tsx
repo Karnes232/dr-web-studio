@@ -16,7 +16,8 @@ import {
   Lightbulb,
   MessageCircle,
 } from "lucide-react"
-import type { WhyUsItem } from "./types"
+import { RichText } from "./RichText"
+import type { WhyUsItem, PortableBlocks } from "./types"
 
 const ICON_MAP: Record<
   string,
@@ -38,7 +39,7 @@ const ICON_MAP: Record<
 
 interface LandingWhyUsProps {
   sectionTitle: string
-  sectionSubtitle: string
+  sectionSubtitle: PortableBlocks | string
   items: WhyUsItem[]
 }
 
@@ -66,11 +67,10 @@ export function LandingWhyUs({
           >
             {sectionTitle}
           </h2>
-          {sectionSubtitle && (
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              {sectionSubtitle}
-            </p>
-          )}
+          <RichText
+            value={sectionSubtitle}
+            className="text-lg text-slate-400 max-w-2xl mx-auto"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -93,9 +93,10 @@ export function LandingWhyUs({
                 <h3 className="text-lg font-semibold text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <RichText
+                  value={item.description}
+                  className="text-slate-400 text-sm leading-relaxed"
+                />
               </motion.div>
             )
           })}

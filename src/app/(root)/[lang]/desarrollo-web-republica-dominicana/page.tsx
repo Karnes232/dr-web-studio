@@ -40,7 +40,10 @@ export default async function DesarrolloWebRepublicaDominicana({
     ],
     serviceName: data.hero.headline,
     serviceDescription: data.hero.subheadline,
-    faqItems: data.faq.items,
+    faqItems: data.faq.items.map(i => ({
+      question: i.question,
+      answer: i.answerText,
+    })),
     structuredData: data.structuredData,
   })
 

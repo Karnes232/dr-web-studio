@@ -12,7 +12,8 @@ import {
   Settings,
   Send,
 } from "lucide-react"
-import type { ProcessStep } from "./types"
+import { RichText } from "./RichText"
+import type { ProcessStep, PortableBlocks } from "./types"
 
 const ICON_MAP: Record<
   string,
@@ -30,7 +31,7 @@ const ICON_MAP: Record<
 
 interface LandingProcessProps {
   sectionTitle: string
-  sectionSubtitle: string
+  sectionSubtitle: PortableBlocks | string
   steps: ProcessStep[]
 }
 
@@ -58,11 +59,10 @@ export function LandingProcess({
           >
             {sectionTitle}
           </h2>
-          {sectionSubtitle && (
-            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              {sectionSubtitle}
-            </p>
-          )}
+          <RichText
+            value={sectionSubtitle}
+            className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
+          />
         </motion.div>
 
         <div className="relative">
@@ -98,9 +98,10 @@ export function LandingProcess({
                       {step.stepTitle}
                     </h3>
                   </div>
-                  <p className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5">
-                    {step.description}
-                  </p>
+                  <RichText
+                    value={step.description}
+                    className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5"
+                  />
                   {step.duration && (
                     <span className="inline-block px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-medium">
                       {step.duration}

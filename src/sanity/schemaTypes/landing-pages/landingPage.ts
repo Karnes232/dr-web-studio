@@ -43,6 +43,41 @@ const localizedStringArray = (name: string, title: string) =>
     ],
   })
 
+// Rich text (Portable Text) for short body fields. Restricted to Normal style +
+// lists + bold/italic + the default `link` annotation (paste an href like
+// /es/pricing or https://…). Stored per locale as { en: [blocks], es: [blocks] }.
+const richBlock = {
+  type: "array" as const,
+  of: [
+    {
+      type: "block" as const,
+      styles: [{ title: "Normal", value: "normal" }],
+      lists: [
+        { title: "Bullet", value: "bullet" },
+        { title: "Numbered", value: "number" },
+      ],
+      marks: {
+        decorators: [
+          { title: "Bold", value: "strong" },
+          { title: "Italic", value: "em" },
+        ],
+        // Default `link` annotation (href) — the built-in external/relative link.
+      },
+    },
+  ],
+}
+
+const localizedBlock = (name: string, title: string) =>
+  defineField({
+    name,
+    title,
+    type: "object",
+    fields: [
+      defineField({ name: "en", title: "English", ...richBlock }),
+      defineField({ name: "es", title: "Spanish", ...richBlock }),
+    ],
+  })
+
 export default defineType({
   name: "landingPage",
   title: "Landing Page",
@@ -148,7 +183,7 @@ export default defineType({
       group: "services",
       fields: [
         localizedString("sectionTitle", "Section Title"),
-        localizedText("sectionSubtitle", "Section Subtitle", 2),
+        localizedBlock("sectionSubtitle", "Section Subtitle"),
         defineField({
           name: "items",
           title: "Service Items",
@@ -164,7 +199,7 @@ export default defineType({
                   description: "e.g. Globe, ShoppingCart, Layout",
                 }),
                 localizedString("title", "Title"),
-                localizedText("description", "Description", 2),
+                localizedBlock("description", "Description"),
                 defineField({
                   name: "linkSlug",
                   title: "Link Slug (optional)",
@@ -194,7 +229,7 @@ export default defineType({
       group: "whyUs",
       fields: [
         localizedString("sectionTitle", "Section Title"),
-        localizedText("sectionSubtitle", "Section Subtitle", 2),
+        localizedBlock("sectionSubtitle", "Section Subtitle"),
         defineField({
           name: "items",
           title: "Differentiators",
@@ -209,7 +244,7 @@ export default defineType({
                   type: "string",
                 }),
                 localizedString("title", "Title"),
-                localizedText("description", "Description", 2),
+                localizedBlock("description", "Description"),
               ],
               preview: {
                 select: { title: "title.en" },
@@ -233,7 +268,7 @@ export default defineType({
       group: "process",
       fields: [
         localizedString("sectionTitle", "Section Title"),
-        localizedText("sectionSubtitle", "Section Subtitle", 2),
+        localizedBlock("sectionSubtitle", "Section Subtitle"),
         defineField({
           name: "steps",
           title: "Steps",
@@ -253,7 +288,7 @@ export default defineType({
                   type: "string",
                 }),
                 localizedString("stepTitle", "Title"),
-                localizedText("description", "Description", 2),
+                localizedBlock("description", "Description"),
                 localizedString("duration", "Duration"),
               ],
               preview: {
@@ -284,7 +319,7 @@ export default defineType({
       group: "portfolio",
       fields: [
         localizedString("sectionTitle", "Section Title"),
-        localizedText("sectionSubtitle", "Section Subtitle", 2),
+        localizedBlock("sectionSubtitle", "Section Subtitle"),
         defineField({
           name: "projects",
           title: "Featured Projects",
@@ -366,7 +401,7 @@ export default defineType({
       group: "faq",
       fields: [
         localizedString("sectionTitle", "Section Title"),
-        localizedText("sectionSubtitle", "Section Subtitle", 2),
+        localizedBlock("sectionSubtitle", "Section Subtitle"),
         defineField({
           name: "items",
           title: "Questions",
@@ -376,7 +411,7 @@ export default defineType({
               type: "object",
               fields: [
                 localizedString("question", "Question"),
-                localizedText("answer", "Answer", 4),
+                localizedBlock("answer", "Answer"),
               ],
               preview: {
                 select: { question: "question.es" },

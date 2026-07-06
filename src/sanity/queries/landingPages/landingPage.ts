@@ -1,5 +1,9 @@
 import { cache } from "react"
 import { client } from "@/sanity/lib/client"
+import { portableTextToPlainText } from "@/lib/portableTextToPlainText"
+
+/** Portable Text block array (loosely typed, matching the project convention). */
+type PortableBlocks = unknown[]
 
 // ──────────────────────────────────────────
 // GROQ Query
@@ -99,6 +103,13 @@ interface LocalizedString {
   es?: string
 }
 
+// Rich-text fields come back as a localized pair of Portable Text arrays. The
+// `string` union covers legacy/un-migrated docs (asBlocks wraps them safely).
+interface LocalizedBlocks {
+  en?: PortableBlocks | string
+  es?: PortableBlocks | string
+}
+
 interface RawStatItem {
   value?: string
   label?: LocalizedString
@@ -107,21 +118,21 @@ interface RawStatItem {
 interface RawServiceItem {
   icon?: string
   title?: LocalizedString
-  description?: LocalizedString
+  description?: LocalizedBlocks
   linkSlug?: string
 }
 
 interface RawWhyUsItem {
   icon?: string
   title?: LocalizedString
-  description?: LocalizedString
+  description?: LocalizedBlocks
 }
 
 interface RawProcessStep {
   number?: number
   icon?: string
   stepTitle?: LocalizedString
-  description?: LocalizedString
+  description?: LocalizedBlocks
   duration?: LocalizedString
 }
 
@@ -144,7 +155,7 @@ interface RawTestimonialItem {
 
 interface RawFaqItem {
   question?: LocalizedString
-  answer?: LocalizedString
+  answer?: LocalizedBlocks
 }
 
 interface RawLandingPage {
@@ -163,22 +174,22 @@ interface RawLandingPage {
   statsBar?: RawStatItem[]
   servicesGrid?: {
     sectionTitle?: LocalizedString
-    sectionSubtitle?: LocalizedString
+    sectionSubtitle?: LocalizedBlocks
     items?: RawServiceItem[]
   }
   whyUs?: {
     sectionTitle?: LocalizedString
-    sectionSubtitle?: LocalizedString
+    sectionSubtitle?: LocalizedBlocks
     items?: RawWhyUsItem[]
   }
   process?: {
     sectionTitle?: LocalizedString
-    sectionSubtitle?: LocalizedString
+    sectionSubtitle?: LocalizedBlocks
     steps?: RawProcessStep[]
   }
   portfolioHighlight?: {
     sectionTitle?: LocalizedString
-    sectionSubtitle?: LocalizedString
+    sectionSubtitle?: LocalizedBlocks
     projects?: RawProject[]
     ctaText?: LocalizedString
     ctaHref?: string
@@ -189,7 +200,7 @@ interface RawLandingPage {
   }
   faq?: {
     sectionTitle?: LocalizedString
-    sectionSubtitle?: LocalizedString
+    sectionSubtitle?: LocalizedBlocks
     items?: RawFaqItem[]
   }
   structuredData?: LocalizedString
@@ -215,33 +226,33 @@ export interface LandingPageData {
   statsBar: { value: string; label: string }[]
   servicesGrid: {
     sectionTitle: string
-    sectionSubtitle: string
+    sectionSubtitle: PortableBlocks
     items: {
       icon: string
       title: string
-      description: string
+      description: PortableBlocks
       linkSlug?: string
     }[]
   }
   whyUs: {
     sectionTitle: string
-    sectionSubtitle: string
-    items: { icon: string; title: string; description: string }[]
+    sectionSubtitle: PortableBlocks
+    items: { icon: string; title: string; description: PortableBlocks }[]
   }
   process: {
     sectionTitle: string
-    sectionSubtitle: string
+    sectionSubtitle: PortableBlocks
     steps: {
       number: number
       icon: string
       stepTitle: string
-      description: string
+      description: PortableBlocks
       duration: string
     }[]
   }
   portfolioHighlight: {
     sectionTitle: string
-    sectionSubtitle: string
+    sectionSubtitle: PortableBlocks
     projects: {
       title: string
       slug: string
@@ -265,8 +276,8 @@ export interface LandingPageData {
   }
   faq: {
     sectionTitle: string
-    sectionSubtitle: string
-    items: { question: string; answer: string }[]
+    sectionSubtitle: PortableBlocks
+    items: { question: string; answer: PortableBlocks; answerText: string }[]
   }
 
   structuredData?: string
@@ -278,6 +289,31 @@ export interface LandingPageData {
 
 function pick(obj: LocalizedString | undefined, lang: "en" | "es"): string {
   return obj?.[lang] ?? obj?.en ?? ""
+}
+
+/** Coerce a rich-text value to a Portable Text block array. Arrays pass through;
+ *  a legacy plain string is wrapped into a single block (defensive for
+ *  un-migrated docs / string-based seeds); anything else becomes []. */
+function asBlocks(value: PortableBlocks | string | undefined): PortableBlocks {
+  if (Array.isArray(value)) return value
+  if (typeof value === "string" && value.trim()) {
+    return [
+      {
+        _type: "block",
+        style: "normal",
+        markDefs: [],
+        children: [{ _type: "span", text: value, marks: [] }],
+      },
+    ]
+  }
+  return []
+}
+
+function pickBlocks(
+  obj: LocalizedBlocks | undefined,
+  lang: "en" | "es",
+): PortableBlocks {
+  return asBlocks(obj?.[lang] ?? obj?.en)
 }
 
 function transformLandingPage(
@@ -303,37 +339,40 @@ function transformLandingPage(
     })),
     servicesGrid: {
       sectionTitle: pick(raw.servicesGrid?.sectionTitle, lang),
-      sectionSubtitle: pick(raw.servicesGrid?.sectionSubtitle, lang),
+      sectionSubtitle: pickBlocks(raw.servicesGrid?.sectionSubtitle, lang),
       items: (raw.servicesGrid?.items ?? []).map(i => ({
         icon: i.icon ?? "Globe",
         title: pick(i.title, lang),
-        description: pick(i.description, lang),
+        description: pickBlocks(i.description, lang),
         linkSlug: i.linkSlug,
       })),
     },
     whyUs: {
       sectionTitle: pick(raw.whyUs?.sectionTitle, lang),
-      sectionSubtitle: pick(raw.whyUs?.sectionSubtitle, lang),
+      sectionSubtitle: pickBlocks(raw.whyUs?.sectionSubtitle, lang),
       items: (raw.whyUs?.items ?? []).map(i => ({
         icon: i.icon ?? "Check",
         title: pick(i.title, lang),
-        description: pick(i.description, lang),
+        description: pickBlocks(i.description, lang),
       })),
     },
     process: {
       sectionTitle: pick(raw.process?.sectionTitle, lang),
-      sectionSubtitle: pick(raw.process?.sectionSubtitle, lang),
+      sectionSubtitle: pickBlocks(raw.process?.sectionSubtitle, lang),
       steps: (raw.process?.steps ?? []).map(s => ({
         number: s.number ?? 0,
         icon: s.icon ?? "ArrowRight",
         stepTitle: pick(s.stepTitle, lang),
-        description: pick(s.description, lang),
+        description: pickBlocks(s.description, lang),
         duration: pick(s.duration, lang),
       })),
     },
     portfolioHighlight: {
       sectionTitle: pick(raw.portfolioHighlight?.sectionTitle, lang),
-      sectionSubtitle: pick(raw.portfolioHighlight?.sectionSubtitle, lang),
+      sectionSubtitle: pickBlocks(
+        raw.portfolioHighlight?.sectionSubtitle,
+        lang,
+      ),
       projects: (raw.portfolioHighlight?.projects ?? []).map(p => ({
         title: pick(p.title, lang),
         slug: p.slug ?? "",
@@ -357,11 +396,15 @@ function transformLandingPage(
     },
     faq: {
       sectionTitle: pick(raw.faq?.sectionTitle, lang),
-      sectionSubtitle: pick(raw.faq?.sectionSubtitle, lang),
-      items: (raw.faq?.items ?? []).map(f => ({
-        question: pick(f.question, lang),
-        answer: pick(f.answer, lang),
-      })),
+      sectionSubtitle: pickBlocks(raw.faq?.sectionSubtitle, lang),
+      items: (raw.faq?.items ?? []).map(f => {
+        const answer = pickBlocks(f.answer, lang)
+        return {
+          question: pick(f.question, lang),
+          answer,
+          answerText: portableTextToPlainText(answer),
+        }
+      }),
     },
     structuredData: raw.structuredData?.[lang] ?? raw.structuredData?.en,
   }

@@ -23,22 +23,26 @@ interface PageProps {
 
 export default async function Contact({ params }: PageProps) {
   const { lang } = await params
-  const [graph, contactHero, locationInfo, faqsHeader, contactFaqs] =
+  const [contactHero, locationInfo, faqsHeader, contactFaqs] =
     await Promise.all([
-      getStandardGraph({
-        lang,
-        pageName: "contact",
-        href: "/contact",
-        crumbs: [
-          { name: lang === "es" ? "Inicio" : "Home", href: "/" },
-          { name: lang === "es" ? "Contacto" : "Contact", href: "/contact" },
-        ],
-      }),
       getContactHero(),
       getLocationInfo(),
       getFAQsHeader(),
       getContactFaqs(),
     ])
+  const graph = await getStandardGraph({
+    lang,
+    pageName: "contact",
+    href: "/contact",
+    faqItems: contactFaqs.map(faq => ({
+      question: faq.question[lang],
+      answer: faq.answer[lang],
+    })),
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      { name: lang === "es" ? "Contacto" : "Contact", href: "/contact" },
+    ],
+  })
 
   return (
     <>

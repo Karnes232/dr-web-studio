@@ -129,6 +129,10 @@ export default async function IndividualService({ params }: PageProps) {
     image,
     price: priceInfo?.price,
     unit: priceInfo?.unit,
+    faqItems: (service.pageContent?.faqs ?? []).map(f => ({
+      question: f.question[lang],
+      answer: f.answer[lang],
+    })),
     crumbs: [
       { name: lang === "es" ? "Inicio" : "Home", href: "/" },
       {

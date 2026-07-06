@@ -3,11 +3,12 @@
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
-import type { FaqItem } from "./types"
+import { RichText } from "./RichText"
+import type { FaqItem, PortableBlocks } from "./types"
 
 interface LandingFaqProps {
   sectionTitle: string
-  sectionSubtitle: string
+  sectionSubtitle: PortableBlocks | string
   items: FaqItem[]
   bgColor?: string
 }
@@ -43,9 +44,10 @@ function FaqAccordionItem({ item, index }: { item: FaqItem; index: number }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="pb-5 text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-            {item.answer}
-          </p>
+          <RichText
+            value={item.answer}
+            className="pb-5 text-slate-500 dark:text-slate-400 leading-relaxed text-sm"
+          />
         </div>
       </div>
     </div>
@@ -81,11 +83,10 @@ export function LandingFaq({
           >
             {sectionTitle}
           </h2>
-          {sectionSubtitle && (
-            <p className="text-lg text-slate-500 dark:text-slate-400">
-              {sectionSubtitle}
-            </p>
-          )}
+          <RichText
+            value={sectionSubtitle}
+            className="text-lg text-slate-500 dark:text-slate-400"
+          />
         </motion.div>
 
         <motion.div

@@ -25,30 +25,28 @@ interface PageProps {
 
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
-  const [
-    graph,
-    customSolutionCTA,
-    pricingHeader,
-    faqsHeader,
-    faqs,
-    pricingData,
-  ] = await Promise.all([
-    getStandardGraph({
-      lang,
-      pageName: "pricing",
-      href: "/pricing",
-      withOffers: true,
-      crumbs: [
-        { name: lang === "es" ? "Inicio" : "Home", href: "/" },
-        { name: lang === "es" ? "Precios" : "Pricing", href: "/pricing" },
-      ],
-    }),
-    getCustomSolutionCTA(),
-    getPricingHeader(),
-    getFAQsHeader(),
-    getFAQs(),
-    getPricingData(),
-  ])
+  const [customSolutionCTA, pricingHeader, faqsHeader, faqs, pricingData] =
+    await Promise.all([
+      getCustomSolutionCTA(),
+      getPricingHeader(),
+      getFAQsHeader(),
+      getFAQs(),
+      getPricingData(),
+    ])
+  const graph = await getStandardGraph({
+    lang,
+    pageName: "pricing",
+    href: "/pricing",
+    withOffers: true,
+    faqItems: faqs.map(f => ({
+      question: f.question[lang],
+      answer: f.answer[lang],
+    })),
+    crumbs: [
+      { name: lang === "es" ? "Inicio" : "Home", href: "/" },
+      { name: lang === "es" ? "Precios" : "Pricing", href: "/pricing" },
+    ],
+  })
   return (
     <>
       <JsonLd data={graph} />

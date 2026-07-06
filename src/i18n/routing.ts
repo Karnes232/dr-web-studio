@@ -2,7 +2,7 @@ import { defineRouting } from "next-intl/routing"
 
 export const routing = defineRouting({
   locales: ["en", "es"],
-  defaultLocale: "en",
+  defaultLocale: "es",
   // Preserve the existing always-prefixed URL scheme (/en/..., /es/...).
   localePrefix: "always",
   // localeDetection is intentionally left at its default (true): un-prefixed

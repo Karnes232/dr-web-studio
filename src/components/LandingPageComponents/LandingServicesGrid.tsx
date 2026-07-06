@@ -17,7 +17,8 @@ import {
   Search,
 } from "lucide-react"
 import { Link } from "@/i18n/navigation"
-import type { ServiceItem } from "./types"
+import { RichText } from "./RichText"
+import type { ServiceItem, PortableBlocks } from "./types"
 
 const ICON_MAP: Record<
   string,
@@ -39,7 +40,7 @@ const ICON_MAP: Record<
 
 interface LandingServicesGridProps {
   sectionTitle: string
-  sectionSubtitle: string
+  sectionSubtitle: PortableBlocks | string
   items: ServiceItem[]
   lang: "en" | "es"
 }
@@ -69,11 +70,10 @@ export function LandingServicesGrid({
           >
             {sectionTitle}
           </h2>
-          {sectionSubtitle && (
-            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              {sectionSubtitle}
-            </p>
-          )}
+          <RichText
+            value={sectionSubtitle}
+            className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -93,9 +93,11 @@ export function LandingServicesGrid({
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <RichText
+                  value={item.description}
+                  linkMode="plain"
+                  className="flex-1 text-slate-500 dark:text-slate-400 text-sm leading-relaxed"
+                />
                 {item.linkSlug && (
                   <div className="mt-6 text-amber-600 text-sm font-medium group-hover:text-amber-700 transition-colors">
                     {lang === "es" ? "Ver más →" : "Learn more →"}
