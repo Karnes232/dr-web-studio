@@ -63,6 +63,38 @@ export default defineType({
             title: "Mantenimiento Web República Dominicana (Landing)",
             value: "mantenimiento-web-republica-dominicana",
           },
+          {
+            title: "Diseño de Páginas Web Santo Domingo (Landing)",
+            value: "diseno-de-paginas-web-santo-domingo",
+          },
+          {
+            title: "Diseño de Páginas Web Santiago (Landing)",
+            value: "diseno-de-paginas-web-santiago",
+          },
+           {
+            title: "Diseño de Páginas Web La Romana (Landing)",
+            value: "diseno-de-paginas-web-la-romana",
+          },
+          {
+            title: "Diseño de Páginas Web Higüey (Landing)",
+            value: "diseno-de-paginas-web-higuey",
+          },
+          {
+            title: "Diseño de Páginas Web San Pedro de Macoris (Landing)",
+            value: "diseno-de-paginas-web-san-pedro-de-macoris",
+          },
+          {
+            title: "Diseño de Páginas Web Punta Cana (Landing)",
+            value: "diseno-de-paginas-web-punta-cana",
+          },
+          {
+            title: "Diseño de Páginas Web Puerto Plata (Landing)",
+            value: "diseno-de-paginas-web-puerto-plata",
+          },
+          {
+            title: "Diseño de Páginas Web Las Terrenas (Landing)",
+            value: "diseno-de-paginas-web-las-terrenas",
+          },
         ],
         layout: "dropdown",
       },

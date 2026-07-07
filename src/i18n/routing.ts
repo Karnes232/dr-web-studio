@@ -70,6 +70,38 @@ export const routing = defineRouting({
       en: "/web-design-dominican-republic",
       es: "/diseno-web-republica-dominicana",
     },
+    "/diseno-de-paginas-web-santo-domingo": {
+      en: "/web-design-santo-domingo",
+      es: "/diseno-de-paginas-web-santo-domingo",
+    },
+    "/diseno-de-paginas-web-santiago": {
+      en: "/web-design-santiago",
+      es: "/diseno-de-paginas-web-santiago",
+    },
+    "/diseno-de-paginas-web-la-romana": {
+      en: "/web-design-la-romana",
+      es: "/diseno-de-paginas-web-la-romana",
+    },
+    "/diseno-de-paginas-web-higuey": {
+      en: "/web-design-higuey",
+      es: "/diseno-de-paginas-web-higuey",
+    },
+    "/diseno-de-paginas-web-san-pedro-de-macoris": {
+      en: "/web-design-san-pedro-de-macoris",
+      es: "/diseno-de-paginas-web-san-pedro-de-macoris",
+    },
+    "/diseno-de-paginas-web-punta-cana": {
+      en: "/web-design-punta-cana",
+      es: "/diseno-de-paginas-web-punta-cana",
+    },
+    "/diseno-de-paginas-web-puerto-plata": {
+      en: "/web-design-puerto-plata",
+      es: "/diseno-de-paginas-web-puerto-plata",
+    },
+    "/diseno-de-paginas-web-las-terrenas": {
+      en: "/web-design-las-terrenas",
+      es: "/diseno-de-paginas-web-las-terrenas",
+    },
     "/mantenimiento-web-republica-dominicana": {
       en: "/website-maintenance-dominican-republic",
       es: "/mantenimiento-web-republica-dominicana",

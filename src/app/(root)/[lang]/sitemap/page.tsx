@@ -47,6 +47,16 @@ const labels = {
         "E-commerce Development — Dominican Republic",
       "mantenimiento-web-republica-dominicana":
         "Website Maintenance — Dominican Republic",
+      "diseno-de-paginas-web-santo-domingo":
+        "Web Design — Santo Domingo",
+      "diseno-de-paginas-web-santiago": "Web Design — Santiago",
+      "diseno-de-paginas-web-la-romana": "Web Design — La Romana",
+      "diseno-de-paginas-web-higuey": "Web Design — Higüey",
+      "diseno-de-paginas-web-san-pedro-de-macoris":
+        "Web Design — San Pedro de Macoris",
+      "diseno-de-paginas-web-punta-cana": "Web Design — Punta Cana",
+      "diseno-de-paginas-web-puerto-plata": "Web Design — Puerto Plata",
+      "diseno-de-paginas-web-las-terrenas": "Web Design — Las Terrenas",
     },
   },
   es: {
@@ -78,6 +88,16 @@ const labels = {
         "Desarrollo E-commerce — República Dominicana",
       "mantenimiento-web-republica-dominicana":
         "Mantenimiento Web — República Dominicana",
+      "diseno-de-paginas-web-santo-domingo":
+        "Diseño de Páginas Web — Santo Domingo",
+      "diseno-de-paginas-web-santiago": "Diseño de Páginas Web — Santiago",
+      "diseno-de-paginas-web-la-romana": "Diseño de Páginas Web — La Romana",
+      "diseno-de-paginas-web-higuey": "Diseño de Páginas Web — Higüey",
+      "diseno-de-paginas-web-san-pedro-de-macoris":
+        "Diseño de Páginas Web — San Pedro de Macoris",
+      "diseno-de-paginas-web-punta-cana": "Diseño de Páginas Web — Punta Cana",
+      "diseno-de-paginas-web-puerto-plata": "Diseño de Páginas Web — Puerto Plata",
+      "diseno-de-paginas-web-las-terrenas": "Diseño de Páginas Web — Las Terrenas",
     },
   },
 }
@@ -88,6 +108,14 @@ const LANDING_PAGE_SLUGS = [
   "desarrollo-web-punta-cana",
   "desarrollo-ecommerce-republica-dominicana",
   "mantenimiento-web-republica-dominicana",
+  "diseno-de-paginas-web-santo-domingo",
+  "diseno-de-paginas-web-santiago",
+  "diseno-de-paginas-web-la-romana",
+  "diseno-de-paginas-web-higuey",
+  "diseno-de-paginas-web-san-pedro-de-macoris",
+  "diseno-de-paginas-web-punta-cana",
+  "diseno-de-paginas-web-puerto-plata",
+  "diseno-de-paginas-web-las-terrenas",
 ] as const
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -188,6 +216,11 @@ export default async function SitemapPage({ params }: PageProps) {
               ))}
             </SitemapSection>
           )}
+           {/* Legal */}
+           <SitemapSection title={l.legal}>
+            <SitemapLink href="/privacy-policy" label={l.privacyPolicy} />
+            <SitemapLink href="/terms-of-service" label={l.termsOfService} />
+          </SitemapSection>
 
           {/* Landing Pages */}
           <SitemapSection title={l.landingPages}>
@@ -199,9 +232,10 @@ export default async function SitemapPage({ params }: PageProps) {
               />
             ))}
           </SitemapSection>
-
+            
           {/* Blog Posts */}
           {blogPosts.length > 0 && (
+            <div className="lg:col-span-2">
             <SitemapSection title={l.blog}>
               {blogPosts.map((post, i) => (
                 <SitemapLink
@@ -214,13 +248,11 @@ export default async function SitemapPage({ params }: PageProps) {
                 />
               ))}
             </SitemapSection>
+            </div>
           )}
-
-          {/* Legal */}
-          <SitemapSection title={l.legal}>
-            <SitemapLink href="/privacy-policy" label={l.privacyPolicy} />
-            <SitemapLink href="/terms-of-service" label={l.termsOfService} />
-          </SitemapSection>
+          
+         
+         
         </div>
       </div>
     </main>
