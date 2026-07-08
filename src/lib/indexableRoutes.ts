@@ -1,6 +1,6 @@
 import type { AppPathnames } from "@/i18n/routing"
 
-type StaticPathname = Exclude<
+export type StaticPathname = Exclude<
   AppPathnames,
   "/blog/[slug]" | "/our-services/[slug]"
 >
@@ -24,6 +24,10 @@ export const LANDING_PAGE_ROUTES = [
   "/paginas-web-para-hoteles",
   "/paginas-web-para-restaurantes",
   "/paginas-web-para-tour-operadores",
+  "/paginas-web-para-alquileres-vacacionales",
+  "/paginas-web-para-bodas-y-eventos",
+  "/paginas-web-para-dentistas",
+  "/paginas-web-para-abogados",
 ] as const satisfies readonly StaticPathname[]
 
 export type LandingPageSlug = (typeof LANDING_PAGE_ROUTES)[number] extends `/${infer S}`

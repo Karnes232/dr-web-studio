@@ -103,19 +103,35 @@ export const routing = defineRouting({
       es: "/diseno-de-paginas-web-las-terrenas",
     },
     "/paginas-web-para-hoteles": {
-      en: "/web-design-hoteles",
+      en: "/web-design-hotlels",
       es: "/paginas-web-para-hoteles",
     },
     "/paginas-web-para-restaurantes": {
-      en: "/web-design-restaurantes",
+      en: "/web-design-restaurants",
       es: "/paginas-web-para-restaurantes",
     },
+    "/paginas-web-para-alquileres-vacacionales": {
+      en: "/web-design-vacation-rentals",
+      es: "/paginas-web-para-alquileres-vacacionales",
+    },
+    "/paginas-web-para-bodas-y-eventos": {
+      en: "/web-design-weddings-and-events",
+      es: "/paginas-web-para-bodas-y-eventos",
+    },
+    "/paginas-web-para-dentistas": {
+      en: "/web-design-dentistas",
+      es: "/paginas-web-para-dentistas",
+    },
     "/paginas-web-para-tour-operadores": {
-      en: "/web-design-tour-operadores",
+      en: "/web-design-tour-operadors",
       es: "/paginas-web-para-tour-operadores",
     },
+    "/paginas-web-para-abogados": {
+      en: '/web-design-lawyers',
+      es: '/paginas-web-para-abogados'
+    },
     "/paginas-web-para-inmobiliarias": {
-      en: "/web-design-inmobiliarias",
+      en: "/web-design-real-estate-agents",
       es: "/paginas-web-para-inmobiliarias",
     },
     "/mantenimiento-web-republica-dominicana": {

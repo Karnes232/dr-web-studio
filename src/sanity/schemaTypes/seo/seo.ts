@@ -111,6 +111,22 @@ export default defineType({
             title: "Páginas Web para Inmobiliarias (Landing)",
             value: "paginas-web-para-inmobiliarias",
           },
+          {
+            title: "Páginas Web para Alquileres Vacacionales (Landing)",
+            value: "paginas-web-para-alquileres-vacacionales",
+          },
+          {
+            title: "Páginas Web para Bodas y Eventos (Landing)",
+            value: "paginas-web-para-bodas-y-eventos",
+          },
+          {
+            title: "Páginas Web para Dentistas (Landing)",
+            value: "paginas-web-para-dentistas",
+          },
+          {
+            title: "Páginas Web para Abogados (Landing)",
+            value: "paginas-web-para-abogados"
+          }
         ],
         layout: "dropdown",
       },

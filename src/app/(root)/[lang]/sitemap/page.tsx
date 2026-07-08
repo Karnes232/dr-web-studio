@@ -61,10 +61,14 @@ const labels = {
       "diseno-de-paginas-web-punta-cana": "Web Design — Punta Cana",
       "diseno-de-paginas-web-puerto-plata": "Web Design — Puerto Plata",
       "diseno-de-paginas-web-las-terrenas": "Web Design — Las Terrenas",
-      "paginas-web-para-inmobiliarias": "Web Design — Inmobiliarias",
-      "paginas-web-para-hoteles": "Web Design — Hoteles",
-      "paginas-web-para-restaurantes": "Web Design — Restaurantes",
-      "paginas-web-para-tour-operadores": "Web Design — Tour Operadores",
+      "paginas-web-para-inmobiliarias": "Web Design — Real Estate Agents",
+      "paginas-web-para-hoteles": "Web Design — Hotels",
+      "paginas-web-para-restaurantes": "Web Design — Restaurants",
+      "paginas-web-para-tour-operadores": "Web Design — Tour Operadors",
+      "paginas-web-para-alquileres-vacacionales": "Web Design — Vacation Rentals",
+      "paginas-web-para-bodas-y-eventos": "Web Design — Weddings and Events",
+      "paginas-web-para-dentistas": "Web Design — Dentists",
+      'paginas-web-para-abogados': "Web Design - Lawyers"
     },
   },
   es: {
@@ -110,6 +114,10 @@ const labels = {
       "paginas-web-para-hoteles": "Páginas Web para Hoteles",
       "paginas-web-para-restaurantes": "Páginas Web para Restaurantes",
       "paginas-web-para-tour-operadores": "Páginas Web para Tour Operadores",
+      "paginas-web-para-alquileres-vacacionales": "Páginas Web para Alquileres Vacacionales",
+      "paginas-web-para-bodas-y-eventos": "Páginas Web para Bodas y Eventos",
+      "paginas-web-para-dentistas": "Páginas Web para Dentistas",
+      'paginas-web-para-abogados': "Páginas Web para Abogados"
     },
   },
 }
