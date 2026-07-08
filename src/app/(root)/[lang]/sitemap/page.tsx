@@ -2,6 +2,10 @@ import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { Metadata } from "next"
 import { Link } from "@/i18n/navigation"
+import {
+  LANDING_PAGE_ROUTES,
+  type LandingPageSlug,
+} from "@/lib/indexableRoutes"
 import { buildAlternates } from "@/lib/urls"
 import { slugForLocale } from "@/lib/slugs"
 
@@ -57,6 +61,10 @@ const labels = {
       "diseno-de-paginas-web-punta-cana": "Web Design — Punta Cana",
       "diseno-de-paginas-web-puerto-plata": "Web Design — Puerto Plata",
       "diseno-de-paginas-web-las-terrenas": "Web Design — Las Terrenas",
+      "paginas-web-para-inmobiliarias": "Web Design — Inmobiliarias",
+      "paginas-web-para-hoteles": "Web Design — Hoteles",
+      "paginas-web-para-restaurantes": "Web Design — Restaurantes",
+      "paginas-web-para-tour-operadores": "Web Design — Tour Operadores",
     },
   },
   es: {
@@ -98,25 +106,13 @@ const labels = {
       "diseno-de-paginas-web-punta-cana": "Diseño de Páginas Web — Punta Cana",
       "diseno-de-paginas-web-puerto-plata": "Diseño de Páginas Web — Puerto Plata",
       "diseno-de-paginas-web-las-terrenas": "Diseño de Páginas Web — Las Terrenas",
+      "paginas-web-para-inmobiliarias": "Páginas Web para Inmobiliarias",
+      "paginas-web-para-hoteles": "Páginas Web para Hoteles",
+      "paginas-web-para-restaurantes": "Páginas Web para Restaurantes",
+      "paginas-web-para-tour-operadores": "Páginas Web para Tour Operadores",
     },
   },
 }
-
-const LANDING_PAGE_SLUGS = [
-  "desarrollo-web-republica-dominicana",
-  "diseno-web-republica-dominicana",
-  "desarrollo-web-punta-cana",
-  "desarrollo-ecommerce-republica-dominicana",
-  "mantenimiento-web-republica-dominicana",
-  "diseno-de-paginas-web-santo-domingo",
-  "diseno-de-paginas-web-santiago",
-  "diseno-de-paginas-web-la-romana",
-  "diseno-de-paginas-web-higuey",
-  "diseno-de-paginas-web-san-pedro-de-macoris",
-  "diseno-de-paginas-web-punta-cana",
-  "diseno-de-paginas-web-puerto-plata",
-  "diseno-de-paginas-web-las-terrenas",
-] as const
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Sub-components
@@ -224,13 +220,16 @@ export default async function SitemapPage({ params }: PageProps) {
 
           {/* Landing Pages */}
           <SitemapSection title={l.landingPages}>
-            {LANDING_PAGE_SLUGS.map(slug => (
-              <SitemapLink
-                key={slug}
-                href={`/${slug}` as Href}
-                label={l.landingPageLabels[slug]}
-              />
-            ))}
+            {LANDING_PAGE_ROUTES.map(route => {
+              const slug = route.slice(1) as LandingPageSlug
+              return (
+                <SitemapLink
+                  key={route}
+                  href={route}
+                  label={l.landingPageLabels[slug]}
+                />
+              )
+            })}
           </SitemapSection>
             
           {/* Blog Posts */}

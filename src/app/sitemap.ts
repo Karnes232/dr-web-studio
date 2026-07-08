@@ -1,35 +1,12 @@
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import type { MetadataRoute } from "next"
+import { INDEXABLE_STATIC_ROUTES } from "@/lib/indexableRoutes"
 import { localizedUrl } from "@/lib/urls"
 import { slugPair, type Locale } from "@/lib/slugs"
 import { routing } from "@/i18n/routing"
 
 export const revalidate = 3600
-
-type Href = Parameters<typeof localizedUrl>[0]
-
-// Internal pathname keys included in the sitemap (both locales). Intentionally
-// excludes /sitemap, /custom-payment, /payment-success (noindex / utility).
-const STATIC_ROUTES: Href[] = [
-  "/",
-  "/about-me",
-  "/blog",
-  "/contact",
-  "/faqs",
-  "/guia-completa-desarrollo-web-moderno-negocios",
-  "/desarrollo-web-republica-dominicana",
-  "/diseno-web-republica-dominicana",
-  "/desarrollo-web-punta-cana",
-  "/desarrollo-ecommerce-republica-dominicana",
-  "/mantenimiento-web-republica-dominicana",
-  "/privacy-policy",
-  "/terms-of-service",
-  "/our-services",
-  "/pricing",
-  "/portfolio",
-  "/project-planner",
-]
 
 // Stable lastmod for hardcoded routes. Using `new Date()` here would stamp a
 // fresh timestamp on every hourly revalidate, training crawlers to ignore
@@ -50,6 +27,21 @@ function languagesFor(urlForLocale: (locale: Locale) => string) {
   return languages
 }
 
+function pushLocalizedEntries(
+  entries: MetadataRoute.Sitemap,
+  urlFor: (locale: Locale) => string,
+  lastModified: Date,
+) {
+  const languages = languagesFor(urlFor)
+  for (const locale of routing.locales) {
+    entries.push({
+      url: urlFor(locale),
+      lastModified,
+      alternates: { languages },
+    })
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [serviceItems, blogPosts] = await Promise.all([
     getServiceItemsSitemap(),
@@ -57,49 +49,38 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ])
   const entries: MetadataRoute.Sitemap = []
 
-  for (const key of STATIC_ROUTES) {
-    const languages = languagesFor(locale => localizedUrl(key, locale))
-    for (const locale of routing.locales) {
-      entries.push({
-        url: localizedUrl(key, locale),
-        lastModified: STATIC_LASTMOD,
-        alternates: { languages },
-      })
-    }
+  for (const key of INDEXABLE_STATIC_ROUTES) {
+    pushLocalizedEntries(
+      entries,
+      locale => localizedUrl(key, locale),
+      STATIC_LASTMOD,
+    )
   }
 
   for (const item of serviceItems) {
     const pair = slugPair(item)
-    const urlFor = (locale: Locale) =>
-      localizedUrl(
-        { pathname: "/our-services/[slug]", params: { slug: pair[locale] } },
-        locale,
-      )
-    const languages = languagesFor(urlFor)
-    for (const locale of routing.locales) {
-      entries.push({
-        url: urlFor(locale),
-        lastModified: new Date(item._updatedAt),
-        alternates: { languages },
-      })
-    }
+    pushLocalizedEntries(
+      entries,
+      locale =>
+        localizedUrl(
+          { pathname: "/our-services/[slug]", params: { slug: pair[locale] } },
+          locale,
+        ),
+      new Date(item._updatedAt),
+    )
   }
 
   for (const item of blogPosts) {
     const pair = slugPair(item)
-    const urlFor = (locale: Locale) =>
-      localizedUrl(
-        { pathname: "/blog/[slug]", params: { slug: pair[locale] } },
-        locale,
-      )
-    const languages = languagesFor(urlFor)
-    for (const locale of routing.locales) {
-      entries.push({
-        url: urlFor(locale),
-        lastModified: new Date(item._updatedAt),
-        alternates: { languages },
-      })
-    }
+    pushLocalizedEntries(
+      entries,
+      locale =>
+        localizedUrl(
+          { pathname: "/blog/[slug]", params: { slug: pair[locale] } },
+          locale,
+        ),
+      new Date(item._updatedAt),
+    )
   }
 
   return entries
