@@ -95,6 +95,22 @@ export default defineType({
             title: "Diseño de Páginas Web Las Terrenas (Landing)",
             value: "diseno-de-paginas-web-las-terrenas",
           },
+          {
+            title: "Páginas Web para Restaurantes (Landing)",
+            value: "paginas-web-para-restaurantes",
+          },
+          {
+            title: "Páginas Web para Hoteles (Landing)",
+            value: "paginas-web-para-hoteles",
+          },
+          {
+            title: "Páginas Web para Tour Operadores (Landing)",
+            value: "paginas-web-para-tour-operadores",
+          },
+          {
+            title: "Páginas Web para Inmobiliarias (Landing)",
+            value: "paginas-web-para-inmobiliarias",
+          },
         ],
         layout: "dropdown",
       },

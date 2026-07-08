@@ -102,6 +102,22 @@ export const routing = defineRouting({
       en: "/web-design-las-terrenas",
       es: "/diseno-de-paginas-web-las-terrenas",
     },
+    "/paginas-web-para-hoteles": {
+      en: "/web-design-hoteles",
+      es: "/paginas-web-para-hoteles",
+    },
+    "/paginas-web-para-restaurantes": {
+      en: "/web-design-restaurantes",
+      es: "/paginas-web-para-restaurantes",
+    },
+    "/paginas-web-para-tour-operadores": {
+      en: "/web-design-tour-operadores",
+      es: "/paginas-web-para-tour-operadores",
+    },
+    "/paginas-web-para-inmobiliarias": {
+      en: "/web-design-inmobiliarias",
+      es: "/paginas-web-para-inmobiliarias",
+    },
     "/mantenimiento-web-republica-dominicana": {
       en: "/website-maintenance-dominican-republic",
       es: "/mantenimiento-web-republica-dominicana",
