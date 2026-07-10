@@ -289,7 +289,7 @@ export async function generateMetadata({
       lang === "es"
         ? "Una lista completa de todas las páginas del sitio web de DR Web Studio."
         : "A complete list of all pages on the DR Web Studio website.",
-    robots: { index: false, follow: false },
+    robots: { index: false, follow: true },
     alternates: {
       canonical: canonicalUrl,
       languages,
