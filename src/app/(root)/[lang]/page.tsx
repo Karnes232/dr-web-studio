@@ -138,7 +138,7 @@ export default async function Home({ params }: PageProps) {
   const recentWorkProjects = featuredWork?.projects?.length
     ? featuredWork.projects
     : latestProjects
-
+   
   return (
     <>
       <JsonLd data={graph} />
