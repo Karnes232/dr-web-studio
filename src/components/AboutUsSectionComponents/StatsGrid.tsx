@@ -5,11 +5,16 @@ import { useLocale } from "@/i18n/useLocale"
 const StatsGrid = ({
   stats,
 }: {
-  stats: { websitesDelivered: number; yearsExperience: number }
+  stats: { projectsCompleted: number; yearsExperience: number }
 }) => {
   const { t } = useLocale()
-  const [websitesDelivered, setWebsitesDelivered] = useState(25)
-  const [yearsExperience, setYearsExperience] = useState(6)
+  // Initialise with the real values so the server-rendered HTML (what
+  // crawlers see) already shows the correct numbers; the count-up animation
+  // only kicks in client-side once the grid scrolls into view.
+  const [projectsCompleted, setProjectsCompleted] = useState(
+    stats.projectsCompleted,
+  )
+  const [yearsExperience, setYearsExperience] = useState(stats.yearsExperience)
   const [clientSatisfaction, setClientSatisfaction] = useState(100)
   const statsRef = useRef<HTMLDivElement>(null)
 
@@ -30,8 +35,8 @@ const StatsGrid = ({
             const progress = frame / totalFrames
 
             if (frame <= totalFrames) {
-              setWebsitesDelivered(
-                Math.ceil(progress * stats.websitesDelivered),
+              setProjectsCompleted(
+                Math.ceil(progress * stats.projectsCompleted),
               )
               setYearsExperience(Math.ceil(progress * stats.yearsExperience))
               setClientSatisfaction(
@@ -53,12 +58,12 @@ const StatsGrid = ({
     }
 
     return () => observer.disconnect()
-  }, [stats.websitesDelivered, stats.yearsExperience, targetClientSatisfaction])
+  }, [stats.projectsCompleted, stats.yearsExperience, targetClientSatisfaction])
 
   const statsArray = [
     {
-      number: `${websitesDelivered}+`,
-      label: t("stats.websitesDelivered"),
+      number: `${projectsCompleted}+`,
+      label: t("home.projectsCompleted"),
       icon: Globe,
     },
     {

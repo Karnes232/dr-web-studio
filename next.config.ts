@@ -21,7 +21,8 @@ const ES_STATIC_REDIRECTS: Record<string, string> = {
   "terms-of-service": "terminos-de-servicio",
 }
 
-// en landing pages whose slug changed (old Spanish folder slug → new English slug).
+// en landing pages whose slug changed (old Spanish folder slug → new English
+// slug, plus typo/untranslated slug corrections).
 const EN_LANDING_REDIRECTS: Record<string, string> = {
   "desarrollo-web-republica-dominicana": "web-development-dominican-republic",
   "desarrollo-ecommerce-republica-dominicana":
@@ -32,6 +33,9 @@ const EN_LANDING_REDIRECTS: Record<string, string> = {
     "website-maintenance-dominican-republic",
   "guia-completa-desarrollo-web-moderno-negocios":
     "complete-guide-modern-web-development-business",
+  "web-design-hotlels": "web-design-hotels",
+  "web-design-dentistas": "web-design-dentists",
+  "web-design-tour-operadors": "web-design-tour-operators",
 }
 
 // Per-document es slug 301/308s, built from Sanity at build time. Falls back to
@@ -179,6 +183,13 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        // Header-level noindex backstop for the embedded Sanity Studio: the
+        // SPA catch-all is crawlable in principle, and its meta-robots tag
+        // only exists once the shell renders.
+        source: "/studio/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },
     ]
   },

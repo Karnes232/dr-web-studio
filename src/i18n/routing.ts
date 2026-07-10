@@ -103,7 +103,7 @@ export const routing = defineRouting({
       es: "/diseno-de-paginas-web-las-terrenas",
     },
     "/paginas-web-para-hoteles": {
-      en: "/web-design-hotlels",
+      en: "/web-design-hotels",
       es: "/paginas-web-para-hoteles",
     },
     "/paginas-web-para-restaurantes": {
@@ -119,11 +119,11 @@ export const routing = defineRouting({
       es: "/paginas-web-para-bodas-y-eventos",
     },
     "/paginas-web-para-dentistas": {
-      en: "/web-design-dentistas",
+      en: "/web-design-dentists",
       es: "/paginas-web-para-dentistas",
     },
     "/paginas-web-para-tour-operadores": {
-      en: "/web-design-tour-operadors",
+      en: "/web-design-tour-operators",
       es: "/paginas-web-para-tour-operadores",
     },
     "/paginas-web-para-abogados": {

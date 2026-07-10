@@ -14,7 +14,9 @@ const AI_SEARCH_BOTS = [
 // Training-only / bulk-scrape crawlers that add no search visibility — denied.
 const TRAINING_BOTS = ["CCBot", "anthropic-ai", "cohere-ai", "Applebot-Extended"]
 
-const DISALLOW = ["/studio/", "/api/"]
+// No trailing slashes: `/studio/` would not match the bare `/studio` path,
+// leaving the Studio SPA's infinite-depth catch-all crawlable.
+const DISALLOW = ["/studio", "/api"]
 
 export default function robots(): MetadataRoute.Robots {
   return {

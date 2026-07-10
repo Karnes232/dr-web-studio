@@ -238,12 +238,12 @@ export default function ProjectPlanner({
           >
             DR
           </span>
-          <span className="text-[15px] font-semibold text-slate-900 dark:text-white">
+          <h1 className="text-[15px] font-semibold text-slate-900 dark:text-white">
             {config.intro.title[locale]}{" "}
             <span className="font-medium text-slate-400">
               · {config.intro.kicker[locale]}
             </span>
-          </span>
+          </h1>
         </div>
         {!done && (
           <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-[12.5px] text-slate-500 dark:text-slate-400">

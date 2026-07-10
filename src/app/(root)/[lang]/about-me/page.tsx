@@ -8,6 +8,7 @@ import StatsGrid from "@/components/AboutUsSectionComponents/StatsGrid"
 import TechStack from "@/components/AboutUsSectionComponents/TechStack"
 import WhyChooseUs from "@/components/AboutUsSectionComponents/WhyChooseUs"
 import { getStats } from "@/sanity/queries/layout/stats"
+import { getTrustSignals } from "@/sanity/queries/home/trustSignals"
 import { getLocationAvailability } from "@/sanity/queries/about-me/locationAvailability"
 import { getPersonalStory } from "@/sanity/queries/about-me/personalStory"
 import { getSectionHeader } from "@/sanity/queries/about-me/sectionHeader"
@@ -40,6 +41,7 @@ export default async function AboutUs({ params }: PageProps) {
     technologies,
     developmentApproach,
     whyChooseUs,
+    trustSignals,
   ] = await Promise.all([
     getStandardGraph({
       lang,
@@ -58,6 +60,7 @@ export default async function AboutUs({ params }: PageProps) {
     getTechnologies(),
     getDevelopmentApproach(),
     getWhyChooseUs(),
+    getTrustSignals(),
   ])
 
   return (
@@ -96,7 +99,16 @@ export default async function AboutUs({ params }: PageProps) {
 
             {/* Right Column - Technical Information */}
             <div>
-              <StatsGrid stats={stats} />
+              <StatsGrid
+                stats={{
+                  // Single source of truth for the project count is the
+                  // trustSignals doc (shared with the homepage/footer).
+                  projectsCompleted:
+                    trustSignals?.stats?.projectsCompleted ??
+                    stats.websitesDelivered,
+                  yearsExperience: stats.yearsExperience,
+                }}
+              />
               <TechStack
                 technologies={technologies.technologies}
                 title={technologies.title[lang]}

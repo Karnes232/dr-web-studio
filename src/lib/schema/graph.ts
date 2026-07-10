@@ -28,20 +28,39 @@ const HOME_LABEL: Record<Locale, string> = { en: "Home", es: "Inicio" }
 
 // Site-identity nodes stay auto-generated: they're built live from layout data
 // (with offers/ratings/reviews on home) and CMS copies are stale snapshots of
-// the same @id.
+// the same @id. OfferCatalog is included because the catalog (names + prices)
+// is built live from serviceItem docs + SERVICE_PRICES; stored copies have
+// drifted from the published prices.
 const SITE_IDENTITY_TYPES = new Set([
   "Organization",
   "LocalBusiness",
   "ProfessionalService",
   "WebSite",
+  "OfferCatalog",
+])
+
+// Page-content types where the auto node is authoritative when it exists: it's
+// built from the live routing tables and CMS fields, so its @id/slug always
+// matches the page being rendered, while stored CMS copies have proven to carry
+// stale or wrong-locale URLs. A CMS node of these types still applies on pages
+// where no auto equivalent is emitted (e.g. FAQPage on blog posts).
+const AUTO_WINS_TYPES = new Set([
+  "Article",
+  "Service",
+  "WebPage",
+  "BreadcrumbList",
+  "FAQPage",
+  "Person",
 ])
 
 // Treat the Article family as one type when detecting collisions: stored blog
-// structured data says "Article" while the auto node is "BlogPosting".
+// structured data says "Article" while the auto node is "BlogPosting". Same for
+// CollectionPage vs the auto WebPage on listing pages.
 const TYPE_EQUIVALENCE: Record<string, string> = {
   BlogPosting: "Article",
   NewsArticle: "Article",
   TechArticle: "Article",
+  CollectionPage: "WebPage",
 }
 
 const canonType = (t: string) => TYPE_EQUIVALENCE[t] ?? t
@@ -78,10 +97,13 @@ function parseCustomNodes(json?: string | null): JsonObject[] | null {
   }
 }
 
-/** Merge CMS nodes into the auto-generated node list: custom nodes win for
- *  page-content types (colliding auto nodes are dropped, e.g. a stored Article
- *  replaces the auto BlogPosting), non-colliding ones are appended, and
- *  site-identity types are discarded in favor of the auto versions. */
+/** Merge CMS nodes into the auto-generated node list. Precedence:
+ *  1. Site-identity types: CMS copies are always discarded.
+ *  2. AUTO_WINS types: the auto node is kept and the CMS copy dropped whenever
+ *     an auto node of the same canonical type exists; if the page emits no auto
+ *     equivalent, the CMS node still applies.
+ *  3. Everything else: the CMS node wins and the colliding auto node is
+ *     dropped; non-colliding CMS nodes are appended. */
 function mergeCustomNodes(
   autoNodes: (JsonObject | null | undefined)[],
   customJson?: string | null,
@@ -90,11 +112,18 @@ function mergeCustomNodes(
     n => !typesOf(n).some(t => SITE_IDENTITY_TYPES.has(t)),
   )
   if (!custom?.length) return autoNodes
-  const customTypes = new Set(custom.flatMap(typesOf))
+  const autoTypes = new Set(
+    autoNodes.flatMap(n => (n ? typesOf(n) : [])),
+  )
+  const applicable = custom.filter(
+    n => !typesOf(n).some(t => AUTO_WINS_TYPES.has(t) && autoTypes.has(t)),
+  )
+  if (!applicable.length) return autoNodes
+  const customTypes = new Set(applicable.flatMap(typesOf))
   const kept = autoNodes.filter(
     n => !n || !typesOf(n).some(t => customTypes.has(t)),
   )
-  return [...kept, ...custom]
+  return [...kept, ...applicable]
 }
 
 function buildGraph(
