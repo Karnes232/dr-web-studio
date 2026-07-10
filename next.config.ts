@@ -125,27 +125,85 @@ async function dynamicSlugRedirects() {
   return out
 }
 
-// Content-Security-Policy. Shipped in Report-Only mode first: violations surface
-// in the browser console (and any report endpoint) without breaking the page.
-// Once the console is clean across checkout/Studio/analytics flows, switch the
-// header key below to "Content-Security-Policy" to enforce.
+// Content-Security-Policy — ENFORCED since 2026-07-10 after a report-only
+// soak: a headless console sweep of home/pricing/contact/checkout/blog/
+// planner showed zero violations; only /studio needed extra hosts (covered by
+// the dedicated Studio policy below). Roll back by switching the header key
+// back to "Content-Security-Policy-Report-Only".
 // 'unsafe-inline' on script-src is required by Next.js RSC inline bootstrap and
 // the next/font + next/image inline styles (no nonce pipeline in use).
-const contentSecurityPolicy = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'self'",
-  "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://js.stripe.com https://vercel.live https://www.googletagmanager.com https://analytics.ahrefs.com",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "img-src 'self' data: blob: https://cdn.sanity.io https://*.stripe.com https://www.googletagmanager.com https://www.google-analytics.com",
-  "font-src 'self' data: https://fonts.gstatic.com",
-  "connect-src 'self' https://cdn.sanity.io https://api.stripe.com https://vercel.live https://www.google-analytics.com https://*.analytics.google.com https://analytics.ahrefs.com",
-  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://vercel.live",
-  "worker-src 'self' blob:",
-  "upgrade-insecure-requests",
-].join("; ")
+const cspDirectives: Record<string, string[]> = {
+  "default-src": ["'self'"],
+  "base-uri": ["'self'"],
+  "object-src": ["'none'"],
+  "frame-ancestors": ["'self'"],
+  "form-action": ["'self'"],
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://js.stripe.com",
+    "https://vercel.live",
+    "https://www.googletagmanager.com",
+    "https://analytics.ahrefs.com",
+  ],
+  "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+  "img-src": [
+    "'self'",
+    "data:",
+    "blob:",
+    "https://cdn.sanity.io",
+    "https://*.stripe.com",
+    "https://www.googletagmanager.com",
+    "https://www.google-analytics.com",
+  ],
+  "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
+  "connect-src": [
+    "'self'",
+    "https://cdn.sanity.io",
+    "https://api.stripe.com",
+    "https://vercel.live",
+    "https://www.google-analytics.com",
+    "https://*.analytics.google.com",
+    "https://analytics.ahrefs.com",
+  ],
+  "frame-src": [
+    "'self'",
+    "https://js.stripe.com",
+    "https://hooks.stripe.com",
+    "https://vercel.live",
+  ],
+  "worker-src": ["'self'", "blob:"],
+  "upgrade-insecure-requests": [],
+}
+
+function buildCsp(extra: Record<string, string[]> = {}): string {
+  return Object.entries(cspDirectives)
+    .map(([directive, values]) => {
+      const merged = [...values, ...(extra[directive] ?? [])]
+      return merged.length ? `${directive} ${merged.join(" ")}` : directive
+    })
+    .join("; ")
+}
+
+const contentSecurityPolicy = buildCsp()
+
+// The embedded Sanity Studio needs additional hosts (verified from live
+// console violations under the report-only policy): the core bridge script,
+// the project API + live-listener websockets, telemetry, and auth-provider
+// avatar images.
+const studioContentSecurityPolicy = buildCsp({
+  "script-src": ["https://core.sanity-cdn.com"],
+  "connect-src": [
+    "https://*.api.sanity.io",
+    "wss://*.api.sanity.io",
+    "https://api.sanity.io",
+    "https://telemetry.sanity.io",
+  ],
+  "img-src": [
+    "https://lh3.googleusercontent.com",
+    "https://avatars.githubusercontent.com",
+  ],
+})
 
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
@@ -161,7 +219,7 @@ const securityHeaders = [
     value: "max-age=63072000; includeSubDomains; preload",
   },
   {
-    key: "Content-Security-Policy-Report-Only",
+    key: "Content-Security-Policy",
     value: contentSecurityPolicy,
   },
 ]
@@ -185,11 +243,16 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
-        // Header-level noindex backstop for the embedded Sanity Studio: the
-        // SPA catch-all is crawlable in principle, and its meta-robots tag
-        // only exists once the shell renders.
+        // Studio-specific overrides. For a duplicate header key, Next.js
+        // applies the LAST matching rule, so the extended CSP replaces the
+        // site-wide one on Studio routes. X-Robots-Tag is the header-level
+        // noindex backstop for the SPA catch-all, whose meta-robots tag only
+        // exists once the shell renders.
         source: "/studio/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex" },
+          { key: "Content-Security-Policy", value: studioContentSecurityPolicy },
+        ],
       },
     ]
   },
