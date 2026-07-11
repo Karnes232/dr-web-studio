@@ -39,7 +39,7 @@ export default function ThemeToggle({ color }: { color: string }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className={`flex items-center justify-center text-${color} dark:text-slate-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-slate-800 border border-transparent hover:border-orange-200 dark:hover:border-slate-700`}
+      className={`flex items-center justify-center text-${color} dark:text-slate-200 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-slate-800 border border-transparent hover:border-orange-200 dark:hover:border-slate-700 lg:hidden xl:block`}
     >
       <Icon className="h-5 w-5" />
     </button>

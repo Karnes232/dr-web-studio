@@ -29,7 +29,7 @@ const DesktopNavigation = ({
         <Link
           key={index}
           href={item.href}
-          className="text-slate-700 dark:text-slate-200 hover:text-orange-500 font-medium transition-colors duration-200"
+          className="text-slate-700 dark:text-slate-200 hover:text-orange-500 font-medium transition-colors duration-200 truncate"
         >
           {item.label}
         </Link>

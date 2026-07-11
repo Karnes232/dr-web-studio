@@ -41,7 +41,7 @@ const Navbar = ({
           />
 
           {/* Desktop: Theme Toggle + Language Switcher + CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center lg:space-x-2 xl:space-x-4">
             <ThemeToggle color="slate-700" />
             <LanguageSwitcher color="slate-700" />
             <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
