@@ -11,10 +11,10 @@ const WhyChooseUs = ({
 }) => {
   return (
     <div className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-900 rounded-xl p-6">
-      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+      <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
         <Star className="h-6 w-6 text-teal-600 mr-2" />
         {title}
-      </h3>
+      </h2>
       <ul className="space-y-3">
         {reasons.map((reason, index) => (
           <li key={index} className="flex items-start">

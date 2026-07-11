@@ -45,9 +45,9 @@ const PricingCard = ({
           <Icon className="h-6 w-6 text-orange-600" />
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
           {pricingData.title[lang as keyof typeof pricingData.title]}
-        </h3>
+        </h2>
         <p className="text-gray-600 dark:text-slate-400 text-sm mb-4">
           {
             pricingData.description[

@@ -3,15 +3,19 @@ import { useLocale } from "@/i18n/useLocale"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 import { Link } from "@/i18n/navigation"
+import { FaWhatsapp } from "react-icons/fa"
+import { waHref } from "@/lib/contact"
 
 const MobileMenu = ({
   isOpen,
   setIsOpen,
   serviceLinks,
+  phone,
 }: {
   isOpen: boolean
   setIsOpen: any
   serviceLinks: ServiceItemsLinks[]
+  phone?: string
 }) => {
   const { currentLocale, t, getServiceHref } = useLocale()
 
@@ -91,6 +95,18 @@ const MobileMenu = ({
           >
             {t("resources.get_quote")}
           </Link>
+          {phone && (
+            <a
+              href={waHref(phone, t("landingPage.whatsappMessage"))}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex w-full items-center justify-center gap-2 bg-green-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-green-700 transition-all duration-200 shadow-md"
+            >
+              <FaWhatsapp className="h-5 w-5" />
+              {t("landingPage.whatsapp")}
+            </a>
+          )}
         </div>
       </div>
     </div>

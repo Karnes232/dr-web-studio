@@ -11,9 +11,9 @@ const ContactFAQ = ({
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   return (
     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
-      <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6">
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6">
         {title}
-      </h3>
+      </h2>
 
       <div className="space-y-4">
         {faqs.map((faq, index) => (

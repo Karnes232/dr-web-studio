@@ -10,6 +10,7 @@ import heroVisualElement from "./home/HeroVisualElements"
 import serviceSection from "./home/HomePageService"
 import homeFeaturedWork from "./home/HomeFeaturedWork"
 import trustSignals from "./home/TrustSignals"
+import homeIntro from "./home/HomeIntro"
 import previousClients from "./home/PreviousClients"
 import Testimonial from "./home/Testimonial"
 
@@ -90,6 +91,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     serviceSection,
     homeFeaturedWork,
     trustSignals,
+    homeIntro,
     previousClients,
     Testimonial,
 

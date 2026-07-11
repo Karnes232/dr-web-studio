@@ -5,6 +5,7 @@ import LocationInfo from "@/components/ContactPageComponents/LocationInfo"
 import { getContactFaqs } from "@/sanity/queries/contact/contactFaq"
 import { getContactHero } from "@/sanity/queries/contact/contactHero"
 import { getLocationInfo } from "@/sanity/queries/contact/locationInfo"
+import { getCompanyInfo } from "@/sanity/queries/layout/generalLayout"
 import { getFAQsHeader } from "@/sanity/queries/pricing/faqsHeader"
 import { getSEO } from "@/sanity/queries/seo"
 import { getStandardGraph } from "@/lib/schema/graph"
@@ -23,12 +24,13 @@ interface PageProps {
 
 export default async function Contact({ params }: PageProps) {
   const { lang } = await params
-  const [contactHero, locationInfo, faqsHeader, contactFaqs] =
+  const [contactHero, locationInfo, faqsHeader, contactFaqs, companyInfo] =
     await Promise.all([
       getContactHero(),
       getLocationInfo(),
       getFAQsHeader(),
       getContactFaqs(),
+      getCompanyInfo(),
     ])
   const graph = await getStandardGraph({
     lang,
@@ -77,6 +79,7 @@ export default async function Contact({ params }: PageProps) {
                   locationInfo.emergencySupport.description[lang]
                 }
                 language={lang}
+                phone={companyInfo?.telephone}
               />
               <ContactFAQ
                 title={faqsHeader.title[lang]}

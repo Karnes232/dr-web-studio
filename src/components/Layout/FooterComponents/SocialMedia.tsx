@@ -2,6 +2,8 @@ import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { useLocale } from "@/i18n/useLocale"
 import React from "react"
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
+import { FaWhatsapp } from "react-icons/fa"
+import { waHref } from "@/lib/contact"
 
 interface SocialMediaProps {
   socialLinks: {
@@ -9,11 +11,21 @@ interface SocialMediaProps {
     github: string
   }
   email: string
+  phone?: string
 }
-const SocialMedia = ({ socialLinks, email }: SocialMediaProps) => {
+const SocialMedia = ({ socialLinks, email, phone }: SocialMediaProps) => {
   const { t } = useLocale()
   const socialLinksArray = [
     { icon: FiMail, href: `mailto:${email}`, label: "Email" },
+    ...(phone
+      ? [
+          {
+            icon: FaWhatsapp,
+            href: waHref(phone, t("landingPage.whatsappMessage")),
+            label: "WhatsApp",
+          },
+        ]
+      : []),
     { icon: FiLinkedin, href: socialLinks.linkedin, label: "LinkedIn" },
     { icon: FiGithub, href: socialLinks.github, label: "GitHub" },
   ]

@@ -94,9 +94,9 @@ const ContactForm = () => {
     return (
       <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8 text-center">
         <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
           {t("contact.form.messageSent")}
-        </h3>
+        </h2>
         <p className="text-slate-600 dark:text-slate-400 mb-6">
           {t("contact.form.messageSentDescription")}
         </p>

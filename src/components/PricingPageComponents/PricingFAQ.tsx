@@ -16,9 +16,9 @@ const PricingFAQ = ({
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
           {title}
-        </h3>
+        </h2>
         <p className="text-gray-600 dark:text-slate-400">{subtitle}</p>
       </div>
 

@@ -1,5 +1,7 @@
-import { Clock, MapPin } from "lucide-react"
+import { Clock, MapPin, Phone } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
 import React from "react"
+import { telHref, waHref } from "@/lib/contact"
 
 const LocationInfo = ({
   title,
@@ -10,6 +12,7 @@ const LocationInfo = ({
   emergencySupportTitle,
   emergencySupportDescription,
   language,
+  phone,
 }: {
   title: string
   location: string
@@ -19,21 +22,22 @@ const LocationInfo = ({
   emergencySupportTitle: string
   emergencySupportDescription: string
   language: string
+  phone?: string
 }) => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
       <div className="flex items-center mb-6">
         <MapPin className="h-6 w-6 text-orange-600 dark:text-orange-400 mr-3" />
-        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
           {title}
-        </h3>
+        </h2>
       </div>
 
       <div className="space-y-6">
         <div>
-          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
+          <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
             {location}
-          </h4>
+          </h3>
           <p className="text-slate-600 dark:text-slate-400 mb-4">
             {description}
           </p>
@@ -49,12 +53,47 @@ const LocationInfo = ({
           </div>
         </div>
 
+        {phone && (
+          <div>
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">
+              {language === "en" ? "Talk to us directly" : "Háblanos directamente"}
+            </h3>
+            <div className="space-y-2">
+              <a
+                href={waHref(
+                  phone,
+                  language === "en"
+                    ? "Hi! I'm interested in a website for my business."
+                    : "¡Hola! Me interesa un sitio web para mi negocio.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              >
+                <FaWhatsapp className="h-5 w-5 mr-2 text-green-600 dark:text-green-500" />
+                <span>
+                  {language === "en"
+                    ? "Chat on WhatsApp"
+                    : "Escríbenos por WhatsApp"}
+                </span>
+              </a>
+              <a
+                href={telHref(phone)}
+                className="flex items-center text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+              >
+                <Phone className="h-5 w-5 mr-2 text-orange-600 dark:text-orange-400" />
+                <span>{phone}</span>
+              </a>
+            </div>
+          </div>
+        )}
+
         <div>
           <div className="flex items-center mb-3">
             <Clock className="h-5 w-5 text-slate-600 dark:text-slate-400 mr-2" />
-            <h4 className="font-semibold text-slate-800 dark:text-slate-100">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100">
               {language === "en" ? "Business Hours" : "Horarios de Negocios"}
-            </h4>
+            </h3>
           </div>
           <div className="space-y-2 text-slate-600 dark:text-slate-400">
             <div className="flex justify-between">
@@ -80,9 +119,9 @@ const LocationInfo = ({
         </div>
 
         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-4">
-          <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
+          <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
             {emergencySupportTitle}
-          </h4>
+          </h3>
           <p className="text-slate-600 dark:text-slate-400 text-sm">
             {emergencySupportDescription}
           </p>

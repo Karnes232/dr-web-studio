@@ -63,6 +63,13 @@ export const structure: StructureResolver = S =>
                     .documentId("homeFeaturedWork"),
                 ),
               S.listItem()
+                .title("Home Intro")
+                .child(
+                  S.editor()
+                    .schemaType("homeIntro")
+                    .documentId("homeIntro"),
+                ),
+              S.listItem()
                 .title("Trust Signals")
                 .child(
                   S.documentList()

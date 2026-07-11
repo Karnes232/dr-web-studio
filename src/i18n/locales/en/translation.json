@@ -225,7 +225,10 @@
     "getQuote": "Get Free Quote",
     "startProject": "Start Your Project",
     "whatsapp": "WhatsApp",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "ctaHeadline": "Ready to start your project?",
+    "ctaSubtext": "Get a free, no-obligation quote — or message us on WhatsApp and get answers right away.",
+    "whatsappMessage": "Hi! I'm interested in a website for my business."
   },
   "theme": {
     "toLight": "Switch to light mode",

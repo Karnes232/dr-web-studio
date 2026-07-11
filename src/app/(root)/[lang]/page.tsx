@@ -15,6 +15,8 @@ import {
   projectProjection,
 } from "@/sanity/queries/portfolio/project"
 import { getHomeFeaturedWork } from "@/sanity/queries/home/homeFeaturedWork"
+import { getHomeIntro } from "@/sanity/queries/home/homeIntro"
+import HomeIntro from "@/components/HomeIntroComponents/HomeIntro"
 import { getTrustSignals } from "@/sanity/queries/home/trustSignals"
 import { getPreviousClients } from "@/sanity/queries/home/previousClients"
 import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
@@ -113,6 +115,7 @@ export default async function Home({ params }: PageProps) {
     testimonials,
     projects,
     featuredWork,
+    homeIntro,
   ] = await Promise.all([
     getHomeGraph(lang),
     getContent(),
@@ -123,6 +126,7 @@ export default async function Home({ params }: PageProps) {
     getAllTestimonials(),
     getProjects(),
     getHomeFeaturedWork(),
+    getHomeIntro(),
   ])
 
   // Fallback when an editor hasn't picked projects yet: featured-first, then latest.
@@ -155,6 +159,7 @@ export default async function Home({ params }: PageProps) {
           lang={lang}
           happyClients={trustSignals.stats?.happyClients ?? 20}
         />
+        <HomeIntro data={homeIntro} lang={lang} />
         <QuickServicesOverview
           title={serviceData.title[lang]}
           subtitle={serviceData.subtitle[lang]}

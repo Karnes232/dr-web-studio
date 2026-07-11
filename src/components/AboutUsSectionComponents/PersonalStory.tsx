@@ -11,9 +11,9 @@ const PersonalStory = ({
 }) => {
   return (
     <div className="prose prose-slate max-w-none">
-      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4">
+      <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4">
         {title}
-      </h3>
+      </h2>
       <p className="text-slate-600 dark:text-slate-400 mb-4">{story1}</p>
       <p className="text-slate-600 dark:text-slate-400 mb-6">{story2}</p>
     </div>

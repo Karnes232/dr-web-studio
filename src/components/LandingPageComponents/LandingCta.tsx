@@ -3,7 +3,9 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, MessageCircle, Phone } from "lucide-react"
+import { ArrowRight, Phone } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
+import { waHref } from "@/lib/contact"
 
 interface LandingCtaProps {
   headline: string
@@ -13,6 +15,8 @@ interface LandingCtaProps {
   secondaryBtn: string
   secondaryBtnHref: string
   whatsappNumber?: string
+  /** Prefilled, already-localized wa.me message. */
+  whatsappText?: string
   phone?: string
   lang: "en" | "es"
 }
@@ -25,6 +29,7 @@ export function LandingCta({
   secondaryBtn,
   secondaryBtnHref,
   whatsappNumber,
+  whatsappText,
   phone,
   lang,
 }: LandingCtaProps) {
@@ -32,7 +37,7 @@ export function LandingCta({
   const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   const whatsappHref = whatsappNumber
-    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}`
+    ? waHref(whatsappNumber, whatsappText)
     : undefined
 
   return (
@@ -101,7 +106,7 @@ export function LandingCta({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-slate-400 hover:text-green-400 transition-colors text-sm"
               >
-                <MessageCircle size={16} />
+                <FaWhatsapp size={16} />
                 <span>WhatsApp</span>
               </a>
             )}

@@ -13,9 +13,11 @@ import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 const Navbar = ({
   logo,
   serviceLinks,
+  phone,
 }: {
   logo: any
   serviceLinks: ServiceItemsLinks[]
+  phone?: string
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
@@ -43,7 +45,7 @@ const Navbar = ({
             <ThemeToggle color="slate-700" />
             <LanguageSwitcher color="slate-700" />
             <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
-            <CTAButtons />
+            <CTAButtons phone={phone} />
           </div>
 
           {/* Mobile: Theme Toggle + Menu Toggle */}
@@ -60,6 +62,7 @@ const Navbar = ({
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           serviceLinks={serviceLinks}
+          phone={phone}
         />
       </div>
     </nav>

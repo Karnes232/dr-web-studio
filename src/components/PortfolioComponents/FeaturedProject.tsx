@@ -36,25 +36,25 @@ const FeaturedProject = ({
             <span className="text-orange-700 dark:text-orange-400 font-medium text-sm">
               {project.category[currentLocale as keyof typeof project.category]}
             </span>
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 dark:text-slate-100 mt-2 mb-2 leading-tight">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 dark:text-slate-100 mt-2 mb-2 leading-tight">
               {project.title[currentLocale as keyof typeof project.title]}
-            </h3>
+            </h2>
             <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
               {project.client}
             </p>
           </div>
 
           <div className="mb-4 sm:mb-6">
-            <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 text-sm sm:text-base">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 text-sm sm:text-base">
               {t("portfolio.theChallenge")}
-            </h4>
+            </h3>
             <p className="text-slate-600 dark:text-slate-400 mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base">
               {project.problem[currentLocale as keyof typeof project.problem]}
             </p>
 
-            <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 text-sm sm:text-base">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2 text-sm sm:text-base">
               {t("portfolio.ourSolution")}
-            </h4>
+            </h3>
             <p className="text-slate-600 dark:text-slate-400 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base">
               {project.solution[currentLocale as keyof typeof project.solution]}
             </p>

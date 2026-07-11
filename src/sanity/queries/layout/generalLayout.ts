@@ -34,6 +34,7 @@ const logoQuery = `*[_type == "generalLayout"][0] {
 
 const companyInfoQuery = `*[_type == "generalLayout"][0] {
   email,
+  telephone,
   companyName,
   footerText {
     en,

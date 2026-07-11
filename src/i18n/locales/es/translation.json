@@ -225,7 +225,10 @@
     "getQuote": "Obtener Cotización Gratis",
     "startProject": "Empieza Tu Proyecto",
     "whatsapp": "WhatsApp",
-    "viewAll": "Ver Todo"
+    "viewAll": "Ver Todo",
+    "ctaHeadline": "¿Listo para comenzar tu proyecto?",
+    "ctaSubtext": "Recibe una cotización gratis y sin compromiso — o escríbenos por WhatsApp y obtén respuestas al instante.",
+    "whatsappMessage": "¡Hola! Me interesa un sitio web para mi negocio."
   },
   "theme": {
     "toLight": "Cambiar a modo claro",

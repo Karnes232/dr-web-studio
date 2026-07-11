@@ -16,9 +16,9 @@ const DevelopmentApproach = ({
   }
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-6">
+      <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-6">
         {title}
-      </h3>
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {approaches.map((approach, index) => {
           const Icon = icons[approach.iconName as keyof typeof icons]
@@ -28,9 +28,9 @@ const DevelopmentApproach = ({
                 <Icon className="h-6 w-6 text-orange-600 dark:text-orange-300" />
               </div>
               <div>
-                <h4 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">
                   {approach.title}
-                </h4>
+                </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">
                   {approach.description}
                 </p>

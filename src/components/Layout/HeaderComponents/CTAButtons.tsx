@@ -1,8 +1,16 @@
 import { useLocale } from "@/i18n/useLocale"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import { FaWhatsapp } from "react-icons/fa"
+import { waHref } from "@/lib/contact"
 
-const CTAButtons = ({ className = "" }) => {
+const CTAButtons = ({
+  className = "",
+  phone,
+}: {
+  className?: string
+  phone?: string
+}) => {
   const { t } = useLocale()
   return (
     <div className={`flex items-center space-x-4 ${className}`}>
@@ -19,6 +27,19 @@ const CTAButtons = ({ className = "" }) => {
       >
         {t("resources.get_quote")}
       </Link>
+
+      {phone && (
+        <a
+          href={waHref(phone, t("landingPage.whatsappMessage"))}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("landingPage.whatsapp")}
+          title={t("landingPage.whatsapp")}
+          className="p-2 rounded-lg text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-slate-800 transition-all duration-200 transform hover:scale-110"
+        >
+          <FaWhatsapp className="h-6 w-6" />
+        </a>
+      )}
     </div>
   )
 }

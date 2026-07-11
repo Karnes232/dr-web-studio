@@ -51,7 +51,11 @@ export default async function LangLayout({
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <ThemeProvider>
           <NextIntlClientProvider locale={lang} messages={messages}>
-            <Navbar logo={logo} serviceLinks={serviceLinks} />
+            <Navbar
+              logo={logo}
+              serviceLinks={serviceLinks}
+              phone={companyInfo?.telephone}
+            />
             {children}
             <Footer
               logo={logo}

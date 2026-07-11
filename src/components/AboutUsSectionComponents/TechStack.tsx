@@ -9,10 +9,10 @@ const TechStack = ({
 }) => {
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+      <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
         <Code className="h-6 w-6 text-orange-500 mr-2" />
         {title}
-      </h3>
+      </h2>
       <div className="flex flex-wrap gap-2">
         {technologies.map((tech, index) => (
           <span

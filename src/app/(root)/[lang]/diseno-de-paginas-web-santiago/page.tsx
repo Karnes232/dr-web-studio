@@ -8,6 +8,7 @@ import { LandingProcess } from "@/components/LandingPageComponents/LandingProces
 import { LandingPortfolioHighlight } from "@/components/LandingPageComponents/LandingPortfolioHighlight"
 import { LandingTestimonials } from "@/components/LandingPageComponents/LandingTestimonials"
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
+import { LandingContactCta } from "@/components/LandingPageComponents/LandingContactCta"
 import type { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
 import { getLandingGraph } from "@/lib/schema/graph"
@@ -96,6 +97,8 @@ export default async function DisenoDePaginasWebSantiago({
           items={data.faq.items}
         />
       )}
+
+      <LandingContactCta hero={data.hero} lang={lang} />
 
       <JsonLd data={graph} />
     </main>

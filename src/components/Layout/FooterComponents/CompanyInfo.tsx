@@ -1,9 +1,11 @@
 "use client"
 
 import React from "react"
-import { MapPin, Mail, MessageCircle, Calendar } from "lucide-react"
+import { MapPin, Mail, Phone } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
 import FooterLogo from "./FooterLogo"
 import { useLocale } from "@/i18n/useLocale"
+import { telHref, waHref } from "@/lib/contact"
 
 interface CompanyInfoProps {
   logo: {
@@ -17,6 +19,7 @@ interface CompanyInfoProps {
   }
   companyInfo: {
     email: string
+    telephone?: string
     companyName: string
     footerText: {
       en: string
@@ -53,21 +56,33 @@ const CompanyInfo = ({ logo, companyInfo }: CompanyInfoProps) => {
             {companyInfo.email}
           </a>
         </div>
-        {/* <div className="flex items-center text-gray-300">
-          <MessageCircle className="h-5 w-5 text-orange-400 mr-3" />
-          <a
-            href="https://wa.me/18091234567"
-            className="hover:text-orange-400 transition-colors"
-          >
-            WhatsApp
-          </a>
-        </div>
-        <div className="flex items-center text-gray-300">
-          <Calendar className="h-5 w-5 text-orange-400 mr-3" />
-          <a href="#" className="hover:text-orange-400 transition-colors">
-            Schedule a Call
-          </a>
-        </div> */}
+        {companyInfo.telephone && (
+          <>
+            <div className="flex items-center text-gray-300">
+              <FaWhatsapp className="h-5 w-5 text-orange-400 mr-3" />
+              <a
+                href={waHref(
+                  companyInfo.telephone,
+                  t("landingPage.whatsappMessage"),
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-400 transition-colors"
+              >
+                {t("landingPage.whatsapp")}
+              </a>
+            </div>
+            <div className="flex items-center text-gray-300">
+              <Phone className="h-5 w-5 text-orange-400 mr-3" />
+              <a
+                href={telHref(companyInfo.telephone)}
+                className="hover:text-orange-400 transition-colors"
+              >
+                {companyInfo.telephone}
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
