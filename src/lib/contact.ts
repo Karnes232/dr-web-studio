@@ -10,7 +10,9 @@ export function waHref(phone: string, text?: string): string {
   return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`
 }
 
-/** tel: link; keeps a leading + and digits only. */
+/** tel: link; digits only, normalized to E.164 (+…) so the number dials
+ *  correctly from abroad even when the CMS value omits the plus. */
 export function telHref(phone: string): string {
-  return `tel:${phone.replace(/[^+\d]/g, "")}`
+  const cleaned = phone.replace(/[^+\d]/g, "")
+  return `tel:${cleaned.startsWith("+") ? cleaned : `+${cleaned}`}`
 }
