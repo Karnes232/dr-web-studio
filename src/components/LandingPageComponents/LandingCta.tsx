@@ -5,7 +5,7 @@ import { useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, Phone } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
-import { waHref } from "@/lib/contact"
+import { telHref, waHref } from "@/lib/contact"
 
 interface LandingCtaProps {
   headline: string
@@ -112,7 +112,7 @@ export function LandingCta({
             )}
             {phone && (
               <a
-                href={`tel:${phone.replace(/\s/g, "")}`}
+                href={telHref(phone)}
                 className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm"
               >
                 <Phone size={16} />

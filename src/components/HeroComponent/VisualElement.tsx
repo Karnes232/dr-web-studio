@@ -66,9 +66,11 @@ const VisualElement = ({
                     <p className="text-xs font-medium uppercase tracking-wide text-orange-300">
                       {project.category[locale]}
                     </p>
-                    <h3 className="mt-1 truncate text-lg font-semibold text-white">
+                    {/* Not a heading: this sits right after the page h1, and a
+                        carousel card title isn't part of the document outline. */}
+                    <p className="mt-1 truncate text-lg font-semibold text-white">
                       {project.title[locale]}
-                    </h3>
+                    </p>
                   </div>
                   <span className="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-white/90 transition-colors group-hover:text-orange-300">
                     {t("resources.view_project")}

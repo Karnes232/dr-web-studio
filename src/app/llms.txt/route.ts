@@ -1,4 +1,5 @@
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
+import { getNewestBlogPostDate } from "@/sanity/queries/blog/blog"
 import { getSEO } from "@/sanity/queries/seo"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { localizedUrl } from "@/lib/urls"
@@ -292,10 +293,11 @@ function languageSection(
 }
 
 export async function GET() {
-  const [home, services, contactEmail] = await Promise.all([
+  const [home, services, contactEmail, newestPostDate] = await Promise.all([
     getSEO("home"),
     getServiceItemsSitemap(),
     getContactEmail(),
+    getNewestBlogPostDate(),
   ])
 
   const summaryEn = (home?.meta.en.description ?? FALLBACK_SUMMARY.en).trim()
@@ -308,6 +310,13 @@ export async function GET() {
     `> Contact: ${contactEmail ?? `${SITE_URL}/en/contact`}`,
     `> License: RSL 1.0 — citation with attribution permitted`,
     `> Language: en, es`,
+    ...(newestPostDate
+      ? [
+          `> Last-Updated: ${new Date(newestPostDate)
+            .toISOString()
+            .slice(0, 10)}`,
+        ]
+      : []),
   ].join("\n")
 
   const body =

@@ -348,6 +348,19 @@ export async function getArticleGraph(args: {
     [
       org,
       webSiteNode(layout),
+      // Auto WebPage so stale CMS WebPage copies (wrong-locale slugs) are
+      // dropped by the AUTO_WINS rule instead of passing through.
+      webPageNode({
+        lang,
+        href,
+        name: title,
+        description,
+        image,
+        breadcrumb: true,
+      }),
+      // Author is referenced by @id from the article; define it on-page so
+      // validators don't have to resolve it from another URL.
+      personNode(layout, lang),
       articleNode({
         lang,
         href,

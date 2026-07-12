@@ -38,7 +38,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params
   const serviceSEO = await getServiceItemSEO(slug)
-  if (!serviceSEO) return {}
+  // Unknown slug: 404 instead of emitting metadata for a missing service. The
+  // real 404 status depends on no route-level loading.tsx above this segment
+  // (a Suspense boundary makes ISR cache the not-found render as a 200).
+  if (!serviceSEO) notFound()
   const pair = slugPair(serviceSEO)
   const { canonical: canonicalUrl, languages } = buildAlternates({
     currentLocale: lang,

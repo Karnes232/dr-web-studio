@@ -14,8 +14,9 @@ interface PageProps {
   }>
 }
 
-export default async function PrivacyPolicy({ params }: PageProps) {
+export default async function TermsOfService({ params }: PageProps) {
   const { lang } = await params
+  const title = lang === "es" ? "Términos de Servicio" : "Terms of Service"
   const [legalData, graph] = await Promise.all([
     getLegal("terms-of-service"),
     getStandardGraph({
@@ -24,10 +25,7 @@ export default async function PrivacyPolicy({ params }: PageProps) {
       href: "/terms-of-service",
       crumbs: [
         { name: lang === "es" ? "Inicio" : "Home", href: "/" },
-        {
-          name: lang === "es" ? "Términos de Servicio" : "Terms of Service",
-          href: "/terms-of-service",
-        },
+        { name: title, href: "/terms-of-service" },
       ],
     }),
   ])
@@ -36,6 +34,9 @@ export default async function PrivacyPolicy({ params }: PageProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-950">
       <JsonLd data={graph} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <h1 className="mb-8 font-serif text-3xl font-bold text-slate-900 dark:text-slate-100 sm:text-4xl">
+          {title}
+        </h1>
         <div className="prose prose-lg prose-slate max-w-none">
           <BlockContent
             content={legalData?.content as any}

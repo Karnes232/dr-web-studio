@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { Suspense } from "react"
 import PaymentSucessContent from "@/components/CheckoutComponents/PaymentSucessContent"
 import { getPaymentSuccess } from "@/sanity/queries/payment/paymentSuccess"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
@@ -14,12 +15,14 @@ export default async function PaymentSuccess() {
     getContactEmail(),
   ])
   return (
-    <>
+    // PaymentSucessContent reads useSearchParams(); it needs its own boundary
+    // now that there is no route-level loading.tsx providing one.
+    <Suspense>
       <PaymentSucessContent
         paymentSuccessData={paymentSuccessData}
         email={{ email: email ?? "james@dr-webstudio.com" }}
       />
-    </>
+    </Suspense>
   )
 }
 
