@@ -2,6 +2,12 @@
   "name": "james-portfolio",
   "version": "0.1.0",
   "private": true,
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "dev2": "next dev",
@@ -11,7 +17,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
-    "seed:blog": "npx tsx --env-file=.env.local scripts/seedAbogados.ts",
+    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-capcana2.ts",
     "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedLasTerrenas.ts"
   },
   "dependencies": {

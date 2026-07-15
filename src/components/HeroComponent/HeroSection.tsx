@@ -54,10 +54,12 @@ const HeroSection = async ({
       {/* Gradient overlay for visual appeal */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-transparent to-teal-900/50"></div>
 
-      {/* Decorative blur elements */}
-      <div className="absolute top-20 right-20 w-72 h-72 bg-orange-500/30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl"></div>
+      {/* Decorative blur elements — desktop only. Large `blur-3xl` composites
+          are very expensive to paint on mobile GPUs and were a major cause of
+          the hero's LCP render delay, so phones skip them entirely. */}
+      <div className="hidden lg:block absolute top-20 right-20 w-72 h-72 bg-orange-500/30 rounded-full blur-3xl"></div>
+      <div className="hidden lg:block absolute bottom-20 left-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
+      <div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -88,7 +90,7 @@ const HeroSection = async ({
 
               <Link
                 href="/portfolio"
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
+                className="bg-white/10 lg:backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center justify-center"
               >
                 {t("resources.see_our_work")}
               </Link>

@@ -226,6 +226,17 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Tree-shake barrel-import libraries so only the icons/modules actually used
+  // ship to the client — cuts the first-load JS the phone must parse (a major
+  // contributor to the hero's LCP render delay on mobile).
+  experimental: {
+    optimizePackageImports: [
+      "react-icons",
+      "motion",
+      "swiper",
+      "lucide-react",
+    ],
+  },
   images: {
     remotePatterns: [
       {

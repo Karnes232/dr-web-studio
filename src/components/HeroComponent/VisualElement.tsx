@@ -35,7 +35,7 @@ const VisualElement = ({
           <SwiperSlide key={project._id}>
             <Link
               href="/portfolio"
-              className="group block rounded-2xl border border-white/15 bg-white/10 p-2.5 shadow-2xl backdrop-blur-lg transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="group block rounded-2xl border border-white/15 bg-white/10 p-2.5 shadow-2xl lg:backdrop-blur-lg transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
             >
               {/* Real project screenshot */}
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-900">
