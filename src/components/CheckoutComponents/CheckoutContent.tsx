@@ -13,7 +13,7 @@ import {
   Mail,
 } from "lucide-react"
 import { useParams } from "next/navigation"
-import { CustomPaymentData } from "@/sanity/queries/payment/customPayment"
+import type { CustomPaymentData } from "@/sanity/queries/payment/customPayment"
 import { useLocale } from "@/i18n/useLocale"
 import { StripeElementLocale } from "@stripe/stripe-js"
 

@@ -33,8 +33,24 @@ const HeroSection = async ({
 
   return (
     <section className="relative text-white overflow-hidden min-h-screen flex items-center">
-      {/* Background Image with Fallback */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-teal-900/60">
+      {/* Background Image with Fallback. No next/image placeholder="blur" here:
+          it wraps the LQIP in a full-viewport SVG feGaussianBlur whose software
+          rasterization blocked the page's FIRST paint for ~2s on mobile/headless
+          (the bulk of LCP's element render delay). The raw Sanity LQIP is already
+          a pre-blurred tiny JPEG, so painting it directly as a CSS background
+          gives the same effect at negligible raster cost. */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-teal-900/60"
+        style={
+          lqip
+            ? {
+                backgroundImage: `url(${lqip})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : undefined
+        }
+      >
         <Image
           src={heroSrc}
           alt="Custom website development services in the Dominican Republic"
@@ -44,7 +60,6 @@ const HeroSection = async ({
           quality={70}
           className="object-cover"
           sizes="100vw"
-          {...(lqip ? { placeholder: "blur" as const, blurDataURL: lqip } : {})}
         />
       </div>
 

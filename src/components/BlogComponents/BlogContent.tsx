@@ -5,7 +5,7 @@ import BlogFilters from "./BlogFilters"
 import FeaturedPost from "./FeaturedPost"
 import BlogCard from "./BlogCard"
 import Pagination from "./Pagination"
-import { BlogHeader as BlogHeaderType } from "@/sanity/queries/blog/blogHeader"
+import type { BlogHeader as BlogHeaderType } from "@/sanity/queries/blog/blogHeader"
 import { useLocale } from "@/i18n/useLocale"
 
 const BlogContent = ({

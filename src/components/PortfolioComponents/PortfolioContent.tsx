@@ -4,7 +4,7 @@ import PortfolioCard from "@/components/PortfolioComponents/PortfolioCard"
 import PortfolioFilter from "@/components/PortfolioComponents/PortfolioFilter"
 import PortfolioHeader from "@/components/PortfolioComponents/PortfolioHeader"
 import ProjectDetailModal from "@/components/PortfolioComponents/ProjectDetailModal"
-import { PortfolioHeaderData } from "@/sanity/queries/portfolio/portfolioHeader"
+import type { PortfolioHeaderData } from "@/sanity/queries/portfolio/portfolioHeader"
 import type { Project } from "@/sanity/queries/portfolio/project"
 import React, { useState } from "react"
 

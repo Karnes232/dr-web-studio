@@ -37,8 +37,22 @@ const VisualElement = ({
               href="/portfolio"
               className="group block rounded-2xl border border-white/15 bg-white/10 p-2.5 shadow-2xl lg:backdrop-blur-lg transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
             >
-              {/* Real project screenshot */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-900">
+              {/* Real project screenshot. Same constraint as the hero image:
+                  placeholder="blur" rasterizes an SVG feGaussianBlur, which is
+                  expensive to paint — the raw LQIP as a CSS background reads
+                  the same and costs nothing. */}
+              <div
+                className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-900"
+                style={
+                  project.image.asset.metadata?.lqip
+                    ? {
+                        backgroundImage: `url(${project.image.asset.metadata.lqip})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "top",
+                      }
+                    : undefined
+                }
+              >
                 <Image
                   src={`${project.image.asset.url}?w=1200&q=70&auto=format&fit=max`}
                   alt={project.title[locale]}
@@ -50,12 +64,6 @@ const VisualElement = ({
                     : { loading: "lazy" as const })}
                   sizes="(max-width: 1024px) 90vw, 40vw"
                   className="object-cover object-top"
-                  {...(project.image.asset.metadata?.lqip
-                    ? {
-                        placeholder: "blur" as const,
-                        blurDataURL: project.image.asset.metadata.lqip,
-                      }
-                    : {})}
                 />
               </div>
 

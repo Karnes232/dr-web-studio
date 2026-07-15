@@ -14,7 +14,7 @@ import {
   User,
   DollarSign,
 } from "lucide-react"
-import { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
+import type { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
 import { useLocale } from "@/i18n/useLocale"
 const PaymentSucessContent = ({
   paymentSuccessData,

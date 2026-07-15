@@ -1,7 +1,7 @@
 "use client"
 import { ArrowRight, Target } from "lucide-react"
 import React from "react"
-import { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
+import type { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
 import { useLocale } from "@/i18n/useLocale"
 import { Link } from "@/i18n/navigation"
 

@@ -44,10 +44,9 @@ export default async function LangLayout({
   // actual locale of the page, server-side and per statically-generated route.
   return (
     <html lang={lang} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
-      </head>
+      {/* No preconnect to cdn.sanity.io: every image is served through the
+          same-origin /_next/image optimizer, so the browser never contacts
+          the Sanity CDN directly (PageSpeed flags the hint as unused). */}
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <ThemeProvider>
           <NextIntlClientProvider locale={lang} messages={messages}>

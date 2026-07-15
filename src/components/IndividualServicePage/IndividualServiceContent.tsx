@@ -1,7 +1,7 @@
 "use client"
 import ServiceHero from "@/components/IndividualServicePage/ServiceHero"
 import { useLocale } from "@/i18n/useLocale"
-import { ServiceItemIndividual } from "@/sanity/queries/services/serviceItem"
+import type { ServiceItemIndividual } from "@/sanity/queries/services/serviceItem"
 import React from "react"
 import ServiceOverview from "./ServiceOverview"
 import ServiceBenefits from "./ServiceBenefits"

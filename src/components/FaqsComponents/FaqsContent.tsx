@@ -13,8 +13,8 @@ import FaqsHeader from "./FaqsHeader"
 import SearchBar from "./SearchBar"
 import QuickStats from "./QuickStats"
 import FaqsCategories from "./FaqsCategories"
-import { FaqsData } from "@/sanity/queries/faqs/faqs"
-import { FaqsHeaderData } from "@/sanity/queries/faqs/faqsHeader"
+import type { FaqsData } from "@/sanity/queries/faqs/faqs"
+import type { FaqsHeaderData } from "@/sanity/queries/faqs/faqsHeader"
 
 const iconMap = {
   HelpCircle,

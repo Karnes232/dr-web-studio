@@ -1,6 +1,6 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 import { Link } from "@/i18n/navigation"
 import React from "react"
 

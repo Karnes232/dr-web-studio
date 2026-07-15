@@ -236,6 +236,10 @@ const nextConfig: NextConfig = {
       "swiper",
       "lucide-react",
     ],
+    // Inline the page's CSS into the HTML instead of render-blocking
+    // stylesheet requests — on slow 4G those two round trips delayed every
+    // first paint (~450ms est. in Lighthouse).
+    inlineCss: true,
   },
   images: {
     remotePatterns: [

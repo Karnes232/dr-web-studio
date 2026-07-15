@@ -8,7 +8,7 @@ import ServicesLinks from "./ServicesLinks"
 import ResourcesLinks from "./ResourcesLinks"
 import SocialMedia from "./SocialMedia"
 import BottomBar from "./BottomBar"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 interface FooterProps {
   logo: {

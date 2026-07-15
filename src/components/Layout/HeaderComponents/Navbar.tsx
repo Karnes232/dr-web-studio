@@ -8,7 +8,7 @@ import CTAButtons from "./CTAButtons"
 import DesktopNavigation from "./DesktopNavigation"
 import LanguageSwitcher from "@/components/LanguageSwitcher" // Adjust path as needed
 import ThemeToggle from "@/components/theme/ThemeToggle"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 
 const Navbar = ({
   logo,

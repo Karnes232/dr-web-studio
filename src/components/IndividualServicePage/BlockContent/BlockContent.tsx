@@ -1,17 +1,17 @@
-import { client } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
-import imageUrlBuilder from "@sanity/image-url"
+// urlFor builds image URLs from project config alone — importing the full
+// Sanity client here would drag @sanity/client into the browser bundle.
+import { urlFor } from "@/sanity/lib/image"
 
 import Image from "next/image"
 import TextComponentHeading from "./TextComponentHeading"
 import TextComponentParagraph from "./TextComponentParagraph"
 import TextComponentList from "./TextComponentList"
-const builder = imageUrlBuilder(client)
 
 const components = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = builder.image(value).url()
+      const imageUrl = urlFor(value).url()
 
       // Sanity images usually need to be accessed via .asset.url
 
