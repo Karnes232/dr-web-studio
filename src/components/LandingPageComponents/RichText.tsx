@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import { PortableText, type PortableTextComponents } from "@portabletext/react"
 

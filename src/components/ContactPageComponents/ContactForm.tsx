@@ -10,7 +10,6 @@ import {
   User,
 } from "lucide-react"
 import React, { useState } from "react"
-import Botpoison from "@botpoison/browser"
 
 const ContactForm = () => {
   const { t } = useLocale()
@@ -28,10 +27,6 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
-  const botpoison = new Botpoison({
-    publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
-  })
-
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -46,6 +41,12 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitError(null)
+    // Load BotPoison only when the user actually submits — keeps its ~15–20 kB
+    // off the contact page's initial bundle.
+    const { default: Botpoison } = await import("@botpoison/browser")
+    const botpoison = new Botpoison({
+      publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
+    })
     const { solution } = await botpoison.challenge()
     if (!solution) {
       setSubmitError(t("contact.form.submitFailed"))

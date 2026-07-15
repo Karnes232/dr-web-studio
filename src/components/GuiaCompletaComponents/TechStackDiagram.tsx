@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Reveal } from "@/components/animation/Reveal"
 import {
   Code,
   Server,
@@ -87,32 +87,18 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
     <section className="py-20 bg-gradient-to-br from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
-          >
+        <Reveal className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white">
             {t.title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
-          >
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t.subtitle}
-          </motion.p>
-        </div>
+          </p>
+        </Reveal>
 
         {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+        <Reveal
+          delay={0.2}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {(Object.keys(categoryIcons) as Category[]).map(category => {
@@ -121,19 +107,17 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
             const count = categoryCounts[category]
 
             return (
-              <motion.button
+              <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`
-                  group relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300
+                  group relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 active:scale-95
                   ${
                     isActive
                       ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 shadow-lg shadow-orange-500/30"
                       : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-700"
                   }
                 `}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 <Icon className="w-4 h-4" />
                 <span>{t[category]}</span>
@@ -149,46 +133,36 @@ export function TechStackGrid({ data, language = "es" }: TechStackGridProps) {
                 >
                   {count}
                 </span>
-              </motion.button>
+              </button>
             )
           })}
-        </motion.div>
+        </Reveal>
 
         {/* Tech Stack Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
-          >
-            {filteredData.map((tech, index) => (
-              <TechCard
-                key={tech.name}
-                tech={tech}
-                index={index}
-                isHovered={hoveredCard === tech.name}
-                onHover={() => setHoveredCard(tech.name)}
-                onLeave={() => setHoveredCard(null)}
-                labels={t}
-              />
-            ))}
-          </motion.div>
-        </AnimatePresence>
+        <div
+          key={activeCategory}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+        >
+          {filteredData.map((tech, index) => (
+            <TechCard
+              key={tech.name}
+              tech={tech}
+              index={index}
+              isHovered={hoveredCard === tech.name}
+              onHover={() => setHoveredCard(tech.name)}
+              onLeave={() => setHoveredCard(null)}
+              labels={t}
+            />
+          ))}
+        </div>
 
         {/* Empty State */}
         {filteredData.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-20"
-          >
+          <div className="text-center py-20">
             <p className="text-slate-500 dark:text-slate-400 text-lg">
               No technologies found in this category.
             </p>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
@@ -254,10 +228,7 @@ function TechCard({
   const colors = categoryColors[tech.category]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
+    <div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       className="group relative h-full"
@@ -322,9 +293,10 @@ function TechCard({
               <Sparkles className={`w-4 h-4 ${colors.text}`} />
               {labels.benefits}
             </h4>
-            <motion.div
-              animate={{ rotate: showDetails ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
+            <div
+              className={`transition-transform duration-300 ${
+                showDetails ? "rotate-180" : "rotate-0"
+              }`}
             >
               <svg
                 className="w-5 h-5 text-slate-400"
@@ -339,7 +311,7 @@ function TechCard({
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
-            </motion.div>
+            </div>
           </button>
 
           {/* Benefits List (always show first 3) */}
@@ -358,15 +330,8 @@ function TechCard({
           </ul>
 
           {/* Expandable Details */}
-          <AnimatePresence>
-            {showDetails && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
+          {showDetails && (
+            <div className="overflow-hidden">
                 {/* Remaining Benefits */}
                 {tech.benefits.length > 3 && (
                   <ul className="space-y-2 mb-4">
@@ -401,9 +366,8 @@ function TechCard({
                     ))}
                   </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            </div>
+          )}
 
           {/* Expand Button Hint */}
           {!showDetails && (
@@ -420,18 +384,15 @@ function TechCard({
         {tech.popularity && (
           <div className="px-6 pb-6">
             <div className="relative h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${tech.popularity}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2 + index * 0.05 }}
-                className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colors.bg.replace("/10", "/50")} rounded-full`}
+              <div
+                style={{ width: `${tech.popularity}%` }}
+                className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colors.bg.replace("/10", "/50")} rounded-full transition-all duration-1000`}
               />
             </div>
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   )
 }
 

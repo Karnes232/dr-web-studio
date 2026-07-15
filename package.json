@@ -17,7 +17,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
-    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-capcana2.ts",
+    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-jarabacoa.ts",
     "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedLasTerrenas.ts"
   },
   "dependencies": {

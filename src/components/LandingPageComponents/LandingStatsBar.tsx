@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion, useInView } from "framer-motion"
 import type { StatItem } from "./types"
 
 interface LandingStatsBarProps {
@@ -27,10 +26,32 @@ function AnimatedStat({
   delay: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const [isInView, setIsInView] = useState(false)
   // Seed with the real value so the server-rendered HTML shows the true number;
   // the count-up (reset to 0 below) only runs client-side once in view.
   const [displayed, setDisplayed] = useState(() => formatStat(value))
+
+  // Native IntersectionObserver replaces framer-motion's useInView so the whole
+  // section no longer pulls in the motion runtime.
+  useEffect(() => {
+    if (isInView) return
+    const el = ref.current
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setIsInView(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries.some(e => e.isIntersecting)) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "-50px" },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [isInView])
 
   useEffect(() => {
     if (!isInView) return
@@ -63,12 +84,10 @@ function AnimatedStat({
   }, [isInView, value])
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay }}
-      className="flex flex-col items-center text-center px-6 py-6"
+      className={`reveal ${isInView ? "is-visible" : ""} flex flex-col items-center text-center px-6 py-6`}
+      style={{ ["--reveal-delay" as string]: `${delay}s` }}
     >
       <span
         className="text-4xl font-bold text-slate-900 dark:text-white mb-1"
@@ -79,7 +98,7 @@ function AnimatedStat({
       <span className="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">
         {label}
       </span>
-    </motion.div>
+    </div>
   )
 }
 

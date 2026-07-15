@@ -1,7 +1,7 @@
 "use client"
 import { Link } from "@/i18n/navigation"
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { Reveal } from "@/components/animation/Reveal"
 import {
   DollarSign,
   TrendingUp,
@@ -168,49 +168,34 @@ export function ROICalculator({ language = "es" }: ROICalculatorProps) {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
-          >
+          <Reveal className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6">
             <Calculator className="w-4 h-4" />
             {language === "es"
               ? "Calculadora Interactiva"
               : "Interactive Calculator"}
-          </motion.div>
+          </Reveal>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <Reveal
+            as="h2"
+            delay={0.1}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
-          </motion.h2>
+          </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <Reveal
+            as="p"
+            delay={0.2}
             className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
             {t.subtitle}
-          </motion.p>
+          </Reveal>
         </div>
 
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Inputs */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="space-y-6"
-            >
+            <Reveal delay={0.3} className="space-y-6">
               {/* Input Card */}
               <div className="bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
@@ -339,16 +324,10 @@ export function ROICalculator({ language = "es" }: ROICalculatorProps) {
                   })}
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Right Column - Results */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="space-y-6"
-            >
+            <Reveal delay={0.4} className="space-y-6">
               {/* Results Card */}
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50 rounded-3xl border-2 border-green-200 dark:border-green-800 p-8 shadow-2xl">
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
@@ -441,26 +420,17 @@ export function ROICalculator({ language = "es" }: ROICalculatorProps) {
 
               {/* CTA Button */}
               <Link href="/project-planner">
-                <motion.div
-                  className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
+                <div className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-6 rounded-2xl bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 font-semibold text-lg overflow-hidden shadow-2xl shadow-orange-500/30 transition-transform duration-300 hover:scale-105 active:scale-95">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   <span className="relative z-10">{t.cta}</span>
                   <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.div>
+                </div>
               </Link>
               {/* Disclaimer */}
               <p className="text-xs text-slate-500 dark:text-slate-400 text-center italic">
                 {t.disclaimer}
               </p>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </div>

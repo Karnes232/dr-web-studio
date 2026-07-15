@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { ChevronDown, HelpCircle, MessageCircle, Mail } from "lucide-react"
+import { Reveal } from "@/components/animation/Reveal"
 
 interface FAQ {
   question: string
@@ -55,35 +55,26 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
-          >
+          <Reveal className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6">
             <HelpCircle className="w-4 h-4" />
             FAQ
-          </motion.div>
+          </Reveal>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <Reveal
+            as="h2"
+            delay={0.1}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
-          </motion.h2>
+          </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <Reveal
+            as="p"
+            delay={0.2}
             className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto"
           >
             {t.subtitle}
-          </motion.p>
+          </Reveal>
         </div>
 
         {/* FAQ Items */}
@@ -102,12 +93,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
         </div>
 
         {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
-        >
+        <Reveal className="max-w-2xl mx-auto">
           <div className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/50 dark:to-yellow-950/50 rounded-3xl border-2 border-orange-200 dark:border-orange-800 p-8 md:p-12 text-center">
             <MessageCircle className="w-12 h-12 mx-auto mb-4 text-orange-700 dark:text-orange-400" />
 
@@ -127,7 +113,7 @@ export function FAQAccordion({ data, language = "es" }: FAQAccordionProps) {
               {t.contactUs}
             </a>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )
@@ -146,13 +132,7 @@ function FAQItem({
   onToggle: () => void
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className="group"
-    >
+    <Reveal delay={index * 0.05} className="group">
       <div
         className={`bg-white dark:bg-slate-900 rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
           isActive
@@ -169,10 +149,10 @@ function FAQItem({
             {faq.question}
           </span>
 
-          <motion.div
-            animate={{ rotate: isActive ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="flex-shrink-0"
+          <div
+            className={`flex-shrink-0 transition-transform duration-300 ${
+              isActive ? "rotate-180" : ""
+            }`}
           >
             <ChevronDown
               className={`w-6 h-6 transition-colors ${
@@ -181,7 +161,7 @@ function FAQItem({
                   : "text-slate-400 group-hover:text-orange-500"
               }`}
             />
-          </motion.div>
+          </div>
         </button>
 
         {/* Answer — always rendered (collapsed via CSS) so it ships in SSR HTML. */}
@@ -199,7 +179,7 @@ function FAQItem({
           </div>
         </div>
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 

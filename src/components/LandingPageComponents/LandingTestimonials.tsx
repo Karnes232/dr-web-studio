@@ -1,8 +1,5 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import { Star, Quote } from "lucide-react"
+import { Reveal } from "@/components/animation/Reveal"
 import type { TestimonialItem } from "./types"
 
 interface LandingTestimonialsProps {
@@ -30,36 +27,25 @@ export function LandingTestimonials({
   sectionTitle,
   items,
 }: LandingTestimonialsProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   if (!items.length) return null
 
   return (
     <section className="bg-slate-900 py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
           >
             {sectionTitle}
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, i) => (
-            <motion.div
+            <Reveal
               key={i}
-              initial={{ opacity: 0, y: 32 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              delay={i * 0.1}
               className="relative bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 hover:border-amber-500/30 transition-colors duration-300"
             >
               <Quote size={28} className="text-amber-500/30 mb-4" />
@@ -80,7 +66,7 @@ export function LandingTestimonials({
                   <p className="text-slate-400 text-xs">{item.company}</p>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

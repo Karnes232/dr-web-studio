@@ -1,7 +1,3 @@
-"use client"
-
-import React from "react"
-import { MotionConfig } from "framer-motion"
 import { Language, PillarPageContent } from "./types"
 import PillarHero from "./PillarHero"
 import { ComparisonTable } from "./ComparisonTable"
@@ -11,6 +7,8 @@ import { CaseStudyCards } from "./CaseStudyCards"
 import { ProcessTimeline } from "./ProcessTimeline"
 import { FAQAccordion } from "./FAQAccordion"
 
+// Plain server wrapper: framer-motion (and its MotionConfig) is gone; entrance
+// animations are now CSS-based and honor `prefers-reduced-motion` directly.
 const PageClientComponent = ({
   content,
   lang,
@@ -19,9 +17,7 @@ const PageClientComponent = ({
   lang: Language
 }) => {
   return (
-    // Honor the OS "reduce motion" setting across every Framer Motion animation
-    // on the page (entrance reveals, hover/scale, infinite loops).
-    <MotionConfig reducedMotion="user">
+    <>
       <PillarHero data={content.heroData} language={lang} />
       <ComparisonTable data={content.comparisonData} language={lang} />
       <TechStackDiagram data={content.techStack} language={lang} />
@@ -29,7 +25,7 @@ const PageClientComponent = ({
       <CaseStudyCards data={content.caseStudies} language={lang} />
       <ProcessTimeline data={content.processSteps} language={lang} />
       <FAQAccordion data={content.faqs} language={lang} />
-    </MotionConfig>
+    </>
   )
 }
 

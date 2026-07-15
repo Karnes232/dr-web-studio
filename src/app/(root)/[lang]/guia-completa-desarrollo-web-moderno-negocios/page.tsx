@@ -1,10 +1,5 @@
-import dynamic from "next/dynamic"
 import type { Language } from "@/components/GuiaCompletaComponents/types"
-
-const PageClientComponent = dynamic(
-  () => import("@/components/GuiaCompletaComponents/PageClientComponent"),
-  { ssr: true },
-)
+import PageClientComponent from "@/components/GuiaCompletaComponents/PageClientComponent"
 import { getPillarPageContent } from "@/sanity/queries/pillarPage"
 import { getSEO } from "@/sanity/queries/seo"
 import { Metadata } from "next"

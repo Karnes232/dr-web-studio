@@ -1,7 +1,3 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import {
   Search,
   Palette,
@@ -12,6 +8,7 @@ import {
   Settings,
   Send,
 } from "lucide-react"
+import { Reveal } from "@/components/animation/Reveal"
 import { RichText } from "./RichText"
 import type { ProcessStep, PortableBlocks } from "./types"
 
@@ -40,19 +37,10 @@ export function LandingProcess({
   sectionSubtitle,
   steps,
 }: LandingProcessProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   return (
     <section className="bg-white dark:bg-slate-900 py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
@@ -63,7 +51,7 @@ export function LandingProcess({
             value={sectionSubtitle}
             className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
           />
-        </motion.div>
+        </Reveal>
 
         <div className="relative">
           {/* Connecting line (desktop only) */}
@@ -73,11 +61,9 @@ export function LandingProcess({
             {steps.map((step, i) => {
               const Icon = ICON_MAP[step.icon] ?? Rocket
               return (
-                <motion.div
+                <Reveal
                   key={i}
-                  initial={{ opacity: 0, y: 32 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  delay={i * 0.12}
                   className="flex flex-col items-center text-center"
                 >
                   {/* Step circle */}
@@ -107,7 +93,7 @@ export function LandingProcess({
                       {step.duration}
                     </span>
                   )}
-                </motion.div>
+                </Reveal>
               )
             })}
           </div>

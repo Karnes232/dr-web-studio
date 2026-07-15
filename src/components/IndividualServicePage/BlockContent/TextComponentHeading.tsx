@@ -1,5 +1,4 @@
 import React from "react"
-import * as motion from "motion/react-client"
 import { playfairDisplay } from "@/lib/fonts"
 
 const TextComponentHeading = ({
@@ -13,16 +12,7 @@ const TextComponentHeading = ({
 }) => {
   return (
     <div className="">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 3,
-          delay: 0.3,
-        }}
-        className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto"
-      >
+      <div className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto">
         {headingNumber === "h1" && (
           <h1
             className={`${playfairDisplay.className} text-gray-700 dark:text-slate-200 my-5 2xl:mb-2 2xl:mt-10 text-3xl md:text-4xl ${HeadingClassName}`}
@@ -65,7 +55,7 @@ const TextComponentHeading = ({
             {heading}
           </h6>
         )}
-      </motion.div>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,3 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import {
   Globe,
   ShoppingCart,
@@ -17,6 +13,7 @@ import {
   Search,
 } from "lucide-react"
 import { Link } from "@/i18n/navigation"
+import { Reveal } from "@/components/animation/Reveal"
 import { RichText } from "./RichText"
 import type { ServiceItem, PortableBlocks } from "./types"
 
@@ -51,19 +48,10 @@ export function LandingServicesGrid({
   items,
   lang,
 }: LandingServicesGridProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   return (
     <section className="bg-slate-50 dark:bg-slate-950 py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
@@ -74,17 +62,14 @@ export function LandingServicesGrid({
             value={sectionSubtitle}
             className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
           />
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item, i) => {
             const Icon = ICON_MAP[item.icon] ?? Globe
             const card = (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 32 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
+              <Reveal
+                delay={i * 0.07}
                 className="group flex flex-col h-full bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-100 dark:border-slate-700 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-500/10 group-hover:bg-amber-100 dark:group-hover:bg-amber-500/20 flex items-center justify-center mb-6 transition-colors duration-200">
@@ -103,7 +88,7 @@ export function LandingServicesGrid({
                     {lang === "es" ? "Ver más →" : "Learn more →"}
                   </div>
                 )}
-              </motion.div>
+              </Reveal>
             )
 
             return item.linkSlug ? (

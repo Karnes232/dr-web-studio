@@ -21,8 +21,10 @@ const FeaturedProject = ({
             width={800}
             height={500}
             sizes="(max-width: 1024px) 100vw, 50vw"
-            src={project.image.asset.url}
+            src={`${project.image.asset.url}?w=800&q=70&auto=format&fit=max`}
             alt={project.title}
+            // Above-the-fold featured project — the LCP candidate on /portfolio.
+            priority
             className="w-full h-48 sm:h-56 lg:h-full object-cover rounded-xl shadow-lg"
           />
           <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-2 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold">

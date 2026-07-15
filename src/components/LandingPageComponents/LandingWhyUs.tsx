@@ -1,7 +1,3 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import {
   Globe,
   Languages,
@@ -16,6 +12,7 @@ import {
   Lightbulb,
   MessageCircle,
 } from "lucide-react"
+import { Reveal } from "@/components/animation/Reveal"
 import { RichText } from "./RichText"
 import type { WhyUsItem, PortableBlocks } from "./types"
 
@@ -48,19 +45,10 @@ export function LandingWhyUs({
   sectionSubtitle,
   items,
 }: LandingWhyUsProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   return (
     <section className="bg-slate-950 py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
@@ -71,17 +59,15 @@ export function LandingWhyUs({
             value={sectionSubtitle}
             className="text-lg text-slate-400 max-w-2xl mx-auto"
           />
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item, i) => {
             const Icon = ICON_MAP[item.icon] ?? Check
             return (
-              <motion.div
+              <Reveal
                 key={i}
-                initial={{ opacity: 0, y: 32 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                delay={i * 0.1}
                 className="group relative bg-slate-900/60 border border-slate-800 rounded-2xl p-8 hover:border-amber-500/40 hover:bg-slate-900 transition-all duration-300"
               >
                 {/* Gold top border accent on hover */}
@@ -97,7 +83,7 @@ export function LandingWhyUs({
                   value={item.description}
                   className="text-slate-400 text-sm leading-relaxed"
                 />
-              </motion.div>
+              </Reveal>
             )
           })}
         </div>

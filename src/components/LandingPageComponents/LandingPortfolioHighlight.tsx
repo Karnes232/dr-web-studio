@@ -1,11 +1,8 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
 import NextLink from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
+import { Reveal } from "@/components/animation/Reveal"
 import { RichText } from "./RichText"
 import type { PortfolioProject, PortableBlocks } from "./types"
 
@@ -26,21 +23,12 @@ export function LandingPortfolioHighlight({
   ctaHref,
   lang,
 }: LandingPortfolioHighlightProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   if (!projects.length) return null
 
   return (
     <section className="bg-slate-50 dark:bg-slate-950 py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <h2
             className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
@@ -51,16 +39,11 @@ export function LandingPortfolioHighlight({
             value={sectionSubtitle}
             className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
           />
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {projects.map((project, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 32 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
+            <Reveal key={i} delay={i * 0.1}>
               <Link
                 href="/portfolio"
                 className="group block bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 hover:border-amber-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -108,17 +91,12 @@ export function LandingPortfolioHighlight({
                   )}
                 </div>
               </Link>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
+        <Reveal delay={0.2} className="text-center">
           <NextLink
             href={ctaHref}
             className="inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-semibold rounded-xl hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all duration-200"
@@ -129,7 +107,7 @@ export function LandingPortfolioHighlight({
                 : "View Full Portfolio")}
             <ArrowRight size={18} />
           </NextLink>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

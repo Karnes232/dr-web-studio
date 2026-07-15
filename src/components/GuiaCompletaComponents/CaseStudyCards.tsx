@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Reveal } from "@/components/animation/Reveal"
 import {
   TrendingUp,
   Users,
@@ -70,35 +70,26 @@ export function CaseStudyCards({ data, language = "es" }: CaseStudyCardsProps) {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium mb-6"
-          >
+          <Reveal className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium mb-6">
             <CheckCircle2 className="w-4 h-4" />
             {language === "es" ? "Resultados Verificados" : "Verified Results"}
-          </motion.div>
+          </Reveal>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <Reveal
+            as="h2"
+            delay={0.1}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
-          </motion.h2>
+          </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <Reveal
+            as="p"
+            delay={0.2}
             className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
             {t.subtitle}
-          </motion.p>
+          </Reveal>
         </div>
 
         {/* Case Study Cards */}
@@ -159,13 +150,7 @@ function CaseStudyCard({
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative h-full"
-    >
+    <Reveal delay={index * 0.1} className="group relative h-full">
       {/* Glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-amber-500/20 to-yellow-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -213,14 +198,7 @@ function CaseStudyCard({
               const IconComponent = getMetricIcon(result.metric)
 
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 * idx }}
-                  className="relative"
-                >
+                <div key={idx} className="relative">
                   <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 border border-green-200 dark:border-green-800">
                     <IconComponent className="w-5 h-5 text-green-600 dark:text-green-400 mb-2" />
                     <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">
@@ -234,23 +212,16 @@ function CaseStudyCard({
                       {result.before} → {result.after}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
         </div>
 
         {/* Expandable Details */}
-        <AnimatePresence>
-          {isActive && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <div className="p-6 space-y-6 border-b border-slate-100 dark:border-slate-800">
+        {isActive && (
+          <div className="overflow-hidden">
+            <div className="p-6 space-y-6 border-b border-slate-100 dark:border-slate-800">
                 {/* Solution */}
                 <div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
@@ -303,9 +274,8 @@ function CaseStudyCard({
                   </div>
                 )}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
 
         {/* Testimonial */}
         {caseStudy.testimonial && (
@@ -341,7 +311,7 @@ function CaseStudyCard({
           </button>
         </div>
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 

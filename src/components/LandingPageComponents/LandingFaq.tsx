@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { useState } from "react"
 import { Plus, Minus } from "lucide-react"
+import { Reveal } from "@/components/animation/Reveal"
 import { RichText } from "./RichText"
 import type { FaqItem, PortableBlocks } from "./types"
 
@@ -60,9 +60,6 @@ export function LandingFaq({
   items,
   bgColor,
 }: LandingFaqProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-
   if (!items.length) return null
 
   return (
@@ -70,13 +67,7 @@ export function LandingFaq({
       className={`${bgColor ? bgColor : "bg-white dark:bg-slate-900"} py-24 px-6`}
     >
       <div className="max-w-3xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <h2
             className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
             style={{ fontFamily: "var(--font-crimson-pro)" }}
@@ -87,18 +78,16 @@ export function LandingFaq({
             value={sectionSubtitle}
             className="text-lg text-slate-500 dark:text-slate-400"
           />
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <Reveal
+          delay={0.1}
           className={`${bgColor ? bgColor : "bg-slate-50 dark:bg-slate-900"} rounded-2xl px-8 py-2`}
         >
           {items.map((item, i) => (
             <FaqAccordionItem key={i} item={item} index={i} />
           ))}
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

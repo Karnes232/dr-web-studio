@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { Reveal } from "@/components/animation/Reveal"
 import {
   Search,
   Lightbulb,
@@ -73,37 +73,28 @@ export function ProcessTimeline({
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6"
-          >
+          <Reveal className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-sm font-medium mb-6">
             <Rocket className="w-4 h-4" />
             {language === "es"
               ? "Metodología Comprobada"
               : "Proven Methodology"}
-          </motion.div>
+          </Reveal>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <Reveal
+            as="h2"
+            delay={0.1}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-900 dark:text-white"
           >
             {t.title}
-          </motion.h2>
+          </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <Reveal
+            as="p"
+            delay={0.2}
             className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
             {t.subtitle}
-          </motion.p>
+          </Reveal>
         </div>
 
         {/* Timeline */}
@@ -116,13 +107,7 @@ export function ProcessTimeline({
               <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-orange-200 via-yellow-200 to-yellow-200 dark:from-orange-900 dark:via-yellow-900 dark:to-yellow-900" />
 
               {/* Progress Line */}
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, ease: "easeOut" }}
-                className="absolute top-20 left-0 h-1 bg-gradient-to-r from-orange-600 via-yellow-600 to-yellow-600"
-              />
+              <div className="absolute top-20 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-yellow-600 to-yellow-600" />
 
               {/* Steps */}
               <div className="grid grid-cols-6 gap-4">
@@ -131,12 +116,9 @@ export function ProcessTimeline({
                   const isActive = activeStep === index
 
                   return (
-                    <motion.div
+                    <Reveal
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
+                      delay={index * 0.1}
                       className="relative"
                     >
                       {/* Step Card */}
@@ -147,9 +129,8 @@ export function ProcessTimeline({
                         onClick={() => setActiveStep(isActive ? null : index)}
                       >
                         {/* Icon Circle */}
-                        <motion.div
-                          whileHover={{ scale: 1.1 }}
-                          className={`relative z-10 mx-auto w-40 h-40 rounded-full flex items-center justify-center ${
+                        <div
+                          className={`relative z-10 mx-auto w-40 h-40 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 ${
                             isActive
                               ? "bg-gradient-to-br from-orange-500 to-yellow-500 shadow-2xl shadow-orange-500/50"
                               : "bg-white dark:bg-slate-800 border-4 border-orange-200 dark:border-orange-900"
@@ -162,7 +143,7 @@ export function ProcessTimeline({
                                 : "text-orange-700 dark:text-orange-400"
                             }`}
                           />
-                        </motion.div>
+                        </div>
 
                         {/* Step Info */}
                         <div className="mt-6 text-center">
@@ -178,7 +159,7 @@ export function ProcessTimeline({
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </Reveal>
                   )
                 })}
               </div>
@@ -186,15 +167,9 @@ export function ProcessTimeline({
 
             {/* Active Step Details */}
             {activeStep !== null && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-12 overflow-hidden"
-              >
+              <div className="mt-12 overflow-hidden">
                 <StepDetails step={data[activeStep]} labels={t} />
-              </motion.div>
+              </div>
             )}
           </div>
 
@@ -241,11 +216,8 @@ function StepDetails({ step, labels }: { step: ProcessStep; labels: any }) {
           </h4>
           <div className="space-y-3">
             {step.deliverables.map((deliverable, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
                 className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-900 border border-orange-200 dark:border-orange-800"
               >
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center">
@@ -254,7 +226,7 @@ function StepDetails({ step, labels }: { step: ProcessStep; labels: any }) {
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                   {deliverable}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -280,13 +252,7 @@ function MobileStepCard({
   const Icon = iconMap[step.icon] || CheckCircle2
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="relative"
-    >
+    <Reveal delay={index * 0.1} className="relative">
       {/* Connector Line */}
       {index < 5 && (
         <div className="absolute left-10 top-20 bottom-0 w-1 bg-gradient-to-b from-orange-200 to-yellow-200 dark:from-orange-900 dark:to-yellow-900" />
@@ -339,25 +305,19 @@ function MobileStepCard({
             </div>
 
             {/* Expand Icon */}
-            <motion.div
-              animate={{ rotate: isActive ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex-shrink-0"
+            <div
+              className={`flex-shrink-0 ${
+                isActive ? "rotate-180" : ""
+              } transition-transform duration-300`}
             >
               <ArrowRight className="w-5 h-5 text-slate-400 transform rotate-90" />
-            </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Expanded Details */}
         {isActive && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-slate-100 dark:border-slate-800"
-          >
+          <div className="overflow-hidden border-t border-slate-100 dark:border-slate-800">
             <div className="p-6 bg-slate-50 dark:bg-slate-900/50 space-y-6">
               {/* Full Description */}
               <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -384,10 +344,10 @@ function MobileStepCard({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 
