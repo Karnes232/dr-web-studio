@@ -23,6 +23,8 @@ export function LandingHero({ data, lang }: LandingHeroProps) {
           fill
           className="object-cover object-center"
           priority
+          quality={70}
+          sizes="100vw"
           aria-hidden
         />
       )}

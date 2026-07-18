@@ -21,7 +21,7 @@ export const landingPageQuery = `
     secondaryCta { en, es },
     secondaryCtaHref,
     badge { en, es },
-    "backgroundImage": backgroundImage.asset->url
+    "backgroundImage": backgroundImage.asset->url + "?w=1920&q=75&auto=format&fit=max"
   },
   statsBar[] {
     value,
