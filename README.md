@@ -26,6 +26,8 @@ A full-stack freelance web development portfolio built with Next.js 15, Sanity C
 - **Contact Form** — spam-protected via BotPoison, emails sent with Resend
 - **Blog** — CMS-driven posts with categories, authors, and slugs
 - **SEO** — sitemap, robots.txt, per-page metadata, and a pillar-page content type
+- **SEO landing pages** — 23 bilingual location + industry pages (8 cities, 10 industries, 5 national), CMS-seeded and localized via `routing.pathnames`
+- **AI index files** — generated `/llms.txt` (bilingual site index) and `/llms-full.txt` + `/llms-full-es.txt` (full content) for LLM crawlers
 - **Sanity Studio** — embedded at `/studio`, not protected by locale middleware
 
 ## Project Structure

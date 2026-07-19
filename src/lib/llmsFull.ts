@@ -2,6 +2,9 @@ import { getAllBlogPosts } from "@/sanity/queries/blog/blog"
 import { getAllServiceItemsFull } from "@/sanity/queries/services/serviceItem"
 import { getFaqs } from "@/sanity/queries/faqs/faqs"
 import { getSEO } from "@/sanity/queries/seo"
+import { getAllLandingPages } from "@/sanity/queries/landingPages/allLandingPages"
+import { transformLandingPage } from "@/sanity/queries/landingPages/landingPage"
+import { LANDING_PAGE_ROUTES } from "@/lib/indexableRoutes"
 import { localizedUrl } from "@/lib/urls"
 import { slugPair } from "@/lib/slugs"
 import { portableTextToMarkdown } from "@/lib/portableTextToMarkdown"
@@ -30,22 +33,36 @@ const CROSS_LINKS: Record<Locale, string> = {
 
 const HEADINGS: Record<
   Locale,
-  { services: string; faqs: string; blog: string }
+  { services: string; faqs: string; landing: string; blog: string }
 > = {
-  en: { services: "Services", faqs: "FAQs", blog: "Blog" },
+  en: {
+    services: "Services",
+    faqs: "FAQs",
+    landing: "Location & Industry Pages",
+    blog: "Blog",
+  },
   es: {
     services: "Servicios",
     faqs: "Preguntas Frecuentes",
+    landing: "Páginas de Ubicación e Industria",
     blog: "Blog",
   },
 }
 
+/** Flatten a Portable Text markdown rendering to a single line for list items. */
+function inlineMd(blocks: unknown): string {
+  return portableTextToMarkdown(blocks)
+    .replace(/\s*\n+\s*/g, " ")
+    .trim()
+}
+
 /** Builds the full Markdown content of /llms-full.txt for a single locale. */
 export async function buildLlmsFull(locale: Locale): Promise<string> {
-  const [home, services, faqs, posts] = await Promise.all([
+  const [home, services, faqs, landingPages, posts] = await Promise.all([
     getSEO("home"),
     getAllServiceItemsFull(),
     getFaqs(),
+    getAllLandingPages(),
     getAllBlogPosts(),
   ])
 
@@ -108,6 +125,44 @@ export async function buildLlmsFull(locale: Locale): Promise<string> {
       return [`### ${category.title[locale]}`, qa].filter(Boolean).join("\n\n")
     })
     sections.push([`## ${labels.faqs}`, ...cats].join("\n\n"))
+  }
+
+  // Location & industry landing pages, in sitemap order. Rendered from the
+  // same raw docs + transform the pages themselves use, so content and
+  // answerText handling can't diverge from what's on-site.
+  const landingSections = LANDING_PAGE_ROUTES.flatMap(route => {
+    const raw = landingPages.get(route.slice(1))
+    if (!raw) return []
+    const page = transformLandingPage(raw, locale)
+    const parts: string[] = [
+      `### ${page.hero.headline}`,
+      page.hero.subheadline,
+      localizedUrl(route, locale),
+    ]
+    const gridItems = page.servicesGrid.items
+      .filter(i => i.title)
+      .map(i => `- **${i.title}**: ${inlineMd(i.description)}`)
+    if (gridItems.length > 0) {
+      parts.push(gridItems.join("\n"))
+    }
+    const whyUs = page.whyUs.items
+      .filter(i => i.title)
+      .map(i => `- **${i.title}**: ${inlineMd(i.description)}`)
+    if (whyUs.length > 0) {
+      parts.push(whyUs.join("\n"))
+    }
+    const qa = page.faq.items
+      .filter(f => f.question)
+      .map(f => `**${f.question}**\n\n${portableTextToMarkdown(f.answer)}`)
+    if (qa.length > 0) {
+      parts.push(qa.join("\n\n"))
+    }
+    return [parts.filter(Boolean).join("\n\n")]
+  })
+  if (landingSections.length > 0) {
+    sections.push(
+      `## ${labels.landing}\n\n` + landingSections.join("\n\n---\n\n"),
+    )
   }
 
   // Blog (already ordered by publishedAt desc)

@@ -9,8 +9,9 @@ type PortableBlocks = unknown[]
 // GROQ Query
 // ──────────────────────────────────────────
 
-export const landingPageQuery = `
-*[_type == "landingPage" && slug.current == $slug][0] {
+/** Shared field projection — used by the single-page query below and the
+ *  all-pages query in allLandingPages.ts. */
+export const landingPageProjection = `{
   title,
   "slug": slug.current,
   hero {
@@ -91,7 +92,10 @@ export const landingPageQuery = `
   },
 
   structuredData { en, es }
-}
+}`
+
+export const landingPageQuery = `
+*[_type == "landingPage" && slug.current == $slug][0] ${landingPageProjection}
 `
 
 // ──────────────────────────────────────────
@@ -158,7 +162,7 @@ interface RawFaqItem {
   answer?: LocalizedBlocks
 }
 
-interface RawLandingPage {
+export interface RawLandingPage {
   title?: string
   slug?: string
   hero?: {
@@ -316,7 +320,7 @@ function pickBlocks(
   return asBlocks(obj?.[lang] ?? obj?.en)
 }
 
-function transformLandingPage(
+export function transformLandingPage(
   raw: RawLandingPage,
   lang: "en" | "es",
 ): LandingPageData {
