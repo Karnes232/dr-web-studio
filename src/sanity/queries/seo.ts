@@ -104,7 +104,9 @@ function socialImage(
 }
 
 /** Trim a localized {title, description, ...} block's description in place. */
-function trimDescription<T extends { description?: string }>(block?: T): T | undefined {
+function trimDescription<T extends { description?: string }>(
+  block?: T,
+): T | undefined {
   if (!block || typeof block.description !== "string") return block
   return { ...block, description: block.description.trim() }
 }
@@ -122,7 +124,9 @@ function normalizeSEO(data: SEOData): SEOData {
       ...data.openGraph,
       en: trimDescription(data.openGraph?.en) as SEOData["openGraph"]["en"],
       es: trimDescription(data.openGraph?.es) as SEOData["openGraph"]["es"],
-      image: socialImage(data.openGraph?.image) as SEOData["openGraph"]["image"],
+      image: socialImage(
+        data.openGraph?.image,
+      ) as SEOData["openGraph"]["image"],
     },
   }
 }

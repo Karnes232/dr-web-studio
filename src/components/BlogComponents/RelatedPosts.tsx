@@ -24,7 +24,10 @@ const RelatedPosts = ({ posts, lang }: RelatedPostsProps) => {
 
   useEffect(() => {
     const w = window as Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number
+      requestIdleCallback?: (
+        cb: () => void,
+        opts?: { timeout: number },
+      ) => number
       cancelIdleCallback?: (id: number) => void
     }
     let id: number

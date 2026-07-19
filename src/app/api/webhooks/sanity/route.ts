@@ -30,7 +30,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 })
   }
 
-  const urls = indexNowUrlsForDocument(doc as Parameters<typeof indexNowUrlsForDocument>[0])
+  const urls = indexNowUrlsForDocument(
+    doc as Parameters<typeof indexNowUrlsForDocument>[0],
+  )
   if (urls.length === 0) {
     // Unmapped type or missing slug — nothing to ping, but acknowledge so Sanity
     // doesn't retry.

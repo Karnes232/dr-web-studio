@@ -154,10 +154,7 @@ const higueyPage: Record<string, unknown> = {
 
   // ── HERO ──────────────────────────────────────────────────────────────────
   hero: {
-    headline: loc(
-      "Web Design in Higüey",
-      "Diseño de Páginas Web en Higüey",
-    ),
+    headline: loc("Web Design in Higüey", "Diseño de Páginas Web en Higüey"),
     subheadline: loc(
       "Fast, professional websites for Higüey's shops, services and suppliers — built by your neighbors in Punta Cana, in the same province.",
       "Páginas web rápidas y profesionales para los comercios, servicios y proveedores de Higüey — creadas por tus vecinos en Punta Cana, en la misma provincia.",
@@ -236,10 +233,7 @@ const higueyPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "ShoppingCart",
-        title: loc(
-          "Online Stores & Ordering",
-          "Tiendas Online y Pedidos",
-        ),
+        title: loc("Online Stores & Ordering", "Tiendas Online y Pedidos"),
         description: locBlocks(
           "Take orders beyond your neighborhood: online stores with secure payments and WhatsApp ordering flows, built for a city that shops from the phone.",
           "Recibe pedidos más allá de tu sector: tiendas online con pagos seguros y flujos de pedidos por WhatsApp, hechas para una ciudad que compra desde el celular.",
@@ -311,7 +305,10 @@ const higueyPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, your customers and how you sell today. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, tus clientes y cómo vendes hoy. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -529,8 +526,7 @@ const higueySeo = {
         "Professional websites for Higüey's businesses and tourism-corridor suppliers. Built by your neighbors in Punta Cana. Get a free quote.",
     },
     es: {
-      title:
-        "Diseño de Páginas Web en Higüey — Rápidas y Listas para WhatsApp",
+      title: "Diseño de Páginas Web en Higüey — Rápidas y Listas para WhatsApp",
       description:
         "Páginas web profesionales para los negocios de Higüey y los proveedores del corredor turístico. Creadas por tus vecinos en Punta Cana. Cotización gratis.",
     },

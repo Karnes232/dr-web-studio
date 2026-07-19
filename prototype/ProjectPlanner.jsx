@@ -263,7 +263,6 @@ function computeEstimate(s) {
 
   const d = DESIGNS.find(x => x.id === s.design)
   if (d) items.push({ key: "design", label: d.label, amount: d.amount })
-
   ;(s.features || []).forEach(fid => {
     const f = FEATURES.find(x => x.id === fid)
     if (!f) return

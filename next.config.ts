@@ -230,12 +230,7 @@ const nextConfig: NextConfig = {
   // ship to the client — cuts the first-load JS the phone must parse (a major
   // contributor to the hero's LCP render delay on mobile).
   experimental: {
-    optimizePackageImports: [
-      "react-icons",
-      "motion",
-      "swiper",
-      "lucide-react",
-    ],
+    optimizePackageImports: ["react-icons", "motion", "swiper", "lucide-react"],
     // Inline the page's CSS into the HTML instead of render-blocking
     // stylesheet requests — on slow 4G those two round trips delayed every
     // first paint (~450ms est. in Lighthouse).
@@ -266,7 +261,10 @@ const nextConfig: NextConfig = {
         source: "/studio/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex" },
-          { key: "Content-Security-Policy", value: studioContentSecurityPolicy },
+          {
+            key: "Content-Security-Policy",
+            value: studioContentSecurityPolicy,
+          },
         ],
       },
     ]

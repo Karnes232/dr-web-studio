@@ -160,10 +160,7 @@ export function organizationNode(
 
 // ── Person (James Karnes) ────────────────────────────────────────────────────
 
-export function personNode(
-  layout: LayoutSchemaData,
-  lang: Locale,
-): JsonObject {
+export function personNode(layout: LayoutSchemaData, lang: Locale): JsonObject {
   const s = layout.socialLinks ?? {}
   const sameAs = compact([s.linkedin, s.github])
   return {
@@ -279,7 +276,9 @@ export function serviceNode(args: {
       "@type": "Offer",
       price: String(args.price),
       priceCurrency: CURRENCIES_ACCEPTED,
-      ...(args.unit ? { priceSpecification: offerUnit(args.price, args.unit) } : {}),
+      ...(args.unit
+        ? { priceSpecification: offerUnit(args.price, args.unit) }
+        : {}),
     }
   }
   return node
@@ -396,8 +395,7 @@ export function aggregateRatingNode(
 ): JsonObject | null {
   const rated = testimonials.filter(t => typeof t.rating === "number")
   if (!rated.length) return null
-  const avg =
-    rated.reduce((sum, t) => sum + t.rating, 0) / rated.length
+  const avg = rated.reduce((sum, t) => sum + t.rating, 0) / rated.length
   return {
     "@type": "AggregateRating",
     ratingValue: avg.toFixed(1),

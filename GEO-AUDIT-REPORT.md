@@ -30,25 +30,25 @@ plus a LinkedIn Company Page and a Wikidata entity, is what moves the composite 
 
 ## 1. Score Breakdown — baseline → now (live-verified)
 
-| Category | Weight | Baseline | Now | Notes |
-|---|---|---|---|---|
-| AI Citability & Visibility | 25% | 85 | **92** | FAQ answers server-rendered & crawlable (verified live) |
-| Brand Authority Signals | 20% | 26 | **38** | GBP + Clutch + Trustpilot connected in `sameAs`; no indexed reviews yet |
-| Content Quality & E-E-A-T | 20% | 79 | **83** | Articles authored by James (Person); stats consistent |
-| Technical Foundations | 15% | 91 | **91** | Strong; only the CSP header remains |
-| Structured Data | 10% | 82 | **96** | One consistent, correct entity graph site-wide (verified live) |
-| Platform Optimization | 10% | 66 | **78** | LocalBusiness everywhere + GBP local grounding |
-| **Composite** | **100%** | **71** | **78** | **Good — on-site done; capped by off-site review volume** |
+| Category                   | Weight   | Baseline | Now    | Notes                                                                   |
+| -------------------------- | -------- | -------- | ------ | ----------------------------------------------------------------------- |
+| AI Citability & Visibility | 25%      | 85       | **92** | FAQ answers server-rendered & crawlable (verified live)                 |
+| Brand Authority Signals    | 20%      | 26       | **38** | GBP + Clutch + Trustpilot connected in `sameAs`; no indexed reviews yet |
+| Content Quality & E-E-A-T  | 20%      | 79       | **83** | Articles authored by James (Person); stats consistent                   |
+| Technical Foundations      | 15%      | 91       | **91** | Strong; only the CSP header remains                                     |
+| Structured Data            | 10%      | 82       | **96** | One consistent, correct entity graph site-wide (verified live)          |
+| Platform Optimization      | 10%      | 66       | **78** | LocalBusiness everywhere + GBP local grounding                          |
+| **Composite**              | **100%** | **71**   | **78** | **Good — on-site done; capped by off-site review volume**               |
 
 ### Per-platform readiness (AI search engines)
 
-| Platform | Baseline | Now | Notes |
-|---|---|---|---|
-| Google AI Overviews | 78 | 86 | LocalBusiness + GBP grounding + crawlable FAQ answers |
-| Google Gemini | 71 | 79 | Consistent entity + founder Person node |
-| ChatGPT Search | 62 | 69 | Clean entity; needs review corroboration |
-| Bing Copilot | 54 | 58 | No Bing verification / IndexNow yet |
-| Perplexity | 45 | 52 | Still thin third-party footprint to cite |
+| Platform            | Baseline | Now | Notes                                                 |
+| ------------------- | -------- | --- | ----------------------------------------------------- |
+| Google AI Overviews | 78       | 86  | LocalBusiness + GBP grounding + crawlable FAQ answers |
+| Google Gemini       | 71       | 79  | Consistent entity + founder Person node               |
+| ChatGPT Search      | 62       | 69  | Clean entity; needs review corroboration              |
+| Bing Copilot        | 54       | 58  | No Bing verification / IndexNow yet                   |
+| Perplexity          | 45       | 52  | Still thin third-party footprint to cite              |
 
 ---
 
@@ -77,11 +77,11 @@ Severity: **High** = meaningful authority/trust impact · **Medium** = best-prac
 ### 🟠 High
 
 **Off-site review volume (the #1 lever).** GBP, Clutch, and Trustpilot are connected but **empty** —
-no indexed reviews, no organic visibility. Connected-but-empty corroborates *existence*, not *trust*.
+no indexed reviews, no organic visibility. Connected-but-empty corroborates _existence_, not _trust_.
 Driving real reviews (GBP first) is what unlocks AI citation and moves Brand Authority out of the
 Poor band. See Section 4.
 
-**No LinkedIn Company Page / no Wikidata entity.** Only James's *personal* LinkedIn exists; the brand
+**No LinkedIn Company Page / no Wikidata entity.** Only James's _personal_ LinkedIn exists; the brand
 has no org-level social entity, and there's no Wikidata item (the top structured entity-recognition
 signal for LLMs, and self-serve to create).
 
@@ -94,7 +94,7 @@ but no CSP — the only remaining technical-foundations gap. Add it (Report-Only
 - **M2 — Spanish About-page depth.** `/es/sobre-mi` (~320 words) is much thinner than EN (~800). ES is the priority market.
 - **M5 — Metadata polish.** Homepage `<title>` is 64 chars (trim ≤60); strip trailing whitespace from the meta description.
 - **M4 — `speakable` schema.** Add to FAQ/homepage/article nodes for voice & AI answer eligibility.
-- **Niche directories.** Get listed *inside* the directories DR-niche AI answers already cite (e.g. TechBehemoths "Web Design Punta Cana", Clutch "DR web developers") — currently the brand is adjacent to, not in, those lists.
+- **Niche directories.** Get listed _inside_ the directories DR-niche AI answers already cite (e.g. TechBehemoths "Web Design Punta Cana", Clutch "DR web developers") — currently the brand is adjacent to, not in, those lists.
 
 ### ⚪ Low
 
@@ -130,11 +130,13 @@ flows into the `#organization` `sameAs` on every page automatically.
 
 > **English:** Hi [Name], it was a pleasure building [project] with you. If you have two minutes, a
 > short Google review would mean a lot and helps other Dominican business owners find us: [GBP review
-> link]. Thank you — James, DR Web Studio.
+>
+> > link]. Thank you — James, DR Web Studio.
 
 > **Español:** Hola [Nombre], fue un placer crear [proyecto] contigo. Si tienes dos minutos, una
 > breve reseña en Google significaría mucho y ayuda a otros negocios dominicanos a encontrarnos: [enlace
-> de reseña de GBP]. ¡Muchas gracias! — James, DR Web Studio.
+>
+> > de reseña de GBP]. ¡Muchas gracias! — James, DR Web Studio.
 
 ### 4.3 Current `sameAs` (live in schema)
 
@@ -145,7 +147,8 @@ flows into the `#organization` `sameAs` on every page automatically.
   "https://clutch.co/profile/dr-web-studio"
 ]
 ```
-*Add `linkedinCompany` and a Wikidata URL to `generalLayout` as those go live — they propagate site-wide automatically.*
+
+_Add `linkedinCompany` and a Wikidata URL to `generalLayout` as those go live — they propagate site-wide automatically._
 
 ---
 
@@ -163,4 +166,4 @@ flows into the `#organization` `sameAs` on every page automatically.
 
 ---
 
-*Generated by the GEO-SEO Analysis tool · GEO-first, SEO-supported · 2026-06-23 (re-audit, live-verified)*
+_Generated by the GEO-SEO Analysis tool · GEO-first, SEO-supported · 2026-06-23 (re-audit, live-verified)_

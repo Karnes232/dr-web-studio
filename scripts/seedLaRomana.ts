@@ -272,7 +272,10 @@ const laRomanaPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Languages",
-        title: loc("English-First for Tourists", "Inglés Primero para Turistas"),
+        title: loc(
+          "English-First for Tourists",
+          "Inglés Primero para Turistas",
+        ),
         description: locBlocks(
           "Your visitors search in English before they ever land. Every site ships fully bilingual, with the English version built as a first-class citizen — not an afterthought.",
           "Tus visitantes buscan en inglés antes de aterrizar. Cada sitio se entrega completamente bilingüe, con la versión en inglés construida como protagonista — no como algo secundario.",
@@ -311,7 +314,10 @@ const laRomanaPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, your seasons and your booking flow. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, tus temporadas y tu flujo de reservas. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -491,7 +497,6 @@ const laRomanaPage: Record<string, unknown> = {
   structuredData: { en: lrCityServiceEn, es: lrCityServiceEs },
 }
 
-
 // ─────────────────────────────────────────────────────────────────────────────
 // seo document (metadata) — same content as seedCitySeo.ts's La Romana entry
 // ─────────────────────────────────────────────────────────────────────────────
@@ -553,16 +558,16 @@ async function seed() {
   await client.createOrReplace(
     laRomanaPage as Parameters<typeof client.createOrReplace>[0],
   )
-  console.log('✓ Seeded landing page: diseno-de-paginas-web-la-romana')
+  console.log("✓ Seeded landing page: diseno-de-paginas-web-la-romana")
 
   await client.createOrReplace(
     laRomanaSeo as Parameters<typeof client.createOrReplace>[0],
   )
-  console.log('✓ Seeded SEO doc: diseno-de-paginas-web-la-romana')
+  console.log("✓ Seeded SEO doc: diseno-de-paginas-web-la-romana")
 
-  console.log('')
-  console.log('Next steps: see the header comment (seo.ts dropdown option,')
-  console.log('route folder, internal links, sitemap check, Studio tasks).')
+  console.log("")
+  console.log("Next steps: see the header comment (seo.ts dropdown option,")
+  console.log("route folder, internal links, sitemap check, Studio tasks).")
 }
 
 seed().catch(console.error)

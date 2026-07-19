@@ -253,10 +253,7 @@ const hotelesPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "CreditCard",
-        title: loc(
-          "Online Payments & Deposits",
-          "Pagos y Depósitos en Línea",
-        ),
+        title: loc("Online Payments & Deposits", "Pagos y Depósitos en Línea"),
         description: locBlocks(
           "Secure online deposits and payments for direct reservations — confirming bookings instantly, reducing no-shows, and keeping the whole transaction commission-free on your own site.",
           "Depósitos y pagos seguros en línea para reservas directas — confirmando al instante, reduciendo no-shows y manteniendo toda la transacción sin comisiones, en tu propio sitio.",
@@ -292,10 +289,7 @@ const hotelesPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Languages",
-        title: loc(
-          "Bilingual for Your Guests",
-          "Bilingüe para tus Huéspedes",
-        ),
+        title: loc("Bilingual for Your Guests", "Bilingüe para tus Huéspedes"),
         description: locBlocks(
           "Your guests book from the US, Canada and Europe. Every site ships fully bilingual — Spanish and English — with international SEO so travelers find you while planning from abroad.",
           "Tus huéspedes reservan desde EE. UU., Canadá y Europa. Cada sitio se entrega completamente bilingüe — español e inglés — con SEO internacional para que los viajeros te encuentren planificando desde el exterior.",
@@ -337,7 +331,10 @@ const hotelesPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your hotel, your guests and your current booking mix. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu hotel, tus huéspedes y tu mezcla actual de reservas. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -555,8 +552,7 @@ const hotelesSeo = {
         "Photography-first, bilingual websites for boutique hotels in the Dominican Republic. Turn repeat guests and referrals into direct bookings. Free quotes.",
     },
     es: {
-      title:
-        "Páginas Web para Hoteles — Reservas Directas, No Comisiones",
+      title: "Páginas Web para Hoteles — Reservas Directas, No Comisiones",
       description:
         "Páginas web bilingües y centradas en fotografía para hoteles boutique en República Dominicana. Convierte referidos y huéspedes recurrentes en reservas directas.",
     },

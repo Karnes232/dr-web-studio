@@ -332,40 +332,40 @@ function TechCard({
           {/* Expandable Details */}
           {showDetails && (
             <div className="overflow-hidden">
-                {/* Remaining Benefits */}
-                {tech.benefits.length > 3 && (
-                  <ul className="space-y-2 mb-4">
-                    {tech.benefits.slice(3).map((benefit, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300"
-                      >
-                        <Check
-                          className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colors.text}`}
-                        />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              {/* Remaining Benefits */}
+              {tech.benefits.length > 3 && (
+                <ul className="space-y-2 mb-4">
+                  {tech.benefits.slice(3).map((benefit, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300"
+                    >
+                      <Check
+                        className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colors.text}`}
+                      />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-                {/* Use Cases */}
-                <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-                  <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Code className={`w-4 h-4 ${colors.text}`} />
-                    {labels.useCases}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {tech.useCases.map((useCase, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300"
-                      >
-                        {useCase}
-                      </span>
-                    ))}
-                  </div>
+              {/* Use Cases */}
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                  <Code className={`w-4 h-4 ${colors.text}`} />
+                  {labels.useCases}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {tech.useCases.map((useCase, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300"
+                    >
+                      {useCase}
+                    </span>
+                  ))}
                 </div>
+              </div>
             </div>
           )}
 

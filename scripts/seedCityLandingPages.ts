@@ -318,9 +318,12 @@ const santoDomingoPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Search",
-        title: loc("Built to Rank Locally", "Hechos para Posicionar Localmente"),
+        title: loc(
+          "Built to Rank Locally",
+          "Hechos para Posicionar Localmente",
+        ),
         description: locBlocks(
-          "Clean architecture, structured data and local SEO fundamentals baked in — so your business can compete in searches like \"diseño de páginas web en Santo Domingo\" in your own industry.",
+          'Clean architecture, structured data and local SEO fundamentals baked in — so your business can compete in searches like "diseño de páginas web en Santo Domingo" in your own industry.',
           "Arquitectura limpia, datos estructurados y fundamentos de SEO local integrados — para que tu negocio compita en las búsquedas de tu propia industria en Santo Domingo.",
         ),
       },
@@ -369,7 +372,10 @@ const santoDomingoPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, goals and audience. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, objetivos y audiencia. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -693,10 +699,7 @@ const santiagoPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "ShieldCheck",
-        title: loc(
-          "No Plugins, No Surprises",
-          "Sin Plugins, Sin Sorpresas",
-        ),
+        title: loc("No Plugins, No Surprises", "Sin Plugins, Sin Sorpresas"),
         description: locBlocks(
           "We build with Next.js instead of plugin-heavy WordPress: no monthly plugin failures, no hacked sites, no calls to a webmaster every time something breaks.",
           "Construimos con Next.js en lugar de WordPress cargado de plugins: sin fallos mensuales de plugins, sin sitios hackeados, sin llamar a un webmaster cada vez que algo se rompe.",
@@ -741,7 +744,10 @@ const santiagoPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your company, your customers in the Cibao and beyond, then define the full scope, sitemap and timeline together with our project questionnaire.",
           "Conocemos tu empresa y tus clientes en el Cibao y fuera de él, y juntos definimos el alcance, mapa del sitio y cronograma con nuestro cuestionario de proyecto.",

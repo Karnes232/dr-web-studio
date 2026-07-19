@@ -341,7 +341,10 @@ const alquileresPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your properties, your guests and your current channel mix. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tus propiedades, tus huéspedes y tu mezcla actual de canales. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",

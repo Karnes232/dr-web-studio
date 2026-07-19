@@ -152,7 +152,10 @@ const sanPedroPage: Record<string, unknown> = {
   _type: "landingPage",
   _id: "landingPage-diseno-paginas-web-san-pedro-de-macoris",
   title: "Diseño de Páginas Web en San Pedro de Macorís (City Landing Page)",
-  slug: { _type: "slug", current: "diseno-de-paginas-web-san-pedro-de-macoris" },
+  slug: {
+    _type: "slug",
+    current: "diseno-de-paginas-web-san-pedro-de-macoris",
+  },
 
   // ── HERO ──────────────────────────────────────────────────────────────────
   hero: {
@@ -286,10 +289,7 @@ const sanPedroPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Zap",
-        title: loc(
-          "Fast on Any Connection",
-          "Rápidas en Cualquier Conexión",
-        ),
+        title: loc("Fast on Any Connection", "Rápidas en Cualquier Conexión"),
         description: locBlocks(
           "Your customers browse on phones with mobile data. Our sites load in under two seconds, keep visitors on the page, and score higher with Google.",
           "Tus clientes navegan desde el celular con datos móviles. Nuestros sitios cargan en menos de dos segundos, retienen a los visitantes y puntúan mejor en Google.",
@@ -319,7 +319,10 @@ const sanPedroPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, goals and audience. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, objetivos y audiencia. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -537,8 +540,7 @@ const sanPedroSeo = {
         "Bilingual websites for San Pedro's industry, local businesses and the Juan Dolio real estate market. Fast, modern and built to rank. Get a free quote.",
     },
     es: {
-      title:
-        "Diseño de Páginas Web en San Pedro de Macorís — De Grandes Ligas",
+      title: "Diseño de Páginas Web en San Pedro de Macorís — De Grandes Ligas",
       description:
         "Páginas web bilingües para la industria, los comercios y el mercado inmobiliario de Juan Dolio. Rápidas, modernas y hechas para posicionar. Cotización gratis.",
     },
@@ -558,7 +560,9 @@ async function seed() {
   await client.createOrReplace(
     sanPedroPage as Parameters<typeof client.createOrReplace>[0],
   )
-  console.log("✓ Seeded landing page: diseno-de-paginas-web-san-pedro-de-macoris")
+  console.log(
+    "✓ Seeded landing page: diseno-de-paginas-web-san-pedro-de-macoris",
+  )
 
   await client.createOrReplace(
     sanPedroSeo as Parameters<typeof client.createOrReplace>[0],

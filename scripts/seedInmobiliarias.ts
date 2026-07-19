@@ -343,7 +343,10 @@ const inmobiliariasPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your agency, your zones and the buyers you serve. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu inmobiliaria, tus zonas y los compradores que atiendes. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",

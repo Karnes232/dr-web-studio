@@ -305,7 +305,10 @@ const puertoPlataPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Award",
-        title: loc("Tourism Is Our Specialty", "El Turismo Es Nuestra Especialidad"),
+        title: loc(
+          "Tourism Is Our Specialty",
+          "El Turismo Es Nuestra Especialidad",
+        ),
         description: locBlocks(
           "We're based in the country's biggest tourism zone and our portfolio shows it — tour operators and hospitality businesses with results like 150% sales growth.",
           "Tenemos base en la zona turística más grande del país y nuestro portafolio lo demuestra — operadores de tours y negocios de hospitalidad con resultados como un 150% de crecimiento en ventas.",
@@ -326,7 +329,10 @@ const puertoPlataPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, your seasons and your customers. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, tus temporadas y tus clientes. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -540,13 +546,13 @@ const puertoPlataSeo = {
   },
   openGraph: {
     en: {
-      title: "Web Design on the North Coast — English-Friendly, Built for Tourism",
+      title:
+        "Web Design on the North Coast — English-Friendly, Built for Tourism",
       description:
         "Websites for cruise excursions, kite schools, restaurants and rentals in Puerto Plata, Sosúa and Cabarete. Run the whole project in English. Free quotes.",
     },
     es: {
-      title:
-        "Diseño de Páginas Web en Puerto Plata — Para Toda la Costa Norte",
+      title: "Diseño de Páginas Web en Puerto Plata — Para Toda la Costa Norte",
       description:
         "Páginas web para excursiones de cruceros, escuelas de kite, restaurantes y alquileres en Puerto Plata, Sosúa y Cabarete. Cotización gratis.",
     },

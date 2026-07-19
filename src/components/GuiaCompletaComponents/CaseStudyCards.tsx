@@ -222,58 +222,57 @@ function CaseStudyCard({
         {isActive && (
           <div className="overflow-hidden">
             <div className="p-6 space-y-6 border-b border-slate-100 dark:border-slate-800">
-                {/* Solution */}
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-orange-700 dark:text-orange-400" />
-                    {labels.solution}
-                  </h4>
-                  <ul className="space-y-2">
-                    {caseStudy.solution.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Technologies Used */}
-                {caseStudy.technologies &&
-                  caseStudy.technologies.length > 0 && (
-                    <div>
-                      <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-                        {labels.technologies}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {caseStudy.technologies.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-xs font-medium text-orange-700 dark:text-orange-300"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                {/* Timeline */}
-                {caseStudy.timeline && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-                      {labels.timeline}
-                    </h4>
-                    <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
-                      <Clock className="w-4 h-4 text-slate-500" />
-                      {caseStudy.timeline}
-                    </div>
-                  </div>
-                )}
+              {/* Solution */}
+              <div>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-orange-700 dark:text-orange-400" />
+                  {labels.solution}
+                </h4>
+                <ul className="space-y-2">
+                  {caseStudy.solution.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+
+              {/* Technologies Used */}
+              {caseStudy.technologies && caseStudy.technologies.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
+                    {labels.technologies}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {caseStudy.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-xs font-medium text-orange-700 dark:text-orange-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Timeline */}
+              {caseStudy.timeline && (
+                <div>
+                  <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                    {labels.timeline}
+                  </h4>
+                  <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <Clock className="w-4 h-4 text-slate-500" />
+                    {caseStudy.timeline}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
 

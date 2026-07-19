@@ -68,17 +68,15 @@ export const PERSON_KNOWS_LANGUAGE = ["en", "es"]
  * the price lives here (kept out of the CMS to stay consistent with the public
  * pricing page). `unit: "MONTH"` marks recurring offers.
  */
-export const SERVICE_PRICES: Record<
-  string,
-  { price: number; unit?: "MONTH" }
-> = {
-  "landing-pages": { price: 400 },
-  "website-migrations-or-rebuilds": { price: 600 },
-  "headless-cms-development": { price: 700 },
-  "multilingual-and-international-websites": { price: 800 },
-  "e-commerce": { price: 900 },
-  "custom-business": { price: 950 },
-  "web-applications": { price: 1250 },
-  "api-integrations-and-automation": { price: 500 },
-  "ongoing-website-maintenance-and-support": { price: 95, unit: "MONTH" },
-}
+export const SERVICE_PRICES: Record<string, { price: number; unit?: "MONTH" }> =
+  {
+    "landing-pages": { price: 400 },
+    "website-migrations-or-rebuilds": { price: 600 },
+    "headless-cms-development": { price: 700 },
+    "multilingual-and-international-websites": { price: 800 },
+    "e-commerce": { price: 900 },
+    "custom-business": { price: 950 },
+    "web-applications": { price: 1250 },
+    "api-integrations-and-automation": { price: 500 },
+    "ongoing-website-maintenance-and-support": { price: 95, unit: "MONTH" },
+  }

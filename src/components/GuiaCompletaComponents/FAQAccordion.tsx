@@ -167,7 +167,9 @@ function FAQItem({
         {/* Answer — always rendered (collapsed via CSS) so it ships in SSR HTML. */}
         <div
           className={`grid transition-all duration-300 ease-in-out ${
-            isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            isActive
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <div className="overflow-hidden">

@@ -332,7 +332,10 @@ const puntaCanaPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, your seasons and your customers — by video call or in person here in Punta Cana. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, tus temporadas y tus clientes — por videollamada o en persona aquí en Punta Cana. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -583,7 +586,9 @@ async function seed() {
   console.log("✓ Seeded SEO doc: diseno-de-paginas-web-punta-cana")
 
   console.log("")
-  console.log("Next steps: see the header comment — especially the anchor-split")
+  console.log(
+    "Next steps: see the header comment — especially the anchor-split",
+  )
   console.log("rules vs your existing desarrollo-web-punta-cana page.")
 }
 

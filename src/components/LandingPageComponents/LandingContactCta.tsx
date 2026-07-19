@@ -18,7 +18,10 @@ interface LandingContactCtaProps {
 /** Closing CTA for SEO landing pages: generic localized headline/subtext, the
  *  page's own hero CTA buttons, plus WhatsApp + click-to-call sourced from the
  *  `generalLayout` singleton. Server component so each page needs one line. */
-export async function LandingContactCta({ hero, lang }: LandingContactCtaProps) {
+export async function LandingContactCta({
+  hero,
+  lang,
+}: LandingContactCtaProps) {
   const [t, layout] = await Promise.all([
     getTranslations(),
     getLayoutSchemaData(),
@@ -43,7 +46,9 @@ export async function LandingContactCta({ hero, lang }: LandingContactCtaProps) 
       secondaryBtn={hero.secondaryCta || t("resources.start_project")}
       secondaryBtnHref={
         localized(hero.secondaryCtaHref) ||
-        (lang === "es" ? "/es/planificador-de-proyectos" : "/en/project-planner")
+        (lang === "es"
+          ? "/es/planificador-de-proyectos"
+          : "/en/project-planner")
       }
       whatsappNumber={phone}
       whatsappText={t("landingPage.whatsappMessage")}

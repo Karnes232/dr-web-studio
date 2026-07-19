@@ -26,7 +26,9 @@ const STATIC_LASTMOD: Partial<Record<StaticPathname, string>> = {
 }
 
 function staticLastmod(route: StaticPathname): Date {
-  return new Date(`${STATIC_LASTMOD[route] ?? DEFAULT_STATIC_LASTMOD}T00:00:00Z`)
+  return new Date(
+    `${STATIC_LASTMOD[route] ?? DEFAULT_STATIC_LASTMOD}T00:00:00Z`,
+  )
 }
 
 // A Sanity doc as returned by the sitemap queries: localized slugs + timestamp.
@@ -66,7 +68,8 @@ function collectionEntries(
   return docs.flatMap(doc => {
     const pair = slugPair(doc)
     return localizedEntries(
-      locale => localizedUrl({ pathname, params: { slug: pair[locale] } }, locale),
+      locale =>
+        localizedUrl({ pathname, params: { slug: pair[locale] } }, locale),
       new Date(doc._updatedAt),
     )
   })
@@ -80,7 +83,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...INDEXABLE_STATIC_ROUTES.flatMap(route =>
-      localizedEntries(locale => localizedUrl(route, locale), staticLastmod(route)),
+      localizedEntries(
+        locale => localizedUrl(route, locale),
+        staticLastmod(route),
+      ),
     ),
     ...collectionEntries("/our-services/[slug]", serviceItems),
     ...collectionEntries("/blog/[slug]", blogPosts),

@@ -371,10 +371,8 @@ export const getAllBlogPostsSitemap = cache(
 
 // Newest post's publishedAt — content-derived freshness signal for llms.txt
 // (same convention as llms-full.txt: only moves when content changes).
-export const getNewestBlogPostDate = cache(
-  async (): Promise<string | null> => {
-    return await client.fetch(
-      `*[_type == "blogPost"] | order(publishedAt desc)[0].publishedAt`,
-    )
-  },
-)
+export const getNewestBlogPostDate = cache(async (): Promise<string | null> => {
+  return await client.fetch(
+    `*[_type == "blogPost"] | order(publishedAt desc)[0].publishedAt`,
+  )
+})

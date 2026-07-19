@@ -166,10 +166,7 @@ const dentistasPage: Record<string, unknown> = {
 
   // ── HERO ──────────────────────────────────────────────────────────────────
   hero: {
-    headline: loc(
-      "Web Design for Dentists",
-      "Páginas Web para Dentistas",
-    ),
+    headline: loc("Web Design for Dentists", "Páginas Web para Dentistas"),
     subheadline: loc(
       "Bilingual websites for dental clinics that turn nervous online research into booked appointments — from patients down the street and patients flying in from abroad.",
       "Páginas web bilingües para clínicas dentales que convierten la investigación nerviosa en línea en citas agendadas — de pacientes de tu ciudad y de pacientes que vuelan desde el exterior.",
@@ -287,10 +284,7 @@ const dentistasPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Globe",
-        title: loc(
-          "English for Dental Tourism",
-          "Inglés para Turismo Dental",
-        ),
+        title: loc("English for Dental Tourism", "Inglés para Turismo Dental"),
         description: locBlocks(
           "Every site ships fully bilingual with international SEO — so patients searching treatment options from abroad find your clinic, read your process in their language, and inquire with confidence.",
           "Cada sitio se entrega completamente bilingüe con SEO internacional — para que los pacientes que buscan opciones de tratamiento desde el exterior encuentren tu clínica, lean tu proceso en su idioma y consulten con confianza.",
@@ -311,10 +305,7 @@ const dentistasPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "MessageSquare",
-        title: loc(
-          "Frictionless Appointments",
-          "Citas sin Fricción",
-        ),
+        title: loc("Frictionless Appointments", "Citas sin Fricción"),
         description: locBlocks(
           "Patients book where their thumbs already are: one-tap WhatsApp plus forms that capture the treatment they're interested in — so your front desk answers prepared, not from zero.",
           "Los pacientes agendan donde ya están sus pulgares: WhatsApp de un toque más formularios que capturan el tratamiento que les interesa — para que tu recepción responda preparada, no desde cero.",
@@ -335,7 +326,10 @@ const dentistasPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your clinic, your specialties and the patients you want more of. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu clínica, tus especialidades y los pacientes que quieres atraer. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -553,8 +547,7 @@ const dentistasSeo = {
         "Bilingual websites for dental clinics in the Dominican Republic: dental tourism pages in English, WhatsApp appointments and local SEO. Free quotes.",
     },
     es: {
-      title:
-        "Páginas Web para Dentistas — Confianza Antes de la Primera Cita",
+      title: "Páginas Web para Dentistas — Confianza Antes de la Primera Cita",
       description:
         "Páginas web bilingües para clínicas dentales en República Dominicana: turismo dental en inglés, citas por WhatsApp y SEO local. Cotización gratis.",
     },

@@ -23,9 +23,7 @@ interface PageProps {
   params: Promise<{ lang: "en" | "es" }>
 }
 
-export default async function PaginasWebParaAbogados({
-  params,
-}: PageProps) {
+export default async function PaginasWebParaAbogados({ params }: PageProps) {
   const { lang } = await params
   const data = await getLandingPage(PAGE_SLUG, lang)
 

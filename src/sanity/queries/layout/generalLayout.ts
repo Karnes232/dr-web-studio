@@ -120,8 +120,7 @@ export interface LayoutSchemaData {
 }
 
 export const getLayoutSchemaData = cache(
-  async (): Promise<LayoutSchemaData | null> =>
-    client.fetch(layoutSchemaQuery),
+  async (): Promise<LayoutSchemaData | null> => client.fetch(layoutSchemaQuery),
 )
 
 const contactEmailQuery = `*[_type == "generalLayout"][0] { email }`

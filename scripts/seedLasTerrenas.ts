@@ -240,10 +240,7 @@ const lasTerrenasPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "BedDouble",
-        title: loc(
-          "Boutique Hotels & Villas",
-          "Hoteles Boutique y Villas",
-        ),
+        title: loc("Boutique Hotels & Villas", "Hoteles Boutique y Villas"),
         description: locBlocks(
           "The peninsula's small hotels pay some of the heaviest OTA commissions in the country. A fast, trustworthy site with direct booking inquiries turns your repeat guests and referrals into commission-free reservations.",
           "Los hoteles pequeños de la península pagan algunas de las comisiones OTA más altas del país. Un sitio rápido y confiable con reservas directas convierte a tus huéspedes recurrentes y referidos en reservaciones sin comisión.",
@@ -340,7 +337,10 @@ const lasTerrenasPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your business, your seasons and your guests. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu negocio, tus temporadas y tus huéspedes. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",

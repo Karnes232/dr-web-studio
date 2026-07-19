@@ -164,10 +164,7 @@ const abogadosPage: Record<string, unknown> = {
 
   // ── HERO ──────────────────────────────────────────────────────────────────
   hero: {
-    headline: loc(
-      "Web Design for Lawyers",
-      "Páginas Web para Abogados",
-    ),
+    headline: loc("Web Design for Lawyers", "Páginas Web para Abogados"),
     subheadline: loc(
       "Authority-building websites for law firms — with practice-area pages that rank on Google and an English version that wins the foreign clients other firms can't reach.",
       "Páginas web que proyectan autoridad para bufetes — con páginas por área de práctica que posicionan en Google y una versión en inglés que gana los clientes extranjeros que otras firmas no alcanzan.",
@@ -285,10 +282,7 @@ const abogadosPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Search",
-        title: loc(
-          "Rank by Practice Area",
-          "Posiciona por Área de Práctica",
-        ),
+        title: loc("Rank by Practice Area", "Posiciona por Área de Práctica"),
         description: locBlocks(
           "From 'abogado inmobiliario en Punta Cana' to 'residency lawyer Dominican Republic' — structured practice-area pages with bilingual SEO put your firm in both markets' searches.",
           "Desde 'abogado inmobiliario en Punta Cana' hasta 'residency lawyer Dominican Republic' — las páginas por área de práctica con SEO bilingüe ponen tu firma en las búsquedas de ambos mercados.",
@@ -297,10 +291,7 @@ const abogadosPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Lock",
-        title: loc(
-          "Confidential Consultations",
-          "Consultas Confidenciales",
-        ),
+        title: loc("Confidential Consultations", "Consultas Confidenciales"),
         description: locBlocks(
           "Legal matters are private. Consultation forms are discreet and secure by design, and inquiries arrive only to you — a detail clients notice before they've written a word.",
           "Los asuntos legales son privados. Los formularios de consulta son discretos y seguros por diseño, y las solicitudes llegan solo a ti — un detalle que los clientes notan antes de escribir una palabra.",
@@ -333,7 +324,10 @@ const abogadosPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your firm, your practice areas and the clients you want more of. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu firma, tus áreas de práctica y los clientes que quieres atraer. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",
@@ -552,8 +546,7 @@ const abogadosSeo = {
         "Practice-area pages that rank, English for international clients, and confidential consultation requests. Built in the Dominican Republic. Free quotes.",
     },
     es: {
-      title:
-        "Páginas Web para Abogados — Autoridad que Gana Clientes",
+      title: "Páginas Web para Abogados — Autoridad que Gana Clientes",
       description:
         "Páginas por área de práctica que posicionan, inglés para clientes internacionales y consultas confidenciales. Creadas en República Dominicana. Cotización gratis.",
     },

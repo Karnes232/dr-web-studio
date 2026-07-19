@@ -112,9 +112,7 @@ function mergeCustomNodes(
     n => !typesOf(n).some(t => SITE_IDENTITY_TYPES.has(t)),
   )
   if (!custom?.length) return autoNodes
-  const autoTypes = new Set(
-    autoNodes.flatMap(n => (n ? typesOf(n) : [])),
-  )
+  const autoTypes = new Set(autoNodes.flatMap(n => (n ? typesOf(n) : [])))
   const applicable = custom.filter(
     n => !typesOf(n).some(t => AUTO_WINS_TYPES.has(t) && autoTypes.has(t)),
   )

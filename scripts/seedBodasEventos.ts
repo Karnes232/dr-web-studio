@@ -226,10 +226,7 @@ const bodasEventosPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Heart",
-        title: loc(
-          "A Portfolio that Wins Hearts",
-          "Un Portafolio que Enamora",
-        ),
+        title: loc("A Portfolio that Wins Hearts", "Un Portafolio que Enamora"),
         description: locBlocks(
           "Full-bleed galleries of your real weddings and events — organized by style and venue, loading instantly even packed with photos. Your best work, presented the way it deserves.",
           "Galerías a pantalla completa de tus bodas y eventos reales — organizadas por estilo y venue, cargando al instante aun llenas de fotos. Tu mejor trabajo, presentado como se merece.",
@@ -339,7 +336,10 @@ const bodasEventosPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your style, your services and the clients you want more of. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tu estilo, tus servicios y los clientes que quieres atraer más. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",

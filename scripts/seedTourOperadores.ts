@@ -228,10 +228,7 @@ const tourOperadoresPage: Record<string, unknown> = {
       {
         _key: key(),
         icon: "Compass",
-        title: loc(
-          "Tour Pages that Sell",
-          "Páginas de Tours que Venden",
-        ),
+        title: loc("Tour Pages that Sell", "Páginas de Tours que Venden"),
         description: locBlocks(
           "Each tour gets its own page: itinerary, photos, what's included, clear per-person pricing and departure times — structured so travelers get every answer without messaging you first.",
           "Cada tour tiene su propia página: itinerario, fotos, qué incluye, precios por persona claros y horarios de salida — estructurada para que el viajero encuentre cada respuesta sin tener que escribirte primero.",
@@ -341,7 +338,10 @@ const tourOperadoresPage: Record<string, unknown> = {
         _key: key(),
         number: 1,
         icon: "MessageCircle",
-        stepTitle: loc("Discovery & Planning", "Descubrimiento y Planificación"),
+        stepTitle: loc(
+          "Discovery & Planning",
+          "Descubrimiento y Planificación",
+        ),
         description: locBlocks(
           "We learn about your tours, your seasons and how your bookings arrive today. You complete our project questionnaire and we define the full scope, sitemap and timeline together.",
           "Conocemos tus tours, tus temporadas y cómo llegan tus reservas hoy. Completas nuestro cuestionario de proyecto y juntos definimos el alcance, mapa del sitio y cronograma.",

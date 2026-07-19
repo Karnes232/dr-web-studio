@@ -56,7 +56,9 @@ const LocationInfo = ({
         {phone && (
           <div>
             <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">
-              {language === "en" ? "Talk to us directly" : "Háblanos directamente"}
+              {language === "en"
+                ? "Talk to us directly"
+                : "Háblanos directamente"}
             </h3>
             <div className="space-y-2">
               <a
