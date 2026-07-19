@@ -127,12 +127,20 @@ export const routing = defineRouting({
       es: "/paginas-web-para-tour-operadores",
     },
     "/paginas-web-para-abogados": {
-      en: '/web-design-lawyers',
-      es: '/paginas-web-para-abogados'
+      en: "/web-design-lawyers",
+      es: "/paginas-web-para-abogados",
     },
     "/paginas-web-para-inmobiliarias": {
       en: "/web-design-real-estate-agents",
       es: "/paginas-web-para-inmobiliarias",
+    },
+    "/paginas-web-para-salones-de-belleza": {
+      en: "/web-design-for-salons-and-spas",
+      es: "/paginas-web-para-salones-de-belleza",
+    },
+    "/paginas-web-para-constructoras": {
+      en: "/web-design-for-construction",
+      es: "/paginas-web-para-constructoras",
     },
     "/mantenimiento-web-republica-dominicana": {
       en: "/website-maintenance-dominican-republic",

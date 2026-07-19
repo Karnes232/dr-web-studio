@@ -28,11 +28,12 @@ export const LANDING_PAGE_ROUTES = [
   "/paginas-web-para-bodas-y-eventos",
   "/paginas-web-para-dentistas",
   "/paginas-web-para-abogados",
+  "/paginas-web-para-constructoras",
+  "/paginas-web-para-salones-de-belleza",
 ] as const satisfies readonly StaticPathname[]
 
-export type LandingPageSlug = (typeof LANDING_PAGE_ROUTES)[number] extends `/${infer S}`
-  ? S
-  : never
+export type LandingPageSlug =
+  (typeof LANDING_PAGE_ROUTES)[number] extends `/${infer S}` ? S : never
 
 const MAIN_INDEXABLE_ROUTES = [
   "/",

@@ -18,7 +18,7 @@
     "test": "vitest run",
     "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
     "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-jarabacoa.ts",
-    "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedLasTerrenas.ts"
+    "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedConstructoras.ts"
   },
   "dependencies": {
     "@botpoison/browser": "^0.1.30",

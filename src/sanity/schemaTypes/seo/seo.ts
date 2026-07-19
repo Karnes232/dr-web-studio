@@ -71,7 +71,7 @@ export default defineType({
             title: "Diseño de Páginas Web Santiago (Landing)",
             value: "diseno-de-paginas-web-santiago",
           },
-           {
+          {
             title: "Diseño de Páginas Web La Romana (Landing)",
             value: "diseno-de-paginas-web-la-romana",
           },
@@ -125,8 +125,16 @@ export default defineType({
           },
           {
             title: "Páginas Web para Abogados (Landing)",
-            value: "paginas-web-para-abogados"
-          }
+            value: "paginas-web-para-abogados",
+          },
+          {
+            title: "Páginas Web para Salones de Belleza (Industry Landing)",
+            value: "paginas-web-para-salones-de-belleza",
+          },
+          {
+            title: "Páginas Web para Constructoras (Industry Landing)",
+            value: "paginas-web-para-constructoras",
+          },
         ],
         layout: "dropdown",
       },

@@ -51,8 +51,7 @@ const labels = {
         "E-commerce Development — Dominican Republic",
       "mantenimiento-web-republica-dominicana":
         "Website Maintenance — Dominican Republic",
-      "diseno-de-paginas-web-santo-domingo":
-        "Web Design — Santo Domingo",
+      "diseno-de-paginas-web-santo-domingo": "Web Design — Santo Domingo",
       "diseno-de-paginas-web-santiago": "Web Design — Santiago",
       "diseno-de-paginas-web-la-romana": "Web Design — La Romana",
       "diseno-de-paginas-web-higuey": "Web Design — Higüey",
@@ -65,10 +64,13 @@ const labels = {
       "paginas-web-para-hoteles": "Web Design — Hotels",
       "paginas-web-para-restaurantes": "Web Design — Restaurants",
       "paginas-web-para-tour-operadores": "Web Design — Tour Operadors",
-      "paginas-web-para-alquileres-vacacionales": "Web Design — Vacation Rentals",
+      "paginas-web-para-alquileres-vacacionales":
+        "Web Design — Vacation Rentals",
       "paginas-web-para-bodas-y-eventos": "Web Design — Weddings and Events",
       "paginas-web-para-dentistas": "Web Design — Dentists",
-      'paginas-web-para-abogados': "Web Design - Lawyers"
+      "paginas-web-para-abogados": "Web Design - Lawyers",
+      "paginas-web-para-constructoras": "Web Design — Construction Companies",
+      "paginas-web-para-salones-de-belleza": "Web Design — Salons and Spas",
     },
   },
   es: {
@@ -108,16 +110,22 @@ const labels = {
       "diseno-de-paginas-web-san-pedro-de-macoris":
         "Diseño de Páginas Web — San Pedro de Macoris",
       "diseno-de-paginas-web-punta-cana": "Diseño de Páginas Web — Punta Cana",
-      "diseno-de-paginas-web-puerto-plata": "Diseño de Páginas Web — Puerto Plata",
-      "diseno-de-paginas-web-las-terrenas": "Diseño de Páginas Web — Las Terrenas",
+      "diseno-de-paginas-web-puerto-plata":
+        "Diseño de Páginas Web — Puerto Plata",
+      "diseno-de-paginas-web-las-terrenas":
+        "Diseño de Páginas Web — Las Terrenas",
       "paginas-web-para-inmobiliarias": "Páginas Web para Inmobiliarias",
       "paginas-web-para-hoteles": "Páginas Web para Hoteles",
       "paginas-web-para-restaurantes": "Páginas Web para Restaurantes",
       "paginas-web-para-tour-operadores": "Páginas Web para Tour Operadores",
-      "paginas-web-para-alquileres-vacacionales": "Páginas Web para Alquileres Vacacionales",
+      "paginas-web-para-alquileres-vacacionales":
+        "Páginas Web para Alquileres Vacacionales",
       "paginas-web-para-bodas-y-eventos": "Páginas Web para Bodas y Eventos",
       "paginas-web-para-dentistas": "Páginas Web para Dentistas",
-      'paginas-web-para-abogados': "Páginas Web para Abogados"
+      "paginas-web-para-abogados": "Páginas Web para Abogados",
+      "paginas-web-para-constructoras": "Páginas Web para Constructoras",
+      "paginas-web-para-salones-de-belleza":
+        "Páginas Web para Salones de Belleza",
     },
   },
 }
@@ -220,8 +228,8 @@ export default async function SitemapPage({ params }: PageProps) {
               ))}
             </SitemapSection>
           )}
-           {/* Legal */}
-           <SitemapSection title={l.legal}>
+          {/* Legal */}
+          <SitemapSection title={l.legal}>
             <SitemapLink href="/privacy-policy" label={l.privacyPolicy} />
             <SitemapLink href="/terms-of-service" label={l.termsOfService} />
           </SitemapSection>
@@ -239,27 +247,24 @@ export default async function SitemapPage({ params }: PageProps) {
               )
             })}
           </SitemapSection>
-            
+
           {/* Blog Posts */}
           {blogPosts.length > 0 && (
             <div className="lg:col-span-2">
-            <SitemapSection title={l.blog}>
-              {blogPosts.map((post, i) => (
-                <SitemapLink
-                  key={i}
-                  href={{
-                    pathname: "/blog/[slug]",
-                    params: { slug: slugForLocale(post, lang) },
-                  }}
-                  label={post.title[lang] ?? post.title.en}
-                />
-              ))}
-            </SitemapSection>
+              <SitemapSection title={l.blog}>
+                {blogPosts.map((post, i) => (
+                  <SitemapLink
+                    key={i}
+                    href={{
+                      pathname: "/blog/[slug]",
+                      params: { slug: slugForLocale(post, lang) },
+                    }}
+                    label={post.title[lang] ?? post.title.en}
+                  />
+                ))}
+              </SitemapSection>
             </div>
           )}
-          
-         
-         
         </div>
       </div>
     </main>
