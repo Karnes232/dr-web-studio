@@ -22,7 +22,7 @@ const ServiceStats = ({
         </div>
         {/* <div className="text-sm font-semibold text-slate-800">{timeline} {t("serviceCard.timeFrame")}</div> */}
         <div className="text-sm font-semibold text-slate-800 dark:text-slate-100">
-          {timeline !== "Ongoing" 
+          {timeline !== "Ongoing"
             ? timeline + " " + t("serviceCard.timeFrame")
             : t("serviceCard.ongoing")}
         </div>
