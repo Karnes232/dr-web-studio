@@ -44,6 +44,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "profilePhoto",
+      title: "Profile Photo",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "basedOutOf",
       title: "Based Out Of",
       type: "object",

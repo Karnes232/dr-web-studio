@@ -21,6 +21,7 @@ import { getTechnologies } from "@/sanity/queries/about-me/technologies"
 import { getDevelopmentApproach } from "@/sanity/queries/about-me/developmentApproach"
 import { getWhyChooseUs } from "@/sanity/queries/about-me/whyChooseUs"
 import { buildAlternates } from "@/lib/urls"
+import { urlFor } from "@/sanity/lib/image"
 
 export const revalidate = 86400
 
@@ -83,6 +84,15 @@ export default async function AboutUs({ params }: PageProps) {
               <ProfileCard
                 name="James Karnes"
                 location={sectionHeader.basedOutOf[lang]}
+                photoUrl={
+                  sectionHeader.profilePhoto
+                    ? urlFor(sectionHeader.profilePhoto)
+                        .width(256)
+                        .height(256)
+                        .fit("crop")
+                        .url()
+                    : undefined
+                }
               />
               <PersonalStory
                 title={personalStory.title[lang]}

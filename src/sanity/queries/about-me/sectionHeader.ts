@@ -14,6 +14,17 @@ interface SectionHeaderData {
     en: string
     es: string
   }
+  profilePhoto?: {
+    asset: {
+      _ref: string
+    }
+    hotspot?: {
+      x: number
+      y: number
+      height: number
+      width: number
+    }
+  }
 }
 
 export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
@@ -28,7 +39,8 @@ export const sectionHeaderQuery = `*[_type == "sectionHeader"][0] {
     basedOutOf {
       en,
       es
-    }
+    },
+    profilePhoto
   }`
 
 export const getSectionHeader = cache(async (): Promise<SectionHeaderData> => {
