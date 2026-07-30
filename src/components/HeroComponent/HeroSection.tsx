@@ -25,11 +25,10 @@ const HeroSection = async ({
 }) => {
   const t = await getTranslations()
   const lqip = backgroundImage?.asset?.metadata?.lqip
-  const heroSrc = urlFor(backgroundImage)
-    .width(1920)
-    .quality(80)
-    .auto("format")
-    .url()
+  // Bare asset URL: the global Sanity image loader appends w/q/auto=format
+  // per srcset candidate, so the browser fetches exactly one right-sized WebP
+  // straight from cdn.sanity.io.
+  const heroSrc = urlFor(backgroundImage).url()
 
   return (
     <section className="relative text-white overflow-hidden min-h-screen flex items-center">
@@ -57,7 +56,7 @@ const HeroSection = async ({
           fill
           priority
           fetchPriority="high"
-          quality={70}
+          quality={60}
           className="object-cover"
           sizes="100vw"
         />

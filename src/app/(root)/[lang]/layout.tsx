@@ -2,6 +2,7 @@ import Navbar from "@/components/Layout/HeaderComponents/Navbar"
 import Footer from "@/components/Layout/FooterComponents/Footer"
 import { getCompanyInfo, getLogo } from "@/sanity/queries/layout/generalLayout"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import { preconnect } from "react-dom"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import { routing } from "@/i18n/routing"
@@ -33,6 +34,11 @@ export default async function LangLayout({
   // Enables static rendering and scopes server-side translations to this locale.
   setRequestLocale(lang)
 
+  // Images load directly from the Sanity CDN (custom next/image loader), so
+  // warm up that connection before the hero preload fires. No crossOrigin:
+  // <img>/imagesrcset preloads are no-cors, which reuses the anonymous socket.
+  preconnect("https://cdn.sanity.io")
+
   const [logo, companyInfo, serviceLinks, messages] = await Promise.all([
     getLogo(),
     getCompanyInfo(),
@@ -44,9 +50,6 @@ export default async function LangLayout({
   // actual locale of the page, server-side and per statically-generated route.
   return (
     <html lang={lang} suppressHydrationWarning>
-      {/* No preconnect to cdn.sanity.io: every image is served through the
-          same-origin /_next/image optimizer, so the browser never contacts
-          the Sanity CDN directly (PageSpeed flags the hint as unused). */}
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <ThemeProvider>
           <NextIntlClientProvider locale={lang} messages={messages}>

@@ -1,5 +1,4 @@
 import { cache } from "react"
-import { groq } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 
 export interface LocationInfo {
@@ -40,7 +39,10 @@ export interface LocationInfo {
 }
 
 export const getLocationInfo = cache(async (): Promise<LocationInfo> => {
-  const query = groq`
+  // Plain template literal — importing the `groq` tag from next-sanity pulls
+  // its visual-editing client components (@sanity/client + stega, ~57 KiB)
+  // into the /contact browser bundle.
+  const query = `
     *[_type == "locationInfo"][0] {
       _id,
       _type,

@@ -230,20 +230,25 @@ const nextConfig: NextConfig = {
   // ship to the client — cuts the first-load JS the phone must parse (a major
   // contributor to the hero's LCP render delay on mobile).
   experimental: {
-    optimizePackageImports: ["react-icons", "motion", "swiper", "lucide-react"],
+    optimizePackageImports: ["react-icons", "swiper", "lucide-react"],
     // Inline the page's CSS into the HTML instead of render-blocking
     // stylesheet requests — on slow 4G those two round trips delayed every
     // first paint (~450ms est. in Lighthouse).
     inlineCss: true,
   },
   images: {
+    // All next/image sources are Sanity assets; serve them straight from
+    // cdn.sanity.io (see src/sanity/lib/imageLoader.ts). remotePatterns stays
+    // so /_next/image keeps answering stale cached HTML during rollout, and
+    // webp-only means any such residual hit never pays a cold AVIF encode.
+    loaderFile: "./src/sanity/lib/imageLoader.ts",
     remotePatterns: [
       {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
     ],
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp"],
     minimumCacheTTL: 2_678_400, // 31 days — Sanity assets are immutable per URL
   },
   async headers() {

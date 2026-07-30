@@ -17,7 +17,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
-    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-jarabacoa.ts",
+    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-product-photography.ts",
     "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedConstructoras.ts"
   },
   "dependencies": {
@@ -31,7 +31,6 @@
     "@stripe/stripe-js": "^7.4.0",
     "@vercel/analytics": "^1.6.1",
     "lucide-react": "^0.511.0",
-    "motion": "^12.17.0",
     "next": "^15.5.10",
     "next-intl": "^4.12.0",
     "next-sanity": "^9.12.0",

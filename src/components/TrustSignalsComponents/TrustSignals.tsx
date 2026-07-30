@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { Star, Quote } from "lucide-react"
 import { useLocale } from "@/i18n/useLocale"
 import ClientLogosMarquee from "./ClientLogosMarquee"
@@ -26,55 +26,54 @@ const TrustSignals = ({
   const targetAverageRating = stats?.averageRating ?? 5.0
   const supportAvailable = stats?.supportAvailable ?? "24/7"
 
-  const [happyClients, setHappyClients] = useState(targetHappyClients)
-  const [projectsCompleted, setProjectsCompleted] = useState(
-    targetProjectsCompleted,
-  )
-  const [averageRating, setAverageRating] = useState(targetAverageRating)
   const statsRef = useRef<HTMLDivElement>(null)
+  const happyRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
+  const ratingRef = useRef<HTMLDivElement>(null)
+
+  // Count-up via rAF writing textContent directly: the SSR HTML carries the
+  // final values, and React never re-renders during the animation (the old
+  // 60fps setInterval + 3×setState version cost ~120 re-renders / 2s and
+  // showed up in Lighthouse as long tasks + forced reflow).
   useEffect(() => {
+    const el = statsRef.current
+    if (!el) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    let raf = 0
     const observer = new IntersectionObserver(
-      entries => {
-        const [entry] = entries
-        if (entry.isIntersecting) {
-          setHappyClients(0)
-          setProjectsCompleted(0)
-          setAverageRating(0)
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.disconnect()
 
-          const animationDuration = 2000 // 2 seconds
-          const framesPerSecond = 60
-          const totalFrames = (animationDuration / 1000) * framesPerSecond
-
-          let frame = 0
-          const timer = setInterval(() => {
-            frame++
-            const progress = frame / totalFrames
-
-            if (frame <= totalFrames) {
-              setHappyClients(Math.ceil(progress * targetHappyClients))
-              setProjectsCompleted(
-                Math.ceil(progress * targetProjectsCompleted),
-              )
-              setAverageRating(Math.ceil(progress * targetAverageRating))
-            } else {
-              clearInterval(timer)
-            }
-          }, 1000 / framesPerSecond)
-
-          // Disconnect observer after animation starts
-          observer.disconnect()
+        const duration = 2000
+        const start = performance.now()
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1)
+          const ease = 1 - Math.pow(1 - progress, 3)
+          if (happyRef.current)
+            happyRef.current.textContent = `${Math.round(ease * targetHappyClients)}+`
+          if (projectsRef.current)
+            projectsRef.current.textContent = `${Math.round(ease * targetProjectsCompleted)}+`
+          if (ratingRef.current)
+            ratingRef.current.textContent = (
+              ease * targetAverageRating
+            ).toFixed(1)
+          if (progress < 1) raf = requestAnimationFrame(tick)
         }
+        raf = requestAnimationFrame(tick)
       },
       {
         threshold: 0.1, // Trigger when 10% of the element is visible
       },
     )
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current)
-    }
+    observer.observe(el)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(raf)
+    }
   }, [targetHappyClients, targetProjectsCompleted, targetAverageRating])
 
   return (
@@ -139,24 +138,33 @@ const TrustSignals = ({
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2">
-              {happyClients}+
+            <div
+              ref={happyRef}
+              className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2"
+            >
+              {targetHappyClients}+
             </div>
             <div className="text-gray-600 dark:text-slate-400">
               {t("hero.happyClients")}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-2">
-              {projectsCompleted}+
+            <div
+              ref={projectsRef}
+              className="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-2"
+            >
+              {targetProjectsCompleted}+
             </div>
             <div className="text-gray-600 dark:text-slate-400">
               {t("home.projectsCompleted")}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2">
-              {averageRating.toFixed(1)}
+            <div
+              ref={ratingRef}
+              className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-2"
+            >
+              {targetAverageRating.toFixed(1)}
             </div>
             <div className="text-gray-600 dark:text-slate-400">
               {t("home.averageRating")}

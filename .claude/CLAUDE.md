@@ -26,7 +26,6 @@ Full-stack Next.js 15 app with:
 | Payments        | Stripe (Payment Intents + Webhooks) |
 | Email           | Resend + React Email                |
 | i18n            | i18next, `react-i18next` (en + es)  |
-| Animation       | Motion (Framer Motion v12)          |
 | Spam protection | BotPoison                           |
 | Icons           | `lucide-react`, `react-icons`       |
 | Carousel        | Swiper                              |

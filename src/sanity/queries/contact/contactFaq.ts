@@ -1,5 +1,4 @@
 import { cache } from "react"
-import { groq } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 
 export interface ContactFaq {
@@ -17,7 +16,10 @@ export interface ContactFaq {
 }
 
 export const getContactFaqs = cache(async (): Promise<ContactFaq[]> => {
-  const query = groq`
+  // Plain template literal — importing the `groq` tag from next-sanity pulls
+  // its visual-editing client components (@sanity/client + stega, ~57 KiB)
+  // into the /contact browser bundle.
+  const query = `
     *[_type == "contactFaq"] | order(order asc) {
       _id,
       _type,

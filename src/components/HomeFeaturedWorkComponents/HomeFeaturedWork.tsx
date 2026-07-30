@@ -92,7 +92,7 @@ const HomeFeaturedWork = ({
                 src={lead.image.asset.url}
                 alt={lead.title[locale]}
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 608px"
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
@@ -151,7 +151,7 @@ const HomeFeaturedWork = ({
                     src={project.image.asset.url}
                     alt={project.title[locale]}
                     fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 592px"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
