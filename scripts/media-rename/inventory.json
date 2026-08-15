@@ -1,0 +1,3327 @@
+[
+  {
+    "_id": "image-6a71c6f35fc64c97a98fe4ee324379735ed45a6f-3200x3200-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3200,
+      "width": 3200
+    },
+    "extension": "png",
+    "originalFilename": "dr-web-studio-bg-removed2.png",
+    "refs": [
+      {
+        "_id": "generalLayout",
+        "_type": "generalLayout",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/6a71c6f35fc64c97a98fe4ee324379735ed45a6f-3200x3200.png"
+  },
+  {
+    "_id": "image-72afbc4aba2f71f6899a6ceaf46751f45f46da26-3200x3200-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3200,
+      "width": 3200
+    },
+    "extension": "png",
+    "originalFilename": "dr-web-studio-bg-removed.png",
+    "refs": [
+      {
+        "_id": "generalLayout",
+        "_type": "generalLayout",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/72afbc4aba2f71f6899a6ceaf46751f45f46da26-3200x3200.png"
+  },
+  {
+    "_id": "image-82d041f4b2aee4ed6c5543d16f2312376c547a31-3200x3200-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3200,
+      "width": 3200
+    },
+    "extension": "png",
+    "originalFilename": "dr-web-studio.png",
+    "refs": [
+      {
+        "_id": "0179c888-c6b1-4c28-9213-552b6774055a",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "12fdb520-c7ec-4a53-b790-c8d6397d19b1",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "2fdced11-8236-4f69-b2fe-d35d8e700fcf",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "3af05e73-6143-4494-baed-7b8e54a319b3",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "47be1235-b571-4a15-8fe5-90386af5efda",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "755e83c5-0088-4f2c-86e1-ba986cdc3b6b",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "ef9f1980-df19-41f0-a02d-83949b75b437",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "f1dfb141-2ba6-474e-811a-ea607c7ca9cc",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/82d041f4b2aee4ed6c5543d16f2312376c547a31-3200x3200.png"
+  },
+  {
+    "_id": "image-3f03e17b6c1e2c676f5f220fc45232efa38a98d1-6000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "backgroundImage.jpg",
+    "refs": [
+      {
+        "_id": "05d5e794-f04f-4d7e-88bb-50d976bd636b",
+        "_type": "heroSection",
+        "title": "Home Page"
+      },
+      {
+        "_id": "a228e6ea-3676-432d-9d61-7a8bd9bc1c89",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "landingPage-desarrollo-web-republica-dominicana",
+        "_type": "landingPage",
+        "title": "Desarrollo Web República Dominicana (Hub)"
+      },
+      {
+        "_id": "seo-diseno-web-republica-dominicana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/3f03e17b6c1e2c676f5f220fc45232efa38a98d1-6000x4000.jpg"
+  },
+  {
+    "_id": "image-a5a08da87a0b2a88b010506707f4eef95d8c498f-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "code.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/a5a08da87a0b2a88b010506707f4eef95d8c498f-24x24.svg"
+  },
+  {
+    "_id": "image-3d72f710e6adf2b14a6f80d20646e24a632d4d7b-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "rocket.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/3d72f710e6adf2b14a6f80d20646e24a632d4d7b-24x24.svg"
+  },
+  {
+    "_id": "image-c4d5d22f49b92b5c9bedbe06fe6e1d29769c2b4f-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "palette.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c4d5d22f49b92b5c9bedbe06fe6e1d29769c2b4f-24x24.svg"
+  },
+  {
+    "_id": "image-110654ad74f3d9065a3d70d8857d0e3ad5103873-577x432-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 432,
+      "width": 577
+    },
+    "extension": "png",
+    "originalFilename": "james2.png",
+    "refs": [
+      {
+        "_id": "47c97498-bb8a-44e2-806c-1242e98e7736",
+        "_type": "author",
+        "title": "James Karnes"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/110654ad74f3d9065a3d70d8857d0e3ad5103873-577x432.png"
+  },
+  {
+    "_id": "image-e2e3c56b077c1978dd36bf008da9829f07f220e3-3840x1920-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1920,
+      "width": 3840
+    },
+    "extension": "jpg",
+    "originalFilename": "website.jpg",
+    "refs": [
+      {
+        "_id": "2cf835f4-efa1-4495-b267-3cdf7348fa09",
+        "_type": "blogPost",
+        "title": "Top 5 Website Features Every Business Needs"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e2e3c56b077c1978dd36bf008da9829f07f220e3-3840x1920.jpg"
+  },
+  {
+    "_id": "image-60ef9f64a2922416992536ca85242b7136b19d25-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "shopping-cart.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/60ef9f64a2922416992536ca85242b7136b19d25-24x24.svg"
+  },
+  {
+    "_id": "image-891ef33f82e634681e5679fbc1805dac59ec948d-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "smartphone.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/891ef33f82e634681e5679fbc1805dac59ec948d-24x24.svg"
+  },
+  {
+    "_id": "image-0d00460d2e7a74518cabc54a67e6172273a7b7ab-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "zap.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0d00460d2e7a74518cabc54a67e6172273a7b7ab-24x24.svg"
+  },
+  {
+    "_id": "image-9859410781a1dc4d8c3ba21c79db2d5abb17666f-24x24-svg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 24,
+      "width": 24
+    },
+    "extension": "svg",
+    "originalFilename": "search.svg",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/9859410781a1dc4d8c3ba21c79db2d5abb17666f-24x24.svg"
+  },
+  {
+    "_id": "image-d716adb82827e51188be53d82df1bab3b0eae4a2-493x427-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 427,
+      "width": 493
+    },
+    "extension": "png",
+    "originalFilename": "logo.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      },
+      {
+        "_id": "381921f6-799e-40c0-b48b-d5c58ba09e9a",
+        "_type": "pillarPage",
+        "title": "Guía Completa de Desarrollo Web Moderno para Negocios"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png"
+  },
+  {
+    "_id": "image-0d5eaf8a6ea5df913518c4e81fc819e475e934f8-826x853-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 853,
+      "width": 826
+    },
+    "extension": "png",
+    "originalFilename": "favicon.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      },
+      {
+        "_id": "381921f6-799e-40c0-b48b-d5c58ba09e9a",
+        "_type": "pillarPage",
+        "title": "Guía Completa de Desarrollo Web Moderno para Negocios"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0d5eaf8a6ea5df913518c4e81fc819e475e934f8-826x853.png"
+  },
+  {
+    "_id": "image-b819bf0868fe6c25154103e4d8893850a6fa503a-744x704-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 704,
+      "width": 744
+    },
+    "extension": "png",
+    "originalFilename": "TourLogoNew.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/b819bf0868fe6c25154103e4d8893850a6fa503a-744x704.png"
+  },
+  {
+    "_id": "image-772d6f23ef1ed143b62e09a3ffeb35daaf2f06ec-500x500-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 500,
+      "width": 500
+    },
+    "extension": "png",
+    "originalFilename": "nancy-logo-bgremoval.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/772d6f23ef1ed143b62e09a3ffeb35daaf2f06ec-500x500.png"
+  },
+  {
+    "_id": "image-83a931f7221f2df028fe26f1ff4c95f0cb1fa6a6-2400x1600-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1600,
+      "width": 2400
+    },
+    "extension": "jpg",
+    "originalFilename": "prepare.jpg",
+    "refs": [
+      {
+        "_id": "499a80a6-0c1b-45e2-b7a3-e9835f77a67a",
+        "_type": "serviceItem",
+        "title": "Landing Pages & One-Page Sites"
+      },
+      {
+        "_id": "adf15982-18af-4178-b980-44ca7b99b8f0",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "c30d70d0-0f12-4bc8-b5ca-1a02626438f7",
+        "_type": "blogPost",
+        "title": "How to Prepare Content for a New Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/83a931f7221f2df028fe26f1ff4c95f0cb1fa6a6-2400x1600.jpg"
+  },
+  {
+    "_id": "image-3c95c7f708ab847bf8c6887e3e06444b5aa1a390-1920x1440-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1440,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "screenshotsertuinevents.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/3c95c7f708ab847bf8c6887e3e06444b5aa1a390-1920x1440.png"
+  },
+  {
+    "_id": "image-e5abef4f21846ddf18f438aa63a8d1e6825eeb54-1920x1440-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1440,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "916shots_so.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e5abef4f21846ddf18f438aa63a8d1e6825eeb54-1920x1440.png"
+  },
+  {
+    "_id": "image-5ac36ecadc8020f74c3be8be6a3c483225a8293a-1920x1440-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1440,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "622shots_so.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/5ac36ecadc8020f74c3be8be6a3c483225a8293a-1920x1440.png"
+  },
+  {
+    "_id": "image-bc6216cc4c05a50341b334f9c4e4f40580bf43f2-1920x1440-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1440,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "456shots_so.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/bc6216cc4c05a50341b334f9c4e4f40580bf43f2-1920x1440.png"
+  },
+  {
+    "_id": "image-9162e032cd22e8930b344c580d98e7a41a39ede8-2569x1608-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1608,
+      "width": 2569
+    },
+    "extension": "jpg",
+    "originalFilename": "2345222.jpg",
+    "refs": [
+      {
+        "_id": "2cf835f4-efa1-4495-b267-3cdf7348fa09",
+        "_type": "blogPost",
+        "title": "Top 5 Website Features Every Business Needs"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/9162e032cd22e8930b344c580d98e7a41a39ede8-2569x1608.jpg"
+  },
+  {
+    "_id": "image-0a3d95b2aaf4d112f269ae4c56fe18626c58af65-3916x2037-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2037,
+      "width": 3916
+    },
+    "extension": "jpg",
+    "originalFilename": "laptopcontent.jpg",
+    "refs": [
+      {
+        "_id": "c30d70d0-0f12-4bc8-b5ca-1a02626438f7",
+        "_type": "blogPost",
+        "title": "How to Prepare Content for a New Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0a3d95b2aaf4d112f269ae4c56fe18626c58af65-3916x2037.jpg"
+  },
+  {
+    "_id": "image-e208f150a6d86616f136c3d2978ff3896fa7079e-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "7090057.jpg",
+    "refs": [
+      {
+        "_id": "f5c39c83-5f71-4fd3-afa0-15b9019eef1d",
+        "_type": "serviceItem",
+        "title": "API Integrations & Automation"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e208f150a6d86616f136c3d2978ff3896fa7079e-2000x2000.jpg"
+  },
+  {
+    "_id": "image-646f85b72dbe1d70a6cfd8616a9cd95d7fcf00a3-3000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 3000
+    },
+    "extension": "jpg",
+    "originalFilename": "5063183.jpg",
+    "refs": [
+      {
+        "_id": "6ffbe545-502e-4d15-9d53-eb1042c06df4",
+        "_type": "serviceItem",
+        "title": "Website Migrations or Rebuilds"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/646f85b72dbe1d70a6cfd8616a9cd95d7fcf00a3-3000x2000.jpg"
+  },
+  {
+    "_id": "image-291acd95b3f046152cce8f40577af237653ab404-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "3143931.jpg",
+    "refs": [
+      {
+        "_id": "d07b14b5-1a46-4737-8a48-d61be1d86f12",
+        "_type": "serviceItem",
+        "title": "Ongoing Website Maintenance & Support"
+      },
+      {
+        "_id": "landingPage-mantenimiento-web-republica-dominicana",
+        "_type": "landingPage",
+        "title": "Mantenimiento Web República Dominicana"
+      },
+      {
+        "_id": "seo-mantenimiento-web-republica-dominicana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/291acd95b3f046152cce8f40577af237653ab404-2000x2000.jpg"
+  },
+  {
+    "_id": "image-4246694773876d23a4852ff19aa2c93fbf97c31c-4500x3500-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3500,
+      "width": 4500
+    },
+    "extension": "jpg",
+    "originalFilename": "2128.jpg",
+    "refs": [
+      {
+        "_id": "db85c86b-f7bb-45e8-ad9f-74685e1ff0f0",
+        "_type": "serviceItem",
+        "title": "E-commerce Integrations"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/4246694773876d23a4852ff19aa2c93fbf97c31c-4500x3500.jpg"
+  },
+  {
+    "_id": "image-c24162fd502557a37c30941c5e1f8c05b2bf8b49-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "10290108.jpg",
+    "refs": [
+      {
+        "_id": "ee5f3620-04d7-40fc-b551-66a5f3f7798c",
+        "_type": "serviceItem",
+        "title": "Multilingual & International Websites"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c24162fd502557a37c30941c5e1f8c05b2bf8b49-2000x2000.jpg"
+  },
+  {
+    "_id": "image-90a29bf4964a524e1ba69457dac5b50bda488798-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "4827607.jpg",
+    "refs": [
+      {
+        "_id": "bc994ea4-d6d9-40da-a014-ff720893e7f6",
+        "_type": "serviceItem",
+        "title": "Headless CMS Development"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/90a29bf4964a524e1ba69457dac5b50bda488798-2000x2000.jpg"
+  },
+  {
+    "_id": "image-e5407b296924bf63b9ec4828d0fce68f0008652c-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "4380747.jpg",
+    "refs": [
+      {
+        "_id": "a6b36a98-aeaf-48ce-b77a-eb7d0bc344b1",
+        "_type": "serviceItem",
+        "title": "Web Applications"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e5407b296924bf63b9ec4828d0fce68f0008652c-2000x2000.jpg"
+  },
+  {
+    "_id": "image-30903fc4a4fa252d0e49c3194a8a3e8b0f9e97a0-7730x7730-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 7730,
+      "width": 7730
+    },
+    "extension": "jpg",
+    "originalFilename": "Wavy_Bus-05_Single-05.jpg",
+    "refs": [
+      {
+        "_id": "c50a49f3-d5d9-46f0-902e-479ce4ff1a91",
+        "_type": "serviceItem",
+        "title": "Custom Business Websites"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/30903fc4a4fa252d0e49c3194a8a3e8b0f9e97a0-7730x7730.jpg"
+  },
+  {
+    "_id": "image-81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 487,
+      "width": 512
+    },
+    "extension": "png",
+    "originalFilename": "dr-web-studio-bg-removed-no-title-2.png",
+    "refs": [
+      {
+        "_id": "389e47c6-351e-4898-b289-0d346b67392e",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png"
+  },
+  {
+    "_id": "image-7287cb96fadd7fbd5dee2e6b682862b469cacc1d-3882x2584-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2584,
+      "width": 3882
+    },
+    "extension": "jpg",
+    "originalFilename": "christopher-gower-m_HRfLhgABo-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "2ed0e6bd-4e56-4702-ab54-ff3badcdb4d9",
+        "_type": "blogPost",
+        "title": "What is JAMstack and Why Does It Make Websites Faster"
+      },
+      {
+        "_id": "d03d8d89-f04c-42d6-a373-36f970d52dd9",
+        "_type": "blogPost",
+        "title": "What’s New in Next.js: Why the App Router Changes Everything"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7287cb96fadd7fbd5dee2e6b682862b469cacc1d-3882x2584.jpg"
+  },
+  {
+    "_id": "image-213faf0c7371565da37cce483447ff95abc73956-3677x3002-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3002,
+      "width": 3677
+    },
+    "extension": "jpg",
+    "originalFilename": "web-design-technology-browsing-programming-concept.jpg",
+    "refs": [
+      {
+        "_id": "50ac7737-774d-4766-83a6-ae031e268468",
+        "_type": "blogPost",
+        "title": "Why Businesses in the Dominican Republic Need a Fast Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/213faf0c7371565da37cce483447ff95abc73956-3677x3002.jpg"
+  },
+  {
+    "_id": "image-5ccf66c5c625bff9415c1a4806c1bdb816390458-3750x2500-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2500,
+      "width": 3750
+    },
+    "extension": "jpg",
+    "originalFilename": "tech.jpg",
+    "refs": [
+      {
+        "_id": "efb4c653-447f-4dc9-ad09-46763e268a61",
+        "_type": "blogPost",
+        "title": "How Technology Is Changing Small Business in the Dominican Republic"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/5ccf66c5c625bff9415c1a4806c1bdb816390458-3750x2500.jpg"
+  },
+  {
+    "_id": "image-a9e69697f9b863cc33735daef748b1a38d4e57a2-2918x3648-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3648,
+      "width": 2918
+    },
+    "extension": "jpg",
+    "originalFilename": "websiteplanning.jpg",
+    "refs": [
+      {
+        "_id": "cc13f2c4-2728-414e-a9bd-20125e83be35",
+        "_type": "blogPost",
+        "title": "How to Plan a Web Project with Your Developer"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/a9e69697f9b863cc33735daef748b1a38d4e57a2-2918x3648.jpg"
+  },
+  {
+    "_id": "image-68b4545501943b163291902396350f36c49af3f1-2000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 2000
+    },
+    "extension": "jpg",
+    "originalFilename": "cms.jpg",
+    "refs": [
+      {
+        "_id": "3f5d9090-40ec-4f39-a041-1385a9c6b1fe",
+        "_type": "blogPost",
+        "title": "Headless CMS Explained (Without Technical Jargon)"
+      },
+      {
+        "_id": "ac8a0f80-ae5b-4f90-a2f2-b3b407a2be3a",
+        "_type": "blogPost",
+        "title": "What Is a Headless CMS?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/68b4545501943b163291902396350f36c49af3f1-2000x2000.jpg"
+  },
+  {
+    "_id": "image-13266691f576191ccff3b9e357a751c66c4478e8-5184x3456-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3456,
+      "width": 5184
+    },
+    "extension": "jpg",
+    "originalFilename": "website.jpg",
+    "refs": [
+      {
+        "_id": "de220fcc-cd07-4c93-acf7-2794d29c19da",
+        "_type": "blogPost",
+        "title": "The Real Cost of a Cheap Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/13266691f576191ccff3b9e357a751c66c4478e8-5184x3456.jpg"
+  },
+  {
+    "_id": "image-bcdf269601d3a115ff745f6a261167bc32f7d12a-512x512-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 512,
+      "width": 512
+    },
+    "extension": "png",
+    "originalFilename": "icon.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/bcdf269601d3a115ff745f6a261167bc32f7d12a-512x512.png"
+  },
+  {
+    "_id": "image-b653ecdc678bfd199779c3608d3ae9d1dab4fc03-1920x963-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 963,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "screely-1757108321778.png",
+    "refs": [
+      {
+        "_id": "ce4859a7-c3f4-4f25-9365-84fea681ff74",
+        "_type": "blogPost",
+        "title": "How We Built a Venue Discovery Marketplace for Punta Cana's Wedding and Events Industry"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/b653ecdc678bfd199779c3608d3ae9d1dab4fc03-1920x963.png"
+  },
+  {
+    "_id": "image-107187c369cc3c0331732f3d152a7a62c23aa687-500x500-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 500,
+      "width": 500
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaphotoedition-logo.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      },
+      {
+        "_id": "381921f6-799e-40c0-b48b-d5c58ba09e9a",
+        "_type": "pillarPage",
+        "title": "Guía Completa de Desarrollo Web Moderno para Negocios"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/107187c369cc3c0331732f3d152a7a62c23aa687-500x500.png"
+  },
+  {
+    "_id": "image-d36d6cbd64e13b7888691f3e5393f102a27d75a3-1280x1280-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1280,
+      "width": 1280
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaphotoedition.png",
+    "refs": [
+      {
+        "_id": "5b33e1a5-5271-4eab-a474-143bc7ee4fbd",
+        "_type": "blogPost",
+        "title": "How We Built a Luxury Photography Portfolio That Doubled Session Time and Increased Inquiries 60% in Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d36d6cbd64e13b7888691f3e5393f102a27d75a3-1280x1280.png"
+  },
+  {
+    "_id": "image-cfb0a49620c9c1aa4c0184ebdc18f32cb08d7f15-5320x3073-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3073,
+      "width": 5320
+    },
+    "extension": "jpg",
+    "originalFilename": "igor-miske-Px3iBXV-4TU-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "26555c7b-f97a-4415-82fd-82e94c5eca27",
+        "_type": "blogPost",
+        "title": "When It’s Time to Upgrade Your Business Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/cfb0a49620c9c1aa4c0184ebdc18f32cb08d7f15-5320x3073.jpg"
+  },
+  {
+    "_id": "image-27bb99d92fd2014ab04754162682285f47300208-6000x3368-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3368,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "dole777-EQSPI11rf68-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "3a3af4b0-21aa-4050-aa23-1773110cd848",
+        "_type": "blogPost",
+        "title": "Website vs Social Media: What Your Business Really Needs"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/27bb99d92fd2014ab04754162682285f47300208-6000x3368.jpg"
+  },
+  {
+    "_id": "image-50fdd25fabf8ebc5ad602a2c34c3af93c76f1ab8-2400x1737-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1737,
+      "width": 2400
+    },
+    "extension": "jpg",
+    "originalFilename": "deng-xiang-YBtAJPcvc4Y-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "f3868ce2-f08a-44f6-beba-fd85db71247a",
+        "_type": "blogPost",
+        "title": "Why Your Business Needs More Than WordPress in 2026"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/50fdd25fabf8ebc5ad602a2c34c3af93c76f1ab8-2400x1737.jpg"
+  },
+  {
+    "_id": "image-1a3b8211cdd54f3439a2c9c55c3e55faee93c7c6-5848x3899-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3899,
+      "width": 5848
+    },
+    "extension": "jpg",
+    "originalFilename": "domenico-loia-hGV2TfOh0ns-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "8b574775-e26a-4829-a950-6abf34f59d68",
+        "_type": "blogPost",
+        "title": "Next.js vs WordPress: Complete Comparison for Business Owners"
+      },
+      {
+        "_id": "landingPage-diseno-web-republica-dominicana",
+        "_type": "landingPage",
+        "title": "Diseño Web República Dominicana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/1a3b8211cdd54f3439a2c9c55c3e55faee93c7c6-5848x3899.jpg"
+  },
+  {
+    "_id": "image-08b79531869cbb444ec0ed85ef8c37b3d48f5db8-6553x4369-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4369,
+      "width": 6553
+    },
+    "extension": "jpg",
+    "originalFilename": "frederik-lipfert-MXPboV0_-D4-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "9f757226-7429-49d9-9b9a-b9fc895df376",
+        "_type": "blogPost",
+        "title": "Core Web Vitals: How Speed Affects Your Online Sales"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/08b79531869cbb444ec0ed85ef8c37b3d48f5db8-6553x4369.jpg"
+  },
+  {
+    "_id": "image-dde6fd9a97e901d74d24c2699458314ba9f2d0fd-5184x3456-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3456,
+      "width": 5184
+    },
+    "extension": "jpg",
+    "originalFilename": "pexels-tranmautritam-326503.jpg",
+    "refs": [
+      {
+        "_id": "186dde5e-418d-4388-9829-0a48e8e3102a",
+        "_type": "blogPost",
+        "title": "Web Design Trends for Dominican Businesses in 2026: What Actually Wins Bookings (and What to Ignore)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/dde6fd9a97e901d74d24c2699458314ba9f2d0fd-5184x3456.jpg"
+  },
+  {
+    "_id": "image-9ed0f1a13a82063ec789e0fe828f3daf94f606f3-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "nanobananas-1774977278373.png",
+    "refs": [
+      {
+        "_id": "b628e519-8067-4ea4-b59a-fc0c52555d16",
+        "_type": "blogPost",
+        "title": "How to Choose a Web Development Company in the Dominican Republic"
+      },
+      {
+        "_id": "landingPage-desarrollo-web-punta-cana",
+        "_type": "landingPage",
+        "title": "Desarrollo Web Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/9ed0f1a13a82063ec789e0fe828f3daf94f606f3-1344x768.png"
+  },
+  {
+    "_id": "image-fe79fc5a55723e39bc9debe55e8cf33f2e297938-1024x1024-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1024,
+      "width": 1024
+    },
+    "extension": "png",
+    "originalFilename": "nanobananas-1775224423991.png",
+    "refs": [
+      {
+        "_id": "2b585f54-1d59-4d3f-b87c-46136cca9cd5",
+        "_type": "blogPost",
+        "title": "Website Creation for Dominican Businesses: Complete Guide "
+      },
+      {
+        "_id": "landingPage-desarrollo-ecommerce-republica-dominicana",
+        "_type": "landingPage",
+        "title": "Desarrollo E-commerce República Dominicana"
+      },
+      {
+        "_id": "seo-desarrollo-ecommerce-republica-dominicana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/fe79fc5a55723e39bc9debe55e8cf33f2e297938-1024x1024.png"
+  },
+  {
+    "_id": "image-e7d7186368916b9f7935daffdd2b6a905c9184bd-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "nanobananas-1775226161786.png",
+    "refs": [
+      {
+        "_id": "28a2b70b-00cb-4197-8f68-6e2d0a6a48d3",
+        "_type": "blogPost",
+        "title": "Local vs International Web Development: Advantages of Working with Dominican Developers"
+      },
+      {
+        "_id": "seo-desarrollo-web-punta-cana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e7d7186368916b9f7935daffdd2b6a905c9184bd-1344x768.png"
+  },
+  {
+    "_id": "image-87dd1f261aa29484258b1c09400860b07c3b95d5-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "nanobananas-1775227163513.png",
+    "refs": [
+      {
+        "_id": "6c2598fa-5103-4e9c-b53e-35dc0bf66121",
+        "_type": "blogPost",
+        "title": "Professional Web Design: Why Dominican Businesses Need More Than Templates"
+      },
+      {
+        "_id": "seo-desarrollo-web-republica-dominicana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/87dd1f261aa29484258b1c09400860b07c3b95d5-1344x768.png"
+  },
+  {
+    "_id": "image-d0b7187796fe8e708229f7a42f46171d6cadd8c3-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 001 - Punta Cana Proposal Packages - [puntacanaproposalpackages.com].png",
+    "refs": [
+      {
+        "_id": "b3846c89-659b-4ea6-b2fb-47cdb4bc05aa",
+        "_type": "blogPost",
+        "title": "How We Built a 9-Language Proposal Packages Platform for Punta Cana's Most International Romantic Service"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d0b7187796fe8e708229f7a42f46171d6cadd8c3-1920x999.png"
+  },
+  {
+    "_id": "image-bc34a9b9da946eab8ea77141d4f5caf183e7c11f-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 002 - Fuerza del Pueblo Verón–Punta Cana - Compromiso con la Comunidad_ - [www.fuerzadelpuebloveronpuntacana.com].png",
+    "refs": [
+      {
+        "_id": "e46a578f-df92-452d-b0b9-f542e287ebb5",
+        "_type": "blogPost",
+        "title": "How We Built a Civic Engagement Platform for a Dominican Political Party in Verón-Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/bc34a9b9da946eab8ea77141d4f5caf183e7c11f-1920x999.png"
+  },
+  {
+    "_id": "image-c473fc27639e8e47b35fd417c0e378721e10c94d-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 003 - Wedding Planner & Event Design in Punta Cana - [sertuinevents.com].png",
+    "refs": [
+      {
+        "_id": "beca8f00-3e11-494e-a432-db155a51672f",
+        "_type": "blogPost",
+        "title": "How We Built a Full Business Platform for a Punta Cana Event Planner That Grew Sales 150%"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c473fc27639e8e47b35fd417c0e378721e10c94d-1920x999.png"
+  },
+  {
+    "_id": "image-0cbfab38090cd3b8b0f406d068cb6789a0582dfe-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 004 - Scuba Diving Punta Cana - PADI Courses, Reef & Shark Diving – Grand_ - [www.grandbay-puntacana.com].png",
+    "refs": [
+      {
+        "_id": "ab026bcf-a1a5-41c8-a6ea-2fdf17fcb065",
+        "_type": "blogPost",
+        "title": "How We Built a Booking-First Dive Center Website That Increased Conversions 200% in Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0cbfab38090cd3b8b0f406d068cb6789a0582dfe-1920x999.png"
+  },
+  {
+    "_id": "image-b0907d4b496f71c3e099af900cc3fbfb9e3a84d7-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 005 - Home Page - Punta Cana Tour Store - [puntacanatourstore.com].png",
+    "refs": [
+      {
+        "_id": "b96d8282-f43a-43bc-82d0-b9e2015ae801",
+        "_type": "blogPost",
+        "title": "How We Built a Full-Scale Tour Marketplace for Punta Cana's Most Complete Excursion Platform"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/b0907d4b496f71c3e099af900cc3fbfb9e3a84d7-1920x999.png"
+  },
+  {
+    "_id": "image-aad7590741ad4e7fa747de14ebfa4a584dc4d9af-1920x999-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 999,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 006 - Handmade Resin Gifts in Punta Cana - Esencias by Nancy_ - [esenciasbynancy.com].png",
+    "refs": [
+      {
+        "_id": "af7be5e4-0b8d-4ae5-9a2f-3303bb9fcc73",
+        "_type": "blogPost",
+        "title": "How We Built a Bilingual E-Commerce Store for a Punta Cana Handmade Resin Artist"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/aad7590741ad4e7fa747de14ebfa4a584dc4d9af-1920x999.png"
+  },
+  {
+    "_id": "image-2b2fe95844384c650072a3eed2c3705e29ccf8d6-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1777563306506.png",
+    "refs": [
+      {
+        "_id": "562c0b86-ec54-4f44-a01f-0be126f21ea1",
+        "_type": "blogPost",
+        "title": "How Much Should a Website Cost in the Dominican Republic in 2026?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/2b2fe95844384c650072a3eed2c3705e29ccf8d6-1344x768.png"
+  },
+  {
+    "_id": "image-c95e204b3a0d204794a4a46f1b52dfe5edb66c0b-1920x998-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 998,
+      "width": 1920
+    },
+    "extension": "png",
+    "originalFilename": "FireShot Capture 007 - Punta Cana Wedding Packages — Design Your Dream Wedding_ - [punta-cana-wedding-packages.netlify.app].png",
+    "refs": [
+      {
+        "_id": "125d1fa5-2b6a-4797-b449-a71aa9580e04",
+        "_type": "blogPost",
+        "title": "How We Built a Real-Time Wedding Package Calculator That Turns Browsers Into Qualified Leads in 10 Minutes"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c95e204b3a0d204794a4a46f1b52dfe5edb66c0b-1920x998.png"
+  },
+  {
+    "_id": "image-7046f3ca640e3907d3322ad211b1b61ba1ebe1b0-1264x848-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 848,
+      "width": 1264
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1777847204809.jpg",
+    "refs": [
+      {
+        "_id": "fe53b0db-9ed3-4612-817c-b2d5d69a16e2",
+        "_type": "blogPost",
+        "title": "The Dominican Republic's Tourism Boom Is Digital — Is Your Business Ready?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7046f3ca640e3907d3322ad211b1b61ba1ebe1b0-1264x848.jpg"
+  },
+  {
+    "_id": "image-96c438593e2fc34233dc00a64c7c199b64ec2cf6-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1777847965813.png",
+    "refs": [
+      {
+        "_id": "105d0d8e-91c7-4de4-a81b-ff211408f6c7",
+        "_type": "blogPost",
+        "title": "WhatsApp Is Not a Website: Why Dominican Businesses Need Both"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/96c438593e2fc34233dc00a64c7c199b64ec2cf6-1344x768.png"
+  },
+  {
+    "_id": "image-0233fc6688c479da511b1ab56050cf27519e3c0e-1264x848-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 848,
+      "width": 1264
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1778517890853.jpg",
+    "refs": [
+      {
+        "_id": "f961e48e-841d-4db6-86db-610b2f1eb245",
+        "_type": "blogPost",
+        "title": "The Punta Cana Digital Market in 2026: What International Buyers Expect Before They Book"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0233fc6688c479da511b1ab56050cf27519e3c0e-1264x848.jpg"
+  },
+  {
+    "_id": "image-697241c41b569025c006e1bd0d6463d943b0b93a-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1778519469367.png",
+    "refs": [
+      {
+        "_id": "281d956c-e9c8-454e-84c9-4a47dc2a8fea",
+        "_type": "blogPost",
+        "title": "Google's Core Web Vitals in 2026: The Performance Score That's Costing Dominican Businesses Rankings"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/697241c41b569025c006e1bd0d6463d943b0b93a-1344x768.png"
+  },
+  {
+    "_id": "image-0b26ec1d80834398529814aa24031ded8c95be12-1264x848-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 848,
+      "width": 1264
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1778520232079.jpg",
+    "refs": [
+      {
+        "_id": "12ede911-1fd3-4036-8dce-db86a6be36de",
+        "_type": "blogPost",
+        "title": "Why Your Punta Cana Business Doesn't Appear on Google Maps (And How to Fix It)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0b26ec1d80834398529814aa24031ded8c95be12-1264x848.jpg"
+  },
+  {
+    "_id": "image-dbb402f255266e3f05d1fa71667ce3899c4be3c0-5504x3072-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3072,
+      "width": 5504
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1778783186290.png",
+    "refs": [
+      {
+        "_id": "cc5cf695-7ab1-4d62-a177-422852f21268",
+        "_type": "blogPost",
+        "title": "How Long Does SEO Take? A Realistic Timeline for Dominican Businesses"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/dbb402f255266e3f05d1fa71667ce3899c4be3c0-5504x3072.png"
+  },
+  {
+    "_id": "image-5bcc0a661a2e9940b099a0a3cdb3b1f7fb0a62c1-1344x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1344
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1778783389162.png",
+    "refs": [
+      {
+        "_id": "fcc15160-2632-4564-bc89-17be93bd016a",
+        "_type": "blogPost",
+        "title": "What Is a Sitemap and Why Does Google Need One for Your Dominican Website?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/5bcc0a661a2e9940b099a0a3cdb3b1f7fb0a62c1-1344x768.png"
+  },
+  {
+    "_id": "image-e00c72d331345ec2e2cf27567cb2f298a344f127-5504x3072-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3072,
+      "width": 5504
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1778783901349.png",
+    "refs": [
+      {
+        "_id": "8778a61b-cc98-45e1-bbcf-f945ae2f4e49",
+        "_type": "blogPost",
+        "title": "Image Optimization for Tourism Websites: How to Make High-Quality Photos Load Fast"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e00c72d331345ec2e2cf27567cb2f298a344f127-5504x3072.png"
+  },
+  {
+    "_id": "image-f40117acabb252d7e11469b236125e3772906985-1264x848-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 848,
+      "width": 1264
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1779114815462.jpg",
+    "refs": [
+      {
+        "_id": "6879f5f4-e38a-4cb6-a84e-e0c2ff2a6ad4",
+        "_type": "blogPost",
+        "title": "Structured Data for Dominican Businesses: How to Get Rich Results in Google Search"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/f40117acabb252d7e11469b236125e3772906985-1264x848.jpg"
+  },
+  {
+    "_id": "image-c0c009ab6b7322774ae976abe0a1c7930bf66bfa-1376x768-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1779117933838.jpg",
+    "refs": [
+      {
+        "_id": "9b0504c2-6cd8-4df9-b3b7-90640ead8615",
+        "_type": "blogPost",
+        "title": "The Difference Between SEO and SEM: Which One Does a Punta Cana Business Actually Need?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c0c009ab6b7322774ae976abe0a1c7930bf66bfa-1376x768.jpg"
+  },
+  {
+    "_id": "image-8b8499866f1d93e08dec3a9f9e58f4051ffc505d-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1779463935901.png",
+    "refs": [
+      {
+        "_id": "1ba86d77-2b93-4ff4-aaa1-94e41e093182",
+        "_type": "blogPost",
+        "title": "Why a Fast Website Makes You More Money: The Conversion Math Behind Page Speed"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/8b8499866f1d93e08dec3a9f9e58f4051ffc505d-2752x1536.png"
+  },
+  {
+    "_id": "image-110f4fb3241c9fc589a4c63142d75ace51f2a532-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1779465178675.png",
+    "refs": [
+      {
+        "_id": "ba14036c-0f69-4617-b7df-ae4d1df3f2b8",
+        "_type": "blogPost",
+        "title": "Bilingual SEO: How to Rank in Both English and Spanish Without Hurting Either"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/110f4fb3241c9fc589a4c63142d75ace51f2a532-2752x1536.png"
+  },
+  {
+    "_id": "image-c5f0778249cc95a3bcc3402b6a239cb5df956a4f-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1779470865950.png",
+    "refs": [
+      {
+        "_id": "f84ca12c-edf8-44c1-a185-48dbeca1658c",
+        "_type": "blogPost",
+        "title": "What Is a Robots.txt File and Is Yours Blocking Google From Your Website?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c5f0778249cc95a3bcc3402b6a239cb5df956a4f-2752x1536.png"
+  },
+  {
+    "_id": "image-e70ae286016433b211d58ee78cd08f33b3a1e7c9-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781284684375.png",
+    "refs": [
+      {
+        "_id": "4c770127-4b89-4787-8d66-5948baa2bf94",
+        "_type": "blogPost",
+        "title": "Why Punta Cana Businesses Are Losing Tourists to Competitors With Better Websites"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e70ae286016433b211d58ee78cd08f33b3a1e7c9-2752x1536.png"
+  },
+  {
+    "_id": "image-aebf23c2fba2b49a5ec2af6bcbabab0f49ffdb22-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781285468067.png",
+    "refs": [
+      {
+        "_id": "370fa72f-d0d5-447d-b5eb-bb3b9fb4f466",
+        "_type": "blogPost",
+        "title": "Does My Business Need a Website or a Landing Page? A Dominican Business Owner's Decision Guide"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/aebf23c2fba2b49a5ec2af6bcbabab0f49ffdb22-2752x1536.png"
+  },
+  {
+    "_id": "image-db5d7a3819fa15de59013f3bd549cd39dffeda16-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781287534603.png",
+    "refs": [
+      {
+        "_id": "4e53f775-b1f4-4d7c-bf64-4b8dc8bee311",
+        "_type": "blogPost",
+        "title": "How to Brief a Web Developer: What Dominican Businesses Need to Know Before Starting a Project"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/db5d7a3819fa15de59013f3bd549cd39dffeda16-2752x1536.png"
+  },
+  {
+    "_id": "image-33c6dd263059d6590327d1070fcbf38e08f2f318-500x500-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 500,
+      "width": 500
+    },
+    "extension": "png",
+    "originalFilename": "logo-no-bg.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/33c6dd263059d6590327d1070fcbf38e08f2f318-500x500.png"
+  },
+  {
+    "_id": "image-319a3f3e002fd58c6ecb1ed830e74e918f588146-1024x1024-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1024,
+      "width": 1024
+    },
+    "extension": "png",
+    "originalFilename": "logo-bgremove.jpg",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/319a3f3e002fd58c6ecb1ed830e74e918f588146-1024x1024.png"
+  },
+  {
+    "_id": "image-78f6d30176b4fcadb7eae1a9513a10b7ac55b6a9-1200x538-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 538,
+      "width": 1200
+    },
+    "extension": "png",
+    "originalFilename": "Partido_Logo_Fuerza_del_Pueblo2.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/78f6d30176b4fcadb7eae1a9513a10b7ac55b6a9-1200x538.png"
+  },
+  {
+    "_id": "image-dd5d86e12131525d4be872ff5af866af9a3cefc3-225x225-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 225,
+      "width": 225
+    },
+    "extension": "png",
+    "originalFilename": "images.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/dd5d86e12131525d4be872ff5af866af9a3cefc3-225x225.png"
+  },
+  {
+    "_id": "image-f2826e89e870755802e528941ee933dd150fe721-365x538-webp",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 538,
+      "width": 365
+    },
+    "extension": "webp",
+    "originalFilename": "Partido_Logo_Fuerza_del_Pueblo2.webp",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/f2826e89e870755802e528941ee933dd150fe721-365x538.webp"
+  },
+  {
+    "_id": "image-a44dca48167ff27841dd84e053c3b520e97e32e1-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781481493174.png",
+    "refs": [
+      {
+        "_id": "c44047a7-004f-4ee1-9941-2425fd6ea733",
+        "_type": "blogPost",
+        "title": "Next.js vs WordPress: Which One Is Right for Your Dominican Business?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/a44dca48167ff27841dd84e053c3b520e97e32e1-1376x768.png"
+  },
+  {
+    "_id": "image-7e42b8365d5dc44b99f614973a7764a25b16a2e9-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781481581304.png",
+    "refs": [
+      {
+        "_id": "d40f0761-8369-4f3c-a86e-ccf0da04d982",
+        "_type": "blogPost",
+        "title": "Why Your Dominican Business Website Needs Dark Mode (And What It Says About Your Brand)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7e42b8365d5dc44b99f614973a7764a25b16a2e9-1376x768.png"
+  },
+  {
+    "_id": "image-75c6deb1efdbca8565ffcebb932ecf869630caa2-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781617937174.png",
+    "refs": [
+      {
+        "_id": "efe830a9-e64d-4b78-9689-a0962f794e92",
+        "_type": "blogPost",
+        "title": "The Dominican Business Website Launch Checklist: 20 Things to Verify Before Going Live"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/75c6deb1efdbca8565ffcebb932ecf869630caa2-2752x1536.png"
+  },
+  {
+    "_id": "image-86192dd3b9a5a14ffc1a237774bbaad13a28c3a8-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781622826444.png",
+    "refs": [
+      {
+        "_id": "1f9119a5-ac75-402f-b4f2-f37351ffb806",
+        "_type": "blogPost",
+        "title": "How to Choose Colors, Fonts, and a Design Style for Your Dominican Business Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/86192dd3b9a5a14ffc1a237774bbaad13a28c3a8-2752x1536.png"
+  },
+  {
+    "_id": "image-fa7d216caa28f59897776d83b5c24954bbf5e038-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781626072556.png",
+    "refs": [
+      {
+        "_id": "643472f1-2c2b-423d-98cd-ff1f53219522",
+        "_type": "blogPost",
+        "title": "How to Connect Your Dominican Business Website to WhatsApp, Google Maps, and Instagram (The Right Way)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/fa7d216caa28f59897776d83b5c24954bbf5e038-2752x1536.png"
+  },
+  {
+    "_id": "image-874ad3e78a133f25caf23388b700305d436bb588-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1781653883013.png",
+    "refs": [
+      {
+        "_id": "e296d39b-e406-45f4-92e5-cb9cb48256ba",
+        "_type": "blogPost",
+        "title": "How to Write Website Content for a Punta Cana Tourism Business (Even If You're Not a Writer)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/874ad3e78a133f25caf23388b700305d436bb588-1376x768.png"
+  },
+  {
+    "_id": "image-262145309d7de7632919de900ff393e21b19f15d-1376x768-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1781962013839.jpg",
+    "refs": [
+      {
+        "_id": "b8316c2c-7bc8-49a1-a48e-c2b2c766f55a",
+        "_type": "blogPost",
+        "title": "How to Start Selling Online in the Dominican Republic: A Practical 2026 Guide"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/262145309d7de7632919de900ff393e21b19f15d-1376x768.jpg"
+  },
+  {
+    "_id": "image-06096c833c3f2c8238de8e669b92bb04652f3de6-5504x3072-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3072,
+      "width": 5504
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaproposal.png",
+    "refs": [
+      {
+        "_id": "8039c907-db3a-4cbf-8684-47dd91e28777",
+        "_type": "project",
+        "title": "Punta Cana Proposal Packages"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/06096c833c3f2c8238de8e669b92bb04652f3de6-5504x3072.png"
+  },
+  {
+    "_id": "image-a410ba867fd9fab40c39b561807a5df4eefd76be-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "fuerzadelpueblo.png",
+    "refs": [
+      {
+        "_id": "68d0aafe-13e7-4d4f-8301-f5f61958346e",
+        "_type": "project",
+        "title": "Fuerza del Pueblo Verón-Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/a410ba867fd9fab40c39b561807a5df4eefd76be-2752x1536.png"
+  },
+  {
+    "_id": "image-ca1b6d7f959b60ab43c6724dbe43c35ef916946e-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "grandbay.png",
+    "refs": [
+      {
+        "_id": "f09203ac-9dfd-400a-9e94-4062e56d424e",
+        "_type": "project",
+        "title": "Scuba Diving Website with Payments"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/ca1b6d7f959b60ab43c6724dbe43c35ef916946e-1376x768.png"
+  },
+  {
+    "_id": "image-673ab368838b0f9f2c8095bb9873e9dae378c82f-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "nancy.png",
+    "refs": [
+      {
+        "_id": "fc4f2424-d459-46c8-8964-79c62f441648",
+        "_type": "project",
+        "title": "Multilingual E-commerce Site"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/673ab368838b0f9f2c8095bb9873e9dae378c82f-1376x768.png"
+  },
+  {
+    "_id": "image-88ea1daca36d555cfec79c3b1a8629cc352e2cb8-2720x1536-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2720
+    },
+    "extension": "jpg",
+    "originalFilename": "tourstore.jpg",
+    "refs": [
+      {
+        "_id": "b07a4ca3-4c43-4601-864b-87610042d2f7",
+        "_type": "project",
+        "title": "Multilingual Excursion Booking Site"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/88ea1daca36d555cfec79c3b1a8629cc352e2cb8-2720x1536.jpg"
+  },
+  {
+    "_id": "image-6ca710a258407f6d1c2ae4c768e0ed9238f73702-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "SertuinEvents.png",
+    "refs": [
+      {
+        "_id": "0b25fe18-117b-4b36-8e1f-4a932f219ed1",
+        "_type": "project",
+        "title": "Multilingual Web App for Event Planning"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/6ca710a258407f6d1c2ae4c768e0ed9238f73702-1376x768.png"
+  },
+  {
+    "_id": "image-dde1cd08607e5a18a124fc253fbb7aafa284a0ae-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaphoto.png",
+    "refs": [
+      {
+        "_id": "01fcef2c-653e-452c-b325-f4d22dba49b3",
+        "_type": "project",
+        "title": "Wedding & Event Photography Portfolio"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/dde1cd08607e5a18a124fc253fbb7aafa284a0ae-1376x768.png"
+  },
+  {
+    "_id": "image-74c995ae314e7c067af4ecd10a7bc0b60ff11676-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "puntacanavenue.png",
+    "refs": [
+      {
+        "_id": "fb50c1f5-bde8-4ee2-b00a-61b234da6169",
+        "_type": "project",
+        "title": "Elegant Venue Directory for Punta Cana Events"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/74c995ae314e7c067af4ecd10a7bc0b60ff11676-1376x768.png"
+  },
+  {
+    "_id": "image-9be25634447b762e73943570444e105581924db2-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaexcursions.png",
+    "refs": [
+      {
+        "_id": "5bbee198-9a6b-4964-aa25-4855585ddbd5",
+        "_type": "project",
+        "title": "Excursion & Tour Booking Platform"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/9be25634447b762e73943570444e105581924db2-2752x1536.png"
+  },
+  {
+    "_id": "image-841e757369e0882665a1cd3a14e0d625ce2ea916-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "puntacanaweddings.png",
+    "refs": [
+      {
+        "_id": "702ea289-0939-484b-9480-09a56792c123",
+        "_type": "project",
+        "title": "Destination Wedding Builder with Real-Time Pricing"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/841e757369e0882665a1cd3a14e0d625ce2ea916-2752x1536.png"
+  },
+  {
+    "_id": "image-4a9de3df21701c267bcbdae8592727eb2069ca63-600x600-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 600,
+      "width": 600
+    },
+    "extension": "png",
+    "originalFilename": "darklogo.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/4a9de3df21701c267bcbdae8592727eb2069ca63-600x600.png"
+  },
+  {
+    "_id": "image-f25b77bed3231c0af5544f94a6764960495a407f-600x600-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 600,
+      "width": 600
+    },
+    "extension": "png",
+    "originalFilename": "Punta Cana Excursions.png",
+    "refs": [
+      {
+        "_id": "07aecb48-b667-4d6c-98b2-5301f73d657c",
+        "_type": "previousClients",
+        "title": "PROUD TO WORK WITH"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/f25b77bed3231c0af5544f94a6764960495a407f-600x600.png"
+  },
+  {
+    "_id": "image-6e7dfde86aff5ef79b1d649a5f2b09a22a17c6b4-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1782083926385.png",
+    "refs": [
+      {
+        "_id": "2836876d-e279-4d80-9c1c-4e427849c104",
+        "_type": "blogPost",
+        "title": "WooCommerce vs Shopify vs Custom: Which Is Right for Your Dominican Store?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/6e7dfde86aff5ef79b1d649a5f2b09a22a17c6b4-1376x768.png"
+  },
+  {
+    "_id": "image-749d23a77a513a7a3f51a6dc1a7166eb8aa7de2d-1264x848-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 848,
+      "width": 1264
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1782083937332.png",
+    "refs": [
+      {
+        "_id": "57d375df-7792-43ad-901e-fcdaa5752023",
+        "_type": "blogPost",
+        "title": "How to Accept Online Payments in the Dominican Republic (2026 Guide)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/749d23a77a513a7a3f51a6dc1a7166eb8aa7de2d-1264x848.png"
+  },
+  {
+    "_id": "image-d15bd07011c6cd63afcf4091f5af2d8f00a9f761-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1782084909318.png",
+    "refs": [
+      {
+        "_id": "9a198483-2799-44b3-aaf8-edfe40876923",
+        "_type": "blogPost",
+        "title": "Why Your Online Store Isn't Selling (7 Reasons for Dominican Businesses)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d15bd07011c6cd63afcf4091f5af2d8f00a9f761-1376x768.png"
+  },
+  {
+    "_id": "image-d5824bedc655aa04b2c518bdc807f0cc3e0f484f-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783116027519.png",
+    "refs": [
+      {
+        "_id": "c0baed4a-6a76-479c-8558-2735d5e6e7b2",
+        "_type": "blogPost",
+        "title": "What Are llms.txt and llms-full.txt — and Does Your Business Actually Need Them?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d5824bedc655aa04b2c518bdc807f0cc3e0f484f-1376x768.png"
+  },
+  {
+    "_id": "image-e61f239ab63ed26bfa7f567a5969d2d791b4b6e6-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783179076303.png",
+    "refs": [],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e61f239ab63ed26bfa7f567a5969d2d791b4b6e6-1376x768.png"
+  },
+  {
+    "_id": "image-db6d198d136b500a1d7f4a577c6fa79b49fb5332-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783179975354.png",
+    "refs": [
+      {
+        "_id": "b77da073-5b97-44f5-8538-15896b98aeef",
+        "_type": "blogPost",
+        "title": "Websites for La Romana & Bayahíbe Businesses"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/db6d198d136b500a1d7f4a577c6fa79b49fb5332-1376x768.png"
+  },
+  {
+    "_id": "image-f073ce762060792020519188e5b7d6adf2aaa04e-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783179972091.png",
+    "refs": [
+      {
+        "_id": "2472a9c6-54d8-4a9b-bd69-4a46db620fbe",
+        "_type": "blogPost",
+        "title": "Web Design in Bávaro: A Guide for Local Businesses"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/f073ce762060792020519188e5b7d6adf2aaa04e-1376x768.png"
+  },
+  {
+    "_id": "image-a4f42caa57513f8344fe1056fca54caafff27178-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783180159458.png",
+    "refs": [
+      {
+        "_id": "c26dc590-df54-423b-95da-ebfeb113901d",
+        "_type": "blogPost",
+        "title": "Web Design for Santo Domingo Businesses: What to Look For"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/a4f42caa57513f8344fe1056fca54caafff27178-1376x768.png"
+  },
+  {
+    "_id": "image-7b7a643ce8a1c2c39509a7b77ed793a25b67ec9d-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783180184967.png",
+    "refs": [
+      {
+        "_id": "46a04b6f-9c35-4b15-b146-f79cbbc5c09f",
+        "_type": "blogPost",
+        "title": "Web Design in Las Terrenas & Samaná: The Multilingual Market"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7b7a643ce8a1c2c39509a7b77ed793a25b67ec9d-1376x768.png"
+  },
+  {
+    "_id": "image-de27919a5f73c45a8d19b2d5f3bfbc28c5693d6c-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783180785513.png",
+    "refs": [
+      {
+        "_id": "22b84cde-191d-4405-8aeb-12d66a214820",
+        "_type": "blogPost",
+        "title": "How to Hire a Web Designer in Punta Cana (2026 Guide)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/de27919a5f73c45a8d19b2d5f3bfbc28c5693d6c-1376x768.png"
+  },
+  {
+    "_id": "image-8d3df34e9f63f9a573a05278c55f50fddc800581-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783180782154.png",
+    "refs": [
+      {
+        "_id": "baf2963d-babe-4ebc-b0dc-71a15ec7173d",
+        "_type": "blogPost",
+        "title": "Steps to Commission a Website for Your Local Business"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/8d3df34e9f63f9a573a05278c55f50fddc800581-1376x768.png"
+  },
+  {
+    "_id": "image-c5d62fbeb954e782d4f1f14e10869e010195c526-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783181159537.png",
+    "refs": [
+      {
+        "_id": "3f61a75d-93dd-4b8b-bd33-a5b1a1d86687",
+        "_type": "blogPost",
+        "title": "What You Need to Create a Professional Website"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c5d62fbeb954e782d4f1f14e10869e010195c526-1376x768.png"
+  },
+  {
+    "_id": "image-e6bf9d89a45b769f1109b08654ae219c1f669c3e-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783182053438.png",
+    "refs": [
+      {
+        "_id": "ecf0daba-55c0-4bd0-a414-a9164ddfd715",
+        "_type": "blogPost",
+        "title": "Where to Find Reliable Web Designers in Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e6bf9d89a45b769f1109b08654ae219c1f669c3e-1376x768.png"
+  },
+  {
+    "_id": "image-7ea4c158e3f79a126c6faff827f56c1ee31e90ad-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783182076117.png",
+    "refs": [
+      {
+        "_id": "5e3404c1-3b78-4a46-afad-ad6294931695",
+        "_type": "blogPost",
+        "title": "Websites for Boutique Hotels & Vacation Rentals in Punta Cana"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7ea4c158e3f79a126c6faff827f56c1ee31e90ad-1376x768.png"
+  },
+  {
+    "_id": "image-96be19990613523cf67ea3de97ce0ffcf62503fb-1376x768-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1783183907523.jpg",
+    "refs": [
+      {
+        "_id": "8e38b305-6b5e-4ac1-9b13-3eaec3824989",
+        "_type": "blogPost",
+        "title": "Websites for Tour Operators & Excursion Companies: What Actually Converts"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/96be19990613523cf67ea3de97ce0ffcf62503fb-1376x768.jpg"
+  },
+  {
+    "_id": "image-cda04ae9c87c69fa047415a68f0d28c6d262f460-1376x768-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "jpg",
+    "originalFilename": "vinano-1783184575228.jpg",
+    "refs": [
+      {
+        "_id": "d4ef7426-24b9-4420-b17a-38012cafbcfc",
+        "_type": "blogPost",
+        "title": "Restaurant Websites in Punta Cana: Menu, Reservations & Google"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/cda04ae9c87c69fa047415a68f0d28c6d262f460-1376x768.jpg"
+  },
+  {
+    "_id": "image-d87ab8fa785a554528fe00123d07d3e3321f26da-6000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "aldward-castillo-8q41O5b7BEI-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "13cf8155-b045-4ce0-9cd9-aa478ec9cc49",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "landingPage-diseno-paginas-web-santo-domingo",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Santo Domingo (City Landing Page)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d87ab8fa785a554528fe00123d07d3e3321f26da-6000x4000.jpg"
+  },
+  {
+    "_id": "image-bc10348df0141f65d24802f9dcbcef7951d22e6d-3000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 3000
+    },
+    "extension": "jpg",
+    "originalFilename": "ronny-osoria-cnJipS4hEPs-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "175db356-7f72-436e-ab56-5e9572d51392",
+        "_type": "seo",
+        "title": null
+      },
+      {
+        "_id": "landingPage-diseno-paginas-web-santiago",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Santiago (City Landing Page)"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/bc10348df0141f65d24802f9dcbcef7951d22e6d-3000x4000.jpg"
+  },
+  {
+    "_id": "image-36527c0d05f902cd1bdf609cf3118f4e8152332e-5737x3817-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3817,
+      "width": 5737
+    },
+    "extension": "jpg",
+    "originalFilename": "vlad-d-2TFtAHQzG_M-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-diseno-paginas-web-la-romana",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en La Romana (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-la-romana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/36527c0d05f902cd1bdf609cf3118f4e8152332e-5737x3817.jpg"
+  },
+  {
+    "_id": "image-7ada1c8c777101c8364ba520c5f039a83bdeda88-5464x3070-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3070,
+      "width": 5464
+    },
+    "extension": "jpg",
+    "originalFilename": "pexels-alberto-guzman-352733377-36896628.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-diseno-paginas-web-higuey",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Higüey (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-higuey",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7ada1c8c777101c8364ba520c5f039a83bdeda88-5464x3070.jpg"
+  },
+  {
+    "_id": "image-85c2aedf429692121f9ce40a5045601a11fe3988-5464x3640-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3640,
+      "width": 5464
+    },
+    "extension": "jpg",
+    "originalFilename": "asael-pena-jk6KUbKXtJs-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-diseno-paginas-web-san-pedro-de-macoris",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en San Pedro de Macorís (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-san-pedro-de-macoris",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/85c2aedf429692121f9ce40a5045601a11fe3988-5464x3640.jpg"
+  },
+  {
+    "_id": "image-0fed58990ca388916d7e9586bd1a3b0dbbcd4808-6000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "rachid-oucharia-9FTX45W1yAY-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-diseno-paginas-web-punta-cana",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Punta Cana (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-punta-cana",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/0fed58990ca388916d7e9586bd1a3b0dbbcd4808-6000x4000.jpg"
+  },
+  {
+    "_id": "image-c31286fb01a771a356b32fad117b5e1c6b091e62-3616x2215-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2215,
+      "width": 3616
+    },
+    "extension": "jpg",
+    "originalFilename": "eros-reyes-cabrera-xga_ccrAmj0-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-north-coast-three-audiences-puerto-plata-sosua-cabarete",
+        "_type": "blogPost",
+        "title": "Puerto Plata, Sosúa & Cabarete: Three Audiences, One North Coast"
+      },
+      {
+        "_id": "landingPage-diseno-paginas-web-puerto-plata",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Puerto Plata (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-puerto-plata",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c31286fb01a771a356b32fad117b5e1c6b091e62-3616x2215.jpg"
+  },
+  {
+    "_id": "image-d90d79d8d5d67d296f86464110b0f04d727dbb12-4000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 4000
+    },
+    "extension": "jpg",
+    "originalFilename": "roberto-gomez-Oyqyb0C-EsM-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-diseno-paginas-web-las-terrenas",
+        "_type": "landingPage",
+        "title": "Diseño de Páginas Web en Las Terrenas / Samaná (City Landing Page)"
+      },
+      {
+        "_id": "seo-diseno-de-paginas-web-las-terrenas",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d90d79d8d5d67d296f86464110b0f04d727dbb12-4000x4000.jpg"
+  },
+  {
+    "_id": "image-091cbc098c3ada5cfab59c680d98b06543240187-3264x2448-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2448,
+      "width": 3264
+    },
+    "extension": "jpg",
+    "originalFilename": "Pedernales_Dominikanische_Republik_-_panoramio.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-pedernales-cabo-rojo-southwest-digital-frontier",
+        "_type": "blogPost",
+        "title": "Pedernales and Cabo Rojo: Why the Southwest Is the DR's Next Digital Frontier"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/091cbc098c3ada5cfab59c680d98b06543240187-3264x2448.jpg"
+  },
+  {
+    "_id": "image-d53c927c0bbe80570b59504cf318537022405788-1200x900-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 900,
+      "width": 1200
+    },
+    "extension": "jpg",
+    "originalFilename": "Miches,_El_Seibo,_Dominican_Republic_1.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-miches-all-inclusive-trap-local-business-websites",
+        "_type": "blogPost",
+        "title": "Miches and the All-Inclusive Trap: Why Local Businesses Need Websites"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d53c927c0bbe80570b59504cf318537022405788-1200x900.jpg"
+  },
+  {
+    "_id": "image-21ab4d08035059a29884bbe0dd8465031b648316-3840x2560-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2560,
+      "width": 3840
+    },
+    "extension": "jpg",
+    "originalFilename": "Cap_Cana_Marina_Dominican_Republic.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-cap-cana-website-must-match-luxury-standard",
+        "_type": "blogPost",
+        "title": "Cap Cana: Why Your Website Must Match the Luxury Standard"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/21ab4d08035059a29884bbe0dd8465031b648316-3840x2560.jpg"
+  },
+  {
+    "_id": "image-d304ca030534ce9b3f2a8ac00c3fe5f83fedf52f-4402x2935-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2935,
+      "width": 4402
+    },
+    "extension": "jpg",
+    "originalFilename": "jay-wennington-N_Y88TWmGwA-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-restaurantes",
+        "_type": "landingPage",
+        "title": "Páginas Web para Restaurantes (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-restaurantes",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/d304ca030534ce9b3f2a8ac00c3fe5f83fedf52f-4402x2935.jpg"
+  },
+  {
+    "_id": "image-fed3c52f8e248c6d532c080283281f18d4e9de9b-5888x3925-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3925,
+      "width": 5888
+    },
+    "extension": "jpg",
+    "originalFilename": "asael-pena-FiimCkOmIrY-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-hoteles",
+        "_type": "landingPage",
+        "title": "Páginas Web para Hoteles Boutique (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-hoteles",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/fed3c52f8e248c6d532c080283281f18d4e9de9b-5888x3925.jpg"
+  },
+  {
+    "_id": "image-2ccba95f2af30476ff03549dc4ea281a0184a4a6-1376x768-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "jpg",
+    "originalFilename": "sailing_catamaran_in_punta_cana.png_202605201337.jpeg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-tour-operadores",
+        "_type": "landingPage",
+        "title": "Páginas Web para Tour Operadores (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-tour-operadores",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/2ccba95f2af30476ff03549dc4ea281a0184a4a6-1376x768.jpg"
+  },
+  {
+    "_id": "image-e709b4b9fc95491755ae03b6554d1f13bf1b898a-4592x3448-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3448,
+      "width": 4592
+    },
+    "extension": "jpg",
+    "originalFilename": "tierra-mallorca-rgJ1J8SDEAY-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-inmobiliarias",
+        "_type": "landingPage",
+        "title": "Páginas Web para Inmobiliarias (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-inmobiliarias",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/e709b4b9fc95491755ae03b6554d1f13bf1b898a-4592x3448.jpg"
+  },
+  {
+    "_id": "image-7a4ea28aa17919a8a1db0ce052d7655f53c37472-5464x3070-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3070,
+      "width": 5464
+    },
+    "extension": "jpg",
+    "originalFilename": "luis-j-corniel-KRKT8oZxk6s-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-alquileres-vacacionales",
+        "_type": "landingPage",
+        "title": "Páginas Web para Alquileres Vacacionales (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-alquileres-vacacionales",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/7a4ea28aa17919a8a1db0ce052d7655f53c37472-5464x3070.jpg"
+  },
+  {
+    "_id": "image-737bf96ac371a3af1203d803565002aecce77193-3600x2400-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2400,
+      "width": 3600
+    },
+    "extension": "jpg",
+    "originalFilename": "mikaela-san-juan-n0jUdPcyu28-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-bodas-y-eventos",
+        "_type": "landingPage",
+        "title": "Páginas Web para Bodas y Eventos (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-bodas-y-eventos",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/737bf96ac371a3af1203d803565002aecce77193-3600x2400.jpg"
+  },
+  {
+    "_id": "image-fd565178aace88a695857c1bb1015abcf63a4bd7-6000x3376-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3376,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "divaris-shirichena-KnYh9XvaKio-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-dentistas",
+        "_type": "landingPage",
+        "title": "Páginas Web para Dentistas (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-dentistas",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/fd565178aace88a695857c1bb1015abcf63a4bd7-6000x3376.jpg"
+  },
+  {
+    "_id": "image-746813aa0c3fc9fc580cc4ddcdcc46f614b37626-5616x3744-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3744,
+      "width": 5616
+    },
+    "extension": "jpg",
+    "originalFilename": "sasun-bughdaryan-ozS0tPf8QT0-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-abogados",
+        "_type": "landingPage",
+        "title": "Páginas Web para Abogados (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-abogados",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/746813aa0c3fc9fc580cc4ddcdcc46f614b37626-5616x3744.jpg"
+  },
+  {
+    "_id": "image-f6b27904af4a0df7e78210beefd238b3ddd10cf3-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783798172947.png",
+    "refs": [
+      {
+        "_id": "blogPost-redesign-website-without-losing-rankings",
+        "_type": "blogPost",
+        "title": "How to Redesign Your Website Without Losing Rankings"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/f6b27904af4a0df7e78210beefd238b3ddd10cf3-1376x768.png"
+  },
+  {
+    "_id": "image-2b54bba6151477d0461f81cdfaeed0ab1ee3a1eb-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783798259308.png",
+    "refs": [
+      {
+        "_id": "blogPost-my-website-doesnt-show-up-on-google",
+        "_type": "blogPost",
+        "title": "My Website Doesn't Show Up on Google: 7 Reasons & Fixes"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/2b54bba6151477d0461f81cdfaeed0ab1ee3a1eb-1376x768.png"
+  },
+  {
+    "_id": "image-46f5bf5267737b01f4b7c26d959bbbc998c587c7-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783798303771.png",
+    "refs": [
+      {
+        "_id": "blogPost-real-estate-websites-punta-cana",
+        "_type": "blogPost",
+        "title": "Real Estate Websites in Punta Cana: Bilingual Listings & Foreign Buyers"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/46f5bf5267737b01f4b7c26d959bbbc998c587c7-1376x768.png"
+  },
+  {
+    "_id": "image-792ca65af52808aa536e5834fb61343ce83872fc-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783798574292.png",
+    "refs": [
+      {
+        "_id": "blogPost-wedding-event-business-websites-punta-cana",
+        "_type": "blogPost",
+        "title": "Websites for Wedding & Event Businesses: What We Learned Building Four"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/792ca65af52808aa536e5834fb61343ce83872fc-1376x768.png"
+  },
+  {
+    "_id": "image-c4040bb99f6fa0f96e29d2570f16a74396abcab0-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1783798609372.png",
+    "refs": [
+      {
+        "_id": "blogPost-websites-for-doctors-dentists-clinics-dominican-republic",
+        "_type": "blogPost",
+        "title": "Websites for Doctors, Dentists & Clinics in the Dominican Republic"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c4040bb99f6fa0f96e29d2570f16a74396abcab0-1376x768.png"
+  },
+  {
+    "_id": "image-6a03bf66e390ba86bd9617f1ff48c94a113de619-2752x1536-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 1536,
+      "width": 2752
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1784128161153.png",
+    "refs": [
+      {
+        "_id": "blogPost-santiago-economic-engine-business-websites",
+        "_type": "blogPost",
+        "title": "Santiago: Websites for the DR's Economic Engine, Not a Resort Town"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/6a03bf66e390ba86bd9617f1ff48c94a113de619-2752x1536.png"
+  },
+  {
+    "_id": "image-902dd55cb49d1dc4df7d46e30ab1a6ac825826a6-3000x2000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2000,
+      "width": 3000
+    },
+    "extension": "jpg",
+    "originalFilename": "saltoLimon.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-samana-peninsula-eco-tourism-property-websites",
+        "_type": "blogPost",
+        "title": "The Samaná Peninsula: Websites for Eco-Tourism & International Buyers"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/902dd55cb49d1dc4df7d46e30ab1a6ac825826a6-3000x2000.jpg"
+  },
+  {
+    "_id": "image-3af0398ff76677b505f0abe5facbde90077c11d8-6000x4000-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4000,
+      "width": 6000
+    },
+    "extension": "jpg",
+    "originalFilename": "Jarabacoa_-_Río_Baiguate_0265.jpeg",
+    "refs": [
+      {
+        "_id": "blogPost-jarabacoa-constanza-mountain-adventure-websites",
+        "_type": "blogPost",
+        "title": "Jarabacoa & Constanza: Websites for the DR's Mountain Adventure Capital"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/3af0398ff76677b505f0abe5facbde90077c11d8-6000x4000.jpg"
+  },
+  {
+    "_id": "image-70454b0330e9c7c55cc441d04a7c8211c79d65ef-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1784495425367.png",
+    "refs": [
+      {
+        "_id": "seo-paginas-web-para-constructoras",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/70454b0330e9c7c55cc441d04a7c8211c79d65ef-1376x768.png"
+  },
+  {
+    "_id": "image-3cc076d40c9e789e3ed0ad3fee6dbd7ce54162b6-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1784495414169.png",
+    "refs": [
+      {
+        "_id": "landingPage-paginas-web-para-salones-de-belleza",
+        "_type": "landingPage",
+        "title": "Páginas Web para Salones de Belleza (Industry Landing Page)"
+      },
+      {
+        "_id": "seo-paginas-web-para-salones-de-belleza",
+        "_type": "seo",
+        "title": null
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/3cc076d40c9e789e3ed0ad3fee6dbd7ce54162b6-1376x768.png"
+  },
+  {
+    "_id": "image-b19cfde9bc4e7709148763f6fa735ec7d0fa498f-1792x2400-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 2400,
+      "width": 1792
+    },
+    "extension": "png",
+    "originalFilename": "james.png",
+    "refs": [
+      {
+        "_id": "509a5bc7-1d5d-463d-aeaf-588a09972df5",
+        "_type": "sectionHeader",
+        "title": "Meet the Founder of DR Web Studio"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/b19cfde9bc4e7709148763f6fa735ec7d0fa498f-1792x2400.png"
+  },
+  {
+    "_id": "image-2bda9d2afe2115c1d23adb848bfca8769d9eb3c9-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785021909936.png",
+    "refs": [
+      {
+        "_id": "blogPost-product-photography-that-sells",
+        "_type": "blogPost",
+        "title": "Product Photography That Sells: A Practical Guide for Dominican Stores"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/2bda9d2afe2115c1d23adb848bfca8769d9eb3c9-1376x768.png"
+  },
+  {
+    "_id": "image-99f1b860169f32bb7a35917b96c4f4920c918857-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785021891282.png",
+    "refs": [
+      {
+        "_id": "blogPost-wix-squarespace-templates-vs-custom-website",
+        "_type": "blogPost",
+        "title": "Wix, Squarespace & Templates vs. a Custom Website: The Honest Comparison"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/99f1b860169f32bb7a35917b96c4f4920c918857-1376x768.png"
+  },
+  {
+    "_id": "image-9cd6965cdad9cb978e89cbcfd416621e747f1ef7-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785021902505.png",
+    "refs": [
+      {
+        "_id": "blogPost-whatsapp-catalog-vs-real-online-store",
+        "_type": "blogPost",
+        "title": "WhatsApp Catalog vs. a Real Online Store: Which Does Your Business Need?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/9cd6965cdad9cb978e89cbcfd416621e747f1ef7-1376x768.png"
+  },
+  {
+    "_id": "image-16057bb39acfb4bcff2dfd64895136d41f6b9a4e-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785422550364.png",
+    "refs": [
+      {
+        "_id": "blogPost-do-i-need-an-app-or-a-website",
+        "_type": "blogPost",
+        "title": "Do I Need an App or a Website? The Honest Answer for Dominican Businesses"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/16057bb39acfb4bcff2dfd64895136d41f6b9a4e-1376x768.png"
+  },
+  {
+    "_id": "image-cb18448776bbeeddb38a4918ce25c65d9b9cff14-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785422596700.png",
+    "refs": [
+      {
+        "_id": "blogPost-website-maintenance-why-its-not-optional",
+        "_type": "blogPost",
+        "title": "Website Maintenance: Why It's Not Optional"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/cb18448776bbeeddb38a4918ce25c65d9b9cff14-1376x768.png"
+  },
+  {
+    "_id": "image-01703b9f426078d9fe5c3bafdf900ba74e2bed52-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785422634624.png",
+    "refs": [
+      {
+        "_id": "blogPost-ai-search-chatgpt-gemini-how-your-business-shows-up",
+        "_type": "blogPost",
+        "title": "AI Search: How Your Business Shows Up in ChatGPT, Gemini & AI Overviews"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/01703b9f426078d9fe5c3bafdf900ba74e2bed52-1376x768.png"
+  },
+  {
+    "_id": "image-bea38d594c057b9c8ba509aa8707cf3368481769-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1785422671644.png",
+    "refs": [
+      {
+        "_id": "blogPost-punta-bergantin-puerto-plata-next-megaproject",
+        "_type": "blogPost",
+        "title": "Punta Bergantín: Puerto Plata's Megaproject and the Two-Year Window"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/bea38d594c057b9c8ba509aa8707cf3368481769-1376x768.png"
+  },
+  {
+    "_id": "image-80152b0e6d85c85a8a14180f9df430c95d77b7e6-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1786222142910.png",
+    "refs": [
+      {
+        "_id": "blogPost-websites-law-firms-accountants-relocation-services",
+        "_type": "blogPost",
+        "title": "Websites for Law Firms, Accountants & Relocation Services in the DR"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/80152b0e6d85c85a8a14180f9df430c95d77b7e6-1376x768.png"
+  },
+  {
+    "_id": "image-8413a1d74cd1ad3dd62152232769938060513eb7-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1786222130802.png",
+    "refs": [
+      {
+        "_id": "blogPost-what-is-hosting-and-a-domain-explained-simply",
+        "_type": "blogPost",
+        "title": "What Is Hosting and a Domain? Explained Simply"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/8413a1d74cd1ad3dd62152232769938060513eb7-1376x768.png"
+  },
+  {
+    "_id": "image-c278fec5848c51d3a1f75e03814e0ba07faddedf-5464x3640-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 3640,
+      "width": 5464
+    },
+    "extension": "jpg",
+    "originalFilename": "eriel-ezequiel-reyes-savinon-XHqLzGl7hfc-unsplash.jpg",
+    "refs": [
+      {
+        "_id": "blogPost-barahona-southwest-coast-websites",
+        "_type": "blogPost",
+        "title": "Barahona & the Southwest Coast: Where Dominicans Vacation"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/c278fec5848c51d3a1f75e03814e0ba07faddedf-5464x3640.jpg"
+  },
+  {
+    "_id": "image-566025787243b258dc45da14614280a907ac79ed-5568x4176-jpg",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 4176,
+      "width": 5568
+    },
+    "extension": "jpg",
+    "originalFilename": "GOPR4989_1777247791170.JPG",
+    "refs": [
+      {
+        "_id": "blogPost-websites-dive-shops-watersports-schools",
+        "_type": "blogPost",
+        "title": "Websites for Dive Shops & Watersports Schools in the DR"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/566025787243b258dc45da14614280a907ac79ed-5568x4176.jpg"
+  },
+  {
+    "_id": "image-358f6b5e24b2b6e814976b0f0f3562742a0f862d-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1786225795007.png",
+    "refs": [
+      {
+        "_id": "blogPost-free-vs-cheap-vs-professional-website",
+        "_type": "blogPost",
+        "title": "Free vs. Cheap vs. Professional Website: What You Actually Get"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/358f6b5e24b2b6e814976b0f0f3562742a0f862d-1376x768.png"
+  },
+  {
+    "_id": "image-dc1449123e88f80eff19a4791fb81829a7523a6e-1376x768-png",
+    "altText": null,
+    "description": null,
+    "dims": {
+      "height": 768,
+      "width": 1376
+    },
+    "extension": "png",
+    "originalFilename": "vinano-1786225789046.png",
+    "refs": [
+      {
+        "_id": "blogPost-one-page-site-vs-multi-page-which-do-you-need",
+        "_type": "blogPost",
+        "title": "One-Page Site vs. Multi-Page: Which Do You Need?"
+      }
+    ],
+    "title": null,
+    "url": "https://cdn.sanity.io/images/6r8ro1r9/production/dc1449123e88f80eff19a4791fb81829a7523a6e-1376x768.png"
+  }
+]

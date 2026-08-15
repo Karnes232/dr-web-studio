@@ -1,0 +1,1137 @@
+[
+  {
+    "_id": "image-6a71c6f35fc64c97a98fe4ee324379735ed45a6f-3200x3200-png",
+    "originalFilename": "layout-dr-web-studio-logo-dark-text.png",
+    "title": "DR Web Studio — logo (dark wordmark)",
+    "altText": "DR Web Studio logo showing a palm tree and waves inside a sunset circle above a dark navy wordmark, on a transparent background.",
+    "description": "Used in general layout settings (site logo)."
+  },
+  {
+    "_id": "image-72afbc4aba2f71f6899a6ceaf46751f45f46da26-3200x3200-png",
+    "originalFilename": "layout-dr-web-studio-logo-white-text.png",
+    "title": "DR Web Studio — logo (white wordmark)",
+    "altText": "DR Web Studio logo showing a palm tree and waves inside a sunset circle above a white wordmark, for use on dark backgrounds.",
+    "description": "Used in general layout settings (site logo, dark-background variant)."
+  },
+  {
+    "_id": "image-82d041f4b2aee4ed6c5543d16f2312376c547a31-3200x3200-png",
+    "originalFilename": "og-dr-web-studio-logo-navy.png",
+    "title": "DR Web Studio — default OG image",
+    "altText": "DR Web Studio logo with a palm tree sunset emblem and white wordmark centered on a navy blue background.",
+    "description": "OG image for 8 SEO documents (default social share image across the site)."
+  },
+  {
+    "_id": "image-3f03e17b6c1e2c676f5f220fc45232efa38a98d1-6000x4000-jpg",
+    "originalFilename": "landing-desarrollo-web-rd-dual-monitors.jpg",
+    "title": "Desarrollo Web RD — dual monitors hero background",
+    "altText": "Two monitors in a dark room, one displaying a code editor and the other a mountain road desktop wallpaper.",
+    "description": "Used in landing page: Desarrollo Web República Dominicana (Hub); hero section: Home Page; OG image for 2 SEO documents."
+  },
+  {
+    "_id": "image-a5a08da87a0b2a88b010506707f4eef95d8c498f-24x24-svg",
+    "originalFilename": "code-icon.svg",
+    "title": "Code icon",
+    "altText": "Line icon of opening and closing angle brackets representing code.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-3d72f710e6adf2b14a6f80d20646e24a632d4d7b-24x24-svg",
+    "originalFilename": "rocket-icon.svg",
+    "title": "Rocket icon",
+    "altText": "Line icon of a launching rocket.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-c4d5d22f49b92b5c9bedbe06fe6e1d29769c2b4f-24x24-svg",
+    "originalFilename": "palette-icon.svg",
+    "title": "Palette icon",
+    "altText": "Line icon of an artist's paint palette with color dots.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-110654ad74f3d9065a3d70d8857d0e3ad5103873-577x432-png",
+    "originalFilename": "author-james-karnes-portrait.png",
+    "title": "James Karnes — author portrait",
+    "altText": "James Karnes, a man with a short beard and sunglasses on his head, wearing a gray polo shirt in a selfie-style portrait.",
+    "description": "Used as author photo for: James Karnes."
+  },
+  {
+    "_id": "image-e2e3c56b077c1978dd36bf008da9829f07f220e3-3840x1920-jpg",
+    "originalFilename": "blog-website-features-fintech-mockup.jpg",
+    "title": "Top 5 Website Features — hero image",
+    "altText": "Browser window mockup of a fintech landing page with the headline 'Power your finance, grow your business' and an isometric illustration.",
+    "description": "Used in blog post: Top 5 Website Features Every Business Needs."
+  },
+  {
+    "_id": "image-60ef9f64a2922416992536ca85242b7136b19d25-24x24-svg",
+    "originalFilename": "shopping-cart-icon.svg",
+    "title": "Shopping cart icon",
+    "altText": "Line icon of a shopping cart.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-891ef33f82e634681e5679fbc1805dac59ec948d-24x24-svg",
+    "originalFilename": "smartphone-icon.svg",
+    "title": "Smartphone icon",
+    "altText": "Line icon of a smartphone.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-0d00460d2e7a74518cabc54a67e6172273a7b7ab-24x24-svg",
+    "originalFilename": "zap-lightning-icon.svg",
+    "title": "Lightning bolt icon",
+    "altText": "Line icon of a lightning bolt representing speed.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-9859410781a1dc4d8c3ba21c79db2d5abb17666f-24x24-svg",
+    "originalFilename": "search-icon.svg",
+    "title": "Search icon",
+    "altText": "Line icon of a magnifying glass representing search.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-d716adb82827e51188be53d82df1bab3b0eae4a2-493x427-png",
+    "originalFilename": "pillar-desarrollo-web-grand-bay-logo.png",
+    "title": "Grand Bay of the Sea — client logo",
+    "altText": "Grand Bay of the Sea logo",
+    "description": "Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios; and previous clients section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-0d5eaf8a6ea5df913518c4e81fc819e475e934f8-826x853-png",
+    "originalFilename": "pillar-desarrollo-web-sertuin-events-logo.png",
+    "title": "Sertuin Events — client logo",
+    "altText": "Sertuin Events logo",
+    "description": "Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios; and previous clients section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-b819bf0868fe6c25154103e4d8893850a6fa503a-744x704-png",
+    "originalFilename": "client-tour-store-punta-cana-logo.png",
+    "title": "Tour Store Punta Cana — client logo",
+    "altText": "Tour Store Punta Cana logo",
+    "description": "Used in previous clients section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-772d6f23ef1ed143b62e09a3ffeb35daaf2f06ec-500x500-png",
+    "originalFilename": "client-esencias-by-nancy-logo.png",
+    "title": "Esencias by Nancy — client logo",
+    "altText": "Esencias by Nancy logo",
+    "description": "Used in previous clients section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-83a931f7221f2df028fe26f1ff4c95f0cb1fa6a6-2400x1600-jpg",
+    "originalFilename": "blog-prepare-content-team-laptops.jpg",
+    "title": "How to Prepare Content — team collaboration",
+    "altText": "Three people smiling and collaborating around a wooden cafe table with laptops and notebooks.",
+    "description": "Used in blog post: How to Prepare Content for a New Website; service item: Landing Pages & One-Page Sites; OG image for 1 SEO document."
+  },
+  {
+    "_id": "image-3c95c7f708ab847bf8c6887e3e06444b5aa1a390-1920x1440-png",
+    "originalFilename": "sertuin-events-wedding-form-screenshot.png",
+    "title": "Sertuin Events — website screenshot",
+    "altText": "Browser screenshot of the Sertuin Events wedding questionnaire page titled 'Your Dream Wedding Awaits' on a pink gradient background.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-e5abef4f21846ddf18f438aa63a8d1e6825eeb54-1920x1440-png",
+    "originalFilename": "tour-store-los-haitises-page-screenshot.png",
+    "title": "Tour Store Punta Cana — website screenshot",
+    "altText": "Browser screenshot of the Tour Store Punta Cana website showing the Los Haitises National Park Tour page with a photo gallery and pricing.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-5ac36ecadc8020f74c3be8be6a3c483225a8293a-1920x1440-png",
+    "originalFilename": "scuba-diving-punta-cana-website-mockup.png",
+    "title": "Scuba Diving Punta Cana — website mockup",
+    "altText": "Browser mockup of the Scuba Diving Punta Cana website hero showing a scuba diver next to coral with the headline 'Explore the Underwater World'.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-bc6216cc4c05a50341b334f9c4e4f40580bf43f2-1920x1440-png",
+    "originalFilename": "esencias-handmade-products-website-mockup.png",
+    "title": "Esencias — website mockup",
+    "altText": "Browser mockup of the Esencias website hero featuring a dark hand-made products banner with rope and glass decor.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-9162e032cd22e8930b344c580d98e7a41a39ede8-2569x1608-jpg",
+    "originalFilename": "blog-website-features-landing-page-illustration.jpg",
+    "title": "Top 5 Website Features — landing page illustration",
+    "altText": "Flat illustration of two people around a large 'Business Solution — Effective Websites' landing page on a pink-and-orange gradient background.",
+    "description": "Used in blog post: Top 5 Website Features Every Business Needs"
+  },
+  {
+    "_id": "image-0a3d95b2aaf4d112f269ae4c56fe18626c58af65-3916x2037-jpg",
+    "originalFilename": "blog-prepare-content-laptop-notebook.jpg",
+    "title": "Prepare Content for a New Website — laptop and notebook",
+    "altText": "Open laptop on a desk beside a handwritten notebook, a cup of coffee, and a small plant.",
+    "description": "Used in blog post: How to Prepare Content for a New Website"
+  },
+  {
+    "_id": "image-e208f150a6d86616f136c3d2978ff3896fa7079e-2000x2000-jpg",
+    "originalFilename": "service-api-integrations-diagram.jpg",
+    "title": "API Integrations & Automation — API diagram",
+    "altText": "Illustrated diagram of an API gear connecting an application, cloud-based services, a server, and a database with request and response arrows.",
+    "description": "Used in service item: API Integrations & Automation"
+  },
+  {
+    "_id": "image-646f85b72dbe1d70a6cfd8616a9cd95d7fcf00a3-3000x2000-jpg",
+    "originalFilename": "service-website-migrations-update-illustration.jpg",
+    "title": "Website Migrations or Rebuilds — update illustration",
+    "altText": "Yellow flat illustration of a person sitting with a laptop in front of a large screen showing an update progress bar, cloud upload, and refresh arrows.",
+    "description": "Used in service item: Website Migrations or Rebuilds"
+  },
+  {
+    "_id": "image-291acd95b3f046152cce8f40577af237653ab404-2000x2000-jpg",
+    "originalFilename": "landing-mantenimiento-web-maintenance-illustration.jpg",
+    "title": "Mantenimiento Web — website maintenance illustration",
+    "altText": "Teal flat illustration of a woman on a ladder repairing layered browser windows, with a large wrench and code panel in the foreground.",
+    "description": "Used in service item: Ongoing Website Maintenance & Support; landing page: Mantenimiento Web República Dominicana; and as OG/SEO image for that landing page."
+  },
+  {
+    "_id": "image-4246694773876d23a4852ff19aa2c93fbf97c31c-4500x3500-jpg",
+    "originalFilename": "service-ecommerce-online-store-illustration.jpg",
+    "title": "E-commerce Integrations — online store illustration",
+    "altText": "Purple isometric illustration of a laptop with an online store on screen, surrounded by a shopping cart, bags, gift boxes, and a phone showing a payment.",
+    "description": "Used in service item: E-commerce Integrations"
+  },
+  {
+    "_id": "image-c24162fd502557a37c30941c5e1f8c05b2bf8b49-2000x2000-jpg",
+    "originalFilename": "service-multilingual-hello-hola-illustration.jpg",
+    "title": "Multilingual Websites — hello/hola illustration",
+    "altText": "Illustration of two people fist-bumping under a 'switch the language' browser window with speech bubbles reading 'Hello' and 'Hola'.",
+    "description": "Used in service item: Multilingual & International Websites"
+  },
+  {
+    "_id": "image-90a29bf4964a524e1ba69457dac5b50bda488798-2000x2000-jpg",
+    "originalFilename": "service-headless-cms-monitor-illustration.jpg",
+    "title": "Headless CMS Development — CMS monitor illustration",
+    "altText": "Monochrome illustration of a desktop monitor labeled 'your website' surrounded by CMS, analytics, media, and document icons.",
+    "description": "Used in service item: Headless CMS Development"
+  },
+  {
+    "_id": "image-e5407b296924bf63b9ec4828d0fce68f0008652c-2000x2000-jpg",
+    "originalFilename": "service-web-applications-code-illustration.jpg",
+    "title": "Web Applications — code and devices illustration",
+    "altText": "Blue and teal illustration of a desktop computer displaying a code editor, flanked by settings icons, a download panel, and a smartphone with a checkmark.",
+    "description": "Used in service item: Web Applications"
+  },
+  {
+    "_id": "image-30903fc4a4fa252d0e49c3194a8a3e8b0f9e97a0-7730x7730-jpg",
+    "originalFilename": "service-custom-websites-builders-illustration.jpg",
+    "title": "Custom Business Websites — website builders illustration",
+    "altText": "Purple flat illustration of two people assembling a web page layout on a large desktop monitor.",
+    "description": "Used in service item: Custom Business Websites"
+  },
+  {
+    "_id": "image-81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487-png",
+    "originalFilename": "og-dr-web-studio-palm-logo.png",
+    "title": "DR Web Studio — palm tree logo",
+    "altText": "DR Web Studio logo: a circular badge with a dark palm tree against an orange sunset sky and stylized turquoise ocean waves.",
+    "description": "OG image for an SEO settings document (id 389e47c6-351e-4898-b289-0d346b67392e)."
+  },
+  {
+    "_id": "image-7287cb96fadd7fbd5dee2e6b682862b469cacc1d-3882x2584-jpg",
+    "originalFilename": "blog-jamstack-nextjs-laptop-code.jpg",
+    "title": "JAMstack / Next.js — laptop with code editor",
+    "altText": "MacBook on a white desk displaying a dark code editor, with a monitor and desk lamp in the background.",
+    "description": "Used in blog posts: What is JAMstack and Why Does It Make Websites Faster; What's New in Next.js: Why the App Router Changes Everything"
+  },
+  {
+    "_id": "image-213faf0c7371565da37cce483447ff95abc73956-3677x3002-jpg",
+    "originalFilename": "blog-fast-website-web-design-desk.jpg",
+    "title": "Fast Website — web design workstation",
+    "altText": "Desktop monitor showing a 'web design' concept collage with icons, surrounded by sticky notes, a keyboard, coffee, and a hand on a mouse.",
+    "description": "Used in blog post: Why Businesses in the Dominican Republic Need a Fast Website"
+  },
+  {
+    "_id": "image-5ccf66c5c625bff9415c1a4806c1bdb816390458-3750x2500-jpg",
+    "originalFilename": "blog-technology-small-business-developers.jpg",
+    "title": "Technology & Small Business — developers at work",
+    "altText": "Two men working together at an office desk with a computer, one seated at the keyboard and the other looking on.",
+    "description": "Used in blog post: How Technology Is Changing Small Business in the Dominican Republic"
+  },
+  {
+    "_id": "image-a9e69697f9b863cc33735daef748b1a38d4e57a2-2918x3648-jpg",
+    "originalFilename": "blog-plan-web-project-wireframe-cards.jpg",
+    "title": "Plan a Web Project — wireframe planning flatlay",
+    "altText": "Teal flatlay of wireframe reference cards, a tablet, sticky tabs, and hand-drawn desktop layout sketches for planning a website.",
+    "description": "Used in blog post: How to Plan a Web Project with Your Developer"
+  },
+  {
+    "_id": "image-68b4545501943b163291902396350f36c49af3f1-2000x2000-jpg",
+    "originalFilename": "blog-headless-cms-diagram-illustration.jpg",
+    "title": "Headless CMS — CMS diagram illustration",
+    "altText": "Pink and red illustration of a laptop labeled 'CMS — Content Management System' connected to content blocks for code, video, images, text, and a www browser window.",
+    "description": "Used in blog posts: Headless CMS Explained (Without Technical Jargon); What Is a Headless CMS?"
+  },
+  {
+    "_id": "image-13266691f576191ccff3b9e357a751c66c4478e8-5184x3456-jpg",
+    "originalFilename": "blog-cheap-website-laptop-screen.jpg",
+    "title": "The Real Cost of a Cheap Website — laptop with website",
+    "altText": "Laptop on a rustic wooden table displaying a personal website with a hero photo and headline, next to a green plant.",
+    "description": "Used in blog post: The Real Cost of a Cheap Website"
+  },
+  {
+    "_id": "image-bcdf269601d3a115ff745f6a261167bc32f7d12a-512x512-png",
+    "originalFilename": "client-palm-tree-wave-logo.png",
+    "title": "Client logo — palm tree and waves",
+    "altText": "Gold palm tree above turquoise wave strokes on a transparent background, a client brand logo.",
+    "description": "Used in previous clients section: PROUD TO WORK WITH"
+  },
+  {
+    "_id": "image-b653ecdc678bfd199779c3608d3ae9d1dab4fc03-1920x963-png",
+    "originalFilename": "blog-venue-marketplace-homepage.png",
+    "title": "Punta Cana Venue Collection — website screenshot",
+    "altText": "Homepage of The Punta Cana Venue Collection website with a beachfront hero, venue search bar, and featured venue cards.",
+    "description": "Used in blog post: How We Built a Venue Discovery Marketplace for Punta Cana's Wedding and Events Industry."
+  },
+  {
+    "_id": "image-107187c369cc3c0331732f3d152a7a62c23aa687-500x500-png",
+    "originalFilename": "pillar-punta-cana-photo-edition-logo.png",
+    "title": "Punta Cana Photo Edition — logo",
+    "altText": "Punta Cana Photo Edition logo",
+    "description": "Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios. Also used in client logo section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-d36d6cbd64e13b7888691f3e5393f102a27d75a3-1280x1280-png",
+    "originalFilename": "blog-punta-cana-photographer-homepage.png",
+    "title": "Punta Cana Photographer — website screenshot",
+    "altText": "Homepage of a Punta Cana photographer's portfolio site showing a beach wedding hero photo and service cards for corporate events and wedding planning.",
+    "description": "Used in blog post: How We Built a Luxury Photography Portfolio That Doubled Session Time and Increased Inquiries 60% in Punta Cana."
+  },
+  {
+    "_id": "image-cfb0a49620c9c1aa4c0184ebdc18f32cb08d7f15-5320x3073-jpg",
+    "originalFilename": "blog-website-upgrade-laptop-desk.jpg",
+    "title": "Website Upgrade — laptop on desk",
+    "altText": "A laptop on a work desk displaying a modern product landing page with a yellow sofa, surrounded by coffee, a smartphone, and design prints.",
+    "description": "Used in blog post: When It's Time to Upgrade Your Business Website."
+  },
+  {
+    "_id": "image-27bb99d92fd2014ab04754162682285f47300208-6000x3368-jpg",
+    "originalFilename": "blog-website-vs-social-phone-apps.jpg",
+    "title": "Website vs Social Media — phone with social apps",
+    "altText": "A smartphone screen showing a social media folder with the Instagram, Facebook, and Twitter app icons.",
+    "description": "Used in blog post: Website vs Social Media: What Your Business Really Needs."
+  },
+  {
+    "_id": "image-50fdd25fabf8ebc5ad602a2c34c3af93c76f1ab8-2400x1737-jpg",
+    "originalFilename": "blog-beyond-wordpress-laptop-logo.jpg",
+    "title": "More Than WordPress — laptop with WordPress logo",
+    "altText": "A laptop on a speckled surface displaying the WordPress logo on a white screen against a blue background.",
+    "description": "Used in blog post: Why Your Business Needs More Than WordPress in 2026."
+  },
+  {
+    "_id": "image-1a3b8211cdd54f3439a2c9c55c3e55faee93c7c6-5848x3899-jpg",
+    "originalFilename": "blog-nextjs-vs-wordpress-desk-setup.jpg",
+    "title": "Next.js vs WordPress — dual-screen workspace",
+    "altText": "A tidy wooden desk with a laptop and a large monitor both displaying website designs, alongside plants and a desk lamp.",
+    "description": "Used in blog post: Next.js vs WordPress: Complete Comparison for Business Owners. Also used in landing page: Diseño Web República Dominicana."
+  },
+  {
+    "_id": "image-08b79531869cbb444ec0ed85ef8c37b3d48f5db8-6553x4369-jpg",
+    "originalFilename": "blog-core-web-vitals-phone-speed.jpg",
+    "title": "Core Web Vitals — phone speed dashboard at the beach",
+    "altText": "A hand holding a smartphone with a dark performance dashboard on screen, with a beach and mountain in the background.",
+    "description": "Used in blog post: Core Web Vitals: How Speed Affects Your Online Sales."
+  },
+  {
+    "_id": "image-dde6fd9a97e901d74d24c2699458314ba9f2d0fd-5184x3456-jpg",
+    "originalFilename": "blog-design-trends-imac-workspace.jpg",
+    "title": "Web Design Trends 2026 — designer workspace",
+    "altText": "Two iMac screens on a wooden desk showing web design layouts and image grids in a bright studio workspace.",
+    "description": "Used in blog post: Web Design Trends for Dominican Businesses in 2026: What Actually Wins Bookings (and What to Ignore)."
+  },
+  {
+    "_id": "image-9ed0f1a13a82063ec789e0fe828f3daf94f606f3-1344x768-png",
+    "originalFilename": "blog-choose-web-company-beach-laptop.png",
+    "title": "Choose a Web Development Company — working from the beach",
+    "altText": "A woman in a sun hat works on a laptop while sitting on a blanket on a palm-lined Caribbean beach with boats in the distance.",
+    "description": "Used in blog post: How to Choose a Web Development Company in the Dominican Republic. Also used in landing page: Desarrollo Web Punta Cana."
+  },
+  {
+    "_id": "image-fe79fc5a55723e39bc9debe55e8cf33f2e297938-1024x1024-png",
+    "originalFilename": "blog-website-creation-office-laptop.png",
+    "title": "Website Creation Guide — office with tropical website on laptop",
+    "altText": "A laptop in a modern office displays a tropical-themed website while a small team collaborates in the background beside teal-branded stationery.",
+    "description": "Used in blog post: Website Creation for Dominican Businesses: Complete Guide. Also used in landing page: Desarrollo E-commerce República Dominicana, and as OG image for its SEO settings."
+  },
+  {
+    "_id": "image-e7d7186368916b9f7935daffdd2b6a905c9184bd-1344x768-png",
+    "originalFilename": "blog-local-vs-international-devs.png",
+    "title": "Local vs International Developers — split comparison",
+    "altText": "Split-scene graphic contrasting a local Dominican developer on a video call in a bright office with an outsourced developer working at night, captioned \"Dominican Developers: Your Competitive Edge\".",
+    "description": "Used in blog post: Local vs International Web Development: Advantages of Working with Dominican Developers. Also used as OG image for: Desarrollo Web Punta Cana."
+  },
+  {
+    "_id": "image-87dd1f261aa29484258b1c09400860b07c3b95d5-1344x768-png",
+    "originalFilename": "blog-professional-web-design-screens.png",
+    "title": "Professional Web Design — laptop and monitor mockup",
+    "altText": "A laptop and desktop monitor on a bright office desk both displaying a professional business website, with palm trees visible through the window.",
+    "description": "Used in blog post: Professional Web Design: Why Dominican Businesses Need More Than Templates. Also used as OG image for: Desarrollo Web República Dominicana."
+  },
+  {
+    "_id": "image-d0b7187796fe8e708229f7a42f46171d6cadd8c3-1920x999-png",
+    "originalFilename": "blog-proposal-packages-homepage.png",
+    "title": "Punta Cana Proposal Packages — website screenshot",
+    "altText": "Dark, elegant homepage of the Punta Cana Proposal Packages website with the headline \"Your Perfect Proposal Awaits\".",
+    "description": "Used in blog post: How We Built a 9-Language Proposal Packages Platform for Punta Cana's Most International Romantic Service."
+  },
+  {
+    "_id": "image-bc34a9b9da946eab8ea77141d4f5caf183e7c11f-1920x999-png",
+    "originalFilename": "blog-fuerza-del-pueblo-homepage.png",
+    "title": "Fuerza del Pueblo Verón–Punta Cana — website screenshot",
+    "altText": "Green-themed homepage of the Fuerza del Pueblo Verón–Punta Cana civic platform featuring Leonel Fernández and community outreach photos.",
+    "description": "Used in blog post: How We Built a Civic Engagement Platform for a Dominican Political Party in Verón-Punta Cana."
+  },
+  {
+    "_id": "image-c473fc27639e8e47b35fd417c0e378721e10c94d-1920x999-png",
+    "originalFilename": "blog-sertuin-events-homepage.png",
+    "title": "Sertuin Events — website screenshot",
+    "altText": "Homepage of the Sertuin Events wedding planner website showing an elegant candlelit banquet table with red and white florals.",
+    "description": "Used in blog post: How We Built a Full Business Platform for a Punta Cana Event Planner That Grew Sales 150%."
+  },
+  {
+    "_id": "image-0cbfab38090cd3b8b0f406d068cb6789a0582dfe-1920x999-png",
+    "originalFilename": "blog-grand-bay-dive-homepage.png",
+    "title": "Grand Bay Scuba Diving — website screenshot",
+    "altText": "Homepage of the Grand Bay scuba diving Punta Cana website showing a diver beside an anemone with clownfish underwater.",
+    "description": "Used in blog post: How We Built a Booking-First Dive Center Website That Increased Conversions 200% in Punta Cana."
+  },
+  {
+    "_id": "image-b0907d4b496f71c3e099af900cc3fbfb9e3a84d7-1920x999-png",
+    "originalFilename": "blog-tour-store-homepage.png",
+    "title": "Punta Cana Tour Store — website screenshot",
+    "altText": "Homepage of the Punta Cana Tour Store website with a turquoise beach hero and script logo over the shoreline.",
+    "description": "Used in blog post: How We Built a Full-Scale Tour Marketplace for Punta Cana's Most Complete Excursion Platform."
+  },
+  {
+    "_id": "image-aad7590741ad4e7fa747de14ebfa4a584dc4d9af-1920x999-png",
+    "originalFilename": "blog-esencias-by-nancy-homepage.png",
+    "title": "Esencias by Nancy — website screenshot",
+    "altText": "Homepage of the Esencias by Nancy website showing handmade blue resin earrings on a rustic backdrop with the heading \"Hand Made Products\".",
+    "description": "Used in blog post: How We Built a Bilingual E-Commerce Store for a Punta Cana Handmade Resin Artist."
+  },
+  {
+    "_id": "image-2b2fe95844384c650072a3eed2c3705e29ccf8d6-1344x768-png",
+    "originalFilename": "blog-website-cost-laptop-calculator.png",
+    "title": "Website Cost in the DR — laptop and calculator",
+    "altText": "A laptop showing a website mockup next to a calculator, a bar-chart printout, and a Dominican Republic flag on a warm-toned desk.",
+    "description": "Used in blog post: How Much Should a Website Cost in the Dominican Republic in 2026?"
+  },
+  {
+    "_id": "image-c95e204b3a0d204794a4a46f1b52dfe5edb66c0b-1920x998-png",
+    "originalFilename": "blog-wedding-calculator-site-screenshot.png",
+    "title": "Wedding Package Calculator — site screenshot",
+    "altText": "Screenshot of the Punta Cana Wedding Packages website hero reading \"Design Your Dream Wedding in Punta Cana\" beside a photo of a bride and groom on the beach.",
+    "description": "Used in blog post: How We Built a Real-Time Wedding Package Calculator That Turns Browsers Into Qualified Leads in 10 Minutes"
+  },
+  {
+    "_id": "image-7046f3ca640e3907d3322ad211b1b61ba1ebe1b0-1264x848-jpg",
+    "originalFilename": "blog-tourism-boom-beachside-laptop.jpg",
+    "title": "DR Tourism Boom — beachside laptop work",
+    "altText": "A smiling woman works on a laptop and tablet showing analytics dashboards at a beachfront resort table with palm trees and tourists behind her.",
+    "description": "Used in blog post: The Dominican Republic's Tourism Boom Is Digital — Is Your Business Ready?"
+  },
+  {
+    "_id": "image-96c438593e2fc34233dc00a64c7c199b64ec2cf6-1344x768-png",
+    "originalFilename": "blog-whatsapp-vs-website-devices.png",
+    "title": "WhatsApp Is Not a Website — devices hero",
+    "altText": "A smiling businesswoman holds up a smartphone next to a laptop and tablet all displaying the same business website in an office at sunset.",
+    "description": "Used in blog post: WhatsApp Is Not a Website: Why Dominican Businesses Need Both"
+  },
+  {
+    "_id": "image-0233fc6688c479da511b1ab56050cf27519e3c0e-1264x848-jpg",
+    "originalFilename": "blog-punta-cana-market-reviews-social.jpg",
+    "title": "Punta Cana Digital Market 2026 — hero image",
+    "altText": "A woman at a resort terrace cafe uses a tablet while floating Google reviews, social media icons and booking screens hover over a Punta Cana beach view.",
+    "description": "Used in blog post: The Punta Cana Digital Market in 2026: What International Buyers Expect Before They Book"
+  },
+  {
+    "_id": "image-697241c41b569025c006e1bd0d6463d943b0b93a-1344x768-png",
+    "originalFilename": "blog-core-web-vitals-monitor-dashboard.png",
+    "title": "Core Web Vitals 2026 — monitoring dashboard",
+    "altText": "A man at a desk studies three monitors displaying a Google Core Web Vitals dashboard with a score of 58 and red and green performance arrows, palm trees visible outside.",
+    "description": "Used in blog post: Google's Core Web Vitals in 2026: The Performance Score That's Costing Dominican Businesses Rankings"
+  },
+  {
+    "_id": "image-0b26ec1d80834398529814aa24031ded8c95be12-1264x848-jpg",
+    "originalFilename": "blog-google-maps-before-after.jpg",
+    "title": "Google Maps Fix — before and after cover",
+    "altText": "Split before-and-after illustration showing a frustrated business owner missing from Google Maps on the left and an optimized map listing attracting tourists on the right.",
+    "description": "Used in blog post: Why Your Punta Cana Business Doesn't Appear on Google Maps (And How to Fix It)"
+  },
+  {
+    "_id": "image-dbb402f255266e3f05d1fa71667ce3899c4be3c0-5504x3072-png",
+    "originalFilename": "blog-seo-timeline-growth-chart.png",
+    "title": "How Long Does SEO Take — growth chart",
+    "altText": "A woman in an office overlooking the Punta Cana coastline points at a large monitor showing an organic traffic growth chart titled \"How Long Does SEO Take\".",
+    "description": "Used in blog post: How Long Does SEO Take? A Realistic Timeline for Dominican Businesses"
+  },
+  {
+    "_id": "image-5bcc0a661a2e9940b099a0a3cdb3b1f7fb0a62c1-1344x768-png",
+    "originalFilename": "blog-sitemap-holographic-diagram.png",
+    "title": "What Is a Sitemap — holographic diagram",
+    "altText": "Two professionals in a seaside office point at a floating holographic sitemap diagram of connected hexagonal page nodes.",
+    "description": "Used in blog post: What Is a Sitemap and Why Does Google Need One for Your Dominican Website?"
+  },
+  {
+    "_id": "image-e00c72d331345ec2e2cf27567cb2f298a344f127-5504x3072-png",
+    "originalFilename": "blog-image-optimization-before-after.png",
+    "title": "Image Optimization — before and after collage",
+    "altText": "A woman with a laptop at a beachfront desk reviews a before-and-after collage comparing huge slow-loading photos with fast-loading optimized tourism images.",
+    "description": "Used in blog post: Image Optimization for Tourism Websites: How to Make High-Quality Photos Load Fast"
+  },
+  {
+    "_id": "image-f40117acabb252d7e11469b236125e3772906985-1264x848-jpg",
+    "originalFilename": "blog-structured-data-rich-results.jpg",
+    "title": "Structured Data — rich results screen",
+    "altText": "A man in a modern office by the Caribbean coast points at a large screen showing Google Search rich results and structured data panels for Dominican businesses.",
+    "description": "Used in blog post: Structured Data for Dominican Businesses: How to Get Rich Results in Google Search"
+  },
+  {
+    "_id": "image-c0c009ab6b7322774ae976abe0a1c7930bf66bfa-1376x768-jpg",
+    "originalFilename": "blog-seo-vs-sem-comparison.jpg",
+    "title": "SEO vs SEM — comparison infographic",
+    "altText": "Split infographic comparing SEO with organic traffic growth on the left and SEM with instant paid traffic on the right, with a woman standing between the panels on a beach backdrop.",
+    "description": "Used in blog post: The Difference Between SEO and SEM: Which One Does a Punta Cana Business Actually Need?"
+  },
+  {
+    "_id": "image-8b8499866f1d93e08dec3a9f9e58f4051ffc505d-2752x1536-png",
+    "originalFilename": "blog-page-speed-conversion-dashboards.png",
+    "title": "Page Speed Conversion Math — hero image",
+    "altText": "A man compares two monitors showing a fast website scoring 98/100 with rising conversions against a slow competitor site with declining metrics, beach visible through the window.",
+    "description": "Used in blog post: Why a Fast Website Makes You More Money: The Conversion Math Behind Page Speed"
+  },
+  {
+    "_id": "image-110f4fb3241c9fc589a4c63142d75ace51f2a532-2752x1536-png",
+    "originalFilename": "blog-bilingual-seo-analytics-desk.png",
+    "title": "Bilingual SEO — analytics workstation",
+    "altText": "A smiling woman works at a triple-monitor desk showing bilingual website analytics and a world map, with a tropical resort visible through the windows.",
+    "description": "Used in blog post: Bilingual SEO: How to Rank in Both English and Spanish Without Hurting Either"
+  },
+  {
+    "_id": "image-c5f0778249cc95a3bcc3402b6a239cb5df956a4f-2752x1536-png",
+    "originalFilename": "blog-robots-txt-good-vs-bad.png",
+    "title": "Robots.txt — good vs bad file examples",
+    "altText": "A man looks at a glowing screen comparing a good robots.txt file in green with a misconfigured robots.txt blocking pages in red, beside floating website wireframes.",
+    "description": "Used in blog post: What Is a Robots.txt File and Is Yours Blocking Google From Your Website?"
+  },
+  {
+    "_id": "image-e70ae286016433b211d58ee78cd08f33b3a1e7c9-2752x1536-png",
+    "originalFilename": "blog-losing-tourists-worried-owner.png",
+    "title": "Losing Tourists to Competitors — hero image",
+    "altText": "A pensive Dominican business owner sits at his desk with a notebook and coffee, studying a competitor's polished tourism website on his laptop.",
+    "description": "Used in blog post: Why Punta Cana Businesses Are Losing Tourists to Competitors With Better Websites"
+  },
+  {
+    "_id": "image-aebf23c2fba2b49a5ec2af6bcbabab0f49ffdb22-2752x1536-png",
+    "originalFilename": "blog-website-vs-landing-page-planning.png",
+    "title": "Website or Landing Page — planning session",
+    "altText": "A woman takes handwritten notes at her desk while comparing a printed site plan with a tablet displaying a Spanish-language landing page titled \"Explora el paraíso\".",
+    "description": "Used in blog post: Does My Business Need a Website or a Landing Page? A Dominican Business Owner's Decision Guide"
+  },
+  {
+    "_id": "image-db5d7a3819fa15de59013f3bd549cd39dffeda16-2752x1536-png",
+    "originalFilename": "blog-web-developer-brief-meeting.png",
+    "title": "How to Brief a Web Developer — client meeting",
+    "altText": "Two women discuss a website project at an outdoor cafe table with a laptop, printed documents and color swatches between them.",
+    "description": "Used in blog post: How to Brief a Web Developer: What Dominican Businesses Need to Know Before Starting a Project"
+  },
+  {
+    "_id": "image-33c6dd263059d6590327d1070fcbf38e08f2f318-500x500-png",
+    "originalFilename": "client-punta-cana-proposal-packages-logo.png",
+    "title": "Punta Cana Proposal Packages — logo",
+    "altText": "Punta Cana Proposal Packages logo.",
+    "description": "Used in previous clients section: PROUD TO WORK WITH"
+  },
+  {
+    "_id": "image-319a3f3e002fd58c6ecb1ed830e74e918f588146-1024x1024-png",
+    "originalFilename": "client-punta-cana-wedding-packages-logo.png",
+    "title": "Punta Cana Wedding Packages — logo",
+    "altText": "Punta Cana Wedding Packages logo.",
+    "description": "Used in previous clients section: PROUD TO WORK WITH"
+  },
+  {
+    "_id": "image-78f6d30176b4fcadb7eae1a9513a10b7ac55b6a9-1200x538-png",
+    "originalFilename": "fuerza-del-pueblo-logo.png",
+    "title": "Fuerza del Pueblo — logo",
+    "altText": "Fuerza del Pueblo logo.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-dd5d86e12131525d4be872ff5af866af9a3cefc3-225x225-png",
+    "originalFilename": "fuerza-del-pueblo-fp-logo-green.png",
+    "title": "Fuerza del Pueblo — FP logo on green",
+    "altText": "Fuerza del Pueblo logo",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-f2826e89e870755802e528941ee933dd150fe721-365x538-webp",
+    "originalFilename": "client-fuerza-del-pueblo-logo.webp",
+    "title": "Fuerza del Pueblo — client logo",
+    "altText": "Fuerza del Pueblo logo",
+    "description": "Used in previous clients section: PROUD TO WORK WITH"
+  },
+  {
+    "_id": "image-a44dca48167ff27841dd84e053c3b520e97e32e1-1376x768-png",
+    "originalFilename": "blog-nextjs-vs-wordpress-desk-comparison.png",
+    "title": "Next.js vs WordPress — hero image",
+    "altText": "Split flat-lay comparison of two desk setups, one minimal with a black notebook and pencil and one cluttered with colorful notebooks, pens, sticky notes, and a smartphone.",
+    "description": "Used in blog post: Next.js vs WordPress: Which One Is Right for Your Dominican Business?"
+  },
+  {
+    "_id": "image-7e42b8365d5dc44b99f614973a7764a25b16a2e9-1376x768-png",
+    "originalFilename": "blog-dark-mode-phone-at-dusk.png",
+    "title": "Dark Mode — hero image",
+    "altText": "A woman browses her phone at dusk in a beachside Dominican restaurant with palm trees and string lights behind her.",
+    "description": "Used in blog post: Why Your Dominican Business Website Needs Dark Mode (And What It Says About Your Brand)"
+  },
+  {
+    "_id": "image-75c6deb1efdbca8565ffcebb932ecf869630caa2-2752x1536-png",
+    "originalFilename": "blog-launch-checklist-shop-owner.png",
+    "title": "Website Launch Checklist — hero image",
+    "altText": "A small business owner writes on a printed checklist beside an open laptop at a sunlit counter in her shop.",
+    "description": "Used in blog post: The Dominican Business Website Launch Checklist: 20 Things to Verify Before Going Live"
+  },
+  {
+    "_id": "image-86192dd3b9a5a14ffc1a237774bbaad13a28c3a8-2752x1536-png",
+    "originalFilename": "blog-design-style-moodboard.png",
+    "title": "Colors, Fonts & Design Style — hero image",
+    "altText": "A design moodboard on a wooden table with color swatches, typography letter cards, tropical photo prints, and a hand-drawn website wireframe.",
+    "description": "Used in blog post: How to Choose Colors, Fonts, and a Design Style for Your Dominican Business Website"
+  },
+  {
+    "_id": "image-fa7d216caa28f59897776d83b5c24954bbf5e038-2752x1536-png",
+    "originalFilename": "blog-whatsapp-maps-instagram-beach-bar.png",
+    "title": "WhatsApp, Maps & Instagram — hero image",
+    "altText": "A couple at a beach bar smiles at a phone while a hand in the foreground holds a smartphone showing a map and business listing.",
+    "description": "Used in blog post: How to Connect Your Dominican Business Website to WhatsApp, Google Maps, and Instagram (The Right Way)"
+  },
+  {
+    "_id": "image-874ad3e78a133f25caf23388b700305d436bb588-1376x768-png",
+    "originalFilename": "blog-tourism-content-writing-beach-kiosk.png",
+    "title": "Punta Cana Tourism Content — hero image",
+    "altText": "A woman with a pencil and notebook thinks over her writing at a beachfront tour kiosk signed Aventuras del Caribe.",
+    "description": "Used in blog post: How to Write Website Content for a Punta Cana Tourism Business (Even If You're Not a Writer)"
+  },
+  {
+    "_id": "image-262145309d7de7632919de900ff393e21b19f15d-1376x768-jpg",
+    "originalFilename": "blog-selling-online-artisan-laptop.jpg",
+    "title": "Start Selling Online in the DR — hero image",
+    "altText": "An artisan works on a laptop at a home workspace surrounded by handmade jewelry, packaging, and plants.",
+    "description": "Used in blog post: How to Start Selling Online in the Dominican Republic: A Practical 2026 Guide"
+  },
+  {
+    "_id": "image-06096c833c3f2c8238de8e669b92bb04652f3de6-5504x3072-png",
+    "originalFilename": "portfolio-proposal-packages-mockup.png",
+    "title": "Punta Cana Proposal Packages — site mockup",
+    "altText": "Laptop and smartphone mockup of an elegant dark website with the headline Your Perfect Proposal Awaits in gold serif type.",
+    "description": "Used in portfolio project: Punta Cana Proposal Packages"
+  },
+  {
+    "_id": "image-a410ba867fd9fab40c39b561807a5df4eefd76be-2752x1536-png",
+    "originalFilename": "portfolio-fuerza-del-pueblo-site-mockup.png",
+    "title": "Fuerza del Pueblo Verón-Punta Cana — site mockup",
+    "altText": "Laptop and smartphone mockup of the green-branded Fuerza del Pueblo political website featuring Leonel Fernández.",
+    "description": "Used in portfolio project: Fuerza del Pueblo Verón-Punta Cana"
+  },
+  {
+    "_id": "image-ca1b6d7f959b60ab43c6724dbe43c35ef916946e-1376x768-png",
+    "originalFilename": "portfolio-scuba-diving-site-mockup.png",
+    "title": "Scuba Diving Website with Payments — site mockup",
+    "altText": "Laptop and smartphone mockup of a scuba diving website with an underwater hero photo and the headline Scuba Diving Punta Cana.",
+    "description": "Used in portfolio project: Scuba Diving Website with Payments"
+  },
+  {
+    "_id": "image-673ab368838b0f9f2c8095bb9873e9dae378c82f-1376x768-png",
+    "originalFilename": "portfolio-handmade-ecommerce-mockup.png",
+    "title": "Multilingual E-commerce Site — site mockup",
+    "altText": "Laptop and smartphone mockup of a dark handmade products e-commerce site with the heading Hand Made Products.",
+    "description": "Used in portfolio project: Multilingual E-commerce Site"
+  },
+  {
+    "_id": "image-88ea1daca36d555cfec79c3b1a8629cc352e2cb8-2720x1536-jpg",
+    "originalFilename": "portfolio-tour-store-booking-mockup.jpg",
+    "title": "Multilingual Excursion Booking Site — site mockup",
+    "altText": "Laptop and smartphone mockup of the Punta Cana Tour Store booking website with a turquoise beach hero image.",
+    "description": "Used in portfolio project: Multilingual Excursion Booking Site"
+  },
+  {
+    "_id": "image-6ca710a258407f6d1c2ae4c768e0ed9238f73702-1376x768-png",
+    "originalFilename": "portfolio-sertuin-events-app-mockup.png",
+    "title": "Sertuin Events Web App — site mockup",
+    "altText": "Laptop and smartphone mockup of an event planning website showing an elegant outdoor wedding banquet table with candles and red flowers.",
+    "description": "Used in portfolio project: Multilingual Web App for Event Planning"
+  },
+  {
+    "_id": "image-dde1cd08607e5a18a124fc253fbb7aafa284a0ae-1376x768-png",
+    "originalFilename": "portfolio-photography-site-mockup.png",
+    "title": "Wedding & Event Photography Portfolio — site mockup",
+    "altText": "Laptop and smartphone mockup of the Punta Cana Photographer portfolio website with a coastal hero photo and services gallery.",
+    "description": "Used in portfolio project: Wedding & Event Photography Portfolio"
+  },
+  {
+    "_id": "image-74c995ae314e7c067af4ecd10a7bc0b60ff11676-1376x768-png",
+    "originalFilename": "portfolio-venue-directory-mockup.png",
+    "title": "Punta Cana Venue Directory — site mockup",
+    "altText": "Laptop and smartphone mockup of the Punta Cana Venue Collection directory site with a sunset terrace dining hero photo.",
+    "description": "Used in portfolio project: Elegant Venue Directory for Punta Cana Events"
+  },
+  {
+    "_id": "image-9be25634447b762e73943570444e105581924db2-2752x1536-png",
+    "originalFilename": "portfolio-excursion-platform-mockup.png",
+    "title": "Excursion & Tour Booking Platform — site mockup",
+    "altText": "Laptop and smartphone mockup of a tour booking website with an aerial catamaran hero and the headline Discover the Best Excursions in Punta Cana.",
+    "description": "Used in portfolio project: Excursion & Tour Booking Platform"
+  },
+  {
+    "_id": "image-841e757369e0882665a1cd3a14e0d625ce2ea916-2752x1536-png",
+    "originalFilename": "portfolio-wedding-builder-mockup.png",
+    "title": "Destination Wedding Builder — site mockup",
+    "altText": "Laptop and smartphone mockup of a clean wedding planning website with the headline Design Your Dream Wedding in Punta Cana and a beach couple photo.",
+    "description": "Used in portfolio project: Destination Wedding Builder with Real-Time Pricing"
+  },
+  {
+    "_id": "image-4a9de3df21701c267bcbdae8592727eb2069ca63-600x600-png",
+    "originalFilename": "punta-cana-excursions-grand-bay-logo.png",
+    "title": "Punta Cana Excursions by Grand Bay — logo",
+    "altText": "Punta Cana Excursions by Grand Bay logo",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-f25b77bed3231c0af5544f94a6764960495a407f-600x600-png",
+    "originalFilename": "client-punta-cana-excursions-logo.png",
+    "title": "Punta Cana Excursions — client logo",
+    "altText": "Punta Cana Excursions by Grand Bay logo",
+    "description": "Used in previous clients section: PROUD TO WORK WITH."
+  },
+  {
+    "_id": "image-6e7dfde86aff5ef79b1d649a5f2b09a22a17c6b4-1376x768-png",
+    "originalFilename": "blog-woocommerce-shopify-custom-desk-flatlay.png",
+    "title": "WooCommerce vs Shopify vs Custom — hero image",
+    "altText": "Overhead flat lay of a wooden desk with notebooks, color swatches, wireframe sketches, pencils and cups of coffee.",
+    "description": "Used in blog post: WooCommerce vs Shopify vs Custom: Which Is Right for Your Dominican Store?"
+  },
+  {
+    "_id": "image-749d23a77a513a7a3f51a6dc1a7166eb8aa7de2d-1264x848-png",
+    "originalFilename": "blog-online-payments-dr-checkout-tablet.png",
+    "title": "Accept Online Payments in the DR — hero image",
+    "altText": "Smiling shop owner at a boutique counter while a customer completes a payment on a tablet showing a success screen, with a phone card reader nearby.",
+    "description": "Used in blog post: How to Accept Online Payments in the Dominican Republic (2026 Guide)."
+  },
+  {
+    "_id": "image-d15bd07011c6cd63afcf4091f5af2d8f00a9f761-1376x768-png",
+    "originalFilename": "blog-store-not-selling-declining-chart.png",
+    "title": "Why Your Online Store Isn't Selling — hero image",
+    "altText": "Pensive business owner at a home office desk studying a laptop screen with a declining analytics chart.",
+    "description": "Used in blog post: Why Your Online Store Isn't Selling (7 Reasons for Dominican Businesses)."
+  },
+  {
+    "_id": "image-d5824bedc655aa04b2c518bdc807f0cc3e0f484f-1376x768-png",
+    "originalFilename": "blog-llms-txt-file-ai-brain.png",
+    "title": "llms.txt explained — hero image",
+    "altText": "Glowing llms.txt file icon connected by circuit lines to a digital AI brain on a light background.",
+    "description": "Used in blog post: What Are llms.txt and llms-full.txt — and Does Your Business Actually Need Them?"
+  },
+  {
+    "_id": "image-e61f239ab63ed26bfa7f567a5969d2d791b4b6e6-1376x768-png",
+    "originalFilename": "caribbean-hotel-booking-whatsapp-illustration.png",
+    "title": "Caribbean hotel booking with WhatsApp — illustration",
+    "altText": "Cartoon illustration of a hand holding a phone with a Caribbean beach hotel booking site and WhatsApp chat bubbles over a colorful seaside town.",
+    "description": "Not referenced by any document.",
+    "unreferenced": true
+  },
+  {
+    "_id": "image-db6d198d136b500a1d7f4a577c6fa79b49fb5332-1376x768-png",
+    "originalFilename": "blog-la-romana-bayahibe-dive-shop-owner.png",
+    "title": "La Romana & Bayahíbe businesses — hero image",
+    "altText": "Dive shop owner on a wooden dock checking his phone beside a tours-and-rentals sign, with boats and a cruise ship in the harbor behind him.",
+    "description": "Used in blog post: Websites for La Romana & Bayahíbe Businesses."
+  },
+  {
+    "_id": "image-f073ce762060792020519188e5b7d6adf2aaa04e-1376x768-png",
+    "originalFilename": "blog-bavaro-boutique-owner-phone.png",
+    "title": "Web design in Bávaro — hero image",
+    "altText": "Boutique owner smiling at her phone behind the counter of a colorful beach-town gift shop, with an inset phone screen showing her store's website.",
+    "description": "Used in blog post: Web Design in Bávaro: A Guide for Local Businesses."
+  },
+  {
+    "_id": "image-a4f42caa57513f8344fe1056fca54caafff27178-1376x768-png",
+    "originalFilename": "blog-santo-domingo-businesswoman-tablet.png",
+    "title": "Web design for Santo Domingo businesses — hero image",
+    "altText": "Businesswoman in a blazer reviewing a tablet by a high-rise office window overlooking a sprawling city skyline.",
+    "description": "Used in blog post: Web Design for Santo Domingo Businesses: What to Look For."
+  },
+  {
+    "_id": "image-7b7a643ce8a1c2c39509a7b77ed793a25b67ec9d-1376x768-png",
+    "originalFilename": "blog-las-terrenas-samana-beach-cafe.png",
+    "title": "Las Terrenas & Samaná web design — hero image",
+    "altText": "Woman working on a tablet at a rustic thatched-roof beachfront café with palm trees and the sea in the background.",
+    "description": "Used in blog post: Web Design in Las Terrenas & Samaná: The Multilingual Market."
+  },
+  {
+    "_id": "image-de27919a5f73c45a8d19b2d5f3bfbc28c5693d6c-1376x768-png",
+    "originalFilename": "blog-hire-web-designer-punta-cana-tablet.png",
+    "title": "How to hire a web designer in Punta Cana — hero image",
+    "altText": "Person browsing a travel website on a tablet at an outdoor wooden table with a cappuccino, tropical flowers and the coast behind.",
+    "description": "Used in blog post: How to Hire a Web Designer in Punta Cana (2026 Guide)."
+  },
+  {
+    "_id": "image-8d3df34e9f63f9a573a05278c55f50fddc800581-1376x768-png",
+    "originalFilename": "blog-commission-website-client-meeting.png",
+    "title": "Commission a website — client meeting hero image",
+    "altText": "Web designer and client reviewing a bakery website on a laptop over coffee and handwritten notes in a brick-walled café.",
+    "description": "Used in blog post: Steps to Commission a Website for Your Local Business."
+  },
+  {
+    "_id": "image-c5d62fbeb954e782d4f1f14e10869e010195c526-1376x768-png",
+    "originalFilename": "blog-professional-website-designer-desk.png",
+    "title": "What you need for a professional website — hero image",
+    "altText": "Overhead view of a designer's desk with a laptop showing a personal portfolio site, color swatches, a paint palette, cables and printed documents.",
+    "description": "Used in blog post: What You Need to Create a Professional Website."
+  },
+  {
+    "_id": "image-e6bf9d89a45b769f1109b08654ae219c1f669c3e-1376x768-png",
+    "originalFilename": "blog-find-web-designers-portfolio-review.png",
+    "title": "Find reliable web designers in Punta Cana — hero image",
+    "altText": "Woman at a sunny home desk thoughtfully browsing a grid of web design portfolios on her laptop, with tropical greenery outside the window.",
+    "description": "Used in blog post: Where to Find Reliable Web Designers in Punta Cana."
+  },
+  {
+    "_id": "image-7ea4c158e3f79a126c6faff827f56c1ee31e90ad-1376x768-png",
+    "originalFilename": "blog-boutique-hotels-guest-booking-phone.png",
+    "title": "Boutique hotel & vacation rental websites — hero image",
+    "altText": "Guest relaxing on a flower-draped seaside terrace booking a stay on her phone, with a coastal cliffside village and turquoise water beyond.",
+    "description": "Used in blog post: Websites for Boutique Hotels & Vacation Rentals in Punta Cana."
+  },
+  {
+    "_id": "image-96be19990613523cf67ea3de97ce0ffcf62503fb-1376x768-jpg",
+    "originalFilename": "blog-tour-operators-booking-app-dock.jpg",
+    "title": "Tour operator websites that convert — hero image",
+    "altText": "Tour guide on a busy marina dock checking bookings on her phone, with a customer's phone showing the tour website and excursion boats behind.",
+    "description": "Used in blog post: Websites for Tour Operators & Excursion Companies: What Actually Converts."
+  },
+  {
+    "_id": "image-cda04ae9c87c69fa047415a68f0d28c6d262f460-1376x768-jpg",
+    "originalFilename": "blog-punta-cana-restaurant-digital-menu.jpg",
+    "title": "Restaurant websites in Punta Cana — hero image",
+    "altText": "Server at a beachfront thatched-roof restaurant presenting a digital menu on a tablet at dusk, with string lights and set tables around her.",
+    "description": "Used in blog post: Restaurant Websites in Punta Cana: Menu, Reservations & Google."
+  },
+  {
+    "_id": "image-d87ab8fa785a554528fe00123d07d3e3321f26da-6000x4000-jpg",
+    "originalFilename": "landing-santo-domingo-zona-colonial-street.jpg",
+    "title": "Santo Domingo — Zona Colonial street",
+    "altText": "Cobblestone pedestrian street in Santo Domingo's Zona Colonial with historic stone walls and a colonial bell tower in the distance.",
+    "description": "Used in landing page: Diseño de Páginas Web en Santo Domingo (City Landing Page); also used as SEO/OG image."
+  },
+  {
+    "_id": "image-bc10348df0141f65d24802f9dcbcef7951d22e6d-3000x4000-jpg",
+    "originalFilename": "landing-santiago-monumento-heroes.jpg",
+    "title": "Santiago — Monumento a los Héroes",
+    "altText": "The Monumento a los Héroes de la Restauración in Santiago de los Caballeros rising above green trees under a blue sky with the Dominican flag.",
+    "description": "Used in landing page: Diseño de Páginas Web en Santiago (City Landing Page); also used as SEO/OG image."
+  },
+  {
+    "_id": "image-36527c0d05f902cd1bdf609cf3118f4e8152332e-5737x3817-jpg",
+    "originalFilename": "landing-la-romana-beach-pier-sunset.jpg",
+    "title": "La Romana — beach pier at sunset",
+    "altText": "Wooden pier with a gazebo stretching over calm water at sunset on a Dominican beach near La Romana.",
+    "description": "Used in landing page: Diseño de Páginas Web en La Romana (City Landing Page); also used as SEO/OG image."
+  },
+  {
+    "_id": "image-7ada1c8c777101c8364ba520c5f039a83bdeda88-5464x3070-jpg",
+    "originalFilename": "landing-higuey-basilica-aerial.jpg",
+    "title": "Higüey — Basílica de la Altagracia aerial",
+    "altText": "Aerial view of the Basílica de Nuestra Señora de la Altagracia in Higüey, its towering concrete arch rising above the city under a blue sky.",
+    "description": "Used in landing page: Diseño de Páginas Web en Higüey (City Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-85c2aedf429692121f9ce40a5045601a11fe3988-5464x3640-jpg",
+    "originalFilename": "landing-san-pedro-de-macoris-cathedral.jpg",
+    "title": "San Pedro de Macorís — cathedral aerial",
+    "altText": "Aerial view of the white St. Peter the Apostle cathedral surrounded by the rooftops of San Pedro de Macorís at dusk.",
+    "description": "Used in landing page: Diseño de Páginas Web en San Pedro de Macorís (City Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-0fed58990ca388916d7e9586bd1a3b0dbbcd4808-6000x4000-jpg",
+    "originalFilename": "landing-punta-cana-palm-beach.jpg",
+    "title": "Punta Cana — palm-lined beach",
+    "altText": "Palm trees leaning over a white-sand beach with turquoise Caribbean water in Punta Cana.",
+    "description": "Used in landing page: Diseño de Páginas Web en Punta Cana (City Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-c31286fb01a771a356b32fad117b5e1c6b091e62-3616x2215-jpg",
+    "originalFilename": "blog-north-coast-puerto-plata-fortaleza.jpg",
+    "title": "Puerto Plata — Fortaleza San Felipe aerial",
+    "altText": "Aerial view of the Fortaleza San Felipe peninsula jutting into the sea at Puerto Plata, with the city and harbor behind it.",
+    "description": "Used in blog post: Puerto Plata, Sosúa & Cabarete: Three Audiences, One North Coast. Also used in landing page: Diseño de Páginas Web en Puerto Plata (City Landing Page) and as its SEO/OG image."
+  },
+  {
+    "_id": "image-d90d79d8d5d67d296f86464110b0f04d727dbb12-4000x4000-jpg",
+    "originalFilename": "landing-las-terrenas-samana-bridge-islet.jpg",
+    "title": "Samaná — pedestrian bridge to islet",
+    "altText": "Long pedestrian bridge stretching across turquoise water to a small forested islet in Samaná Bay.",
+    "description": "Used in landing page: Diseño de Páginas Web en Las Terrenas / Samaná (City Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-091cbc098c3ada5cfab59c680d98b06543240187-3264x2448-jpg",
+    "originalFilename": "blog-pedernales-cabo-rojo-beach.jpg",
+    "title": "Pedernales — beach with boats",
+    "altText": "View from under a thatched palapa of a quiet Pedernales beach with small boats floating on turquoise water and lounge chairs along the sand.",
+    "description": "Used in blog post: Pedernales and Cabo Rojo: Why the Southwest Is the DR's Next Digital Frontier."
+  },
+  {
+    "_id": "image-d53c927c0bbe80570b59504cf318537022405788-1200x900-jpg",
+    "originalFilename": "blog-miches-montana-redonda-viewpoint.jpg",
+    "title": "Miches — Montaña Redonda viewpoint",
+    "altText": "Grassy hilltop viewpoint at Montaña Redonda near Miches with a green swing frame overlooking rolling hills and the coast.",
+    "description": "Used in blog post: Miches and the All-Inclusive Trap: Why Local Businesses Need Websites."
+  },
+  {
+    "_id": "image-21ab4d08035059a29884bbe0dd8465031b648316-3840x2560-jpg",
+    "originalFilename": "blog-cap-cana-marina-waterfront.jpg",
+    "title": "Cap Cana — marina waterfront",
+    "altText": "Upscale waterfront buildings and palm trees lining the turquoise water of the Cap Cana marina under a clear sky.",
+    "description": "Used in blog post: Cap Cana: Why Your Website Must Match the Luxury Standard."
+  },
+  {
+    "_id": "image-d304ca030534ce9b3f2a8ac00c3fe5f83fedf52f-4402x2935-jpg",
+    "originalFilename": "landing-restaurantes-gourmet-plate.jpg",
+    "title": "Restaurantes — gourmet plated dish",
+    "altText": "Elegantly plated gourmet dish being served at a candlelit restaurant table set with wine glasses and bread.",
+    "description": "Used in landing page: Páginas Web para Restaurantes (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-fed3c52f8e248c6d532c080283281f18d4e9de9b-5888x3925-jpg",
+    "originalFilename": "landing-hoteles-boutique-resort-pool.jpg",
+    "title": "Hoteles Boutique — seaside resort pool",
+    "altText": "Palm trees swaying over a seaside boutique resort with a red-tiled roof and pool deck overlooking the ocean.",
+    "description": "Used in landing page: Páginas Web para Hoteles Boutique (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-2ccba95f2af30476ff03549dc4ea281a0184a4a6-1376x768-jpg",
+    "originalFilename": "landing-tour-operadores-catamaran.jpg",
+    "title": "Tour Operadores — sailing catamaran",
+    "altText": "White sailing catamaran gliding over clear turquoise water near a palm-fringed coast in Punta Cana.",
+    "description": "Used in landing page: Páginas Web para Tour Operadores (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-e709b4b9fc95491755ae03b6554d1f13bf1b898a-4592x3448-jpg",
+    "originalFilename": "landing-inmobiliarias-house-keys.jpg",
+    "title": "Inmobiliarias — house keys",
+    "altText": "House keys on a keychain lying on a wooden table next to a miniature model house with a red facade and gray roof.",
+    "description": "Used in landing page: Páginas Web para Inmobiliarias (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-7a4ea28aa17919a8a1db0ce052d7655f53c37472-5464x3070-jpg",
+    "originalFilename": "landing-alquileres-vacacionales-marina-aerial.jpg",
+    "title": "Alquileres Vacacionales — marina aerial",
+    "altText": "Aerial view of a Caribbean marina resort community with turquoise canals, docked boats, and dense waterfront buildings near the beach.",
+    "description": "Used in landing page: Páginas Web para Alquileres Vacacionales (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-737bf96ac371a3af1203d803565002aecce77193-3600x2400-jpg",
+    "originalFilename": "landing-bodas-eventos-beach-bridal-party.jpg",
+    "title": "Bodas y Eventos — beach bridal party",
+    "altText": "Bride in a white gown walking along a palm-lined beach with five bridesmaids in blush dresses holding bouquets.",
+    "description": "Used in landing page: Páginas Web para Bodas y Eventos (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-fd565178aace88a695857c1bb1015abcf63a4bd7-6000x3376-jpg",
+    "originalFilename": "landing-dentistas-dental-clinic.jpg",
+    "title": "Dentistas — dental clinic",
+    "altText": "Masked dentist in scrubs standing beside a reclined patient in a modern multi-chair dental clinic.",
+    "description": "Used in landing page: Páginas Web para Dentistas (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-746813aa0c3fc9fc580cc4ddcdcc46f614b37626-5616x3744-jpg",
+    "originalFilename": "landing-abogados-gavel-book.jpg",
+    "title": "Abogados — gavel and law book",
+    "altText": "Wooden judge's gavel resting in front of an open law book against a blue background.",
+    "description": "Used in landing page: Páginas Web para Abogados (Industry Landing Page). Also used as SEO/OG image for that page."
+  },
+  {
+    "_id": "image-f6b27904af4a0df7e78210beefd238b3ddd10cf3-1376x768-png",
+    "originalFilename": "blog-redesign-rankings-two-laptops.png",
+    "title": "Website Redesign — comparing two laptops",
+    "altText": "Person pointing at one of two laptops on a wooden desk, comparing an old and a redesigned website side by side with a handwritten checklist nearby.",
+    "description": "Used in blog post: How to Redesign Your Website Without Losing Rankings."
+  },
+  {
+    "_id": "image-2b54bba6151477d0461f81cdfaeed0ab1ee3a1eb-1376x768-png",
+    "originalFilename": "blog-not-on-google-frustrated-owner.png",
+    "title": "Not Showing on Google — worried site owner",
+    "altText": "Woman at a home office desk resting her chin on her hand while studying search results on her laptop, with notes and a phone beside her.",
+    "description": "Used in blog post: My Website Doesn't Show Up on Google: 7 Reasons & Fixes."
+  },
+  {
+    "_id": "image-46f5bf5267737b01f4b7c26d959bbbc998c587c7-1376x768-png",
+    "originalFilename": "blog-real-estate-punta-cana-agent-tablet.png",
+    "title": "Real Estate Punta Cana — agent with tablet",
+    "altText": "Real estate agent in a blazer reviewing property listings on a tablet at the entrance of a luxury oceanfront villa in Punta Cana.",
+    "description": "Used in blog post: Real Estate Websites in Punta Cana: Bilingual Listings & Foreign Buyers."
+  },
+  {
+    "_id": "image-792ca65af52808aa536e5834fb61343ce83872fc-1376x768-png",
+    "originalFilename": "blog-wedding-websites-couple-tablet.png",
+    "title": "Wedding Websites — couple browsing on tablet",
+    "altText": "Smiling couple seated in a rustic cafe looking together at a wedding venue website on a tablet.",
+    "description": "Used in blog post: Websites for Wedding & Event Businesses: What We Learned Building Four."
+  },
+  {
+    "_id": "image-c4040bb99f6fa0f96e29d2570f16a74396abcab0-1376x768-png",
+    "originalFilename": "blog-doctors-clinics-booking-tablet.png",
+    "title": "Websites for Doctors & Clinics — hero image",
+    "altText": "A receptionist in a bright medical clinic shows a patient an online appointment calendar on a tablet while others wait in the background.",
+    "description": "Used in blog post: Websites for Doctors, Dentists & Clinics in the Dominican Republic"
+  },
+  {
+    "_id": "image-6a03bf66e390ba86bd9617f1ff48c94a113de619-2752x1536-png",
+    "originalFilename": "blog-santiago-monument-night-skyline.png",
+    "title": "Santiago — Monument at dusk hero image",
+    "altText": "The illuminated Monumento a los Héroes de la Restauración rises above the Santiago de los Caballeros skyline at dusk.",
+    "description": "Used in blog post: Santiago: Websites for the DR's Economic Engine, Not a Resort Town"
+  },
+  {
+    "_id": "image-902dd55cb49d1dc4df7d46e30ab1a6ac825826a6-3000x2000-jpg",
+    "originalFilename": "blog-samana-salto-el-limon-waterfall.jpg",
+    "title": "Samaná Peninsula — Salto El Limón waterfall",
+    "altText": "Visitors gather at the base of the wide Salto El Limón waterfall cascading down a jungle cliff in Samaná.",
+    "description": "Used in blog post: The Samaná Peninsula: Websites for Eco-Tourism & International Buyers"
+  },
+  {
+    "_id": "image-3af0398ff76677b505f0abe5facbde90077c11d8-6000x4000-jpg",
+    "originalFilename": "blog-jarabacoa-rio-baiguate-waterfall.jpg",
+    "title": "Jarabacoa — Río Baiguate waterfall",
+    "altText": "The Río Baiguate waterfall in Jarabacoa pours between rocky cliffs into a natural swimming pool surrounded by forest.",
+    "description": "Used in blog post: Jarabacoa & Constanza: Websites for the DR's Mountain Adventure Capital"
+  },
+  {
+    "_id": "image-70454b0330e9c7c55cc441d04a7c8211c79d65ef-1376x768-png",
+    "originalFilename": "og-constructoras-beachfront-construction.png",
+    "title": "Páginas Web para Constructoras — OG image",
+    "altText": "A beachfront construction site with a crane and workers building a concrete villa beside a finished modern home with a pool on the Caribbean coast.",
+    "description": "OG image for: Páginas Web para Constructoras (SEO document seo-paginas-web-para-constructoras)"
+  },
+  {
+    "_id": "image-3cc076d40c9e789e3ed0ad3fee6dbd7ce54162b6-1376x768-png",
+    "originalFilename": "landing-salones-belleza-stylist-mirror.png",
+    "title": "Salones de Belleza — salon hero image",
+    "altText": "A hairstylist styling a smiling client's curls, reflected in a round lighted mirror inside a warm pink beauty salon.",
+    "description": "Used in landing page: Páginas Web para Salones de Belleza (Industry Landing Page); also the OG image for its SEO document."
+  },
+  {
+    "_id": "image-b19cfde9bc4e7709148763f6fa735ec7d0fa498f-1792x2400-png",
+    "originalFilename": "home-founder-james-beach-portrait.png",
+    "title": "Meet the Founder — James Karnes portrait",
+    "altText": "James Karnes, founder of DR Web Studio, in a gray polo with sunglasses on his head, standing on a palm-lined Dominican beach at sunset.",
+    "description": "Used in homepage section header: Meet the Founder of DR Web Studio"
+  },
+  {
+    "_id": "image-2bda9d2afe2115c1d23adb848bfca8769d9eb3c9-1376x768-png",
+    "originalFilename": "blog-product-photography-phone-setup.png",
+    "title": "Product Photography That Sells — hero image",
+    "altText": "A hand photographs a small jar with a smartphone against a white paper backdrop taped to a rustic wooden table by a window.",
+    "description": "Used in blog post: Product Photography That Sells: A Practical Guide for Dominican Stores"
+  },
+  {
+    "_id": "image-99f1b860169f32bb7a35917b96c4f4920c918857-1376x768-png",
+    "originalFilename": "blog-templates-vs-custom-houses.png",
+    "title": "Templates vs. Custom Website — hero image",
+    "altText": "A row of five identical gray cookie-cutter houses contrasts with a single warmly lit custom modern home surrounded by tropical plants.",
+    "description": "Used in blog post: Wix, Squarespace & Templates vs. a Custom Website: The Honest Comparison"
+  },
+  {
+    "_id": "image-9cd6965cdad9cb978e89cbcfd416621e747f1ef7-1376x768-png",
+    "originalFilename": "blog-whatsapp-vs-store-shop-desk.png",
+    "title": "WhatsApp Catalog vs. Online Store — hero image",
+    "altText": "A phone showing a WhatsApp product catalog sits beside a laptop displaying an online store on a wooden table in a small artisan shop.",
+    "description": "Used in blog post: WhatsApp Catalog vs. a Real Online Store: Which Does Your Business Need?"
+  },
+  {
+    "_id": "image-16057bb39acfb4bcff2dfd64895136d41f6b9a4e-1376x768-png",
+    "originalFilename": "blog-app-vs-website-phone-storefront.png",
+    "title": "App or Website? — hero image",
+    "altText": "A smartphone lies on a wooden desk with a glowing beam connecting it to a small holographic storefront icon.",
+    "description": "Used in blog post: Do I Need an App or a Website? The Honest Answer for Dominican Businesses"
+  },
+  {
+    "_id": "image-cb18448776bbeeddb38a4918ce25c65d9b9cff14-1376x768-png",
+    "originalFilename": "blog-maintenance-monitoring-laptop.png",
+    "title": "Website Maintenance — hero image",
+    "altText": "A laptop on a tidy desk at night displays green website monitoring dashboards under the warm light of a desk lamp.",
+    "description": "Used in blog post: Website Maintenance: Why It's Not Optional"
+  },
+  {
+    "_id": "image-01703b9f426078d9fe5c3bafdf900ba74e2bed52-1376x768-png",
+    "originalFilename": "blog-ai-search-phone-colmado-street.png",
+    "title": "AI Search — hero image",
+    "altText": "A hand holds up a phone with a glowing AI chat interface on a cobblestone Dominican street lined with colmado shop signs at night.",
+    "description": "Used in blog post: AI Search: How Your Business Shows Up in ChatGPT, Gemini & AI Overviews"
+  },
+  {
+    "_id": "image-bea38d594c057b9c8ba509aa8707cf3368481769-1376x768-png",
+    "originalFilename": "blog-punta-bergantin-resort-construction.png",
+    "title": "Punta Bergantín — coastal construction aerial",
+    "altText": "Aerial view of a turquoise bay near Puerto Plata with resort buildings under construction and cranes rising among green mountains.",
+    "description": "Used in blog post: Punta Bergantín: Puerto Plata's Megaproject and the Two-Year Window"
+  },
+  {
+    "_id": "image-80152b0e6d85c85a8a14180f9df430c95d77b7e6-1376x768-png",
+    "originalFilename": "blog-legal-relocation-passport-desk.png",
+    "title": "Law Firms & Relocation Services — hero image",
+    "altText": "A laptop showing a document sits on a wooden desk beside a coffee cup, a passport, a map, and a notepad.",
+    "description": "Used in blog post: Websites for Law Firms, Accountants & Relocation Services in the DR"
+  },
+  {
+    "_id": "image-8413a1d74cd1ad3dd62152232769938060513eb7-1376x768-png",
+    "originalFilename": "blog-hosting-domain-house-model.png",
+    "title": "Hosting & Domain Explained — hero image",
+    "altText": "A miniature architectural model of a lit modern house on a small plot with a tiny address sign, symbolizing hosting and a domain.",
+    "description": "Used in blog post: What Is Hosting and a Domain? Explained Simply"
+  },
+  {
+    "_id": "image-c278fec5848c51d3a1f75e03814e0ba07faddedf-5464x3640-jpg",
+    "originalFilename": "blog-barahona-bay-aerial-port.jpg",
+    "title": "Barahona — bay and port aerial",
+    "altText": "Aerial view of Barahona's curving bay on the DR's southwest coast, with a cargo ship docked at the port pier and the town along the shore.",
+    "description": "Used in blog post: Barahona & the Southwest Coast: Where Dominicans Vacation"
+  },
+  {
+    "_id": "image-566025787243b258dc45da14614280a907ac79ed-5568x4176-jpg",
+    "originalFilename": "blog-dive-shops-scuba-divers-reef.jpg",
+    "title": "Dive Shops & Watersports — divers underwater",
+    "altText": "Three scuba divers swim above a coral reef in clear blue Caribbean water, trailing streams of bubbles.",
+    "description": "Used in blog post: Websites for Dive Shops & Watersports Schools in the DR"
+  },
+  {
+    "_id": "image-358f6b5e24b2b6e814976b0f0f3562742a0f862d-1376x768-png",
+    "originalFilename": "blog-free-cheap-pro-house-models.png",
+    "title": "Free vs. Cheap vs. Professional — hero image",
+    "altText": "Three miniature house models in a row progress from a rough plywood shack to a plain gray box to a polished, warmly lit modern home.",
+    "description": "Used in blog post: Free vs. Cheap vs. Professional Website: What You Actually Get"
+  },
+  {
+    "_id": "image-dc1449123e88f80eff19a4791fb81829a7523a6e-1376x768-png",
+    "originalFilename": "blog-onepage-vs-multipage-mockups.png",
+    "title": "One-Page vs. Multi-Page — hero image",
+    "altText": "A single smartphone showing one long scrolling page stands opposite a fanned-out row of five separate page mockups.",
+    "description": "Used in blog post: One-Page Site vs. Multi-Page: Which Do You Need?"
+  }
+]

@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Media rename review — 160 assets</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem; background: #f8fafc; color: #0f172a; }
+  h1 { font-size: 1.3rem; }
+  table { border-collapse: collapse; width: 100%; background: #fff; font-size: 0.85rem; }
+  th, td { border: 1px solid #e2e8f0; padding: 0.5rem; vertical-align: top; text-align: left; }
+  th { background: #f1f5f9; position: sticky; top: 0; }
+  img { width: 120px; height: auto; border-radius: 4px; display: block; }
+  .old { color: #94a3b8; word-break: break-all; max-width: 14rem; }
+  .new { word-break: break-all; max-width: 16rem; }
+  .refs { max-width: 18rem; color: #475569; }
+  .desc { color: #94a3b8; font-size: 0.78rem; }
+  .unref { color: #b91c1c; font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Media rename review — 160 assets (15 unreferenced)</h1>
+<p>Edit <code>scripts/media-rename/proposals.json</code> for any name you want to change, then run
+<code>npx tsx --env-file=.env.local scripts/renameMediaAssets.ts --apply</code>.</p>
+<table>
+<thead><tr><th>Image</th><th>Current name</th><th>Proposed name / title</th><th>Alt text</th><th>Used by</th></tr></thead>
+<tbody>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/6a71c6f35fc64c97a98fe4ee324379735ed45a6f-3200x3200.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/6a71c6f35fc64c97a98fe4ee324379735ed45a6f-3200x3200.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">dr-web-studio-bg-removed2.png</td>
+      <td class="new"><strong>layout-dr-web-studio-logo-dark-text.png</strong><br><em>DR Web Studio — logo (dark wordmark)</em></td>
+      <td>DR Web Studio logo showing a palm tree and waves inside a sunset circle above a dark navy wordmark, on a transparent background.</td>
+      <td class="refs">generalLayout: generalLayout<br><span class="desc">Used in general layout settings (site logo).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/72afbc4aba2f71f6899a6ceaf46751f45f46da26-3200x3200.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/72afbc4aba2f71f6899a6ceaf46751f45f46da26-3200x3200.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">dr-web-studio-bg-removed.png</td>
+      <td class="new"><strong>layout-dr-web-studio-logo-white-text.png</strong><br><em>DR Web Studio — logo (white wordmark)</em></td>
+      <td>DR Web Studio logo showing a palm tree and waves inside a sunset circle above a white wordmark, for use on dark backgrounds.</td>
+      <td class="refs">generalLayout: generalLayout<br><span class="desc">Used in general layout settings (site logo, dark-background variant).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/82d041f4b2aee4ed6c5543d16f2312376c547a31-3200x3200.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/82d041f4b2aee4ed6c5543d16f2312376c547a31-3200x3200.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">dr-web-studio.png</td>
+      <td class="new"><strong>og-dr-web-studio-logo-navy.png</strong><br><em>DR Web Studio — default OG image</em></td>
+      <td>DR Web Studio logo with a palm tree sunset emblem and white wordmark centered on a navy blue background.</td>
+      <td class="refs">seo: 0179c888-c6b1-4c28-9213-552b6774055a<br>seo: 12fdb520-c7ec-4a53-b790-c8d6397d19b1<br>seo: 2fdced11-8236-4f69-b2fe-d35d8e700fcf<br>seo: 3af05e73-6143-4494-baed-7b8e54a319b3<br>seo: 47be1235-b571-4a15-8fe5-90386af5efda<br>seo: 755e83c5-0088-4f2c-86e1-ba986cdc3b6b<br>seo: ef9f1980-df19-41f0-a02d-83949b75b437<br>seo: f1dfb141-2ba6-474e-811a-ea607c7ca9cc<br><span class="desc">OG image for 8 SEO documents (default social share image across the site).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/3f03e17b6c1e2c676f5f220fc45232efa38a98d1-6000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/3f03e17b6c1e2c676f5f220fc45232efa38a98d1-6000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">backgroundImage.jpg</td>
+      <td class="new"><strong>landing-desarrollo-web-rd-dual-monitors.jpg</strong><br><em>Desarrollo Web RD — dual monitors hero background</em></td>
+      <td>Two monitors in a dark room, one displaying a code editor and the other a mountain road desktop wallpaper.</td>
+      <td class="refs">heroSection: Home Page<br>seo: a228e6ea-3676-432d-9d61-7a8bd9bc1c89<br>landingPage: Desarrollo Web República Dominicana (Hub)<br>seo: seo-diseno-web-republica-dominicana<br><span class="desc">Used in landing page: Desarrollo Web República Dominicana (Hub); hero section: Home Page; OG image for 2 SEO documents.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/a5a08da87a0b2a88b010506707f4eef95d8c498f-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/a5a08da87a0b2a88b010506707f4eef95d8c498f-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">code.svg</td>
+      <td class="new"><strong>code-icon.svg</strong><br><em>Code icon</em></td>
+      <td>Line icon of opening and closing angle brackets representing code.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/3d72f710e6adf2b14a6f80d20646e24a632d4d7b-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/3d72f710e6adf2b14a6f80d20646e24a632d4d7b-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">rocket.svg</td>
+      <td class="new"><strong>rocket-icon.svg</strong><br><em>Rocket icon</em></td>
+      <td>Line icon of a launching rocket.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c4d5d22f49b92b5c9bedbe06fe6e1d29769c2b4f-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c4d5d22f49b92b5c9bedbe06fe6e1d29769c2b4f-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">palette.svg</td>
+      <td class="new"><strong>palette-icon.svg</strong><br><em>Palette icon</em></td>
+      <td>Line icon of an artist's paint palette with color dots.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/110654ad74f3d9065a3d70d8857d0e3ad5103873-577x432.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/110654ad74f3d9065a3d70d8857d0e3ad5103873-577x432.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">james2.png</td>
+      <td class="new"><strong>author-james-karnes-portrait.png</strong><br><em>James Karnes — author portrait</em></td>
+      <td>James Karnes, a man with a short beard and sunglasses on his head, wearing a gray polo shirt in a selfie-style portrait.</td>
+      <td class="refs">author: James Karnes<br><span class="desc">Used as author photo for: James Karnes.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e2e3c56b077c1978dd36bf008da9829f07f220e3-3840x1920.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e2e3c56b077c1978dd36bf008da9829f07f220e3-3840x1920.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">website.jpg</td>
+      <td class="new"><strong>blog-website-features-fintech-mockup.jpg</strong><br><em>Top 5 Website Features — hero image</em></td>
+      <td>Browser window mockup of a fintech landing page with the headline 'Power your finance, grow your business' and an isometric illustration.</td>
+      <td class="refs">blogPost: Top 5 Website Features Every Business Needs<br><span class="desc">Used in blog post: Top 5 Website Features Every Business Needs.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/60ef9f64a2922416992536ca85242b7136b19d25-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/60ef9f64a2922416992536ca85242b7136b19d25-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">shopping-cart.svg</td>
+      <td class="new"><strong>shopping-cart-icon.svg</strong><br><em>Shopping cart icon</em></td>
+      <td>Line icon of a shopping cart.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/891ef33f82e634681e5679fbc1805dac59ec948d-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/891ef33f82e634681e5679fbc1805dac59ec948d-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">smartphone.svg</td>
+      <td class="new"><strong>smartphone-icon.svg</strong><br><em>Smartphone icon</em></td>
+      <td>Line icon of a smartphone.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0d00460d2e7a74518cabc54a67e6172273a7b7ab-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0d00460d2e7a74518cabc54a67e6172273a7b7ab-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">zap.svg</td>
+      <td class="new"><strong>zap-lightning-icon.svg</strong><br><em>Lightning bolt icon</em></td>
+      <td>Line icon of a lightning bolt representing speed.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/9859410781a1dc4d8c3ba21c79db2d5abb17666f-24x24.svg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/9859410781a1dc4d8c3ba21c79db2d5abb17666f-24x24.svg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">search.svg</td>
+      <td class="new"><strong>search-icon.svg</strong><br><em>Search icon</em></td>
+      <td>Line icon of a magnifying glass representing search.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">logo.png</td>
+      <td class="new"><strong>pillar-desarrollo-web-grand-bay-logo.png</strong><br><em>Grand Bay of the Sea — client logo</em></td>
+      <td>Grand Bay of the Sea logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br>pillarPage: Guía Completa de Desarrollo Web Moderno para Negocios<br><span class="desc">Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios; and previous clients section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0d5eaf8a6ea5df913518c4e81fc819e475e934f8-826x853.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0d5eaf8a6ea5df913518c4e81fc819e475e934f8-826x853.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">favicon.png</td>
+      <td class="new"><strong>pillar-desarrollo-web-sertuin-events-logo.png</strong><br><em>Sertuin Events — client logo</em></td>
+      <td>Sertuin Events logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br>pillarPage: Guía Completa de Desarrollo Web Moderno para Negocios<br><span class="desc">Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios; and previous clients section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/b819bf0868fe6c25154103e4d8893850a6fa503a-744x704.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/b819bf0868fe6c25154103e4d8893850a6fa503a-744x704.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">TourLogoNew.png</td>
+      <td class="new"><strong>client-tour-store-punta-cana-logo.png</strong><br><em>Tour Store Punta Cana — client logo</em></td>
+      <td>Tour Store Punta Cana logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/772d6f23ef1ed143b62e09a3ffeb35daaf2f06ec-500x500.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/772d6f23ef1ed143b62e09a3ffeb35daaf2f06ec-500x500.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nancy-logo-bgremoval.png</td>
+      <td class="new"><strong>client-esencias-by-nancy-logo.png</strong><br><em>Esencias by Nancy — client logo</em></td>
+      <td>Esencias by Nancy logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/83a931f7221f2df028fe26f1ff4c95f0cb1fa6a6-2400x1600.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/83a931f7221f2df028fe26f1ff4c95f0cb1fa6a6-2400x1600.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">prepare.jpg</td>
+      <td class="new"><strong>blog-prepare-content-team-laptops.jpg</strong><br><em>How to Prepare Content — team collaboration</em></td>
+      <td>Three people smiling and collaborating around a wooden cafe table with laptops and notebooks.</td>
+      <td class="refs">serviceItem: Landing Pages &amp; One-Page Sites<br>seo: adf15982-18af-4178-b980-44ca7b99b8f0<br>blogPost: How to Prepare Content for a New Website<br><span class="desc">Used in blog post: How to Prepare Content for a New Website; service item: Landing Pages &amp; One-Page Sites; OG image for 1 SEO document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/3c95c7f708ab847bf8c6887e3e06444b5aa1a390-1920x1440.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/3c95c7f708ab847bf8c6887e3e06444b5aa1a390-1920x1440.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">screenshotsertuinevents.png</td>
+      <td class="new"><strong>sertuin-events-wedding-form-screenshot.png</strong><br><em>Sertuin Events — website screenshot</em></td>
+      <td>Browser screenshot of the Sertuin Events wedding questionnaire page titled 'Your Dream Wedding Awaits' on a pink gradient background.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e5abef4f21846ddf18f438aa63a8d1e6825eeb54-1920x1440.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e5abef4f21846ddf18f438aa63a8d1e6825eeb54-1920x1440.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">916shots_so.png</td>
+      <td class="new"><strong>tour-store-los-haitises-page-screenshot.png</strong><br><em>Tour Store Punta Cana — website screenshot</em></td>
+      <td>Browser screenshot of the Tour Store Punta Cana website showing the Los Haitises National Park Tour page with a photo gallery and pricing.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/5ac36ecadc8020f74c3be8be6a3c483225a8293a-1920x1440.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/5ac36ecadc8020f74c3be8be6a3c483225a8293a-1920x1440.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">622shots_so.png</td>
+      <td class="new"><strong>scuba-diving-punta-cana-website-mockup.png</strong><br><em>Scuba Diving Punta Cana — website mockup</em></td>
+      <td>Browser mockup of the Scuba Diving Punta Cana website hero showing a scuba diver next to coral with the headline 'Explore the Underwater World'.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/bc6216cc4c05a50341b334f9c4e4f40580bf43f2-1920x1440.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/bc6216cc4c05a50341b334f9c4e4f40580bf43f2-1920x1440.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">456shots_so.png</td>
+      <td class="new"><strong>esencias-handmade-products-website-mockup.png</strong><br><em>Esencias — website mockup</em></td>
+      <td>Browser mockup of the Esencias website hero featuring a dark hand-made products banner with rope and glass decor.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/9162e032cd22e8930b344c580d98e7a41a39ede8-2569x1608.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/9162e032cd22e8930b344c580d98e7a41a39ede8-2569x1608.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">2345222.jpg</td>
+      <td class="new"><strong>blog-website-features-landing-page-illustration.jpg</strong><br><em>Top 5 Website Features — landing page illustration</em></td>
+      <td>Flat illustration of two people around a large 'Business Solution — Effective Websites' landing page on a pink-and-orange gradient background.</td>
+      <td class="refs">blogPost: Top 5 Website Features Every Business Needs<br><span class="desc">Used in blog post: Top 5 Website Features Every Business Needs</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0a3d95b2aaf4d112f269ae4c56fe18626c58af65-3916x2037.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0a3d95b2aaf4d112f269ae4c56fe18626c58af65-3916x2037.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">laptopcontent.jpg</td>
+      <td class="new"><strong>blog-prepare-content-laptop-notebook.jpg</strong><br><em>Prepare Content for a New Website — laptop and notebook</em></td>
+      <td>Open laptop on a desk beside a handwritten notebook, a cup of coffee, and a small plant.</td>
+      <td class="refs">blogPost: How to Prepare Content for a New Website<br><span class="desc">Used in blog post: How to Prepare Content for a New Website</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e208f150a6d86616f136c3d2978ff3896fa7079e-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e208f150a6d86616f136c3d2978ff3896fa7079e-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">7090057.jpg</td>
+      <td class="new"><strong>service-api-integrations-diagram.jpg</strong><br><em>API Integrations &amp; Automation — API diagram</em></td>
+      <td>Illustrated diagram of an API gear connecting an application, cloud-based services, a server, and a database with request and response arrows.</td>
+      <td class="refs">serviceItem: API Integrations &amp; Automation<br><span class="desc">Used in service item: API Integrations &amp; Automation</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/646f85b72dbe1d70a6cfd8616a9cd95d7fcf00a3-3000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/646f85b72dbe1d70a6cfd8616a9cd95d7fcf00a3-3000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">5063183.jpg</td>
+      <td class="new"><strong>service-website-migrations-update-illustration.jpg</strong><br><em>Website Migrations or Rebuilds — update illustration</em></td>
+      <td>Yellow flat illustration of a person sitting with a laptop in front of a large screen showing an update progress bar, cloud upload, and refresh arrows.</td>
+      <td class="refs">serviceItem: Website Migrations or Rebuilds<br><span class="desc">Used in service item: Website Migrations or Rebuilds</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/291acd95b3f046152cce8f40577af237653ab404-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/291acd95b3f046152cce8f40577af237653ab404-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">3143931.jpg</td>
+      <td class="new"><strong>landing-mantenimiento-web-maintenance-illustration.jpg</strong><br><em>Mantenimiento Web — website maintenance illustration</em></td>
+      <td>Teal flat illustration of a woman on a ladder repairing layered browser windows, with a large wrench and code panel in the foreground.</td>
+      <td class="refs">serviceItem: Ongoing Website Maintenance &amp; Support<br>landingPage: Mantenimiento Web República Dominicana<br>seo: seo-mantenimiento-web-republica-dominicana<br><span class="desc">Used in service item: Ongoing Website Maintenance &amp; Support; landing page: Mantenimiento Web República Dominicana; and as OG/SEO image for that landing page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/4246694773876d23a4852ff19aa2c93fbf97c31c-4500x3500.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/4246694773876d23a4852ff19aa2c93fbf97c31c-4500x3500.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">2128.jpg</td>
+      <td class="new"><strong>service-ecommerce-online-store-illustration.jpg</strong><br><em>E-commerce Integrations — online store illustration</em></td>
+      <td>Purple isometric illustration of a laptop with an online store on screen, surrounded by a shopping cart, bags, gift boxes, and a phone showing a payment.</td>
+      <td class="refs">serviceItem: E-commerce Integrations<br><span class="desc">Used in service item: E-commerce Integrations</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c24162fd502557a37c30941c5e1f8c05b2bf8b49-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c24162fd502557a37c30941c5e1f8c05b2bf8b49-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">10290108.jpg</td>
+      <td class="new"><strong>service-multilingual-hello-hola-illustration.jpg</strong><br><em>Multilingual Websites — hello/hola illustration</em></td>
+      <td>Illustration of two people fist-bumping under a 'switch the language' browser window with speech bubbles reading 'Hello' and 'Hola'.</td>
+      <td class="refs">serviceItem: Multilingual &amp; International Websites<br><span class="desc">Used in service item: Multilingual &amp; International Websites</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/90a29bf4964a524e1ba69457dac5b50bda488798-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/90a29bf4964a524e1ba69457dac5b50bda488798-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">4827607.jpg</td>
+      <td class="new"><strong>service-headless-cms-monitor-illustration.jpg</strong><br><em>Headless CMS Development — CMS monitor illustration</em></td>
+      <td>Monochrome illustration of a desktop monitor labeled 'your website' surrounded by CMS, analytics, media, and document icons.</td>
+      <td class="refs">serviceItem: Headless CMS Development<br><span class="desc">Used in service item: Headless CMS Development</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e5407b296924bf63b9ec4828d0fce68f0008652c-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e5407b296924bf63b9ec4828d0fce68f0008652c-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">4380747.jpg</td>
+      <td class="new"><strong>service-web-applications-code-illustration.jpg</strong><br><em>Web Applications — code and devices illustration</em></td>
+      <td>Blue and teal illustration of a desktop computer displaying a code editor, flanked by settings icons, a download panel, and a smartphone with a checkmark.</td>
+      <td class="refs">serviceItem: Web Applications<br><span class="desc">Used in service item: Web Applications</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/30903fc4a4fa252d0e49c3194a8a3e8b0f9e97a0-7730x7730.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/30903fc4a4fa252d0e49c3194a8a3e8b0f9e97a0-7730x7730.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Wavy_Bus-05_Single-05.jpg</td>
+      <td class="new"><strong>service-custom-websites-builders-illustration.jpg</strong><br><em>Custom Business Websites — website builders illustration</em></td>
+      <td>Purple flat illustration of two people assembling a web page layout on a large desktop monitor.</td>
+      <td class="refs">serviceItem: Custom Business Websites<br><span class="desc">Used in service item: Custom Business Websites</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">dr-web-studio-bg-removed-no-title-2.png</td>
+      <td class="new"><strong>og-dr-web-studio-palm-logo.png</strong><br><em>DR Web Studio — palm tree logo</em></td>
+      <td>DR Web Studio logo: a circular badge with a dark palm tree against an orange sunset sky and stylized turquoise ocean waves.</td>
+      <td class="refs">seo: 389e47c6-351e-4898-b289-0d346b67392e<br><span class="desc">OG image for an SEO settings document (id 389e47c6-351e-4898-b289-0d346b67392e).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7287cb96fadd7fbd5dee2e6b682862b469cacc1d-3882x2584.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7287cb96fadd7fbd5dee2e6b682862b469cacc1d-3882x2584.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">christopher-gower-m_HRfLhgABo-unsplash.jpg</td>
+      <td class="new"><strong>blog-jamstack-nextjs-laptop-code.jpg</strong><br><em>JAMstack / Next.js — laptop with code editor</em></td>
+      <td>MacBook on a white desk displaying a dark code editor, with a monitor and desk lamp in the background.</td>
+      <td class="refs">blogPost: What is JAMstack and Why Does It Make Websites Faster<br>blogPost: What’s New in Next.js: Why the App Router Changes Everything<br><span class="desc">Used in blog posts: What is JAMstack and Why Does It Make Websites Faster; What's New in Next.js: Why the App Router Changes Everything</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/213faf0c7371565da37cce483447ff95abc73956-3677x3002.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/213faf0c7371565da37cce483447ff95abc73956-3677x3002.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">web-design-technology-browsing-programming-concept.jpg</td>
+      <td class="new"><strong>blog-fast-website-web-design-desk.jpg</strong><br><em>Fast Website — web design workstation</em></td>
+      <td>Desktop monitor showing a 'web design' concept collage with icons, surrounded by sticky notes, a keyboard, coffee, and a hand on a mouse.</td>
+      <td class="refs">blogPost: Why Businesses in the Dominican Republic Need a Fast Website<br><span class="desc">Used in blog post: Why Businesses in the Dominican Republic Need a Fast Website</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/5ccf66c5c625bff9415c1a4806c1bdb816390458-3750x2500.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/5ccf66c5c625bff9415c1a4806c1bdb816390458-3750x2500.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">tech.jpg</td>
+      <td class="new"><strong>blog-technology-small-business-developers.jpg</strong><br><em>Technology &amp; Small Business — developers at work</em></td>
+      <td>Two men working together at an office desk with a computer, one seated at the keyboard and the other looking on.</td>
+      <td class="refs">blogPost: How Technology Is Changing Small Business in the Dominican Republic<br><span class="desc">Used in blog post: How Technology Is Changing Small Business in the Dominican Republic</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/a9e69697f9b863cc33735daef748b1a38d4e57a2-2918x3648.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/a9e69697f9b863cc33735daef748b1a38d4e57a2-2918x3648.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">websiteplanning.jpg</td>
+      <td class="new"><strong>blog-plan-web-project-wireframe-cards.jpg</strong><br><em>Plan a Web Project — wireframe planning flatlay</em></td>
+      <td>Teal flatlay of wireframe reference cards, a tablet, sticky tabs, and hand-drawn desktop layout sketches for planning a website.</td>
+      <td class="refs">blogPost: How to Plan a Web Project with Your Developer<br><span class="desc">Used in blog post: How to Plan a Web Project with Your Developer</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/68b4545501943b163291902396350f36c49af3f1-2000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/68b4545501943b163291902396350f36c49af3f1-2000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">cms.jpg</td>
+      <td class="new"><strong>blog-headless-cms-diagram-illustration.jpg</strong><br><em>Headless CMS — CMS diagram illustration</em></td>
+      <td>Pink and red illustration of a laptop labeled 'CMS — Content Management System' connected to content blocks for code, video, images, text, and a www browser window.</td>
+      <td class="refs">blogPost: Headless CMS Explained (Without Technical Jargon)<br>blogPost: What Is a Headless CMS?<br><span class="desc">Used in blog posts: Headless CMS Explained (Without Technical Jargon); What Is a Headless CMS?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/13266691f576191ccff3b9e357a751c66c4478e8-5184x3456.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/13266691f576191ccff3b9e357a751c66c4478e8-5184x3456.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">website.jpg</td>
+      <td class="new"><strong>blog-cheap-website-laptop-screen.jpg</strong><br><em>The Real Cost of a Cheap Website — laptop with website</em></td>
+      <td>Laptop on a rustic wooden table displaying a personal website with a hero photo and headline, next to a green plant.</td>
+      <td class="refs">blogPost: The Real Cost of a Cheap Website<br><span class="desc">Used in blog post: The Real Cost of a Cheap Website</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/bcdf269601d3a115ff745f6a261167bc32f7d12a-512x512.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/bcdf269601d3a115ff745f6a261167bc32f7d12a-512x512.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">icon.png</td>
+      <td class="new"><strong>client-palm-tree-wave-logo.png</strong><br><em>Client logo — palm tree and waves</em></td>
+      <td>Gold palm tree above turquoise wave strokes on a transparent background, a client brand logo.</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/b653ecdc678bfd199779c3608d3ae9d1dab4fc03-1920x963.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/b653ecdc678bfd199779c3608d3ae9d1dab4fc03-1920x963.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">screely-1757108321778.png</td>
+      <td class="new"><strong>blog-venue-marketplace-homepage.png</strong><br><em>Punta Cana Venue Collection — website screenshot</em></td>
+      <td>Homepage of The Punta Cana Venue Collection website with a beachfront hero, venue search bar, and featured venue cards.</td>
+      <td class="refs">blogPost: How We Built a Venue Discovery Marketplace for Punta Cana's Wedding and Events Industry<br><span class="desc">Used in blog post: How We Built a Venue Discovery Marketplace for Punta Cana's Wedding and Events Industry.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/107187c369cc3c0331732f3d152a7a62c23aa687-500x500.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/107187c369cc3c0331732f3d152a7a62c23aa687-500x500.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaphotoedition-logo.png</td>
+      <td class="new"><strong>pillar-punta-cana-photo-edition-logo.png</strong><br><em>Punta Cana Photo Edition — logo</em></td>
+      <td>Punta Cana Photo Edition logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br>pillarPage: Guía Completa de Desarrollo Web Moderno para Negocios<br><span class="desc">Used in pillar page: Guía Completa de Desarrollo Web Moderno para Negocios. Also used in client logo section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d36d6cbd64e13b7888691f3e5393f102a27d75a3-1280x1280.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d36d6cbd64e13b7888691f3e5393f102a27d75a3-1280x1280.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaphotoedition.png</td>
+      <td class="new"><strong>blog-punta-cana-photographer-homepage.png</strong><br><em>Punta Cana Photographer — website screenshot</em></td>
+      <td>Homepage of a Punta Cana photographer's portfolio site showing a beach wedding hero photo and service cards for corporate events and wedding planning.</td>
+      <td class="refs">blogPost: How We Built a Luxury Photography Portfolio That Doubled Session Time and Increased Inquiries 60% in Punta Cana<br><span class="desc">Used in blog post: How We Built a Luxury Photography Portfolio That Doubled Session Time and Increased Inquiries 60% in Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/cfb0a49620c9c1aa4c0184ebdc18f32cb08d7f15-5320x3073.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/cfb0a49620c9c1aa4c0184ebdc18f32cb08d7f15-5320x3073.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">igor-miske-Px3iBXV-4TU-unsplash.jpg</td>
+      <td class="new"><strong>blog-website-upgrade-laptop-desk.jpg</strong><br><em>Website Upgrade — laptop on desk</em></td>
+      <td>A laptop on a work desk displaying a modern product landing page with a yellow sofa, surrounded by coffee, a smartphone, and design prints.</td>
+      <td class="refs">blogPost: When It’s Time to Upgrade Your Business Website<br><span class="desc">Used in blog post: When It's Time to Upgrade Your Business Website.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/27bb99d92fd2014ab04754162682285f47300208-6000x3368.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/27bb99d92fd2014ab04754162682285f47300208-6000x3368.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">dole777-EQSPI11rf68-unsplash.jpg</td>
+      <td class="new"><strong>blog-website-vs-social-phone-apps.jpg</strong><br><em>Website vs Social Media — phone with social apps</em></td>
+      <td>A smartphone screen showing a social media folder with the Instagram, Facebook, and Twitter app icons.</td>
+      <td class="refs">blogPost: Website vs Social Media: What Your Business Really Needs<br><span class="desc">Used in blog post: Website vs Social Media: What Your Business Really Needs.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/50fdd25fabf8ebc5ad602a2c34c3af93c76f1ab8-2400x1737.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/50fdd25fabf8ebc5ad602a2c34c3af93c76f1ab8-2400x1737.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">deng-xiang-YBtAJPcvc4Y-unsplash.jpg</td>
+      <td class="new"><strong>blog-beyond-wordpress-laptop-logo.jpg</strong><br><em>More Than WordPress — laptop with WordPress logo</em></td>
+      <td>A laptop on a speckled surface displaying the WordPress logo on a white screen against a blue background.</td>
+      <td class="refs">blogPost: Why Your Business Needs More Than WordPress in 2026<br><span class="desc">Used in blog post: Why Your Business Needs More Than WordPress in 2026.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/1a3b8211cdd54f3439a2c9c55c3e55faee93c7c6-5848x3899.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/1a3b8211cdd54f3439a2c9c55c3e55faee93c7c6-5848x3899.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">domenico-loia-hGV2TfOh0ns-unsplash.jpg</td>
+      <td class="new"><strong>blog-nextjs-vs-wordpress-desk-setup.jpg</strong><br><em>Next.js vs WordPress — dual-screen workspace</em></td>
+      <td>A tidy wooden desk with a laptop and a large monitor both displaying website designs, alongside plants and a desk lamp.</td>
+      <td class="refs">blogPost: Next.js vs WordPress: Complete Comparison for Business Owners<br>landingPage: Diseño Web República Dominicana<br><span class="desc">Used in blog post: Next.js vs WordPress: Complete Comparison for Business Owners. Also used in landing page: Diseño Web República Dominicana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/08b79531869cbb444ec0ed85ef8c37b3d48f5db8-6553x4369.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/08b79531869cbb444ec0ed85ef8c37b3d48f5db8-6553x4369.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">frederik-lipfert-MXPboV0_-D4-unsplash.jpg</td>
+      <td class="new"><strong>blog-core-web-vitals-phone-speed.jpg</strong><br><em>Core Web Vitals — phone speed dashboard at the beach</em></td>
+      <td>A hand holding a smartphone with a dark performance dashboard on screen, with a beach and mountain in the background.</td>
+      <td class="refs">blogPost: Core Web Vitals: How Speed Affects Your Online Sales<br><span class="desc">Used in blog post: Core Web Vitals: How Speed Affects Your Online Sales.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/dde6fd9a97e901d74d24c2699458314ba9f2d0fd-5184x3456.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/dde6fd9a97e901d74d24c2699458314ba9f2d0fd-5184x3456.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">pexels-tranmautritam-326503.jpg</td>
+      <td class="new"><strong>blog-design-trends-imac-workspace.jpg</strong><br><em>Web Design Trends 2026 — designer workspace</em></td>
+      <td>Two iMac screens on a wooden desk showing web design layouts and image grids in a bright studio workspace.</td>
+      <td class="refs">blogPost: Web Design Trends for Dominican Businesses in 2026: What Actually Wins Bookings (and What to Ignore)<br><span class="desc">Used in blog post: Web Design Trends for Dominican Businesses in 2026: What Actually Wins Bookings (and What to Ignore).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/9ed0f1a13a82063ec789e0fe828f3daf94f606f3-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/9ed0f1a13a82063ec789e0fe828f3daf94f606f3-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nanobananas-1774977278373.png</td>
+      <td class="new"><strong>blog-choose-web-company-beach-laptop.png</strong><br><em>Choose a Web Development Company — working from the beach</em></td>
+      <td>A woman in a sun hat works on a laptop while sitting on a blanket on a palm-lined Caribbean beach with boats in the distance.</td>
+      <td class="refs">blogPost: How to Choose a Web Development Company in the Dominican Republic<br>landingPage: Desarrollo Web Punta Cana<br><span class="desc">Used in blog post: How to Choose a Web Development Company in the Dominican Republic. Also used in landing page: Desarrollo Web Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/fe79fc5a55723e39bc9debe55e8cf33f2e297938-1024x1024.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/fe79fc5a55723e39bc9debe55e8cf33f2e297938-1024x1024.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nanobananas-1775224423991.png</td>
+      <td class="new"><strong>blog-website-creation-office-laptop.png</strong><br><em>Website Creation Guide — office with tropical website on laptop</em></td>
+      <td>A laptop in a modern office displays a tropical-themed website while a small team collaborates in the background beside teal-branded stationery.</td>
+      <td class="refs">blogPost: Website Creation for Dominican Businesses: Complete Guide <br>landingPage: Desarrollo E-commerce República Dominicana<br>seo: seo-desarrollo-ecommerce-republica-dominicana<br><span class="desc">Used in blog post: Website Creation for Dominican Businesses: Complete Guide. Also used in landing page: Desarrollo E-commerce República Dominicana, and as OG image for its SEO settings.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e7d7186368916b9f7935daffdd2b6a905c9184bd-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e7d7186368916b9f7935daffdd2b6a905c9184bd-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nanobananas-1775226161786.png</td>
+      <td class="new"><strong>blog-local-vs-international-devs.png</strong><br><em>Local vs International Developers — split comparison</em></td>
+      <td>Split-scene graphic contrasting a local Dominican developer on a video call in a bright office with an outsourced developer working at night, captioned "Dominican Developers: Your Competitive Edge".</td>
+      <td class="refs">blogPost: Local vs International Web Development: Advantages of Working with Dominican Developers<br>seo: seo-desarrollo-web-punta-cana<br><span class="desc">Used in blog post: Local vs International Web Development: Advantages of Working with Dominican Developers. Also used as OG image for: Desarrollo Web Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/87dd1f261aa29484258b1c09400860b07c3b95d5-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/87dd1f261aa29484258b1c09400860b07c3b95d5-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nanobananas-1775227163513.png</td>
+      <td class="new"><strong>blog-professional-web-design-screens.png</strong><br><em>Professional Web Design — laptop and monitor mockup</em></td>
+      <td>A laptop and desktop monitor on a bright office desk both displaying a professional business website, with palm trees visible through the window.</td>
+      <td class="refs">blogPost: Professional Web Design: Why Dominican Businesses Need More Than Templates<br>seo: seo-desarrollo-web-republica-dominicana<br><span class="desc">Used in blog post: Professional Web Design: Why Dominican Businesses Need More Than Templates. Also used as OG image for: Desarrollo Web República Dominicana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d0b7187796fe8e708229f7a42f46171d6cadd8c3-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d0b7187796fe8e708229f7a42f46171d6cadd8c3-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 001 - Punta Cana Proposal Packages - [puntacanaproposalpackages.com].png</td>
+      <td class="new"><strong>blog-proposal-packages-homepage.png</strong><br><em>Punta Cana Proposal Packages — website screenshot</em></td>
+      <td>Dark, elegant homepage of the Punta Cana Proposal Packages website with the headline "Your Perfect Proposal Awaits".</td>
+      <td class="refs">blogPost: How We Built a 9-Language Proposal Packages Platform for Punta Cana's Most International Romantic Service<br><span class="desc">Used in blog post: How We Built a 9-Language Proposal Packages Platform for Punta Cana's Most International Romantic Service.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/bc34a9b9da946eab8ea77141d4f5caf183e7c11f-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/bc34a9b9da946eab8ea77141d4f5caf183e7c11f-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 002 - Fuerza del Pueblo Verón–Punta Cana - Compromiso con la Comunidad_ - [www.fuerzadelpuebloveronpuntacana.com].png</td>
+      <td class="new"><strong>blog-fuerza-del-pueblo-homepage.png</strong><br><em>Fuerza del Pueblo Verón–Punta Cana — website screenshot</em></td>
+      <td>Green-themed homepage of the Fuerza del Pueblo Verón–Punta Cana civic platform featuring Leonel Fernández and community outreach photos.</td>
+      <td class="refs">blogPost: How We Built a Civic Engagement Platform for a Dominican Political Party in Verón-Punta Cana<br><span class="desc">Used in blog post: How We Built a Civic Engagement Platform for a Dominican Political Party in Verón-Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c473fc27639e8e47b35fd417c0e378721e10c94d-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c473fc27639e8e47b35fd417c0e378721e10c94d-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 003 - Wedding Planner &amp; Event Design in Punta Cana - [sertuinevents.com].png</td>
+      <td class="new"><strong>blog-sertuin-events-homepage.png</strong><br><em>Sertuin Events — website screenshot</em></td>
+      <td>Homepage of the Sertuin Events wedding planner website showing an elegant candlelit banquet table with red and white florals.</td>
+      <td class="refs">blogPost: How We Built a Full Business Platform for a Punta Cana Event Planner That Grew Sales 150%<br><span class="desc">Used in blog post: How We Built a Full Business Platform for a Punta Cana Event Planner That Grew Sales 150%.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0cbfab38090cd3b8b0f406d068cb6789a0582dfe-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0cbfab38090cd3b8b0f406d068cb6789a0582dfe-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 004 - Scuba Diving Punta Cana - PADI Courses, Reef &amp; Shark Diving – Grand_ - [www.grandbay-puntacana.com].png</td>
+      <td class="new"><strong>blog-grand-bay-dive-homepage.png</strong><br><em>Grand Bay Scuba Diving — website screenshot</em></td>
+      <td>Homepage of the Grand Bay scuba diving Punta Cana website showing a diver beside an anemone with clownfish underwater.</td>
+      <td class="refs">blogPost: How We Built a Booking-First Dive Center Website That Increased Conversions 200% in Punta Cana<br><span class="desc">Used in blog post: How We Built a Booking-First Dive Center Website That Increased Conversions 200% in Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/b0907d4b496f71c3e099af900cc3fbfb9e3a84d7-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/b0907d4b496f71c3e099af900cc3fbfb9e3a84d7-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 005 - Home Page - Punta Cana Tour Store - [puntacanatourstore.com].png</td>
+      <td class="new"><strong>blog-tour-store-homepage.png</strong><br><em>Punta Cana Tour Store — website screenshot</em></td>
+      <td>Homepage of the Punta Cana Tour Store website with a turquoise beach hero and script logo over the shoreline.</td>
+      <td class="refs">blogPost: How We Built a Full-Scale Tour Marketplace for Punta Cana's Most Complete Excursion Platform<br><span class="desc">Used in blog post: How We Built a Full-Scale Tour Marketplace for Punta Cana's Most Complete Excursion Platform.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/aad7590741ad4e7fa747de14ebfa4a584dc4d9af-1920x999.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/aad7590741ad4e7fa747de14ebfa4a584dc4d9af-1920x999.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 006 - Handmade Resin Gifts in Punta Cana - Esencias by Nancy_ - [esenciasbynancy.com].png</td>
+      <td class="new"><strong>blog-esencias-by-nancy-homepage.png</strong><br><em>Esencias by Nancy — website screenshot</em></td>
+      <td>Homepage of the Esencias by Nancy website showing handmade blue resin earrings on a rustic backdrop with the heading "Hand Made Products".</td>
+      <td class="refs">blogPost: How We Built a Bilingual E-Commerce Store for a Punta Cana Handmade Resin Artist<br><span class="desc">Used in blog post: How We Built a Bilingual E-Commerce Store for a Punta Cana Handmade Resin Artist.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/2b2fe95844384c650072a3eed2c3705e29ccf8d6-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/2b2fe95844384c650072a3eed2c3705e29ccf8d6-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1777563306506.png</td>
+      <td class="new"><strong>blog-website-cost-laptop-calculator.png</strong><br><em>Website Cost in the DR — laptop and calculator</em></td>
+      <td>A laptop showing a website mockup next to a calculator, a bar-chart printout, and a Dominican Republic flag on a warm-toned desk.</td>
+      <td class="refs">blogPost: How Much Should a Website Cost in the Dominican Republic in 2026?<br><span class="desc">Used in blog post: How Much Should a Website Cost in the Dominican Republic in 2026?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c95e204b3a0d204794a4a46f1b52dfe5edb66c0b-1920x998.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c95e204b3a0d204794a4a46f1b52dfe5edb66c0b-1920x998.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">FireShot Capture 007 - Punta Cana Wedding Packages — Design Your Dream Wedding_ - [punta-cana-wedding-packages.netlify.app].png</td>
+      <td class="new"><strong>blog-wedding-calculator-site-screenshot.png</strong><br><em>Wedding Package Calculator — site screenshot</em></td>
+      <td>Screenshot of the Punta Cana Wedding Packages website hero reading "Design Your Dream Wedding in Punta Cana" beside a photo of a bride and groom on the beach.</td>
+      <td class="refs">blogPost: How We Built a Real-Time Wedding Package Calculator That Turns Browsers Into Qualified Leads in 10 Minutes<br><span class="desc">Used in blog post: How We Built a Real-Time Wedding Package Calculator That Turns Browsers Into Qualified Leads in 10 Minutes</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7046f3ca640e3907d3322ad211b1b61ba1ebe1b0-1264x848.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7046f3ca640e3907d3322ad211b1b61ba1ebe1b0-1264x848.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1777847204809.jpg</td>
+      <td class="new"><strong>blog-tourism-boom-beachside-laptop.jpg</strong><br><em>DR Tourism Boom — beachside laptop work</em></td>
+      <td>A smiling woman works on a laptop and tablet showing analytics dashboards at a beachfront resort table with palm trees and tourists behind her.</td>
+      <td class="refs">blogPost: The Dominican Republic's Tourism Boom Is Digital — Is Your Business Ready?<br><span class="desc">Used in blog post: The Dominican Republic's Tourism Boom Is Digital — Is Your Business Ready?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/96c438593e2fc34233dc00a64c7c199b64ec2cf6-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/96c438593e2fc34233dc00a64c7c199b64ec2cf6-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1777847965813.png</td>
+      <td class="new"><strong>blog-whatsapp-vs-website-devices.png</strong><br><em>WhatsApp Is Not a Website — devices hero</em></td>
+      <td>A smiling businesswoman holds up a smartphone next to a laptop and tablet all displaying the same business website in an office at sunset.</td>
+      <td class="refs">blogPost: WhatsApp Is Not a Website: Why Dominican Businesses Need Both<br><span class="desc">Used in blog post: WhatsApp Is Not a Website: Why Dominican Businesses Need Both</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0233fc6688c479da511b1ab56050cf27519e3c0e-1264x848.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0233fc6688c479da511b1ab56050cf27519e3c0e-1264x848.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778517890853.jpg</td>
+      <td class="new"><strong>blog-punta-cana-market-reviews-social.jpg</strong><br><em>Punta Cana Digital Market 2026 — hero image</em></td>
+      <td>A woman at a resort terrace cafe uses a tablet while floating Google reviews, social media icons and booking screens hover over a Punta Cana beach view.</td>
+      <td class="refs">blogPost: The Punta Cana Digital Market in 2026: What International Buyers Expect Before They Book<br><span class="desc">Used in blog post: The Punta Cana Digital Market in 2026: What International Buyers Expect Before They Book</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/697241c41b569025c006e1bd0d6463d943b0b93a-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/697241c41b569025c006e1bd0d6463d943b0b93a-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778519469367.png</td>
+      <td class="new"><strong>blog-core-web-vitals-monitor-dashboard.png</strong><br><em>Core Web Vitals 2026 — monitoring dashboard</em></td>
+      <td>A man at a desk studies three monitors displaying a Google Core Web Vitals dashboard with a score of 58 and red and green performance arrows, palm trees visible outside.</td>
+      <td class="refs">blogPost: Google's Core Web Vitals in 2026: The Performance Score That's Costing Dominican Businesses Rankings<br><span class="desc">Used in blog post: Google's Core Web Vitals in 2026: The Performance Score That's Costing Dominican Businesses Rankings</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0b26ec1d80834398529814aa24031ded8c95be12-1264x848.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0b26ec1d80834398529814aa24031ded8c95be12-1264x848.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778520232079.jpg</td>
+      <td class="new"><strong>blog-google-maps-before-after.jpg</strong><br><em>Google Maps Fix — before and after cover</em></td>
+      <td>Split before-and-after illustration showing a frustrated business owner missing from Google Maps on the left and an optimized map listing attracting tourists on the right.</td>
+      <td class="refs">blogPost: Why Your Punta Cana Business Doesn't Appear on Google Maps (And How to Fix It)<br><span class="desc">Used in blog post: Why Your Punta Cana Business Doesn't Appear on Google Maps (And How to Fix It)</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/dbb402f255266e3f05d1fa71667ce3899c4be3c0-5504x3072.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/dbb402f255266e3f05d1fa71667ce3899c4be3c0-5504x3072.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778783186290.png</td>
+      <td class="new"><strong>blog-seo-timeline-growth-chart.png</strong><br><em>How Long Does SEO Take — growth chart</em></td>
+      <td>A woman in an office overlooking the Punta Cana coastline points at a large monitor showing an organic traffic growth chart titled "How Long Does SEO Take".</td>
+      <td class="refs">blogPost: How Long Does SEO Take? A Realistic Timeline for Dominican Businesses<br><span class="desc">Used in blog post: How Long Does SEO Take? A Realistic Timeline for Dominican Businesses</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/5bcc0a661a2e9940b099a0a3cdb3b1f7fb0a62c1-1344x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/5bcc0a661a2e9940b099a0a3cdb3b1f7fb0a62c1-1344x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778783389162.png</td>
+      <td class="new"><strong>blog-sitemap-holographic-diagram.png</strong><br><em>What Is a Sitemap — holographic diagram</em></td>
+      <td>Two professionals in a seaside office point at a floating holographic sitemap diagram of connected hexagonal page nodes.</td>
+      <td class="refs">blogPost: What Is a Sitemap and Why Does Google Need One for Your Dominican Website?<br><span class="desc">Used in blog post: What Is a Sitemap and Why Does Google Need One for Your Dominican Website?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e00c72d331345ec2e2cf27567cb2f298a344f127-5504x3072.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e00c72d331345ec2e2cf27567cb2f298a344f127-5504x3072.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1778783901349.png</td>
+      <td class="new"><strong>blog-image-optimization-before-after.png</strong><br><em>Image Optimization — before and after collage</em></td>
+      <td>A woman with a laptop at a beachfront desk reviews a before-and-after collage comparing huge slow-loading photos with fast-loading optimized tourism images.</td>
+      <td class="refs">blogPost: Image Optimization for Tourism Websites: How to Make High-Quality Photos Load Fast<br><span class="desc">Used in blog post: Image Optimization for Tourism Websites: How to Make High-Quality Photos Load Fast</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/f40117acabb252d7e11469b236125e3772906985-1264x848.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/f40117acabb252d7e11469b236125e3772906985-1264x848.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1779114815462.jpg</td>
+      <td class="new"><strong>blog-structured-data-rich-results.jpg</strong><br><em>Structured Data — rich results screen</em></td>
+      <td>A man in a modern office by the Caribbean coast points at a large screen showing Google Search rich results and structured data panels for Dominican businesses.</td>
+      <td class="refs">blogPost: Structured Data for Dominican Businesses: How to Get Rich Results in Google Search<br><span class="desc">Used in blog post: Structured Data for Dominican Businesses: How to Get Rich Results in Google Search</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c0c009ab6b7322774ae976abe0a1c7930bf66bfa-1376x768.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c0c009ab6b7322774ae976abe0a1c7930bf66bfa-1376x768.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1779117933838.jpg</td>
+      <td class="new"><strong>blog-seo-vs-sem-comparison.jpg</strong><br><em>SEO vs SEM — comparison infographic</em></td>
+      <td>Split infographic comparing SEO with organic traffic growth on the left and SEM with instant paid traffic on the right, with a woman standing between the panels on a beach backdrop.</td>
+      <td class="refs">blogPost: The Difference Between SEO and SEM: Which One Does a Punta Cana Business Actually Need?<br><span class="desc">Used in blog post: The Difference Between SEO and SEM: Which One Does a Punta Cana Business Actually Need?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/8b8499866f1d93e08dec3a9f9e58f4051ffc505d-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/8b8499866f1d93e08dec3a9f9e58f4051ffc505d-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1779463935901.png</td>
+      <td class="new"><strong>blog-page-speed-conversion-dashboards.png</strong><br><em>Page Speed Conversion Math — hero image</em></td>
+      <td>A man compares two monitors showing a fast website scoring 98/100 with rising conversions against a slow competitor site with declining metrics, beach visible through the window.</td>
+      <td class="refs">blogPost: Why a Fast Website Makes You More Money: The Conversion Math Behind Page Speed<br><span class="desc">Used in blog post: Why a Fast Website Makes You More Money: The Conversion Math Behind Page Speed</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/110f4fb3241c9fc589a4c63142d75ace51f2a532-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/110f4fb3241c9fc589a4c63142d75ace51f2a532-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1779465178675.png</td>
+      <td class="new"><strong>blog-bilingual-seo-analytics-desk.png</strong><br><em>Bilingual SEO — analytics workstation</em></td>
+      <td>A smiling woman works at a triple-monitor desk showing bilingual website analytics and a world map, with a tropical resort visible through the windows.</td>
+      <td class="refs">blogPost: Bilingual SEO: How to Rank in Both English and Spanish Without Hurting Either<br><span class="desc">Used in blog post: Bilingual SEO: How to Rank in Both English and Spanish Without Hurting Either</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c5f0778249cc95a3bcc3402b6a239cb5df956a4f-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c5f0778249cc95a3bcc3402b6a239cb5df956a4f-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1779470865950.png</td>
+      <td class="new"><strong>blog-robots-txt-good-vs-bad.png</strong><br><em>Robots.txt — good vs bad file examples</em></td>
+      <td>A man looks at a glowing screen comparing a good robots.txt file in green with a misconfigured robots.txt blocking pages in red, beside floating website wireframes.</td>
+      <td class="refs">blogPost: What Is a Robots.txt File and Is Yours Blocking Google From Your Website?<br><span class="desc">Used in blog post: What Is a Robots.txt File and Is Yours Blocking Google From Your Website?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e70ae286016433b211d58ee78cd08f33b3a1e7c9-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e70ae286016433b211d58ee78cd08f33b3a1e7c9-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781284684375.png</td>
+      <td class="new"><strong>blog-losing-tourists-worried-owner.png</strong><br><em>Losing Tourists to Competitors — hero image</em></td>
+      <td>A pensive Dominican business owner sits at his desk with a notebook and coffee, studying a competitor's polished tourism website on his laptop.</td>
+      <td class="refs">blogPost: Why Punta Cana Businesses Are Losing Tourists to Competitors With Better Websites<br><span class="desc">Used in blog post: Why Punta Cana Businesses Are Losing Tourists to Competitors With Better Websites</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/aebf23c2fba2b49a5ec2af6bcbabab0f49ffdb22-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/aebf23c2fba2b49a5ec2af6bcbabab0f49ffdb22-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781285468067.png</td>
+      <td class="new"><strong>blog-website-vs-landing-page-planning.png</strong><br><em>Website or Landing Page — planning session</em></td>
+      <td>A woman takes handwritten notes at her desk while comparing a printed site plan with a tablet displaying a Spanish-language landing page titled "Explora el paraíso".</td>
+      <td class="refs">blogPost: Does My Business Need a Website or a Landing Page? A Dominican Business Owner's Decision Guide<br><span class="desc">Used in blog post: Does My Business Need a Website or a Landing Page? A Dominican Business Owner's Decision Guide</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/db5d7a3819fa15de59013f3bd549cd39dffeda16-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/db5d7a3819fa15de59013f3bd549cd39dffeda16-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781287534603.png</td>
+      <td class="new"><strong>blog-web-developer-brief-meeting.png</strong><br><em>How to Brief a Web Developer — client meeting</em></td>
+      <td>Two women discuss a website project at an outdoor cafe table with a laptop, printed documents and color swatches between them.</td>
+      <td class="refs">blogPost: How to Brief a Web Developer: What Dominican Businesses Need to Know Before Starting a Project<br><span class="desc">Used in blog post: How to Brief a Web Developer: What Dominican Businesses Need to Know Before Starting a Project</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/33c6dd263059d6590327d1070fcbf38e08f2f318-500x500.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/33c6dd263059d6590327d1070fcbf38e08f2f318-500x500.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">logo-no-bg.png</td>
+      <td class="new"><strong>client-punta-cana-proposal-packages-logo.png</strong><br><em>Punta Cana Proposal Packages — logo</em></td>
+      <td>Punta Cana Proposal Packages logo.</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/319a3f3e002fd58c6ecb1ed830e74e918f588146-1024x1024.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/319a3f3e002fd58c6ecb1ed830e74e918f588146-1024x1024.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">logo-bgremove.jpg</td>
+      <td class="new"><strong>client-punta-cana-wedding-packages-logo.png</strong><br><em>Punta Cana Wedding Packages — logo</em></td>
+      <td>Punta Cana Wedding Packages logo.</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/78f6d30176b4fcadb7eae1a9513a10b7ac55b6a9-1200x538.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/78f6d30176b4fcadb7eae1a9513a10b7ac55b6a9-1200x538.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Partido_Logo_Fuerza_del_Pueblo2.png</td>
+      <td class="new"><strong>fuerza-del-pueblo-logo.png</strong><br><em>Fuerza del Pueblo — logo</em></td>
+      <td>Fuerza del Pueblo logo.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/dd5d86e12131525d4be872ff5af866af9a3cefc3-225x225.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/dd5d86e12131525d4be872ff5af866af9a3cefc3-225x225.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">images.png</td>
+      <td class="new"><strong>fuerza-del-pueblo-fp-logo-green.png</strong><br><em>Fuerza del Pueblo — FP logo on green</em></td>
+      <td>Fuerza del Pueblo logo</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/f2826e89e870755802e528941ee933dd150fe721-365x538.webp" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/f2826e89e870755802e528941ee933dd150fe721-365x538.webp?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Partido_Logo_Fuerza_del_Pueblo2.webp</td>
+      <td class="new"><strong>client-fuerza-del-pueblo-logo.webp</strong><br><em>Fuerza del Pueblo — client logo</em></td>
+      <td>Fuerza del Pueblo logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/a44dca48167ff27841dd84e053c3b520e97e32e1-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/a44dca48167ff27841dd84e053c3b520e97e32e1-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781481493174.png</td>
+      <td class="new"><strong>blog-nextjs-vs-wordpress-desk-comparison.png</strong><br><em>Next.js vs WordPress — hero image</em></td>
+      <td>Split flat-lay comparison of two desk setups, one minimal with a black notebook and pencil and one cluttered with colorful notebooks, pens, sticky notes, and a smartphone.</td>
+      <td class="refs">blogPost: Next.js vs WordPress: Which One Is Right for Your Dominican Business?<br><span class="desc">Used in blog post: Next.js vs WordPress: Which One Is Right for Your Dominican Business?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7e42b8365d5dc44b99f614973a7764a25b16a2e9-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7e42b8365d5dc44b99f614973a7764a25b16a2e9-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781481581304.png</td>
+      <td class="new"><strong>blog-dark-mode-phone-at-dusk.png</strong><br><em>Dark Mode — hero image</em></td>
+      <td>A woman browses her phone at dusk in a beachside Dominican restaurant with palm trees and string lights behind her.</td>
+      <td class="refs">blogPost: Why Your Dominican Business Website Needs Dark Mode (And What It Says About Your Brand)<br><span class="desc">Used in blog post: Why Your Dominican Business Website Needs Dark Mode (And What It Says About Your Brand)</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/75c6deb1efdbca8565ffcebb932ecf869630caa2-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/75c6deb1efdbca8565ffcebb932ecf869630caa2-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781617937174.png</td>
+      <td class="new"><strong>blog-launch-checklist-shop-owner.png</strong><br><em>Website Launch Checklist — hero image</em></td>
+      <td>A small business owner writes on a printed checklist beside an open laptop at a sunlit counter in her shop.</td>
+      <td class="refs">blogPost: The Dominican Business Website Launch Checklist: 20 Things to Verify Before Going Live<br><span class="desc">Used in blog post: The Dominican Business Website Launch Checklist: 20 Things to Verify Before Going Live</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/86192dd3b9a5a14ffc1a237774bbaad13a28c3a8-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/86192dd3b9a5a14ffc1a237774bbaad13a28c3a8-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781622826444.png</td>
+      <td class="new"><strong>blog-design-style-moodboard.png</strong><br><em>Colors, Fonts &amp; Design Style — hero image</em></td>
+      <td>A design moodboard on a wooden table with color swatches, typography letter cards, tropical photo prints, and a hand-drawn website wireframe.</td>
+      <td class="refs">blogPost: How to Choose Colors, Fonts, and a Design Style for Your Dominican Business Website<br><span class="desc">Used in blog post: How to Choose Colors, Fonts, and a Design Style for Your Dominican Business Website</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/fa7d216caa28f59897776d83b5c24954bbf5e038-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/fa7d216caa28f59897776d83b5c24954bbf5e038-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781626072556.png</td>
+      <td class="new"><strong>blog-whatsapp-maps-instagram-beach-bar.png</strong><br><em>WhatsApp, Maps &amp; Instagram — hero image</em></td>
+      <td>A couple at a beach bar smiles at a phone while a hand in the foreground holds a smartphone showing a map and business listing.</td>
+      <td class="refs">blogPost: How to Connect Your Dominican Business Website to WhatsApp, Google Maps, and Instagram (The Right Way)<br><span class="desc">Used in blog post: How to Connect Your Dominican Business Website to WhatsApp, Google Maps, and Instagram (The Right Way)</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/874ad3e78a133f25caf23388b700305d436bb588-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/874ad3e78a133f25caf23388b700305d436bb588-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781653883013.png</td>
+      <td class="new"><strong>blog-tourism-content-writing-beach-kiosk.png</strong><br><em>Punta Cana Tourism Content — hero image</em></td>
+      <td>A woman with a pencil and notebook thinks over her writing at a beachfront tour kiosk signed Aventuras del Caribe.</td>
+      <td class="refs">blogPost: How to Write Website Content for a Punta Cana Tourism Business (Even If You're Not a Writer)<br><span class="desc">Used in blog post: How to Write Website Content for a Punta Cana Tourism Business (Even If You're Not a Writer)</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/262145309d7de7632919de900ff393e21b19f15d-1376x768.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/262145309d7de7632919de900ff393e21b19f15d-1376x768.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1781962013839.jpg</td>
+      <td class="new"><strong>blog-selling-online-artisan-laptop.jpg</strong><br><em>Start Selling Online in the DR — hero image</em></td>
+      <td>An artisan works on a laptop at a home workspace surrounded by handmade jewelry, packaging, and plants.</td>
+      <td class="refs">blogPost: How to Start Selling Online in the Dominican Republic: A Practical 2026 Guide<br><span class="desc">Used in blog post: How to Start Selling Online in the Dominican Republic: A Practical 2026 Guide</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/06096c833c3f2c8238de8e669b92bb04652f3de6-5504x3072.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/06096c833c3f2c8238de8e669b92bb04652f3de6-5504x3072.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaproposal.png</td>
+      <td class="new"><strong>portfolio-proposal-packages-mockup.png</strong><br><em>Punta Cana Proposal Packages — site mockup</em></td>
+      <td>Laptop and smartphone mockup of an elegant dark website with the headline Your Perfect Proposal Awaits in gold serif type.</td>
+      <td class="refs">project: Punta Cana Proposal Packages<br><span class="desc">Used in portfolio project: Punta Cana Proposal Packages</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/a410ba867fd9fab40c39b561807a5df4eefd76be-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/a410ba867fd9fab40c39b561807a5df4eefd76be-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">fuerzadelpueblo.png</td>
+      <td class="new"><strong>portfolio-fuerza-del-pueblo-site-mockup.png</strong><br><em>Fuerza del Pueblo Verón-Punta Cana — site mockup</em></td>
+      <td>Laptop and smartphone mockup of the green-branded Fuerza del Pueblo political website featuring Leonel Fernández.</td>
+      <td class="refs">project: Fuerza del Pueblo Verón-Punta Cana<br><span class="desc">Used in portfolio project: Fuerza del Pueblo Verón-Punta Cana</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/ca1b6d7f959b60ab43c6724dbe43c35ef916946e-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/ca1b6d7f959b60ab43c6724dbe43c35ef916946e-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">grandbay.png</td>
+      <td class="new"><strong>portfolio-scuba-diving-site-mockup.png</strong><br><em>Scuba Diving Website with Payments — site mockup</em></td>
+      <td>Laptop and smartphone mockup of a scuba diving website with an underwater hero photo and the headline Scuba Diving Punta Cana.</td>
+      <td class="refs">project: Scuba Diving Website with Payments<br><span class="desc">Used in portfolio project: Scuba Diving Website with Payments</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/673ab368838b0f9f2c8095bb9873e9dae378c82f-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/673ab368838b0f9f2c8095bb9873e9dae378c82f-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">nancy.png</td>
+      <td class="new"><strong>portfolio-handmade-ecommerce-mockup.png</strong><br><em>Multilingual E-commerce Site — site mockup</em></td>
+      <td>Laptop and smartphone mockup of a dark handmade products e-commerce site with the heading Hand Made Products.</td>
+      <td class="refs">project: Multilingual E-commerce Site<br><span class="desc">Used in portfolio project: Multilingual E-commerce Site</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/88ea1daca36d555cfec79c3b1a8629cc352e2cb8-2720x1536.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/88ea1daca36d555cfec79c3b1a8629cc352e2cb8-2720x1536.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">tourstore.jpg</td>
+      <td class="new"><strong>portfolio-tour-store-booking-mockup.jpg</strong><br><em>Multilingual Excursion Booking Site — site mockup</em></td>
+      <td>Laptop and smartphone mockup of the Punta Cana Tour Store booking website with a turquoise beach hero image.</td>
+      <td class="refs">project: Multilingual Excursion Booking Site<br><span class="desc">Used in portfolio project: Multilingual Excursion Booking Site</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/6ca710a258407f6d1c2ae4c768e0ed9238f73702-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/6ca710a258407f6d1c2ae4c768e0ed9238f73702-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">SertuinEvents.png</td>
+      <td class="new"><strong>portfolio-sertuin-events-app-mockup.png</strong><br><em>Sertuin Events Web App — site mockup</em></td>
+      <td>Laptop and smartphone mockup of an event planning website showing an elegant outdoor wedding banquet table with candles and red flowers.</td>
+      <td class="refs">project: Multilingual Web App for Event Planning<br><span class="desc">Used in portfolio project: Multilingual Web App for Event Planning</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/dde1cd08607e5a18a124fc253fbb7aafa284a0ae-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/dde1cd08607e5a18a124fc253fbb7aafa284a0ae-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaphoto.png</td>
+      <td class="new"><strong>portfolio-photography-site-mockup.png</strong><br><em>Wedding &amp; Event Photography Portfolio — site mockup</em></td>
+      <td>Laptop and smartphone mockup of the Punta Cana Photographer portfolio website with a coastal hero photo and services gallery.</td>
+      <td class="refs">project: Wedding &amp; Event Photography Portfolio<br><span class="desc">Used in portfolio project: Wedding &amp; Event Photography Portfolio</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/74c995ae314e7c067af4ecd10a7bc0b60ff11676-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/74c995ae314e7c067af4ecd10a7bc0b60ff11676-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanavenue.png</td>
+      <td class="new"><strong>portfolio-venue-directory-mockup.png</strong><br><em>Punta Cana Venue Directory — site mockup</em></td>
+      <td>Laptop and smartphone mockup of the Punta Cana Venue Collection directory site with a sunset terrace dining hero photo.</td>
+      <td class="refs">project: Elegant Venue Directory for Punta Cana Events<br><span class="desc">Used in portfolio project: Elegant Venue Directory for Punta Cana Events</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/9be25634447b762e73943570444e105581924db2-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/9be25634447b762e73943570444e105581924db2-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaexcursions.png</td>
+      <td class="new"><strong>portfolio-excursion-platform-mockup.png</strong><br><em>Excursion &amp; Tour Booking Platform — site mockup</em></td>
+      <td>Laptop and smartphone mockup of a tour booking website with an aerial catamaran hero and the headline Discover the Best Excursions in Punta Cana.</td>
+      <td class="refs">project: Excursion &amp; Tour Booking Platform<br><span class="desc">Used in portfolio project: Excursion &amp; Tour Booking Platform</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/841e757369e0882665a1cd3a14e0d625ce2ea916-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/841e757369e0882665a1cd3a14e0d625ce2ea916-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">puntacanaweddings.png</td>
+      <td class="new"><strong>portfolio-wedding-builder-mockup.png</strong><br><em>Destination Wedding Builder — site mockup</em></td>
+      <td>Laptop and smartphone mockup of a clean wedding planning website with the headline Design Your Dream Wedding in Punta Cana and a beach couple photo.</td>
+      <td class="refs">project: Destination Wedding Builder with Real-Time Pricing<br><span class="desc">Used in portfolio project: Destination Wedding Builder with Real-Time Pricing</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/4a9de3df21701c267bcbdae8592727eb2069ca63-600x600.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/4a9de3df21701c267bcbdae8592727eb2069ca63-600x600.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">darklogo.png</td>
+      <td class="new"><strong>punta-cana-excursions-grand-bay-logo.png</strong><br><em>Punta Cana Excursions by Grand Bay — logo</em></td>
+      <td>Punta Cana Excursions by Grand Bay logo</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/f25b77bed3231c0af5544f94a6764960495a407f-600x600.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/f25b77bed3231c0af5544f94a6764960495a407f-600x600.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Punta Cana Excursions.png</td>
+      <td class="new"><strong>client-punta-cana-excursions-logo.png</strong><br><em>Punta Cana Excursions — client logo</em></td>
+      <td>Punta Cana Excursions by Grand Bay logo</td>
+      <td class="refs">previousClients: PROUD TO WORK WITH<br><span class="desc">Used in previous clients section: PROUD TO WORK WITH.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/6e7dfde86aff5ef79b1d649a5f2b09a22a17c6b4-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/6e7dfde86aff5ef79b1d649a5f2b09a22a17c6b4-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1782083926385.png</td>
+      <td class="new"><strong>blog-woocommerce-shopify-custom-desk-flatlay.png</strong><br><em>WooCommerce vs Shopify vs Custom — hero image</em></td>
+      <td>Overhead flat lay of a wooden desk with notebooks, color swatches, wireframe sketches, pencils and cups of coffee.</td>
+      <td class="refs">blogPost: WooCommerce vs Shopify vs Custom: Which Is Right for Your Dominican Store?<br><span class="desc">Used in blog post: WooCommerce vs Shopify vs Custom: Which Is Right for Your Dominican Store?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/749d23a77a513a7a3f51a6dc1a7166eb8aa7de2d-1264x848.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/749d23a77a513a7a3f51a6dc1a7166eb8aa7de2d-1264x848.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1782083937332.png</td>
+      <td class="new"><strong>blog-online-payments-dr-checkout-tablet.png</strong><br><em>Accept Online Payments in the DR — hero image</em></td>
+      <td>Smiling shop owner at a boutique counter while a customer completes a payment on a tablet showing a success screen, with a phone card reader nearby.</td>
+      <td class="refs">blogPost: How to Accept Online Payments in the Dominican Republic (2026 Guide)<br><span class="desc">Used in blog post: How to Accept Online Payments in the Dominican Republic (2026 Guide).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d15bd07011c6cd63afcf4091f5af2d8f00a9f761-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d15bd07011c6cd63afcf4091f5af2d8f00a9f761-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1782084909318.png</td>
+      <td class="new"><strong>blog-store-not-selling-declining-chart.png</strong><br><em>Why Your Online Store Isn't Selling — hero image</em></td>
+      <td>Pensive business owner at a home office desk studying a laptop screen with a declining analytics chart.</td>
+      <td class="refs">blogPost: Why Your Online Store Isn't Selling (7 Reasons for Dominican Businesses)<br><span class="desc">Used in blog post: Why Your Online Store Isn't Selling (7 Reasons for Dominican Businesses).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d5824bedc655aa04b2c518bdc807f0cc3e0f484f-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d5824bedc655aa04b2c518bdc807f0cc3e0f484f-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783116027519.png</td>
+      <td class="new"><strong>blog-llms-txt-file-ai-brain.png</strong><br><em>llms.txt explained — hero image</em></td>
+      <td>Glowing llms.txt file icon connected by circuit lines to a digital AI brain on a light background.</td>
+      <td class="refs">blogPost: What Are llms.txt and llms-full.txt — and Does Your Business Actually Need Them?<br><span class="desc">Used in blog post: What Are llms.txt and llms-full.txt — and Does Your Business Actually Need Them?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e61f239ab63ed26bfa7f567a5969d2d791b4b6e6-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e61f239ab63ed26bfa7f567a5969d2d791b4b6e6-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783179076303.png</td>
+      <td class="new"><strong>caribbean-hotel-booking-whatsapp-illustration.png</strong><br><em>Caribbean hotel booking with WhatsApp — illustration</em></td>
+      <td>Cartoon illustration of a hand holding a phone with a Caribbean beach hotel booking site and WhatsApp chat bubbles over a colorful seaside town.</td>
+      <td class="refs"><span class="unref">unreferenced</span><br><span class="desc">Not referenced by any document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/db6d198d136b500a1d7f4a577c6fa79b49fb5332-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/db6d198d136b500a1d7f4a577c6fa79b49fb5332-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783179975354.png</td>
+      <td class="new"><strong>blog-la-romana-bayahibe-dive-shop-owner.png</strong><br><em>La Romana &amp; Bayahíbe businesses — hero image</em></td>
+      <td>Dive shop owner on a wooden dock checking his phone beside a tours-and-rentals sign, with boats and a cruise ship in the harbor behind him.</td>
+      <td class="refs">blogPost: Websites for La Romana &amp; Bayahíbe Businesses<br><span class="desc">Used in blog post: Websites for La Romana &amp; Bayahíbe Businesses.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/f073ce762060792020519188e5b7d6adf2aaa04e-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/f073ce762060792020519188e5b7d6adf2aaa04e-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783179972091.png</td>
+      <td class="new"><strong>blog-bavaro-boutique-owner-phone.png</strong><br><em>Web design in Bávaro — hero image</em></td>
+      <td>Boutique owner smiling at her phone behind the counter of a colorful beach-town gift shop, with an inset phone screen showing her store's website.</td>
+      <td class="refs">blogPost: Web Design in Bávaro: A Guide for Local Businesses<br><span class="desc">Used in blog post: Web Design in Bávaro: A Guide for Local Businesses.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/a4f42caa57513f8344fe1056fca54caafff27178-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/a4f42caa57513f8344fe1056fca54caafff27178-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783180159458.png</td>
+      <td class="new"><strong>blog-santo-domingo-businesswoman-tablet.png</strong><br><em>Web design for Santo Domingo businesses — hero image</em></td>
+      <td>Businesswoman in a blazer reviewing a tablet by a high-rise office window overlooking a sprawling city skyline.</td>
+      <td class="refs">blogPost: Web Design for Santo Domingo Businesses: What to Look For<br><span class="desc">Used in blog post: Web Design for Santo Domingo Businesses: What to Look For.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7b7a643ce8a1c2c39509a7b77ed793a25b67ec9d-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7b7a643ce8a1c2c39509a7b77ed793a25b67ec9d-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783180184967.png</td>
+      <td class="new"><strong>blog-las-terrenas-samana-beach-cafe.png</strong><br><em>Las Terrenas &amp; Samaná web design — hero image</em></td>
+      <td>Woman working on a tablet at a rustic thatched-roof beachfront café with palm trees and the sea in the background.</td>
+      <td class="refs">blogPost: Web Design in Las Terrenas &amp; Samaná: The Multilingual Market<br><span class="desc">Used in blog post: Web Design in Las Terrenas &amp; Samaná: The Multilingual Market.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/de27919a5f73c45a8d19b2d5f3bfbc28c5693d6c-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/de27919a5f73c45a8d19b2d5f3bfbc28c5693d6c-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783180785513.png</td>
+      <td class="new"><strong>blog-hire-web-designer-punta-cana-tablet.png</strong><br><em>How to hire a web designer in Punta Cana — hero image</em></td>
+      <td>Person browsing a travel website on a tablet at an outdoor wooden table with a cappuccino, tropical flowers and the coast behind.</td>
+      <td class="refs">blogPost: How to Hire a Web Designer in Punta Cana (2026 Guide)<br><span class="desc">Used in blog post: How to Hire a Web Designer in Punta Cana (2026 Guide).</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/8d3df34e9f63f9a573a05278c55f50fddc800581-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/8d3df34e9f63f9a573a05278c55f50fddc800581-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783180782154.png</td>
+      <td class="new"><strong>blog-commission-website-client-meeting.png</strong><br><em>Commission a website — client meeting hero image</em></td>
+      <td>Web designer and client reviewing a bakery website on a laptop over coffee and handwritten notes in a brick-walled café.</td>
+      <td class="refs">blogPost: Steps to Commission a Website for Your Local Business<br><span class="desc">Used in blog post: Steps to Commission a Website for Your Local Business.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c5d62fbeb954e782d4f1f14e10869e010195c526-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c5d62fbeb954e782d4f1f14e10869e010195c526-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783181159537.png</td>
+      <td class="new"><strong>blog-professional-website-designer-desk.png</strong><br><em>What you need for a professional website — hero image</em></td>
+      <td>Overhead view of a designer's desk with a laptop showing a personal portfolio site, color swatches, a paint palette, cables and printed documents.</td>
+      <td class="refs">blogPost: What You Need to Create a Professional Website<br><span class="desc">Used in blog post: What You Need to Create a Professional Website.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e6bf9d89a45b769f1109b08654ae219c1f669c3e-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e6bf9d89a45b769f1109b08654ae219c1f669c3e-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783182053438.png</td>
+      <td class="new"><strong>blog-find-web-designers-portfolio-review.png</strong><br><em>Find reliable web designers in Punta Cana — hero image</em></td>
+      <td>Woman at a sunny home desk thoughtfully browsing a grid of web design portfolios on her laptop, with tropical greenery outside the window.</td>
+      <td class="refs">blogPost: Where to Find Reliable Web Designers in Punta Cana<br><span class="desc">Used in blog post: Where to Find Reliable Web Designers in Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7ea4c158e3f79a126c6faff827f56c1ee31e90ad-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7ea4c158e3f79a126c6faff827f56c1ee31e90ad-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783182076117.png</td>
+      <td class="new"><strong>blog-boutique-hotels-guest-booking-phone.png</strong><br><em>Boutique hotel &amp; vacation rental websites — hero image</em></td>
+      <td>Guest relaxing on a flower-draped seaside terrace booking a stay on her phone, with a coastal cliffside village and turquoise water beyond.</td>
+      <td class="refs">blogPost: Websites for Boutique Hotels &amp; Vacation Rentals in Punta Cana<br><span class="desc">Used in blog post: Websites for Boutique Hotels &amp; Vacation Rentals in Punta Cana.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/96be19990613523cf67ea3de97ce0ffcf62503fb-1376x768.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/96be19990613523cf67ea3de97ce0ffcf62503fb-1376x768.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783183907523.jpg</td>
+      <td class="new"><strong>blog-tour-operators-booking-app-dock.jpg</strong><br><em>Tour operator websites that convert — hero image</em></td>
+      <td>Tour guide on a busy marina dock checking bookings on her phone, with a customer's phone showing the tour website and excursion boats behind.</td>
+      <td class="refs">blogPost: Websites for Tour Operators &amp; Excursion Companies: What Actually Converts<br><span class="desc">Used in blog post: Websites for Tour Operators &amp; Excursion Companies: What Actually Converts.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/cda04ae9c87c69fa047415a68f0d28c6d262f460-1376x768.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/cda04ae9c87c69fa047415a68f0d28c6d262f460-1376x768.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783184575228.jpg</td>
+      <td class="new"><strong>blog-punta-cana-restaurant-digital-menu.jpg</strong><br><em>Restaurant websites in Punta Cana — hero image</em></td>
+      <td>Server at a beachfront thatched-roof restaurant presenting a digital menu on a tablet at dusk, with string lights and set tables around her.</td>
+      <td class="refs">blogPost: Restaurant Websites in Punta Cana: Menu, Reservations &amp; Google<br><span class="desc">Used in blog post: Restaurant Websites in Punta Cana: Menu, Reservations &amp; Google.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d87ab8fa785a554528fe00123d07d3e3321f26da-6000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d87ab8fa785a554528fe00123d07d3e3321f26da-6000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">aldward-castillo-8q41O5b7BEI-unsplash.jpg</td>
+      <td class="new"><strong>landing-santo-domingo-zona-colonial-street.jpg</strong><br><em>Santo Domingo — Zona Colonial street</em></td>
+      <td>Cobblestone pedestrian street in Santo Domingo's Zona Colonial with historic stone walls and a colonial bell tower in the distance.</td>
+      <td class="refs">seo: 13cf8155-b045-4ce0-9cd9-aa478ec9cc49<br>landingPage: Diseño de Páginas Web en Santo Domingo (City Landing Page)<br><span class="desc">Used in landing page: Diseño de Páginas Web en Santo Domingo (City Landing Page); also used as SEO/OG image.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/bc10348df0141f65d24802f9dcbcef7951d22e6d-3000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/bc10348df0141f65d24802f9dcbcef7951d22e6d-3000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">ronny-osoria-cnJipS4hEPs-unsplash.jpg</td>
+      <td class="new"><strong>landing-santiago-monumento-heroes.jpg</strong><br><em>Santiago — Monumento a los Héroes</em></td>
+      <td>The Monumento a los Héroes de la Restauración in Santiago de los Caballeros rising above green trees under a blue sky with the Dominican flag.</td>
+      <td class="refs">seo: 175db356-7f72-436e-ab56-5e9572d51392<br>landingPage: Diseño de Páginas Web en Santiago (City Landing Page)<br><span class="desc">Used in landing page: Diseño de Páginas Web en Santiago (City Landing Page); also used as SEO/OG image.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/36527c0d05f902cd1bdf609cf3118f4e8152332e-5737x3817.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/36527c0d05f902cd1bdf609cf3118f4e8152332e-5737x3817.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vlad-d-2TFtAHQzG_M-unsplash.jpg</td>
+      <td class="new"><strong>landing-la-romana-beach-pier-sunset.jpg</strong><br><em>La Romana — beach pier at sunset</em></td>
+      <td>Wooden pier with a gazebo stretching over calm water at sunset on a Dominican beach near La Romana.</td>
+      <td class="refs">landingPage: Diseño de Páginas Web en La Romana (City Landing Page)<br>seo: seo-diseno-de-paginas-web-la-romana<br><span class="desc">Used in landing page: Diseño de Páginas Web en La Romana (City Landing Page); also used as SEO/OG image.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7ada1c8c777101c8364ba520c5f039a83bdeda88-5464x3070.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7ada1c8c777101c8364ba520c5f039a83bdeda88-5464x3070.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">pexels-alberto-guzman-352733377-36896628.jpg</td>
+      <td class="new"><strong>landing-higuey-basilica-aerial.jpg</strong><br><em>Higüey — Basílica de la Altagracia aerial</em></td>
+      <td>Aerial view of the Basílica de Nuestra Señora de la Altagracia in Higüey, its towering concrete arch rising above the city under a blue sky.</td>
+      <td class="refs">landingPage: Diseño de Páginas Web en Higüey (City Landing Page)<br>seo: seo-diseno-de-paginas-web-higuey<br><span class="desc">Used in landing page: Diseño de Páginas Web en Higüey (City Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/85c2aedf429692121f9ce40a5045601a11fe3988-5464x3640.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/85c2aedf429692121f9ce40a5045601a11fe3988-5464x3640.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">asael-pena-jk6KUbKXtJs-unsplash.jpg</td>
+      <td class="new"><strong>landing-san-pedro-de-macoris-cathedral.jpg</strong><br><em>San Pedro de Macorís — cathedral aerial</em></td>
+      <td>Aerial view of the white St. Peter the Apostle cathedral surrounded by the rooftops of San Pedro de Macorís at dusk.</td>
+      <td class="refs">landingPage: Diseño de Páginas Web en San Pedro de Macorís (City Landing Page)<br>seo: seo-diseno-de-paginas-web-san-pedro-de-macoris<br><span class="desc">Used in landing page: Diseño de Páginas Web en San Pedro de Macorís (City Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/0fed58990ca388916d7e9586bd1a3b0dbbcd4808-6000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/0fed58990ca388916d7e9586bd1a3b0dbbcd4808-6000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">rachid-oucharia-9FTX45W1yAY-unsplash.jpg</td>
+      <td class="new"><strong>landing-punta-cana-palm-beach.jpg</strong><br><em>Punta Cana — palm-lined beach</em></td>
+      <td>Palm trees leaning over a white-sand beach with turquoise Caribbean water in Punta Cana.</td>
+      <td class="refs">landingPage: Diseño de Páginas Web en Punta Cana (City Landing Page)<br>seo: seo-diseno-de-paginas-web-punta-cana<br><span class="desc">Used in landing page: Diseño de Páginas Web en Punta Cana (City Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c31286fb01a771a356b32fad117b5e1c6b091e62-3616x2215.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c31286fb01a771a356b32fad117b5e1c6b091e62-3616x2215.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">eros-reyes-cabrera-xga_ccrAmj0-unsplash.jpg</td>
+      <td class="new"><strong>blog-north-coast-puerto-plata-fortaleza.jpg</strong><br><em>Puerto Plata — Fortaleza San Felipe aerial</em></td>
+      <td>Aerial view of the Fortaleza San Felipe peninsula jutting into the sea at Puerto Plata, with the city and harbor behind it.</td>
+      <td class="refs">blogPost: Puerto Plata, Sosúa &amp; Cabarete: Three Audiences, One North Coast<br>landingPage: Diseño de Páginas Web en Puerto Plata (City Landing Page)<br>seo: seo-diseno-de-paginas-web-puerto-plata<br><span class="desc">Used in blog post: Puerto Plata, Sosúa &amp; Cabarete: Three Audiences, One North Coast. Also used in landing page: Diseño de Páginas Web en Puerto Plata (City Landing Page) and as its SEO/OG image.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d90d79d8d5d67d296f86464110b0f04d727dbb12-4000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d90d79d8d5d67d296f86464110b0f04d727dbb12-4000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">roberto-gomez-Oyqyb0C-EsM-unsplash.jpg</td>
+      <td class="new"><strong>landing-las-terrenas-samana-bridge-islet.jpg</strong><br><em>Samaná — pedestrian bridge to islet</em></td>
+      <td>Long pedestrian bridge stretching across turquoise water to a small forested islet in Samaná Bay.</td>
+      <td class="refs">landingPage: Diseño de Páginas Web en Las Terrenas / Samaná (City Landing Page)<br>seo: seo-diseno-de-paginas-web-las-terrenas<br><span class="desc">Used in landing page: Diseño de Páginas Web en Las Terrenas / Samaná (City Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/091cbc098c3ada5cfab59c680d98b06543240187-3264x2448.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/091cbc098c3ada5cfab59c680d98b06543240187-3264x2448.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Pedernales_Dominikanische_Republik_-_panoramio.jpg</td>
+      <td class="new"><strong>blog-pedernales-cabo-rojo-beach.jpg</strong><br><em>Pedernales — beach with boats</em></td>
+      <td>View from under a thatched palapa of a quiet Pedernales beach with small boats floating on turquoise water and lounge chairs along the sand.</td>
+      <td class="refs">blogPost: Pedernales and Cabo Rojo: Why the Southwest Is the DR's Next Digital Frontier<br><span class="desc">Used in blog post: Pedernales and Cabo Rojo: Why the Southwest Is the DR's Next Digital Frontier.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d53c927c0bbe80570b59504cf318537022405788-1200x900.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d53c927c0bbe80570b59504cf318537022405788-1200x900.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Miches,_El_Seibo,_Dominican_Republic_1.jpg</td>
+      <td class="new"><strong>blog-miches-montana-redonda-viewpoint.jpg</strong><br><em>Miches — Montaña Redonda viewpoint</em></td>
+      <td>Grassy hilltop viewpoint at Montaña Redonda near Miches with a green swing frame overlooking rolling hills and the coast.</td>
+      <td class="refs">blogPost: Miches and the All-Inclusive Trap: Why Local Businesses Need Websites<br><span class="desc">Used in blog post: Miches and the All-Inclusive Trap: Why Local Businesses Need Websites.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/21ab4d08035059a29884bbe0dd8465031b648316-3840x2560.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/21ab4d08035059a29884bbe0dd8465031b648316-3840x2560.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Cap_Cana_Marina_Dominican_Republic.jpg</td>
+      <td class="new"><strong>blog-cap-cana-marina-waterfront.jpg</strong><br><em>Cap Cana — marina waterfront</em></td>
+      <td>Upscale waterfront buildings and palm trees lining the turquoise water of the Cap Cana marina under a clear sky.</td>
+      <td class="refs">blogPost: Cap Cana: Why Your Website Must Match the Luxury Standard<br><span class="desc">Used in blog post: Cap Cana: Why Your Website Must Match the Luxury Standard.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/d304ca030534ce9b3f2a8ac00c3fe5f83fedf52f-4402x2935.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/d304ca030534ce9b3f2a8ac00c3fe5f83fedf52f-4402x2935.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">jay-wennington-N_Y88TWmGwA-unsplash.jpg</td>
+      <td class="new"><strong>landing-restaurantes-gourmet-plate.jpg</strong><br><em>Restaurantes — gourmet plated dish</em></td>
+      <td>Elegantly plated gourmet dish being served at a candlelit restaurant table set with wine glasses and bread.</td>
+      <td class="refs">landingPage: Páginas Web para Restaurantes (Industry Landing Page)<br>seo: seo-paginas-web-para-restaurantes<br><span class="desc">Used in landing page: Páginas Web para Restaurantes (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/fed3c52f8e248c6d532c080283281f18d4e9de9b-5888x3925.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/fed3c52f8e248c6d532c080283281f18d4e9de9b-5888x3925.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">asael-pena-FiimCkOmIrY-unsplash.jpg</td>
+      <td class="new"><strong>landing-hoteles-boutique-resort-pool.jpg</strong><br><em>Hoteles Boutique — seaside resort pool</em></td>
+      <td>Palm trees swaying over a seaside boutique resort with a red-tiled roof and pool deck overlooking the ocean.</td>
+      <td class="refs">landingPage: Páginas Web para Hoteles Boutique (Industry Landing Page)<br>seo: seo-paginas-web-para-hoteles<br><span class="desc">Used in landing page: Páginas Web para Hoteles Boutique (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/2ccba95f2af30476ff03549dc4ea281a0184a4a6-1376x768.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/2ccba95f2af30476ff03549dc4ea281a0184a4a6-1376x768.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">sailing_catamaran_in_punta_cana.png_202605201337.jpeg</td>
+      <td class="new"><strong>landing-tour-operadores-catamaran.jpg</strong><br><em>Tour Operadores — sailing catamaran</em></td>
+      <td>White sailing catamaran gliding over clear turquoise water near a palm-fringed coast in Punta Cana.</td>
+      <td class="refs">landingPage: Páginas Web para Tour Operadores (Industry Landing Page)<br>seo: seo-paginas-web-para-tour-operadores<br><span class="desc">Used in landing page: Páginas Web para Tour Operadores (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/e709b4b9fc95491755ae03b6554d1f13bf1b898a-4592x3448.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/e709b4b9fc95491755ae03b6554d1f13bf1b898a-4592x3448.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">tierra-mallorca-rgJ1J8SDEAY-unsplash.jpg</td>
+      <td class="new"><strong>landing-inmobiliarias-house-keys.jpg</strong><br><em>Inmobiliarias — house keys</em></td>
+      <td>House keys on a keychain lying on a wooden table next to a miniature model house with a red facade and gray roof.</td>
+      <td class="refs">landingPage: Páginas Web para Inmobiliarias (Industry Landing Page)<br>seo: seo-paginas-web-para-inmobiliarias<br><span class="desc">Used in landing page: Páginas Web para Inmobiliarias (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/7a4ea28aa17919a8a1db0ce052d7655f53c37472-5464x3070.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/7a4ea28aa17919a8a1db0ce052d7655f53c37472-5464x3070.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">luis-j-corniel-KRKT8oZxk6s-unsplash.jpg</td>
+      <td class="new"><strong>landing-alquileres-vacacionales-marina-aerial.jpg</strong><br><em>Alquileres Vacacionales — marina aerial</em></td>
+      <td>Aerial view of a Caribbean marina resort community with turquoise canals, docked boats, and dense waterfront buildings near the beach.</td>
+      <td class="refs">landingPage: Páginas Web para Alquileres Vacacionales (Industry Landing Page)<br>seo: seo-paginas-web-para-alquileres-vacacionales<br><span class="desc">Used in landing page: Páginas Web para Alquileres Vacacionales (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/737bf96ac371a3af1203d803565002aecce77193-3600x2400.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/737bf96ac371a3af1203d803565002aecce77193-3600x2400.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">mikaela-san-juan-n0jUdPcyu28-unsplash.jpg</td>
+      <td class="new"><strong>landing-bodas-eventos-beach-bridal-party.jpg</strong><br><em>Bodas y Eventos — beach bridal party</em></td>
+      <td>Bride in a white gown walking along a palm-lined beach with five bridesmaids in blush dresses holding bouquets.</td>
+      <td class="refs">landingPage: Páginas Web para Bodas y Eventos (Industry Landing Page)<br>seo: seo-paginas-web-para-bodas-y-eventos<br><span class="desc">Used in landing page: Páginas Web para Bodas y Eventos (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/fd565178aace88a695857c1bb1015abcf63a4bd7-6000x3376.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/fd565178aace88a695857c1bb1015abcf63a4bd7-6000x3376.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">divaris-shirichena-KnYh9XvaKio-unsplash.jpg</td>
+      <td class="new"><strong>landing-dentistas-dental-clinic.jpg</strong><br><em>Dentistas — dental clinic</em></td>
+      <td>Masked dentist in scrubs standing beside a reclined patient in a modern multi-chair dental clinic.</td>
+      <td class="refs">landingPage: Páginas Web para Dentistas (Industry Landing Page)<br>seo: seo-paginas-web-para-dentistas<br><span class="desc">Used in landing page: Páginas Web para Dentistas (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/746813aa0c3fc9fc580cc4ddcdcc46f614b37626-5616x3744.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/746813aa0c3fc9fc580cc4ddcdcc46f614b37626-5616x3744.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">sasun-bughdaryan-ozS0tPf8QT0-unsplash.jpg</td>
+      <td class="new"><strong>landing-abogados-gavel-book.jpg</strong><br><em>Abogados — gavel and law book</em></td>
+      <td>Wooden judge's gavel resting in front of an open law book against a blue background.</td>
+      <td class="refs">landingPage: Páginas Web para Abogados (Industry Landing Page)<br>seo: seo-paginas-web-para-abogados<br><span class="desc">Used in landing page: Páginas Web para Abogados (Industry Landing Page). Also used as SEO/OG image for that page.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/f6b27904af4a0df7e78210beefd238b3ddd10cf3-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/f6b27904af4a0df7e78210beefd238b3ddd10cf3-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783798172947.png</td>
+      <td class="new"><strong>blog-redesign-rankings-two-laptops.png</strong><br><em>Website Redesign — comparing two laptops</em></td>
+      <td>Person pointing at one of two laptops on a wooden desk, comparing an old and a redesigned website side by side with a handwritten checklist nearby.</td>
+      <td class="refs">blogPost: How to Redesign Your Website Without Losing Rankings<br><span class="desc">Used in blog post: How to Redesign Your Website Without Losing Rankings.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/2b54bba6151477d0461f81cdfaeed0ab1ee3a1eb-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/2b54bba6151477d0461f81cdfaeed0ab1ee3a1eb-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783798259308.png</td>
+      <td class="new"><strong>blog-not-on-google-frustrated-owner.png</strong><br><em>Not Showing on Google — worried site owner</em></td>
+      <td>Woman at a home office desk resting her chin on her hand while studying search results on her laptop, with notes and a phone beside her.</td>
+      <td class="refs">blogPost: My Website Doesn't Show Up on Google: 7 Reasons &amp; Fixes<br><span class="desc">Used in blog post: My Website Doesn't Show Up on Google: 7 Reasons &amp; Fixes.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/46f5bf5267737b01f4b7c26d959bbbc998c587c7-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/46f5bf5267737b01f4b7c26d959bbbc998c587c7-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783798303771.png</td>
+      <td class="new"><strong>blog-real-estate-punta-cana-agent-tablet.png</strong><br><em>Real Estate Punta Cana — agent with tablet</em></td>
+      <td>Real estate agent in a blazer reviewing property listings on a tablet at the entrance of a luxury oceanfront villa in Punta Cana.</td>
+      <td class="refs">blogPost: Real Estate Websites in Punta Cana: Bilingual Listings &amp; Foreign Buyers<br><span class="desc">Used in blog post: Real Estate Websites in Punta Cana: Bilingual Listings &amp; Foreign Buyers.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/792ca65af52808aa536e5834fb61343ce83872fc-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/792ca65af52808aa536e5834fb61343ce83872fc-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783798574292.png</td>
+      <td class="new"><strong>blog-wedding-websites-couple-tablet.png</strong><br><em>Wedding Websites — couple browsing on tablet</em></td>
+      <td>Smiling couple seated in a rustic cafe looking together at a wedding venue website on a tablet.</td>
+      <td class="refs">blogPost: Websites for Wedding &amp; Event Businesses: What We Learned Building Four<br><span class="desc">Used in blog post: Websites for Wedding &amp; Event Businesses: What We Learned Building Four.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c4040bb99f6fa0f96e29d2570f16a74396abcab0-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c4040bb99f6fa0f96e29d2570f16a74396abcab0-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1783798609372.png</td>
+      <td class="new"><strong>blog-doctors-clinics-booking-tablet.png</strong><br><em>Websites for Doctors &amp; Clinics — hero image</em></td>
+      <td>A receptionist in a bright medical clinic shows a patient an online appointment calendar on a tablet while others wait in the background.</td>
+      <td class="refs">blogPost: Websites for Doctors, Dentists &amp; Clinics in the Dominican Republic<br><span class="desc">Used in blog post: Websites for Doctors, Dentists &amp; Clinics in the Dominican Republic</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/6a03bf66e390ba86bd9617f1ff48c94a113de619-2752x1536.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/6a03bf66e390ba86bd9617f1ff48c94a113de619-2752x1536.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1784128161153.png</td>
+      <td class="new"><strong>blog-santiago-monument-night-skyline.png</strong><br><em>Santiago — Monument at dusk hero image</em></td>
+      <td>The illuminated Monumento a los Héroes de la Restauración rises above the Santiago de los Caballeros skyline at dusk.</td>
+      <td class="refs">blogPost: Santiago: Websites for the DR's Economic Engine, Not a Resort Town<br><span class="desc">Used in blog post: Santiago: Websites for the DR's Economic Engine, Not a Resort Town</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/902dd55cb49d1dc4df7d46e30ab1a6ac825826a6-3000x2000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/902dd55cb49d1dc4df7d46e30ab1a6ac825826a6-3000x2000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">saltoLimon.jpg</td>
+      <td class="new"><strong>blog-samana-salto-el-limon-waterfall.jpg</strong><br><em>Samaná Peninsula — Salto El Limón waterfall</em></td>
+      <td>Visitors gather at the base of the wide Salto El Limón waterfall cascading down a jungle cliff in Samaná.</td>
+      <td class="refs">blogPost: The Samaná Peninsula: Websites for Eco-Tourism &amp; International Buyers<br><span class="desc">Used in blog post: The Samaná Peninsula: Websites for Eco-Tourism &amp; International Buyers</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/3af0398ff76677b505f0abe5facbde90077c11d8-6000x4000.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/3af0398ff76677b505f0abe5facbde90077c11d8-6000x4000.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">Jarabacoa_-_Río_Baiguate_0265.jpeg</td>
+      <td class="new"><strong>blog-jarabacoa-rio-baiguate-waterfall.jpg</strong><br><em>Jarabacoa — Río Baiguate waterfall</em></td>
+      <td>The Río Baiguate waterfall in Jarabacoa pours between rocky cliffs into a natural swimming pool surrounded by forest.</td>
+      <td class="refs">blogPost: Jarabacoa &amp; Constanza: Websites for the DR's Mountain Adventure Capital<br><span class="desc">Used in blog post: Jarabacoa &amp; Constanza: Websites for the DR's Mountain Adventure Capital</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/70454b0330e9c7c55cc441d04a7c8211c79d65ef-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/70454b0330e9c7c55cc441d04a7c8211c79d65ef-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1784495425367.png</td>
+      <td class="new"><strong>og-constructoras-beachfront-construction.png</strong><br><em>Páginas Web para Constructoras — OG image</em></td>
+      <td>A beachfront construction site with a crane and workers building a concrete villa beside a finished modern home with a pool on the Caribbean coast.</td>
+      <td class="refs">seo: seo-paginas-web-para-constructoras<br><span class="desc">OG image for: Páginas Web para Constructoras (SEO document seo-paginas-web-para-constructoras)</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/3cc076d40c9e789e3ed0ad3fee6dbd7ce54162b6-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/3cc076d40c9e789e3ed0ad3fee6dbd7ce54162b6-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1784495414169.png</td>
+      <td class="new"><strong>landing-salones-belleza-stylist-mirror.png</strong><br><em>Salones de Belleza — salon hero image</em></td>
+      <td>A hairstylist styling a smiling client's curls, reflected in a round lighted mirror inside a warm pink beauty salon.</td>
+      <td class="refs">landingPage: Páginas Web para Salones de Belleza (Industry Landing Page)<br>seo: seo-paginas-web-para-salones-de-belleza<br><span class="desc">Used in landing page: Páginas Web para Salones de Belleza (Industry Landing Page); also the OG image for its SEO document.</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/b19cfde9bc4e7709148763f6fa735ec7d0fa498f-1792x2400.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/b19cfde9bc4e7709148763f6fa735ec7d0fa498f-1792x2400.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">james.png</td>
+      <td class="new"><strong>home-founder-james-beach-portrait.png</strong><br><em>Meet the Founder — James Karnes portrait</em></td>
+      <td>James Karnes, founder of DR Web Studio, in a gray polo with sunglasses on his head, standing on a palm-lined Dominican beach at sunset.</td>
+      <td class="refs">sectionHeader: Meet the Founder of DR Web Studio<br><span class="desc">Used in homepage section header: Meet the Founder of DR Web Studio</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/2bda9d2afe2115c1d23adb848bfca8769d9eb3c9-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/2bda9d2afe2115c1d23adb848bfca8769d9eb3c9-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785021909936.png</td>
+      <td class="new"><strong>blog-product-photography-phone-setup.png</strong><br><em>Product Photography That Sells — hero image</em></td>
+      <td>A hand photographs a small jar with a smartphone against a white paper backdrop taped to a rustic wooden table by a window.</td>
+      <td class="refs">blogPost: Product Photography That Sells: A Practical Guide for Dominican Stores<br><span class="desc">Used in blog post: Product Photography That Sells: A Practical Guide for Dominican Stores</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/99f1b860169f32bb7a35917b96c4f4920c918857-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/99f1b860169f32bb7a35917b96c4f4920c918857-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785021891282.png</td>
+      <td class="new"><strong>blog-templates-vs-custom-houses.png</strong><br><em>Templates vs. Custom Website — hero image</em></td>
+      <td>A row of five identical gray cookie-cutter houses contrasts with a single warmly lit custom modern home surrounded by tropical plants.</td>
+      <td class="refs">blogPost: Wix, Squarespace &amp; Templates vs. a Custom Website: The Honest Comparison<br><span class="desc">Used in blog post: Wix, Squarespace &amp; Templates vs. a Custom Website: The Honest Comparison</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/9cd6965cdad9cb978e89cbcfd416621e747f1ef7-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/9cd6965cdad9cb978e89cbcfd416621e747f1ef7-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785021902505.png</td>
+      <td class="new"><strong>blog-whatsapp-vs-store-shop-desk.png</strong><br><em>WhatsApp Catalog vs. Online Store — hero image</em></td>
+      <td>A phone showing a WhatsApp product catalog sits beside a laptop displaying an online store on a wooden table in a small artisan shop.</td>
+      <td class="refs">blogPost: WhatsApp Catalog vs. a Real Online Store: Which Does Your Business Need?<br><span class="desc">Used in blog post: WhatsApp Catalog vs. a Real Online Store: Which Does Your Business Need?</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/16057bb39acfb4bcff2dfd64895136d41f6b9a4e-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/16057bb39acfb4bcff2dfd64895136d41f6b9a4e-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785422550364.png</td>
+      <td class="new"><strong>blog-app-vs-website-phone-storefront.png</strong><br><em>App or Website? — hero image</em></td>
+      <td>A smartphone lies on a wooden desk with a glowing beam connecting it to a small holographic storefront icon.</td>
+      <td class="refs">blogPost: Do I Need an App or a Website? The Honest Answer for Dominican Businesses<br><span class="desc">Used in blog post: Do I Need an App or a Website? The Honest Answer for Dominican Businesses</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/cb18448776bbeeddb38a4918ce25c65d9b9cff14-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/cb18448776bbeeddb38a4918ce25c65d9b9cff14-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785422596700.png</td>
+      <td class="new"><strong>blog-maintenance-monitoring-laptop.png</strong><br><em>Website Maintenance — hero image</em></td>
+      <td>A laptop on a tidy desk at night displays green website monitoring dashboards under the warm light of a desk lamp.</td>
+      <td class="refs">blogPost: Website Maintenance: Why It's Not Optional<br><span class="desc">Used in blog post: Website Maintenance: Why It's Not Optional</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/01703b9f426078d9fe5c3bafdf900ba74e2bed52-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/01703b9f426078d9fe5c3bafdf900ba74e2bed52-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785422634624.png</td>
+      <td class="new"><strong>blog-ai-search-phone-colmado-street.png</strong><br><em>AI Search — hero image</em></td>
+      <td>A hand holds up a phone with a glowing AI chat interface on a cobblestone Dominican street lined with colmado shop signs at night.</td>
+      <td class="refs">blogPost: AI Search: How Your Business Shows Up in ChatGPT, Gemini &amp; AI Overviews<br><span class="desc">Used in blog post: AI Search: How Your Business Shows Up in ChatGPT, Gemini &amp; AI Overviews</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/bea38d594c057b9c8ba509aa8707cf3368481769-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/bea38d594c057b9c8ba509aa8707cf3368481769-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1785422671644.png</td>
+      <td class="new"><strong>blog-punta-bergantin-resort-construction.png</strong><br><em>Punta Bergantín — coastal construction aerial</em></td>
+      <td>Aerial view of a turquoise bay near Puerto Plata with resort buildings under construction and cranes rising among green mountains.</td>
+      <td class="refs">blogPost: Punta Bergantín: Puerto Plata's Megaproject and the Two-Year Window<br><span class="desc">Used in blog post: Punta Bergantín: Puerto Plata's Megaproject and the Two-Year Window</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/80152b0e6d85c85a8a14180f9df430c95d77b7e6-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/80152b0e6d85c85a8a14180f9df430c95d77b7e6-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1786222142910.png</td>
+      <td class="new"><strong>blog-legal-relocation-passport-desk.png</strong><br><em>Law Firms &amp; Relocation Services — hero image</em></td>
+      <td>A laptop showing a document sits on a wooden desk beside a coffee cup, a passport, a map, and a notepad.</td>
+      <td class="refs">blogPost: Websites for Law Firms, Accountants &amp; Relocation Services in the DR<br><span class="desc">Used in blog post: Websites for Law Firms, Accountants &amp; Relocation Services in the DR</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/8413a1d74cd1ad3dd62152232769938060513eb7-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/8413a1d74cd1ad3dd62152232769938060513eb7-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1786222130802.png</td>
+      <td class="new"><strong>blog-hosting-domain-house-model.png</strong><br><em>Hosting &amp; Domain Explained — hero image</em></td>
+      <td>A miniature architectural model of a lit modern house on a small plot with a tiny address sign, symbolizing hosting and a domain.</td>
+      <td class="refs">blogPost: What Is Hosting and a Domain? Explained Simply<br><span class="desc">Used in blog post: What Is Hosting and a Domain? Explained Simply</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/c278fec5848c51d3a1f75e03814e0ba07faddedf-5464x3640.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/c278fec5848c51d3a1f75e03814e0ba07faddedf-5464x3640.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">eriel-ezequiel-reyes-savinon-XHqLzGl7hfc-unsplash.jpg</td>
+      <td class="new"><strong>blog-barahona-bay-aerial-port.jpg</strong><br><em>Barahona — bay and port aerial</em></td>
+      <td>Aerial view of Barahona's curving bay on the DR's southwest coast, with a cargo ship docked at the port pier and the town along the shore.</td>
+      <td class="refs">blogPost: Barahona &amp; the Southwest Coast: Where Dominicans Vacation<br><span class="desc">Used in blog post: Barahona &amp; the Southwest Coast: Where Dominicans Vacation</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/566025787243b258dc45da14614280a907ac79ed-5568x4176.jpg" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/566025787243b258dc45da14614280a907ac79ed-5568x4176.jpg?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">GOPR4989_1777247791170.JPG</td>
+      <td class="new"><strong>blog-dive-shops-scuba-divers-reef.jpg</strong><br><em>Dive Shops &amp; Watersports — divers underwater</em></td>
+      <td>Three scuba divers swim above a coral reef in clear blue Caribbean water, trailing streams of bubbles.</td>
+      <td class="refs">blogPost: Websites for Dive Shops &amp; Watersports Schools in the DR<br><span class="desc">Used in blog post: Websites for Dive Shops &amp; Watersports Schools in the DR</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/358f6b5e24b2b6e814976b0f0f3562742a0f862d-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/358f6b5e24b2b6e814976b0f0f3562742a0f862d-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1786225795007.png</td>
+      <td class="new"><strong>blog-free-cheap-pro-house-models.png</strong><br><em>Free vs. Cheap vs. Professional — hero image</em></td>
+      <td>Three miniature house models in a row progress from a rough plywood shack to a plain gray box to a polished, warmly lit modern home.</td>
+      <td class="refs">blogPost: Free vs. Cheap vs. Professional Website: What You Actually Get<br><span class="desc">Used in blog post: Free vs. Cheap vs. Professional Website: What You Actually Get</span></td>
+    </tr>
+<tr>
+      <td><a href="https://cdn.sanity.io/images/6r8ro1r9/production/dc1449123e88f80eff19a4791fb81829a7523a6e-1376x768.png" target="_blank"><img loading="lazy" src="https://cdn.sanity.io/images/6r8ro1r9/production/dc1449123e88f80eff19a4791fb81829a7523a6e-1376x768.png?w=160&auto=format&q=60" alt=""></a></td>
+      <td class="old">vinano-1786225789046.png</td>
+      <td class="new"><strong>blog-onepage-vs-multipage-mockups.png</strong><br><em>One-Page vs. Multi-Page — hero image</em></td>
+      <td>A single smartphone showing one long scrolling page stands opposite a fanned-out row of five separate page mockups.</td>
+      <td class="refs">blogPost: One-Page Site vs. Multi-Page: Which Do You Need?<br><span class="desc">Used in blog post: One-Page Site vs. Multi-Page: Which Do You Need?</span></td>
+    </tr>
+</tbody>
+</table>
+</body>
+</html>
