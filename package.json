@@ -16,9 +16,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "lint": "next lint",
     "test": "vitest run",
-    "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
-    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-product-photography.ts",
-    "seed:example-landing": "npx tsx --env-file=.env.local scripts/seedConstructoras.ts"
+    "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs"
   },
   "dependencies": {
     "@botpoison/browser": "^0.1.30",
