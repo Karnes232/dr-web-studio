@@ -24,6 +24,11 @@ export interface PricingData {
     es: string
   }
   price: string
+  pricePeriod?: {
+    en?: string
+    es?: string
+  }
+  order?: number
   description: {
     en: string
     es: string
@@ -39,10 +44,12 @@ export interface PricingData {
   badge?: PricingBadge
 }
 
-const pricingDataQuery = `*[_type == "pricingData"] | order(variant asc) {
+const pricingDataQuery = `*[_type == "pricingData"] | order(coalesce(order, 99) asc, variant asc) {
   _id,
   title,
   price,
+  pricePeriod,
+  order,
   description,
   iconName,
   features[] {

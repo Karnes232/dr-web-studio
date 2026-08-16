@@ -1,6 +1,7 @@
 import { cache } from "react"
 import { client } from "@/sanity/lib/client"
 import { portableTextToPlainText } from "@/lib/portableTextToPlainText"
+import { getPathname } from "@/i18n/navigation"
 
 /** Portable Text block array (loosely typed, matching the project convention). */
 type PortableBlocks = unknown[]
@@ -91,7 +92,8 @@ export const landingPageProjection = `{
     }
   },
 
-  structuredData { en, es }
+  structuredData { en, es },
+  "serviceSlugPairs": *[_type == "serviceItem"] { "en": slug.current, "es": slugEs.current }
 }`
 
 export const landingPageQuery = `
@@ -208,6 +210,7 @@ export interface RawLandingPage {
     items?: RawFaqItem[]
   }
   structuredData?: LocalizedString
+  serviceSlugPairs?: { en?: string; es?: string | null }[]
 }
 
 // ──────────────────────────────────────────
@@ -320,10 +323,46 @@ function pickBlocks(
   return asBlocks(obj?.[lang] ?? obj?.en)
 }
 
+/** Resolve a Sanity-stored href (canonical English path like "/contact" or
+ *  "/our-services/<en-slug>", with or without a locale prefix) into the final
+ *  locale-prefixed URL ("/es/contacto"), so components can render it with a
+ *  plain <Link> and no redirect hop. Unknown paths fall back to prefix-only. */
+function resolveLandingHref(
+  href: string,
+  lang: "en" | "es",
+  slugPairs: { en?: string; es?: string | null }[],
+): string {
+  if (!href.startsWith("/")) return href
+  const path = href.replace(/^\/(en|es)(?=\/|$)/, "") || "/"
+
+  const serviceMatch = path.match(/^\/our-services\/(.+)$/)
+  if (serviceMatch) {
+    const enSlug = serviceMatch[1]
+    const pair = slugPairs.find(p => p.en === enSlug)
+    const slug = lang === "es" ? (pair?.es ?? enSlug) : enSlug
+    return getPathname({
+      locale: lang,
+      href: { pathname: "/our-services/[slug]", params: { slug } },
+    })
+  }
+
+  try {
+    return getPathname({
+      locale: lang,
+      href: path as Parameters<typeof getPathname>[0]["href"],
+    })
+  } catch {
+    return `/${lang}${path}`
+  }
+}
+
 export function transformLandingPage(
   raw: RawLandingPage,
   lang: "en" | "es",
 ): LandingPageData {
+  const slugPairs = raw.serviceSlugPairs ?? []
+  const resolveHref = (href: string) =>
+    resolveLandingHref(href, lang, slugPairs)
   return {
     title: raw.title ?? "",
     slug: raw.slug ?? "",
@@ -331,9 +370,9 @@ export function transformLandingPage(
       headline: pick(raw.hero?.headline, lang),
       subheadline: pick(raw.hero?.subheadline, lang),
       primaryCta: pick(raw.hero?.primaryCta, lang),
-      primaryCtaHref: raw.hero?.primaryCtaHref ?? `/${lang}/contact`,
+      primaryCtaHref: resolveHref(raw.hero?.primaryCtaHref ?? "/contact"),
       secondaryCta: pick(raw.hero?.secondaryCta, lang),
-      secondaryCtaHref: raw.hero?.secondaryCtaHref ?? `/${lang}/portfolio`,
+      secondaryCtaHref: resolveHref(raw.hero?.secondaryCtaHref ?? "/portfolio"),
       badge: pick(raw.hero?.badge, lang),
       backgroundImage: raw.hero?.backgroundImage,
     },
@@ -348,7 +387,13 @@ export function transformLandingPage(
         icon: i.icon ?? "Globe",
         title: pick(i.title, lang),
         description: pickBlocks(i.description, lang),
-        linkSlug: i.linkSlug,
+        // Localized here (en slug from content → es slug when lang is es) so
+        // the grid's Link emits the final URL with no redirect hop.
+        linkSlug: i.linkSlug
+          ? lang === "es"
+            ? (slugPairs.find(p => p.en === i.linkSlug)?.es ?? i.linkSlug)
+            : i.linkSlug
+          : undefined,
       })),
     },
     whyUs: {
@@ -386,7 +431,7 @@ export function transformLandingPage(
         tags: p.tags,
       })),
       ctaText: pick(raw.portfolioHighlight?.ctaText, lang),
-      ctaHref: raw.portfolioHighlight?.ctaHref ?? `/${lang}/portfolio`,
+      ctaHref: resolveHref(raw.portfolioHighlight?.ctaHref ?? "/portfolio"),
     },
     testimonials: {
       sectionTitle: pick(raw.testimonials?.sectionTitle, lang),

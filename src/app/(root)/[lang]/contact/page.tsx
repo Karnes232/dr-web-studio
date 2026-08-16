@@ -80,6 +80,7 @@ export default async function Contact({ params }: PageProps) {
                 }
                 language={lang}
                 phone={companyInfo?.telephone}
+                googleBusinessUrl={companyInfo?.socialLinks?.googleBusiness}
               />
               <ContactFAQ
                 title={faqsHeader.title[lang]}

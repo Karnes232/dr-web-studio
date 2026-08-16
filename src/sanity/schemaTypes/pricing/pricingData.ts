@@ -31,6 +31,22 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "pricePeriod",
+      title: "Price Period (e.g. /mo)",
+      description: "Optional suffix rendered after the price.",
+      type: "object",
+      fields: [
+        { name: "en", title: "English", type: "string" },
+        { name: "es", title: "Spanish", type: "string" },
+      ],
+    }),
+    defineField({
+      name: "order",
+      title: "Display Order",
+      description: "Cards sort ascending by this number.",
+      type: "number",
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "object",

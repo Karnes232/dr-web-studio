@@ -178,7 +178,10 @@ export function personNode(layout: LayoutSchemaData, lang: Locale): JsonObject {
 
 // ── WebSite ──────────────────────────────────────────────────────────────────
 
-export function webSiteNode(layout: LayoutSchemaData): JsonObject {
+export function webSiteNode(
+  layout: LayoutSchemaData,
+  lang: Locale,
+): JsonObject {
   return {
     "@type": "WebSite",
     "@id": WEBSITE_ID,
@@ -192,7 +195,7 @@ export function webSiteNode(layout: LayoutSchemaData): JsonObject {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/en/blog?q={search_term_string}`,
+        urlTemplate: `${localizedUrl("/blog", lang)}?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },

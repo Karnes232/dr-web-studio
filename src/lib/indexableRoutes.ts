@@ -35,6 +35,71 @@ export const LANDING_PAGE_ROUTES = [
 export type LandingPageSlug =
   (typeof LANDING_PAGE_ROUTES)[number] extends `/${infer S}` ? S : never
 
+/** The 8 city landing pages — surfaced in the footer and cross-linked between
+ *  neighboring cities (they were reachable only via /sitemap before). */
+export const CITY_PAGE_ROUTES = [
+  "/diseno-de-paginas-web-santo-domingo",
+  "/diseno-de-paginas-web-santiago",
+  "/diseno-de-paginas-web-la-romana",
+  "/diseno-de-paginas-web-higuey",
+  "/diseno-de-paginas-web-san-pedro-de-macoris",
+  "/diseno-de-paginas-web-punta-cana",
+  "/diseno-de-paginas-web-puerto-plata",
+  "/diseno-de-paginas-web-las-terrenas",
+] as const satisfies readonly StaticPathname[]
+
+export type CityPageRoute = (typeof CITY_PAGE_ROUTES)[number]
+
+/** City display names (proper nouns — identical in both locales). */
+export const CITY_NAMES: Record<CityPageRoute, string> = {
+  "/diseno-de-paginas-web-santo-domingo": "Santo Domingo",
+  "/diseno-de-paginas-web-santiago": "Santiago",
+  "/diseno-de-paginas-web-la-romana": "La Romana",
+  "/diseno-de-paginas-web-higuey": "Higüey",
+  "/diseno-de-paginas-web-san-pedro-de-macoris": "San Pedro de Macorís",
+  "/diseno-de-paginas-web-punta-cana": "Punta Cana",
+  "/diseno-de-paginas-web-puerto-plata": "Puerto Plata",
+  "/diseno-de-paginas-web-las-terrenas": "Las Terrenas",
+}
+
+/** Geographically nearby cities for each city page's "also serving" links. */
+export const CITY_ADJACENCY: Record<CityPageRoute, CityPageRoute[]> = {
+  "/diseno-de-paginas-web-santo-domingo": [
+    "/diseno-de-paginas-web-san-pedro-de-macoris",
+    "/diseno-de-paginas-web-la-romana",
+    "/diseno-de-paginas-web-santiago",
+  ],
+  "/diseno-de-paginas-web-santiago": [
+    "/diseno-de-paginas-web-puerto-plata",
+    "/diseno-de-paginas-web-santo-domingo",
+  ],
+  "/diseno-de-paginas-web-la-romana": [
+    "/diseno-de-paginas-web-san-pedro-de-macoris",
+    "/diseno-de-paginas-web-higuey",
+    "/diseno-de-paginas-web-punta-cana",
+  ],
+  "/diseno-de-paginas-web-higuey": [
+    "/diseno-de-paginas-web-punta-cana",
+    "/diseno-de-paginas-web-la-romana",
+  ],
+  "/diseno-de-paginas-web-san-pedro-de-macoris": [
+    "/diseno-de-paginas-web-santo-domingo",
+    "/diseno-de-paginas-web-la-romana",
+  ],
+  "/diseno-de-paginas-web-punta-cana": [
+    "/diseno-de-paginas-web-higuey",
+    "/diseno-de-paginas-web-la-romana",
+  ],
+  "/diseno-de-paginas-web-puerto-plata": [
+    "/diseno-de-paginas-web-santiago",
+    "/diseno-de-paginas-web-las-terrenas",
+  ],
+  "/diseno-de-paginas-web-las-terrenas": [
+    "/diseno-de-paginas-web-puerto-plata",
+    "/diseno-de-paginas-web-santo-domingo",
+  ],
+}
+
 const MAIN_INDEXABLE_ROUTES = [
   "/",
   "/about-me",

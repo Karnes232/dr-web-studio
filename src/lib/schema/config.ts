@@ -39,7 +39,36 @@ export const AREA_SERVED = [
     name: "Santo Domingo",
     sameAs: "https://en.wikipedia.org/wiki/Santo_Domingo",
   },
-  { "@type": "City", name: "Santiago de los Caballeros" },
+  {
+    "@type": "City",
+    name: "Santiago de los Caballeros",
+    sameAs: "https://en.wikipedia.org/wiki/Santiago_de_los_Caballeros",
+  },
+  {
+    "@type": "City",
+    name: "La Romana",
+    sameAs: "https://en.wikipedia.org/wiki/La_Romana,_Dominican_Republic",
+  },
+  {
+    "@type": "City",
+    name: "Higüey",
+    sameAs: "https://en.wikipedia.org/wiki/Higüey,_Dominican_Republic",
+  },
+  {
+    "@type": "City",
+    name: "San Pedro de Macorís",
+    sameAs: "https://en.wikipedia.org/wiki/San_Pedro_de_Macorís",
+  },
+  {
+    "@type": "City",
+    name: "Puerto Plata",
+    sameAs: "https://en.wikipedia.org/wiki/Puerto_Plata",
+  },
+  {
+    "@type": "City",
+    name: "Las Terrenas",
+    sameAs: "https://en.wikipedia.org/wiki/Las_Terrenas",
+  },
   {
     "@type": "Country",
     name: "Dominican Republic",

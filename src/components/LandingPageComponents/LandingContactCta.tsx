@@ -29,23 +29,17 @@ export async function LandingContactCta({
   const phone = layout?.telephone
   const contactHref = lang === "es" ? "/es/contacto" : "/en/contact"
 
-  // Hero hrefs are stored unprefixed (e.g. "/contact"); prefix the locale so
-  // the link stays in-language (legacy-slug redirects map e.g. /es/contact →
-  // /es/contacto in one permanent hop).
-  const localized = (href?: string | null) =>
-    href && href.startsWith("/") && !/^\/(en|es)(\/|$)/.test(href)
-      ? `/${lang}${href}`
-      : (href ?? undefined)
-
+  // Hero hrefs arrive fully localized from transformLandingPage
+  // (e.g. "/es/contacto") — no prefixing or redirect hop here.
   return (
     <LandingCta
       headline={t("landingPage.ctaHeadline")}
       subtext={t("landingPage.ctaSubtext")}
       primaryBtn={hero.primaryCta || t("resources.get_quote")}
-      primaryBtnHref={localized(hero.primaryCtaHref) || contactHref}
+      primaryBtnHref={hero.primaryCtaHref || contactHref}
       secondaryBtn={hero.secondaryCta || t("resources.start_project")}
       secondaryBtnHref={
-        localized(hero.secondaryCtaHref) ||
+        hero.secondaryCtaHref ||
         (lang === "es"
           ? "/es/planificador-de-proyectos"
           : "/en/project-planner")

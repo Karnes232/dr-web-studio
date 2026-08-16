@@ -62,7 +62,7 @@ export default async function Pricing({ params }: PageProps) {
           />
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
             {pricingData.map((pkg, index) => (
               <PricingCard key={index} pricingData={pkg} lang={lang} />
             ))}

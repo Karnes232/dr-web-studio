@@ -94,9 +94,8 @@ export function LandingServicesGrid({
             return item.linkSlug ? (
               <Link
                 key={i}
-                // linkSlug is the English service slug from landing content.
-                // next-intl localizes the prefix; for /es the slug stays English
-                // and is 301'd to the Spanish slug (see next.config redirects).
+                // linkSlug is already locale-resolved by transformLandingPage,
+                // so this emits the final URL with no redirect hop.
                 href={{
                   pathname: "/our-services/[slug]",
                   params: { slug: item.linkSlug },

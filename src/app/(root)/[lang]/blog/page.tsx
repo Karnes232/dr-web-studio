@@ -17,12 +17,12 @@ interface PageProps {
   params: Promise<{
     lang: "en" | "es"
   }>
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ page?: string; q?: string }>
 }
 
 export default async function Blog({ params, searchParams }: PageProps) {
   const { lang } = await params
-  const { page: pageParam } = await searchParams
+  const { page: pageParam, q } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1)
 
   const [graph, headerData, blogPosts, categories] = await Promise.all([
@@ -63,6 +63,7 @@ export default async function Blog({ params, searchParams }: PageProps) {
         initialPaginatedPosts={initialPaginatedPosts}
         totalPages={totalPages}
         postsPerPage={POSTS_PER_PAGE}
+        initialSearchTerm={q}
       />
     </>
   )
@@ -70,16 +71,30 @@ export default async function Blog({ params, searchParams }: PageProps) {
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: PageProps): Promise<Metadata> {
   const { lang } = await params
+  const { page: pageParam } = await searchParams
   const seoData = await getSEO("blog")
 
   if (!seoData) return {}
 
-  const { canonical: canonicalUrl, languages } = buildAlternates({
+  const page = Math.max(1, parseInt(pageParam ?? "1", 10) || 1)
+  // Paginated listings self-canonicalize (?page=N) — pointing every page at
+  // page 1 marks pages 2..N as duplicates. hreflang alternates carry the same
+  // suffix so each paginated cluster stays self-consistent.
+  const pageSuffix = page > 1 ? `?page=${page}` : ""
+  const alternates = buildAlternates({
     currentLocale: lang,
     hrefFor: () => "/blog",
   })
+  const canonicalUrl = alternates.canonical + pageSuffix
+  const languages = Object.fromEntries(
+    Object.entries(alternates.languages).map(([l, url]) => [
+      l,
+      url + pageSuffix,
+    ]),
+  )
 
   return {
     title: seoData.meta[lang]?.title,

@@ -1,7 +1,7 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { useLocale } from "@/i18n/useLocale"
 import React from "react"
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiStar } from "react-icons/fi"
 import { FaWhatsapp } from "react-icons/fa"
 import { waHref } from "@/lib/contact"
 
@@ -9,6 +9,8 @@ interface SocialMediaProps {
   socialLinks: {
     linkedin: string
     github: string
+    googleBusiness?: string
+    trustpilot?: string
   }
   email: string
   phone?: string
@@ -28,6 +30,20 @@ const SocialMedia = ({ socialLinks, email, phone }: SocialMediaProps) => {
       : []),
     { icon: FiLinkedin, href: socialLinks.linkedin, label: "LinkedIn" },
     { icon: FiGithub, href: socialLinks.github, label: "GitHub" },
+    // Visible counterparts to the schema sameAs profiles: local-SEO signals
+    // shouldn't exist only in invisible JSON-LD.
+    ...(socialLinks.googleBusiness
+      ? [
+          {
+            icon: FiMapPin,
+            href: socialLinks.googleBusiness,
+            label: "Google Maps",
+          },
+        ]
+      : []),
+    ...(socialLinks.trustpilot
+      ? [{ icon: FiStar, href: socialLinks.trustpilot, label: "Trustpilot" }]
+      : []),
   ]
 
   return (

@@ -17,6 +17,7 @@ const BlogContent = ({
   initialPaginatedPosts = [],
   totalPages: serverTotalPages = 1,
   postsPerPage = 6,
+  initialSearchTerm,
 }: {
   categories: any
   lang: "en" | "es"
@@ -26,9 +27,11 @@ const BlogContent = ({
   initialPaginatedPosts?: any[]
   totalPages?: number
   postsPerPage?: number
+  /** Seeded from ?q= so the WebSite SearchAction urlTemplate actually works. */
+  initialSearchTerm?: string
 }) => {
   const { t, getLocalizedPath } = useLocale()
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm ?? "")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [clientPage, setClientPage] = useState(1)
 

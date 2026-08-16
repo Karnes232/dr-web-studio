@@ -4,12 +4,13 @@ import React from "react"
 import PricingBadge from "./PricingBadge"
 import FeatureItem from "./FeatureItem"
 import PricingCTA from "./PricingCTA"
-import { Zap, ShoppingCart, Globe } from "lucide-react"
+import { Zap, ShoppingCart, Globe, Wrench } from "lucide-react"
 
 const iconMap = {
   Zap,
   ShoppingCart,
   Globe,
+  Wrench,
 }
 
 const PricingCard = ({
@@ -28,12 +29,14 @@ const PricingCard = ({
       "bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border-gray-300 dark:border-slate-700 hover:border-teal-300",
   }
 
-  const Icon = iconMap[pricingData.iconName as keyof typeof iconMap]
+  // Unknown icons and missing badges must not crash the page — both are
+  // editor-controlled fields on new documents.
+  const Icon = iconMap[pricingData.iconName as keyof typeof iconMap] ?? Globe
   return (
     <div
       className={`relative border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
     >
-      {pricingData.badge.text && (
+      {pricingData.badge?.text && (
         <PricingBadge variant={pricingData.badge.variant}>
           {pricingData.badge.text[lang as keyof typeof pricingData.badge.text]}
         </PricingBadge>
@@ -62,6 +65,15 @@ const PricingCard = ({
             <span className="text-3xl font-bold text-gray-900 dark:text-white">
               ${pricingData.price}
             </span>
+            {pricingData.pricePeriod && (
+              <span className="ml-1 text-lg font-medium text-gray-500 dark:text-slate-400">
+                {
+                  pricingData.pricePeriod[
+                    lang as keyof typeof pricingData.pricePeriod
+                  ]
+                }
+              </span>
+            )}
           </div>
         </div>
       </div>

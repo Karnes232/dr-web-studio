@@ -13,6 +13,7 @@ const LocationInfo = ({
   emergencySupportDescription,
   language,
   phone,
+  googleBusinessUrl,
 }: {
   title: string
   location: string
@@ -23,6 +24,7 @@ const LocationInfo = ({
   emergencySupportDescription: string
   language: string
   phone?: string
+  googleBusinessUrl?: string
 }) => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-8">
@@ -51,6 +53,22 @@ const LocationInfo = ({
               {localAdvantageDescription}
             </p>
           </div>
+
+          {googleBusinessUrl && (
+            <a
+              href={googleBusinessUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+            >
+              <MapPin className="h-5 w-5 mr-2 text-orange-600 dark:text-orange-400" />
+              <span>
+                {language === "en"
+                  ? "View us on Google Maps"
+                  : "Encuéntranos en Google Maps"}
+              </span>
+            </a>
+          )}
         </div>
 
         {phone && (

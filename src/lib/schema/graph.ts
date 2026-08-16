@@ -61,6 +61,13 @@ const TYPE_EQUIVALENCE: Record<string, string> = {
   NewsArticle: "Article",
   TechArticle: "Article",
   CollectionPage: "WebPage",
+  // Page-type subclasses stored in CMS structuredData collide with the auto
+  // WebPage and are dropped — an orphan ContactPage (no @id, inline duplicate
+  // Person) and a Blog blob (20 BlogPostings) were leaking through untouched.
+  ContactPage: "WebPage",
+  AboutPage: "WebPage",
+  ProfilePage: "WebPage",
+  Blog: "WebPage",
 }
 
 const canonType = (t: string) => TYPE_EQUIVALENCE[t] ?? t
@@ -180,7 +187,7 @@ export async function getHomeGraph(lang: Locale): Promise<JsonObject> {
     [
       personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       webPageNode({
         lang,
         href: "/",
@@ -206,23 +213,24 @@ export async function getStandardGraph(args: {
   pageName: string
   href: Href
   crumbs: Crumb[]
-  includePerson?: boolean
   withOffers?: boolean
   /** Localized FAQ items; emits a FAQPage node when present. */
   faqItems?: { question: string; answer: string }[]
   /** CMS structuredData JSON string; falls back to the page's seo doc. */
   structuredData?: string
 }): Promise<JsonObject> {
-  const { lang, pageName, href, crumbs, includePerson, withOffers } = args
+  const { lang, pageName, href, crumbs, withOffers } = args
   const [{ layout, org }, meta] = await Promise.all([
     buildOrg(lang, { withOffers }),
     seoMeta(pageName, lang),
   ])
   return buildGraph(
     [
-      includePerson ? personNode(layout, lang) : null,
+      // Always on-page: Organization.founder references this @id, so every
+      // graph must define it or single-page parsers see a dangling pointer.
+      personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       webPageNode({
         lang,
         href,
@@ -271,8 +279,9 @@ export async function getServiceGraph(args: {
   const { layout, org } = await buildOrg(lang, { withOffers: true })
   return buildGraph(
     [
+      personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       serviceNode({ lang, name, serviceType, description, href, price, unit }),
       webPageNode({ lang, href, name, description, image, breadcrumb: true }),
       faqPageNode(args.faqItems ?? []),
@@ -302,8 +311,9 @@ export async function getLandingGraph(args: {
   ])
   return buildGraph(
     [
+      personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       serviceNode({
         lang,
         name: serviceName,
@@ -344,8 +354,9 @@ export async function getArticleGraph(args: {
   const { layout, org } = await buildOrg(lang)
   return buildGraph(
     [
+      personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       // Auto WebPage so stale CMS WebPage copies (wrong-locale slugs) are
       // dropped by the AUTO_WINS rule instead of passing through.
       webPageNode({
@@ -356,9 +367,6 @@ export async function getArticleGraph(args: {
         image,
         breadcrumb: true,
       }),
-      // Author is referenced by @id from the article; define it on-page so
-      // validators don't have to resolve it from another URL.
-      personNode(layout, lang),
       articleNode({
         lang,
         href,
@@ -389,8 +397,9 @@ export async function getFaqsGraph(args: {
   ])
   return buildGraph(
     [
+      personNode(layout, lang),
       org,
-      webSiteNode(layout),
+      webSiteNode(layout, lang),
       webPageNode({
         lang,
         href,

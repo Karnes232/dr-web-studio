@@ -48,7 +48,6 @@ export default async function AboutUs({ params }: PageProps) {
       lang,
       pageName: "about",
       href: "/about-me",
-      includePerson: true,
       crumbs: [
         { name: lang === "es" ? "Inicio" : "Home", href: "/" },
         { name: lang === "es" ? "Sobre mí" : "About", href: "/about-me" },

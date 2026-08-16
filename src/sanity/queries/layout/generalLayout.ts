@@ -42,7 +42,9 @@ const companyInfoQuery = `*[_type == "generalLayout"][0] {
   },
   socialLinks {
     linkedin,
-    github
+    github,
+    googleBusiness,
+    trustpilot
   }
 }`
 

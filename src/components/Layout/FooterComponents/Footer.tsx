@@ -6,6 +6,7 @@ import CompanyInfo from "./CompanyInfo"
 import QuickLinks from "./QuickLinks"
 import ServicesLinks from "./ServicesLinks"
 import ResourcesLinks from "./ResourcesLinks"
+import CitiesLinks from "./CitiesLinks"
 import SocialMedia from "./SocialMedia"
 import BottomBar from "./BottomBar"
 import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
@@ -49,6 +50,7 @@ const Footer = ({ logo, companyInfo, serviceLinks }: FooterProps) => {
           <QuickLinks />
           <ServicesLinks serviceLinks={serviceLinks} />
           <ResourcesLinks />
+          <CitiesLinks />
         </div>
 
         {/* Social Media */}
