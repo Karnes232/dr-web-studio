@@ -1,11 +1,10 @@
-"use client"
-
 import React from "react"
 import { MapPin, Mail, Phone } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
 import FooterLogo from "./FooterLogo"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { telHref, waHref } from "@/lib/contact"
+import type { Locale } from "@/lib/slugs"
 
 interface CompanyInfoProps {
   logo: {
@@ -26,19 +25,16 @@ interface CompanyInfoProps {
       es: string
     }
   }
+  lang: Locale
 }
 
-const CompanyInfo = ({ logo, companyInfo }: CompanyInfoProps) => {
-  const { currentLocale, t } = useLocale()
+const CompanyInfo = async ({ logo, companyInfo, lang }: CompanyInfoProps) => {
+  const t = await getTranslations({ locale: lang })
   return (
     <div className="lg:col-span-2">
       <FooterLogo logo={logo} />
       <p className="text-gray-300 mb-6 max-w-md">
-        {
-          companyInfo.footerText[
-            currentLocale as keyof typeof companyInfo.footerText
-          ]
-        }
+        {companyInfo.footerText[lang]}
       </p>
 
       {/* Contact Info */}

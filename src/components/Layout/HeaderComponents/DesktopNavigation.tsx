@@ -1,19 +1,20 @@
 import React from "react"
 import ServicesDropdown from "./ServicesDropdown"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { LocalizedServiceLink } from "@/components/Layout/chrome"
+import type { Locale } from "@/lib/slugs"
 
-const DesktopNavigation = ({
-  servicesOpen,
-  setServicesOpen,
-  serviceLinks,
+// Server component: the nav links are static markup; only the services
+// dropdown (open state + outside-click) is a client island.
+const DesktopNavigation = async ({
+  services,
+  lang,
 }: {
-  servicesOpen: boolean
-  setServicesOpen: any
-  serviceLinks: ServiceItemsLinks[]
+  services: LocalizedServiceLink[]
+  lang: Locale
 }) => {
-  const { t } = useLocale()
+  const t = await getTranslations({ locale: lang })
 
   const navItems = [
     { href: "/", label: t("navigation.home") },
@@ -35,11 +36,7 @@ const DesktopNavigation = ({
         </Link>
       ))}
 
-      <ServicesDropdown
-        servicesOpen={servicesOpen}
-        setServicesOpen={setServicesOpen}
-        serviceLinks={serviceLinks}
-      />
+      <ServicesDropdown services={services} />
 
       {navItems.slice(2).map((item, index) => (
         <Link

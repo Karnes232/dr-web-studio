@@ -1,9 +1,10 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import React from "react"
 import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiStar } from "react-icons/fi"
 import { FaWhatsapp } from "react-icons/fa"
 import { waHref } from "@/lib/contact"
+import type { Locale } from "@/lib/slugs"
 
 interface SocialMediaProps {
   socialLinks: {
@@ -14,9 +15,17 @@ interface SocialMediaProps {
   }
   email: string
   phone?: string
+  lang: Locale
 }
-const SocialMedia = ({ socialLinks, email, phone }: SocialMediaProps) => {
-  const { t } = useLocale()
+
+// Server component; LanguageSwitcher remains the only client island.
+const SocialMedia = async ({
+  socialLinks,
+  email,
+  phone,
+  lang,
+}: SocialMediaProps) => {
+  const t = await getTranslations({ locale: lang })
   const socialLinksArray = [
     { icon: FiMail, href: `mailto:${email}`, label: "Email" },
     ...(phone

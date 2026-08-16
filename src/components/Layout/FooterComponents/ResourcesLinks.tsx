@@ -1,11 +1,12 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import React from "react"
 import { ExternalLink } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 
-const ResourcesLinks = () => {
-  const { t } = useLocale()
+import type { Locale } from "@/lib/slugs"
+
+const ResourcesLinks = async ({ lang }: { lang: Locale }) => {
+  const t = await getTranslations({ locale: lang })
   const resources = [
     {
       href: "/project-planner",

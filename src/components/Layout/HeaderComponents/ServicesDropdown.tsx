@@ -1,19 +1,21 @@
+"use client"
+
 import { ChevronDown } from "lucide-react"
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { useLocale } from "@/i18n/useLocale"
 import { Link } from "@/i18n/navigation"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { LocalizedServiceLink } from "@/components/Layout/chrome"
 
+// Client island: owns its own open/close state (previously drilled down from
+// Navbar) and the outside-click handler. Service titles/slugs arrive already
+// locale-resolved from the server.
 const ServicesDropdown = ({
-  servicesOpen,
-  setServicesOpen,
-  serviceLinks,
+  services,
 }: {
-  servicesOpen: boolean
-  setServicesOpen: any
-  serviceLinks: ServiceItemsLinks[]
+  services: LocalizedServiceLink[]
 }) => {
-  const { currentLocale, t, getServiceHref } = useLocale()
+  const { t } = useLocale()
+  const [servicesOpen, setServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const ServicesDropdown = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside, true)
     }
-  }, [servicesOpen, setServicesOpen])
+  }, [servicesOpen])
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -53,14 +55,17 @@ const ServicesDropdown = ({
           >
             {t("services.all_services")}
           </Link>
-          {serviceLinks.map((service, index) => (
+          {services.map(service => (
             <Link
               onClick={() => setServicesOpen(false)}
               key={service._id}
-              href={getServiceHref(service)}
+              href={{
+                pathname: "/our-services/[slug]",
+                params: { slug: service.slug },
+              }}
               className="block px-4 py-2 text-slate-700 dark:text-slate-200 xl:text-lg hover:bg-orange-50 dark:hover:bg-slate-800 hover:text-orange-600 dark:hover:text-orange-400 transition-colors truncate"
             >
-              {service.title[currentLocale as keyof typeof service.title]}
+              {service.title}
             </Link>
           ))}
         </div>

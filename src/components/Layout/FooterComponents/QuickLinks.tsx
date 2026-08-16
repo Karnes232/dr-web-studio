@@ -1,10 +1,10 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import type { Locale } from "@/lib/slugs"
 
-const QuickLinks = () => {
-  const { t } = useLocale()
+const QuickLinks = async ({ lang }: { lang: Locale }) => {
+  const t = await getTranslations({ locale: lang })
   const links = [
     { href: "/", label: t("navigation.home") },
     { href: "/about-me", label: t("navigation.about") },

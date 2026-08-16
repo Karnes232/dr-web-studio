@@ -1,10 +1,10 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import type { Locale } from "@/lib/slugs"
 
-const BottomBar = () => {
-  const { currentLocale, t } = useLocale()
+const BottomBar = async ({ lang }: { lang: Locale }) => {
+  const t = await getTranslations({ locale: lang })
   return (
     <div className="border-t border-slate-700 pt-6">
       <div className="flex flex-col md:flex-row justify-between items-center">

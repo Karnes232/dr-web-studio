@@ -1,11 +1,11 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import { CITY_PAGE_ROUTES, CITY_NAMES } from "@/lib/indexableRoutes"
 import React from "react"
+import type { Locale } from "@/lib/slugs"
 
-const CitiesLinks = () => {
-  const { t } = useLocale()
+const CitiesLinks = async ({ lang }: { lang: Locale }) => {
+  const t = await getTranslations({ locale: lang })
 
   return (
     <div>

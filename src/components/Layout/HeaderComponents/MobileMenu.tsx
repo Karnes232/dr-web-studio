@@ -1,7 +1,9 @@
+"use client"
+
 import React from "react"
 import { useLocale } from "@/i18n/useLocale"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
-import { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { LocalizedServiceLink } from "@/components/Layout/chrome"
 import { Link } from "@/i18n/navigation"
 import { FaWhatsapp } from "react-icons/fa"
 import { waHref } from "@/lib/contact"
@@ -9,15 +11,15 @@ import { waHref } from "@/lib/contact"
 const MobileMenu = ({
   isOpen,
   setIsOpen,
-  serviceLinks,
+  services,
   phone,
 }: {
   isOpen: boolean
-  setIsOpen: any
-  serviceLinks: ServiceItemsLinks[]
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  services: LocalizedServiceLink[]
   phone?: string
 }) => {
-  const { currentLocale, t, getServiceHref } = useLocale()
+  const { t } = useLocale()
 
   const navItems = [
     { href: "/", label: t("navigation.home") },
@@ -65,15 +67,18 @@ const MobileMenu = ({
             {t("services.services")}
           </Link>
           <div className="pl-4 mt-2 space-y-1">
-            {serviceLinks.map((service, index) => (
+            {services.map(service => (
               <Link
                 onClick={() => setIsOpen(!isOpen)}
-                key={index}
-                href={getServiceHref(service)}
+                key={service._id}
+                href={{
+                  pathname: "/our-services/[slug]",
+                  params: { slug: service.slug },
+                }}
                 prefetch={prefetch}
                 className="block py-1 text-sm text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
               >
-                {service.title[currentLocale as keyof typeof service.title]}
+                {service.title}
               </Link>
             ))}
           </div>

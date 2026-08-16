@@ -75,7 +75,7 @@ export default async function NotFound() {
     <html lang="en">
       <body className={`${crimsonPro.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider locale={lang} messages={messages}>
-          <Navbar logo={logo} serviceLinks={serviceLinks} />
+          <Navbar logo={logo} serviceLinks={serviceLinks} lang="en" />
           <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50 dark:from-slate-950 dark:to-slate-900 flex items-center justify-center px-4">
             <div className="max-w-xl mx-auto text-center">
               <p className="text-6xl font-bold text-orange-600 dark:text-orange-400 mb-4">
@@ -140,6 +140,7 @@ export default async function NotFound() {
             logo={logo}
             companyInfo={companyInfo}
             serviceLinks={serviceLinks}
+            lang="en"
           />
         </NextIntlClientProvider>
       </body>

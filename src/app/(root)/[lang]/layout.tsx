@@ -57,12 +57,14 @@ export default async function LangLayout({
               logo={logo}
               serviceLinks={serviceLinks}
               phone={companyInfo?.telephone}
+              lang={lang}
             />
             {children}
             <Footer
               logo={logo}
               companyInfo={companyInfo}
               serviceLinks={serviceLinks}
+              lang={lang}
             />
           </NextIntlClientProvider>
         </ThemeProvider>

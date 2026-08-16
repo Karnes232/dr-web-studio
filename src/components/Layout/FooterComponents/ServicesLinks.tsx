@@ -1,28 +1,33 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
-import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import { getTranslations } from "next-intl/server"
+import type { LocalizedServiceLink } from "@/components/Layout/chrome"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import type { Locale } from "@/lib/slugs"
 
-const ServicesLinks = ({
-  serviceLinks,
+const ServicesLinks = async ({
+  services,
+  lang,
 }: {
-  serviceLinks: ServiceItemsLinks[]
+  services: LocalizedServiceLink[]
+  lang: Locale
 }) => {
-  const { currentLocale, t, getServiceHref } = useLocale()
+  const t = await getTranslations({ locale: lang })
   return (
     <div>
       <h3 className="text-lg font-semibold text-white mb-4">
         {t("services.services")}
       </h3>
       <ul className="space-y-2">
-        {serviceLinks.map((service, index) => (
+        {services.map(service => (
           <li key={service._id}>
             <Link
-              href={getServiceHref(service)}
+              href={{
+                pathname: "/our-services/[slug]",
+                params: { slug: service.slug },
+              }}
               className="text-gray-300 hover:text-orange-400 transition-colors duration-200 line-clamp-2"
             >
-              {service.title[currentLocale as keyof typeof service.title]}
+              {service.title}
             </Link>
           </li>
         ))}

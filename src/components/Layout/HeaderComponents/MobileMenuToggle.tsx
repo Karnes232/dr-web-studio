@@ -5,7 +5,7 @@ const MobileMenuToggle = ({
   toggleMobileMenu,
 }: {
   isOpen: boolean
-  toggleMobileMenu: any
+  toggleMobileMenu: () => void
 }) => {
   return (
     <div className="lg:hidden">

@@ -1,71 +1,45 @@
-"use client"
-
-import React, { useState } from "react"
+import React from "react"
 import Logo from "./Logo"
-import MobileMenuToggle from "./MobileMenuToggle"
-import MobileMenu from "./MobileMenu"
+import NavbarShell from "./NavbarShell"
 import CTAButtons from "./CTAButtons"
 import DesktopNavigation from "./DesktopNavigation"
-import LanguageSwitcher from "@/components/LanguageSwitcher" // Adjust path as needed
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import ThemeToggle from "@/components/theme/ThemeToggle"
+import { localizeServiceLinks } from "@/components/Layout/chrome"
 import type { ServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
+import type { Locale } from "@/lib/slugs"
 
+// Server component: all static chrome (logo, nav links, CTAs) renders on the
+// server; only the open/close state lives in the NavbarShell client island.
 const Navbar = ({
   logo,
   serviceLinks,
   phone,
+  lang,
 }: {
   logo: any
   serviceLinks: ServiceItemsLinks[]
   phone?: string
+  lang: Locale
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-
-  const toggleMobileMenu = () => {
-    setIsOpen(!isOpen)
-  }
+  const services = localizeServiceLinks(serviceLinks, lang)
 
   return (
-    <nav
-      className={`bg-white dark:bg-slate-900 shadow-lg ${isOpen ? "sticky" : "md:sticky"} top-0 z-50`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-28 md:h-36">
-          <Logo logo={logo} />
-
-          <DesktopNavigation
-            servicesOpen={servicesOpen}
-            setServicesOpen={setServicesOpen}
-            serviceLinks={serviceLinks}
-          />
-
-          {/* Desktop: Theme Toggle + Language Switcher + CTA Buttons */}
-          <div className="hidden lg:flex items-center lg:space-x-2 xl:space-x-4">
-            <ThemeToggle color="slate-700" />
-            <LanguageSwitcher color="slate-700" />
-            <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
-            <CTAButtons phone={phone} />
-          </div>
-
-          {/* Mobile: Theme Toggle + Menu Toggle */}
-          <div className="lg:hidden flex items-center space-x-3">
-            <ThemeToggle color="slate-700" />
-            <MobileMenuToggle
-              isOpen={isOpen}
-              toggleMobileMenu={toggleMobileMenu}
-            />
-          </div>
-        </div>
-
-        <MobileMenu
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          serviceLinks={serviceLinks}
-          phone={phone}
-        />
-      </div>
-    </nav>
+    <NavbarShell
+      logo={<Logo logo={logo} />}
+      desktopNav={<DesktopNavigation services={services} lang={lang} />}
+      desktopControls={
+        <>
+          <ThemeToggle color="slate-700" />
+          <LanguageSwitcher color="slate-700" />
+          <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
+          <CTAButtons phone={phone} lang={lang} />
+        </>
+      }
+      mobileThemeToggle={<ThemeToggle color="slate-700" />}
+      services={services}
+      phone={phone}
+    />
   )
 }
 

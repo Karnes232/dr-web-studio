@@ -1,10 +1,10 @@
-"use client"
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import type { Locale } from "@/lib/slugs"
 
-const CTASection = () => {
-  const { t } = useLocale()
+const CTASection = async ({ lang }: { lang: Locale }) => {
+  const t = await getTranslations({ locale: lang })
   return (
     <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-lg p-6 mb-8">
       <div className="text-center">

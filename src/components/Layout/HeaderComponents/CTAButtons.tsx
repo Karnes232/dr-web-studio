@@ -1,17 +1,21 @@
-import { useLocale } from "@/i18n/useLocale"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import React from "react"
 import { FaWhatsapp } from "react-icons/fa"
 import { waHref } from "@/lib/contact"
+import type { Locale } from "@/lib/slugs"
 
-const CTAButtons = ({
+// Server component: pure links, no handlers.
+const CTAButtons = async ({
   className = "",
   phone,
+  lang,
 }: {
   className?: string
   phone?: string
+  lang: Locale
 }) => {
-  const { t } = useLocale()
+  const t = await getTranslations({ locale: lang })
   return (
     <div className={`flex items-center space-x-4 lg:ml-2 xl:ml-0 ${className}`}>
       <Link
