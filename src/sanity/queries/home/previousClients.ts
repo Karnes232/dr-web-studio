@@ -6,7 +6,7 @@ interface Client {
   link: string
   logo: {
     asset: {
-      _ref: string
+      url: string
     }
     alt: string
   }
@@ -29,7 +29,9 @@ export const previousClientsQuery = `*[_type == "previousClients"][0] {
     companyName,
     link,
     logo {
-      asset->,
+      // Only the URL: expanding the whole asset doc dragged dimensions/lqip/
+      // palette metadata for every logo into the RSC flight payload.
+      asset-> { url },
       alt
     }
   }

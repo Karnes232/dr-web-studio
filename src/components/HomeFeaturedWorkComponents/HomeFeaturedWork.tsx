@@ -4,7 +4,7 @@ import Image from "next/image"
 import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 import { useLocale } from "@/i18n/useLocale"
-import type { Project } from "@/sanity/queries/portfolio/project"
+import type { LocalizedProject } from "@/sanity/queries/portfolio/project"
 
 const COPY = {
   en: {
@@ -42,7 +42,7 @@ const HomeFeaturedWork = ({
   subtitle,
   lang,
 }: {
-  projects: Project[]
+  projects: LocalizedProject[]
   title?: string
   subtitle?: string
   lang: string
@@ -90,7 +90,7 @@ const HomeFeaturedWork = ({
             <div className="relative aspect-[16/10] w-full overflow-hidden lg:aspect-auto lg:min-h-[22rem]">
               <Image
                 src={lead.image.asset.url}
-                alt={lead.title[locale]}
+                alt={lead.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 608px"
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
@@ -98,10 +98,10 @@ const HomeFeaturedWork = ({
             </div>
             <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 lg:p-10">
               <p className="text-xs font-semibold uppercase tracking-wide text-orange-700 dark:text-orange-400">
-                {lead.category[locale]}
+                {lead.category}
               </p>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-                {lead.title[locale]}
+                {lead.title}
               </h3>
               <p className="text-slate-600 dark:text-slate-400">
                 {lead.client}
@@ -110,7 +110,7 @@ const HomeFeaturedWork = ({
                 <span className="font-semibold text-slate-800 dark:text-slate-100">
                   {copy.challenge}:{" "}
                 </span>
-                {lead.problem[locale]}
+                {lead.problem}
               </p>
               {lead.outcomes?.length > 0 && (
                 <div className="flex flex-wrap gap-6 pt-1">
@@ -120,7 +120,7 @@ const HomeFeaturedWork = ({
                         {o.value}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-400">
-                        {o.metric[locale]}
+                        {o.metric}
                       </div>
                     </div>
                   ))}
@@ -149,7 +149,7 @@ const HomeFeaturedWork = ({
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <Image
                     src={project.image.asset.url}
-                    alt={project.title[locale]}
+                    alt={project.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 592px"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
@@ -157,10 +157,10 @@ const HomeFeaturedWork = ({
                 </div>
                 <div className="flex flex-1 flex-col gap-3 p-6">
                   <p className="text-xs font-semibold uppercase tracking-wide text-orange-700 dark:text-orange-400">
-                    {project.category[locale]}
+                    {project.category}
                   </p>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                    {project.title[locale]}
+                    {project.title}
                   </h3>
                   <div className="mt-auto pt-1">
                     <TechTags items={project.technologies} />

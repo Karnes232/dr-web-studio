@@ -6,7 +6,7 @@ import VisualElement from "./VisualElementLazy"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import { urlFor } from "@/sanity/lib/image"
-import type { Project } from "@/sanity/queries/portfolio/project"
+import type { LocalizedProject } from "@/sanity/queries/portfolio/project"
 
 const HeroSection = async ({
   heading,
@@ -19,7 +19,7 @@ const HeroSection = async ({
   heading: any
   subheading: string
   backgroundImage: any
-  projects: Project[]
+  projects: LocalizedProject[]
   lang: string
   happyClients?: number
 }) => {
@@ -147,7 +147,7 @@ const HeroSection = async ({
           </div>
 
           {/* Visual Element — real project screenshots */}
-          <VisualElement projects={projects} currentLocale={lang} />
+          <VisualElement projects={projects} />
         </div>
       </div>
     </section>

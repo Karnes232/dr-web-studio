@@ -1,7 +1,7 @@
 "use client"
 import dynamic from "next/dynamic"
-import { useEffect, useState } from "react"
-import type { Project } from "@/sanity/queries/portfolio/project"
+import { useEffect, useRef, useState } from "react"
+import type { LocalizedProject } from "@/sanity/queries/portfolio/project"
 
 // Placeholder mirrors VisualElement's hydrated card (same wrapper + 16/10 image
 // box + caption space) so swapping the client carousel in doesn't shift the
@@ -26,36 +26,40 @@ const VisualElement = dynamic(() => import("./VisualElement"), {
 })
 
 interface VisualElementLazyProps {
-  projects: Project[]
-  currentLocale: string
+  projects: LocalizedProject[]
 }
 
-// Swiper (~40 KiB) isn't needed to paint the hero. Loading it on mount put its
-// parse/execute right in the LCP paint window and fed the long main-thread task
-// PageSpeed flagged. Gate the dynamic import behind idle time (or the first user
-// interaction, whichever comes first) so the hero paints before Swiper runs.
+// Swiper (~40 KiB) isn't needed to paint the hero. The previous idle-timeout
+// gate (requestIdleCallback timeout 2500ms) fired at its deadline on a busy
+// page — right inside the LCP window — so Swiper's parse/mount landed exactly
+// when the hero image wanted to paint. Gate on viewport proximity instead: on
+// mobile the carousel sits below the fold and loads only when scrolled near;
+// on desktop it's in view at mount, so the observer fires on the next frame,
+// after paint. First interaction still force-loads as a fallback.
 export default function VisualElementLazy(props: VisualElementLazyProps) {
   const [ready, setReady] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (ready) return
 
     const load = () => setReady(true)
-    const w = window as Window & {
-      requestIdleCallback?: (
-        cb: () => void,
-        opts?: { timeout: number },
-      ) => number
-      cancelIdleCallback?: (id: number) => void
-    }
 
-    let idleId: number
-    let usedIdle = false
-    if (typeof w.requestIdleCallback === "function") {
-      usedIdle = true
-      idleId = w.requestIdleCallback(load, { timeout: 2500 })
+    let observer: IntersectionObserver | undefined
+    if (typeof IntersectionObserver === "function" && containerRef.current) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) load()
+        },
+        // No preload margin: on a phone the card sits just below the fold, and
+        // any positive margin makes the observer fire at load time — putting
+        // Swiper's parse right back in the LCP window. In view at mount
+        // (desktop) it still loads immediately.
+        { rootMargin: "0px" },
+      )
+      observer.observe(containerRef.current)
     } else {
-      idleId = window.setTimeout(load, 1500)
+      load()
     }
 
     const opts = { once: true, passive: true } as const
@@ -64,14 +68,19 @@ export default function VisualElementLazy(props: VisualElementLazyProps) {
     window.addEventListener("keydown", load, opts)
 
     return () => {
-      if (usedIdle) w.cancelIdleCallback?.(idleId)
-      else window.clearTimeout(idleId)
+      observer?.disconnect()
       window.removeEventListener("pointerdown", load)
       window.removeEventListener("touchstart", load)
       window.removeEventListener("keydown", load)
     }
   }, [ready])
 
-  if (!ready) return <Placeholder />
+  if (!ready) {
+    return (
+      <div ref={containerRef}>
+        <Placeholder />
+      </div>
+    )
+  }
   return <VisualElement {...props} />
 }

@@ -45,6 +45,43 @@ export interface Project {
   year: string
 }
 
+// Locale-resolved shape for client components: the flight payload only carries
+// the active language's strings instead of the full { en, es } pairs.
+export interface LocalizedOutcome {
+  metric: string
+  value: string
+}
+
+export interface LocalizedProject {
+  _id: string
+  title: string
+  client: string
+  category: string
+  image: Project["image"]
+  technologies: string[]
+  problem: string
+  outcomes: LocalizedOutcome[]
+}
+
+export function localizeProject(
+  project: Project,
+  lang: "en" | "es",
+): LocalizedProject {
+  return {
+    _id: project._id,
+    title: project.title[lang],
+    client: project.client,
+    category: project.category[lang],
+    image: project.image,
+    technologies: project.technologies,
+    problem: project.problem[lang],
+    outcomes: (project.outcomes ?? []).map(o => ({
+      metric: o.metric[lang],
+      value: o.value,
+    })),
+  }
+}
+
 // Shared projection so hero / featured-work / portfolio queries return the same shape.
 export const projectProjection = `{
   _id,

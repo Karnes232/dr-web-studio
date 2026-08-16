@@ -12,6 +12,7 @@ import { getHomePageService } from "@/sanity/queries/home/homePageService"
 import { getServices } from "@/sanity/queries/services/services"
 import {
   getProjects,
+  localizeProject,
   projectProjection,
 } from "@/sanity/queries/portfolio/project"
 import { getHomeFeaturedWork } from "@/sanity/queries/home/homeFeaturedWork"
@@ -136,12 +137,13 @@ export default async function Home({ params }: PageProps) {
   ].slice(0, 3)
 
   // Editor-selected projects (Sanity) win; otherwise fall back to latest.
-  const heroProjects = pageData?.heroProjects?.length
-    ? pageData.heroProjects
-    : latestProjects
-  const recentWorkProjects = featuredWork?.projects?.length
-    ? featuredWork.projects
-    : latestProjects
+  // Localized here so client components only receive the active language.
+  const heroProjects = (
+    pageData?.heroProjects?.length ? pageData.heroProjects : latestProjects
+  ).map((p: (typeof latestProjects)[number]) => localizeProject(p, lang))
+  const recentWorkProjects = (
+    featuredWork?.projects?.length ? featuredWork.projects : latestProjects
+  ).map((p: (typeof latestProjects)[number]) => localizeProject(p, lang))
 
   return (
     <>
@@ -179,8 +181,14 @@ export default async function Home({ params }: PageProps) {
           <TrustSignals
             title={trustSignals.title[lang]}
             subtitle={trustSignals.subtitle[lang]}
-            previousClients={previousClients}
-            testimonials={testimonials}
+            clientsTitle={previousClients.title[lang]}
+            clients={previousClients.clients}
+            testimonials={testimonials.map(tm => ({
+              quote: tm.quote[lang],
+              author: tm.author,
+              company: tm.company,
+              rating: tm.rating,
+            }))}
             stats={trustSignals.stats}
           />
         </Suspense>

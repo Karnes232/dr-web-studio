@@ -8,17 +8,10 @@ import "swiper/css/pagination"
 import { ArrowUpRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 import { useLocale } from "@/i18n/useLocale"
-import type { Project } from "@/sanity/queries/portfolio/project"
+import type { LocalizedProject } from "@/sanity/queries/portfolio/project"
 
-const VisualElement = ({
-  projects,
-  currentLocale,
-}: {
-  projects: Project[]
-  currentLocale: string
-}) => {
+const VisualElement = ({ projects }: { projects: LocalizedProject[] }) => {
   const { t } = useLocale()
-  const locale = currentLocale as "en" | "es"
 
   if (!projects?.length) return null
 
@@ -55,7 +48,7 @@ const VisualElement = ({
               >
                 <Image
                   src={`${project.image.asset.url}?w=1200&q=70&auto=format&fit=max`}
-                  alt={project.title[locale]}
+                  alt={project.title}
                   fill
                   // First slide is above the fold on desktop — load it eagerly
                   // so it doesn't lose the LCP race; defer the rest.
@@ -72,12 +65,12 @@ const VisualElement = ({
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-xs font-medium uppercase tracking-wide text-orange-300">
-                      {project.category[locale]}
+                      {project.category}
                     </p>
                     {/* Not a heading: this sits right after the page h1, and a
                         carousel card title isn't part of the document outline. */}
                     <p className="mt-1 truncate text-lg font-semibold text-white">
-                      {project.title[locale]}
+                      {project.title}
                     </p>
                   </div>
                   <span className="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-white/90 transition-colors group-hover:text-orange-300">

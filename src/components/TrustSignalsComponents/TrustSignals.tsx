@@ -5,20 +5,31 @@ import { useLocale } from "@/i18n/useLocale"
 import ClientLogosMarquee from "./ClientLogosMarquee"
 import type { TrustStats } from "@/sanity/queries/home/trustSignals"
 
+// Locale-resolved on the server (page.tsx) so the flight payload doesn't carry
+// both languages' strings.
+export interface LocalizedTestimonial {
+  quote: string
+  author: string
+  company: string
+  rating: number
+}
+
 const TrustSignals = ({
   title,
   subtitle,
-  previousClients,
+  clientsTitle,
+  clients,
   testimonials,
   stats,
 }: {
   title: string
   subtitle: string
-  previousClients: any
-  testimonials: any
+  clientsTitle: string
+  clients: React.ComponentProps<typeof ClientLogosMarquee>["clients"]
+  testimonials: LocalizedTestimonial[]
   stats?: TrustStats
 }) => {
-  const { t, currentLocale } = useLocale()
+  const { t } = useLocale()
   // Single source of truth: numbers come from the trustSignals Sanity doc
   // (shared with the hero indicator). Fallbacks keep SSR safe if unset.
   const targetHappyClients = stats?.happyClients ?? 20
@@ -92,14 +103,14 @@ const TrustSignals = ({
         {/* Client Logos */}
         <div className="mb-16">
           <h3 className="text-center text-lg font-semibold text-gray-500 dark:text-slate-400 mb-8">
-            {previousClients.title[currentLocale]}
+            {clientsTitle}
           </h3>
-          <ClientLogosMarquee clients={previousClients.clients} />
+          <ClientLogosMarquee clients={clients} />
         </div>
 
         {/* Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial: any, index: number) => (
+          {testimonials.map((testimonial, index) => (
             <div
               key={index}
               className="bg-gray-50 dark:bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
@@ -117,7 +128,7 @@ const TrustSignals = ({
               </div>
 
               <p className="text-gray-700 dark:text-slate-200 mb-6 leading-relaxed italic line-clamp-3">
-                &ldquo;{testimonial.quote[currentLocale]}&rdquo;
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               <div className="border-t dark:border-slate-700 pt-4">

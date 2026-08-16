@@ -234,7 +234,7 @@ const nextConfig: NextConfig = {
     // Inline the page's CSS into the HTML instead of render-blocking
     // stylesheet requests — on slow 4G those two round trips delayed every
     // first paint (~450ms est. in Lighthouse).
-    inlineCss: true,
+    inlineCss: false,
   },
   images: {
     // All next/image sources are Sanity assets; serve them straight from

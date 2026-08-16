@@ -46,10 +46,20 @@ export default function DeferredAnalytics() {
     events.forEach(e =>
       window.addEventListener(e, load, { once: true, passive: true }),
     )
-    const timeoutId = window.setTimeout(load, FALLBACK_DELAY_MS)
+
+    // Fallback for visitors who never interact: wait for the load event (so
+    // gtag's ~160 KB parse can't land inside the LCP/TTI window on slow
+    // devices — a fixed 5 s timer could), then a further idle delay.
+    let timeoutId: number | undefined
+    const scheduleFallback = () => {
+      timeoutId = window.setTimeout(load, FALLBACK_DELAY_MS)
+    }
+    if (document.readyState === "complete") scheduleFallback()
+    else window.addEventListener("load", scheduleFallback, { once: true })
 
     return () => {
       events.forEach(e => window.removeEventListener(e, load))
+      window.removeEventListener("load", scheduleFallback)
       clearTimeout(timeoutId)
     }
   }, [])
