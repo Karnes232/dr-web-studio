@@ -23,7 +23,7 @@ james-portfolio/
 │   │   ├── (root)/                   # Route group for all public pages
 │   │   │   ├── layout.tsx            # Shared layout: Navbar + Footer (fetches logo, company info)
 │   │   │   └── [lang]/               # Locale-prefixed routes (en | es)
-│   │   │       ├── layout.tsx        # Injects I18nProvider + Navbar + Footer data
+│   │   │       ├── layout.tsx        # Injects NextIntlClientProvider + ThemeProvider + Navbar/Footer data
 │   │   │       ├── page.tsx          # Home page
 │   │   │       ├── about-me/
 │   │   │       ├── blog/
@@ -116,12 +116,12 @@ james-portfolio/
 │   │   └── structure.ts              # Custom Studio sidebar structure
 │   │
 │   ├── i18n/
-│   │   ├── settings.ts               # languages = ["en", "es"], fallbackLng = "en"
-│   │   ├── index.ts                  # getTranslation(lang) for Server Components
-│   │   ├── client.ts                 # i18next client-side init
-│   │   ├── I18nContext.tsx           # <I18nProvider> for client tree
-│   │   ├── useTranslations.ts        # Hook for Client Components
-│   │   ├── useLocale.ts              # Hook to read current locale
+│   │   ├── routing.ts                # defineRouting: locales, defaultLocale "es", pathnames map
+│   │   ├── request.ts                # getRequestConfig — locale resolution + message loading
+│   │   ├── navigation.ts             # createNavigation → Link, redirect, usePathname, getPathname
+│   │   ├── localizedSlugs.ts         # Localised-slug helpers for Sanity [slug] routes
+│   │   ├── SetLocalizedHrefs.tsx     # Publishes per-locale URLs for the language switcher
+│   │   ├── useLocale.ts              # Wrapper: t, currentLocale, getLocalizedPath, get*Href
 │   │   └── locales/
 │   │       ├── en/translation.json
 │   │       └── es/translation.json

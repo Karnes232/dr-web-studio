@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { getAllBlogPostsSitemap } from "@/sanity/queries/blog/blog"
 import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
+import { getLandingPagesSitemap } from "@/sanity/queries/landingPages/allLandingPages"
 import {
   INDEXABLE_STATIC_ROUTES,
   type StaticPathname,
@@ -11,23 +12,45 @@ import { routing } from "@/i18n/routing"
 
 export const revalidate = 3600
 
-// ── lastmod for static (non-CMS) routes ─────────────────────────────────────
-// These are fixed dates, never `new Date()`: a fresh timestamp on every hourly
-// revalidate would train crawlers to ignore lastmod entirely. Give a route its
-// own date the day its copy materially changes; anything not listed falls back
-// to DEFAULT_STATIC_LASTMOD. (Sanity-backed routes use the doc `_updatedAt`.)
+// ── lastmod for static (non-collection) routes ──────────────────────────────
+// Resolution order, most trustworthy first:
+//
+//   1. The landing page's own Sanity `_updatedAt` (23 of the static routes are
+//      `landingPage` docs, so their copy changes with no deploy at all — a
+//      hardcoded date here goes stale the moment someone edits the CMS).
+//   2. An explicit STATIC_LASTMOD entry, for routes with no single backing doc.
+//   3. DEFAULT_STATIC_LASTMOD.
+//
+// Dates in STATIC_LASTMOD are fixed, never `new Date()`: a fresh timestamp on
+// every hourly revalidate would train crawlers to ignore lastmod entirely. Give
+// a route its own date the day its copy materially changes.
+//
+// The remaining entries are *composite* pages — /pricing alone renders
+// pricingHeader + pricingData + faqsHeader + faq + a CTA. Deriving a real date
+// would need a route→doc-type map that silently rots whenever a page gains a
+// section, so these stay manual on purpose.
 const DEFAULT_STATIC_LASTMOD = "2026-06-26"
 
 const STATIC_LASTMOD: Partial<Record<StaticPathname, string>> = {
+  // Composite CMS pages — both materially changed in e993d14 (2026-08-16):
+  // /contact gained a visible NAP block, /pricing a fourth plan card.
+  "/contact": "2026-08-16",
+  "/pricing": "2026-08-16",
+  // Landing pages: kept only as a fallback if the Sanity doc is missing.
+  // Normally superseded by `_updatedAt` via landingLastmod below.
   "/paginas-web-para-dentistas": "2026-07-08",
   "/paginas-web-para-abogados": "2026-07-08",
   "/paginas-web-para-alquileres-vacacionales": "2026-07-08",
   "/paginas-web-para-bodas-y-eventos": "2026-07-08",
 }
 
-function staticLastmod(route: StaticPathname): Date {
-  return new Date(
-    `${STATIC_LASTMOD[route] ?? DEFAULT_STATIC_LASTMOD}T00:00:00Z`,
+function staticLastmod(
+  route: StaticPathname,
+  landingLastmod: Map<string, Date>,
+): Date {
+  return (
+    landingLastmod.get(route) ??
+    new Date(`${STATIC_LASTMOD[route] ?? DEFAULT_STATIC_LASTMOD}T00:00:00Z`)
   )
 }
 
@@ -76,16 +99,25 @@ function collectionEntries(
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [serviceItems, blogPosts] = await Promise.all([
+  const [serviceItems, blogPosts, landingPages] = await Promise.all([
     getServiceItemsSitemap(),
     getAllBlogPostsSitemap(),
+    getLandingPagesSitemap(),
   ])
+
+  // Keyed by pathname ("/diseno-de-paginas-web-punta-cana") to match the
+  // StaticPathname values in INDEXABLE_STATIC_ROUTES.
+  const landingLastmod = new Map<string, Date>(
+    (landingPages ?? [])
+      .filter(doc => doc.slug)
+      .map(doc => [`/${doc.slug}`, new Date(doc._updatedAt)]),
+  )
 
   return [
     ...INDEXABLE_STATIC_ROUTES.flatMap(route =>
       localizedEntries(
         locale => localizedUrl(route, locale),
-        staticLastmod(route),
+        staticLastmod(route, landingLastmod),
       ),
     ),
     ...collectionEntries("/our-services/[slug]", serviceItems),

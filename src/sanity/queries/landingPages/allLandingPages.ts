@@ -18,3 +18,24 @@ export const getAllLandingPages = cache(
     )
   },
 )
+
+// ── sitemap ─────────────────────────────────────────────────────────────────
+// Deliberately NOT the full landingPageProjection: sitemap.ts only needs the
+// slug and the edit timestamp, and that projection pulls the entire page body.
+export const landingPagesSitemapQuery = `*[_type == "landingPage"] {
+  "slug": slug.current,
+  _updatedAt
+}`
+
+export interface LandingPageSitemap {
+  slug: string | null
+  _updatedAt: string
+}
+
+/** Slug + `_updatedAt` for every landing page, so sitemap.ts can give these
+ *  routes a real lastmod instead of a hand-maintained date. */
+export const getLandingPagesSitemap = cache(
+  async (): Promise<LandingPageSitemap[]> => {
+    return await client.fetch(landingPagesSitemapQuery)
+  },
+)

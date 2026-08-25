@@ -12,14 +12,14 @@ A full-stack freelance web development portfolio built with Next.js 15, Sanity C
 | CMS        | Sanity v3 (embedded Studio at `/studio`) |
 | Payments   | Stripe (Payment Intents + Webhooks)      |
 | Email      | Resend + React Email                     |
-| i18n       | i18next (English / Spanish)              |
+| i18n       | next-intl (Spanish default / English)    |
 | Animation  | Motion                                   |
 | Monitoring | Vercel Analytics                         |
 | Deployment | Vercel                                   |
 
 ## Features
 
-- **Multilingual** — all routes prefixed with `/en` or `/es`; middleware auto-redirects to the fallback locale (`en`)
+- **Multilingual** — all routes prefixed with `/en` or `/es`, with localised URL segments (`/en/contact` ↔ `/es/contacto`); Spanish is the default locale and middleware negotiates from there
 - **Sanity CMS** — content-managed home, services, blog, portfolio, pricing, FAQs, about, and legal pages
 - **Stripe Checkout** — custom payment flow with payment intents, webhook handling, and a post-payment success page
 - **Project Planner** — interactive form that submits a project brief and triggers an automated email
@@ -56,7 +56,7 @@ src/
 │   │   └── webhooks/stripe/
 │   └── studio/             # Embedded Sanity Studio
 ├── components/             # Feature-grouped UI components
-├── i18n/                   # i18next config, locales (en/es)
+├── i18n/                   # next-intl routing/request config, locales (en/es)
 ├── sanity/                 # Sanity client, queries, schema types
 └── lib/                    # Shared utilities
 ```
@@ -105,7 +105,7 @@ npm run dev          # Turbopack (faster)
 npm run dev2         # Standard webpack
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The app redirects to `/en` by default.
+Open [http://localhost:3000](http://localhost:3000). The app redirects to `/es` by default (Spanish is the default locale); browsers advertising English land on `/en`.
 
 The Sanity Studio is available at [http://localhost:3000/studio](http://localhost:3000/studio).
 

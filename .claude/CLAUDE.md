@@ -25,7 +25,7 @@ Full-stack Next.js 15 app with:
 | CMS             | Sanity v3 (`next-sanity`)           |
 | Payments        | Stripe (Payment Intents + Webhooks) |
 | Email           | Resend + React Email                |
-| i18n            | i18next, `react-i18next` (en + es)  |
+| i18n            | `next-intl` (es default + en)       |
 | Spam protection | BotPoison                           |
 | Icons           | `lucide-react`, `react-icons`       |
 | Carousel        | Swiper                              |
@@ -66,12 +66,14 @@ Full-stack Next.js 15 app with:
 
 ### i18n
 
-- Two locales: `en` (default/fallback), `es`.
-- All public routes are prefixed: `/{lang}/...`. Middleware in `src/middleware.ts` redirects bare paths.
-- Translations live in `src/i18n/locales/{en,es}/translation.json`.
-- In Server Components, call `getTranslation(lang)` from `@/i18n` to get the `t()` function.
-- In Client Components, use `useTranslations()` from `@/i18n/useTranslations`.
+- Two locales. **`es` is the `defaultLocale`** (the Dominican market is the primary audience); `en` is the secondary locale. Configured in `src/i18n/routing.ts` — that file is the single source of truth.
+- All public routes are prefixed: `/{lang}/...` (`localePrefix: "always"`). URL segments themselves are localised via the `pathnames` map in `routing.ts` (e.g. `/contact` → `/es/contacto`, `/pricing` → `/es/precios`).
+- Translations live in `src/i18n/locales/{en,es}/translation.json`, loaded by `src/i18n/request.ts`. Missing keys render the key itself, silently.
+- In Server Components, `await getTranslations()` from `next-intl/server`.
+- In Client Components, `useTranslations()` and `useLocale()` from `next-intl`. `src/i18n/useLocale.ts` is a project-specific wrapper adding `getLocalizedPath` / `getServiceHref` / `getBlogHref`.
 - Sanity fields store localised strings as `{ en: "...", es: "..." }` objects — access with `field[lang]`.
+- Bare `/` returns a **308** to `/es` for crawlers (no `NEXT_LOCALE` cookie, absent/wildcard `Accept-Language`) and a **307** to the negotiated locale for real browsers. This asymmetry is deliberate — see `src/middleware.ts` and `.claude/i18n.md`. Do not "fix" it.
+- See `.claude/i18n.md` for the full architecture.
 
 ### Routing
 

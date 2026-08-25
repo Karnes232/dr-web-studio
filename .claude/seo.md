@@ -127,9 +127,9 @@ export default async function MyPage({ params }: PageProps) {
 
 ## hreflang Alternates
 
-Every page's `generateMetadata()` must include `alternates.languages` with `en`, `es`, and `x-default` pointing to the English URL. This tells Google which locale variant to serve per region.
+Every page's `generateMetadata()` must include `alternates.languages` with `en`, `es`, and `x-default`. This tells Google which locale variant to serve per region.
 
-The `x-default` should always point to the English (`/en/...`) URL.
+**`x-default` points to the Spanish (`/es/...`) URL**, because `es` is the `defaultLocale` in `src/i18n/routing.ts` — the Dominican market is the primary audience. Both `buildAlternates()` (`src/lib/urls.ts`) and `src/app/sitemap.ts` derive it from `routing.defaultLocale`, so it stays correct automatically; don't hardcode a locale.
 
 ---
 
