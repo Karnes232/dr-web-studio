@@ -60,7 +60,12 @@ const SocialMedia = async ({
       <h3 className="text-lg font-semibold text-white mb-4">
         {t("footer.followUs")}
       </h3>
-      <div className="flex space-x-4">
+      {/* Wraps, and uses gap rather than space-x: `space-x-*` only sets
+          margin-inline-end, which leaves no vertical spacing once the row wraps
+          onto a second line. Six 44px icons + the 78px switcher + gaps need
+          ~438px, so this row was forcing a 454px min document width and an
+          x-scroll on every phone. */}
+      <div className="flex flex-wrap gap-4">
         {socialLinksArray.map((social, index) => {
           const Icon = social.icon
           return (
