@@ -13,11 +13,33 @@ declare global {
   }
 }
 
-/** Matches the gtag shim in DeferredAnalytics: push the arg list onto dataLayer. */
+/**
+ * Build a real `Arguments` object from an array.
+ *
+ * This is load-bearing, not a style choice. gtag.js only treats an
+ * `[object Arguments]` entry on dataLayer as a *command*; a plain `[object
+ * Array]` is read as a GTM-style data push and silently ignored. Pushing
+ * `["config", "G-…"]` as an array means GA4 never initialises and never sends a
+ * single hit — which is exactly why this property reported "No data received
+ * from your website yet" despite the tag being installed for months.
+ *
+ * Google's own snippet is `function gtag(){dataLayer.push(arguments)}` for this
+ * reason.
+ */
+const capture = function (): IArguments {
+  // eslint-disable-next-line prefer-rest-params
+  return arguments
+} as unknown as (...args: unknown[]) => IArguments
+
+function toArguments(args: unknown[]): IArguments {
+  return capture(...args)
+}
+
+/** gtag command shim — pushes a genuine Arguments object onto dataLayer. */
 export function gtag(...args: unknown[]): void {
   if (typeof window === "undefined") return
   window.dataLayer = window.dataLayer || []
-  window.dataLayer.push(args)
+  window.dataLayer.push(toArguments(args))
 }
 
 export type EventParams = Record<string, string | number | boolean | undefined>
