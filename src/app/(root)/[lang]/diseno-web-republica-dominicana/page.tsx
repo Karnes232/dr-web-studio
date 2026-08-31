@@ -9,6 +9,7 @@ import { LandingPortfolioHighlight } from "@/components/LandingPageComponents/La
 import { LandingTestimonials } from "@/components/LandingPageComponents/LandingTestimonials"
 import { LandingFaq } from "@/components/LandingPageComponents/LandingFaq"
 import { LandingContactCta } from "@/components/LandingPageComponents/LandingContactCta"
+import { LandingRelatedServices } from "@/components/LandingPageComponents/LandingRelatedServices"
 import type { Metadata } from "next"
 import { buildAlternates } from "@/lib/urls"
 import { getLandingGraph } from "@/lib/schema/graph"
@@ -97,6 +98,8 @@ export default async function DisenoWebRepublicaDominicana({
           items={data.faq.items}
         />
       )}
+
+      <LandingRelatedServices currentRoute={PAGE_HREF} lang={lang} />
 
       <LandingContactCta hero={data.hero} lang={lang} />
 

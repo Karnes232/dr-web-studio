@@ -1,4 +1,5 @@
 import type { AppPathnames } from "@/i18n/routing"
+import type { Locale } from "@/lib/slugs"
 
 export type StaticPathname = Exclude<
   AppPathnames,
@@ -98,6 +99,58 @@ export const CITY_ADJACENCY: Record<CityPageRoute, CityPageRoute[]> = {
     "/diseno-de-paginas-web-puerto-plata",
     "/diseno-de-paginas-web-santo-domingo",
   ],
+}
+
+/** The two national landing pages that serve adjacent intents. They are
+ *  reachable only via /sitemap, so these cross-links are their main source of
+ *  internal PageRank — and the descriptive anchor text is what tells Google
+ *  which page owns "desarrollo" and which owns "diseño". */
+export const RELATED_LANDING_ROUTES = [
+  "/desarrollo-web-republica-dominicana",
+  "/diseno-web-republica-dominicana",
+] as const satisfies readonly StaticPathname[]
+
+export type RelatedLandingRoute = (typeof RELATED_LANDING_ROUTES)[number]
+
+export const RELATED_LANDING_PAGES: Record<
+  RelatedLandingRoute,
+  RelatedLandingRoute[]
+> = {
+  "/desarrollo-web-republica-dominicana": ["/diseno-web-republica-dominicana"],
+  "/diseno-web-republica-dominicana": ["/desarrollo-web-republica-dominicana"],
+}
+
+/** Anchor text and supporting copy for the cross-links above. Deliberately
+ *  descriptive rather than a bare page name — the anchor is the ranking signal
+ *  that separates these two pages in search results. */
+export const RELATED_LANDING_COPY: Record<
+  RelatedLandingRoute,
+  Record<Locale, { label: string; blurb: string }>
+> = {
+  "/desarrollo-web-republica-dominicana": {
+    es: {
+      label: "Desarrollo Web en República Dominicana",
+      blurb:
+        "¿Necesitas la parte técnica — velocidad, integraciones, CMS y tienda en línea? Así construimos sitios a medida.",
+    },
+    en: {
+      label: "Web Development in the Dominican Republic",
+      blurb:
+        "Need the technical build — speed, integrations, CMS and online store? Here is how we develop custom sites.",
+    },
+  },
+  "/diseno-web-republica-dominicana": {
+    es: {
+      label: "Diseño de Páginas Web en República Dominicana",
+      blurb:
+        "¿Te interesa más el diseño visual — marca, maquetación y experiencia de usuario? Así abordamos el diseño.",
+    },
+    en: {
+      label: "Custom Web Design in the Dominican Republic",
+      blurb:
+        "More interested in the visual side — brand, layout and user experience? Here is how we approach design.",
+    },
+  },
 }
 
 const MAIN_INDEXABLE_ROUTES = [
