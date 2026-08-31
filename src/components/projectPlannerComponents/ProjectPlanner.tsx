@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from "react"
 import Botpoison from "@botpoison/browser"
+import { trackEvent } from "@/lib/analytics"
 import {
   ArrowLeft,
   ArrowRight,
@@ -201,6 +202,16 @@ export default function ProjectPlanner({
         setSubmitError(config.contactFields.nameInvalid[locale])
         return
       }
+
+      // Qualification signals only — no name, email or free-text fields.
+      // est.total, not the animated `total` from useCountUp, which may still be
+      // mid-animation and report a number the user never actually saw.
+      trackEvent("project_planner_submit", {
+        locale,
+        estimate_total: est.total,
+        service: service?.key,
+      })
+
       setDone(true)
       setStepIndex(0)
       if (typeof window !== "undefined")

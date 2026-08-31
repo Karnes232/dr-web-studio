@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, Phone, MessageCircle } from "lucide-react"
 import { Reveal } from "@/components/animation/Reveal"
+import TrackedLink from "@/components/Analytics/TrackedLink"
 import { telHref, waHref } from "@/lib/contact"
 
 interface LandingCtaProps {
@@ -75,7 +76,9 @@ export function LandingCta({
         {(whatsappHref || phone) && (
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6 border-t border-slate-800">
             {whatsappHref && (
-              <a
+              <TrackedLink
+                event="contact_whatsapp"
+                eventParams={{ location: "landing_cta", lang }}
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -83,16 +86,18 @@ export function LandingCta({
               >
                 <MessageCircle size={16} />
                 <span>WhatsApp</span>
-              </a>
+              </TrackedLink>
             )}
             {phone && (
-              <a
+              <TrackedLink
+                event="contact_phone"
+                eventParams={{ location: "landing_cta", lang }}
                 href={telHref(phone)}
                 className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm"
               >
                 <Phone size={16} />
                 <span>{phone}</span>
-              </a>
+              </TrackedLink>
             )}
           </div>
         )}

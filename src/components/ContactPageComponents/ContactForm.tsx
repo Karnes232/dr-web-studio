@@ -1,5 +1,6 @@
 "use client"
 import { useLocale } from "@/i18n/useLocale"
+import { trackEvent } from "@/lib/analytics"
 import {
   Building2,
   CheckCircle,
@@ -82,6 +83,14 @@ const ContactForm = () => {
         setSubmitError(t("contact.form.submitFailed"))
         return
       }
+
+      // Qualification signals only — never name, email, phone or message body.
+      trackEvent("generate_lead", {
+        form: "contact",
+        project_type: formData.projectType || undefined,
+        budget: budgetPayload || undefined,
+        timeline: formData.timeline || undefined,
+      })
 
       setIsSubmitted(true)
     } catch {

@@ -4,6 +4,7 @@ import React from "react"
 import type { CustomSolutionCTAData } from "@/sanity/queries/services/customSolutionCTA"
 import { useLocale } from "@/i18n/useLocale"
 import { Link } from "@/i18n/navigation"
+import { trackEvent } from "@/lib/analytics"
 
 const CustomSolutionCTA = ({
   customSolutionCTA,
@@ -32,6 +33,12 @@ const CustomSolutionCTA = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/project-planner"
+            onClick={() =>
+              trackEvent("cta_click", {
+                location: "services_custom_solution",
+                destination: "/project-planner",
+              })
+            }
             className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-4 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
           >
             <Target className="h-5 w-5 mr-2" />
@@ -44,6 +51,12 @@ const CustomSolutionCTA = ({
 
           <Link
             href="/contact"
+            onClick={() =>
+              trackEvent("cta_click", {
+                location: "services_custom_solution",
+                destination: "/contact",
+              })
+            }
             className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
           >
             <ArrowRight className="h-5 w-5 mr-2" />

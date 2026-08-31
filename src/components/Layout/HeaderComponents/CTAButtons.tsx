@@ -2,10 +2,13 @@ import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import React from "react"
 import { FaWhatsapp } from "react-icons/fa"
+import TrackedLink from "@/components/Analytics/TrackedLink"
 import { waHref } from "@/lib/contact"
 import type { Locale } from "@/lib/slugs"
 
-// Server component: pure links, no handlers.
+// Server component: the outbound WhatsApp link delegates to TrackedLink (a
+// client component) so the click can be reported — it leaves the site, so it is
+// otherwise invisible to analytics.
 const CTAButtons = async ({
   className = "",
   phone,
@@ -33,7 +36,9 @@ const CTAButtons = async ({
       </Link>
 
       {phone && (
-        <a
+        <TrackedLink
+          event="contact_whatsapp"
+          eventParams={{ location: "header", lang }}
           href={waHref(phone, t("landingPage.whatsappMessage"))}
           target="_blank"
           rel="noopener noreferrer"
@@ -42,7 +47,7 @@ const CTAButtons = async ({
           className="p-2 rounded-lg lg:hidden xl:block text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-slate-800 transition-all duration-200 transform hover:scale-110"
         >
           <FaWhatsapp className="h-6 w-6" />
-        </a>
+        </TrackedLink>
       )}
     </div>
   )

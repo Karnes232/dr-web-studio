@@ -1,6 +1,7 @@
 "use client"
 
 import { useLocale } from "@/i18n/useLocale"
+import { trackEvent } from "@/lib/analytics"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import React from "react"
@@ -27,6 +28,13 @@ const PricingCTA = ({
   return (
     <Link
       href={getLocalizedPath(href)}
+      onClick={() =>
+        trackEvent("cta_click", {
+          location: "pricing",
+          destination: href,
+          variant,
+        })
+      }
       className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 ${variants[variant]} ${className}`}
     >
       {children}
