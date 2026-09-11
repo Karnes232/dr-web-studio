@@ -145,6 +145,7 @@ const cspDirectives: Record<string, string[]> = {
     "https://vercel.live",
     "https://www.googletagmanager.com",
     "https://analytics.ahrefs.com",
+    "https://tracker.metricool.com",
   ],
   "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
   "img-src": [
@@ -155,6 +156,7 @@ const cspDirectives: Record<string, string[]> = {
     "https://*.stripe.com",
     "https://www.googletagmanager.com",
     "https://www.google-analytics.com",
+    "https://tracker.metricool.com",
   ],
   "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
   "connect-src": [

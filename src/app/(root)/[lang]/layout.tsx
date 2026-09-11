@@ -8,6 +8,7 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import { routing } from "@/i18n/routing"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredAnalytics from "@/components/Analytics/DeferredAnalytics"
+import MetricoolTracker from "@/components/Analytics/MetricoolTracker"
 import ThemeProvider from "@/components/theme/ThemeProvider"
 import { crimsonPro, inter } from "@/app/fonts"
 
@@ -69,6 +70,7 @@ export default async function LangLayout({
           </NextIntlClientProvider>
         </ThemeProvider>
         <DeferredAnalytics />
+        <MetricoolTracker />
         <Analytics />
       </body>
     </html>
