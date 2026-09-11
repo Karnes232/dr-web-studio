@@ -42,21 +42,26 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitError(null)
-    // Load BotPoison only when the user actually submits — keeps its ~15–20 kB
-    // off the contact page's initial bundle.
-    const { default: Botpoison } = await import("@botpoison/browser")
-    const botpoison = new Botpoison({
-      publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
-    })
-    const { solution } = await botpoison.challenge()
-    if (!solution) {
-      setSubmitError(t("contact.form.submitFailed"))
-      return
-    }
-
     setIsSubmitting(true)
 
     try {
+      // Load BotPoison only when the user actually submits — keeps its ~15–20 kB
+      // off the contact page's initial bundle.
+      //
+      // This has to stay INSIDE the try. It used to sit above it, and when CSP
+      // blocked api.botpoison.com the rejection went unhandled: no error, no
+      // spinner, no request — the Send button did nothing at all and the
+      // visitor had no way to know why.
+      const { default: Botpoison } = await import("@botpoison/browser")
+      const botpoison = new Botpoison({
+        publicKey: "pk_de02a196-39ef-4d2b-8691-40646ab2d702",
+      })
+      const { solution } = await botpoison.challenge()
+      if (!solution) {
+        setSubmitError(t("contact.form.submitFailed"))
+        return
+      }
+
       const budgetPayload = formData.budget
         ? formData.budget.startsWith("$")
           ? formData.budget

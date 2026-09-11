@@ -163,6 +163,10 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "https://cdn.sanity.io",
     "https://api.stripe.com",
+    // The BotPoison browser SDK POSTs here for its proof-of-work challenge. It
+    // only fires on form *submit*, which is why the report-only soak below —
+    // a console sweep of page loads — never saw the violation it was causing.
+    "https://api.botpoison.com",
     "https://vercel.live",
     "https://www.google-analytics.com",
     "https://*.analytics.google.com",

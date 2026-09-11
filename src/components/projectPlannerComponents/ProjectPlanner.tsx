@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
 import Botpoison from "@botpoison/browser"
 import { trackEvent } from "@/lib/analytics"
 import {
@@ -97,6 +98,10 @@ export default function ProjectPlanner({
     [],
   )
 
+  // `contactFields.nameInvalid` is the inline "invalid email" field message and
+  // still does that job below; submit failures get their own string.
+  const t = useTranslations("projectPlanner")
+
   const canContinue = (key: StepKey): boolean => {
     switch (key) {
       case "service":
@@ -151,7 +156,7 @@ export default function ProjectPlanner({
     try {
       const { solution } = await botpoison.challenge()
       if (!solution) {
-        setSubmitError(config.contactFields.nameInvalid[locale])
+        setSubmitError(t("submitFailed"))
         return
       }
       setSubmitting(true)
@@ -199,7 +204,7 @@ export default function ProjectPlanner({
       })
 
       if (!res.ok) {
-        setSubmitError(config.contactFields.nameInvalid[locale])
+        setSubmitError(t("submitFailed"))
         return
       }
 
@@ -217,7 +222,7 @@ export default function ProjectPlanner({
       if (typeof window !== "undefined")
         window.scrollTo({ top: 0, behavior: "smooth" })
     } catch {
-      setSubmitError(config.contactFields.nameInvalid[locale])
+      setSubmitError(t("submitFailed"))
     } finally {
       setSubmitting(false)
     }
