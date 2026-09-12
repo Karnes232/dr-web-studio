@@ -13,7 +13,7 @@ import {
 import React, { useState } from "react"
 
 const ContactForm = () => {
-  const { t } = useLocale()
+  const { currentLocale, t } = useLocale()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,6 +80,7 @@ const ContactForm = () => {
           budget: budgetPayload,
           timeline: formData.timeline,
           message: formData.message,
+          locale: currentLocale,
           _botpoison: solution,
         }),
       })

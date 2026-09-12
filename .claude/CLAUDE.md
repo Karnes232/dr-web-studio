@@ -109,6 +109,12 @@ React Email templates in `src/emails/`. Rendered server-side via `@react-email/r
 - Stripe webhooks verified with `STRIPE_WEBHOOK_SECRET`.
 - Contact/project-planner forms use BotPoison for spam protection.
 - `SANITY_API_TOKEN` is server-only (never `NEXT_PUBLIC_`).
+- `SUPABASE_SECRET_KEY` is server-only (never `NEXT_PUBLIC_` — that prefix
+  inlines it into the client bundle). It bypasses RLS.
+- **Customer PII never goes in Sanity.** The `production` dataset has
+  `aclMode: public`, so anonymous reads work without a token and the project id
+  ships in the browser bundle. Leads and WhatsApp conversations live in
+  Supabase, with RLS enabled and no policies. Sanity is content-only.
 
 ---
 
@@ -130,6 +136,14 @@ RESEND_API_KEY=
 
 # BotPoison
 NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=
+
+# Supabase — lead + conversation storage (NOT Sanity: the `production`
+# dataset is public, so customer PII must never live there)
+NEXT_PUBLIC_SUPABASE_URL=
+SUPABASE_SECRET_KEY=
+
+# Shared secret for the Supabase keep-alive cron (optional but recommended)
+CRON_SECRET=
 ```
 
 ---

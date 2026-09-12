@@ -1,5 +1,6 @@
 import ContactFormEmail from "@/emails/ContactFormEmail"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
+import { saveLead } from "@/lib/leads/saveLead"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { render } from "@react-email/render"
 import { NextRequest, NextResponse } from "next/server"
@@ -74,13 +75,29 @@ export async function POST(request: NextRequest) {
       }),
     )
 
-    const res = await resend.emails.send({
-      from: "Dr Web Studio <james@dr-webstudio.com>",
-      to: [toEmail],
-      replyTo: email,
-      subject: `New contact: ${name}`,
-      html: emailHtml,
-    })
+    // Persist alongside the email, in parallel so it costs no latency.
+    // saveLead never throws — email stays the path of record.
+    const [, res] = await Promise.all([
+      saveLead({
+        source: "contact-form",
+        name,
+        email,
+        phone,
+        company,
+        message,
+        projectType,
+        budgetBand: budget,
+        timeline,
+        locale: clampString(body.locale, 8) || undefined,
+      }),
+      resend.emails.send({
+        from: "Dr Web Studio <james@dr-webstudio.com>",
+        to: [toEmail],
+        replyTo: email,
+        subject: `New contact: ${name}`,
+        html: emailHtml,
+      }),
+    ])
 
     if (res.error) {
       console.error("Resend contact error:", res.error)

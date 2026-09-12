@@ -17,7 +17,8 @@
     "lint": "next lint",
     "test": "vitest run",
     "seed:planner": "node --env-file=.env.local scripts/seedPlanner.mjs",
-    "seed:blog": "npx tsx --env-file=.env.local scripts/seedBlogPost-dive-watersports.ts"
+    "seed:blog": "npx tsx --env-file=.env.local scripts/1.ts",
+    "export:media": "node --env-file=.env.local scripts/exportSanityMedia.mjs"
   },
   "dependencies": {
     "@botpoison/browser": "^0.1.30",
@@ -28,6 +29,7 @@
     "@sanity/vision": "^3.90.0",
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.4.0",
+    "@supabase/supabase-js": "^2.116.0",
     "@vercel/analytics": "^1.6.1",
     "lucide-react": "^0.511.0",
     "next": "^15.5.10",

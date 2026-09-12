@@ -278,13 +278,6 @@ const PaymentConfirmationEmail = ({
                 </div>
 
                 {/* <div className="flex items-center">
-                <Text className="text-gray-600 font-semibold mr-2">WhatsApp:</Text>
-                <Link href="https://wa.me/18091234567" className="text-orange-700 ">
-                  Message us on WhatsApp
-                </Link>
-              </div> */}
-
-                {/* <div className="flex items-center">
                 <Text className="text-gray-600 font-semibold mr-2">Schedule a Call:</Text>
                 <Link href="https://calendly.com/drwebstudio" className="text-orange-700 ">
                   Book a consultation

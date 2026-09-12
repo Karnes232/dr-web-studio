@@ -96,6 +96,11 @@ export const PERSON_KNOWS_LANGUAGE = ["en", "es"]
  * Names/descriptions/URLs are pulled live from the `serviceItem` documents; only
  * the price lives here (kept out of the CMS to stay consistent with the public
  * pricing page). `unit: "MONTH"` marks recurring offers.
+ *
+ * These duplicate `plannerService.basePrice` in Sanity and have drifted before.
+ * This copy exists only for JSON-LD Offers. Anything that quotes a customer —
+ * the project planner, the lead record, the WhatsApp agent — must read Sanity,
+ * never this constant.
  */
 export const SERVICE_PRICES: Record<string, { price: number; unit?: "MONTH" }> =
   {

@@ -2,6 +2,7 @@ import ProjectPlannerSubmissionEmail, {
   type PlannerEstimateItem,
 } from "@/emails/ProjectPlannerSubmissionEmail"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
+import { saveLead } from "@/lib/leads/saveLead"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { render } from "@react-email/render"
 import { NextRequest, NextResponse } from "next/server"
@@ -86,6 +87,10 @@ export async function POST(request: NextRequest) {
     const company = clampString(body.company, MAX_FIELD)
     const message = clampString(body.message, MAX_MESSAGE)
     const service = clampString(body.service, MAX_FIELD)
+    // The stable slug the planner already sends; the display title above
+    // is localised and can change, this is what matches a plannerService.
+    const serviceKey = clampString(body.serviceKey, MAX_FIELD)
+    const locale = clampString(body.locale, 8)
     const timeline = clampString(body.timeline, MAX_FIELD)
     const rush = body.rush === true
     const addons = clampStringArray(body.addons, MAX_ARRAY_ITEMS, MAX_FIELD)
@@ -133,13 +138,40 @@ export async function POST(request: NextRequest) {
       }),
     )
 
-    const res = await resend.emails.send({
-      from: "Dr Web Studio <james@dr-webstudio.com>",
-      to: [toEmail],
-      replyTo: email,
-      subject: `Project planner: ${name}`,
-      html: emailHtml,
-    })
+    // Persist alongside the email, in parallel so it costs no latency.
+    // saveLead never throws — email stays the path of record.
+    const [, res] = await Promise.all([
+      saveLead({
+        source: "project-planner",
+        name,
+        email,
+        company,
+        message,
+        locale: locale || undefined,
+        serviceKey,
+        serviceTitle: service,
+        addons,
+        design,
+        references,
+        sizeTier: size,
+        content,
+        rush,
+        timeline,
+        estimate: {
+          total: estimateTotal,
+          currency: clampString(estimate.currency, 8) || "USD",
+          currencySymbol,
+          items,
+        },
+      }),
+      resend.emails.send({
+        from: "Dr Web Studio <james@dr-webstudio.com>",
+        to: [toEmail],
+        replyTo: email,
+        subject: `Project planner: ${name}`,
+        html: emailHtml,
+      }),
+    ])
 
     if (res.error) {
       console.error("Resend project planner error:", res.error)

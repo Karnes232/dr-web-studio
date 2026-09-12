@@ -11,7 +11,6 @@ import {
   Calendar,
   Home,
   CreditCard,
-  User,
   DollarSign,
 } from "lucide-react"
 import type { PaymentSuccessData } from "@/sanity/queries/payment/paymentSuccess"
@@ -281,14 +280,6 @@ const PaymentSucessContent = ({
               <Mail className="h-4 w-4 mr-2" />
               {t("checkout.email_us")}
             </a>
-            {/*             
-            <a
-              href="https://wa.me/18091234567"
-              className="flex items-center justify-center px-4 py-2 bg-teal-100 dark:bg-teal-500/15 text-teal-700 dark:text-teal-300 rounded-lg hover:bg-teal-200 dark:hover:bg-teal-500/25 transition-colors duration-200 font-medium"
-            >
-              <User className="h-4 w-4 mr-2" />
-              WhatsApp
-            </a> */}
           </div>
         </div>
 
