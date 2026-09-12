@@ -49,14 +49,17 @@ jobs:
 
       - name: Ping keep-alive endpoint
         env:
-          # The endpoint is public, so the URL is a default rather than a
-          # required secret — one less thing to configure, and one less way for
-          # this to fail with an empty value.
-          KEEP_ALIVE_URL: ${{ secrets.KEEP_ALIVE_URL || 'https://www.dr-webstudio.com/api/keep-alive' }}
+          URL_OVERRIDE: ${{ secrets.KEEP_ALIVE_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          # Secrets go through env, not ${{ }} interpolation, so an empty or
-          # odd value cannot mangle the command line.
+          # Secrets are passed via the env block above rather than being
+          # interpolated straight into this script, so an empty or odd value
+          # cannot mangle the command line.
+          #
+          # The endpoint is public, so the URL is a plain default rather than a
+          # required secret. The fallback is done in bash, not a GitHub
+          # expression, so its behaviour with an unset secret is unambiguous.
+          KEEP_ALIVE_URL="${URL_OVERRIDE:-https://www.dr-webstudio.com/api/keep-alive}"
           echo "Pinging $KEEP_ALIVE_URL"
           set +e
           code=$(curl -sS -o /tmp/body -w "%{http_code}" --max-time 30 \
