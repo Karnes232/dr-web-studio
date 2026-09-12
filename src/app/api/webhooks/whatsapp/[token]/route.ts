@@ -34,9 +34,14 @@ export const dynamic = "force-dynamic"
  */
 
 function tokenMatches(token: string): boolean {
-  const expected = process.env.WHATSAPP_WEBHOOK_TOKEN
-  if (!expected) return false
-  const a = Buffer.from(token)
+  // Trimmed: pasting into a hosting provider's env-var box readily picks up a
+  // trailing newline, which would fail the compare with no visible cause.
+  const expected = process.env.WHATSAPP_WEBHOOK_TOKEN?.trim()
+  if (!expected) {
+    console.error("whatsapp webhook: WHATSAPP_WEBHOOK_TOKEN is not set")
+    return false
+  }
+  const a = Buffer.from(token.trim())
   const b = Buffer.from(expected)
   return a.length === b.length && timingSafeEqual(a, b)
 }
@@ -86,7 +91,7 @@ export async function POST(
   // Raw body first, always — the signature covers these exact bytes.
   const raw = await request.text()
 
-  const secret = process.env.KAPSO_WEBHOOK_SECRET
+  const secret = process.env.KAPSO_WEBHOOK_SECRET?.trim()
   if (!secret) {
     console.error("whatsapp webhook: KAPSO_WEBHOOK_SECRET is not set")
     return NextResponse.json({ error: "Not configured" }, { status: 500 })
