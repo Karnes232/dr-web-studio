@@ -17,9 +17,11 @@
 #   3. Runs scheduled on the hour can be delayed or dropped under load, so this
 #      deliberately fires at :17 rather than :00.
 #
-# Required repository secrets (Settings -> Secrets and variables -> Actions):
-#   KEEP_ALIVE_URL  - https://www.dr-webstudio.com/api/keep-alive
-#   CRON_SECRET     - same value as the CRON_SECRET env var in Vercel
+# Repository secrets (Settings -> Secrets and variables -> Actions):
+#   CRON_SECRET     - REQUIRED. Same value as the CRON_SECRET env var in Vercel.
+#   KEEP_ALIVE_URL  - optional override. The production URL is the default
+#                     below; the endpoint is public, so this is only needed if
+#                     the domain changes or you want to point at a preview.
 name: Supabase keep-alive
 
 on:
@@ -31,14 +33,56 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping keep-alive endpoint
+      - name: Check configuration
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          code=$(curl -sS -o /tmp/body -w "%{http_code}" \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.KEEP_ALIVE_URL }}")
-          echo "HTTP $code"
-          cat /tmp/body
-          if [ "$code" != "200" ]; then
-            echo "::error::Keep-alive failed with HTTP $code"
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error::Repository secret CRON_SECRET is empty or not set."
+            echo "  Add it at Settings -> Secrets and variables -> Actions ->"
+            echo "  the *Secrets* tab -> New repository secret, named exactly"
+            echo "  CRON_SECRET, matching the value in Vercel."
+            echo "  (A value on the Variables tab will not be picked up here.)"
             exit 1
           fi
+          echo "CRON_SECRET is set (${#CRON_SECRET} chars)."
+
+      - name: Ping keep-alive endpoint
+        env:
+          # The endpoint is public, so the URL is a default rather than a
+          # required secret — one less thing to configure, and one less way for
+          # this to fail with an empty value.
+          KEEP_ALIVE_URL: ${{ secrets.KEEP_ALIVE_URL || 'https://www.dr-webstudio.com/api/keep-alive' }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          # Secrets go through env, not ${{ }} interpolation, so an empty or
+          # odd value cannot mangle the command line.
+          echo "Pinging $KEEP_ALIVE_URL"
+          set +e
+          code=$(curl -sS -o /tmp/body -w "%{http_code}" --max-time 30 \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            "$KEEP_ALIVE_URL")
+          curl_exit=$?
+          set -e
+
+          if [ $curl_exit -ne 0 ]; then
+            echo "::error::curl failed (exit $curl_exit) before getting a response."
+            case $curl_exit in
+              3) echo "  Exit 3 = malformed URL. Check KEEP_ALIVE_URL includes https:// and has no stray quotes or spaces." ;;
+              6) echo "  Exit 6 = could not resolve host. Check the domain in KEEP_ALIVE_URL." ;;
+              28) echo "  Exit 28 = timed out after 30s." ;;
+            esac
+            exit 1
+          fi
+
+          echo "HTTP $code"
+          cat /tmp/body || true
+          echo
+
+          case "$code" in
+            200) echo "Keep-alive OK." ;;
+            401) echo "::error::401 — CRON_SECRET here does not match Vercel's, or Vercel was not redeployed after the env var was added."; exit 1 ;;
+            404) echo "::error::404 — the route is not deployed at that path. Is the workflow pointing at the production URL?"; exit 1 ;;
+            503) echo "::error::503 — Supabase env vars are not set in Vercel yet."; exit 1 ;;
+            *)   echo "::error::Keep-alive failed with HTTP $code"; exit 1 ;;
+          esac
