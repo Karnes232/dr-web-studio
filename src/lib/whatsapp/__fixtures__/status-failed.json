@@ -1,0 +1,35 @@
+{
+  "message": {
+    "id": "wamid.OUTBOUND123",
+    "timestamp": "1730093200",
+    "type": "text",
+    "to": "18295551234",
+    "kapso": {
+      "direction": "outbound",
+      "status": "failed",
+      "statuses": [
+        {
+          "id": "wamid.OUTBOUND123",
+          "status": "sent",
+          "timestamp": "1730093100",
+          "recipient_id": "18295551234"
+        },
+        {
+          "id": "wamid.OUTBOUND123",
+          "status": "failed",
+          "timestamp": "1730093200",
+          "recipient_id": "18295551234",
+          "errors": [
+            {
+              "code": 131047,
+              "title": "Re-engagement message",
+              "message": "More than 24 hours have passed since the recipient last replied"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "conversation": { "id": "conv_abc123", "phone_number_id": "647015955153740" },
+  "phone_number_id": "647015955153740"
+}

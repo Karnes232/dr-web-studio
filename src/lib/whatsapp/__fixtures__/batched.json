@@ -1,0 +1,6 @@
+{
+  "type": "whatsapp.message.received",
+  "batch": true,
+  "batch_info": { "size": 2 },
+  "data": [{ "message": { "id": "wamid.A" } }, { "message": { "id": "wamid.B" } }]
+}

@@ -1,0 +1,32 @@
+{
+  "message": {
+    "id": "wamid.HBgNMTgyOTU1NTEyMzQVAgASGBQzQUJDRA==",
+    "timestamp": "1730092800",
+    "type": "text",
+    "from": "18295551234",
+    "from_user_id": "US.13491208655302741918",
+    "text": { "body": "Hola, cuanto cuesta una pagina web?" },
+    "kapso": {
+      "direction": "inbound",
+      "status": "received",
+      "origin": "cloud_api",
+      "has_media": false,
+      "content": "Hola, cuanto cuesta una pagina web?"
+    }
+  },
+  "conversation": {
+    "id": "conv_abc123",
+    "contact_name": "Ana Gomez",
+    "phone_number": "18295551234",
+    "business_scoped_user_id": "US.13491208655302741918",
+    "status": "active",
+    "phone_number_id": "647015955153740",
+    "kapso": {
+      "messages_count": 1,
+      "last_inbound_at": "2026-09-12T17:25:01.000000Z",
+      "last_outbound_at": null
+    }
+  },
+  "is_new_conversation": true,
+  "phone_number_id": "647015955153740"
+}

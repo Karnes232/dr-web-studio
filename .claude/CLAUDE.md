@@ -115,6 +115,12 @@ React Email templates in `src/emails/`. Rendered server-side via `@react-email/r
   `aclMode: public`, so anonymous reads work without a token and the project id
   ships in the browser bundle. Leads and WhatsApp conversations live in
   Supabase, with RLS enabled and no policies. Sanity is content-only.
+- The WhatsApp webhook lives at `/api/webhooks/whatsapp/[token]`. The token is
+  a second factor: Kapso signs the body but includes no timestamp, so requests
+  are replayable and no IP allowlist is published. The HMAC
+  (`X-Webhook-Signature`, SHA-256 hex over the **raw** body) is the real check.
+- The WhatsApp webhook must answer within **10 seconds** or Kapso retries twice
+  and the customer gets duplicate replies. Acknowledge first, work in `after()`.
 
 ---
 
@@ -144,6 +150,15 @@ SUPABASE_SECRET_KEY=
 
 # Shared secret for the Supabase keep-alive cron (optional but recommended)
 CRON_SECRET=
+
+# WhatsApp (Kapso transport)
+KAPSO_API_KEY=
+KAPSO_WEBHOOK_SECRET=
+WHATSAPP_WEBHOOK_TOKEN=
+# Optional: override the API base, or the Meta hub-challenge token if the app
+# ever talks to graph.facebook.com directly instead of through Kapso.
+KAPSO_API_BASE=
+WHATSAPP_VERIFY_TOKEN=
 ```
 
 ---
