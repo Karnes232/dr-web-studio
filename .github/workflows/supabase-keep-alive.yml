@@ -17,11 +17,13 @@
 #   3. Runs scheduled on the hour can be delayed or dropped under load, so this
 #      deliberately fires at :17 rather than :00.
 #
+# The URL is hardcoded below on purpose. It is a public endpoint, so it gains
+# nothing from being a secret, and a secret with a stray quote or a trailing
+# newline fails as an unreadable "malformed URL" because GitHub masks the value
+# in the logs. If the domain ever changes, edit KEEP_ALIVE_URL here.
+#
 # Repository secrets (Settings -> Secrets and variables -> Actions):
-#   CRON_SECRET     - REQUIRED. Same value as the CRON_SECRET env var in Vercel.
-#   KEEP_ALIVE_URL  - optional override. The production URL is the default
-#                     below; the endpoint is public, so this is only needed if
-#                     the domain changes or you want to point at a preview.
+#   CRON_SECRET - REQUIRED. Same value as the CRON_SECRET env var in Vercel.
 name: Supabase keep-alive
 
 on:
@@ -32,35 +34,29 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    env:
+      KEEP_ALIVE_URL: https://www.dr-webstudio.com/api/keep-alive
     steps:
-      - name: Check configuration
-        env:
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
-        run: |
-          if [ -z "$CRON_SECRET" ]; then
-            echo "::error::Repository secret CRON_SECRET is empty or not set."
-            echo "  Add it at Settings -> Secrets and variables -> Actions ->"
-            echo "  the *Secrets* tab -> New repository secret, named exactly"
-            echo "  CRON_SECRET, matching the value in Vercel."
-            echo "  (A value on the Variables tab will not be picked up here.)"
-            exit 1
-          fi
-          echo "CRON_SECRET is set (${#CRON_SECRET} chars)."
-
       - name: Ping keep-alive endpoint
         env:
-          URL_OVERRIDE: ${{ secrets.KEEP_ALIVE_URL }}
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          # Passed through env rather than interpolated into the script, so an
+          # odd value cannot mangle the command line.
+          CRON_SECRET_RAW: ${{ secrets.CRON_SECRET }}
         run: |
-          # Secrets are passed via the env block above rather than being
-          # interpolated straight into this script, so an empty or odd value
-          # cannot mangle the command line.
-          #
-          # The endpoint is public, so the URL is a plain default rather than a
-          # required secret. The fallback is done in bash, not a GitHub
-          # expression, so its behaviour with an unset secret is unambiguous.
-          KEEP_ALIVE_URL="${URL_OVERRIDE:-https://www.dr-webstudio.com/api/keep-alive}"
+          # Pasting into GitHub's secret box readily picks up a trailing
+          # newline, which would silently corrupt the Authorization header.
+          CRON_SECRET=$(printf '%s' "$CRON_SECRET_RAW" | tr -d '[:space:]')
+
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error::Repository secret CRON_SECRET is empty or not set."
+            echo "  Add it under Settings -> Secrets and variables -> Actions,"
+            echo "  on the *Secrets* tab (not Variables), named exactly"
+            echo "  CRON_SECRET, matching the value set in Vercel."
+            exit 1
+          fi
+          echo "CRON_SECRET present (${#CRON_SECRET} chars after trimming)."
           echo "Pinging $KEEP_ALIVE_URL"
+
           set +e
           code=$(curl -sS -o /tmp/body -w "%{http_code}" --max-time 30 \
             -H "Authorization: Bearer $CRON_SECRET" \
@@ -68,11 +64,11 @@ jobs:
           curl_exit=$?
           set -e
 
-          if [ $curl_exit -ne 0 ]; then
+          if [ "$curl_exit" -ne 0 ]; then
             echo "::error::curl failed (exit $curl_exit) before getting a response."
-            case $curl_exit in
-              3) echo "  Exit 3 = malformed URL. Check KEEP_ALIVE_URL includes https:// and has no stray quotes or spaces." ;;
-              6) echo "  Exit 6 = could not resolve host. Check the domain in KEEP_ALIVE_URL." ;;
+            case "$curl_exit" in
+              3) echo "  Exit 3 = malformed URL. KEEP_ALIVE_URL above is wrong." ;;
+              6) echo "  Exit 6 = could not resolve host." ;;
               28) echo "  Exit 28 = timed out after 30s." ;;
             esac
             exit 1
@@ -84,8 +80,8 @@ jobs:
 
           case "$code" in
             200) echo "Keep-alive OK." ;;
-            401) echo "::error::401 — CRON_SECRET here does not match Vercel's, or Vercel was not redeployed after the env var was added."; exit 1 ;;
-            404) echo "::error::404 — the route is not deployed at that path. Is the workflow pointing at the production URL?"; exit 1 ;;
-            503) echo "::error::503 — Supabase env vars are not set in Vercel yet."; exit 1 ;;
+            401) echo "::error::401 - CRON_SECRET here does not match Vercel's, or Vercel was not redeployed after the env var was added."; exit 1 ;;
+            404) echo "::error::404 - the route is not deployed at that path."; exit 1 ;;
+            503) echo "::error::503 - Supabase env vars are not set in Vercel yet."; exit 1 ;;
             *)   echo "::error::Keep-alive failed with HTTP $code"; exit 1 ;;
           esac
