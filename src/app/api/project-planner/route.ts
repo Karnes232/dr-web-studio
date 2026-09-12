@@ -1,6 +1,10 @@
 import ProjectPlannerSubmissionEmail, {
   type PlannerEstimateItem,
 } from "@/emails/ProjectPlannerSubmissionEmail"
+import ProjectPlannerCustomerEmail, {
+  customerEmailSubject,
+} from "@/emails/ProjectPlannerCustomerEmail"
+import { getPlannerConfig } from "@/sanity/queries/project-planner/plannerConfig"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
 import { saveLead } from "@/lib/leads/saveLead"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
@@ -115,8 +119,12 @@ export async function POST(request: NextRequest) {
     const currencySymbol = clampString(estimate.currencySymbol, 8) || "$"
     const items = parseItems(estimate.items)
 
-    const cachedEmail = await getContactEmail()
+    const [cachedEmail, plannerConfig] = await Promise.all([
+      getContactEmail(),
+      getPlannerConfig(),
+    ])
     const toEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
+    const customerLocale: "en" | "es" = locale === "en" ? "en" : "es"
 
     const emailHtml = await render(
       ProjectPlannerSubmissionEmail({
@@ -171,6 +179,38 @@ export async function POST(request: NextRequest) {
         subject: `Project planner: ${name}`,
         html: emailHtml,
       }),
+      // The confirmation screen promises "we've sent a copy to your inbox".
+      // Honour it — but never let it fail the submission: the business
+      // notification above is the one that must not be lost.
+      (async () => {
+        try {
+          if (!plannerConfig?.confirmation) return
+          const customerHtml = await render(
+            ProjectPlannerCustomerEmail({
+              name,
+              locale: customerLocale,
+              confirmation: plannerConfig.confirmation,
+              contactEmail: toEmail,
+              service,
+              addons,
+              size,
+              timeline,
+              estimateTotal,
+              currencySymbol,
+              items,
+            }),
+          )
+          await resend.emails.send({
+            from: "Dr Web Studio <james@dr-webstudio.com>",
+            to: [email],
+            replyTo: toEmail,
+            subject: customerEmailSubject(name, customerLocale),
+            html: customerHtml,
+          })
+        } catch (err) {
+          console.error("Project planner customer copy failed:", err)
+        }
+      })(),
     ])
 
     if (res.error) {

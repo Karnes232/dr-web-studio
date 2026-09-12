@@ -11,9 +11,14 @@
 # Three GitHub Actions rules this depends on:
 #   1. Scheduled workflows run ONLY on the default branch, so this file has to
 #      be merged to `main` to fire at all.
-#   2. In a PUBLIC repo, scheduled workflows are disabled automatically after
-#      60 days with no repository activity — which would silently stop the
-#      keep-alive and let Supabase pause. Private repos are exempt.
+#   2. This repo IS public, and GitHub disables scheduled workflows in public
+#      repos automatically after 60 days with no repository activity. GitHub
+#      emails first, and a push or a manual run resets the clock. Because that
+#      would silently stop the keep-alive, `vercel.json` also runs a daily
+#      Vercel Cron against the same endpoint — Vercel's scheduler does not
+#      depend on repo activity, so it keeps working even if this one is
+#      disabled. Belt and braces; the Resend fallback in saveLead is the
+#      actual guarantee that no lead is lost.
 #   3. Runs scheduled on the hour can be delayed or dropped under load, so this
 #      deliberately fires at :17 rather than :00.
 #
