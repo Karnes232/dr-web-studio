@@ -150,6 +150,43 @@ async function emailFallback(input: SaveLeadInput, reason: string) {
  * outage must not cost a lead. Returns the new row id, or null if the write
  * failed (in which case the payload has been emailed).
  */
+/** The handful of lead fields worth putting in a notification email. */
+export interface LeadSummary {
+  name: string | null
+  email: string | null
+  company: string | null
+  service_key: string | null
+  timeline: string | null
+  message: string | null
+}
+
+/**
+ * Read back a saved lead so it can be described in an email.
+ *
+ * Deliberately a separate read rather than echoing the tool's own arguments:
+ * `save_lead` validates and DROPS values that fail their checks (a non-email in
+ * the email field, a service key absent from the catalogue), so the arguments
+ * the model supplied and the row that actually landed are not the same thing.
+ * The email should describe the lead James will find, not the one the model
+ * tried to write.
+ */
+export async function getLead(id: string): Promise<LeadSummary | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data, error } = await supabase
+    .from("leads")
+    .select("name, email, company, service_key, timeline, message")
+    .eq("id", id)
+    .maybeSingle()
+
+  if (error) {
+    console.error("getLead failed:", error)
+    return null
+  }
+  return (data as LeadSummary) ?? null
+}
+
 export async function saveLead(input: SaveLeadInput): Promise<string | null> {
   const supabase = getSupabase()
 

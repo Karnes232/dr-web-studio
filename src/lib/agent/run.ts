@@ -3,6 +3,8 @@ import { Resend } from "resend"
 import { runTurn, describeClaudeError } from "./claude"
 import { renderKnowledge } from "./knowledge"
 import { detectLocale } from "./locale"
+import { claimsHandoff } from "./handoffClaim"
+import { getLead } from "@/lib/leads/saveLead"
 import { getAgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 import {
   isBusinessScopedUserId,
@@ -117,6 +119,23 @@ export async function runAgent(
     }
   }
 
+  // Link the lead to the conversation.
+  //
+  // This was imported and never called, so `conversations.lead_id` stayed null
+  // forever — and `claude.ts` derives "No lead saved yet for this conversation"
+  // from exactly that field. The model was therefore told on EVERY turn that no
+  // lead existed and dutifully called save_lead every time, which is a second
+  // full API request re-sending the whole cached prefix. It roughly doubled the
+  // cost of every conversation. Only the unique index on leads.conversation_id
+  // kept it from producing a row per turn.
+  if (turn.leadId && !conversation.lead_id) {
+    await linkLead(conversation, turn.leadId)
+    // First save for this conversation — tell James. A successful saveLead is
+    // otherwise completely silent: it only emails when the DB write *fails*,
+    // so a lead that lands perfectly would sit unseen in Supabase.
+    await notifyNewLead(tenant, conversation, message, turn.leadId)
+  }
+
   await recordTurn(tenant, conversation, {
     locale,
     costUsd: turn.usage.costUsd,
@@ -137,6 +156,80 @@ export async function runAgent(
       await loadHistory(conversation),
       turn.escalated.urgency,
     )
+  } else if (turn.reply && claimsHandoff(turn.reply)) {
+    // The model announced a handoff without calling escalate_to_human, leaving
+    // a customer waiting on something that never happened. Tell James anyway.
+    //
+    // Deliberately does NOT stand the agent down: a false positive here would
+    // silence a working agent, which is worse than the bug it guards against.
+    // James is informed and can simply reply from the inbox, which the takeover
+    // detection now picks up properly.
+    console.warn(
+      `agent: reply claims a handoff but escalate_to_human was not called ` +
+        `(conversation ${conversation.id})`,
+    )
+    await escalate(
+      tenant,
+      conversation,
+      message,
+      "the agent TOLD the customer it was handing over, but never called " +
+        "escalate_to_human — it may be waiting on you",
+      await loadHistory(conversation),
+      "high",
+      { standDown: false },
+    )
+  }
+}
+
+/**
+ * Tell James a new lead came in.
+ *
+ * Fires once per conversation, on the first successful save. Later refinements
+ * stay silent — the agent updates the same lead as it learns more, and an email
+ * per turn would train him to ignore them.
+ */
+async function notifyNewLead(
+  tenant: Tenant,
+  conversation: Conversation,
+  message: InboundMessage,
+  leadId: string,
+): Promise<void> {
+  try {
+    const to = tenant.escalation_email
+    if (!to) return
+
+    const lead = await getLead(leadId)
+    const contact = isBusinessScopedUserId(message.waId)
+      ? `@${message.waId} (WhatsApp username — no phone number)`
+      : `+${message.waId}`
+
+    const line = (label: string, value?: string | null) =>
+      value ? `${label.padEnd(10)}${value}` : ""
+
+    await resend.emails.send({
+      from: "Dr Web Studio <james@dr-webstudio.com>",
+      to: [to],
+      subject: `New WhatsApp lead: ${lead?.name || message.profileName || message.waId}`,
+      text: [
+        "The WhatsApp agent saved a new lead.",
+        "",
+        line("Name:", lead?.name ?? message.profileName),
+        line("Contact:", contact),
+        line("Email:", lead?.email),
+        line("Company:", lead?.company),
+        line("Service:", lead?.service_key),
+        line("Timeline:", lead?.timeline),
+        line("Notes:", lead?.message),
+        "",
+        "The agent is still handling this conversation. Reply in the inbox to",
+        `take it over — it will stand down automatically: ${AGENT_INBOX_URL}`,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    })
+  } catch (error) {
+    // Never let a notification failure affect the conversation.
+    console.error("agent: new-lead email failed:", error)
   }
 }
 
@@ -153,8 +246,12 @@ async function escalate(
   reason: string,
   history: { role: string; content: string }[],
   urgency = "normal",
+  opts: { standDown?: boolean } = {},
 ): Promise<void> {
-  await markEscalated(conversation, reason)
+  // Standing down is the default. The one caller that passes false is the
+  // safety net for a claimed-but-unperformed handoff, where a false positive
+  // must not silence a working agent.
+  if (opts.standDown !== false) await markEscalated(conversation, reason)
 
   // A username-only contact has a business-scoped user id where a phone number
   // would be. Rendering it as "+DO.1757134975438075" or as a wa.me link both
