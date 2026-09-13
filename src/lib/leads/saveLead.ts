@@ -15,9 +15,13 @@ export interface LeadEstimateItem {
 
 export interface SaveLeadInput {
   source: LeadSource
-  /** When set, UPDATE this row instead of inserting a new one. A WhatsApp
-   *  conversation is one lead however many times the agent refines it. */
-  leadId?: string
+  /**
+   * When set, this lead belongs to a WhatsApp conversation and there may only
+   * ever be one. Enforced by a unique index, not by application state — the
+   * model can call save_lead twice inside a single turn, and both calls read
+   * the same stale state before either writes.
+   */
+  conversationId?: string
   tenantId?: string
   name?: string
   email?: string
@@ -64,8 +68,7 @@ function toRow(input: SaveLeadInput): Record<string, unknown> {
   return {
     source: input.source,
     tenant_id: input.tenantId ?? "drwebstudio",
-    // Only set on insert — updating must not undo a status you have changed.
-    ...(input.leadId ? {} : { status: "new" }),
+    status: "new",
     ...compact({
       name: input.name,
       email: input.email,
@@ -156,8 +159,16 @@ export async function saveLead(input: SaveLeadInput): Promise<string | null> {
 
   try {
     const row = toRow(input)
-    const query = input.leadId
-      ? supabase.from("leads").update(row).eq("id", input.leadId)
+
+    // Upsert on the unique index, so a repeat call updates the same row rather
+    // than racing another insert.
+    const query = input.conversationId
+      ? supabase
+          .from("leads")
+          .upsert(
+            { ...row, conversation_id: input.conversationId },
+            { onConflict: "conversation_id" },
+          )
       : supabase.from("leads").insert(row)
 
     const { data, error } = await query.select("id").single()

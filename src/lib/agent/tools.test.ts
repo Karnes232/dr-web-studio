@@ -136,20 +136,32 @@ describe("runTool", () => {
 })
 
 describe("cleanToolString", () => {
-  it("strips tool-call markup the model leaked into an argument", () => {
-    // Taken verbatim from a real turn: this was stored as a `timeline` value.
-    const leaked =
-      '</parameter>\n<parameter name="notes">Centro de buceo. Quiere sitio informativo.'
-    const out = cleanToolString(leaked)
-    expect(out).not.toContain("<parameter")
-    expect(out).not.toContain("</parameter>")
-    expect(out).toContain("Centro de buceo")
+  // Every one of these was captured verbatim from a real stored lead row.
+  // The separator after "antml" is NOT an ASCII colon in any of them.
+  it.each([
+    ["</antml\u0903parameter>", ""],
+    [
+      "</antml\u061bparameter> Sitio web para barbería",
+      "Sitio web para barbería",
+    ],
+    ['</antml":parameter>', ""],
+    [
+      '</parameter>\n<parameter name="notes">Centro de buceo.',
+      "Centro de buceo.",
+    ],
+    ["</antml\u0903parameter> landing-pages", "landing-pages"],
+  ])("scrubs %j", (input, expected) => {
+    const out = cleanToolString(input)
+    expect(out ?? "").toBe(expected)
+    expect(out ?? "").not.toMatch(/antml/i)
+    expect(out ?? "").not.toMatch(/<\/?parameter/i)
   })
 
   it("leaves ordinary text alone", () => {
     expect(cleanToolString("Antes de diciembre 2026")).toBe(
       "Antes de diciembre 2026",
     )
+    expect(cleanToolString("ana@example.com")).toBe("ana@example.com")
   })
 
   it("returns undefined for blanks and non-strings", () => {
@@ -157,8 +169,7 @@ describe("cleanToolString", () => {
     expect(cleanToolString("   ")).toBeUndefined()
     expect(cleanToolString(undefined)).toBeUndefined()
     expect(cleanToolString(42)).toBeUndefined()
-    // Markup-only input must not survive as an empty-ish string.
-    expect(cleanToolString("</parameter>")).toBeUndefined()
+    expect(cleanToolString("</antml\u0903parameter>")).toBeUndefined()
   })
 })
 
@@ -178,23 +189,19 @@ describe("save_lead stays one lead per conversation", () => {
     notes: "",
   }
 
-  it("inserts and reports the new id when the conversation has no lead yet", async () => {
-    const out = await runTool("save_lead", args, ctx)
-    expect(saveLeadMock.mock.calls[0][0].leadId).toBeUndefined()
-    expect(out.leadId).toBe("lead-1")
+  it("always scopes the lead to the conversation", async () => {
+    await runTool("save_lead", args, ctx)
+    // Dedupe is a unique index on leads.conversation_id — not app state that
+    // two calls in the same turn can both read stale.
+    expect(saveLeadMock.mock.calls[0][0].conversationId).toBe("conv-1")
   })
 
-  it("updates the existing lead instead of inserting a second one", async () => {
-    const withLead = {
-      ...ctx,
-      conversation: { ...ctx.conversation, lead_id: "lead-1" },
-    } as unknown as ToolContext
-
-    const out = await runTool("save_lead", args, withLead)
-
-    // The whole point: a 9-turn conversation produced six duplicate rows before.
-    expect(saveLeadMock.mock.calls[0][0].leadId).toBe("lead-1")
-    expect(out.leadId).toBeUndefined()
+  it("passes the same conversation id however many times it is called", async () => {
+    await runTool("save_lead", args, ctx)
+    await runTool("save_lead", args, ctx)
+    await runTool("save_lead", args, ctx)
+    const ids = saveLeadMock.mock.calls.map(c => c[0].conversationId)
+    expect(ids).toEqual(["conv-1", "conv-1", "conv-1"])
   })
 
   it("tells the model to stop calling it", async () => {

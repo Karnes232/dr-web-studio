@@ -40,7 +40,15 @@ export interface ToolContext {
 export function cleanToolString(raw: unknown): string | undefined {
   if (typeof raw !== "string") return undefined
   const cleaned = raw
-    .replace(/<\/?(?:antml:)?(?:parameter|invoke|function_calls)[^>]*>/gi, " ")
+    // The separator is NOT reliably an ASCII colon, and there may be more than
+    // one character of it. Real captured values used U+0903, U+061B, and the
+    // two-character sequence '":'. So: any run of non-word characters, or none.
+    .replace(
+      /<\/?\s*(?:antml\W*)?(?:parameter|invoke|function_calls)\b[^>]*>?/gi,
+      " ",
+    )
+    // A bare trailing fragment with no closing bracket also occurs.
+    .replace(/<\/?\s*antml\W*\w*/gi, " ")
     .replace(/\s+/g, " ")
     .trim()
   return cleaned || undefined
@@ -141,12 +149,13 @@ export async function runTool(
 
       // Reuses the same helper the web forms use, so a WhatsApp lead inherits
       // the Resend fallback and is exactly as durable as a form submission.
-      // One lead per conversation. Without this the agent inserts a fresh row
-      // every time it refines its understanding — a real 9-turn conversation
-      // produced six duplicate leads for one prospect.
+      // One lead per conversation, guaranteed by a unique index on
+      // leads.conversation_id rather than by app state. The first attempt used
+      // conversations.lead_id read back between turns and still produced three
+      // rows, two of them 93ms apart inside one turn.
       const id = await saveLead({
         source: "whatsapp",
-        leadId: ctx.conversation.lead_id ?? undefined,
+        conversationId: ctx.conversation.id,
         tenantId: ctx.tenant.tenant_id,
         name: str("name") ?? ctx.profileName,
         phone: ctx.waId,
