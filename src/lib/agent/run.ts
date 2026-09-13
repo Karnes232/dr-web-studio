@@ -84,7 +84,14 @@ export async function runAgent(
       turn.reply,
     )
     if (result.ok) {
-      await recordOutbound(tenant, conversation, result.messageId, turn.reply)
+      await recordOutbound(tenant, conversation, result.messageId, turn.reply, {
+        inputTokens: turn.usage.inputTokens,
+        outputTokens: turn.usage.outputTokens,
+        cacheReadTokens: turn.usage.cacheReadTokens,
+        cacheWriteTokens: turn.usage.cacheWriteTokens,
+        costUsd: turn.usage.costUsd,
+        apiCalls: turn.usage.apiCalls,
+      })
     } else if (result.errorCode === WINDOW_EXPIRED) {
       // Outside the 24-hour service window only approved templates may be sent.
       console.warn("agent: 24h window closed, reply not delivered")
@@ -101,8 +108,9 @@ export async function runAgent(
   })
 
   console.log(
-    `agent turn: ${turn.usage.inputTokens} in / ${turn.usage.outputTokens} out / ` +
-      `${turn.usage.cacheReadTokens} cache-read / $${turn.usage.costUsd.toFixed(4)}`,
+    `agent turn: ${turn.usage.apiCalls} call(s) / ${turn.usage.inputTokens} in / ` +
+      `${turn.usage.outputTokens} out / ${turn.usage.cacheReadTokens} cache-read / ` +
+      `${turn.usage.cacheWriteTokens} cache-write / $${turn.usage.costUsd.toFixed(4)}`,
   )
 
   if (turn.escalated) {

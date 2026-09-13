@@ -22,6 +22,9 @@ export interface TurnUsage {
   cacheReadTokens: number
   cacheWriteTokens: number
   costUsd: number
+  /** Claude API calls this turn took. >1 means tools ran; each call re-sends
+   *  the whole prefix, so this is a first-class cost driver. */
+  apiCalls: number
 }
 
 export interface TurnResult {
@@ -95,6 +98,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
     cacheReadTokens: 0,
     cacheWriteTokens: 0,
     costUsd: 0,
+    apiCalls: 0,
   }
 
   const now = new Intl.DateTimeFormat("en-GB", {
@@ -156,6 +160,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
       messages,
     })
 
+    usage.apiCalls += 1
     tally(response.usage, usage)
 
     for (const block of response.content) {

@@ -156,11 +156,21 @@ export async function recordInbound(
   return true
 }
 
+export interface OutboundUsage {
+  inputTokens: number
+  outputTokens: number
+  cacheReadTokens: number
+  cacheWriteTokens: number
+  costUsd: number
+  apiCalls: number
+}
+
 export async function recordOutbound(
   tenant: Tenant,
   conversation: Conversation,
   providerMessageId: string,
   body: string,
+  usage?: OutboundUsage,
 ): Promise<void> {
   const supabase = getSupabase()
   if (!supabase) return
@@ -177,6 +187,16 @@ export async function recordOutbound(
     body,
     status: "sent",
     sent_at: now,
+    ...(usage
+      ? {
+          input_tokens: usage.inputTokens,
+          output_tokens: usage.outputTokens,
+          cache_read_tokens: usage.cacheReadTokens,
+          cache_write_tokens: usage.cacheWriteTokens,
+          cost_usd: Number(usage.costUsd.toFixed(6)),
+          api_calls: usage.apiCalls,
+        }
+      : {}),
   })
   if (error && error.code !== UNIQUE_VIOLATION) {
     console.error("recordOutbound failed:", error)
