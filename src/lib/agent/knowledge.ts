@@ -47,6 +47,30 @@ const weeks = (raw: string | null | undefined): string => {
   return /^\d/.test(t) ? `${t} weeks` : t
 }
 
+/**
+ * Drop questions already asked, keeping the first.
+ *
+ * The three FAQ sources are context-specific on the website — the same question
+ * legitimately appears on the contact page and in the FAQ hub — but flattening
+ * them into one prompt turns that into the model reading the same question
+ * twice with two differently-worded answers, and paying for both. Deduping here
+ * rather than in Sanity keeps the website's contextual repetition intact.
+ *
+ * Matching is on the English question only: it is the stable key (every entry
+ * has one, `renderQA` already falls back to it), and a pair that shares an
+ * English question is the same question whatever the Spanish says.
+ */
+function dedupeQA(items: AgentQA[]): AgentQA[] {
+  const seen = new Set<string>()
+  return items.filter(q => {
+    const key = (q.question.en ?? "").trim().toLowerCase().replace(/\s+/g, " ")
+    if (!key) return true
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+}
+
 function renderQA(items: AgentQA[], heading: string, lang: Lang): string {
   if (!items.length) return ""
   const body = items
@@ -157,7 +181,9 @@ export function renderKnowledge(
   // Three separate Sanity types, flattened: the agent has no reason to know
   // they're modelled apart.
   const catQs = kb.faqCategories.flatMap(c => c.questions ?? [])
-  out.push(renderQA([...kb.faqs, ...kb.contactFaqs, ...catQs], "FAQ", lang))
+  out.push(
+    renderQA(dedupeQA([...kb.faqs, ...kb.contactFaqs, ...catQs]), "FAQ", lang),
+  )
 
   return out.filter(Boolean).join("\n")
 }

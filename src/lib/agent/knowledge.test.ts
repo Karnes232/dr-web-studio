@@ -47,12 +47,20 @@ describe("renderKnowledge", () => {
   })
 
   it("flattens all three FAQ types into one section", () => {
-    const total =
-      kb.faqs.length +
-      kb.contactFaqs.length +
-      kb.faqCategories.flatMap(c => c.questions ?? []).length
-    expect(total).toBeGreaterThan(15)
-    expect((rendered.match(/^Q\(en\) /gm) ?? []).length).toBe(total)
+    const all = [
+      ...kb.faqs,
+      ...kb.contactFaqs,
+      ...kb.faqCategories.flatMap(c => c.questions ?? []),
+    ]
+    // Every DISTINCT question survives the flatten; repeats collapse. The same
+    // question legitimately appears on two pages of the website, so the source
+    // count is higher than the rendered count.
+    const distinct = new Set(
+      all.map(q => (q.question.en ?? "").trim().toLowerCase()),
+    )
+    expect(all.length).toBeGreaterThan(15)
+    expect(distinct.size).toBeLessThan(all.length) // there ARE repeats today
+    expect((rendered.match(/^Q\(en\) /gm) ?? []).length).toBe(distinct.size)
     // The agent should never learn they were three separate Sanity types.
     expect(rendered).not.toContain("contactFaq")
     expect(rendered).not.toContain("faqCategory")
@@ -93,5 +101,38 @@ describe("renderKnowledge", () => {
   it("stays small enough to cache economically", () => {
     // llms-full.txt is ~295K tokens, which is why it is not used here.
     expect(tokens(renderKnowledge(kb, "es"))).toBeLessThan(15_000)
+  })
+})
+
+/**
+ * The three FAQ sources are context-specific on the website — the same question
+ * legitimately appears on the contact page and in the FAQ hub — but the agent
+ * sees them flattened into one prompt, where a repeat means reading the same
+ * question twice with two differently-worded answers, and paying for both.
+ */
+describe("FAQ de-duplication", () => {
+  const rendered = renderKnowledge(kb, "es")
+
+  it("asks each question only once", () => {
+    const qs = [...rendered.matchAll(/^Q (.+)$/gm)].map(m =>
+      m[1].trim().toLowerCase(),
+    )
+    expect(qs.length).toBeGreaterThan(15)
+    expect(new Set(qs).size).toBe(qs.length)
+  })
+
+  it("keeps the first occurrence, not the last", () => {
+    // `faqs` come before `faqCategories` in the flatten order, so the standalone
+    // `faq` answer is the one that survives.
+    const both = renderKnowledge(kb, "both")
+    const dup = "Can you redesign or migrate my existing website?"
+    const hits = both.split(dup).length - 1
+    expect(hits).toBe(1)
+  })
+
+  it("does not drop distinct questions that merely look similar", () => {
+    // Pre-sales response time and post-launch issue response time are different
+    // questions with different answers; only exact repeats should collapse.
+    expect(rendered).toMatch(/Q .*consulta/i)
   })
 })
