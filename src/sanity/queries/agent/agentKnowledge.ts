@@ -72,6 +72,7 @@ export interface AgentLayout {
   companyName: string | null
   email: string | null
   telephone: string | null
+  whatsapp: string | null
   address: {
     addressLocality?: string
     addressRegion?: string
@@ -110,7 +111,7 @@ const agentKnowledgeQuery = `{
     key, title, description, basePrice, timeline, pageBased, included
   },
   "layout": *[_id == "generalLayout"][0] {
-    companyName, email, telephone, address, openingHours
+    companyName, email, telephone, "whatsapp": coalesce(whatsapp, telephone), address, openingHours
   }
 }`
 

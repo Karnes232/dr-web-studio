@@ -14,14 +14,14 @@ const NavbarShell = ({
   desktopControls,
   mobileThemeToggle,
   services,
-  phone,
+  whatsapp,
 }: {
   logo: React.ReactNode
   desktopNav: React.ReactNode
   desktopControls: React.ReactNode
   mobileThemeToggle: React.ReactNode
   services: LocalizedServiceLink[]
-  phone?: string
+  whatsapp?: string
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -54,7 +54,7 @@ const NavbarShell = ({
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           services={services}
-          phone={phone}
+          whatsapp={whatsapp}
         />
       </div>
     </nav>

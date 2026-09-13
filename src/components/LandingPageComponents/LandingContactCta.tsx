@@ -27,6 +27,7 @@ export async function LandingContactCta({
     getLayoutSchemaData(),
   ])
   const phone = layout?.telephone
+  const whatsapp = layout?.whatsapp
   const contactHref = lang === "es" ? "/es/contacto" : "/en/contact"
 
   // Hero hrefs arrive fully localized from transformLandingPage
@@ -44,7 +45,7 @@ export async function LandingContactCta({
           ? "/es/planificador-de-proyectos"
           : "/en/project-planner")
       }
-      whatsappNumber={phone}
+      whatsappNumber={whatsapp}
       whatsappText={t("landingPage.whatsappMessage")}
       phone={phone}
       lang={lang}

@@ -14,12 +14,12 @@ import type { Locale } from "@/lib/slugs"
 const Navbar = ({
   logo,
   serviceLinks,
-  phone,
+  whatsapp,
   lang,
 }: {
   logo: any
   serviceLinks: ServiceItemsLinks[]
-  phone?: string
+  whatsapp?: string
   lang: Locale
 }) => {
   const services = localizeServiceLinks(serviceLinks, lang)
@@ -33,12 +33,12 @@ const Navbar = ({
           <ThemeToggle color="slate-700" />
           <LanguageSwitcher color="slate-700" />
           <div className="w-px h-6 bg-slate-300 dark:bg-slate-700"></div>
-          <CTAButtons phone={phone} lang={lang} />
+          <CTAButtons whatsapp={whatsapp} lang={lang} />
         </>
       }
       mobileThemeToggle={<ThemeToggle color="slate-700" />}
       services={services}
-      phone={phone}
+      whatsapp={whatsapp}
     />
   )
 }

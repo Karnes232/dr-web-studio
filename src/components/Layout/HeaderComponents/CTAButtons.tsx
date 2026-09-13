@@ -11,11 +11,11 @@ import type { Locale } from "@/lib/slugs"
 // otherwise invisible to analytics.
 const CTAButtons = async ({
   className = "",
-  phone,
+  whatsapp,
   lang,
 }: {
   className?: string
-  phone?: string
+  whatsapp?: string
   lang: Locale
 }) => {
   const t = await getTranslations({ locale: lang })
@@ -35,11 +35,11 @@ const CTAButtons = async ({
         {t("resources.get_quote")}
       </Link>
 
-      {phone && (
+      {whatsapp && (
         <TrackedLink
           event="contact_whatsapp"
           eventParams={{ location: "header", lang }}
-          href={waHref(phone, t("landingPage.whatsappMessage"))}
+          href={waHref(whatsapp, t("landingPage.whatsappMessage"))}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("landingPage.whatsapp")}

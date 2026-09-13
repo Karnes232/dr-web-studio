@@ -14,7 +14,7 @@ interface SocialMediaProps {
     trustpilot?: string
   }
   email: string
-  phone?: string
+  whatsapp?: string
   lang: Locale
 }
 
@@ -22,17 +22,17 @@ interface SocialMediaProps {
 const SocialMedia = async ({
   socialLinks,
   email,
-  phone,
+  whatsapp,
   lang,
 }: SocialMediaProps) => {
   const t = await getTranslations({ locale: lang })
   const socialLinksArray = [
     { icon: FiMail, href: `mailto:${email}`, label: "Email" },
-    ...(phone
+    ...(whatsapp
       ? [
           {
             icon: FaWhatsapp,
-            href: waHref(phone, t("landingPage.whatsappMessage")),
+            href: waHref(whatsapp, t("landingPage.whatsappMessage")),
             label: "WhatsApp",
           },
         ]

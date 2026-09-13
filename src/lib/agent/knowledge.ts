@@ -83,7 +83,7 @@ export function renderKnowledge(
         "\n## Business",
         `Name: ${l.companyName ?? "DR Web Studio"}`,
         l.email ? `Email: ${l.email}` : "",
-        l.telephone ? `Phone/WhatsApp: +${l.telephone}` : "",
+        l.telephone ? `Phone (voice, James direct): +${l.telephone}` : "",
         where ? `Location: ${where}` : "",
         hours ? `Opening hours (America/Santo_Domingo): ${hours}` : "",
       ]

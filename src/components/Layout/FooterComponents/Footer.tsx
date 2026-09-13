@@ -24,6 +24,7 @@ interface FooterProps {
   companyInfo: {
     email: string
     telephone?: string
+    whatsapp?: string
     companyName: string
     footerText: {
       en: string
@@ -63,7 +64,7 @@ const Footer = ({ logo, companyInfo, serviceLinks, lang }: FooterProps) => {
         <SocialMedia
           socialLinks={companyInfo.socialLinks}
           email={companyInfo.email}
-          phone={companyInfo.telephone}
+          whatsapp={companyInfo.whatsapp}
           lang={lang}
         />
 

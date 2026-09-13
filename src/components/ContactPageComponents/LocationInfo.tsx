@@ -13,6 +13,8 @@ const LocationInfo = ({
   emergencySupportDescription,
   language,
   phone,
+  whatsapp,
+  whatsappMessage,
   googleBusinessUrl,
 }: {
   title: string
@@ -24,6 +26,8 @@ const LocationInfo = ({
   emergencySupportDescription: string
   language: string
   phone?: string
+  whatsapp?: string
+  whatsappMessage?: string
   googleBusinessUrl?: string
 }) => {
   return (
@@ -71,7 +75,7 @@ const LocationInfo = ({
           )}
         </div>
 
-        {phone && (
+        {(whatsapp || phone) && (
           <div>
             <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">
               {language === "en"
@@ -79,31 +83,30 @@ const LocationInfo = ({
                 : "Háblanos directamente"}
             </h3>
             <div className="space-y-2">
-              <a
-                href={waHref(
-                  phone,
-                  language === "en"
-                    ? "Hi! I'm interested in a website for my business."
-                    : "¡Hola! Me interesa un sitio web para mi negocio.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-              >
-                <FaWhatsapp className="h-5 w-5 mr-2 text-green-600 dark:text-green-500" />
-                <span>
-                  {language === "en"
-                    ? "Chat on WhatsApp"
-                    : "Escríbenos por WhatsApp"}
-                </span>
-              </a>
-              <a
-                href={telHref(phone)}
-                className="flex items-center text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
-              >
-                <Phone className="h-5 w-5 mr-2 text-orange-600 dark:text-orange-400" />
-                <span>{phone}</span>
-              </a>
+              {whatsapp && (
+                <a
+                  href={waHref(whatsapp, whatsappMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                >
+                  <FaWhatsapp className="h-5 w-5 mr-2 text-green-600 dark:text-green-500" />
+                  <span>
+                    {language === "en"
+                      ? "Chat on WhatsApp"
+                      : "Escríbenos por WhatsApp"}
+                  </span>
+                </a>
+              )}
+              {phone && (
+                <a
+                  href={telHref(phone)}
+                  className="flex items-center text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                >
+                  <Phone className="h-5 w-5 mr-2 text-orange-600 dark:text-orange-400" />
+                  <span>{phone}</span>
+                </a>
+              )}
             </div>
           </div>
         )}

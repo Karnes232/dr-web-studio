@@ -97,16 +97,39 @@ export function organizationNode(
     node.image = logoUrl
   }
 
+  // `telephone` is the callable voice line and is the NAP that must agree
+  // with the Google Business Profile and every directory citation. The
+  // WhatsApp number is a messaging endpoint that cannot be dialled, so it is
+  // published as its own contactPoint rather than as Organization.telephone.
   const phone = formatPhone(layout.telephone)
   if (phone) node.telephone = phone
 
-  node.contactPoint = {
-    "@type": "ContactPoint",
-    contactType: "customer service",
-    email: layout.email,
-    ...(phone ? { telephone: phone } : {}),
-    availableLanguage: ["English", "Spanish"],
+  const whatsapp = formatPhone(layout.whatsapp)
+
+  const contactPoints: JsonObject[] = [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: layout.email,
+      ...(phone ? { telephone: phone } : {}),
+      availableLanguage: ["English", "Spanish"],
+    },
+  ]
+
+  // Only a second node once the two numbers actually differ — until the
+  // WhatsApp field is populated the GROQ `coalesce` makes them identical, and
+  // emitting a duplicate contactPoint would be noise.
+  if (whatsapp && whatsapp !== phone) {
+    contactPoints.push({
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: whatsapp,
+      availableLanguage: ["English", "Spanish"],
+    })
   }
+
+  node.contactPoint =
+    contactPoints.length === 1 ? contactPoints[0] : contactPoints
 
   if (layout.address) {
     // Build from only the populated subfields — the GROQ projection returns

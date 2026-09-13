@@ -35,6 +35,7 @@ const logoQuery = `*[_type == "generalLayout"][0] {
 const companyInfoQuery = `*[_type == "generalLayout"][0] {
   email,
   telephone,
+  "whatsapp": coalesce(whatsapp, telephone),
   companyName,
   footerText {
     en,
@@ -59,6 +60,7 @@ const layoutSchemaQuery = `*[_type == "generalLayout"][0] {
   companyName,
   email,
   telephone,
+  "whatsapp": coalesce(whatsapp, telephone),
   "logo": logo.asset->url,
   address {
     streetAddress,
@@ -92,6 +94,7 @@ export interface LayoutSchemaData {
   companyName?: string
   email?: string
   telephone?: string
+  whatsapp?: string
   logo?: string
   address?: {
     streetAddress?: string

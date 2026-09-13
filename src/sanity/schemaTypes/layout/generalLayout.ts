@@ -23,6 +23,19 @@ export default defineType({
       name: "telephone",
       title: "Telephone",
       type: "string",
+      description:
+        "The callable voice number. Used for tel: links, the visible phone " +
+        "number on the site, and Organization.telephone in structured data. " +
+        "Must be a number that actually rings.",
+    }),
+    defineField({
+      name: "whatsapp",
+      title: "WhatsApp Number",
+      type: "string",
+      description:
+        "The number the WhatsApp AI agent answers on. Digits only, country " +
+        "code first, no + and no spaces (e.g. 18296405433). Used for every " +
+        "wa.me link. Leave empty to fall back to Telephone.",
     }),
     defineField({
       name: "socialLinks",

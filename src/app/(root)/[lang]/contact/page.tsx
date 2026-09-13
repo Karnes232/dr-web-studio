@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd"
 import { Metadata } from "next"
 import React from "react"
 import { buildAlternates } from "@/lib/urls"
+import { getTranslations } from "next-intl/server"
 
 export const revalidate = 86400
 
@@ -24,13 +25,14 @@ interface PageProps {
 
 export default async function Contact({ params }: PageProps) {
   const { lang } = await params
-  const [contactHero, locationInfo, faqsHeader, contactFaqs, companyInfo] =
+  const [contactHero, locationInfo, faqsHeader, contactFaqs, companyInfo, t] =
     await Promise.all([
       getContactHero(),
       getLocationInfo(),
       getFAQsHeader(),
       getContactFaqs(),
       getCompanyInfo(),
+      getTranslations({ locale: lang }),
     ])
   const graph = await getStandardGraph({
     lang,
@@ -80,6 +82,8 @@ export default async function Contact({ params }: PageProps) {
                 }
                 language={lang}
                 phone={companyInfo?.telephone}
+                whatsapp={companyInfo?.whatsapp}
+                whatsappMessage={t("landingPage.whatsappMessage")}
                 googleBusinessUrl={companyInfo?.socialLinks?.googleBusiness}
               />
               <ContactFAQ

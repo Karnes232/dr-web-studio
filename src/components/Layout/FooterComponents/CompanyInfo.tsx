@@ -19,6 +19,7 @@ interface CompanyInfoProps {
   companyInfo: {
     email: string
     telephone?: string
+    whatsapp?: string
     companyName: string
     footerText: {
       en: string
@@ -52,32 +53,32 @@ const CompanyInfo = async ({ logo, companyInfo, lang }: CompanyInfoProps) => {
             {companyInfo.email}
           </a>
         </div>
+        {companyInfo.whatsapp && (
+          <div className="flex items-center text-gray-300">
+            <FaWhatsapp className="h-5 w-5 text-orange-400 mr-3" />
+            <a
+              href={waHref(
+                companyInfo.whatsapp,
+                t("landingPage.whatsappMessage"),
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-400 transition-colors"
+            >
+              {t("landingPage.whatsapp")}
+            </a>
+          </div>
+        )}
         {companyInfo.telephone && (
-          <>
-            <div className="flex items-center text-gray-300">
-              <FaWhatsapp className="h-5 w-5 text-orange-400 mr-3" />
-              <a
-                href={waHref(
-                  companyInfo.telephone,
-                  t("landingPage.whatsappMessage"),
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-400 transition-colors"
-              >
-                {t("landingPage.whatsapp")}
-              </a>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <Phone className="h-5 w-5 text-orange-400 mr-3" />
-              <a
-                href={telHref(companyInfo.telephone)}
-                className="hover:text-orange-400 transition-colors"
-              >
-                {companyInfo.telephone}
-              </a>
-            </div>
-          </>
+          <div className="flex items-center text-gray-300">
+            <Phone className="h-5 w-5 text-orange-400 mr-3" />
+            <a
+              href={telHref(companyInfo.telephone)}
+              className="hover:text-orange-400 transition-colors"
+            >
+              {companyInfo.telephone}
+            </a>
+          </div>
         )}
       </div>
     </div>

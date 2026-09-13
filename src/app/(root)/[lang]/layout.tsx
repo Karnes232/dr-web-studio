@@ -57,7 +57,7 @@ export default async function LangLayout({
             <Navbar
               logo={logo}
               serviceLinks={serviceLinks}
-              phone={companyInfo?.telephone}
+              whatsapp={companyInfo?.whatsapp}
               lang={lang}
             />
             {children}

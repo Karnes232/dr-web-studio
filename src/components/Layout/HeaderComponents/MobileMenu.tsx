@@ -12,12 +12,12 @@ const MobileMenu = ({
   isOpen,
   setIsOpen,
   services,
-  phone,
+  whatsapp,
 }: {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   services: LocalizedServiceLink[]
-  phone?: string
+  whatsapp?: string
 }) => {
   const { t } = useLocale()
 
@@ -111,9 +111,9 @@ const MobileMenu = ({
           >
             {t("resources.get_quote")}
           </Link>
-          {phone && (
+          {whatsapp && (
             <a
-              href={waHref(phone, t("landingPage.whatsappMessage"))}
+              href={waHref(whatsapp, t("landingPage.whatsappMessage"))}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(!isOpen)}
