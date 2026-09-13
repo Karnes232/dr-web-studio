@@ -74,8 +74,13 @@ const ServiceFeatures = ({
                       </p>
                     </div>
                   </div>
-                  <span className="text-orange-700 dark:text-orange-400 font-semibold text-sm ml-4">
-                    +${feature.price}
+                  {/* Not every add-on carries a fixed price. An extra
+                      language is quoted against whichever service is being
+                      built, so a bare "+$undefined" must never render. */}
+                  <span className="text-orange-700 dark:text-orange-400 font-semibold text-sm ml-4 whitespace-nowrap">
+                    {typeof feature.price === "number"
+                      ? `+$${feature.price}`
+                      : t("individualService.quotedPerProject")}
                   </span>
                 </div>
               ))}

@@ -465,7 +465,8 @@ export default defineType({
                       name: "price",
                       title: "Price",
                       type: "number",
-                      validation: Rule => Rule.required(),
+                      description:
+                        "Leave empty for work that is quoted per project — the page then shows \"Quoted per project\" instead of a figure.",
                     },
                   ],
                 },
