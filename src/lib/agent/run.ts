@@ -20,6 +20,14 @@ import type { InboundMessage } from "@/lib/whatsapp/types"
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 /**
+ * Where a human picks the conversation up.
+ *
+ * A Cloud API number is removed from the WhatsApp Business app, so there is no
+ * phone to answer on — replying *as* the business means the provider's inbox.
+ */
+const AGENT_INBOX_URL = "https://inbox.kapso.ai"
+
+/**
  * One inbound message → one reply.
  *
  * Called from inside `after()` in the webhook route, so it runs AFTER the 200
@@ -160,7 +168,11 @@ async function escalate(
         `Reason:   ${reason}`,
         `Urgency:  ${urgency}`,
         `Customer: ${message.profileName || "unknown"} (+${message.waId})`,
-        `Reply:    ${waHref(message.waId)}`,
+        "",
+        `Reply as ${tenant.business_name}:  ${AGENT_INBOX_URL}`,
+        `Reply from your own phone:  ${waHref(message.waId)}`,
+        "  (that one reaches them from your personal number, not the business",
+        "   number they have been talking to — use the inbox where you can)",
         "",
         "The agent has stopped replying to this conversation.",
         "",
