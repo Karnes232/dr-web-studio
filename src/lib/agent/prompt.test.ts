@@ -38,6 +38,15 @@ describe("systemPersona", () => {
     expect(prompt).toMatch(/celular/)
   })
 
+  it("tells the agent to save the lead early, not to wait for a name", () => {
+    // A real 3-turn conversation qualified a tour operator and saved nothing,
+    // because the prompt said to wait for a name the customer never gave —
+    // while the WhatsApp profile name was already in context.
+    expect(prompt).toMatch(/save_lead EARLY/)
+    expect(prompt).toMatch(/WhatsApp name is already given to you/)
+    expect(prompt).toMatch(/Call it ONCE/)
+  })
+
   it("keeps replies WhatsApp-shaped", () => {
     expect(prompt).toMatch(/SHORT/)
     expect(prompt).toMatch(/No markdown headings/)
