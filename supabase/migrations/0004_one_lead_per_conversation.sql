@@ -16,7 +16,10 @@ alter table public.leads
   add column if not exists conversation_id uuid
     references public.conversations(id) on delete set null;
 
--- Partial: form leads have no conversation and must stay unconstrained.
+-- SUPERSEDED BY 0005. This partial index cannot serve as an ON CONFLICT target
+-- (PostgREST emits no matching WHERE clause), so every upsert failed 42P10.
+-- The predicate was unnecessary anyway: a plain UNIQUE already allows unlimited
+-- NULLs. Kept here only so the history reads correctly.
 create unique index if not exists leads_one_per_conversation
   on public.leads (conversation_id)
   where conversation_id is not null;

@@ -54,6 +54,9 @@ export function cleanToolString(raw: unknown): string | undefined {
   return cleaned || undefined
 }
 
+/** Basic shape check — the same one `/api/contact` applies to form input. */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export interface ToolOutcome {
   /** Text handed back to the model as the tool result. */
   result: string
@@ -147,6 +150,27 @@ export async function runTool(
     case "save_lead": {
       const str = (k: string) => cleanToolString(input[k])
 
+      // `strict: true` puts every property in `required`, so the model must
+      // supply an email even when it has none. A real turn filled it with the
+      // service key instead. Validate rather than instruct: a value that is not
+      // shaped like an email is dropped.
+      const rawEmail = str("email")
+      const email = rawEmail && EMAIL_RE.test(rawEmail) ? rawEmail : undefined
+      if (rawEmail && !email) {
+        console.warn(
+          `save_lead: discarded non-email in email field: ${rawEmail}`,
+        )
+      }
+
+      // Same posture for the service key: only accept one that actually exists
+      // in the catalogue, so an invented or mis-assigned slug never lands.
+      const rawKey = str("service_key")
+      const known = new Set(ctx.knowledge.plannerServices.map(p => p.key))
+      const serviceKey = rawKey && known.has(rawKey) ? rawKey : undefined
+      if (rawKey && !serviceKey) {
+        console.warn(`save_lead: discarded unknown service_key: ${rawKey}`)
+      }
+
       // Reuses the same helper the web forms use, so a WhatsApp lead inherits
       // the Resend fallback and is exactly as durable as a form submission.
       // One lead per conversation, guaranteed by a unique index on
@@ -160,9 +184,9 @@ export async function runTool(
         name: str("name") ?? ctx.profileName,
         phone: ctx.waId,
         company: str("company"),
-        email: str("email"),
+        email,
         locale: ctx.locale,
-        serviceKey: str("service_key"),
+        serviceKey,
         projectType: str("project_type"),
         timeline: str("timeline"),
         message: str("notes"),

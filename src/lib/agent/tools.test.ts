@@ -173,6 +173,54 @@ describe("cleanToolString", () => {
   })
 })
 
+describe("save_lead rejects values that are not what the field is for", () => {
+  beforeEach(() => {
+    saveLeadMock.mockReset()
+    saveLeadMock.mockResolvedValue("lead-1")
+  })
+
+  const base = {
+    name: "Ana",
+    company: "",
+    email: "",
+    service_key: "",
+    project_type: "sitio",
+    timeline: "",
+    notes: "",
+  }
+
+  it("drops a non-email from the email field", async () => {
+    // Captured verbatim: strict mode forces an email argument, and a real turn
+    // filled it with the service key.
+    await runTool(
+      "save_lead",
+      { ...base, email: "multilingual-and-international-websites" },
+      ctx,
+    )
+    expect(saveLeadMock.mock.calls[0][0].email).toBeUndefined()
+  })
+
+  it("keeps a real email", async () => {
+    await runTool("save_lead", { ...base, email: "ana@example.com" }, ctx)
+    expect(saveLeadMock.mock.calls[0][0].email).toBe("ana@example.com")
+  })
+
+  it("keeps a service key that exists in the catalogue", async () => {
+    const real = ctx.knowledge.plannerServices[0].key
+    await runTool("save_lead", { ...base, service_key: real }, ctx)
+    expect(saveLeadMock.mock.calls[0][0].serviceKey).toBe(real)
+  })
+
+  it("drops an invented service key rather than storing a slug that means nothing", async () => {
+    await runTool(
+      "save_lead",
+      { ...base, service_key: "super-deluxe-website" },
+      ctx,
+    )
+    expect(saveLeadMock.mock.calls[0][0].serviceKey).toBeUndefined()
+  })
+})
+
 describe("save_lead stays one lead per conversation", () => {
   beforeEach(() => {
     saveLeadMock.mockReset()
