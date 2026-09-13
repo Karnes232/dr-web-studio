@@ -1,6 +1,6 @@
 import "server-only"
 import { getSupabase } from "@/lib/supabase/serverClient"
-import type { InboundMessage, StatusUpdate } from "./types"
+import type { InboundMessage, OutboundMessage, StatusUpdate } from "./types"
 
 /** Postgres unique-violation. A duplicate here is expected, not an error. */
 const UNIQUE_VIOLATION = "23505"
@@ -34,6 +34,17 @@ export interface Conversation {
   cost_usd: number | null
   lead_id: string | null
 }
+
+/**
+ * How long the business must stay silent before the agent picks a handed-off or
+ * escalated conversation back up.
+ *
+ * Measured from `last_outbound_at` — the last time *the business* said
+ * anything, agent or human — not from `last_inbound_at`, which
+ * `upsertConversation` has already stamped with the message being handled by
+ * the time anything reads it, and is therefore always "now".
+ */
+export const RESUME_AFTER_MS = 5 * 24 * 60 * 60 * 1000
 
 /**
  * Claim a webhook delivery.
@@ -207,6 +218,189 @@ export async function recordOutbound(
     .from("conversations")
     .update({ last_outbound_at: now, updated_at: now })
     .eq("id", conversation.id)
+}
+
+/**
+ * Have we already recorded this outbound message ourselves?
+ *
+ * This is the whole basis of takeover detection. Kapso reports every outbound
+ * message as `origin: "cloud_api"` whether the agent's API call or a person
+ * typing in the inbox produced it, so the only thing that distinguishes them is
+ * whether `recordOutbound` had already written the wamid.
+ *
+ * Scoped by tenant so the lookup uses the (tenant_id, provider_message_id)
+ * unique index rather than scanning.
+ */
+export async function haveSentMessage(
+  tenant: Tenant,
+  providerMessageId: string,
+): Promise<boolean> {
+  const supabase = getSupabase()
+  if (!supabase) return true // not configured: assume ours, never stand down
+
+  const { data, error } = await supabase
+    .from("messages")
+    .select("id")
+    .eq("tenant_id", tenant.tenant_id)
+    .eq("provider_message_id", providerMessageId)
+    .maybeSingle()
+
+  if (error) {
+    // Fail SAFE, not open: a lookup failure must not be read as "a human sent
+    // this", or a transient Supabase error would silence the agent.
+    console.error("haveSentMessage failed:", error)
+    return true
+  }
+  return !!data
+}
+
+/** Find an existing conversation by the customer's id. Never creates one. */
+export async function findConversation(
+  tenant: Tenant,
+  waId: string,
+): Promise<Conversation | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data, error } = await supabase
+    .from("conversations")
+    .select("*")
+    .eq("tenant_id", tenant.tenant_id)
+    .eq("wa_id", waId)
+    .maybeSingle()
+
+  if (error) {
+    console.error("findConversation failed:", error)
+    return null
+  }
+  return (data as Conversation) ?? null
+}
+
+/**
+ * Store a message a person typed in the provider's inbox, and stand the agent
+ * down.
+ *
+ * `role` stays `'assistant'`: from the model's point of view the business said
+ * this, and `loadHistory` must replay it as such. Authorship lives in its own
+ * column because `role` is CHECK-constrained to user|assistant|system, and a
+ * violation there is swallowed silently by the insert's error branch.
+ */
+export async function recordHumanOutbound(
+  tenant: Tenant,
+  conversation: Conversation,
+  message: OutboundMessage,
+): Promise<void> {
+  const supabase = getSupabase()
+  if (!supabase) return
+
+  const sentAt = message.timestamp.toISOString()
+  const now = new Date().toISOString()
+
+  const { error } = await supabase.from("messages").insert({
+    conversation_id: conversation.id,
+    tenant_id: tenant.tenant_id,
+    provider_message_id: message.providerMessageId,
+    direction: "outbound",
+    role: "assistant",
+    authored_by: "human",
+    type: message.type,
+    body: message.text,
+    status: "sent",
+    sent_at: sentAt,
+  })
+  if (error && error.code !== UNIQUE_VIOLATION) {
+    console.error("recordHumanOutbound failed:", error)
+  }
+
+  const { error: cErr } = await supabase
+    .from("conversations")
+    .update({
+      status: "handed-off",
+      handed_off_at: now,
+      last_outbound_at: sentAt,
+      updated_at: now,
+    })
+    .eq("id", conversation.id)
+  if (cErr) console.error("recordHumanOutbound (conversation) failed:", cErr)
+}
+
+/**
+ * The pure half of {@link claimTurn}: may the agent answer, and does the
+ * conversation need reactivating first?
+ *
+ * Separated so the idle rule — the part most easily got wrong — is testable
+ * without a database, the same way `isWindowOpen` is.
+ *
+ * Idleness is measured from `last_outbound_at` deliberately.
+ * `upsertConversation` stamps `last_inbound_at` with the message currently
+ * being handled before anything reads the row, so that field is always "now"
+ * and cannot express "how long has this been quiet". `last_outbound_at` means
+ * "the last time the business said anything" — agent or human, since
+ * `recordHumanOutbound` maintains it too — which is the intended semantic.
+ *
+ * A conversation that was handed off before ever receiving a reply has a null
+ * `last_outbound_at`; treating that as epoch means it is immediately eligible,
+ * which is right — nobody is mid-exchange with the customer.
+ */
+export function turnDecision(
+  conversation: Pick<Conversation, "status" | "last_outbound_at">,
+  now = new Date(),
+): { allowed: boolean; resumed: boolean; reactivate: boolean } {
+  if (conversation.status === "active") {
+    return { allowed: true, resumed: false, reactivate: false }
+  }
+  if (conversation.status === "closed") {
+    return { allowed: false, resumed: false, reactivate: false }
+  }
+
+  const last = conversation.last_outbound_at
+    ? new Date(conversation.last_outbound_at).getTime()
+    : 0
+  if (now.getTime() - last < RESUME_AFTER_MS) {
+    return { allowed: false, resumed: false, reactivate: false }
+  }
+  return { allowed: true, resumed: true, reactivate: true }
+}
+
+/**
+ * May the agent answer this conversation?
+ *
+ * Replaces a bare `status !== "active"` early-return. A conversation the agent
+ * escalated, or that a human took over, comes back automatically once the
+ * business has been silent for {@link RESUME_AFTER_MS} — otherwise a customer
+ * who returns weeks later is met with permanent silence, which is what the
+ * original one-way `markEscalated` produced.
+ *
+ * Returns `{ allowed, resumed }`; `resumed` tells the caller to have the agent
+ * re-introduce itself, since its usual "disclose on the first reply" rule
+ * cannot fire when there is already history.
+ */
+export async function claimTurn(
+  conversation: Conversation,
+  now = new Date(),
+): Promise<{ allowed: boolean; resumed: boolean }> {
+  const decision = turnDecision(conversation, now)
+  if (!decision.reactivate) return decision
+
+  const supabase = getSupabase()
+  if (!supabase) return { allowed: false, resumed: false }
+
+  const { error } = await supabase
+    .from("conversations")
+    .update({ status: "active", updated_at: now.toISOString() })
+    .eq("id", conversation.id)
+
+  if (error) {
+    // Could not reclaim it — stay quiet rather than answer over a human.
+    console.error("claimTurn failed:", error)
+    return { allowed: false, resumed: false }
+  }
+
+  console.log(
+    `agent: resuming ${conversation.id} after ${conversation.status}, ` +
+      `business silent since ${conversation.last_outbound_at ?? "never"}`,
+  )
+  return { allowed: true, resumed: true }
 }
 
 /** Apply a delivery-status webhook to the outbound row it describes. */

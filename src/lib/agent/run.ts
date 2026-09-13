@@ -42,6 +42,7 @@ export async function runAgent(
   tenant: Tenant,
   conversation: Conversation,
   message: InboundMessage,
+  opts: { resumed?: boolean } = {},
 ): Promise<void> {
   // Spend cap before anything costly. Degrades to a human handoff rather than
   // silently going over budget.
@@ -76,6 +77,7 @@ export async function runAgent(
       locale,
       waId: message.waId,
       profileName: message.profileName,
+      resumed: opts.resumed,
     })
   } catch (error) {
     // A failed model call must not leave the customer in silence.

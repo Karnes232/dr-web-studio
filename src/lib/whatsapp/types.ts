@@ -28,6 +28,29 @@ export interface InboundMessage {
   timestamp: Date
 }
 
+/**
+ * An outbound message echoed back to us by the provider.
+ *
+ * Exists to answer one question: did *we* send this, or did a person type it in
+ * the provider's inbox? Kapso cannot tell us — an inbox reply and an API reply
+ * both report `origin: "cloud_api"` — so the answer is inferred from whether we
+ * had already recorded the wamid ourselves.
+ *
+ * It carries `text` because a human's words belong in the transcript; the
+ * status path deliberately does not, which is why this is its own kind.
+ */
+export interface OutboundMessage {
+  providerMessageId: string
+  /** The customer, as a phone number or a business-scoped user id. */
+  waId?: string
+  providerConversationId?: string
+  /** The business number it was sent from — the tenant key. */
+  phoneNumberId: string
+  type: string
+  text: string
+  timestamp: Date
+}
+
 export interface StatusUpdate {
   providerMessageId: string
   phoneNumberId: string
@@ -41,5 +64,6 @@ export interface StatusUpdate {
 
 export type NormalizedEvent =
   | { kind: "message"; message: InboundMessage }
+  | { kind: "outbound"; message: OutboundMessage }
   | { kind: "status"; status: StatusUpdate }
   | { kind: "ignored"; reason: string }

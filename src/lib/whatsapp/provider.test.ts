@@ -12,6 +12,7 @@ const inboundRaw = fixture("inbound-text.json")
 const statusRaw = fixture("status-failed.json")
 const batchedRaw = fixture("batched.json")
 const usernameRaw = fixture("inbound-username.json")
+const sentRaw = fixture("message-sent.json")
 
 describe("normalizeKapsoWebhook — inbound", () => {
   it("maps an inbound text message onto the neutral shape", () => {
@@ -194,5 +195,78 @@ describe("normalizeKapsoWebhook — username-only sender", () => {
     delete body.conversation.username
     const none = normalizeKapsoWebhook(body, "whatsapp.message.received")
     expect(none.kind).toBe("ignored")
+  })
+})
+
+/**
+ * Outbound echoes. Subscribing to `whatsapp.message.sent` is how a human
+ * takeover is detected, so these payloads must reach the route with their text
+ * intact — the status path has nowhere to put a body and would discard it.
+ *
+ * NOTE: shape follows Kapso's documented outbound example. Replace with a
+ * verbatim capture from the delivery log once one exists.
+ */
+describe("normalizeKapsoWebhook — outbound echo", () => {
+  const event = normalizeKapsoWebhook(
+    JSON.parse(sentRaw),
+    "whatsapp.message.sent",
+  )
+
+  it("is its own kind, not a status", () => {
+    // It satisfies all three `isStatus` clauses, so it must be caught first.
+    expect(event.kind).toBe("outbound")
+  })
+
+  it("keeps the text a human typed", () => {
+    if (event.kind !== "outbound") throw new Error("expected outbound")
+    expect(event.message.text).toBe(
+      "Hola, soy James. Te respondo yo directamente.",
+    )
+  })
+
+  it("carries the wamid, tenant key and recipient", () => {
+    if (event.kind !== "outbound") throw new Error("expected outbound")
+    expect(event.message.providerMessageId).toMatch(/^wamid\./)
+    expect(event.message.phoneNumberId).toBe("1262180810319552")
+    // A username-only customer: the recipient is the BSUID, and it is what
+    // `findConversation` keys on.
+    expect(event.message.waId).toBe("DO.1757134975438075")
+  })
+
+  it("reads a body from kapso.content when text.body is absent", () => {
+    const body = JSON.parse(sentRaw)
+    delete body.message.text
+    body.message.kapso.content = "desde el inbox"
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.sent")
+    if (e.kind !== "outbound") throw new Error("expected outbound")
+    expect(e.message.text).toBe("desde el inbox")
+  })
+
+  it("ignores an outbound event with no text at all", () => {
+    const body = JSON.parse(sentRaw)
+    delete body.message.text
+    expect(normalizeKapsoWebhook(body, "whatsapp.message.sent").kind).toBe(
+      "ignored",
+    )
+  })
+
+  it("does NOT treat delivery receipts as new messages", () => {
+    // `delivered`/`read` also carry direction "outbound" and would replay the
+    // same text on every receipt if the header were not the discriminator.
+    const body = JSON.parse(sentRaw)
+    body.message.kapso.status = "delivered"
+    body.message.kapso.statuses = [{ status: "delivered" }]
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.delivered")
+    expect(e.kind).toBe("status")
+    if (e.kind !== "status") return
+    expect(e.status.status).toBe("delivered")
+  })
+
+  it("leaves the existing failed-status path untouched", () => {
+    const e = normalizeKapsoWebhook(
+      JSON.parse(statusRaw),
+      "whatsapp.message.failed",
+    )
+    expect(e.kind).toBe("status")
   })
 })

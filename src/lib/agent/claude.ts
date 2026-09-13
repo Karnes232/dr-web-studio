@@ -46,6 +46,13 @@ export interface TurnParams {
   locale: string
   waId: string
   profileName?: string
+  /**
+   * The conversation was handed to a person (or escalated) and has just been
+   * reclaimed after a long silence. The "introduce yourself on your first
+   * reply" rule cannot fire here — there is history — so the model is told
+   * explicitly to say who it is again.
+   */
+  resumed?: boolean
 }
 
 let client: Anthropic | null = null
@@ -115,9 +122,11 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
     params.profileName
       ? `The customer's WhatsApp name is ${params.profileName}.`
       : "",
-    params.conversation.turn_count === 0
-      ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
-      : "You have already introduced yourself; do not do it again.",
+    params.resumed
+      ? "This conversation was handled by a person, or paused, and has been quiet for days. You are picking it back up. Greet them again briefly, say plainly that you are the assistant (not James) helping them, and acknowledge the gap before continuing — do not pretend the pause did not happen."
+      : params.conversation.turn_count === 0
+        ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
+        : "You have already introduced yourself; do not do it again.",
     params.conversation.lead_id
       ? "A lead has already been saved for this conversation. Do NOT call save_lead again unless the service or the deadline materially changes."
       : "No lead saved yet for this conversation.",

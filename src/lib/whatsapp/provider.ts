@@ -1,5 +1,9 @@
 import type { MessageStatus, NormalizedEvent } from "./types"
 
+/** Kapso's event header for an outbound message leaving the business number. */
+export const EVENT_MESSAGE_SENT = "whatsapp.message.sent"
+export const EVENT_MESSAGE_RECEIVED = "whatsapp.message.received"
+
 /**
  * Normalise a Kapso webhook body into provider-neutral shapes.
  *
@@ -75,8 +79,43 @@ export function normalizeKapsoWebhook(
   const direction = asStr(kapso.direction)
   const statuses = Array.isArray(kapso.statuses) ? kapso.statuses : undefined
 
+  // An outbound message echoed back to us. This has to be caught BEFORE the
+  // status test below, which is a deny-list of one string and would otherwise
+  // claim it on all three clauses — and the status path has nowhere to put the
+  // text, so the words would be parsed out and thrown away.
+  //
+  // Only the explicit header counts. A delivery receipt for an earlier message
+  // also has `direction: "outbound"`, and treating those as fresh messages
+  // would replay the same text on every `delivered` and `read`.
+  if (event === EVENT_MESSAGE_SENT) {
+    // Kapso's documented outbound example puts the body in `message.text.body`;
+    // our own inbound payloads use `kapso.content`. Read both — neither is
+    // guaranteed and an empty body must not masquerade as a real reply.
+    const sentText =
+      asStr(asObj(message.text)?.body) ?? asStr(kapso.content) ?? ""
+    if (!sentText) {
+      return { kind: "ignored", reason: "outbound message with no text" }
+    }
+
+    return {
+      kind: "outbound",
+      message: {
+        providerMessageId,
+        waId:
+          asStr(message.to) ??
+          asStr(conversation.phone_number) ??
+          asStr(conversation.business_scoped_user_id),
+        providerConversationId: asStr(conversation.id),
+        phoneNumberId,
+        type: asStr(message.type) ?? "text",
+        text: sentText,
+        timestamp: toDate(message.timestamp),
+      },
+    }
+  }
+
   const isStatus =
-    (event && event !== "whatsapp.message.received") ||
+    (event && event !== EVENT_MESSAGE_RECEIVED) ||
     direction === "outbound" ||
     !!statuses
 

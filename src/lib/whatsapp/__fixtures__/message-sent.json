@@ -1,0 +1,27 @@
+{
+  "message": {
+    "id": "wamid.HBgTRE8uMTc1NzEzNDk3NTQzODA3NRUUABIYFDlDOEEyNEE5QkNERjRGNzc4OUEA",
+    "timestamp": "1789329999",
+    "type": "text",
+    "to": "DO.1757134975438075",
+    "text": { "body": "Hola, soy James. Te respondo yo directamente." },
+    "kapso": {
+      "direction": "outbound",
+      "status": "sent",
+      "processing_status": "completed",
+      "origin": "cloud_api",
+      "has_media": false,
+      "statuses": [{ "status": "sent", "timestamp": "1789329999" }]
+    }
+  },
+  "conversation": {
+    "id": "d847b0b0-b53c-458a-bbc2-094210d04870",
+    "status": "active",
+    "username": "Jameskarnes",
+    "phone_number_id": "1262180810319552",
+    "business_scoped_user_id": "DO.1757134975438075"
+  },
+  "is_new_conversation": false,
+  "phone_number_id": "1262180810319552",
+  "type": "whatsapp.message.sent"
+}
