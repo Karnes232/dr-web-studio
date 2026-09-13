@@ -2,13 +2,12 @@ import { after, NextRequest, NextResponse } from "next/server"
 import { timingSafeEqual } from "crypto"
 import { isValidKapsoSignature } from "@/lib/whatsapp/verify"
 import { normalizeKapsoWebhook } from "@/lib/whatsapp/provider"
-import { sendText } from "@/lib/whatsapp/send"
+import { runAgent } from "@/lib/agent/run"
 import {
   applyStatus,
   claimDelivery,
   isWindowOpen,
   recordInbound,
-  recordOutbound,
   resolveTenant,
   upsertConversation,
 } from "@/lib/whatsapp/store"
@@ -177,28 +176,10 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
       return
     }
 
-    // Phase 1: a fixed acknowledgement. Phase 2 replaces this with Claude.
-    const locale = conversation.locale ?? tenant.default_locale ?? "es"
-    const greeting =
-      tenant.greeting?.[locale] ??
-      (locale === "en"
-        ? "Thanks for your message — we'll reply shortly."
-        : "Gracias por tu mensaje — te respondemos en breve.")
-
-    const result = await sendText(
-      tenant.phone_number_id,
-      message.waId,
-      greeting,
-    )
-
-    if (!result.ok) {
-      console.error(
-        `whatsapp send failed (${result.errorCode ?? "no code"}): ${result.errorMessage}`,
-      )
-      return
-    }
-
-    await recordOutbound(tenant, conversation, result.messageId, greeting)
+    // Claude composes, sends, records the outbound row and meters the cost.
+    // It handles its own failures — a broken model call escalates to a human
+    // rather than leaving the customer in silence.
+    await runAgent(tenant, conversation, message)
   } catch (error) {
     // Never throw out of `after()` — the response has already been sent and a
     // rejection here would be an unhandled promise, not a retry.

@@ -121,6 +121,10 @@ React Email templates in `src/emails/`. Rendered server-side via `@react-email/r
   (`X-Webhook-Signature`, SHA-256 hex over the **raw** body) is the real check.
 - The WhatsApp webhook must answer within **10 seconds** or Kapso retries twice
   and the customer gets duplicate replies. Acknowledge first, work in `after()`.
+- The WhatsApp agent may repeat **published** package prices from Sanity
+  `pricingData` verbatim, but must never calculate a price for a specific
+  project — a custom-price question escalates to a human. `compute_quote` is
+  deliberately not a tool.
 
 ---
 
@@ -159,6 +163,9 @@ WHATSAPP_WEBHOOK_TOKEN=
 # ever talks to graph.facebook.com directly instead of through Kapso.
 KAPSO_API_BASE=
 WHATSAPP_VERIFY_TOKEN=
+
+# Claude — powers the WhatsApp agent
+ANTHROPIC_API_KEY=
 ```
 
 ---

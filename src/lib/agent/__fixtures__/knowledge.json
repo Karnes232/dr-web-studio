@@ -1,0 +1,1466 @@
+{
+  "contactFaqs": [
+    {
+      "answer": {
+        "en": "We typically respond to emails within 2 hours during business hours.",
+        "es": "Normalmente respondemos a los correos electrónicos dentro de 2 horas durante el horario laboral."
+      },
+      "question": {
+        "en": "How quickly can you respond to my inquiry?",
+        "es": "¿Qué tan rápido puedes responder a mi consulta?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Yes! We offer a free 30-minute consultation to discuss your project,  understand your needs, and provide initial recommendations.",
+        "es": "¡Sí! Ofrecemos una consulta gratuita de 30 minutos para hablar sobre su proyecto, comprender sus necesidades y ofrecerle recomendaciones iniciales."
+      },
+      "question": {
+        "en": "Do you offer free consultations?",
+        "es": "¿Ofrecen consultas gratuitas?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Tell us about your business, the type of website you need, your timeline, budget range, and any specific features or requirements you have in mind.",
+        "es": "Cuéntenos sobre su negocio, el tipo de sitio web que necesita, su cronograma, rango de presupuesto y cualquier característica o requisito específico que tenga en mente."
+      },
+      "question": {
+        "en": "What information should I include in my message?",
+        "es": "¿Qué información debo incluir en mi mensaje?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Absolutely! While we're based in the DR, we work with clients throughout the Caribbean, Latin America, and internationally.",
+        "es": "¡Por supuesto! Aunque estamos ubicados en República Dominicana, trabajamos con clientes en todo el Caribe, Latinoamérica y el mundo."
+      },
+      "question": {
+        "en": "Do you work with clients outside the Dominican Republic?",
+        "es": "¿Trabajan con clientes fuera de República Dominicana?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Simple websites take 2-3 weeks, business websites 3-5 weeks, and complex e-commerce sites 5-8 weeks. Timeline depends on project scope and content readiness.",
+        "es": "Los sitios web sencillos tardan de 2 a 3 semanas, los sitios web comerciales, de 3 a 5 semanas, y los sitios de comercio electrónico complejos, de 5 a 8 semanas. El plazo depende del alcance del proyecto y de la disponibilidad del contenido."
+      },
+      "question": {
+        "en": "What's the typical project timeline?",
+        "es": "¿Cuál es el cronograma típico del proyecto?"
+      }
+    }
+  ],
+  "faqCategories": [
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "DR Web Studio is a web development agency based in Punta Cana, Dominican Republic. We specialize in building fast, modern, and multilingual websites using Next.js, Sanity CMS, TypeScript, and Tailwind CSS. We serve businesses across the entire Dominican Republic — from tourism companies in Punta Cana to retailers in Santo Domingo and service businesses nationwide.",
+            "es": "DR Web Studio es una agencia de desarrollo web ubicada en Punta Cana, República Dominicana. Nos especializamos en crear sitios web rápidos, modernos y multilingües usando Next.js, Sanity CMS, TypeScript y Tailwind CSS. Atendemos negocios en toda República Dominicana — desde empresas turísticas en Punta Cana hasta comercios en Santo Domingo y negocios de servicios a nivel nacional."
+          },
+          "question": {
+            "en": "Who is DR Web Studio?",
+            "es": "¿Quién es DR Web Studio?"
+          }
+        },
+        {
+          "answer": {
+            "en": "We work with businesses across many industries, with particular expertise in tourism (dive shops, tour operators, hotels), events and weddings, photography, e-commerce, restaurants, real estate, and professional services. Our bilingual approach makes us especially well-suited for businesses serving both Dominican and international clients.",
+            "es": "Trabajamos con negocios de muchas industrias, con experiencia particular en turismo (tiendas de buceo, operadores de tours, hoteles), eventos y bodas, fotografía, e-commerce, restaurantes, bienes raíces y servicios profesionales. Nuestro enfoque bilingüe nos hace especialmente adecuados para negocios que atienden clientes dominicanos e internacionales."
+          },
+          "question": {
+            "en": "What industries do you work with?",
+            "es": "¿Con qué industrias trabajan?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Absolutely. While we're based in Punta Cana, we serve businesses across the entire Dominican Republic — Santo Domingo, Santiago, La Romana, Samaná, Puerto Plata, Bávaro, Higüey, and beyond. We handle everything remotely with video calls, shared project tools, and regular updates. In-person meetings are available for clients in the Punta Cana–Bávaro area.",
+            "es": "Por supuesto. Aunque estamos ubicados en Punta Cana, atendemos negocios en toda República Dominicana — Santo Domingo, Santiago, La Romana, Samaná, Puerto Plata, Bávaro, Higüey y más allá. Gestionamos todo de forma remota con videollamadas, herramientas de proyecto compartidas y actualizaciones regulares. Las reuniones presenciales están disponibles para clientes en el área de Punta Cana–Bávaro."
+          },
+          "question": {
+            "en": "Do you work with businesses outside of Punta Cana?",
+            "es": "¿Trabajan con negocios fuera de Punta Cana?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes! We're based in Punta Cana, so in-person meetings are available for local clients. We can meet at your business, a coworking space, or a café. For clients elsewhere in the Dominican Republic or internationally, we work via video call — same quality of service, just remote.",
+            "es": "¡Sí! Estamos en Punta Cana, así que las reuniones presenciales están disponibles para clientes locales. Podemos reunirnos en tu negocio, un coworking o un café. Para clientes en otras partes de República Dominicana o internacionales, trabajamos por videollamada — la misma calidad de servicio, solo remoto."
+          },
+          "question": {
+            "en": "Can we meet in person?",
+            "es": "¿Podemos reunirnos en persona?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes — bilingual websites are one of our core specialties. We build full Spanish and English versions with seamless language switching, separate SEO optimization for each language, and content that's culturally adapted for each audience — not just machine-translated text. This is essential for tourism businesses and any Dominican company serving international clients.",
+            "es": "Sí — los sitios web bilingües son una de nuestras especialidades principales. Construimos versiones completas en español e inglés con cambio de idioma fluido, optimización SEO separada para cada idioma y contenido culturalmente adaptado para cada audiencia — no solo texto traducido por máquina. Esto es esencial para negocios turísticos y cualquier empresa dominicana que atienda clientes internacionales."
+          },
+          "question": {
+            "en": "Do you build bilingual websites in Spanish and English?",
+            "es": "¿Construyen sitios web bilingües en español e inglés?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Start by completing our free project questionnaire or contact us directly for a consultation. We'll review your needs, discuss your goals, and provide a detailed quote within 48 hours. Once you approve the 50% upfront payment, we begin the discovery phase immediately.",
+            "es": "Comienza completando nuestro cuestionario de proyecto gratuito o contáctanos directamente para una consulta. Revisaremos tus necesidades, discutiremos tus objetivos y proporcionaremos una cotización detallada en 48 horas. Una vez que apruebes el pago inicial del 50%, comenzamos la fase de descubrimiento de inmediato."
+          },
+          "question": {
+            "en": "How do I get started?",
+            "es": "¿Cómo puedo empezar?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Your initial consultation is completely free. We'll discuss your business, your goals for the website, your timeline, and your budget. After the consultation, you'll receive a detailed proposal with a clear scope, timeline, and price — no obligation.",
+            "es": "Sí. Tu consulta inicial es completamente gratuita. Discutiremos tu negocio, tus objetivos para el sitio web, tu cronograma y tu presupuesto. Después de la consulta, recibirás una propuesta detallada con alcance, cronograma y precio claros — sin compromiso."
+          },
+          "question": {
+            "en": "Do you offer free consultations?",
+            "es": "¿Ofrecen consultas gratuitas?"
+          }
+        }
+      ],
+      "title": {
+        "en": "General",
+        "es": "General"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "Timelines depend on the project type: landing pages take 2–3 weeks, custom business websites take 6–8 weeks, and web applications take 5–8 weeks. We provide a detailed timeline during the discovery phase so there are no surprises. Complex projects with e-commerce, multiple languages, or custom features may take longer.",
+            "es": "Los plazos dependen del tipo de proyecto: las landing pages toman 2–3 semanas, los sitios web empresariales personalizados 6–8 semanas y las aplicaciones web 5–8 semanas. Proporcionamos un cronograma detallado durante la fase de descubrimiento para que no haya sorpresas. Proyectos complejos con e-commerce, múltiples idiomas o funcionalidades personalizadas pueden tomar más tiempo."
+          },
+          "question": {
+            "en": "How long does it take to build a website?",
+            "es": "¿Cuánto tiempo toma crear un sitio web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Our process has five stages: (1) Discovery & Planning — we learn your business, goals, and audience; (2) Design & Prototyping — we create a custom visual design with two revision rounds; (3) Development & CMS Setup — we build with Next.js and connect Sanity CMS; (4) Testing & Launch — we test on all devices, set up your domain/email, and go live; (5) Post-Launch Support — 30 days of free support plus one year of free hosting and maintenance.",
+            "es": "Nuestro proceso tiene cinco etapas: (1) Descubrimiento y Planificación — conocemos tu negocio, objetivos y audiencia; (2) Diseño y Prototipado — creamos un diseño visual personalizado con dos rondas de revisión; (3) Desarrollo y Configuración del CMS — construimos con Next.js y conectamos Sanity CMS; (4) Pruebas y Lanzamiento — probamos en todos los dispositivos, configuramos dominio/email y lanzamos; (5) Soporte Post-Lanzamiento — 30 días de soporte gratis más un año de hosting y mantenimiento gratis."
+          },
+          "question": {
+            "en": "What is your web development process?",
+            "es": "¿Cuál es su proceso de desarrollo web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Every project includes two full revision rounds. During each round, you can request changes to colors, layouts, typography, imagery, and content placement. We work collaboratively to ensure the final design matches your vision exactly.",
+            "es": "Cada proyecto incluye dos rondas completas de revisión. Durante cada ronda, puedes solicitar cambios en colores, layouts, tipografía, imágenes y ubicación de contenido. Trabajamos colaborativamente para asegurar que el diseño final coincida exactamente con tu visión."
+          },
+          "question": {
+            "en": "How many design revisions do I get?",
+            "es": "¿Cuántas revisiones de diseño obtengo?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Every website includes Sanity CMS — a user-friendly content editor where you can update text, images, blog posts, products, and more without any coding knowledge. We provide complete training so you're confident managing your site independently.",
+            "es": "Sí. Cada sitio web incluye Sanity CMS — un editor de contenido intuitivo donde puedes actualizar textos, imágenes, artículos de blog, productos y más sin conocimientos de programación. Proporcionamos capacitación completa para que gestiones tu sitio de forma independiente con confianza."
+          },
+          "question": {
+            "en": "Can I edit the website content myself after launch?",
+            "es": "¿Puedo editar el contenido del sitio web yo mismo después del lanzamiento?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Every website we build is designed from scratch — we never use WordPress themes, Wix templates, or pre-built page builders. Your website will be completely unique, designed specifically for your brand, audience, and business goals.",
+            "es": "Cada sitio web que construimos se diseña desde cero — nunca usamos temas de WordPress, plantillas de Wix ni page builders prefabricados. Tu sitio web será completamente único, diseñado específicamente para tu marca, audiencia y objetivos de negocio."
+          },
+          "question": {
+            "en": "Do you use templates or build custom designs?",
+            "es": "¿Usan plantillas o construyen diseños personalizados?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Website migrations and rebuilds start at $600. We take your existing content and rebuild it on our modern Next.js stack — dramatically improving speed, SEO, security, and visual design. We handle the complete migration so you don't lose any content or search rankings.",
+            "es": "Sí. Las migraciones y reconstrucciones de sitios web comienzan en $600. Tomamos tu contenido existente y lo reconstruimos en nuestro stack moderno de Next.js — mejorando drásticamente la velocidad, SEO, seguridad y diseño visual. Manejamos la migración completa para que no pierdas contenido ni posicionamiento en buscadores."
+          },
+          "question": {
+            "en": "Can you redesign or migrate my existing website?",
+            "es": "¿Pueden rediseñar o migrar mi sitio web existente?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Absolutely. We use a mobile-first design approach — we design for phones first, then scale up to tablets and desktops. Over 70% of Dominican internet users browse on mobile, so every site we build is fully responsive and optimized for fast loading on mobile data connections.",
+            "es": "Absolutamente. Usamos un enfoque de diseño mobile-first — diseñamos primero para teléfonos y luego escalamos a tablets y escritorio. Más del 70% de los usuarios de internet dominicanos navegan en móvil, así que cada sitio que construimos es totalmente responsivo y optimizado para carga rápida en conexiones de datos móviles."
+          },
+          "question": {
+            "en": "Will my website be mobile-friendly?",
+            "es": "¿Mi sitio web será compatible con móviles?"
+          }
+        },
+        {
+          "answer": {
+            "en": "We'll need your logo (if you have one), brand colors and fonts (if established), content for your pages (text and images), and access to your domain registrar if you already own a domain. Don't worry if you don't have everything ready — we guide you through our project questionnaire, and we can help with content strategy and image selection during the discovery phase.",
+            "es": "Necesitaremos tu logo (si tienes uno), colores y fuentes de marca (si están establecidos), contenido para tus páginas (texto e imágenes) y acceso a tu registrador de dominio si ya posees un dominio. No te preocupes si no tienes todo listo — te guiamos a través de nuestro cuestionario de proyecto, y podemos ayudar con estrategia de contenido y selección de imágenes durante la fase de descubrimiento."
+          },
+          "question": {
+            "en": "What do I need to provide to get started?",
+            "es": "¿Qué necesito proporcionar para empezar?"
+          }
+        }
+      ],
+      "title": {
+        "en": "Website Development",
+        "es": "Desarrollo de Sitios Web"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "Our pricing starts at $400 for landing pages, $600 for website migrations, $700 for headless CMS development, $800 for multilingual websites, $900 for e-commerce integrations, $950 for custom business websites, and $1,250 for web applications. API integrations start at $500. All projects include one year of free hosting, two revision rounds, domain and email setup, CMS training, and 30 days of post-launch support.",
+            "es": "Nuestros precios comienzan en $400 para landing pages, $600 para migraciones de sitios web, $700 para desarrollo CMS headless, $800 para sitios multilingües, $900 para integraciones e-commerce, $950 para sitios web empresariales personalizados y $1,250 para aplicaciones web. Las integraciones API comienzan en $500. Todos los proyectos incluyen un año de hosting gratis, dos rondas de revisión, configuración de dominio y email, capacitación en CMS y 30 días de soporte post-lanzamiento."
+          },
+          "question": {
+            "en": "How much does a website cost?",
+            "es": "¿Cuánto cuesta un sitio web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "We charge 50% upfront to begin work and 50% upon project completion before launch. This split protects both sides — you know we're committed to finishing, and we know you're committed to the project. We accept bank transfers and PayPal.",
+            "es": "Cobramos 50% al inicio para comenzar el trabajo y 50% al completar el proyecto antes del lanzamiento. Esta división protege a ambas partes — sabes que estamos comprometidos a terminar, y nosotros sabemos que estás comprometido con el proyecto. Aceptamos transferencias bancarias y PayPal."
+          },
+          "question": {
+            "en": "What are your payment terms?",
+            "es": "¿Cuáles son sus términos de pago?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Every project includes: custom design (no templates), two revision rounds, Sanity CMS integration with training, domain and business email setup, SEO optimization, mobile-responsive design, one year of free hosting and maintenance (valued at $1,140), and 30 days of post-launch support.",
+            "es": "Cada proyecto incluye: diseño personalizado (sin plantillas), dos rondas de revisión, integración con Sanity CMS con capacitación, configuración de dominio y email empresarial, optimización SEO, diseño responsivo para móvil, un año de hosting y mantenimiento gratis (valorado en $1,140) y 30 días de soporte post-lanzamiento."
+          },
+          "question": {
+            "en": "What's included in every project?",
+            "es": "¿Qué está incluido en cada proyecto?"
+          }
+        },
+        {
+          "answer": {
+            "en": "No hidden fees. The price we quote is the price you pay. After your free first year, the only ongoing cost is the optional maintenance plan at $95/month for hosting, security, updates, and support. If you have an e-commerce store, PayPal charges their standard processing fee (typically 3.49% + fixed fee per transaction) — that goes to PayPal, not to us.",
+            "es": "Sin cargos ocultos. El precio que cotizamos es el precio que pagas. Después de tu primer año gratis, el único costo continuo es el plan de mantenimiento opcional a $95/mes por hosting, seguridad, actualizaciones y soporte. Si tienes una tienda e-commerce, PayPal cobra su comisión estándar (típicamente 3.49% + tarifa fija por transacción) — eso va a PayPal, no a nosotros."
+          },
+          "question": {
+            "en": "Are there any hidden fees or ongoing costs?",
+            "es": "¿Hay cargos ocultos o costos continuos?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Every new website project includes 12 months of hosting and maintenance at absolutely no cost — a $1,140 value. This starts the day your site launches and includes hosting on Netlify's global CDN, security monitoring, performance optimization, uptime monitoring, updates, and bug fixes. After the first year, you can continue at $95/month or host the site yourself.",
+            "es": "Cada proyecto nuevo de sitio web incluye 12 meses de hosting y mantenimiento sin costo alguno — un valor de $1,140. Esto comienza el día que tu sitio se lanza e incluye hosting en la CDN global de Netlify, monitoreo de seguridad, optimización de rendimiento, monitoreo de disponibilidad, actualizaciones y corrección de errores. Después del primer año, puedes continuar a $95/mes o alojar el sitio tú mismo."
+          },
+          "question": {
+            "en": "How does the free first year of hosting work?",
+            "es": "¿Cómo funciona el primer año gratis de hosting?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Our standard terms are 50% upfront and 50% on completion. For larger projects, we can discuss milestone-based payment schedules where payments are tied to specific project phases. Contact us to discuss what works best for your budget.",
+            "es": "Nuestros términos estándar son 50% al inicio y 50% al completar. Para proyectos más grandes, podemos discutir cronogramas de pago por hitos donde los pagos se vinculan a fases específicas del proyecto. Contáctanos para discutir qué funciona mejor para tu presupuesto."
+          },
+          "question": {
+            "en": "Do you offer payment plans or financing?",
+            "es": "¿Ofrecen planes de pago o financiamiento?"
+          }
+        }
+      ],
+      "title": {
+        "en": "Pricing & Payments",
+        "es": "Precios y Pagos"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "Website maintenance is $95/month after your free first year. This includes hosting on Netlify's global CDN, security monitoring, performance optimization, uptime monitoring, regular framework updates, and bug fixes. There are no tiers or hidden charges — one simple price covers everything.",
+            "es": "El mantenimiento web cuesta $95/mes después de tu primer año gratis. Incluye hosting en la CDN global de Netlify, monitoreo de seguridad, optimización de rendimiento, monitoreo de disponibilidad, actualizaciones regulares del framework y corrección de errores. No hay niveles ni cargos ocultos — un precio simple cubre todo."
+          },
+          "question": {
+            "en": "How much does website maintenance cost?",
+            "es": "¿Cuánto cuesta el mantenimiento web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "You own your website completely — code, design, and content. If you choose not to continue, you can host the site yourself or with another provider. However, you'll lose security monitoring, performance optimization, uptime alerts, and technical support. We recommend continuing to protect your investment.",
+            "es": "Eres dueño completo de tu sitio web — código, diseño y contenido. Si decides no continuar, puedes alojar el sitio tú mismo o con otro proveedor. Sin embargo, perderás monitoreo de seguridad, optimización de rendimiento, alertas de disponibilidad y soporte técnico. Recomendamos continuar para proteger tu inversión."
+          },
+          "question": {
+            "en": "What happens if I don't pay for maintenance after the first year?",
+            "es": "¿Qué pasa si no pago el mantenimiento después del primer año?"
+          }
+        },
+        {
+          "answer": {
+            "en": "We monitor your site 24/7 with automated alerts. For critical issues like downtime, we're alerted instantly and begin resolving immediately. For non-critical requests like content changes or bug reports, we typically respond within 24 hours during business days. We're based in Punta Cana, so we work in your timezone.",
+            "es": "Monitoreamos tu sitio 24/7 con alertas automatizadas. Para problemas críticos como caídas, recibimos alertas instantáneas y comenzamos a resolver de inmediato. Para solicitudes no críticas como cambios de contenido o reportes de errores, típicamente respondemos dentro de 24 horas en días laborables. Estamos en Punta Cana, así que trabajamos en tu zona horaria."
+          },
+          "question": {
+            "en": "How quickly do you respond to issues?",
+            "es": "¿Qué tan rápido responden a los problemas?"
+          }
+        },
+        {
+          "answer": {
+            "en": "No — and this is one of the biggest advantages of our approach. WordPress sites typically need 20–50 plugin updates per month, and any one can break your site or create security vulnerabilities. Our Next.js sites have zero plugins. Maintenance focuses on genuine improvements like speed optimization and security hardening — not damage control.",
+            "es": "No — y esta es una de las mayores ventajas de nuestro enfoque. Los sitios WordPress típicamente necesitan 20–50 actualizaciones de plugins al mes, y cualquiera puede romper tu sitio o crear vulnerabilidades de seguridad. Nuestros sitios Next.js no tienen plugins. El mantenimiento se enfoca en mejoras genuinas como optimización de velocidad y fortalecimiento de seguridad — no en control de daños."
+          },
+          "question": {
+            "en": "Do your sites need WordPress-style plugin updates?",
+            "es": "¿Sus sitios necesitan actualizaciones de plugins como WordPress?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Our maintenance plans are designed specifically for websites we build with Next.js and Sanity CMS. If you have an existing WordPress or other platform site, we recommend migrating it to our modern stack first (starting at $600) — which includes a free year of maintenance. This gives you a faster, more secure site that costs less to maintain long-term.",
+            "es": "Nuestros planes de mantenimiento están diseñados específicamente para sitios web que construimos con Next.js y Sanity CMS. Si tienes un sitio existente en WordPress u otra plataforma, recomendamos migrarlo primero a nuestro stack moderno (desde $600) — lo que incluye un año gratis de mantenimiento. Esto te da un sitio más rápido y seguro que cuesta menos mantener a largo plazo."
+          },
+          "question": {
+            "en": "Can you maintain a website built by someone else?",
+            "es": "¿Pueden mantener un sitio web construido por alguien más?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Every project includes 30 days of dedicated post-launch support. During this period, we fix any bugs, make minor adjustments, answer your CMS questions, and ensure everything is running smoothly. This is separate from the one-year free maintenance — think of it as an intensive onboarding period to make sure you and your site are fully set up for success.",
+            "es": "Cada proyecto incluye 30 días de soporte post-lanzamiento dedicado. Durante este período, corregimos cualquier error, hacemos ajustes menores, respondemos tus preguntas sobre el CMS y aseguramos que todo funcione sin problemas. Esto es separado del año gratis de mantenimiento — piénsalo como un período intensivo de incorporación para asegurar que tú y tu sitio estén completamente preparados para el éxito."
+          },
+          "question": {
+            "en": "What does post-launch support include?",
+            "es": "¿Qué incluye el soporte post-lanzamiento?"
+          }
+        }
+      ],
+      "title": {
+        "en": "Support & Maintenance",
+        "es": "Soporte y Mantenimiento"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "We specialize in Next.js (React), TypeScript, Tailwind CSS, and Sanity CMS. For hosting, we use Netlify with global CDN distribution. This modern stack delivers websites that are significantly faster, more secure, and more scalable than traditional WordPress, Wix, or Squarespace sites.",
+            "es": "Nos especializamos en Next.js (React), TypeScript, Tailwind CSS y Sanity CMS. Para hosting, usamos Netlify con distribución CDN global. Esta tecnología moderna entrega sitios web significativamente más rápidos, seguros y escalables que los sitios tradicionales en WordPress, Wix o Squarespace."
+          },
+          "question": {
+            "en": "What technologies do you use?",
+            "es": "¿Qué tecnologías utilizan?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Next.js delivers 3x faster load times than WordPress, scores higher on Google's Core Web Vitals, requires no plugins that slow your site or create security vulnerabilities, and is far more secure by default. Combined with Sanity CMS, you get the same easy content editing without the bloat, constant updates, and performance penalties of WordPress.",
+            "es": "Next.js ofrece tiempos de carga 3x más rápidos que WordPress, mejores resultados en Core Web Vitals de Google, no necesita plugins que ralenticen tu sitio o creen vulnerabilidades de seguridad, y es mucho más seguro por defecto. Combinado con Sanity CMS, obtienes la misma facilidad para editar contenido sin el peso, las actualizaciones constantes y las penalizaciones de rendimiento de WordPress."
+          },
+          "question": {
+            "en": "Why do you use Next.js instead of WordPress?",
+            "es": "¿Por qué usan Next.js en vez de WordPress?"
+          }
+        },
+        {
+          "answer": {
+            "en": "A headless CMS separates your content (text, images, products) from how it's displayed on your website. Sanity CMS is our headless CMS of choice — it gives you an easy editor to manage your content while we build the frontend with Next.js for maximum speed and flexibility. The result: you can update your site easily, and it loads much faster than traditional CMS platforms like WordPress.",
+            "es": "Un CMS headless separa tu contenido (textos, imágenes, productos) de cómo se muestra en tu sitio web. Sanity CMS es nuestro CMS headless preferido — te da un editor fácil para gestionar tu contenido mientras nosotros construimos el frontend con Next.js para máxima velocidad y flexibilidad. El resultado: puedes actualizar tu sitio fácilmente, y carga mucho más rápido que plataformas CMS tradicionales como WordPress."
+          },
+          "question": {
+            "en": "What is a headless CMS and why should I care?",
+            "es": "¿Qué es un CMS headless y por qué debería importarme?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Core Web Vitals are Google's metrics for measuring how fast and smooth your website feels to visitors — loading speed, interactivity, and visual stability. Google uses these as a direct ranking factor, meaning faster sites rank higher in search results. Our Next.js websites consistently score 90+ on Google PageSpeed, giving your business an SEO advantage over slower WordPress competitors.",
+            "es": "Los Core Web Vitals son las métricas de Google para medir qué tan rápido y fluido se siente tu sitio web para los visitantes — velocidad de carga, interactividad y estabilidad visual. Google los usa como factor directo de posicionamiento, lo que significa que los sitios más rápidos posicionan mejor en resultados de búsqueda. Nuestros sitios en Next.js obtienen consistentemente 90+ en Google PageSpeed, dando a tu negocio una ventaja SEO sobre competidores más lentos en WordPress."
+          },
+          "question": {
+            "en": "What are Core Web Vitals and why do they matter?",
+            "es": "¿Qué son los Core Web Vitals y por qué importan?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes — 100%. You own the code, the design, and all the content. There's no vendor lock-in, no proprietary page builders, and no annual license fees. If you ever want to switch developers, you can take everything with you. This is a major advantage over platforms like Wix or Squarespace where your site is locked into their ecosystem.",
+            "es": "Sí — 100%. Eres dueño del código, el diseño y todo el contenido. No hay dependencia de proveedores, no hay page builders propietarios ni cuotas de licencia anuales. Si alguna vez quieres cambiar de desarrollador, puedes llevarte todo contigo. Esta es una ventaja importante sobre plataformas como Wix o Squarespace donde tu sitio está encerrado en su ecosistema."
+          },
+          "question": {
+            "en": "Do I own my website code and content?",
+            "es": "¿Soy dueño del código y contenido de mi sitio web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Every website includes technical SEO built in: proper heading structure, meta tags, image optimization, structured data (JSON-LD schema), XML sitemaps, fast load times, mobile responsiveness, and clean URLs. For bilingual sites, we implement proper hreflang tags and separate SEO optimization for each language so you rank in both Spanish and English searches.",
+            "es": "Sí. Cada sitio web incluye SEO técnico integrado: estructura de encabezados adecuada, meta tags, optimización de imágenes, datos estructurados (esquema JSON-LD), sitemaps XML, tiempos de carga rápidos, responsividad móvil y URLs limpias. Para sitios bilingües, implementamos etiquetas hreflang adecuadas y optimización SEO separada para cada idioma para que posiciones tanto en búsquedas en español como en inglés."
+          },
+          "question": {
+            "en": "Will my website be optimized for SEO?",
+            "es": "¿Mi sitio web estará optimizado para SEO?"
+          }
+        }
+      ],
+      "title": {
+        "en": "Design & Technology",
+        "es": "Diseño y Tecnología"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "Yes. We build complete e-commerce stores with product catalogs, shopping carts, inventory management, and secure checkout. E-commerce integrations start at $900 as an add-on to any website, or as a standalone store. We also build online booking and reservation systems for tour operators, dive shops, photographers, and service businesses.",
+            "es": "Sí. Construimos tiendas e-commerce completas con catálogos de productos, carritos de compra, gestión de inventario y checkout seguro. Las integraciones de e-commerce comienzan en $900 como complemento a cualquier sitio web, o como tienda independiente. También construimos sistemas de reservas en línea para operadores turísticos, tiendas de buceo, fotógrafos y negocios de servicios."
+          },
+          "question": {
+            "en": "Can you build an online store for my business?",
+            "es": "¿Pueden construir una tienda online para mi negocio?"
+          }
+        },
+        {
+          "answer": {
+            "en": "We integrate PayPal, which accepts credit cards (Visa, Mastercard, American Express), debit cards, and PayPal balances from customers worldwide. PayPal is one of the most trusted payment processors in the Dominican Republic and works for both local and international transactions.",
+            "es": "Integramos PayPal, que acepta tarjetas de crédito (Visa, Mastercard, American Express), tarjetas de débito y saldos PayPal de clientes en todo el mundo. PayPal es uno de los procesadores de pago más confiables en República Dominicana y funciona tanto para transacciones locales como internacionales."
+          },
+          "question": {
+            "en": "What payment methods can my store accept?",
+            "es": "¿Qué métodos de pago puede aceptar mi tienda?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Shopify charges $39–$399/month in platform fees plus transaction fees. WooCommerce requires WordPress with dozens of plugins, constant updates, and security vulnerabilities. Our Next.js stores have zero monthly platform fees, load 3x faster, are inherently more secure, and you own the entire codebase — no vendor lock-in, no surprise costs.",
+            "es": "Shopify cobra $39–$399/mes en cuotas de plataforma más comisiones por transacción. WooCommerce requiere WordPress con docenas de plugins, actualizaciones constantes y vulnerabilidades de seguridad. Nuestras tiendas en Next.js no tienen cuotas mensuales de plataforma, cargan 3x más rápido, son inherentemente más seguras y eres dueño de todo el código — sin dependencia de proveedores, sin costos sorpresa."
+          },
+          "question": {
+            "en": "Why not just use Shopify or WooCommerce?",
+            "es": "¿Por qué no simplemente usar Shopify o WooCommerce?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Your e-commerce store comes with Sanity CMS, where you can add, edit, and remove products, update prices, change descriptions and images, and manage your entire catalog — all without coding. Perfect for updating seasonal promotions or adding new products and services.",
+            "es": "Sí. Tu tienda e-commerce viene con Sanity CMS, donde puedes agregar, editar y eliminar productos, actualizar precios, cambiar descripciones e imágenes y gestionar todo tu catálogo — sin programación. Perfecto para actualizar promociones estacionales o agregar nuevos productos y servicios."
+          },
+          "question": {
+            "en": "Can I manage products and inventory myself?",
+            "es": "¿Puedo gestionar productos e inventario yo mismo?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. We build custom booking and reservation systems where customers can select dates, choose packages, and pay online through PayPal. We've built these for diving companies, event planners, and tour operators in Punta Cana — one client saw a 200% increase in booking conversions after launching their online booking system.",
+            "es": "Sí. Construimos sistemas personalizados de reservas donde los clientes pueden seleccionar fechas, elegir paquetes y pagar en línea a través de PayPal. Hemos construido estos para empresas de buceo, organizadores de eventos y operadores turísticos en Punta Cana — un cliente vio un aumento del 200% en conversiones de reservas después de lanzar su sistema de reservas en línea."
+          },
+          "question": {
+            "en": "Can you build an online booking system for tours or services?",
+            "es": "¿Pueden construir un sistema de reservas en línea para tours o servicios?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. PayPal processes payments from customers worldwide. Combined with our bilingual store capability, you can sell to Dominican customers, tourists planning their trip, and international buyers — all from the same store with language switching and global payment processing.",
+            "es": "Sí. PayPal procesa pagos de clientes en todo el mundo. Combinado con nuestra capacidad de tienda bilingüe, puedes vender a clientes dominicanos, turistas planificando su viaje y compradores internacionales — todo desde la misma tienda con cambio de idioma y procesamiento de pagos global."
+          },
+          "question": {
+            "en": "Can I sell to customers outside the Dominican Republic?",
+            "es": "¿Puedo vender a clientes fuera de República Dominicana?"
+          }
+        }
+      ],
+      "title": {
+        "en": "E-commerce & Online Stores",
+        "es": "E-commerce y Tiendas Online"
+      }
+    },
+    {
+      "questions": [
+        {
+          "answer": {
+            "en": "Yes. Every website we build includes technical SEO foundations: proper heading structure, meta tags, XML sitemaps, structured data (JSON-LD schema), fast load times, mobile responsiveness, and clean URL structures. We also submit your site to Google Search Console so it gets indexed quickly. However, ranking on the first page for competitive keywords takes time and ongoing content effort — technical SEO gets you in the game, content strategy wins it.",
+            "es": "Sí. Cada sitio web que construimos incluye bases técnicas de SEO: estructura de encabezados adecuada, meta tags, sitemaps XML, datos estructurados (esquema JSON-LD), tiempos de carga rápidos, responsividad móvil y estructuras de URL limpias. También enviamos tu sitio a Google Search Console para que se indexe rápidamente. Sin embargo, posicionar en la primera página para palabras clave competitivas toma tiempo y esfuerzo continuo de contenido — el SEO técnico te pone en el juego, la estrategia de contenido lo gana."
+          },
+          "question": {
+            "en": "Will my website show up on Google?",
+            "es": "¿Mi sitio web aparecerá en Google?"
+          }
+        },
+        {
+          "answer": {
+            "en": "It depends on your industry and competition. For local Dominican searches with low competition, you can see results within 2–3 months. For more competitive terms like 'desarrollo web republica dominicana,' it typically takes 4–8 months of consistent content and optimization. Our technical SEO gives you a strong foundation from day one — your Next.js site already loads faster and scores better on Core Web Vitals than most competitors, which Google rewards directly.",
+            "es": "Depende de tu industria y competencia. Para búsquedas locales dominicanas con baja competencia, puedes ver resultados dentro de 2–3 meses. Para términos más competitivos como 'desarrollo web república dominicana,' típicamente toma 4–8 meses de contenido y optimización consistente. Nuestro SEO técnico te da una base sólida desde el día uno — tu sitio en Next.js ya carga más rápido y obtiene mejores Core Web Vitals que la mayoría de competidores, lo que Google premia directamente."
+          },
+          "question": {
+            "en": "How long does it take to rank on Google?",
+            "es": "¿Cuánto tiempo toma posicionar en Google?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Technical SEO is the code-level optimization built into your website — page speed, mobile responsiveness, structured data, sitemaps, proper URLs, and Core Web Vitals. This is included in every project we build. Content SEO is about creating blog posts, landing pages, and written content that targets the keywords your customers search for. We build the technical foundation; you can create content through Sanity CMS, or we can discuss a content strategy to accelerate your rankings.",
+            "es": "El SEO técnico es la optimización a nivel de código integrada en tu sitio web — velocidad de página, responsividad móvil, datos estructurados, sitemaps, URLs adecuadas y Core Web Vitals. Esto está incluido en cada proyecto que construimos. El SEO de contenido se trata de crear artículos de blog, landing pages y contenido escrito que apunta a las palabras clave que tus clientes buscan. Nosotros construimos la base técnica; tú puedes crear contenido a través de Sanity CMS, o podemos discutir una estrategia de contenido para acelerar tu posicionamiento."
+          },
+          "question": {
+            "en": "What's the difference between technical SEO and content SEO?",
+            "es": "¿Cuál es la diferencia entre SEO técnico y SEO de contenido?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Google uses Core Web Vitals — loading speed, interactivity, and visual stability — as direct ranking factors. Faster sites rank higher, period. Our Next.js websites score 90+ on Google PageSpeed, while most WordPress sites in the Dominican Republic score 40–60. This speed advantage means Google is more likely to show your site above slower competitors for the same search terms.",
+            "es": "Google usa los Core Web Vitals — velocidad de carga, interactividad y estabilidad visual — como factores directos de posicionamiento. Los sitios más rápidos posicionan mejor, punto. Nuestros sitios en Next.js obtienen 90+ en Google PageSpeed, mientras que la mayoría de sitios WordPress en República Dominicana obtienen 40–60. Esta ventaja de velocidad significa que Google es más probable que muestre tu sitio por encima de competidores más lentos para los mismos términos de búsqueda."
+          },
+          "question": {
+            "en": "How does a fast website help my Google rankings?",
+            "es": "¿Cómo ayuda un sitio web rápido a mi posicionamiento en Google?"
+          }
+        },
+        {
+          "answer": {
+            "en": "A properly built bilingual site doubles your keyword opportunities — you rank for both Spanish and English searches. We implement hreflang tags so Google knows which version to show each audience, create separate SEO-optimized meta tags for each language, and structure the URLs properly (/en/ and /es/ prefixes). This is especially valuable in Punta Cana and tourist areas where potential customers search in both languages.",
+            "es": "Un sitio bilingüe bien construido duplica tus oportunidades de palabras clave — posicionas tanto en búsquedas en español como en inglés. Implementamos etiquetas hreflang para que Google sepa qué versión mostrar a cada audiencia, creamos meta tags optimizados para SEO separados para cada idioma y estructuramos las URLs adecuadamente (prefijos /en/ y /es/). Esto es especialmente valioso en Punta Cana y zonas turísticas donde los clientes potenciales buscan en ambos idiomas."
+          },
+          "question": {
+            "en": "How does a bilingual site affect my SEO?",
+            "es": "¿Cómo afecta un sitio bilingüe a mi SEO?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. Every website includes JSON-LD structured data including Organization schema (your business details, services, pricing, location), WebPage schema, BreadcrumbList schema for navigation, and FAQPage schema where applicable. For e-commerce sites, we add Product and Offer schemas. This structured data helps Google understand your business and can generate rich results — star ratings, FAQs, pricing, and business info displayed directly in search results.",
+            "es": "Sí. Cada sitio web incluye datos estructurados JSON-LD incluyendo esquema Organization (detalles de tu negocio, servicios, precios, ubicación), esquema WebPage, esquema BreadcrumbList para navegación y esquema FAQPage donde aplique. Para sitios e-commerce, agregamos esquemas Product y Offer. Estos datos estructurados ayudan a Google a entender tu negocio y pueden generar resultados enriquecidos — calificaciones con estrellas, FAQs, precios e información del negocio mostrada directamente en los resultados de búsqueda."
+          },
+          "question": {
+            "en": "Do you include structured data (schema markup) on my website?",
+            "es": "¿Incluyen datos estructurados (schema markup) en mi sitio web?"
+          }
+        },
+        {
+          "answer": {
+            "en": "A blog isn't strictly required, but it's one of the most effective ways to rank for more keywords and attract organic traffic. Each blog post is a new page that can rank for a specific search term your customers use. Every Sanity CMS setup we build includes a fully functional blog — you can publish articles, categorize them, and each post is automatically SEO-optimized with proper meta tags, headings, and structured data.",
+            "es": "Un blog no es estrictamente necesario, pero es una de las formas más efectivas de posicionar para más palabras clave y atraer tráfico orgánico. Cada artículo de blog es una nueva página que puede posicionar para un término de búsqueda específico que usan tus clientes. Cada configuración de Sanity CMS que construimos incluye un blog completamente funcional — puedes publicar artículos, categorizarlos, y cada post se optimiza automáticamente para SEO con meta tags, encabezados y datos estructurados adecuados."
+          },
+          "question": {
+            "en": "Do I need a blog to rank on Google?",
+            "es": "¿Necesito un blog para posicionar en Google?"
+          }
+        },
+        {
+          "answer": {
+            "en": "Yes. We optimize your site for local search by including your business location in structured data, creating location-specific content, and implementing LocalBusiness schema with your address, service area, and geo coordinates. For businesses in Punta Cana, Santo Domingo, Santiago, or other Dominican cities, this helps you appear when people search for services in your area. We also recommend setting up a Google Business Profile to complement your website's local SEO.",
+            "es": "Sí. Optimizamos tu sitio para búsquedas locales incluyendo la ubicación de tu negocio en datos estructurados, creando contenido específico de ubicación e implementando esquema LocalBusiness con tu dirección, área de servicio y coordenadas geográficas. Para negocios en Punta Cana, Santo Domingo, Santiago u otras ciudades dominicanas, esto ayuda a que aparezcas cuando las personas buscan servicios en tu área. También recomendamos configurar un Perfil de Negocio de Google para complementar el SEO local de tu sitio web."
+          },
+          "question": {
+            "en": "Will my site appear in local searches for my city?",
+            "es": "¿Mi sitio aparecerá en búsquedas locales de mi ciudad?"
+          }
+        }
+      ],
+      "title": {
+        "en": "SEO & Online Visibility",
+        "es": "SEO y Visibilidad en Línea"
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "answer": {
+        "en": "All packages include design, development, basic SEO setup, mobile responsiveness, and 30 days of support after launch. Content creation and premium integrations may cost extra.",
+        "es": "Todos los paquetes incluyen diseño, desarrollo, configuración básica de SEO, compatibilidad con dispositivos móviles y 30 días de soporte técnico tras el lanzamiento. La creación de contenido y las integraciones premium pueden tener un coste adicional."
+      },
+      "question": {
+        "en": "What's included in the project price?",
+        "es": "¿Qué incluye el precio del proyecto?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Starter websites: 2-3 weeks, Business websites: 3-5 weeks, E-commerce: 4-8 weeks. Timeline depends on content readiness and revision rounds.",
+        "es": "Sitios web iniciales: 2-3 semanas, sitios web comerciales: 3-5 semanas, comercio electrónico: 4-8 semanas. El plazo depende de la disponibilidad del contenido y de las revisiones realizadas."
+      },
+      "question": {
+        "en": "How long does it take to complete a website?",
+        "es": "¿Cuánto tiempo se tarda en completar un sitio web?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Yes! We offer 50% upfront and 50% on completion for all packages. Custom projects can have milestone-based payments.",
+        "es": "¡Sí! Ofrecemos un 50% de anticipo y un 50% al finalizar todos los paquetes. Los proyectos personalizados pueden tener pagos por hitos."
+      },
+      "question": {
+        "en": "Do you offer payment plans?",
+        "es": "¿Ofrecen planes de pago?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Minor tweaks are included in the 30-day support period. Larger changes and additional features are quoted separately.",
+        "es": "Los ajustes menores están incluidos en el período de soporte de 30 días. Los cambios más importantes y las funciones adicionales se cotizan por separado."
+      },
+      "question": {
+        "en": "What if I need changes after launch?",
+        "es": "¿Qué pasa si necesito realizar cambios después del lanzamiento?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Yes — completely. Once the final payment clears, the code, design, domain, and content are 100% yours. There is no lock-in: you can host it anywhere, and if you ever want another developer to take over, everything is handed off cleanly.",
+        "es": "Sí — completamente. Una vez realizado el pago final, el código, el diseño, el dominio y el contenido son 100% tuyos. No hay ataduras: puedes alojarlo donde quieras, y si algún día prefieres que otro desarrollador lo maneje, todo se entrega de forma ordenada."
+      },
+      "question": {
+        "en": "Do I own my website once it's paid for?",
+        "es": "¿Soy dueño de mi sitio web una vez pagado?"
+      }
+    },
+    {
+      "answer": {
+        "en": "The only required costs are your domain (about $15/year) and hosting — most of our sites run on hosting plans that start free. If you want us to handle updates, backups, security, and small content changes for you, the optional maintenance plan is $95/month. No hidden fees.",
+        "es": "Los únicos costos obligatorios son tu dominio (unos $15 al año) y el hosting — la mayoría de nuestros sitios funcionan en planes de hosting que comienzan gratis. Si prefieres que nosotros manejemos actualizaciones, respaldos, seguridad y pequeños cambios de contenido, el plan de mantenimiento opcional cuesta $95 al mes. Sin cargos ocultos."
+      },
+      "question": {
+        "en": "What are the ongoing costs after launch?",
+        "es": "¿Cuáles son los costos continuos después del lanzamiento?"
+      }
+    },
+    {
+      "answer": {
+        "en": "Yes. We regularly migrate sites from WordPress, Wix, and other builders to a faster, modern setup — keeping your content and your Google rankings intact with proper redirects. Migrations and rebuilds start at $600.",
+        "es": "Sí. Migramos regularmente sitios desde WordPress, Wix y otros constructores hacia una plataforma moderna y más rápida — conservando tu contenido y tu posicionamiento en Google con las redirecciones correctas. Las migraciones y reconstrucciones comienzan desde $600."
+      },
+      "question": {
+        "en": "Can you redesign or migrate my existing website?",
+        "es": "¿Pueden rediseñar o migrar mi sitio web actual?"
+      }
+    }
+  ],
+  "layout": {
+    "address": {
+      "addressCountry": "DO",
+      "addressLocality": "Punta Cana",
+      "addressRegion": "La Altagracia",
+      "postalCode": "23000"
+    },
+    "companyName": "DR Web Studio",
+    "email": "james@dr-webstudio.com",
+    "openingHours": [
+      {
+        "_key": "weekdays",
+        "closes": "18:00",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00"
+      },
+      {
+        "_key": "saturday",
+        "closes": "14:00",
+        "dayOfWeek": [
+          "Saturday"
+        ],
+        "opens": "10:00"
+      }
+    ],
+    "telephone": "18296405433"
+  },
+  "packages": [
+    {
+      "description": {
+        "en": "Perfect for small businesses and personal brands",
+        "es": "Perfecto para pequeñas empresas y marcas personales."
+      },
+      "features": [
+        {
+          "included": true,
+          "text": {
+            "en": "1-3 responsive pages",
+            "es": "1-3 páginas responsivas"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Modern, clean design",
+            "es": "Diseño moderno y limpio"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Basic SEO optimization",
+            "es": "Optimización SEO básica"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Contact form integration",
+            "es": "Formulario de contacto"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Social media links",
+            "es": "Enlaces de redes sociales"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "CMS integration",
+            "es": "Integración CMS"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "30 days support",
+            "es": "30 días de soporte"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "E-commerce features",
+            "es": "Funciones de comercio electrónico"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "Google Analytics",
+            "es": "Google Analytics"
+          }
+        }
+      ],
+      "price": "400",
+      "pricePeriod": null,
+      "title": {
+        "en": "Starter Website",
+        "es": "Sitio Web Inicial"
+      },
+      "variant": "default"
+    },
+    {
+      "description": {
+        "en": "Ideal for growing businesses with dynamic content needs",
+        "es": "Ideal para empresas en crecimiento con necesidades de contenido dinámico."
+      },
+      "features": [
+        {
+          "included": true,
+          "text": {
+            "en": "4-8 responsive pages",
+            "es": "4-8 páginas responsivas"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Custom design & branding",
+            "es": "Diseño y marca personalizados"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "CMS integration",
+            "es": "Integración de CMS"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Advanced SEO setup",
+            "es": "Configuración avanzada de SEO"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Contact forms & maps",
+            "es": "Formularios de contacto y mapas"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Social media links",
+            "es": "Enlaces de redes sociales"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "60 days support",
+            "es": "60 días de soporte"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "Admin dashboard",
+            "es": "Panel de administración"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "Shopping cart & checkout",
+            "es": "Carrito de compras y pago"
+          }
+        }
+      ],
+      "price": "950",
+      "pricePeriod": null,
+      "title": {
+        "en": "Business Website",
+        "es": "Sitio Web Empresarial"
+      },
+      "variant": "popular"
+    },
+    {
+      "description": {
+        "en": "Complete online store solution for selling products",
+        "es": "Solución completa de tienda online para la venta de productos"
+      },
+      "features": [
+        {
+          "included": true,
+          "text": {
+            "en": "Product catalog",
+            "es": "Catálogo de productos"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Product detail pages",
+            "es": "Páginas de producto detalladas"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Shopping cart",
+            "es": "Carrito de compras"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Secure checkout",
+            "es": "Pago seguro"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Order confirmation emails",
+            "es": "Correos de confirmación de pedido"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "SEO-optimized product pages",
+            "es": "Páginas optimizadas para SEO"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Google Analytics integration",
+            "es": "Integración con Google Analytics"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "Brand strategy & logo design",
+            "es": "Estrategia de marca y diseño de logotipo"
+          }
+        },
+        {
+          "included": false,
+          "text": {
+            "en": "Inventory software integration",
+            "es": "Software de Inventario"
+          }
+        }
+      ],
+      "price": "900",
+      "pricePeriod": null,
+      "title": {
+        "en": "E-commerce Package",
+        "es": "Paquete de Comercio Electrónico"
+      },
+      "variant": "premium"
+    },
+    {
+      "description": {
+        "en": "Keep your site fast, secure, and up to date after launch. Included free for the first year with any website plan.",
+        "es": "Mantén tu sitio rápido, seguro y actualizado después del lanzamiento. Incluido gratis el primer año con cualquier plan de sitio web."
+      },
+      "features": [
+        {
+          "included": true,
+          "text": {
+            "en": "Managed hosting & SSL certificate",
+            "es": "Hosting administrado y certificado SSL"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Software & security updates",
+            "es": "Actualizaciones de software y seguridad"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Automatic backups",
+            "es": "Copias de seguridad automáticas"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Uptime & performance monitoring",
+            "es": "Monitoreo de rendimiento y disponibilidad"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Monthly content updates",
+            "es": "Actualizaciones de contenido mensuales"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Priority WhatsApp support",
+            "es": "Soporte prioritario por WhatsApp"
+          }
+        }
+      ],
+      "price": "95",
+      "pricePeriod": {
+        "en": "/mo",
+        "es": "/mes"
+      },
+      "title": {
+        "en": "Maintenance Plan",
+        "es": "Plan de Mantenimiento"
+      },
+      "variant": "default"
+    }
+  ],
+  "plannerServices": [
+    {
+      "basePrice": 950,
+      "description": {
+        "en": "Custom business websites for companies in the Dominican Republic — built with Next.js, Sanity CMS, and Tailwind CSS for speed, SEO, and conversions. Starting from $950.",
+        "es": "Sitios web para negocios en República Dominicana — construidos con Next.js, Sanity CMS y Tailwind CSS para velocidad, SEO y conversiones. Desde $950."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Responsive Design",
+          "es": "Diseño Responsivo"
+        },
+        {
+          "_key": "inc1",
+          "en": "Contact Forms with Spam Protection",
+          "es": "Formularios de Contacto con Protección Anti-Spam"
+        },
+        {
+          "_key": "inc2",
+          "en": "Full On-Page SEO Setup",
+          "es": "Configuración Completa de SEO On-Page"
+        },
+        {
+          "_key": "inc3",
+          "en": "Google Analytics & Search Console",
+          "es": "Google Analytics y Search Console"
+        },
+        {
+          "_key": "inc4",
+          "en": "Social Media Integration",
+          "es": "Integración con Redes Sociales"
+        },
+        {
+          "_key": "inc5",
+          "en": "SSL Certificate & Security",
+          "es": "Certificado SSL y Seguridad"
+        },
+        {
+          "_key": "inc6",
+          "en": "Sanity CMS Integration",
+          "es": "Integración con Sanity CMS"
+        }
+      ],
+      "key": "custom-business",
+      "pageBased": true,
+      "timeline": {
+        "en": "6–8 weeks",
+        "es": "6–8 semanas"
+      },
+      "title": {
+        "en": "Custom Business Websites",
+        "es": "Sitios Web para Negocios"
+      }
+    },
+    {
+      "basePrice": 400,
+      "description": {
+        "en": "High-converting landing pages for businesses in the Dominican Republic — built fast, mobile-first, and SEO-ready from day one.",
+        "es": "Landing pages de alta conversión para negocios en República Dominicana — rápidas, mobile-first y optimizadas para SEO desde el primer día."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Responsive Design",
+          "es": "Diseño Responsivo"
+        },
+        {
+          "_key": "inc1",
+          "en": "Call-to-Action Buttons",
+          "es": "Botones de Llamada a la Acción"
+        },
+        {
+          "_key": "inc2",
+          "en": "Custom Brand Styling",
+          "es": "Estilos de Marca Personalizados"
+        },
+        {
+          "_key": "inc3",
+          "en": "On-Page SEO Setup",
+          "es": "Configuración de SEO On-Page"
+        },
+        {
+          "_key": "inc4",
+          "en": "Lead Capture Form",
+          "es": "Formulario de Captura de Leads"
+        }
+      ],
+      "key": "landing-pages",
+      "pageBased": false,
+      "timeline": {
+        "en": "2–3 weeks",
+        "es": "2–3 semanas"
+      },
+      "title": {
+        "en": "Landing Pages & One-Page Sites",
+        "es": "Landing Pages y Sitios de Una Página"
+      }
+    },
+    {
+      "basePrice": 900,
+      "description": {
+        "en": "Add a secure online store to your business website in the Dominican Republic — PayPal, Stripe, and custom checkout solutions built with Next.js. Starting from $900. Free consultation.",
+        "es": "Agrega una tienda online segura al sitio web de tu negocio en República Dominicana — PayPal, Stripe y soluciones de pago personalizadas construidas con Next.js. Desde $900. Consulta gratis."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Shopping Cart",
+          "es": "Carrito de Compras"
+        },
+        {
+          "_key": "inc1",
+          "en": "Stripe or PayPal Checkout",
+          "es": "Checkout con Stripe o PayPal"
+        },
+        {
+          "_key": "inc2",
+          "en": "Product Management via CMS",
+          "es": "Gestión de Productos via CMS"
+        },
+        {
+          "_key": "inc3",
+          "en": "Automated Order Notifications",
+          "es": "Notificaciones Automáticas de Pedidos"
+        },
+        {
+          "_key": "inc4",
+          "en": "Customer Receipt Emails",
+          "es": "Correos de Recibo para Clientes"
+        }
+      ],
+      "key": "e-commerce",
+      "pageBased": true,
+      "timeline": {
+        "en": "4–5 weeks",
+        "es": "4–5 semanas"
+      },
+      "title": {
+        "en": "E-commerce Integrations",
+        "es": "Integraciones de E-commerce"
+      }
+    },
+    {
+      "basePrice": 1250,
+      "description": {
+        "en": "Custom web applications built for businesses in the Dominican Republic — dashboards, booking systems, client portals, and internal tools built with Next.js and React.",
+        "es": "Aplicaciones web personalizadas para negocios en República Dominicana — paneles, sistemas de reservas, portales de clientes y herramientas internas construidas con Next.js y React."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Responsive Design",
+          "es": "Diseño Responsivo"
+        },
+        {
+          "_key": "inc1",
+          "en": "SEO & Discoverability Setup",
+          "es": "Configuración SEO y de Visibilidad"
+        },
+        {
+          "_key": "inc2",
+          "en": "Headless CMS Integration",
+          "es": "Integración con CMS Headless"
+        },
+        {
+          "_key": "inc3",
+          "en": "User Authentication & Roles",
+          "es": "Autenticación de Usuarios y Roles"
+        }
+      ],
+      "key": "web-applications",
+      "pageBased": true,
+      "timeline": {
+        "en": "5–8 weeks",
+        "es": "5–8 semanas"
+      },
+      "title": {
+        "en": "Web Applications",
+        "es": "Aplicaciones Web"
+      }
+    },
+    {
+      "basePrice": 700,
+      "description": {
+        "en": "Headless CMS development for businesses in the Dominican Republic — update your website content without touching code, using Sanity or Contentful connected to a blazing-fast Next.js front-end.",
+        "es": "Desarrollo Headless CMS para negocios en República Dominicana — actualiza el contenido de tu sitio sin tocar código, usando Sanity o Contentful conectado a un front-end Next.js ultrarrápido."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Dynamic Routing",
+          "es": "Enrutamiento Dinámico"
+        },
+        {
+          "_key": "inc1",
+          "en": "CMS Dashboard & Admin Access",
+          "es": "Panel CMS y Acceso de Administrador"
+        },
+        {
+          "_key": "inc2",
+          "en": "SEO-Optimized Structure",
+          "es": "Estructura Optimizada para SEO"
+        },
+        {
+          "_key": "inc3",
+          "en": "Media Management",
+          "es": "Gestión de Medios"
+        },
+        {
+          "_key": "inc4",
+          "en": "Rich Text & Portable Text Support",
+          "es": "Soporte de Texto Enriquecido y Portable Text"
+        }
+      ],
+      "key": "headless-cms-development",
+      "pageBased": false,
+      "timeline": {
+        "en": "3–4 weeks",
+        "es": "3–4 semanas"
+      },
+      "title": {
+        "en": "Headless CMS Development",
+        "es": "Desarrollo Headless CMS"
+      }
+    },
+    {
+      "basePrice": 800,
+      "description": {
+        "en": "Spanish-English bilingual websites for businesses in Punta Cana and the Dominican Republic — Next.js, hreflang tags, and per-language SEO. Starting from $800.",
+        "es": "Sitios web bilingües español-inglés para negocios en Punta Cana y República Dominicana — Next.js, etiquetas hreflang y SEO por idioma. Desde $800."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Language Switcher",
+          "es": "Selector de Idioma"
+        },
+        {
+          "_key": "inc1",
+          "en": "Per-Language SEO",
+          "es": "SEO por Idioma"
+        },
+        {
+          "_key": "inc2",
+          "en": "hreflang Tag Implementation",
+          "es": "Implementación de Etiquetas hreflang"
+        },
+        {
+          "_key": "inc3",
+          "en": "Locale-Based URL Routing",
+          "es": "Enrutamiento URL por Idioma"
+        },
+        {
+          "_key": "inc4",
+          "en": "Translatable CMS Content",
+          "es": "Contenido CMS Traducible"
+        },
+        {
+          "_key": "inc5",
+          "en": "Automatic Language Detection",
+          "es": "Detección Automática de Idioma"
+        }
+      ],
+      "key": "multilingual-and-international-websites",
+      "pageBased": true,
+      "timeline": {
+        "en": "3–4 weeks",
+        "es": "3–4 semanas"
+      },
+      "title": {
+        "en": "Multilingual & International Websites",
+        "es": "Sitios Web Multilingües e Internacionales"
+      }
+    },
+    {
+      "basePrice": 600,
+      "description": {
+        "en": "Migrate or rebuild your business website in the Dominican Republic — preserve your SEO rankings, modernize your tech stack, and launch faster with zero data loss.",
+        "es": "Migra o reconstruye el sitio web de tu negocio en República Dominicana — conserva tus posiciones en Google, moderniza tu tecnología y lanza más rápido sin perder datos."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "Full Site Content Export",
+          "es": "Exportación Completa del Contenido"
+        },
+        {
+          "_key": "inc1",
+          "en": "301 Redirects & URL Mapping",
+          "es": "Redirecciones 301 y Mapeo de URLs"
+        },
+        {
+          "_key": "inc2",
+          "en": "Mobile-Responsive Rebuild",
+          "es": "Reconstrucción Responsiva para Móviles"
+        },
+        {
+          "_key": "inc3",
+          "en": "Performance Optimization",
+          "es": "Optimización de Rendimiento"
+        },
+        {
+          "_key": "inc4",
+          "en": "CMS Setup",
+          "es": "Configuración de CMS"
+        }
+      ],
+      "key": "website-migrations-or-rebuilds",
+      "pageBased": true,
+      "timeline": {
+        "en": "3–4 weeks",
+        "es": "3–4 semanas"
+      },
+      "title": {
+        "en": "Website Migrations or Rebuilds",
+        "es": "Migraciones y Reconstrucciones de Sitios Web"
+      }
+    },
+    {
+      "basePrice": 500,
+      "description": {
+        "en": "API integrations and workflow automation for businesses in the Dominican Republic — connect PayPal, Stripe, WhatsApp Business, and CRMs via Resend. Starting from $500.",
+        "es": "Integraciones de API y automatización para negocios en República Dominicana — PayPal, Stripe, WhatsApp Business, CRMs y correo via Resend. Desde $500."
+      },
+      "included": [
+        {
+          "_key": "inc0",
+          "en": "API Integration Setup & Configuration",
+          "es": "Configuración e Instalación de Integración API"
+        },
+        {
+          "_key": "inc1",
+          "en": "Webhook Automation",
+          "es": "Automatización por Webhooks"
+        },
+        {
+          "_key": "inc2",
+          "en": "CRM Data Sync",
+          "es": "Sincronización de Datos con CRM"
+        },
+        {
+          "_key": "inc3",
+          "en": "Automated Email Workflows",
+          "es": "Flujos de Trabajo de Correo Automatizados"
+        },
+        {
+          "_key": "inc4",
+          "en": "Integration Documentation & Handover",
+          "es": "Documentación y Entrega de la Integración"
+        }
+      ],
+      "key": "api-integrations-and-automation",
+      "pageBased": false,
+      "timeline": {
+        "en": "2–4 weeks",
+        "es": "2–4 semanas"
+      },
+      "title": {
+        "en": "API Integrations & Automation",
+        "es": "Integraciones de API y Automatización"
+      }
+    }
+  ],
+  "services": [
+    {
+      "description": {
+        "en": "Custom web applications built for businesses in the Dominican Republic — dashboards, booking systems, client portals, and internal tools built with Next.js and React.",
+        "es": "Aplicaciones web personalizadas para negocios en República Dominicana — paneles, sistemas de reservas, portales de clientes y herramientas internas construidas con Next.js y React."
+      },
+      "priceRange": "1,250",
+      "slug": "web-applications",
+      "timeline": "5-8",
+      "title": {
+        "en": "Web Applications",
+        "es": "Aplicaciones Web"
+      }
+    },
+    {
+      "description": {
+        "en": "High-converting landing pages for businesses in the Dominican Republic — built fast, mobile-first, and SEO-ready from day one.",
+        "es": "Landing pages de alta conversión para negocios en República Dominicana — rápidas, mobile-first y optimizadas para SEO desde el primer día."
+      },
+      "priceRange": "400",
+      "slug": "landing-pages",
+      "timeline": "2-3",
+      "title": {
+        "en": "Landing Pages & One-Page Sites",
+        "es": "Landing Pages y Sitios de Una Página"
+      }
+    },
+    {
+      "description": {
+        "en": "API integrations and workflow automation for businesses in the Dominican Republic — connect PayPal, Stripe, WhatsApp Business, and CRMs via Resend. Starting from $500.",
+        "es": "Integraciones de API y automatización para negocios en República Dominicana — PayPal, Stripe, WhatsApp Business, CRMs y correo via Resend. Desde $500."
+      },
+      "priceRange": "500",
+      "slug": "api-integrations-and-automation",
+      "timeline": "2-4",
+      "title": {
+        "en": "API Integrations & Automation",
+        "es": "Integraciones de API y Automatización"
+      }
+    },
+    {
+      "description": {
+        "en": "Migrate or rebuild your business website in the Dominican Republic — preserve your SEO rankings, modernize your tech stack, and launch faster with zero data loss.",
+        "es": "Migra o reconstruye el sitio web de tu negocio en República Dominicana — conserva tus posiciones en Google, moderniza tu tecnología y lanza más rápido sin perder datos."
+      },
+      "priceRange": "600",
+      "slug": "website-migrations-or-rebuilds",
+      "timeline": "3-4",
+      "title": {
+        "en": "Website Migrations or Rebuilds",
+        "es": "Migraciones y Reconstrucciones de Sitios Web"
+      }
+    },
+    {
+      "description": {
+        "en": "Headless CMS development for businesses in the Dominican Republic — update your website content without touching code, using Sanity or Contentful connected to a blazing-fast Next.js front-end.",
+        "es": "Desarrollo Headless CMS para negocios en República Dominicana — actualiza el contenido de tu sitio sin tocar código, usando Sanity o Contentful conectado a un front-end Next.js ultrarrápido."
+      },
+      "priceRange": "700",
+      "slug": "headless-cms-development",
+      "timeline": "3-4",
+      "title": {
+        "en": "Headless CMS Development",
+        "es": "Desarrollo Headless CMS"
+      }
+    },
+    {
+      "description": {
+        "en": "Spanish-English bilingual websites for businesses in Punta Cana and the Dominican Republic — Next.js, hreflang tags, and per-language SEO. Starting from $800.",
+        "es": "Sitios web bilingües español-inglés para negocios en Punta Cana y República Dominicana — Next.js, etiquetas hreflang y SEO por idioma. Desde $800."
+      },
+      "priceRange": "800",
+      "slug": "multilingual-and-international-websites",
+      "timeline": "3-4",
+      "title": {
+        "en": "Multilingual & International Websites",
+        "es": "Sitios Web Multilingües e Internacionales"
+      }
+    },
+    {
+      "description": {
+        "en": "Add a secure online store to your business website in the Dominican Republic — PayPal, Stripe, and custom checkout solutions built with Next.js. Starting from $900. Free consultation.",
+        "es": "Agrega una tienda online segura al sitio web de tu negocio en República Dominicana — PayPal, Stripe y soluciones de pago personalizadas construidas con Next.js. Desde $900. Consulta gratis."
+      },
+      "priceRange": "900",
+      "slug": "e-commerce",
+      "timeline": "4-5",
+      "title": {
+        "en": "E-commerce Integrations",
+        "es": "Integraciones de E-commerce"
+      }
+    },
+    {
+      "description": {
+        "en": "Monthly website maintenance for businesses in the Dominican Republic — security, uptime, performance, and minor updates. $95/month. First year free with any new project.",
+        "es": "Mantenimiento web mensual para negocios en República Dominicana — seguridad, disponibilidad, rendimiento y actualizaciones. $95/mes. Primer año gratis con proyecto nuevo."
+      },
+      "priceRange": "95",
+      "slug": "ongoing-website-maintenance-and-support",
+      "timeline": "Ongoing",
+      "title": {
+        "en": "Ongoing Website Maintenance & Support",
+        "es": "Mantenimiento y Soporte Web Mensual"
+      }
+    },
+    {
+      "description": {
+        "en": "Custom business websites for companies in the Dominican Republic — built with Next.js, Sanity CMS, and Tailwind CSS for speed, SEO, and conversions. Starting from $950.",
+        "es": "Sitios web para negocios en República Dominicana — construidos con Next.js, Sanity CMS y Tailwind CSS para velocidad, SEO y conversiones. Desde $950."
+      },
+      "priceRange": "950",
+      "slug": "custom-business",
+      "timeline": "6-8",
+      "title": {
+        "en": "Custom Business Websites",
+        "es": "Sitios Web para Negocios"
+      }
+    }
+  ]
+}
