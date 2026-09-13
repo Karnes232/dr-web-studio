@@ -1,6 +1,7 @@
 import ContactFormEmail from "@/emails/ContactFormEmail"
 import { clampString, verifyBotpoisonSolution } from "@/lib/botpoison-verify"
 import { saveLead } from "@/lib/leads/saveLead"
+import { isSpammySubmission } from "@/lib/spam"
 import { getContactEmail } from "@/sanity/queries/layout/generalLayout"
 import { render } from "@react-email/render"
 import { NextRequest, NextResponse } from "next/server"
@@ -58,6 +59,35 @@ export async function POST(request: NextRequest) {
         ? `$${budgetRaw}`
         : ""
     const timeline = clampString(body.timeline, MAX_FIELD_LENGTH)
+    const locale = clampString(body.locale, 8) || undefined
+
+    // Content filtering, after every field is clamped and before any outbound
+    // call. BotPoison already passed — it is proof-of-work, so a headless
+    // browser clears it every time; this is the layer that reads what was
+    // actually typed.
+    const verdict = isSpammySubmission({ name, company, message })
+    if (verdict.spam) {
+      // Stored, never emailed, and answered with the same 200 a real
+      // submission gets: the bot learns nothing about what tripped the filter.
+      // Nothing is lost either — it is reviewable in the leads table.
+      console.warn(
+        `contact: flagged as spam (score ${verdict.score}): ${verdict.reasons.join("; ")}`,
+      )
+      await saveLead({
+        source: "contact-form",
+        status: "spam",
+        name,
+        email,
+        phone,
+        company,
+        message,
+        projectType,
+        budgetBand: budget,
+        timeline,
+        locale,
+      })
+      return NextResponse.json({ message: "Sent" }, { status: 200 })
+    }
 
     const cachedEmail = await getContactEmail()
     const toEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
@@ -88,7 +118,7 @@ export async function POST(request: NextRequest) {
         projectType,
         budgetBand: budget,
         timeline,
-        locale: clampString(body.locale, 8) || undefined,
+        locale,
       }),
       resend.emails.send({
         from: "Dr Web Studio <james@dr-webstudio.com>",

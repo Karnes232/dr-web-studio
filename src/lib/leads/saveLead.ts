@@ -15,6 +15,8 @@ export interface LeadEstimateItem {
 
 export interface SaveLeadInput {
   source: LeadSource
+  /** Defaults to "new". The contact form passes "spam" for flagged bots. */
+  status?: string
   /**
    * When set, this lead belongs to a WhatsApp conversation and there may only
    * ever be one. Enforced by a unique index, not by application state — the
@@ -68,7 +70,7 @@ function toRow(input: SaveLeadInput): Record<string, unknown> {
   return {
     source: input.source,
     tenant_id: input.tenantId ?? "drwebstudio",
-    status: "new",
+    status: input.status ?? "new",
     ...compact({
       name: input.name,
       email: input.email,
