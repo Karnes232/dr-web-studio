@@ -12,18 +12,26 @@ import type {
  *  1. **Deterministic.** No timestamps, no `Date`, no unordered iteration. The
  *     byte-stability of this string IS the prompt cache hit rate — anything
  *     that varies per request silently turns a $0.008 turn into a $0.10 one.
- *  2. **Both locales in one block.** Cache reads are ~10x cheaper than fresh
- *     input, so carrying English and Spanish together costs almost nothing and
- *     means one prefix (higher hit rate) plus the ability to answer an English
- *     question about Spanish-only copy.
+ *  2. **One locale per block.** Carrying both languages looked nearly free on
+ *     the theory that cache reads are ~10x cheaper than fresh input — but the
+ *     first live conversation showed the cache *write* dominates at sparse
+ *     traffic: 22,474 tokens cost $0.1405 to write and only $0.011 to read, and
+ *     a business getting a few chats a day rarely gets two inside one TTL. So
+ *     prefix size is the lever, and a conversation only ever needs one
+ *     language. Two cache entries, each half the size.
  *
  * Type-only imports on purpose: this module must stay free of runtime Sanity
  * imports so it can be unit-tested without env vars. The caller does
  * `renderKnowledge(await getAgentKnowledge())`.
  */
 
-const pair = (l: Localized | null | undefined): string =>
-  l ? `EN: ${l.en}\nES: ${l.es}` : ""
+type Lang = "en" | "es" | "both"
+
+const one = (l: Localized | null | undefined, lang: Lang): string =>
+  !l ? "" : lang === "both" ? `${l.en} / ${l.es}` : (l[lang] ?? l.en)
+
+const pair = (l: Localized | null | undefined, lang: Lang): string =>
+  !l ? "" : lang === "both" ? `EN: ${l.en}\nES: ${l.es}` : (l[lang] ?? l.en)
 
 /** CMS stores bare numbers with no symbol — "400", "1,250". */
 const money = (raw: string | null | undefined): string => {
@@ -39,18 +47,22 @@ const weeks = (raw: string | null | undefined): string => {
   return /^\d/.test(t) ? `${t} weeks` : t
 }
 
-function renderQA(items: AgentQA[], heading: string): string {
+function renderQA(items: AgentQA[], heading: string, lang: Lang): string {
   if (!items.length) return ""
   const body = items
-    .map(
-      q =>
-        `Q(en) ${q.question.en}\nA(en) ${q.answer.en}\nQ(es) ${q.question.es}\nA(es) ${q.answer.es}`,
+    .map(q =>
+      lang === "both"
+        ? `Q(en) ${q.question.en}\nA(en) ${q.answer.en}\nQ(es) ${q.question.es}\nA(es) ${q.answer.es}`
+        : `Q ${q.question[lang] ?? q.question.en}\nA ${q.answer[lang] ?? q.answer.en}`,
     )
     .join("\n\n")
   return `\n## ${heading}\n\n${body}\n`
 }
 
-export function renderKnowledge(kb: AgentKnowledge): string {
+export function renderKnowledge(
+  kb: AgentKnowledge,
+  lang: Lang = "both",
+): string {
   const out: string[] = ["# DR WEB STUDIO — KNOWLEDGE BASE"]
 
   // --- Contact -------------------------------------------------------------
@@ -89,15 +101,15 @@ export function renderKnowledge(kb: AgentKnowledge): string {
         const inc = (p.features ?? []).filter(f => f.included)
         const exc = (p.features ?? []).filter(f => !f.included)
         return [
-          `### ${p.title.en} / ${p.title.es} — ${price}`,
-          pair(p.description),
+          `### ${one(p.title, lang)} — ${price}`,
+          pair(p.description, lang),
           inc.length
-            ? `Includes: ${inc.map(f => `${f.text.en} / ${f.text.es}`).join("; ")}`
+            ? `Includes: ${inc.map(f => one(f.text, lang)).join("; ")}`
             : "",
           // `included: false` means the package does NOT have this. Labelled
           // explicitly so the agent can never present it as part of the deal.
           exc.length
-            ? `NOT included: ${exc.map(f => `${f.text.en} / ${f.text.es}`).join("; ")}`
+            ? `NOT included: ${exc.map(f => one(f.text, lang)).join("; ")}`
             : "",
         ]
           .filter(Boolean)
@@ -117,7 +129,7 @@ export function renderKnowledge(kb: AgentKnowledge): string {
           s.priceRange ? `from ${money(s.priceRange)}` : "",
           s.timeline ? weeks(s.timeline) : "",
         ].filter(Boolean)
-        return `### ${s.title.en} / ${s.title.es}${bits.length ? ` — ${bits.join(", ")}` : ""}\n${pair(s.description)}`
+        return `### ${one(s.title, lang)}${bits.length ? ` — ${bits.join(", ")}` : ""}\n${pair(s.description, lang)}`
       })
       .join("\n\n")
     out.push(`\n## Services\n\n${body}\n`)
@@ -127,9 +139,9 @@ export function renderKnowledge(kb: AgentKnowledge): string {
   if (kb.plannerServices.length) {
     const body = kb.plannerServices
       .map(p => {
-        const inc = (p.included ?? []).map(i => i.en).join("; ")
+        const inc = (p.included ?? []).map(i => one(i, lang)).join("; ")
         return [
-          `- key=${p.key} | ${p.title.en} / ${p.title.es} | base $${p.basePrice} | ${p.timeline.en}${p.pageBased ? " | priced per page" : ""}`,
+          `- key=${p.key} | ${one(p.title, lang)} | base $${p.basePrice} | ${one(p.timeline, lang)}${p.pageBased ? " | priced per page" : ""}`,
           inc ? `  includes: ${inc}` : "",
         ]
           .filter(Boolean)
@@ -145,7 +157,7 @@ export function renderKnowledge(kb: AgentKnowledge): string {
   // Three separate Sanity types, flattened: the agent has no reason to know
   // they're modelled apart.
   const catQs = kb.faqCategories.flatMap(c => c.questions ?? [])
-  out.push(renderQA([...kb.faqs, ...kb.contactFaqs, ...catQs], "FAQ"))
+  out.push(renderQA([...kb.faqs, ...kb.contactFaqs, ...catQs], "FAQ", lang))
 
   return out.filter(Boolean).join("\n")
 }

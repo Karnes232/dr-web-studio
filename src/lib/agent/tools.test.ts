@@ -19,14 +19,17 @@ const ctx = {
 } as unknown as ToolContext
 
 describe("tool schemas", () => {
-  it("has exactly the three Phase 2 tools and NO quoting tool", () => {
+  it("has only the tools that earn their cost", () => {
     expect(TOOLS.map(t => t.name).sort()).toEqual([
       "escalate_to_human",
-      "list_services",
       "save_lead",
     ])
     // Quoting is deliberately out of scope: a custom-price question escalates.
     expect(TOOLS.map(t => t.name)).not.toContain("compute_quote")
+    // list_services was removed after measurement — every tool call costs a
+    // second Claude request that re-sends the whole cached prefix, and the
+    // knowledge base already carries the same catalogue.
+    expect(TOOLS.map(t => t.name)).not.toContain("list_services")
   })
 
   it("is strict, closed, and fully required — so handlers can trust inputs", () => {
@@ -51,13 +54,6 @@ describe("runTool", () => {
   beforeEach(() => {
     saveLeadMock.mockReset()
     saveLeadMock.mockResolvedValue("lead-1")
-  })
-
-  it("list_services returns real keys and flags them as NOT quotes", async () => {
-    const out = await runTool("list_services", {}, ctx)
-    expect(out.result).toContain("e-commerce")
-    expect(out.result).toContain("$900")
-    expect(out.result).toMatch(/STARTING prices, not quotes/)
   })
 
   it("save_lead reuses the shared helper with the WhatsApp source and phone", async () => {

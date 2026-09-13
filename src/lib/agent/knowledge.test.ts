@@ -6,11 +6,11 @@ import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 // A real snapshot of the live `production` dataset. Public marketing content
 // only — no PII.
 const kb = fixture as unknown as AgentKnowledge
-const rendered = renderKnowledge(kb)
+const rendered = renderKnowledge(kb, "both")
 
 describe("renderKnowledge", () => {
   it("is deterministic — the prompt cache depends on it", () => {
-    expect(renderKnowledge(kb)).toBe(rendered)
+    expect(renderKnowledge(kb, "both")).toBe(rendered)
     // Anything date-like would vary per request and destroy the cache.
     expect(rendered).not.toMatch(/\d{4}-\d{2}-\d{2}T/)
   })
@@ -63,12 +63,35 @@ describe("renderKnowledge", () => {
       expect(rendered).toContain(`key=${s.key}`)
   })
 
-  it("stays small enough to cache economically", () => {
-    const approxTokens = rendered.length / 4
-    // llms-full.txt is ~295K tokens, which is why it is not used here.
-    expect(approxTokens).toBeLessThan(25_000)
+  // Measured against a real turn: 54,209 chars billed as 22,474 tokens.
+  // chars/4 — the usual English rule of thumb — undercounts this content by
+  // ~66%, because accented, short-word Spanish tokenizes far denser.
+  const CHARS_PER_TOKEN = 2.4
+  const tokens = (s: string) => Math.round(s.length / CHARS_PER_TOKEN)
+
+  it("renders one language at a time to keep the cache write cheap", () => {
+    const es = renderKnowledge(kb, "es")
+    const en = renderKnowledge(kb, "en")
+    const both = renderKnowledge(kb, "both")
+
+    expect(es).toContain("Sitio Web Inicial")
+    expect(es).not.toContain("Starter Website")
+    expect(en).toContain("Starter Website")
+    expect(en).not.toContain("Sitio Web Inicial")
+
+    // A single-language block must be materially smaller — the cache WRITE is
+    // 12.5x the read, so prefix size dominates at sparse traffic.
+    expect(es.length).toBeLessThan(both.length * 0.65)
+
     console.log(
-      `knowledge block: ${rendered.length.toLocaleString()} chars, ~${Math.round(approxTokens).toLocaleString()} tokens`,
+      `knowledge block — es: ${es.length.toLocaleString()} chars (~${tokens(es).toLocaleString()} tok), ` +
+        `en: ${en.length.toLocaleString()} chars (~${tokens(en).toLocaleString()} tok), ` +
+        `both: ${both.length.toLocaleString()} chars (~${tokens(both).toLocaleString()} tok)`,
     )
+  })
+
+  it("stays small enough to cache economically", () => {
+    // llms-full.txt is ~295K tokens, which is why it is not used here.
+    expect(tokens(renderKnowledge(kb, "es"))).toBeLessThan(15_000)
   })
 })

@@ -58,7 +58,7 @@ export async function runAgent(
       tenant,
       conversation,
       knowledge,
-      knowledgeBlock: renderKnowledge(knowledge),
+      knowledgeBlock: renderKnowledge(knowledge, locale === "en" ? "en" : "es"),
       history,
       locale,
       waId: message.waId,

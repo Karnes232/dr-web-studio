@@ -7,6 +7,11 @@ import type { Conversation, Tenant } from "@/lib/whatsapp/store"
 /**
  * The agent's tools.
  *
+ * `list_services` was removed after measurement: the knowledge base already
+ * contains the same catalogue, and every tool call costs a second Claude
+ * request that re-sends the entire cached prefix — it doubled the price of any
+ * turn where it fired, to re-state text the model could already read.
+ *
  * Deliberately NO `compute_quote`. The agent may repeat published package
  * prices verbatim but must never calculate one for a specific project — a
  * custom-price question escalates instead. Quoting is a later, additive phase:
@@ -34,18 +39,6 @@ export interface ToolOutcome {
 // handlers below can trust their shape.
 export const TOOLS: Anthropic.Tool[] = [
   {
-    name: "list_services",
-    description:
-      "List the services offered, with their starting prices and typical timelines. Use when the customer asks what you do, or to check a service exists before discussing it. Starting prices are NOT quotes.",
-    strict: true,
-    input_schema: {
-      type: "object",
-      properties: {},
-      required: [],
-      additionalProperties: false,
-    },
-  },
-  {
     name: "save_lead",
     description:
       "Record the customer as a lead. Call once you know their name and roughly what they want. Safe to call again later with more detail.",
@@ -65,7 +58,7 @@ export const TOOLS: Anthropic.Tool[] = [
         service_key: {
           type: "string",
           description:
-            "The matching key from list_services, or empty string if unclear. Never invent one.",
+            "The matching key from the service catalogue in your knowledge base, or empty string if unclear. Never invent one.",
         },
         project_type: {
           type: "string",
@@ -122,18 +115,6 @@ export async function runTool(
   ctx: ToolContext,
 ): Promise<ToolOutcome> {
   switch (name) {
-    case "list_services": {
-      const lines = ctx.knowledge.plannerServices.map(
-        s =>
-          `${s.key}: ${ctx.locale === "en" ? s.title.en : s.title.es} — starting at $${s.basePrice}, ${ctx.locale === "en" ? s.timeline.en : s.timeline.es}`,
-      )
-      return {
-        result:
-          lines.join("\n") +
-          "\n\nThese are STARTING prices, not quotes for a specific project.",
-      }
-    }
-
     case "save_lead": {
       const str = (k: string) =>
         typeof input[k] === "string" && (input[k] as string).trim()
