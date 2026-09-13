@@ -106,7 +106,7 @@ const agentKnowledgeQuery = `{
   "faqCategories": *[_type == "faqCategory"] | order(order asc) {
     title, "questions": questions[]{ question, answer }
   },
-  "plannerServices": *[_type == "plannerService"] | order(order asc) {
+  "plannerServices": *[_type == "plannerService" && active != false] | order(order asc) {
     key, title, description, basePrice, timeline, pageBased, included
   },
   "layout": *[_id == "generalLayout"][0] {

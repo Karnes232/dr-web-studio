@@ -57,6 +57,14 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "active",
+      title: "Offered in the planner",
+      type: "boolean",
+      description:
+        "Uncheck to withdraw this service from the project planner without deleting it. The service's own page stays published.",
+      initialValue: true,
+    }),
+    defineField({
       name: "order",
       title: "Order",
       type: "number",

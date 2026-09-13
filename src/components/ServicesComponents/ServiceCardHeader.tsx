@@ -33,14 +33,19 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
         <div className="bg-gradient-to-r from-orange-500 to-yellow-500 p-3 rounded-lg">
           <Icon className="h-6 w-6 text-white" />
         </div>
-        <div className="text-right">
-          <div className="text-sm text-slate-500">
-            {t("serviceCard.startingFrom")}
+        {/* Not every service is priced. Multilingual is presented as a
+            capability included with every site rather than an offer, so it has
+            no priceRange and must not render a bare "Starting from $". */}
+        {service.priceRange?.trim() ? (
+          <div className="text-right">
+            <div className="text-sm text-slate-500">
+              {t("serviceCard.startingFrom")}
+            </div>
+            <div className="text-2xl font-bold text-slate-800">
+              ${service.priceRange}
+            </div>
           </div>
-          <div className="text-2xl font-bold text-slate-800">
-            ${service.priceRange}
-          </div>
-        </div>
+        ) : null}
       </div>
 
       <h3 className="text-xl font-bold text-slate-800 mb-2 truncate">

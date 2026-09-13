@@ -222,8 +222,8 @@
       "questions": [
         {
           "answer": {
-            "en": "Our pricing starts at $400 for landing pages, $600 for website migrations, $700 for headless CMS development, $800 for multilingual websites, $900 for e-commerce integrations, $950 for custom business websites, and $1,250 for web applications. API integrations start at $500. All projects include one year of free hosting, two revision rounds, domain and email setup, CMS training, and 30 days of post-launch support.",
-            "es": "Nuestros precios comienzan en $400 para landing pages, $600 para migraciones de sitios web, $700 para desarrollo CMS headless, $800 para sitios multilingües, $900 para integraciones e-commerce, $950 para sitios web empresariales personalizados y $1,250 para aplicaciones web. Las integraciones API comienzan en $500. Todos los proyectos incluyen un año de hosting gratis, dos rondas de revisión, configuración de dominio y email, capacitación en CMS y 30 días de soporte post-lanzamiento."
+            "en": "Our pricing starts at $400 for landing pages, $600 for website migrations, $700 for headless CMS development, $900 for e-commerce integrations, $950 for custom business websites, and $1,250 for web applications. API integrations start at $500. Every project ships bilingual in Spanish and English at no extra cost; a third language is quoted as an add-on. All projects include one year of free hosting, two revision rounds, domain and email setup, CMS training, and 30 days of post-launch support.",
+            "es": "Nuestros precios comienzan en $400 para landing pages, $600 para migraciones de sitios web, $700 para desarrollo CMS headless, $900 para integraciones e-commerce, $950 para sitios web empresariales personalizados y $1,250 para aplicaciones web. Las integraciones API comienzan en $500. Cada proyecto se entrega bilingüe en español e inglés sin costo adicional; un tercer idioma se cotiza como add-on. Todos los proyectos incluyen un año de hosting gratis, dos rondas de revisión, configuración de dominio y email, capacitación en CMS y 30 días de soporte post-lanzamiento."
           },
           "question": {
             "en": "How much does a website cost?",
@@ -753,6 +753,13 @@
             "en": "Google Analytics",
             "es": "Google Analytics"
           }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Bilingual site — Spanish & English included",
+            "es": "Sitio bilingüe — español e inglés incluidos"
+          }
         }
       ],
       "price": "400",
@@ -831,6 +838,13 @@
             "en": "Shopping cart & checkout",
             "es": "Carrito de compras y pago"
           }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Bilingual site — Spanish & English included",
+            "es": "Sitio bilingüe — español e inglés incluidos"
+          }
         }
       ],
       "price": "950",
@@ -908,6 +922,13 @@
           "text": {
             "en": "Inventory software integration",
             "es": "Software de Inventario"
+          }
+        },
+        {
+          "included": true,
+          "text": {
+            "en": "Bilingual site — Spanish & English included",
+            "es": "Sitio bilingüe — español e inglés incluidos"
           }
         }
       ],
@@ -1207,55 +1228,6 @@
       }
     },
     {
-      "basePrice": 800,
-      "description": {
-        "en": "Spanish-English bilingual websites for businesses in Punta Cana and the Dominican Republic — Next.js, hreflang tags, and per-language SEO. Starting from $800.",
-        "es": "Sitios web bilingües español-inglés para negocios en Punta Cana y República Dominicana — Next.js, etiquetas hreflang y SEO por idioma. Desde $800."
-      },
-      "included": [
-        {
-          "_key": "inc0",
-          "en": "Language Switcher",
-          "es": "Selector de Idioma"
-        },
-        {
-          "_key": "inc1",
-          "en": "Per-Language SEO",
-          "es": "SEO por Idioma"
-        },
-        {
-          "_key": "inc2",
-          "en": "hreflang Tag Implementation",
-          "es": "Implementación de Etiquetas hreflang"
-        },
-        {
-          "_key": "inc3",
-          "en": "Locale-Based URL Routing",
-          "es": "Enrutamiento URL por Idioma"
-        },
-        {
-          "_key": "inc4",
-          "en": "Translatable CMS Content",
-          "es": "Contenido CMS Traducible"
-        },
-        {
-          "_key": "inc5",
-          "en": "Automatic Language Detection",
-          "es": "Detección Automática de Idioma"
-        }
-      ],
-      "key": "multilingual-and-international-websites",
-      "pageBased": true,
-      "timeline": {
-        "en": "3–4 weeks",
-        "es": "3–4 semanas"
-      },
-      "title": {
-        "en": "Multilingual & International Websites",
-        "es": "Sitios Web Multilingües e Internacionales"
-      }
-    },
-    {
       "basePrice": 600,
       "description": {
         "en": "Migrate or rebuild your business website in the Dominican Republic — preserve your SEO rankings, modernize your tech stack, and launch faster with zero data loss.",
@@ -1347,6 +1319,19 @@
   "services": [
     {
       "description": {
+        "en": "Spanish and English ship with every site we build — language switching, hreflang and per-language SEO included as standard. Need a third language, or more? That is what this is for.",
+        "es": "Español e inglés vienen con cada sitio que construimos — cambio de idioma, hreflang y SEO por idioma incluidos. ¿Necesitas un tercer idioma, o más? Para eso es esto."
+      },
+      "priceRange": "",
+      "slug": "multilingual-and-international-websites",
+      "timeline": "3-4",
+      "title": {
+        "en": "Multilingual & International Websites",
+        "es": "Sitios Web Multilingües e Internacionales"
+      }
+    },
+    {
+      "description": {
         "en": "Custom web applications built for businesses in the Dominican Republic — dashboards, booking systems, client portals, and internal tools built with Next.js and React.",
         "es": "Aplicaciones web personalizadas para negocios en República Dominicana — paneles, sistemas de reservas, portales de clientes y herramientas internas construidas con Next.js y React."
       },
@@ -1408,19 +1393,6 @@
       "title": {
         "en": "Headless CMS Development",
         "es": "Desarrollo Headless CMS"
-      }
-    },
-    {
-      "description": {
-        "en": "Spanish-English bilingual websites for businesses in Punta Cana and the Dominican Republic — Next.js, hreflang tags, and per-language SEO. Starting from $800.",
-        "es": "Sitios web bilingües español-inglés para negocios en Punta Cana y República Dominicana — Next.js, etiquetas hreflang y SEO por idioma. Desde $800."
-      },
-      "priceRange": "800",
-      "slug": "multilingual-and-international-websites",
-      "timeline": "3-4",
-      "title": {
-        "en": "Multilingual & International Websites",
-        "es": "Sitios Web Multilingües e Internacionales"
       }
     },
     {

@@ -101,13 +101,16 @@ export const PERSON_KNOWS_LANGUAGE = ["en", "es"]
  * This copy exists only for JSON-LD Offers. Anything that quotes a customer —
  * the project planner, the lead record, the WhatsApp agent — must read Sanity,
  * never this constant.
+ *
+ * `multilingual-and-international-websites` is deliberately absent: Spanish and
+ * English ship with every site, so that page describes a capability rather than
+ * selling one. No entry here means `serviceNode()` emits no Offer for it.
  */
 export const SERVICE_PRICES: Record<string, { price: number; unit?: "MONTH" }> =
   {
     "landing-pages": { price: 400 },
     "website-migrations-or-rebuilds": { price: 600 },
     "headless-cms-development": { price: 700 },
-    "multilingual-and-international-websites": { price: 800 },
     "e-commerce": { price: 900 },
     "custom-business": { price: 950 },
     "web-applications": { price: 1250 },
