@@ -4,14 +4,7 @@ import { systemPersona } from "./prompt"
 import { runTool, TOOLS, type ToolContext } from "./tools"
 import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 import type { Conversation, Tenant } from "@/lib/whatsapp/store"
-
-/** Opus 5 list price, USD per million tokens. */
-const PRICE = {
-  input: 5.0,
-  output: 25.0,
-  cacheRead: 0.5, // 0.1x input
-  cacheWrite: 6.25, // 1.25x input
-} as const
+import { PRICE } from "./pricing"
 
 /** A stuck model must not bankrupt the turn. */
 const MAX_TOOL_ITERATIONS = 5
@@ -156,6 +149,23 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
 
   for (let i = 0; i < MAX_TOOL_ITERATIONS; i++) {
     const response = await anthropic().messages.create({
+      // Model is tenant config, but a cheaper model is NOT just a SQL update —
+      // four things break, three of them silently, and the whole test suite
+      // stays green because nothing here is ever exercised against the API:
+      //
+      //  1. The `{role:"system"}` message below is MODEL-GATED (Opus 5 / 4.8,
+      //     Fable, Mythos). On Sonnet 5 or Haiku it is a 400 on every request,
+      //     which run.ts catches and turns into an escalation — so every
+      //     customer gets silence and James gets an email per message. Fixable
+      //     by moving that block to a third `system` entry AFTER the
+      //     cache_control breakpoint; blocks past the breakpoint are not part
+      //     of the cached prefix, so it would vary freely without a cache miss.
+      //  2. PRICE above is Opus-only: Sonnet would over-report 2.5x, Haiku 5x,
+      //     and the spend cap would trip that much early.
+      //  3. `thinking` is not set at all. Adaptive is the Opus 5 default, so
+      //     omitting it is correct only by accident — on Sonnet 5 thinking
+      //     would be OFF, which is exactly the failure described below.
+      //  4. `output_config.effort` is a hard 400 on Haiku 4.5.
       model: tenant.model || "claude-opus-5",
       max_tokens: 1024, // WhatsApp replies must be short
       output_config: { effort: "low" }, // chat does not repay high effort
