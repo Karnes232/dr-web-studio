@@ -15,6 +15,9 @@ export interface LeadEstimateItem {
 
 export interface SaveLeadInput {
   source: LeadSource
+  /** When set, UPDATE this row instead of inserting a new one. A WhatsApp
+   *  conversation is one lead however many times the agent refines it. */
+  leadId?: string
   tenantId?: string
   name?: string
   email?: string
@@ -61,7 +64,8 @@ function toRow(input: SaveLeadInput): Record<string, unknown> {
   return {
     source: input.source,
     tenant_id: input.tenantId ?? "drwebstudio",
-    status: "new",
+    // Only set on insert — updating must not undo a status you have changed.
+    ...(input.leadId ? {} : { status: "new" }),
     ...compact({
       name: input.name,
       email: input.email,
@@ -151,11 +155,12 @@ export async function saveLead(input: SaveLeadInput): Promise<string | null> {
   }
 
   try {
-    const { data, error } = await supabase
-      .from("leads")
-      .insert(toRow(input))
-      .select("id")
-      .single()
+    const row = toRow(input)
+    const query = input.leadId
+      ? supabase.from("leads").update(row).eq("id", input.leadId)
+      : supabase.from("leads").insert(row)
+
+    const { data, error } = await query.select("id").single()
 
     // supabase-js returns errors in the payload rather than throwing.
     if (error) {

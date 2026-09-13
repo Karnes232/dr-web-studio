@@ -28,11 +28,32 @@ export interface ToolContext {
   locale: string
 }
 
+/**
+ * Strip tool-call markup the model sometimes emits inside argument strings.
+ *
+ * A real turn stored this as a `timeline` value:
+ *   "</parameter>\n<parameter name=\"notes\">Centro de buceo..."
+ *
+ * `strict: true` does not catch it — the value IS a string, just a malformed
+ * one — so it has to be scrubbed at the boundary before it reaches the database.
+ */
+export function cleanToolString(raw: unknown): string | undefined {
+  if (typeof raw !== "string") return undefined
+  const cleaned = raw
+    .replace(/<\/?(?:antml:)?(?:parameter|invoke|function_calls)[^>]*>/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+  return cleaned || undefined
+}
+
 export interface ToolOutcome {
   /** Text handed back to the model as the tool result. */
   result: string
   /** Set when the agent must stop replying — a human is taking over. */
   escalated?: { reason: string; urgency: string }
+  /** Set the first time a lead row is created, so the conversation can be
+   *  linked to it and later calls update rather than duplicate. */
+  leadId?: string
 }
 
 // `strict: true` guarantees the arguments validate against the schema, so the
@@ -41,7 +62,7 @@ export const TOOLS: Anthropic.Tool[] = [
   {
     name: "save_lead",
     description:
-      "Record the customer as a lead. Call once you know their name and roughly what they want. Safe to call again later with more detail.",
+      "Record the customer as a lead. Call ONCE, when you first know their name and roughly what they want. Do not call it again on later turns just to add detail — every call costs a full extra request. Only call again if something material changes, such as a different service or a firm deadline.",
     strict: true,
     input_schema: {
       type: "object",
@@ -116,15 +137,16 @@ export async function runTool(
 ): Promise<ToolOutcome> {
   switch (name) {
     case "save_lead": {
-      const str = (k: string) =>
-        typeof input[k] === "string" && (input[k] as string).trim()
-          ? (input[k] as string).trim()
-          : undefined
+      const str = (k: string) => cleanToolString(input[k])
 
       // Reuses the same helper the web forms use, so a WhatsApp lead inherits
       // the Resend fallback and is exactly as durable as a form submission.
+      // One lead per conversation. Without this the agent inserts a fresh row
+      // every time it refines its understanding — a real 9-turn conversation
+      // produced six duplicate leads for one prospect.
       const id = await saveLead({
         source: "whatsapp",
+        leadId: ctx.conversation.lead_id ?? undefined,
         tenantId: ctx.tenant.tenant_id,
         name: str("name") ?? ctx.profileName,
         phone: ctx.waId,
@@ -139,8 +161,9 @@ export async function runTool(
 
       return {
         result: id
-          ? "Lead saved."
+          ? "Lead saved. Do not call save_lead again unless you learn something materially new."
           : "Lead could not be saved to the database; it has been emailed to the team instead. Continue the conversation normally.",
+        leadId: ctx.conversation.lead_id ? undefined : (id ?? undefined),
       }
     }
 

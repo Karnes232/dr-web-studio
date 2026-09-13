@@ -32,6 +32,7 @@ export interface Conversation {
   last_outbound_at: string | null
   turn_count: number
   cost_usd: number | null
+  lead_id: string | null
 }
 
 /**
@@ -275,6 +276,20 @@ export async function loadHistory(
         m.direction === "inbound" ? ("user" as const) : ("assistant" as const),
       content: m.body as string,
     }))
+}
+
+/** Link the conversation to the lead row it created, so later saves update it. */
+export async function linkLead(
+  conversation: Conversation,
+  leadId: string,
+): Promise<void> {
+  const supabase = getSupabase()
+  if (!supabase) return
+  const { error } = await supabase
+    .from("conversations")
+    .update({ lead_id: leadId, updated_at: new Date().toISOString() })
+    .eq("id", conversation.id)
+  if (error) console.error("linkLead failed:", error)
 }
 
 /** Hand the conversation to a human. The agent stops replying after this. */

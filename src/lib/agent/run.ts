@@ -7,6 +7,7 @@ import { getAgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 import { sendText, WINDOW_EXPIRED } from "@/lib/whatsapp/send"
 import { waHref } from "@/lib/contact"
 import {
+  linkLead,
   loadHistory,
   markEscalated,
   recordOutbound,

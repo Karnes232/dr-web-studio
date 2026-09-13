@@ -5,7 +5,7 @@ vi.mock("@/lib/leads/saveLead", () => ({
   saveLead: (input: unknown) => saveLeadMock(input),
 }))
 
-import { TOOLS, runTool, type ToolContext } from "./tools"
+import { TOOLS, runTool, cleanToolString, type ToolContext } from "./tools"
 import fixture from "./__fixtures__/knowledge.json"
 import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 
@@ -132,5 +132,73 @@ describe("runTool", () => {
   it("does not throw on an unknown tool name", async () => {
     const out = await runTool("nope", {}, ctx)
     expect(out.result).toContain("Unknown tool")
+  })
+})
+
+describe("cleanToolString", () => {
+  it("strips tool-call markup the model leaked into an argument", () => {
+    // Taken verbatim from a real turn: this was stored as a `timeline` value.
+    const leaked =
+      '</parameter>\n<parameter name="notes">Centro de buceo. Quiere sitio informativo.'
+    const out = cleanToolString(leaked)
+    expect(out).not.toContain("<parameter")
+    expect(out).not.toContain("</parameter>")
+    expect(out).toContain("Centro de buceo")
+  })
+
+  it("leaves ordinary text alone", () => {
+    expect(cleanToolString("Antes de diciembre 2026")).toBe(
+      "Antes de diciembre 2026",
+    )
+  })
+
+  it("returns undefined for blanks and non-strings", () => {
+    expect(cleanToolString("")).toBeUndefined()
+    expect(cleanToolString("   ")).toBeUndefined()
+    expect(cleanToolString(undefined)).toBeUndefined()
+    expect(cleanToolString(42)).toBeUndefined()
+    // Markup-only input must not survive as an empty-ish string.
+    expect(cleanToolString("</parameter>")).toBeUndefined()
+  })
+})
+
+describe("save_lead stays one lead per conversation", () => {
+  beforeEach(() => {
+    saveLeadMock.mockReset()
+    saveLeadMock.mockResolvedValue("lead-1")
+  })
+
+  const args = {
+    name: "Ana",
+    company: "",
+    email: "",
+    service_key: "e-commerce",
+    project_type: "tienda",
+    timeline: "",
+    notes: "",
+  }
+
+  it("inserts and reports the new id when the conversation has no lead yet", async () => {
+    const out = await runTool("save_lead", args, ctx)
+    expect(saveLeadMock.mock.calls[0][0].leadId).toBeUndefined()
+    expect(out.leadId).toBe("lead-1")
+  })
+
+  it("updates the existing lead instead of inserting a second one", async () => {
+    const withLead = {
+      ...ctx,
+      conversation: { ...ctx.conversation, lead_id: "lead-1" },
+    } as unknown as ToolContext
+
+    const out = await runTool("save_lead", args, withLead)
+
+    // The whole point: a 9-turn conversation produced six duplicate rows before.
+    expect(saveLeadMock.mock.calls[0][0].leadId).toBe("lead-1")
+    expect(out.leadId).toBeUndefined()
+  })
+
+  it("tells the model to stop calling it", async () => {
+    const out = await runTool("save_lead", args, ctx)
+    expect(out.result).toMatch(/Do not call save_lead again/)
   })
 })

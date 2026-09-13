@@ -30,6 +30,8 @@ export interface TurnUsage {
 export interface TurnResult {
   reply: string
   escalated?: { reason: string; urgency: string }
+  /** Set the first time a lead row was created this turn. */
+  leadId?: string
   usage: TurnUsage
 }
 
@@ -116,6 +118,9 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
     params.conversation.turn_count === 0
       ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
       : "You have already introduced yourself; do not do it again.",
+    params.conversation.lead_id
+      ? "A lead has already been saved for this conversation. Do NOT call save_lead again unless the service or the deadline materially changes."
+      : "No lead saved yet for this conversation.",
   ]
     .filter(Boolean)
     .join(" ")
@@ -137,6 +142,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
   }
 
   let escalated: TurnResult["escalated"]
+  let leadId: string | undefined
   let reply = ""
 
   for (let i = 0; i < MAX_TOOL_ITERATIONS; i++) {
@@ -187,6 +193,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
           ctx,
         )
         if (outcome.escalated) escalated = outcome.escalated
+        if (outcome.leadId) leadId = outcome.leadId
         results.push({
           type: "tool_result",
           tool_use_id: use.id,
@@ -211,7 +218,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
     )
   }
 
-  return { reply: reply.trim(), escalated, usage }
+  return { reply: reply.trim(), escalated, leadId, usage }
 }
 
 /** Most-specific-first, so a rate limit is distinguishable from a bad request. */
