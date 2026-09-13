@@ -1,0 +1,18 @@
+{
+  "message": {
+    "id": "wamid.HBgTRE8uMTc1NzEzNDk3NTQzODA3NRUUABIYFDNBMDE2N0I5RTFCQzRDRTc3MjZBQQA=",
+    "text": { "body": "Hello, I am interested in a website" },
+    "type": "text",
+    "timestamp": "1789325882"
+  },
+  "conversation": {
+    "id": "d847b0b0-b53c-458a-bbc2-094210d04870",
+    "status": "active",
+    "username": "Jameskarnes",
+    "phone_number_id": "1262180810319552",
+    "business_scoped_user_id": "DO.1757134975438075"
+  },
+  "phone_number_id": "1262180810319552",
+  "is_new_conversation": true,
+  "type": "whatsapp.message.received"
+}

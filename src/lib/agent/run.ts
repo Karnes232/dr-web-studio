@@ -4,7 +4,11 @@ import { runTurn, describeClaudeError } from "./claude"
 import { renderKnowledge } from "./knowledge"
 import { detectLocale } from "./locale"
 import { getAgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
-import { sendText, WINDOW_EXPIRED } from "@/lib/whatsapp/send"
+import {
+  isBusinessScopedUserId,
+  sendText,
+  WINDOW_EXPIRED,
+} from "@/lib/whatsapp/send"
 import { waHref } from "@/lib/contact"
 import {
   linkLead,
@@ -150,6 +154,12 @@ async function escalate(
 ): Promise<void> {
   await markEscalated(conversation, reason)
 
+  // A username-only contact has a business-scoped user id where a phone number
+  // would be. Rendering it as "+DO.1757134975438075" or as a wa.me link both
+  // produce something that looks like a number and does not work.
+  const byPhone = !isBusinessScopedUserId(message.waId)
+  const contact = byPhone ? `+${message.waId}` : `@${message.waId}`
+
   try {
     const to = tenant.escalation_email
     if (!to) return
@@ -167,12 +177,20 @@ async function escalate(
         "",
         `Reason:   ${reason}`,
         `Urgency:  ${urgency}`,
-        `Customer: ${message.profileName || "unknown"} (+${message.waId})`,
+        `Customer: ${message.profileName || "unknown"} (${contact})`,
         "",
         `Reply as ${tenant.business_name}:  ${AGENT_INBOX_URL}`,
-        `Reply from your own phone:  ${waHref(message.waId)}`,
-        "  (that one reaches them from your personal number, not the business",
-        "   number they have been talking to — use the inbox where you can)",
+        ...(byPhone
+          ? [
+              `Reply from your own phone:  ${waHref(message.waId)}`,
+              "  (that one reaches them from your personal number, not the",
+              "   business number they have been talking to — prefer the inbox)",
+            ]
+          : [
+              "  This contact has a WhatsApp username and no phone number, so",
+              "  the inbox is the ONLY way to reach them. There is nothing to",
+              "  open in your own WhatsApp.",
+            ]),
         "",
         "The agent has stopped replying to this conversation.",
         "",

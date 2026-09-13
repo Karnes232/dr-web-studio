@@ -10,7 +10,12 @@ import type { MessageStatus, NormalizedEvent } from "./types"
  *  - status events reuse the same `wamid` as the outbound message they describe
  *    and carry a CUMULATIVE `statuses[]` array — on `delivered` you receive the
  *    `sent` entry again — so the last entry is the current state;
- *  - batched delivery changes the body shape entirely.
+ *  - batched delivery changes the body shape entirely;
+ *  - **the sender may have no phone number at all.** WhatsApp usernames mean an
+ *    inbound message can identify its sender only by `username` and a
+ *    business-scoped user id (`DO.1757134975438075`). Sandbox numbers still
+ *    send plain digits, so this shape appears the moment you move to a real
+ *    number — see `senderOf` below.
  */
 
 type Json = Record<string, unknown>
@@ -104,7 +109,15 @@ export function normalizeKapsoWebhook(
     }
   }
 
-  const waId = asStr(message.from) ?? asStr(conversation.phone_number)
+  // A phone number when we have one, otherwise the business-scoped user id.
+  // Both are stable per (business, user), so either works as the conversation
+  // key — but they are NOT interchangeable when sending, which is why the
+  // BSUID shape has to survive into `waId` rather than being flattened away.
+  const phone = asStr(message.from) ?? asStr(conversation.phone_number)
+  const bsuid =
+    asStr(message.from_user_id) ?? asStr(conversation.business_scoped_user_id)
+
+  const waId = phone ?? bsuid
   if (!waId) return { kind: "ignored", reason: "no sender" }
 
   const text = asStr(asObj(message.text)?.body) ?? asStr(kapso.content) ?? ""
@@ -114,11 +127,12 @@ export function normalizeKapsoWebhook(
     message: {
       providerMessageId,
       waId,
-      businessScopedUserId:
-        asStr(message.from_user_id) ??
-        asStr(conversation.business_scoped_user_id),
+      businessScopedUserId: bsuid,
       // Kapso puts the profile name on the conversation, not the message.
-      profileName: asStr(conversation.contact_name),
+      // A username-only contact has no `contact_name`, but the username is a
+      // real name the person chose — better than showing a raw id.
+      profileName:
+        asStr(conversation.contact_name) ?? asStr(conversation.username),
       providerConversationId: asStr(conversation.id),
       isNewConversation: root.is_new_conversation === true,
       phoneNumberId,

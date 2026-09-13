@@ -11,6 +11,7 @@ const fixture = (name: string) =>
 const inboundRaw = fixture("inbound-text.json")
 const statusRaw = fixture("status-failed.json")
 const batchedRaw = fixture("batched.json")
+const usernameRaw = fixture("inbound-username.json")
 
 describe("normalizeKapsoWebhook — inbound", () => {
   it("maps an inbound text message onto the neutral shape", () => {
@@ -146,5 +147,52 @@ describe("isValidKapsoSignature", () => {
 
   it("does not throw on a signature of the wrong length", () => {
     expect(isValidKapsoSignature(inboundRaw, "abc", secret)).toBe(false)
+  })
+})
+
+/**
+ * WhatsApp usernames. Copied verbatim from the Kapso delivery log for the
+ * first real message to +1 204-809-3662 — a payload with NO `message.from`
+ * and NO `conversation.phone_number`, which the normaliser used to drop as
+ * "no sender" while returning 200, so the provider recorded a successful
+ * delivery and the customer got silence.
+ */
+describe("normalizeKapsoWebhook — username-only sender", () => {
+  const event = normalizeKapsoWebhook(
+    JSON.parse(usernameRaw),
+    "whatsapp.message.received",
+  )
+
+  it("accepts a sender that has no phone number", () => {
+    expect(event.kind).toBe("message")
+  })
+
+  it("keys the conversation on the business-scoped user id", () => {
+    if (event.kind !== "message") throw new Error("expected a message")
+    expect(event.message.waId).toBe("DO.1757134975438075")
+    expect(event.message.businessScopedUserId).toBe("DO.1757134975438075")
+  })
+
+  it("falls back to the username for the profile name", () => {
+    if (event.kind !== "message") throw new Error("expected a message")
+    // There is no `contact_name` on a username-only conversation, and the
+    // agent uses this as the lead's name.
+    expect(event.message.profileName).toBe("Jameskarnes")
+  })
+
+  it("still reads the text, tenant key and message id", () => {
+    if (event.kind !== "message") throw new Error("expected a message")
+    expect(event.message.text).toBe("Hello, I am interested in a website")
+    expect(event.message.phoneNumberId).toBe("1262180810319552")
+    expect(event.message.providerMessageId).toMatch(/^wamid\./)
+    expect(event.message.isNewConversation).toBe(true)
+  })
+
+  it("still ignores a payload with no identity of any kind", () => {
+    const body = JSON.parse(usernameRaw)
+    delete body.conversation.business_scoped_user_id
+    delete body.conversation.username
+    const none = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(none.kind).toBe("ignored")
   })
 })

@@ -19,6 +19,32 @@ export type SendResult =
 /** Meta error code for "outside the 24-hour customer service window". */
 export const WINDOW_EXPIRED = 131047
 
+/**
+ * A business-scoped user id, e.g. `DO.1757134975438075` — a two-letter country
+ * prefix, a dot, then digits. Phone numbers never contain a dot, so the shape
+ * is an unambiguous discriminator.
+ *
+ * This matters because `to` is **phone-numbers-only**: a BSUID must be sent as
+ * `recipient` instead, and Meta rejects it in `to`. Detecting from the value
+ * rather than threading a flag through every caller means a reply composed from
+ * a stored `conversations.wa_id` is addressed correctly too, with no extra
+ * column to keep in sync.
+ */
+export const isBusinessScopedUserId = (id: string): boolean =>
+  /^[A-Za-z]{2}\.\d+$/.test(id)
+
+/**
+ * Address a recipient the way Meta expects for its identity type.
+ *
+ * `recipient_type: "individual"` belongs to the phone-number form only; the
+ * documented BSUID body carries neither it nor `to`.
+ */
+function addressed(id: string): Record<string, unknown> {
+  return isBusinessScopedUserId(id)
+    ? { recipient: id }
+    : { recipient_type: "individual", to: id }
+}
+
 function config() {
   return {
     base: process.env.KAPSO_API_BASE || DEFAULT_BASE,
@@ -44,7 +70,6 @@ async function post(
       },
       body: JSON.stringify({
         messaging_product: "whatsapp",
-        recipient_type: "individual",
         ...payload,
       }),
     })
@@ -85,7 +110,11 @@ export function sendText(
   to: string,
   body: string,
 ): Promise<SendResult> {
-  return post(phoneNumberId, { to, type: "text", text: { body } })
+  return post(phoneNumberId, {
+    ...addressed(to),
+    type: "text",
+    text: { body },
+  })
 }
 
 export function sendTemplate(
@@ -96,7 +125,7 @@ export function sendTemplate(
   components?: unknown[],
 ): Promise<SendResult> {
   return post(phoneNumberId, {
-    to,
+    ...addressed(to),
     type: "template",
     template: {
       name,
