@@ -34,6 +34,19 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const AGENT_INBOX_URL = "https://inbox.kapso.ai"
 
 /**
+ * What the customer hears when the tenant's spend cap has been reached.
+ *
+ * Deliberately says nothing about budgets or limits — that is the business's
+ * problem, not the customer's. It promises only what actually happens next: the
+ * escalation email is sent, so a human really has been told.
+ */
+function capReachedNotice(business: string, locale: string): string {
+  return locale === "en"
+    ? `Thanks for your message! I can't answer automatically right now, but I've passed it to the ${business} team and someone will get back to you shortly.`
+    : `¡Gracias por escribirnos! En este momento no puedo responderte automáticamente, pero ya le pasé tu mensaje al equipo de ${business} y te contestan en breve.`
+}
+
+/**
  * One inbound message → one reply.
  *
  * Called from inside `after()` in the webhook route, so it runs AFTER the 200
@@ -46,11 +59,27 @@ export async function runAgent(
   message: InboundMessage,
   opts: { resumed?: boolean } = {},
 ): Promise<void> {
+  const locale =
+    conversation.locale ??
+    detectLocale(message.text, tenant.default_locale || "es")
+
   // Spend cap before anything costly. Degrades to a human handoff rather than
   // silently going over budget.
   const cap = tenant.monthly_cost_cap_usd
   if (cap != null && Number(tenant.cost_this_month_usd ?? 0) >= Number(cap)) {
     console.warn(`agent: monthly cost cap reached for ${tenant.tenant_id}`)
+
+    // Say SOMETHING. The cap firing used to leave the customer in total
+    // silence: no reply, no explanation, and `claimTurn` then blocked the
+    // conversation for five days. For a paying tenant that is their lead
+    // sitting unanswered with no idea anything went wrong. Sent before the
+    // escalation so the customer hears back even if the email fails.
+    await sendText(
+      tenant.phone_number_id,
+      message.waId,
+      capReachedNotice(tenant.business_name, locale),
+    )
+
     await escalate(
       tenant,
       conversation,
@@ -60,10 +89,6 @@ export async function runAgent(
     )
     return
   }
-
-  const locale =
-    conversation.locale ??
-    detectLocale(message.text, tenant.default_locale || "es")
 
   let turn
   try {

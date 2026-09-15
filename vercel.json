@@ -4,6 +4,10 @@
     {
       "path": "/api/keep-alive",
       "schedule": "23 7 * * *"
+    },
+    {
+      "path": "/api/reset-meters",
+      "schedule": "7 4 1 * *"
     }
   ]
 }
