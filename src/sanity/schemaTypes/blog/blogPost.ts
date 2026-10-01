@@ -1,4 +1,146 @@
-import { defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from "sanity"
+
+// Body members shared by both languages. dataTable and barChart give data posts real
+// HTML tables and accessible charts instead of screenshots (better for readers and for citation).
+const bodyMembers = [
+  defineArrayMember({ type: "block" }),
+  defineArrayMember({
+    type: "image",
+    fields: [
+      defineField({
+        name: "alt",
+        title: "Alt text",
+        type: "string",
+        // warning, not error: older posts' body images predate this field
+        validation: Rule => Rule.required().warning("Add alt text describing the image"),
+      }),
+      defineField({ name: "caption", title: "Caption", type: "string" }),
+    ],
+  }),
+  defineArrayMember({
+    name: "dataTable",
+    title: "Data table",
+    type: "object",
+    fields: [
+      defineField({
+        name: "caption",
+        title: "Caption",
+        type: "string",
+        validation: Rule => Rule.required(),
+      }),
+      defineField({
+        name: "headers",
+        title: "Column headers",
+        type: "array",
+        of: [{ type: "string" }],
+        validation: Rule => Rule.required().min(1),
+      }),
+      defineField({
+        name: "numericColumns",
+        title: "Numeric columns",
+        description: "Zero-based indexes of columns to right-align (e.g. 1, 2)",
+        type: "array",
+        of: [{ type: "number" }],
+      }),
+      defineField({
+        name: "rows",
+        title: "Rows",
+        type: "array",
+        of: [
+          defineArrayMember({
+            name: "row",
+            type: "object",
+            fields: [
+              defineField({
+                name: "cells",
+                title: "Cells",
+                type: "array",
+                of: [{ type: "string" }],
+              }),
+            ],
+            preview: {
+              select: { cells: "cells" },
+              prepare: ({ cells }) => ({ title: (cells || []).join(" · ") }),
+            },
+          }),
+        ],
+        validation: Rule => Rule.required().min(1),
+      }),
+      defineField({ name: "note", title: "Note / source", type: "text", rows: 2 }),
+    ],
+    preview: {
+      select: { title: "caption" },
+      prepare: ({ title }) => ({ title: title || "Data table", subtitle: "Table" }),
+    },
+  }),
+  defineArrayMember({
+    name: "barChart",
+    title: "Bar chart",
+    type: "object",
+    fields: [
+      defineField({
+        name: "title",
+        title: "Title",
+        type: "string",
+        validation: Rule => Rule.required(),
+      }),
+      defineField({
+        name: "unit",
+        title: "Unit",
+        description: 'Shown after each value, e.g. "%" or " sites"',
+        type: "string",
+      }),
+      defineField({
+        name: "max",
+        title: "Scale maximum",
+        description: "Leave empty to use the largest value",
+        type: "number",
+      }),
+      defineField({
+        name: "bars",
+        title: "Bars",
+        type: "array",
+        of: [
+          defineArrayMember({
+            name: "bar",
+            type: "object",
+            fields: [
+              defineField({
+                name: "label",
+                title: "Label",
+                type: "string",
+                validation: Rule => Rule.required(),
+              }),
+              defineField({
+                name: "value",
+                title: "Value",
+                type: "number",
+                validation: Rule => Rule.required(),
+              }),
+              defineField({ name: "n", title: "Sample size (n)", type: "number" }),
+              defineField({
+                name: "highlight",
+                title: "Highlight",
+                type: "boolean",
+                initialValue: false,
+              }),
+            ],
+            preview: {
+              select: { title: "label", value: "value" },
+              prepare: ({ title, value }) => ({ title, subtitle: String(value) }),
+            },
+          }),
+        ],
+        validation: Rule => Rule.required().min(1),
+      }),
+      defineField({ name: "note", title: "Note / source", type: "text", rows: 2 }),
+    ],
+    preview: {
+      select: { title: "title" },
+      prepare: ({ title }) => ({ title: title || "Bar chart", subtitle: "Chart" }),
+    },
+  }),
+]
 
 export default defineType({
   name: "blogPost",
@@ -172,14 +314,14 @@ export default defineType({
           name: "en",
           title: "English Content",
           type: "array",
-          of: [{ type: "block" }, { type: "image" }],
+          of: bodyMembers,
           validation: Rule => Rule.required(),
         },
         {
           name: "es",
           title: "Spanish Content",
           type: "array",
-          of: [{ type: "block" }, { type: "image" }],
+          of: bodyMembers,
           validation: Rule => Rule.required(),
         },
       ],

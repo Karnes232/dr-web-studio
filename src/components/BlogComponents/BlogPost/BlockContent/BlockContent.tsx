@@ -5,6 +5,8 @@ import Image from "next/image"
 import TextComponentParagraph from "./TextComponentParagraph"
 import TextComponentHeading from "./TextComponentHeading"
 import TextComponentList from "./TextComponentList"
+import DataTable from "./DataTable"
+import BarChart from "./BarChart"
 
 interface LocaleBlockContent {
   _type: string
@@ -52,6 +54,8 @@ const components = {
         </figure>
       )
     },
+    dataTable: ({ value }: any) => <DataTable value={value} />,
+    barChart: ({ value }: any) => <BarChart value={value} />,
   },
   marks: {
     link: ({ children, value }: any) => {

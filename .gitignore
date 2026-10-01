@@ -49,3 +49,7 @@ next-env.d.ts
 
 # local media exports (large binaries, never commit)
 exports/
+
+# Local research data study (not part of the site)
+platform-study/
+prospect-study/

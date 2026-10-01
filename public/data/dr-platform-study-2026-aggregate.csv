@@ -1,0 +1,118 @@
+table,group,metric,value,n
+platform_share,wordpress,sites,69,200
+platform_share,wix,sites,8,200
+platform_share,squarespace,sites,5,200
+platform_share,shopify,sites,9,200
+platform_share,webflow,sites,2,200
+platform_share,godaddy,sites,4,200
+platform_share,joomla,sites,3,200
+platform_share,drupal,sites,1,200
+platform_share,nextjs,sites,5,200
+platform_share,react_spa,sites,7,200
+platform_share,static_html,sites,26,200
+platform_share,page_builder_other,sites,30,200
+platform_share,unknown,sites,31,200
+psi_by_group,wordpress,median,57.0,69
+psi_by_group,wordpress,q1,46.0,69
+psi_by_group,wordpress,q3,63.0,69
+psi_by_group,custom,median,63.0,35
+psi_by_group,custom,q1,53.0,35
+psi_by_group,custom,q3,77.0,35
+psi_by_group,site_builders,median,55.0,49
+psi_by_group,site_builders,q1,41.5,49
+psi_by_group,site_builders,q3,66.5,49
+psi_by_group,hosted_vertical_platforms,median,45.5,30
+psi_by_group,hosted_vertical_platforms,q1,39.0,30
+psi_by_group,hosted_vertical_platforms,q3,61.5,30
+psi_by_group,shopify,median,63.0,8
+psi_by_group,shopify,q1,46.5,8
+psi_by_group,shopify,q3,67.25,8
+lcp_seconds_by_group,wordpress,median,9.84,69
+lcp_seconds_by_group,wordpress,q1,6.58,69
+lcp_seconds_by_group,wordpress,q3,16.24,69
+lcp_seconds_by_group,custom,median,7.09,35
+lcp_seconds_by_group,custom,q1,4.58,35
+lcp_seconds_by_group,custom,q3,15.87,35
+lcp_seconds_by_group,site_builders,median,8.67,49
+lcp_seconds_by_group,site_builders,q1,6.46,49
+lcp_seconds_by_group,site_builders,q3,18.27,49
+lcp_seconds_by_group,hosted_vertical_platforms,median,11.57,30
+lcp_seconds_by_group,hosted_vertical_platforms,q1,7.17,30
+lcp_seconds_by_group,hosted_vertical_platforms,q3,23.56,30
+lcp_seconds_by_group,shopify,median,6.26,8
+lcp_seconds_by_group,shopify,q1,4.77,8
+lcp_seconds_by_group,shopify,q3,25.68,8
+page_mb_by_group,wordpress,median,3.53,69
+page_mb_by_group,wordpress,q1,1.84,69
+page_mb_by_group,wordpress,q3,9.34,69
+page_mb_by_group,custom,median,2.42,35
+page_mb_by_group,custom,q1,0.98,35
+page_mb_by_group,custom,q3,6.56,35
+page_mb_by_group,site_builders,median,3.34,49
+page_mb_by_group,site_builders,q1,1.86,49
+page_mb_by_group,site_builders,q3,8.3,49
+page_mb_by_group,hosted_vertical_platforms,median,5.79,30
+page_mb_by_group,hosted_vertical_platforms,q1,1.72,30
+page_mb_by_group,hosted_vertical_platforms,q3,8.47,30
+page_mb_by_group,shopify,median,6.0,8
+page_mb_by_group,shopify,q1,2.92,8
+page_mb_by_group,shopify,q3,8.03,8
+sector_adjusted_psi_by_group,wordpress,median,-1.0,69
+sector_adjusted_psi_by_group,wordpress,q1,-7.0,69
+sector_adjusted_psi_by_group,wordpress,q3,4.75,69
+sector_adjusted_psi_by_group,custom,median,5.0,35
+sector_adjusted_psi_by_group,custom,q1,-4.0,35
+sector_adjusted_psi_by_group,custom,q3,16.0,35
+sector_adjusted_psi_by_group,site_builders,median,-2.5,49
+sector_adjusted_psi_by_group,site_builders,q1,-14.25,49
+sector_adjusted_psi_by_group,site_builders,q3,9.25,49
+sector_adjusted_psi_by_group,hosted_vertical_platforms,median,-7.5,30
+sector_adjusted_psi_by_group,hosted_vertical_platforms,q1,-17.12,30
+sector_adjusted_psi_by_group,hosted_vertical_platforms,q3,7.12,30
+sector_adjusted_psi_by_group,shopify,median,6.25,8
+sector_adjusted_psi_by_group,shopify,q1,-7.5,8
+sector_adjusted_psi_by_group,shopify,q3,13.25,8
+psi_by_sector,Hotels & rentals,median,48.0,27
+psi_by_sector,Hotels & rentals,q1,42.0,27
+psi_by_sector,Hotels & rentals,q3,57.0,27
+psi_by_sector,Other services,median,60.0,16
+psi_by_sector,Other services,q1,44.0,16
+psi_by_sector,Other services,q3,65.75,16
+psi_by_sector,Professional services,median,65.0,22
+psi_by_sector,Professional services,q1,58.75,22
+psi_by_sector,Professional services,q3,77.25,22
+psi_by_sector,Real estate,median,55.5,22
+psi_by_sector,Real estate,q1,42.75,22
+psi_by_sector,Real estate,q3,61.5,22
+psi_by_sector,Restaurants & bars,median,59.5,22
+psi_by_sector,Restaurants & bars,q1,49.0,22
+psi_by_sector,Restaurants & bars,q3,73.5,22
+psi_by_sector,Retail & e-commerce,median,54.0,21
+psi_by_sector,Retail & e-commerce,q1,45.5,21
+psi_by_sector,Retail & e-commerce,q3,63.5,21
+psi_by_sector,Tour operators & activities,median,54.0,19
+psi_by_sector,Tour operators & activities,q1,44.0,19
+psi_by_sector,Tour operators & activities,q3,64.0,19
+psi_by_sector,Trades & construction,median,63.0,17
+psi_by_sector,Trades & construction,q1,56.5,17
+psi_by_sector,Trades & construction,q3,66.5,17
+all_sites,all,lcp_good_le_2_5s,3,166
+all_sites,all,psi_90_plus,6,166
+all_sites,all,psi_below_50,55,166
+all_sites,all,of,166,166
+all_sites,all,median_lcp_all,9.239999999999998,166
+all_sites,all,median_psi_all,57.0,166
+broken_or_not_business_site,all,total,24,200
+broken_or_not_business_site,all,of,200,200
+broken_or_not_business_site,all,http_error_page,6,200
+broken_or_not_business_site,all,domain_does_not_resolve,11,200
+broken_or_not_business_site,all,server_default_or_placeholder,3,200
+broken_or_not_business_site,all,hijacked_spam,1,200
+broken_or_not_business_site,all,redirects_to_facebook,1,200
+broken_or_not_business_site,all,parked_domain,1,200
+broken_or_not_business_site,all,redirects_to_third_party_booking_site,1,200
+features_pct,all,fetched,188,188
+features_pct,all,english_and_spanish,18,188
+features_pct,all,whatsapp_link,38,188
+features_pct,all,schema_org,51,188
+features_pct,all,valid_https,88,188
