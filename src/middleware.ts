@@ -36,10 +36,10 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   // Run on everything except API routes, Next internals, the embedded Sanity
-  // Studio, and static/generated files (sitemap.xml, robots.txt, llms.txt,
-  // favicon, the Google verification file, etc.). These must be excluded so the
-  // locale middleware doesn't redirect e.g. /llms.txt → /en/llms.txt.
-  matcher: [
-    "/((?!api|_next/static|_next/image|_vercel|favicon.ico|studio|sitemap.xml|robots.txt|llms.txt|llms-full.txt|llms-full-es.txt|indexnow-key.txt|mvfe1er9ft7d5qc7a67h5gcwqh9u6eu7.txt).*)",
-  ],
+  // Studio, and any path with a file extension. Files must bypass the locale
+  // middleware or it redirects them to a 404 (e.g. /data/x.csv → /es/data/x.csv).
+  // This used to be an explicit list of filenames, which silently missed
+  // manifest.json, the app icons and /data/*. No page route or blog slug
+  // contains a dot, so excluding dotted paths is safe.
+  matcher: ["/((?!api|_next|_vercel|studio|.*\\..*).*)"],
 }
