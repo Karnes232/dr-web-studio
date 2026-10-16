@@ -271,9 +271,91 @@ describe("normalizeKapsoWebhook — outbound echo", () => {
   })
 })
 
-// Coexistence: the number also runs in the WhatsApp Business app, so staff
-// replies typed on a phone come back as webhooks. These fixtures are SYNTHETIC
-// (built from Kapso support's description) until real captures replace them.
+// Coexistence, as Kapso actually delivers it. Captured on Grand Bay's number
+// 2026-10-16 (identifiers replaced). Staff replies come on message.sent, with
+// no kapso block, `from` = the business and no `to`.
+const echoPhoneRaw = fixture("business-app-echo-phone.json")
+const echoWebRaw = fixture("business-app-echo-companion.json")
+const apiSendRaw = fixture("coexistence-api-send.json")
+const inboundPhoneRaw = fixture("inbound-coexistence-phone.json")
+
+describe("normalizeKapsoWebhook — Business App, captured payloads", () => {
+  it.each([
+    ["the phone", echoPhoneRaw],
+    ["WhatsApp Web", echoWebRaw],
+  ])("files a staff reply from %s as a business_app outbound", (_, raw) => {
+    const e = normalizeKapsoWebhook(JSON.parse(raw), "whatsapp.message.sent")
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBe("business_app")
+    // The customer (a username-only contact here), never the business.
+    expect(e.message.waId).toBe("DO.1000000000000042")
+    expect(e.message.phoneNumberId).toBe("1415266428331675")
+  })
+
+  it("keys the echo on the same id the customer's own messages use", () => {
+    const echo = normalizeKapsoWebhook(
+      JSON.parse(echoPhoneRaw),
+      "whatsapp.message.sent",
+    )
+    const body = JSON.parse(echoPhoneRaw)
+    body.message = { id: "wamid.X", type: "text", text: { body: "hi" } }
+    const inbound = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(echo.kind === "outbound" && echo.message.waId).toBe(
+      inbound.kind === "message" && inbound.message.waId,
+    )
+  })
+
+  it("uses the customer's phone when the conversation has one", () => {
+    const body = JSON.parse(echoPhoneRaw)
+    body.conversation.phone_number = "18295551234"
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.sent")
+    expect(e.kind === "outbound" && e.message.waId).toBe("18295551234")
+  })
+
+  it("keeps a staff photo with no text — it is still a takeover", () => {
+    const body = JSON.parse(echoPhoneRaw)
+    body.message.type = "image"
+    delete body.message.text
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.sent")
+    expect(e.kind === "outbound" && e.message.text).toBe("[image]")
+  })
+
+  it("does NOT mark a send through Kapso's API as the app", () => {
+    // The agent's own replies look like this. Marking them business_app would
+    // skip the wamid check and the agent would stand itself down.
+    const e = normalizeKapsoWebhook(
+      JSON.parse(apiSendRaw),
+      "whatsapp.message.sent",
+    )
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBeUndefined()
+  })
+
+  it("reads a customer's message on the coexistence number as inbound", () => {
+    const e = normalizeKapsoWebhook(
+      JSON.parse(inboundPhoneRaw),
+      "whatsapp.message.received",
+    )
+    expect(e.kind).toBe("message")
+    if (e.kind !== "message") return
+    expect(e.message.waId).toBe("18295551234")
+    expect(e.message.isNewConversation).toBe(true)
+  })
+
+  it("does not read `from` as the app on a received event", () => {
+    // An inbound message's `from` is the customer.
+    const e = normalizeKapsoWebhook(
+      JSON.parse(inboundPhoneRaw),
+      "whatsapp.message.received",
+    )
+    expect(e.kind).toBe("message")
+  })
+})
+
+// The shape Kapso support DESCRIBED (origin stamped, on message.received).
+// Not what was captured, but still honoured in case Kapso starts sending it.
 const echoRaw = fixture("business-app-echo.synthetic.json")
 const historyRaw = fixture("history-sync.synthetic.json")
 

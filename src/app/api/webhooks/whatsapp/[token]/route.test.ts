@@ -140,13 +140,15 @@ afterEach(() => {
   vi.useRealTimers()
 })
 
-describe("Business App echo (coexistence)", () => {
-  const echo = () => fresh(fixture("business-app-echo.synthetic.json"))
+describe("Business App echo (coexistence), captured payload", () => {
+  // A real staff reply from the phone: message.sent, `from` = the business.
+  const echo = () => fresh(fixture("business-app-echo-phone.json"))
+  const customer = "DO.1000000000000042"
 
   it("stands the agent down at once, with no takeover pause", async () => {
-    store.findConversation.mockResolvedValue(conversation())
+    store.findConversation.mockResolvedValue(conversation({ wa_id: customer }))
 
-    const res = await deliver(echo(), "whatsapp.message.received")
+    const res = await deliver(echo(), "whatsapp.message.sent")
     expect(res.status).toBe(200)
     await settle()
 
@@ -155,7 +157,7 @@ describe("Business App echo (coexistence)", () => {
     expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
     const [, conv, message] = store.recordHumanOutbound.mock.calls[0]
     expect(conv.id).toBe("conv-1")
-    expect(message.waId).toBe("18295551234")
+    expect(message.waId).toBe(customer)
     expect(runAgent).not.toHaveBeenCalled()
   })
 
@@ -163,27 +165,69 @@ describe("Business App echo (coexistence)", () => {
     // The RECENT_SEND guard exists for inbox replies we might have sent
     // ourselves. An app message cannot be ours.
     store.findConversation.mockResolvedValue(
-      conversation({ last_outbound_at: new Date().toISOString() }),
+      conversation({
+        wa_id: customer,
+        last_outbound_at: new Date().toISOString(),
+      }),
     )
-    await deliver(echo(), "whatsapp.message.received")
+    await deliver(echo(), "whatsapp.message.sent")
     await settle()
+    expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
+  })
+
+  it("does the same for a reply from WhatsApp Web", async () => {
+    store.findConversation.mockResolvedValue(conversation({ wa_id: customer }))
+    await deliver(
+      fresh(fixture("business-app-echo-companion.json")),
+      "whatsapp.message.sent",
+    )
+    await settle()
+    expect(store.haveSentMessage).not.toHaveBeenCalled()
     expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
   })
 
   it("creates a staff-started chat already handed off", async () => {
     store.findConversation.mockResolvedValue(null)
     store.createHandedOffConversation.mockResolvedValue(
-      conversation({ status: "handed-off" }),
+      conversation({ wa_id: customer, status: "handed-off" }),
     )
 
-    await deliver(echo(), "whatsapp.message.received")
+    await deliver(echo(), "whatsapp.message.sent")
     await settle()
 
     expect(store.createHandedOffConversation).toHaveBeenCalledTimes(1)
     expect(store.createHandedOffConversation.mock.calls[0][1].waId).toBe(
-      "18295551234",
+      customer,
     )
     expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
+  })
+
+  it("leaves the agent's own send on the confirm-and-pause path", async () => {
+    // Kapso's API echo on the same number has no `from`. It must still be
+    // checked against our sends, or the agent would hand itself off.
+    store.haveSentMessage.mockResolvedValue(true)
+    await deliver(
+      fresh(fixture("coexistence-api-send.json")),
+      "whatsapp.message.sent",
+    )
+    await settle()
+    expect(store.haveSentMessage).toHaveBeenCalled()
+    expect(store.recordHumanOutbound).not.toHaveBeenCalled()
+  })
+})
+
+describe("Business App echo (coexistence), described shape", () => {
+  // Kapso support's description: origin stamped, on message.received. Not
+  // seen in practice; kept so that shape still stands the agent down.
+  const echo = () => fresh(fixture("business-app-echo.synthetic.json"))
+
+  it("stands the agent down at once", async () => {
+    store.findConversation.mockResolvedValue(conversation())
+    await deliver(echo(), "whatsapp.message.received")
+    await settle()
+    expect(store.haveSentMessage).not.toHaveBeenCalled()
+    expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
+    expect(store.recordHumanOutbound.mock.calls[0][2].waId).toBe("18295551234")
   })
 
   it("then leaves the other side's reply to the staff", async () => {

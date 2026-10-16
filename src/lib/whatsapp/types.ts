@@ -35,8 +35,9 @@ export interface InboundMessage {
  * reply typed in the provider's inbox Kapso cannot tell us — inbox and API
  * replies both report `origin: "cloud_api"` — so the answer is inferred from
  * whether we had already recorded the wamid ourselves. A message typed in the
- * WhatsApp Business app on a coexistence number is different: it arrives as
- * `origin: "business_app"`, which is definitive.
+ * WhatsApp Business app on a coexistence number is different: its sent event
+ * carries `message.from` (the business number), which an API send does not,
+ * and the normaliser marks it `origin: "business_app"`, which is definitive.
  *
  * It carries `text` because a human's words belong in the transcript; the
  * status path deliberately does not, which is why this is its own kind.

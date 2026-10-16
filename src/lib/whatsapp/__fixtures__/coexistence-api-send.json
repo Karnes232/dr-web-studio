@@ -1,0 +1,21 @@
+{
+  "_captured": "Captured 2026-10-16 from Kapso Logs -> Webhooks on Grand Bay coexistence number (phone_number_id 1415266428331675). Body is verbatim except identifiers: the customer BSUID, phone and wamids are replaced with fakes.",
+  "message": {
+    "id": "wamid.CAPTURED.KAPSOAPI.SEND.0001",
+    "text": {
+      "body": "test from Kapso inbox"
+    },
+    "type": "text",
+    "timestamp": "1792173565"
+  },
+  "conversation": {
+    "id": "0000gb01-786d-46bf-97fc-bb5e32f788af",
+    "status": "active",
+    "username": "Jameskarnes",
+    "phone_number_id": "1415266428331675",
+    "business_scoped_user_id": "DO.1000000000000042"
+  },
+  "phone_number_id": "1415266428331675",
+  "is_new_conversation": false,
+  "type": "whatsapp.message.sent"
+}

@@ -81,14 +81,24 @@ export function normalizeKapsoWebhook(
   }
 
   // Coexistence: the number also runs in the WhatsApp Business app, so staff
-  // replies typed on a phone come back to us. Kapso delivers them on
-  // `whatsapp.message.received` — not `message.sent` — stamped
-  // `origin: "business_app"` and `direction: "outbound"`. This has to be
-  // decided before anything else looks at the event: the direction test below
-  // would file the echo as a delivery receipt, the takeover would never be
-  // seen, and the agent would carry on talking over the staff.
-  const origin = asStr(kapso.origin)
+  // replies typed on a phone come back to us. This has to be decided before
+  // anything else looks at the event, or the takeover is missed and the agent
+  // carries on talking over the staff.
+  //
+  // What Kapso actually sends (captured 2026-10-16, Grand Bay) is NOT what its
+  // support described. A staff reply from the phone or from WhatsApp Web
+  // arrives on `whatsapp.message.sent` with no `kapso` block at all, so no
+  // origin and no direction, and with `message.from` set to the business's
+  // own number and no `message.to`. A send through Kapso's API or inbox on
+  // the same number carries neither `from` nor `to`. So `from` on a sent event
+  // marks the app. `kapso.origin: "business_app"`, the shape support
+  // described, is still honoured in case Kapso starts sending it.
   const header = asStr(eventHeader)
+  const origin =
+    asStr(kapso.origin) ??
+    (header === EVENT_MESSAGE_SENT && asStr(message.from)
+      ? ORIGIN_BUSINESS_APP
+      : undefined)
 
   if (origin === ORIGIN_HISTORY_SYNC) {
     // Old messages from an import. Answering them would message people about
