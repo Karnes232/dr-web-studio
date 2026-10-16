@@ -4,6 +4,13 @@ import type { MessageStatus, NormalizedEvent } from "./types"
 export const EVENT_MESSAGE_SENT = "whatsapp.message.sent"
 export const EVENT_MESSAGE_RECEIVED = "whatsapp.message.received"
 
+/** Typed by a person in the WhatsApp Business app on a coexistence number. */
+export const ORIGIN_BUSINESS_APP = "business_app"
+/** Backfilled by a history import, not live traffic. */
+export const ORIGIN_HISTORY_SYNC = "history_sync"
+
+const isPhone = (v: string | undefined) => !!v && /^\d+$/.test(v)
+
 /**
  * Normalise a Kapso webhook body into provider-neutral shapes.
  *
@@ -73,9 +80,65 @@ export function normalizeKapsoWebhook(
     return { kind: "ignored", reason: "no message id" }
   }
 
+  // Coexistence: the number also runs in the WhatsApp Business app, so staff
+  // replies typed on a phone come back to us. Kapso delivers them on
+  // `whatsapp.message.received` — not `message.sent` — stamped
+  // `origin: "business_app"` and `direction: "outbound"`. This has to be
+  // decided before anything else looks at the event: the direction test below
+  // would file the echo as a delivery receipt, the takeover would never be
+  // seen, and the agent would carry on talking over the staff.
+  const origin = asStr(kapso.origin)
+  const header = asStr(eventHeader)
+
+  if (origin === ORIGIN_HISTORY_SYNC) {
+    // Old messages from an import. Answering them would message people about
+    // conversations that ended months ago.
+    return { kind: "ignored", reason: "history_sync import" }
+  }
+
+  // Delivery and read receipts for a staff message may carry the same origin;
+  // those belong on the status path below, not here.
+  const isMessageEvent =
+    !header || header === EVENT_MESSAGE_RECEIVED || header === EVENT_MESSAGE_SENT
+
+  if (origin === ORIGIN_BUSINESS_APP && isMessageEvent) {
+    // The customer is the recipient. Prefer a phone number, as inbound keying
+    // does, so the echo finds the same conversation row; never `message.from`,
+    // which is the business itself.
+    const to = asStr(message.to)
+    const waId =
+      (isPhone(to) ? to : undefined) ??
+      asStr(conversation.phone_number) ??
+      to ??
+      asStr(conversation.business_scoped_user_id)
+    if (!waId) {
+      return { kind: "ignored", reason: "business_app echo with no recipient" }
+    }
+
+    // A photo or voice note from staff is still a takeover, so a missing text
+    // body is not a reason to drop it the way the `sent` branch does.
+    const type = asStr(message.type) ?? "text"
+    const text =
+      asStr(asObj(message.text)?.body) ?? asStr(kapso.content) ?? `[${type}]`
+
+    return {
+      kind: "outbound",
+      message: {
+        origin,
+        providerMessageId,
+        waId,
+        providerConversationId: asStr(conversation.id),
+        phoneNumberId,
+        type,
+        text,
+        timestamp: toDate(message.timestamp),
+      },
+    }
+  }
+
   // Prefer the explicit event header; fall back to the direction Kapso stamps
   // on the message, then to field shape.
-  const event = asStr(eventHeader)
+  const event = header
   const direction = asStr(kapso.direction)
   const statuses = Array.isArray(kapso.statuses) ? kapso.statuses : undefined
 

@@ -1,18 +1,23 @@
 import { after, NextRequest, NextResponse } from "next/server"
 import { timingSafeEqual } from "crypto"
 import { isValidKapsoSignature } from "@/lib/whatsapp/verify"
-import { normalizeKapsoWebhook } from "@/lib/whatsapp/provider"
+import {
+  normalizeKapsoWebhook,
+  ORIGIN_BUSINESS_APP,
+} from "@/lib/whatsapp/provider"
 import { runAgent } from "@/lib/agent/run"
 import {
   applyStatus,
   claimTurn,
   claimDelivery,
+  createHandedOffConversation,
   findConversation,
   haveSentMessage,
   isWindowOpen,
   recordHumanOutbound,
   recordInbound,
   resolveTenant,
+  resumeAfterMsFor,
   upsertConversation,
 } from "@/lib/whatsapp/store"
 import type { InboundMessage, OutboundMessage } from "@/lib/whatsapp/types"
@@ -32,6 +37,16 @@ const TAKEOVER_CONFIRM_MS = 12_000
 
 /** A wamid recorded within this window of the echo is almost certainly ours. */
 const RECENT_SEND_MS = 30_000
+
+/**
+ * An inbound message older than this is stored but never answered.
+ *
+ * Imported history is already dropped by origin; this is the backstop for
+ * anything else old — a re-paired coexistence number re-syncing, or a delivery
+ * Kapso held back. A reply an hour late to a message the staff may already
+ * have handled on the phone does more harm than none.
+ */
+const STALE_INBOUND_MS = 60 * 60 * 1000
 
 // The reply work happens after the response, so the function must outlive it.
 export const maxDuration = 60
@@ -147,13 +162,19 @@ export async function POST(
   // Each kind gets its own prefix. A `whatsapp.message.sent` event and a
   // delivery receipt whose latest status is "sent" would otherwise generate the
   // same key, and `claimDelivery` would swallow whichever arrived second.
+  //
+  // A Business App echo is keyed on its wamid alone, ignoring the delivery
+  // header: Kapso does not promise whether it arrives on `received`, `sent`, or
+  // both, and the per-delivery header would let the same message through twice.
   const idempotencyKey =
-    request.headers.get("x-idempotency-key") ??
-    (event.kind === "message"
-      ? `msg:${event.message.providerMessageId}`
-      : event.kind === "outbound"
-        ? `sent:${event.message.providerMessageId}`
-        : `status:${event.status.providerMessageId}:${event.status.status}`)
+    event.kind === "outbound" && event.message.origin === ORIGIN_BUSINESS_APP
+      ? `sent:${event.message.providerMessageId}`
+      : (request.headers.get("x-idempotency-key") ??
+        (event.kind === "message"
+          ? `msg:${event.message.providerMessageId}`
+          : event.kind === "outbound"
+            ? `sent:${event.message.providerMessageId}`
+            : `status:${event.status.providerMessageId}:${event.status.status}`))
 
   if (
     !(await claimDelivery(
@@ -198,11 +219,25 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
     const isNew = await recordInbound(tenant, conversation, message, raw)
     if (!isNew) return // already processed this wamid
 
+    const age = Date.now() - message.timestamp.getTime()
+    if (age > STALE_INBOUND_MS) {
+      console.warn(
+        `whatsapp: inbound ${message.providerMessageId} is ` +
+          `${Math.round(age / 60_000)} min old, stored but not answered`,
+      )
+      return
+    }
+
     // A human has taken over, or the agent escalated. Either way it stays
     // quiet — unless the business has been silent long enough that the
     // conversation is fair game again, in which case `claimTurn` reactivates it
-    // and tells us to re-introduce the assistant.
-    const turn = await claimTurn(conversation)
+    // and tells us to re-introduce the assistant. Per tenant, a chat a person
+    // spoke in may never come back (see `resume_after_hours`).
+    const turn = await claimTurn(
+      conversation,
+      new Date(),
+      resumeAfterMsFor(tenant),
+    )
     if (!turn.allowed) return
 
     if (!isWindowOpen({ last_inbound_at: message.timestamp.toISOString() })) {
@@ -229,43 +264,64 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
  * An outbound message echoed back by the provider.
  *
  * If we recorded it, it is the agent's own reply and there is nothing to do.
- * If we did not, a person typed it in the inbox — store it so the transcript is
- * complete, and stand the agent down.
+ * If we did not, a person typed it — in the inbox, or in the WhatsApp Business
+ * app on a coexistence number — so store it to keep the transcript complete,
+ * and stand the agent down.
  *
- * The two checks either side of a pause are the safety mechanism: see
- * {@link TAKEOVER_CONFIRM_MS}.
+ * For an inbox reply the two checks either side of a pause are the safety
+ * mechanism: see {@link TAKEOVER_CONFIRM_MS}. A Business App echo skips them —
+ * the agent cannot send from the app, so it is never ours, and standing down
+ * immediately matters more there: staff and agent are on the same thread.
  */
 async function handleOutbound(message: OutboundMessage) {
   try {
     const tenant = await resolveTenant(message.phoneNumberId)
     if (!tenant) return
 
-    if (await haveSentMessage(tenant, message.providerMessageId)) return
+    const fromBusinessApp = message.origin === ORIGIN_BUSINESS_APP
 
-    // Not ours *yet*. Give our own write time to land before concluding.
-    await sleep(TAKEOVER_CONFIRM_MS)
-    if (await haveSentMessage(tenant, message.providerMessageId)) return
+    if (!fromBusinessApp) {
+      if (await haveSentMessage(tenant, message.providerMessageId)) return
+
+      // Not ours *yet*. Give our own write time to land before concluding.
+      await sleep(TAKEOVER_CONFIRM_MS)
+      if (await haveSentMessage(tenant, message.providerMessageId)) return
+    }
 
     if (!message.waId) {
       console.warn("whatsapp: outbound echo with no recipient, ignoring")
       return
     }
+    const waId = message.waId
 
-    const conversation = await findConversation(tenant, message.waId)
-    if (!conversation) return
+    let conversation = await findConversation(tenant, waId)
 
-    // Last guard against the case where `recordOutbound` never wrote the row at
-    // all — it swallows insert errors, and is skipped entirely when a send
-    // fails. A reply we sent seconds ago must not read as someone else's.
-    const lastOut = conversation.last_outbound_at
-      ? new Date(conversation.last_outbound_at).getTime()
-      : 0
-    if (Date.now() - lastOut < RECENT_SEND_MS) {
-      console.warn(
-        `whatsapp: unrecognised outbound ${message.providerMessageId} but we ` +
-          `sent moments ago — treating as ours, not a takeover`,
+    if (!conversation) {
+      // A person started this chat; the agent has never been part of it. Make
+      // the row now, already handed off, or the other side's reply would be
+      // answered by the assistant.
+      conversation = await createHandedOffConversation(tenant, {
+        ...message,
+        waId,
+      })
+      if (!conversation) return
+      console.log(
+        `whatsapp: person-started chat ${conversation.id}, agent stays out`,
       )
-      return
+    } else if (!fromBusinessApp) {
+      // Last guard against the case where `recordOutbound` never wrote the row
+      // at all — it swallows insert errors, and is skipped entirely when a send
+      // fails. A reply we sent seconds ago must not read as someone else's.
+      const lastOut = conversation.last_outbound_at
+        ? new Date(conversation.last_outbound_at).getTime()
+        : 0
+      if (Date.now() - lastOut < RECENT_SEND_MS) {
+        console.warn(
+          `whatsapp: unrecognised outbound ${message.providerMessageId} but we ` +
+            `sent moments ago — treating as ours, not a takeover`,
+        )
+        return
+      }
     }
 
     console.log(`whatsapp: human takeover on conversation ${conversation.id}`)

@@ -1,0 +1,23 @@
+{
+  "_synthetic": "NOT a captured payload. An imported history message per Kapso's docs (kapso.origin history_sync).",
+  "message": {
+    "id": "wamid.SYNTHETIC.HISTORY.0001",
+    "timestamp": "1776000000",
+    "type": "text",
+    "from": "18295551234",
+    "text": { "body": "Do you have availability next week?" },
+    "kapso": {
+      "direction": "inbound",
+      "status": "received",
+      "origin": "history_sync",
+      "has_media": false
+    }
+  },
+  "conversation": {
+    "id": "conv_gb_002",
+    "phone_number": "18295551234",
+    "phone_number_id": "900000000000001"
+  },
+  "is_new_conversation": false,
+  "phone_number_id": "900000000000001"
+}

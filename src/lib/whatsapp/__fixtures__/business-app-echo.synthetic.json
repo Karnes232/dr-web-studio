@@ -1,0 +1,27 @@
+{
+  "_synthetic": "NOT a captured payload. Built from Kapso support's description (2026-10-16): Business App echoes arrive on whatsapp.message.received with kapso.origin business_app, kapso.direction outbound, recipient in message.to. Replace with real captures (business-app-echo-{phone,companion,new-chat}.json) from Kapso Logs -> Webhooks.",
+  "message": {
+    "id": "wamid.SYNTHETIC.BUSINESSAPP.ECHO.0001",
+    "timestamp": "1792152000",
+    "type": "text",
+    "from": "18293741344",
+    "to": "18295551234",
+    "text": { "body": "Hi Ana, this is Carla from the shop. Yes, we have space on Saturday." },
+    "kapso": {
+      "direction": "outbound",
+      "status": "sent",
+      "origin": "business_app",
+      "has_media": false,
+      "content": "Hi Ana, this is Carla from the shop. Yes, we have space on Saturday."
+    }
+  },
+  "conversation": {
+    "id": "conv_gb_001",
+    "contact_name": "Ana Gomez",
+    "phone_number": "18295551234",
+    "status": "active",
+    "phone_number_id": "900000000000001"
+  },
+  "is_new_conversation": false,
+  "phone_number_id": "900000000000001"
+}

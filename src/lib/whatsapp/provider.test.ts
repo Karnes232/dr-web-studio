@@ -270,3 +270,110 @@ describe("normalizeKapsoWebhook — outbound echo", () => {
     expect(e.kind).toBe("status")
   })
 })
+
+// Coexistence: the number also runs in the WhatsApp Business app, so staff
+// replies typed on a phone come back as webhooks. These fixtures are SYNTHETIC
+// (built from Kapso support's description) until real captures replace them.
+const echoRaw = fixture("business-app-echo.synthetic.json")
+const historyRaw = fixture("history-sync.synthetic.json")
+
+describe("normalizeKapsoWebhook — Business App (coexistence)", () => {
+  it("files a staff reply on message.received as a human outbound, not a status", () => {
+    // Kapso stamps these direction "outbound". Without the origin check the
+    // direction test files them as a delivery receipt, the takeover is never
+    // seen, and the agent keeps talking over the staff.
+    const e = normalizeKapsoWebhook(
+      JSON.parse(echoRaw),
+      "whatsapp.message.received",
+    )
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBe("business_app")
+    expect(e.message.waId).toBe("18295551234") // the customer
+    expect(e.message.waId).not.toBe("18293741344") // never the business
+    expect(e.message.text).toMatch(/Carla from the shop/)
+    expect(e.message.phoneNumberId).toBe("900000000000001")
+  })
+
+  it("does the same if the echo arrives on message.sent instead", () => {
+    const e = normalizeKapsoWebhook(
+      JSON.parse(echoRaw),
+      "whatsapp.message.sent",
+    )
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBe("business_app")
+  })
+
+  it("falls back to the conversation's phone when message.to is missing", () => {
+    const body = JSON.parse(echoRaw)
+    delete body.message.to
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(e.kind === "outbound" && e.message.waId).toBe("18295551234")
+  })
+
+  it("prefers a phone over a business-scoped id, matching inbound keying", () => {
+    const body = JSON.parse(echoRaw)
+    body.message.to = "DO.1757134975438075"
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(e.kind === "outbound" && e.message.waId).toBe("18295551234")
+  })
+
+  it("uses the business-scoped id when there is no phone at all", () => {
+    const body = JSON.parse(echoRaw)
+    body.message.to = "DO.1757134975438075"
+    delete body.conversation.phone_number
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(e.kind === "outbound" && e.message.waId).toBe(
+      "DO.1757134975438075",
+    )
+  })
+
+  it("keeps a staff photo or voice note — it is still a takeover", () => {
+    const body = JSON.parse(echoRaw)
+    body.message.type = "image"
+    delete body.message.text
+    delete body.message.kapso.content
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.received")
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.text).toBe("[image]")
+  })
+
+  it("ignores an echo with no recipient", () => {
+    const body = JSON.parse(echoRaw)
+    delete body.message.to
+    delete body.conversation.phone_number
+    expect(
+      normalizeKapsoWebhook(body, "whatsapp.message.received").kind,
+    ).toBe("ignored")
+  })
+
+  it("leaves a delivery receipt for a staff message on the status path", () => {
+    const body = JSON.parse(echoRaw)
+    body.message.kapso.status = "delivered"
+    body.message.kapso.statuses = [{ status: "delivered" }]
+    const e = normalizeKapsoWebhook(body, "whatsapp.message.delivered")
+    expect(e.kind).toBe("status")
+  })
+
+  it("never answers imported history", () => {
+    const e = normalizeKapsoWebhook(
+      JSON.parse(historyRaw),
+      "whatsapp.message.received",
+    )
+    expect(e.kind).toBe("ignored")
+  })
+
+  it("leaves DR's cloud_api echo on the inferred-takeover path", () => {
+    // An inbox reply reports cloud_api; only the wamid check can tell it
+    // apart from the agent's own send, so it must not be marked definitive.
+    const e = normalizeKapsoWebhook(
+      JSON.parse(sentRaw),
+      "whatsapp.message.sent",
+    )
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBeUndefined()
+  })
+})

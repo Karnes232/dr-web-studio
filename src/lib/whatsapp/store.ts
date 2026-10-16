@@ -20,6 +20,13 @@ export interface Tenant {
   cost_this_month_usd: number | null
   messages_this_month: number | null
   monthly_cost_cap_usd: number | null
+  /**
+   * How long staff must stay silent before the agent may pick a handed-off
+   * conversation back up. NULL = never: once a person has spoken in a chat it
+   * is theirs for good, which is what a coexistence number staffed from phones
+   * needs. Absent (column not yet migrated) = the old 5-day default.
+   */
+  resume_after_hours?: number | null
 }
 
 export interface Conversation {
@@ -45,6 +52,21 @@ export interface Conversation {
  * the time anything reads it, and is therefore always "now".
  */
 export const RESUME_AFTER_MS = 5 * 24 * 60 * 60 * 1000
+
+/**
+ * The resume window for a human-handled conversation, from the tenant row.
+ *
+ * `undefined` (the column does not exist yet) keeps {@link RESUME_AFTER_MS}, so
+ * deploying this before the migration changes nothing. `null` means never.
+ */
+export function resumeAfterMsFor(
+  tenant: Pick<Tenant, "resume_after_hours">,
+): number | null {
+  const hours = tenant.resume_after_hours
+  if (hours === undefined) return RESUME_AFTER_MS
+  if (hours === null) return null
+  return hours * 60 * 60 * 1000
+}
 
 /**
  * Claim a webhook delivery.
@@ -254,6 +276,50 @@ export async function haveSentMessage(
   return !!data
 }
 
+/**
+ * A person messaged someone the agent has never spoken to — staff starting a
+ * chat from the Business app, or from the inbox. Create the conversation
+ * already handed off, so that when the other side replies the agent stays out
+ * of it. Without this a supplier answering a chat staff began would be greeted
+ * by the assistant.
+ *
+ * An upsert, not an insert: an inbound message from the same person may be
+ * creating the row at the same moment, and either way it must end handed off.
+ */
+export async function createHandedOffConversation(
+  tenant: Tenant,
+  message: OutboundMessage & { waId: string },
+): Promise<Conversation | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const sentAt = message.timestamp.toISOString()
+  const now = new Date().toISOString()
+
+  const { data, error } = await supabase
+    .from("conversations")
+    .upsert(
+      {
+        tenant_id: tenant.tenant_id,
+        wa_id: message.waId,
+        provider_conversation_id: message.providerConversationId,
+        status: "handed-off",
+        handed_off_at: now,
+        last_outbound_at: sentAt,
+        updated_at: now,
+      },
+      { onConflict: "tenant_id,wa_id" },
+    )
+    .select("*")
+    .single()
+
+  if (error) {
+    console.error("createHandedOffConversation failed:", error)
+    return null
+  }
+  return data as Conversation
+}
+
 /** Find an existing conversation by the customer's id. Never creates one. */
 export async function findConversation(
   tenant: Tenant,
@@ -341,10 +407,16 @@ export async function recordHumanOutbound(
  * A conversation that was handed off before ever receiving a reply has a null
  * `last_outbound_at`; treating that as epoch means it is immediately eligible,
  * which is right — nobody is mid-exchange with the customer.
+ *
+ * `handedOffResumeMs` applies only to `handed-off` (a person spoke). `null`
+ * keeps those human for good. `awaiting-human` (the agent escalated, and staff
+ * may never have answered) always uses {@link RESUME_AFTER_MS}, so a customer
+ * nobody picked up is not left in permanent silence.
  */
 export function turnDecision(
   conversation: Pick<Conversation, "status" | "last_outbound_at">,
   now = new Date(),
+  handedOffResumeMs: number | null = RESUME_AFTER_MS,
 ): { allowed: boolean; resumed: boolean; reactivate: boolean } {
   if (conversation.status === "active") {
     return { allowed: true, resumed: false, reactivate: false }
@@ -353,10 +425,16 @@ export function turnDecision(
     return { allowed: false, resumed: false, reactivate: false }
   }
 
+  const window =
+    conversation.status === "handed-off" ? handedOffResumeMs : RESUME_AFTER_MS
+  if (window === null) {
+    return { allowed: false, resumed: false, reactivate: false }
+  }
+
   const last = conversation.last_outbound_at
     ? new Date(conversation.last_outbound_at).getTime()
     : 0
-  if (now.getTime() - last < RESUME_AFTER_MS) {
+  if (now.getTime() - last < window) {
     return { allowed: false, resumed: false, reactivate: false }
   }
   return { allowed: true, resumed: true, reactivate: true }
@@ -378,8 +456,9 @@ export function turnDecision(
 export async function claimTurn(
   conversation: Conversation,
   now = new Date(),
+  handedOffResumeMs: number | null = RESUME_AFTER_MS,
 ): Promise<{ allowed: boolean; resumed: boolean }> {
-  const decision = turnDecision(conversation, now)
+  const decision = turnDecision(conversation, now, handedOffResumeMs)
   if (!decision.reactivate) return decision
 
   const supabase = getSupabase()

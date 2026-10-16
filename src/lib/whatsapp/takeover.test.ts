@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { turnDecision, RESUME_AFTER_MS } from "./store"
+import { turnDecision, resumeAfterMsFor, RESUME_AFTER_MS } from "./store"
 
 /**
  * When a human takes over — or the agent escalates — the agent goes quiet and
@@ -89,5 +89,75 @@ describe("turnDecision", () => {
 
   it("uses exactly five days", () => {
     expect(RESUME_AFTER_MS).toBe(5 * DAY)
+  })
+})
+
+describe("turnDecision — per-tenant resume window", () => {
+  // Grand Bay staff answer from their phones on the same number, so a chat a
+  // person spoke in must stay theirs: `resume_after_hours` NULL = never.
+  const NEVER = null
+
+  it("never resumes a handed-off chat when the tenant says never", () => {
+    expect(
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(400 * DAY) },
+        NOW,
+        NEVER,
+      ).allowed,
+    ).toBe(false)
+  })
+
+  it("never resumes even a handoff that got no reply", () => {
+    // A person-started chat is created handed-off; the agent stays out.
+    expect(
+      turnDecision({ status: "handed-off", last_outbound_at: null }, NOW, NEVER)
+        .allowed,
+    ).toBe(false)
+  })
+
+  it("still resumes an agent escalation nobody answered, after five days", () => {
+    // awaiting-human means the agent escalated; staff may never have spoken.
+    // Leaving that customer in permanent silence is the old one-way bug.
+    expect(
+      turnDecision(
+        { status: "awaiting-human", last_outbound_at: ago(6 * DAY) },
+        NOW,
+        NEVER,
+      ).allowed,
+    ).toBe(true)
+  })
+
+  it("keeps DR's behaviour at 120 hours exactly", () => {
+    const window = resumeAfterMsFor({ resume_after_hours: 120 })
+    expect(window).toBe(RESUME_AFTER_MS)
+    expect(
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(4 * DAY) },
+        NOW,
+        window,
+      ).allowed,
+    ).toBe(false)
+    expect(
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(5 * DAY + 1000) },
+        NOW,
+        window,
+      ).allowed,
+    ).toBe(true)
+  })
+})
+
+describe("resumeAfterMsFor", () => {
+  it("keeps the five-day default before the column exists", () => {
+    // Deploying the code ahead of the migration must change nothing.
+    expect(resumeAfterMsFor({})).toBe(RESUME_AFTER_MS)
+  })
+
+  it("maps NULL to never", () => {
+    expect(resumeAfterMsFor({ resume_after_hours: null })).toBeNull()
+  })
+
+  it("converts hours", () => {
+    expect(resumeAfterMsFor({ resume_after_hours: 2 })).toBe(2 * 60 * 60 * 1000)
   })
 })

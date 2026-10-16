@@ -31,15 +31,22 @@ export interface InboundMessage {
 /**
  * An outbound message echoed back to us by the provider.
  *
- * Exists to answer one question: did *we* send this, or did a person type it in
- * the provider's inbox? Kapso cannot tell us — an inbox reply and an API reply
- * both report `origin: "cloud_api"` — so the answer is inferred from whether we
- * had already recorded the wamid ourselves.
+ * Exists to answer one question: did *we* send this, or did a person? For a
+ * reply typed in the provider's inbox Kapso cannot tell us — inbox and API
+ * replies both report `origin: "cloud_api"` — so the answer is inferred from
+ * whether we had already recorded the wamid ourselves. A message typed in the
+ * WhatsApp Business app on a coexistence number is different: it arrives as
+ * `origin: "business_app"`, which is definitive.
  *
  * It carries `text` because a human's words belong in the transcript; the
  * status path deliberately does not, which is why this is its own kind.
  */
 export interface OutboundMessage {
+  /**
+   * Where Kapso says the message came from. Only `"business_app"` is acted on:
+   * it can never be the agent's own send.
+   */
+  origin?: string
   providerMessageId: string
   /** The customer, as a phone number or a business-scoped user id. */
   waId?: string
