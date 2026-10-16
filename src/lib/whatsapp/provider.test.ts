@@ -306,6 +306,18 @@ describe("normalizeKapsoWebhook — Business App, captured payloads", () => {
     )
   })
 
+  it("files a chat staff started as business_app, keyed on the recipient", () => {
+    // Unlike a reply, a staff-started message carries `to`.
+    const e = normalizeKapsoWebhook(
+      JSON.parse(fixture("business-app-echo-new-chat.json")),
+      "whatsapp.message.sent",
+    )
+    expect(e.kind).toBe("outbound")
+    if (e.kind !== "outbound") return
+    expect(e.message.origin).toBe("business_app")
+    expect(e.message.waId).toBe("18295550000")
+  })
+
   it("uses the customer's phone when the conversation has one", () => {
     const body = JSON.parse(echoPhoneRaw)
     body.conversation.phone_number = "18295551234"

@@ -1,0 +1,23 @@
+{
+  "_captured": "Captured 2026-10-16 from Kapso Logs -> Webhooks on Grand Bay coexistence number (phone_number_id 1415266428331675): staff START a chat from the Business app. Body is verbatim except identifiers: the recipient phone, BSUID, conversation id and wamid are replaced with fakes.",
+  "message": {
+    "id": "wamid.CAPTURED.BUSINESSAPP.NEWCHAT.0001",
+    "to": "18295550000",
+    "from": "18293741344",
+    "text": {
+      "body": "Hello"
+    },
+    "type": "text",
+    "timestamp": "1792174024"
+  },
+  "conversation": {
+    "id": "0000gb01-757a-47e0-a10e-f5e32a6bea72",
+    "status": "active",
+    "phone_number": "18295550000",
+    "phone_number_id": "1415266428331675",
+    "business_scoped_user_id": "CA.1000000000000009"
+  },
+  "phone_number_id": "1415266428331675",
+  "is_new_conversation": false,
+  "type": "whatsapp.message.sent"
+}

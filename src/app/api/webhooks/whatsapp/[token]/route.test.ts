@@ -202,6 +202,23 @@ describe("Business App echo (coexistence), captured payload", () => {
     expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
   })
 
+  it("creates the captured staff-started chat handed off, keyed on `to`", async () => {
+    store.findConversation.mockResolvedValue(null)
+    store.createHandedOffConversation.mockResolvedValue(
+      conversation({ wa_id: "18295550000", status: "handed-off" }),
+    )
+    await deliver(
+      fresh(fixture("business-app-echo-new-chat.json")),
+      "whatsapp.message.sent",
+    )
+    await settle()
+    expect(store.haveSentMessage).not.toHaveBeenCalled()
+    expect(store.createHandedOffConversation.mock.calls[0][1].waId).toBe(
+      "18295550000",
+    )
+    expect(store.recordHumanOutbound).toHaveBeenCalledTimes(1)
+  })
+
   it("leaves the agent's own send on the confirm-and-pause path", async () => {
     // Kapso's API echo on the same number has no `from`. It must still be
     // checked against our sends, or the agent would hand itself off.
