@@ -721,3 +721,27 @@ export async function recordSendResult(
   )?.[0]
   return row ?? null
 }
+
+/**
+ * The tenant a number belongs to, active or not. Connection alerts must reach
+ * a business even while its agent is switched off — that is often exactly
+ * when a disconnect goes unnoticed.
+ */
+export async function findTenantByPhoneNumberId(
+  phoneNumberId: string,
+): Promise<Tenant | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data, error } = await supabase
+    .from("tenants")
+    .select("*")
+    .eq("phone_number_id", phoneNumberId)
+    .maybeSingle()
+
+  if (error) {
+    console.error("findTenantByPhoneNumberId failed:", error)
+    return null
+  }
+  return (data as Tenant) ?? null
+}

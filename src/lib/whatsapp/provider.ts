@@ -246,3 +246,71 @@ export function normalizeKapsoWebhook(
     },
   }
 }
+
+/**
+ * A number's connection changed. Kapso sends these to a PROJECT webhook (v2),
+ * never to the per-number webhook that carries messages, so they arrive on a
+ * route of their own. On a coexistence number the usual cause is the main
+ * phone not opening WhatsApp for ~14 days.
+ */
+export interface ConnectionEvent {
+  event: "disconnected" | "offboarded" | "reconnected" | "deleted"
+  phoneNumberId: string
+  /** Kapso's event id; absent on `deleted`. */
+  eventId?: string
+  occurredAt?: string
+  /** Meta's code, e.g. PARTNER_REMOVED, ACCOUNT_RECONNECTED. */
+  sourceEvent?: string
+  /** Lower-cased Meta value, e.g. "primary_inactivity". Disconnected only. */
+  reason?: string
+  initiatedBy?: string
+}
+
+const CONNECTION_EVENTS = {
+  "whatsapp.phone_number.disconnected": "disconnected",
+  "whatsapp.phone_number.offboarded": "offboarded",
+  "whatsapp.phone_number.reconnected": "reconnected",
+  "whatsapp.phone_number.deleted": "deleted",
+} as const
+
+export function normalizeKapsoProjectEvent(
+  body: unknown,
+  eventHeader?: string | null,
+):
+  | { kind: "connection"; event: ConnectionEvent }
+  | { kind: "ignored"; reason: string } {
+  const root = asObj(body)
+  if (!root) return { kind: "ignored", reason: "body is not an object" }
+
+  const name = asStr(eventHeader) ?? asStr(root.event)
+  const event = name
+    ? CONNECTION_EVENTS[name as keyof typeof CONNECTION_EVENTS]
+    : undefined
+  if (!event) {
+    return {
+      kind: "ignored",
+      reason: `not a connection event: ${name ?? "none"}`,
+    }
+  }
+
+  const phoneNumberId = asStr(root.phone_number_id)
+  if (!phoneNumberId) {
+    return { kind: "ignored", reason: "no phone_number_id" }
+  }
+
+  const source = asObj(root.source) ?? {}
+  const disconnection = asObj(root.disconnection) ?? {}
+
+  return {
+    kind: "connection",
+    event: {
+      event,
+      phoneNumberId,
+      eventId: asStr(root.id),
+      occurredAt: asStr(root.occurred_at),
+      sourceEvent: asStr(source.event),
+      reason: asStr(disconnection.reason),
+      initiatedBy: asStr(disconnection.initiated_by),
+    },
+  }
+}

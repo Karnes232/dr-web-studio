@@ -6,6 +6,7 @@ import {
   type Tenant,
 } from "@/lib/whatsapp/store"
 import { WINDOW_EXPIRED, type SendResult } from "@/lib/whatsapp/send"
+import type { ConnectionEvent } from "@/lib/whatsapp/provider"
 
 /**
  * Operational alerts: the line itself is in trouble, as opposed to a customer
@@ -100,4 +101,50 @@ export async function noteSendResult(
   } catch (error) {
     console.error("alerts: noteSendResult failed:", error)
   }
+}
+
+const CONNECTION_REASONS: Record<string, string> = {
+  primary_inactivity:
+    "The main phone has not opened WhatsApp for about 14 days. Open WhatsApp on that phone.",
+  companion_inactivity:
+    "A linked device (such as WhatsApp Web) was inactive for about 30 days.",
+}
+
+/** One email per connection event. Never throws. */
+export async function sendConnectionAlert(
+  tenant: Tenant,
+  event: ConnectionEvent,
+): Promise<void> {
+  const facts = [
+    `Event:    ${event.event}${event.sourceEvent ? ` (${event.sourceEvent})` : ""}`,
+    event.reason ? `Reason:   ${event.reason}` : "",
+    event.initiatedBy ? `By:       ${event.initiatedBy}` : "",
+    event.occurredAt ? `When:     ${event.occurredAt}` : "",
+    `Number:   phone_number_id ${event.phoneNumberId}`,
+  ].filter(Boolean)
+
+  if (event.event === "reconnected") {
+    await sendOpsAlert(tenant, "WhatsApp assistant reconnected", [
+      "The WhatsApp number is connected to Kapso again, so the assistant is",
+      "answering new customers again.",
+      "",
+      ...facts,
+    ])
+    return
+  }
+
+  const hint = event.reason ? CONNECTION_REASONS[event.reason] : undefined
+  await sendOpsAlert(tenant, "WhatsApp assistant is OFFLINE", [
+    "The WhatsApp number is no longer connected to Kapso, so the assistant",
+    "cannot see or answer messages. Staff still receive every message in the",
+    "WhatsApp Business app on the phone — answer customers from there.",
+    "",
+    ...(hint ? [hint, ""] : []),
+    "To restore it: open WhatsApp on the main phone; if it stays",
+    "disconnected, reconnect the number in the Kapso dashboard (Connected",
+    "numbers → reconnect). Linked devices such as WhatsApp Web may need to be",
+    "linked again afterwards.",
+    "",
+    ...facts,
+  ])
 }

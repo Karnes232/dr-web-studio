@@ -1,6 +1,6 @@
 import { after, NextRequest, NextResponse } from "next/server"
-import { timingSafeEqual } from "crypto"
 import { isValidKapsoSignature } from "@/lib/whatsapp/verify"
+import { tokenMatches } from "@/lib/whatsapp/webhookToken"
 import {
   normalizeKapsoWebhook,
   ORIGIN_BUSINESS_APP,
@@ -68,19 +68,6 @@ export const dynamic = "force-dynamic"
  * no IP allowlist is published; an unguessable path keeps casual scanners off
  * the endpoint entirely. The HMAC is still the real check.
  */
-
-function tokenMatches(token: string): boolean {
-  // Trimmed: pasting into a hosting provider's env-var box readily picks up a
-  // trailing newline, which would fail the compare with no visible cause.
-  const expected = process.env.WHATSAPP_WEBHOOK_TOKEN?.trim()
-  if (!expected) {
-    console.error("whatsapp webhook: WHATSAPP_WEBHOOK_TOKEN is not set")
-    return false
-  }
-  const a = Buffer.from(token.trim())
-  const b = Buffer.from(expected)
-  return a.length === b.length && timingSafeEqual(a, b)
-}
 
 /**
  * Meta's subscription handshake. Kapso does not use it, but going direct to
