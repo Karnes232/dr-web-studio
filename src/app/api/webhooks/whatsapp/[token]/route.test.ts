@@ -12,9 +12,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
  * misrouted echo means the agent talks over a person, or answers one.
  */
 
-const { pending, runAgent, store } = vi.hoisted(() => ({
+const { pending, runAgent, countKapsoMessage, store } = vi.hoisted(() => ({
   pending: [] as Promise<unknown>[],
   runAgent: vi.fn(),
+  countKapsoMessage: vi.fn(),
   store: {
     applyStatus: vi.fn(),
     claimDelivery: vi.fn(),
@@ -41,6 +42,10 @@ vi.mock("next/server", async importOriginal => {
 
 vi.mock("@/lib/agent/run", () => ({
   runAgent: (...args: unknown[]) => runAgent(...args),
+}))
+
+vi.mock("@/lib/agent/alerts", () => ({
+  countKapsoMessage: (...args: unknown[]) => countKapsoMessage(...args),
 }))
 
 vi.mock("@/lib/whatsapp/store", async importOriginal => {
@@ -124,6 +129,7 @@ beforeEach(() => {
   process.env.WHATSAPP_WEBHOOK_TOKEN = TOKEN
   for (const fn of Object.values(store)) fn.mockReset()
   runAgent.mockReset()
+  countKapsoMessage.mockReset()
   store.claimDelivery.mockResolvedValue(true)
   store.resolveTenant.mockResolvedValue(grandbay)
   store.recordInbound.mockResolvedValue(true)
@@ -270,5 +276,62 @@ describe("inbox echo (cloud_api) — DR's path, unchanged", () => {
     await deliver(fixture("message-sent.json"), "whatsapp.message.sent")
     await settle()
     expect(store.recordHumanOutbound).not.toHaveBeenCalled()
+  })
+})
+
+describe("Kapso allowance and the send breaker", () => {
+  it("does not call the agent while the tenant is paused", async () => {
+    store.resolveTenant.mockResolvedValue({
+      ...grandbay,
+      paused_until: new Date(Date.now() + 30 * 60_000).toISOString(),
+    })
+    store.upsertConversation.mockResolvedValue(conversation())
+    await deliver(
+      fresh(fixture("inbound-text.json")),
+      "whatsapp.message.received",
+    )
+    await settle()
+    expect(store.recordInbound).toHaveBeenCalledTimes(1)
+    expect(runAgent).not.toHaveBeenCalled()
+  })
+
+  it("answers again once the pause has expired", async () => {
+    store.resolveTenant.mockResolvedValue({
+      ...grandbay,
+      paused_until: new Date(Date.now() - 60_000).toISOString(),
+    })
+    store.upsertConversation.mockResolvedValue(conversation())
+    await deliver(
+      fresh(fixture("inbound-text.json")),
+      "whatsapp.message.received",
+    )
+    await settle()
+    expect(runAgent).toHaveBeenCalledTimes(1)
+  })
+
+  it("counts each new inbound message and each staff message once", async () => {
+    store.upsertConversation.mockResolvedValue(conversation())
+    store.findConversation.mockResolvedValue(conversation())
+    await deliver(
+      fresh(fixture("inbound-text.json")),
+      "whatsapp.message.received",
+    )
+    await deliver(
+      fresh(fixture("business-app-echo.synthetic.json")),
+      "whatsapp.message.received",
+    )
+    await settle()
+    expect(countKapsoMessage).toHaveBeenCalledTimes(2)
+  })
+
+  it("does not count a redelivered inbound message", async () => {
+    store.upsertConversation.mockResolvedValue(conversation())
+    store.recordInbound.mockResolvedValue(false) // wamid already stored
+    await deliver(
+      fresh(fixture("inbound-text.json")),
+      "whatsapp.message.received",
+    )
+    await settle()
+    expect(countKapsoMessage).not.toHaveBeenCalled()
   })
 })

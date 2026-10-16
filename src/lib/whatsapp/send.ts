@@ -14,7 +14,21 @@ const DEFAULT_BASE = "https://api.kapso.ai/meta/whatsapp/v24.0"
 
 export type SendResult =
   | { ok: true; messageId: string }
-  | { ok: false; errorCode?: number; errorMessage: string }
+  | {
+      ok: false
+      errorCode?: number
+      errorMessage: string
+      /** HTTP status when Kapso answered at all. */
+      httpStatus?: number
+      /**
+       * The response body, truncated. Kapso has no reliable error code for an
+       * exhausted plan allowance, so the breaker's alert carries the raw text:
+       * the first real one is how we learn what it looks like.
+       */
+      rawBody?: string
+    }
+
+const RAW_BODY_LIMIT = 2000
 
 /** Meta error code for "outside the 24-hour customer service window". */
 export const WINDOW_EXPIRED = 131047
@@ -74,7 +88,13 @@ async function post(
       }),
     })
 
-    const json = (await res.json().catch(() => ({}))) as Record<string, unknown>
+    const text = await res.text().catch(() => "")
+    let json: Record<string, unknown> = {}
+    try {
+      json = JSON.parse(text) as Record<string, unknown>
+    } catch {
+      // Not JSON — keep it as raw text below.
+    }
 
     if (!res.ok) {
       // Meta's error envelope passes straight through Kapso.
@@ -85,6 +105,8 @@ async function post(
         errorMessage:
           (typeof error.message === "string" && error.message) ||
           `HTTP ${res.status}`,
+        httpStatus: res.status,
+        rawBody: text.slice(0, RAW_BODY_LIMIT),
       }
     }
 

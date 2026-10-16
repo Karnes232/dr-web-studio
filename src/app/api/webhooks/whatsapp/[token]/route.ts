@@ -6,6 +6,7 @@ import {
   ORIGIN_BUSINESS_APP,
 } from "@/lib/whatsapp/provider"
 import { runAgent } from "@/lib/agent/run"
+import { countKapsoMessage } from "@/lib/agent/alerts"
 import {
   applyStatus,
   claimTurn,
@@ -13,6 +14,7 @@ import {
   createHandedOffConversation,
   findConversation,
   haveSentMessage,
+  isPaused,
   isWindowOpen,
   recordHumanOutbound,
   recordInbound,
@@ -218,6 +220,7 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
 
     const isNew = await recordInbound(tenant, conversation, message, raw)
     if (!isNew) return // already processed this wamid
+    await countKapsoMessage(tenant)
 
     const age = Date.now() - message.timestamp.getTime()
     if (age > STALE_INBOUND_MS) {
@@ -242,6 +245,15 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
 
     if (!isWindowOpen({ last_inbound_at: message.timestamp.toISOString() })) {
       console.warn("whatsapp: window closed, skipping free-form reply")
+      return
+    }
+
+    // Replies have been failing; don't pay Claude for more that won't arrive.
+    // Staff still see the message on the phone or in the inbox.
+    if (isPaused(tenant)) {
+      console.warn(
+        `whatsapp: ${tenant.tenant_id} paused until ${tenant.paused_until}, not answering`,
+      )
       return
     }
 
@@ -326,6 +338,7 @@ async function handleOutbound(message: OutboundMessage) {
 
     console.log(`whatsapp: human takeover on conversation ${conversation.id}`)
     await recordHumanOutbound(tenant, conversation, message)
+    await countKapsoMessage(tenant)
   } catch (error) {
     console.error("whatsapp: handleOutbound failed:", error)
   }

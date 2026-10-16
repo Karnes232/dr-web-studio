@@ -99,7 +99,9 @@ export function normalizeKapsoWebhook(
   // Delivery and read receipts for a staff message may carry the same origin;
   // those belong on the status path below, not here.
   const isMessageEvent =
-    !header || header === EVENT_MESSAGE_RECEIVED || header === EVENT_MESSAGE_SENT
+    !header ||
+    header === EVENT_MESSAGE_RECEIVED ||
+    header === EVENT_MESSAGE_SENT
 
   if (origin === ORIGIN_BUSINESS_APP && isMessageEvent) {
     // The customer is the recipient. Prefer a phone number, as inbound keying

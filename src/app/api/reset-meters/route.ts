@@ -43,7 +43,9 @@ export async function GET(request: NextRequest) {
   // keep the per-turn detail; this is just the roll-up.
   const { data: before, error: readErr } = await supabase
     .from("tenants")
-    .select("tenant_id, cost_this_month_usd, messages_this_month")
+    .select(
+      "tenant_id, cost_this_month_usd, messages_this_month, kapso_messages_this_month",
+    )
 
   if (readErr) {
     console.error("reset-meters: read failed:", readErr)
@@ -58,6 +60,9 @@ export async function GET(request: NextRequest) {
     .update({
       cost_this_month_usd: 0,
       messages_this_month: 0,
+      // Our count of what Kapso bills against the plan (0008). Kapso's own
+      // allowance resets monthly too; a missed reset only warns early.
+      kapso_messages_this_month: 0,
       updated_at: new Date().toISOString(),
     })
     // PostgREST refuses an unfiltered UPDATE; this matches every row.
@@ -75,7 +80,8 @@ export async function GET(request: NextRequest) {
     console.log(
       `reset-meters: ${t.tenant_id} closed the month at ` +
         `$${Number(t.cost_this_month_usd ?? 0).toFixed(4)} over ` +
-        `${t.messages_this_month ?? 0} messages`,
+        `${t.messages_this_month ?? 0} agent turns, ` +
+        `${t.kapso_messages_this_month ?? 0} Kapso-billed messages`,
     )
   }
 

@@ -13,6 +13,7 @@ function mockFetch(status: number, json: unknown) {
     ok: status >= 200 && status < 300,
     status,
     json: async () => json,
+    text: async () => (typeof json === "string" ? json : JSON.stringify(json)),
   })
   global.fetch = spy as unknown as typeof fetch
   return spy
@@ -53,6 +54,18 @@ describe("sendText", () => {
       type: "text",
       text: { body: "Hola" },
     })
+  })
+
+  it("keeps the raw status and body of a non-JSON failure", async () => {
+    // Kapso gives no reliable code for an exhausted allowance; the breaker's
+    // alert shows exactly what came back so the first real one can be learned.
+    mockFetch(402, "Insufficient credits or free messages")
+    const result = await sendText("647015955153740", "18295551234", "Hola")
+    expect(result.ok).toBe(false)
+    if (result.ok) return
+    expect(result.httpStatus).toBe(402)
+    expect(result.rawBody).toBe("Insufficient credits or free messages")
+    expect(result.errorMessage).toBe("HTTP 402")
   })
 
   it("surfaces Meta error 131047 so the caller can fall back to a template", async () => {

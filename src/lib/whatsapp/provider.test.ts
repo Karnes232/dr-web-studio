@@ -324,9 +324,7 @@ describe("normalizeKapsoWebhook — Business App (coexistence)", () => {
     body.message.to = "DO.1757134975438075"
     delete body.conversation.phone_number
     const e = normalizeKapsoWebhook(body, "whatsapp.message.received")
-    expect(e.kind === "outbound" && e.message.waId).toBe(
-      "DO.1757134975438075",
-    )
+    expect(e.kind === "outbound" && e.message.waId).toBe("DO.1757134975438075")
   })
 
   it("keeps a staff photo or voice note — it is still a takeover", () => {
@@ -344,9 +342,9 @@ describe("normalizeKapsoWebhook — Business App (coexistence)", () => {
     const body = JSON.parse(echoRaw)
     delete body.message.to
     delete body.conversation.phone_number
-    expect(
-      normalizeKapsoWebhook(body, "whatsapp.message.received").kind,
-    ).toBe("ignored")
+    expect(normalizeKapsoWebhook(body, "whatsapp.message.received").kind).toBe(
+      "ignored",
+    )
   })
 
   it("leaves a delivery receipt for a staff message on the status path", () => {

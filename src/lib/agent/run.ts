@@ -4,6 +4,7 @@ import { runTurn, describeClaudeError } from "./claude"
 import { renderKnowledge } from "./knowledge"
 import { detectLocale } from "./locale"
 import { claimsHandoff } from "./handoffClaim"
+import { countKapsoMessage, noteSendResult } from "./alerts"
 import { getLead } from "@/lib/leads/saveLead"
 import { getAgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 import {
@@ -74,11 +75,12 @@ export async function runAgent(
     // conversation for five days. For a paying tenant that is their lead
     // sitting unanswered with no idea anything went wrong. Sent before the
     // escalation so the customer hears back even if the email fails.
-    await sendText(
+    const notice = await sendText(
       tenant.phone_number_id,
       message.waId,
       capReachedNotice(tenant.business_name, locale),
     )
+    if (notice.ok) await countKapsoMessage(tenant)
 
     await escalate(
       tenant,
@@ -126,6 +128,7 @@ export async function runAgent(
       turn.reply,
     )
     if (result.ok) {
+      // First, before anything else: the takeover check races this write.
       await recordOutbound(tenant, conversation, result.messageId, turn.reply, {
         inputTokens: turn.usage.inputTokens,
         outputTokens: turn.usage.outputTokens,
@@ -134,6 +137,7 @@ export async function runAgent(
         costUsd: turn.usage.costUsd,
         apiCalls: turn.usage.apiCalls,
       })
+      await countKapsoMessage(tenant)
     } else if (result.errorCode === WINDOW_EXPIRED) {
       // Outside the 24-hour service window only approved templates may be sent.
       console.warn("agent: 24h window closed, reply not delivered")
@@ -142,6 +146,11 @@ export async function runAgent(
         `agent: send failed (${result.errorCode ?? "no code"}): ${result.errorMessage}`,
       )
     }
+
+    // The breaker: repeated failures pause the agent so it stops paying for
+    // replies nobody receives. Kapso gives no reliable "out of messages" code,
+    // so it counts failures rather than reading them.
+    await noteSendResult(tenant, result)
   }
 
   // Link the lead to the conversation.

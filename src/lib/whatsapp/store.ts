@@ -27,6 +27,34 @@ export interface Tenant {
    * needs. Absent (column not yet migrated) = the old 5-day default.
    */
   resume_after_hours?: number | null
+  // ---- 0008. Optional because code may run before the migration is applied.
+  agent_profile?: string
+  /** NAME of the env var holding this tenant's Kapso key. NULL = KAPSO_API_KEY. */
+  kapso_api_key_env?: string | null
+  /** NAME of the env var holding a BYO Claude key. NULL = ANTHROPIC_API_KEY. */
+  anthropic_api_key_env?: string | null
+  /** NAME of the env var holding this tenant's Kapso project-webhook secret. */
+  kapso_project_secret_env?: string | null
+  inbox_url?: string | null
+  email_from?: string | null
+  email_reply_to?: string | null
+  /** Kapso plan allowance per month. NULL = no limit, nothing is metered. */
+  kapso_monthly_allowance?: number | null
+  kapso_messages_this_month?: number
+  send_failures?: number
+  /** While in the future, the agent makes no Claude calls for this tenant. */
+  paused_until?: string | null
+}
+
+/** Is the send breaker holding this tenant's agent off? */
+export function isPaused(
+  tenant: Pick<Tenant, "paused_until">,
+  now = new Date(),
+): boolean {
+  return (
+    !!tenant.paused_until &&
+    new Date(tenant.paused_until).getTime() > now.getTime()
+  )
 }
 
 export interface Conversation {
@@ -623,4 +651,73 @@ export async function recordTurn(
     })
     .eq("tenant_id", tenant.tenant_id)
   if (tErr) console.error("recordTurn (tenant) failed:", tErr)
+}
+
+/**
+ * Count messages Kapso bills against the tenant's plan allowance.
+ *
+ * Kapso's free plan counts every message in and out, staff messages from the
+ * Business app included, and when it runs out it may simply stop delivering
+ * inbound webhooks, with no error we can detect. So we keep our own count to
+ * warn before that happens. It sees only what Kapso sends us, so it can run
+ * low, never high.
+ *
+ * Atomic in the database (`bump_kapso_meter`, 0008): exactly one caller gets
+ * `crossed`, the one whose increment passed 80%. Returns null when the tenant
+ * has no allowance (paid plan) or the call failed.
+ */
+export async function bumpKapsoMeter(
+  tenant: Tenant,
+  by = 1,
+): Promise<{ messages: number; allowance: number; crossed: boolean } | null> {
+  if (tenant.kapso_monthly_allowance == null) return null
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data, error } = await supabase.rpc("bump_kapso_meter", {
+    p_tenant: tenant.tenant_id,
+    p_by: by,
+  })
+  if (error) {
+    console.error("bumpKapsoMeter failed:", error)
+    return null
+  }
+  const row = (
+    data as { messages: number; allowance: number; crossed: boolean }[] | null
+  )?.[0]
+  return row ?? null
+}
+
+/**
+ * Record one send attempt for the breaker (`record_send_result`, 0008).
+ *
+ * Three consecutive failures pause the tenant for an hour, and `tripped` is
+ * true exactly once per incident. Window-expired failures should not be passed
+ * here: they are normal, not a sign the line is down.
+ */
+export async function recordSendResult(
+  tenant: Tenant,
+  ok: boolean,
+): Promise<{
+  failures: number
+  paused_until: string | null
+  tripped: boolean
+} | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data, error } = await supabase.rpc("record_send_result", {
+    p_tenant: tenant.tenant_id,
+    p_ok: ok,
+  })
+  if (error) {
+    console.error("recordSendResult failed:", error)
+    return null
+  }
+  const row = (
+    data as
+      | { failures: number; paused_until: string | null; tripped: boolean }[]
+      | null
+  )?.[0]
+  return row ?? null
 }
