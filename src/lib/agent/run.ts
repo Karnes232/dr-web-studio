@@ -37,7 +37,7 @@ export async function runAgent(
 ): Promise<void> {
   const locale =
     conversation.locale ??
-    detectLocale(message.text, tenant.default_locale || "es")
+    detectLocale(message.text, tenant.default_locale || "es", tenant.locales)
 
   const profile = profileFor(tenant)
   if (!profile) {

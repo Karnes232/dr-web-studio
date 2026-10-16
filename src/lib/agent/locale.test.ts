@@ -46,3 +46,69 @@ describe("detectLocale", () => {
     ).toBe("en")
   })
 })
+
+describe("detectLocale — four-language tenant", () => {
+  // Grand Bay serves tourists in English, Spanish, German and French.
+  // SYNTHETIC openers until real ones exist in the messages table.
+  const ALL = ["en", "es", "de", "fr"] as const
+  const detect = (t: string) => detectLocale(t, "en", ALL)
+
+  it("reads German", () => {
+    for (const t of [
+      "Hallo, wie viel kostet der Tauchkurs?",
+      "Guten Tag, ich möchte tauchen gehen",
+      "Ist der Open Water Kurs für Anfänger?",
+      "Grüße aus München",
+    ]) {
+      expect(detect(t)).toBe("de")
+    }
+  })
+
+  it("reads French", () => {
+    for (const t of [
+      "Bonjour, combien coûte la plongée ?",
+      "Salut, je voudrais faire un baptême",
+      "Merci, nous sommes deux plongeurs",
+      "Est-ce que vous avez des cours pour débutants ?",
+    ]) {
+      expect(detect(t)).toBe("fr")
+    }
+  })
+
+  it("still reads Spanish and English", () => {
+    expect(detect("Hola, cuánto cuesta el curso?")).toBe("es")
+    expect(detect("¿Tienen buceo con tiburones?")).toBe("es")
+    expect(detect("Hi, how much is the shark dive?")).toBe("en")
+  })
+
+  it("does not take a Spanish ü for German", () => {
+    expect(detect("Vimos un pingüino, hola")).toBe("es")
+  })
+
+  it("falls back on nothing to go on", () => {
+    expect(detect("👍")).toBe("en")
+    expect(detect("")).toBe("en")
+  })
+
+  it("never returns a language the tenant does not serve", () => {
+    // A Spanish/English tenant (DR) sends German to its fallback logic.
+    expect(["es", "en"]).toContain(
+      detectLocale("Hallo, wie viel kostet das?", "es", ["es", "en"]),
+    )
+    expect(
+      detectLocale("Bonjour, combien ?", "es", ["es", "en", "de"]),
+    ).not.toBe("fr")
+  })
+
+  it("leaves DR's two-language path exactly as it was", () => {
+    // Same inputs, with and without the explicit list.
+    for (const t of [
+      "Hola, cuanto cuesta una pagina web?",
+      "Hi, how much for a website?",
+      "Diseño",
+      "ok",
+    ]) {
+      expect(detectLocale(t, "es", ["es", "en"])).toBe(detectLocale(t))
+    }
+  })
+})

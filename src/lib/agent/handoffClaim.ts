@@ -55,6 +55,26 @@ const CLAIM_PHRASES = [
   "retoma directamente",
   "se comunicará",
   "se comunicara",
+  // German and French, for tenants that serve them. Not yet seen in real
+  // replies — added with the first such tenant, to be replaced by verbatim
+  // examples as they arrive.
+  "daten weitergegeben",
+  "weitergeleitet",
+  "wird sich bei ihnen melden",
+  "wird sich bei dir melden",
+  "meldet sich bei ihnen",
+  "meldet sich bei dir",
+  "wird sie kontaktieren",
+  "wird dich kontaktieren",
+  "übernimmt ab hier",
+  "transmis vos coordonnées",
+  "transmis votre demande",
+  "transmis votre message",
+  "vous contactera",
+  "vous recontactera",
+  "reviendra vers vous",
+  "prendra le relais",
+  "va vous contacter",
 ]
 
 /**

@@ -49,3 +49,25 @@ describe("claimsHandoff", () => {
     expect(claimsHandoff("Ya le pasé tus datos a James.")).toBe(true)
   })
 })
+
+// SYNTHETIC: no German or French replies exist yet. Replace with verbatim
+// examples from the messages table once a four-language tenant is live.
+describe("claimsHandoff — German and French (synthetic)", () => {
+  it.each([
+    "Ich habe Ihre Daten an das Team weitergegeben. Es wird sich bei Ihnen melden.",
+    "Das Grand Bay Team meldet sich bei dir heute noch.",
+    "J'ai transmis vos coordonnées à l'équipe, elle vous contactera aujourd'hui.",
+    "L'équipe de Grand Bay prendra le relais.",
+  ])("detects: %s", reply => {
+    expect(claimsHandoff(reply)).toBe(true)
+  })
+
+  it.each([
+    "Soll ich das Team bitten, sich bei Ihnen zu melden?",
+    "Voulez-vous que l'équipe vous contacte ?",
+    "Der Open Water Kurs kostet 550 USD pro Person.",
+    "Le baptême coûte 120 USD par personne.",
+  ])("does not fire on an offer or ordinary reply: %s", reply => {
+    expect(claimsHandoff(reply)).toBe(false)
+  })
+})
