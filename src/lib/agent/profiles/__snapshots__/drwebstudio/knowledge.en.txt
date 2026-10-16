@@ -1,0 +1,251 @@
+# DR WEB STUDIO — KNOWLEDGE BASE
+
+## Business
+Name: DR Web Studio
+Email: james@dr-webstudio.com
+Phone (voice, James direct): +18296405433
+Location: Punta Cana, La Altagracia, DO
+Opening hours (America/Santo_Domingo): Monday/Tuesday/Wednesday/Thursday/Friday 09:00-18:00; Saturday 10:00-14:00
+
+## Published packages (public prices — safe to state exactly)
+
+### Starter Website — $400
+Perfect for small businesses and personal brands
+Includes: 1-3 responsive pages; Modern, clean design; Basic SEO optimization; Contact form integration; Social media links; CMS integration; 30 days support; Bilingual site — Spanish & English included
+NOT included: E-commerce features; Google Analytics
+
+### Business Website — $950
+Ideal for growing businesses with dynamic content needs
+Includes: 4-8 responsive pages; Custom design & branding; CMS integration; Advanced SEO setup; Contact forms & maps; Social media links; 60 days support; Bilingual site — Spanish & English included
+NOT included: Admin dashboard; Shopping cart & checkout
+
+### E-commerce Package — $900
+Complete online store solution for selling products
+Includes: Product catalog; Product detail pages; Shopping cart; Secure checkout; Order confirmation emails; SEO-optimized product pages; Google Analytics integration; Bilingual site — Spanish & English included
+NOT included: Brand strategy & logo design; Inventory software integration
+
+### Maintenance Plan — $95/mo
+Keep your site fast, secure, and up to date after launch. Included free for the first year with any website plan.
+Includes: Managed hosting & SSL certificate; Software & security updates; Automatic backups; Uptime & performance monitoring; Monthly content updates; Priority WhatsApp support
+
+
+## Services
+
+### Multilingual & International Websites — 3-4 weeks
+Spanish and English ship with every site we build — language switching, hreflang and per-language SEO included as standard. Need a third language, or more? That is what this is for.
+
+### Web Applications — from $1,250, 5-8 weeks
+Custom web applications built for businesses in the Dominican Republic — dashboards, booking systems, client portals, and internal tools built with Next.js and React.
+
+### Landing Pages & One-Page Sites — from $400, 2-3 weeks
+High-converting landing pages for businesses in the Dominican Republic — built fast, mobile-first, and SEO-ready from day one.
+
+### API Integrations & Automation — from $500, 2-4 weeks
+API integrations and workflow automation for businesses in the Dominican Republic — connect PayPal, Stripe, WhatsApp Business, and CRMs via Resend. Starting from $500.
+
+### Website Migrations or Rebuilds — from $600, 3-4 weeks
+Migrate or rebuild your business website in the Dominican Republic — preserve your SEO rankings, modernize your tech stack, and launch faster with zero data loss.
+
+### Headless CMS Development — from $700, 3-4 weeks
+Headless CMS development for businesses in the Dominican Republic — update your website content without touching code, using Sanity or Contentful connected to a blazing-fast Next.js front-end.
+
+### E-commerce Integrations — from $900, 4-5 weeks
+Add a secure online store to your business website in the Dominican Republic — PayPal, Stripe, and custom checkout solutions built with Next.js. Starting from $900. Free consultation.
+
+### Ongoing Website Maintenance & Support — from $95, Ongoing
+Monthly website maintenance for businesses in the Dominican Republic — security, uptime, performance, and minor updates. $95/month. First year free with any new project.
+
+### Custom Business Websites — from $950, 6-8 weeks
+Custom business websites for companies in the Dominican Republic — built with Next.js, Sanity CMS, and Tailwind CSS for speed, SEO, and conversions. Starting from $950.
+
+
+## Service catalogue (starting prices — a real project is quoted after a call)
+
+- key=custom-business | Custom Business Websites | base $950 | 6–8 weeks | priced per page
+  includes: Responsive Design; Contact Forms with Spam Protection; Full On-Page SEO Setup; Google Analytics & Search Console; Social Media Integration; SSL Certificate & Security; Sanity CMS Integration
+- key=landing-pages | Landing Pages & One-Page Sites | base $400 | 2–3 weeks
+  includes: Responsive Design; Call-to-Action Buttons; Custom Brand Styling; On-Page SEO Setup; Lead Capture Form
+- key=e-commerce | E-commerce Integrations | base $900 | 4–5 weeks | priced per page
+  includes: Shopping Cart; Stripe or PayPal Checkout; Product Management via CMS; Automated Order Notifications; Customer Receipt Emails
+- key=web-applications | Web Applications | base $1250 | 5–8 weeks | priced per page
+  includes: Responsive Design; SEO & Discoverability Setup; Headless CMS Integration; User Authentication & Roles
+- key=headless-cms-development | Headless CMS Development | base $700 | 3–4 weeks
+  includes: Dynamic Routing; CMS Dashboard & Admin Access; SEO-Optimized Structure; Media Management; Rich Text & Portable Text Support
+- key=website-migrations-or-rebuilds | Website Migrations or Rebuilds | base $600 | 3–4 weeks | priced per page
+  includes: Full Site Content Export; 301 Redirects & URL Mapping; Mobile-Responsive Rebuild; Performance Optimization; CMS Setup
+- key=api-integrations-and-automation | API Integrations & Automation | base $500 | 2–4 weeks
+  includes: API Integration Setup & Configuration; Webhook Automation; CRM Data Sync; Automated Email Workflows; Integration Documentation & Handover
+
+
+## FAQ
+
+Q What's included in the project price?
+A All packages include design, development, basic SEO setup, mobile responsiveness, and 30 days of support after launch. Content creation and premium integrations may cost extra.
+
+Q How long does it take to complete a website?
+A Starter websites: 2-3 weeks, Business websites: 3-5 weeks, E-commerce: 4-8 weeks. Timeline depends on content readiness and revision rounds.
+
+Q Do you offer payment plans?
+A Yes! We offer 50% upfront and 50% on completion for all packages. Custom projects can have milestone-based payments.
+
+Q What if I need changes after launch?
+A Minor tweaks are included in the 30-day support period. Larger changes and additional features are quoted separately.
+
+Q Do I own my website once it's paid for?
+A Yes — completely. Once the final payment clears, the code, design, domain, and content are 100% yours. There is no lock-in: you can host it anywhere, and if you ever want another developer to take over, everything is handed off cleanly.
+
+Q What are the ongoing costs after launch?
+A The only required costs are your domain (about $15/year) and hosting — most of our sites run on hosting plans that start free. If you want us to handle updates, backups, security, and small content changes for you, the optional maintenance plan is $95/month. No hidden fees.
+
+Q Can you redesign or migrate my existing website?
+A Yes. We regularly migrate sites from WordPress, Wix, and other builders to a faster, modern setup — keeping your content and your Google rankings intact with proper redirects. Migrations and rebuilds start at $600.
+
+Q How quickly can you respond to my inquiry?
+A We typically respond to emails within 2 hours during business hours.
+
+Q Do you offer free consultations?
+A Yes! We offer a free 30-minute consultation to discuss your project,  understand your needs, and provide initial recommendations.
+
+Q What information should I include in my message?
+A Tell us about your business, the type of website you need, your timeline, budget range, and any specific features or requirements you have in mind.
+
+Q Do you work with clients outside the Dominican Republic?
+A Absolutely! While we're based in the DR, we work with clients throughout the Caribbean, Latin America, and internationally.
+
+Q What's the typical project timeline?
+A Simple websites take 2-3 weeks, business websites 3-5 weeks, and complex e-commerce sites 5-8 weeks. Timeline depends on project scope and content readiness.
+
+Q Who is DR Web Studio?
+A DR Web Studio is a web development agency based in Punta Cana, Dominican Republic. We specialize in building fast, modern, and multilingual websites using Next.js, Sanity CMS, TypeScript, and Tailwind CSS. We serve businesses across the entire Dominican Republic — from tourism companies in Punta Cana to retailers in Santo Domingo and service businesses nationwide.
+
+Q What industries do you work with?
+A We work with businesses across many industries, with particular expertise in tourism (dive shops, tour operators, hotels), events and weddings, photography, e-commerce, restaurants, real estate, and professional services. Our bilingual approach makes us especially well-suited for businesses serving both Dominican and international clients.
+
+Q Do you work with businesses outside of Punta Cana?
+A Absolutely. While we're based in Punta Cana, we serve businesses across the entire Dominican Republic — Santo Domingo, Santiago, La Romana, Samaná, Puerto Plata, Bávaro, Higüey, and beyond. We handle everything remotely with video calls, shared project tools, and regular updates. In-person meetings are available for clients in the Punta Cana–Bávaro area.
+
+Q Can we meet in person?
+A Yes! We're based in Punta Cana, so in-person meetings are available for local clients. We can meet at your business, a coworking space, or a café. For clients elsewhere in the Dominican Republic or internationally, we work via video call — same quality of service, just remote.
+
+Q Do you build bilingual websites in Spanish and English?
+A Yes — bilingual websites are one of our core specialties. We build full Spanish and English versions with seamless language switching, separate SEO optimization for each language, and content that's culturally adapted for each audience — not just machine-translated text. This is essential for tourism businesses and any Dominican company serving international clients.
+
+Q How do I get started?
+A Start by completing our free project questionnaire or contact us directly for a consultation. We'll review your needs, discuss your goals, and provide a detailed quote within 48 hours. Once you approve the 50% upfront payment, we begin the discovery phase immediately.
+
+Q How long does it take to build a website?
+A Timelines depend on the project type: landing pages take 2–3 weeks, custom business websites take 6–8 weeks, and web applications take 5–8 weeks. We provide a detailed timeline during the discovery phase so there are no surprises. Complex projects with e-commerce, multiple languages, or custom features may take longer.
+
+Q What is your web development process?
+A Our process has five stages: (1) Discovery & Planning — we learn your business, goals, and audience; (2) Design & Prototyping — we create a custom visual design with two revision rounds; (3) Development & CMS Setup — we build with Next.js and connect Sanity CMS; (4) Testing & Launch — we test on all devices, set up your domain/email, and go live; (5) Post-Launch Support — 30 days of free support plus one year of free hosting and maintenance.
+
+Q How many design revisions do I get?
+A Every project includes two full revision rounds. During each round, you can request changes to colors, layouts, typography, imagery, and content placement. We work collaboratively to ensure the final design matches your vision exactly.
+
+Q Can I edit the website content myself after launch?
+A Yes. Every website includes Sanity CMS — a user-friendly content editor where you can update text, images, blog posts, products, and more without any coding knowledge. We provide complete training so you're confident managing your site independently.
+
+Q Do you use templates or build custom designs?
+A Every website we build is designed from scratch — we never use WordPress themes, Wix templates, or pre-built page builders. Your website will be completely unique, designed specifically for your brand, audience, and business goals.
+
+Q Will my website be mobile-friendly?
+A Absolutely. We use a mobile-first design approach — we design for phones first, then scale up to tablets and desktops. Over 70% of Dominican internet users browse on mobile, so every site we build is fully responsive and optimized for fast loading on mobile data connections.
+
+Q What do I need to provide to get started?
+A We'll need your logo (if you have one), brand colors and fonts (if established), content for your pages (text and images), and access to your domain registrar if you already own a domain. Don't worry if you don't have everything ready — we guide you through our project questionnaire, and we can help with content strategy and image selection during the discovery phase.
+
+Q How much does a website cost?
+A Our pricing starts at $400 for landing pages, $600 for website migrations, $700 for headless CMS development, $900 for e-commerce integrations, $950 for custom business websites, and $1,250 for web applications. API integrations start at $500. Every project ships bilingual in Spanish and English at no extra cost; a third language is quoted as an add-on. All projects include one year of free hosting, two revision rounds, domain and email setup, CMS training, and 30 days of post-launch support.
+
+Q What are your payment terms?
+A We charge 50% upfront to begin work and 50% upon project completion before launch. This split protects both sides — you know we're committed to finishing, and we know you're committed to the project. We accept bank transfers and PayPal.
+
+Q What's included in every project?
+A Every project includes: custom design (no templates), two revision rounds, Sanity CMS integration with training, domain and business email setup, SEO optimization, mobile-responsive design, one year of free hosting and maintenance (valued at $1,140), and 30 days of post-launch support.
+
+Q Are there any hidden fees or ongoing costs?
+A No hidden fees. The price we quote is the price you pay. After your free first year, the only ongoing cost is the optional maintenance plan at $95/month for hosting, security, updates, and support. If you have an e-commerce store, PayPal charges their standard processing fee (typically 3.49% + fixed fee per transaction) — that goes to PayPal, not to us.
+
+Q How does the free first year of hosting work?
+A Every new website project includes 12 months of hosting and maintenance at absolutely no cost — a $1,140 value. This starts the day your site launches and includes hosting on Netlify's global CDN, security monitoring, performance optimization, uptime monitoring, updates, and bug fixes. After the first year, you can continue at $95/month or host the site yourself.
+
+Q Do you offer payment plans or financing?
+A Our standard terms are 50% upfront and 50% on completion. For larger projects, we can discuss milestone-based payment schedules where payments are tied to specific project phases. Contact us to discuss what works best for your budget.
+
+Q How much does website maintenance cost?
+A Website maintenance is $95/month after your free first year. This includes hosting on Netlify's global CDN, security monitoring, performance optimization, uptime monitoring, regular framework updates, and bug fixes. There are no tiers or hidden charges — one simple price covers everything.
+
+Q What happens if I don't pay for maintenance after the first year?
+A You own your website completely — code, design, and content. If you choose not to continue, you can host the site yourself or with another provider. However, you'll lose security monitoring, performance optimization, uptime alerts, and technical support. We recommend continuing to protect your investment.
+
+Q How quickly do you respond to issues?
+A We monitor your site 24/7 with automated alerts. For critical issues like downtime, we're alerted instantly and begin resolving immediately. For non-critical requests like content changes or bug reports, we typically respond within 24 hours during business days. We're based in Punta Cana, so we work in your timezone.
+
+Q Do your sites need WordPress-style plugin updates?
+A No — and this is one of the biggest advantages of our approach. WordPress sites typically need 20–50 plugin updates per month, and any one can break your site or create security vulnerabilities. Our Next.js sites have zero plugins. Maintenance focuses on genuine improvements like speed optimization and security hardening — not damage control.
+
+Q Can you maintain a website built by someone else?
+A Our maintenance plans are designed specifically for websites we build with Next.js and Sanity CMS. If you have an existing WordPress or other platform site, we recommend migrating it to our modern stack first (starting at $600) — which includes a free year of maintenance. This gives you a faster, more secure site that costs less to maintain long-term.
+
+Q What does post-launch support include?
+A Every project includes 30 days of dedicated post-launch support. During this period, we fix any bugs, make minor adjustments, answer your CMS questions, and ensure everything is running smoothly. This is separate from the one-year free maintenance — think of it as an intensive onboarding period to make sure you and your site are fully set up for success.
+
+Q What technologies do you use?
+A We specialize in Next.js (React), TypeScript, Tailwind CSS, and Sanity CMS. For hosting, we use Netlify with global CDN distribution. This modern stack delivers websites that are significantly faster, more secure, and more scalable than traditional WordPress, Wix, or Squarespace sites.
+
+Q Why do you use Next.js instead of WordPress?
+A Next.js delivers 3x faster load times than WordPress, scores higher on Google's Core Web Vitals, requires no plugins that slow your site or create security vulnerabilities, and is far more secure by default. Combined with Sanity CMS, you get the same easy content editing without the bloat, constant updates, and performance penalties of WordPress.
+
+Q What is a headless CMS and why should I care?
+A A headless CMS separates your content (text, images, products) from how it's displayed on your website. Sanity CMS is our headless CMS of choice — it gives you an easy editor to manage your content while we build the frontend with Next.js for maximum speed and flexibility. The result: you can update your site easily, and it loads much faster than traditional CMS platforms like WordPress.
+
+Q What are Core Web Vitals and why do they matter?
+A Core Web Vitals are Google's metrics for measuring how fast and smooth your website feels to visitors — loading speed, interactivity, and visual stability. Google uses these as a direct ranking factor, meaning faster sites rank higher in search results. Our Next.js websites consistently score 90+ on Google PageSpeed, giving your business an SEO advantage over slower WordPress competitors.
+
+Q Do I own my website code and content?
+A Yes — 100%. You own the code, the design, and all the content. There's no vendor lock-in, no proprietary page builders, and no annual license fees. If you ever want to switch developers, you can take everything with you. This is a major advantage over platforms like Wix or Squarespace where your site is locked into their ecosystem.
+
+Q Will my website be optimized for SEO?
+A Yes. Every website includes technical SEO built in: proper heading structure, meta tags, image optimization, structured data (JSON-LD schema), XML sitemaps, fast load times, mobile responsiveness, and clean URLs. For bilingual sites, we implement proper hreflang tags and separate SEO optimization for each language so you rank in both Spanish and English searches.
+
+Q Can you build an online store for my business?
+A Yes. We build complete e-commerce stores with product catalogs, shopping carts, inventory management, and secure checkout. E-commerce integrations start at $900 as an add-on to any website, or as a standalone store. We also build online booking and reservation systems for tour operators, dive shops, photographers, and service businesses.
+
+Q What payment methods can my store accept?
+A We integrate PayPal, which accepts credit cards (Visa, Mastercard, American Express), debit cards, and PayPal balances from customers worldwide. PayPal is one of the most trusted payment processors in the Dominican Republic and works for both local and international transactions.
+
+Q Why not just use Shopify or WooCommerce?
+A Shopify charges $39–$399/month in platform fees plus transaction fees. WooCommerce requires WordPress with dozens of plugins, constant updates, and security vulnerabilities. Our Next.js stores have zero monthly platform fees, load 3x faster, are inherently more secure, and you own the entire codebase — no vendor lock-in, no surprise costs.
+
+Q Can I manage products and inventory myself?
+A Yes. Your e-commerce store comes with Sanity CMS, where you can add, edit, and remove products, update prices, change descriptions and images, and manage your entire catalog — all without coding. Perfect for updating seasonal promotions or adding new products and services.
+
+Q Can you build an online booking system for tours or services?
+A Yes. We build custom booking and reservation systems where customers can select dates, choose packages, and pay online through PayPal. We've built these for diving companies, event planners, and tour operators in Punta Cana — one client saw a 200% increase in booking conversions after launching their online booking system.
+
+Q Can I sell to customers outside the Dominican Republic?
+A Yes. PayPal processes payments from customers worldwide. Combined with our bilingual store capability, you can sell to Dominican customers, tourists planning their trip, and international buyers — all from the same store with language switching and global payment processing.
+
+Q Will my website show up on Google?
+A Yes. Every website we build includes technical SEO foundations: proper heading structure, meta tags, XML sitemaps, structured data (JSON-LD schema), fast load times, mobile responsiveness, and clean URL structures. We also submit your site to Google Search Console so it gets indexed quickly. However, ranking on the first page for competitive keywords takes time and ongoing content effort — technical SEO gets you in the game, content strategy wins it.
+
+Q How long does it take to rank on Google?
+A It depends on your industry and competition. For local Dominican searches with low competition, you can see results within 2–3 months. For more competitive terms like 'desarrollo web republica dominicana,' it typically takes 4–8 months of consistent content and optimization. Our technical SEO gives you a strong foundation from day one — your Next.js site already loads faster and scores better on Core Web Vitals than most competitors, which Google rewards directly.
+
+Q What's the difference between technical SEO and content SEO?
+A Technical SEO is the code-level optimization built into your website — page speed, mobile responsiveness, structured data, sitemaps, proper URLs, and Core Web Vitals. This is included in every project we build. Content SEO is about creating blog posts, landing pages, and written content that targets the keywords your customers search for. We build the technical foundation; you can create content through Sanity CMS, or we can discuss a content strategy to accelerate your rankings.
+
+Q How does a fast website help my Google rankings?
+A Google uses Core Web Vitals — loading speed, interactivity, and visual stability — as direct ranking factors. Faster sites rank higher, period. Our Next.js websites score 90+ on Google PageSpeed, while most WordPress sites in the Dominican Republic score 40–60. This speed advantage means Google is more likely to show your site above slower competitors for the same search terms.
+
+Q How does a bilingual site affect my SEO?
+A A properly built bilingual site doubles your keyword opportunities — you rank for both Spanish and English searches. We implement hreflang tags so Google knows which version to show each audience, create separate SEO-optimized meta tags for each language, and structure the URLs properly (/en/ and /es/ prefixes). This is especially valuable in Punta Cana and tourist areas where potential customers search in both languages.
+
+Q Do you include structured data (schema markup) on my website?
+A Yes. Every website includes JSON-LD structured data including Organization schema (your business details, services, pricing, location), WebPage schema, BreadcrumbList schema for navigation, and FAQPage schema where applicable. For e-commerce sites, we add Product and Offer schemas. This structured data helps Google understand your business and can generate rich results — star ratings, FAQs, pricing, and business info displayed directly in search results.
+
+Q Do I need a blog to rank on Google?
+A A blog isn't strictly required, but it's one of the most effective ways to rank for more keywords and attract organic traffic. Each blog post is a new page that can rank for a specific search term your customers use. Every Sanity CMS setup we build includes a fully functional blog — you can publish articles, categorize them, and each post is automatically SEO-optimized with proper meta tags, headings, and structured data.
+
+Q Will my site appear in local searches for my city?
+A Yes. We optimize your site for local search by including your business location in structured data, creating location-specific content, and implementing LocalBusiness schema with your address, service area, and geo coordinates. For businesses in Punta Cana, Santo Domingo, Santiago, or other Dominican cities, this helps you appear when people search for services in your area. We also recommend setting up a Google Business Profile to complement your website's local SEO.

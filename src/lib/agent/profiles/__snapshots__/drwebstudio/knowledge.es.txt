@@ -1,0 +1,251 @@
+# DR WEB STUDIO — KNOWLEDGE BASE
+
+## Business
+Name: DR Web Studio
+Email: james@dr-webstudio.com
+Phone (voice, James direct): +18296405433
+Location: Punta Cana, La Altagracia, DO
+Opening hours (America/Santo_Domingo): Monday/Tuesday/Wednesday/Thursday/Friday 09:00-18:00; Saturday 10:00-14:00
+
+## Published packages (public prices — safe to state exactly)
+
+### Sitio Web Inicial — $400
+Perfecto para pequeñas empresas y marcas personales.
+Includes: 1-3 páginas responsivas; Diseño moderno y limpio; Optimización SEO básica; Formulario de contacto; Enlaces de redes sociales; Integración CMS; 30 días de soporte; Sitio bilingüe — español e inglés incluidos
+NOT included: Funciones de comercio electrónico; Google Analytics
+
+### Sitio Web Empresarial — $950
+Ideal para empresas en crecimiento con necesidades de contenido dinámico.
+Includes: 4-8 páginas responsivas; Diseño y marca personalizados; Integración de CMS; Configuración avanzada de SEO; Formularios de contacto y mapas; Enlaces de redes sociales; 60 días de soporte; Sitio bilingüe — español e inglés incluidos
+NOT included: Panel de administración; Carrito de compras y pago
+
+### Paquete de Comercio Electrónico — $900
+Solución completa de tienda online para la venta de productos
+Includes: Catálogo de productos; Páginas de producto detalladas; Carrito de compras; Pago seguro; Correos de confirmación de pedido; Páginas optimizadas para SEO; Integración con Google Analytics; Sitio bilingüe — español e inglés incluidos
+NOT included: Estrategia de marca y diseño de logotipo; Software de Inventario
+
+### Plan de Mantenimiento — $95/mo
+Mantén tu sitio rápido, seguro y actualizado después del lanzamiento. Incluido gratis el primer año con cualquier plan de sitio web.
+Includes: Hosting administrado y certificado SSL; Actualizaciones de software y seguridad; Copias de seguridad automáticas; Monitoreo de rendimiento y disponibilidad; Actualizaciones de contenido mensuales; Soporte prioritario por WhatsApp
+
+
+## Services
+
+### Sitios Web Multilingües e Internacionales — 3-4 weeks
+Español e inglés vienen con cada sitio que construimos — cambio de idioma, hreflang y SEO por idioma incluidos. ¿Necesitas un tercer idioma, o más? Para eso es esto.
+
+### Aplicaciones Web — from $1,250, 5-8 weeks
+Aplicaciones web personalizadas para negocios en República Dominicana — paneles, sistemas de reservas, portales de clientes y herramientas internas construidas con Next.js y React.
+
+### Landing Pages y Sitios de Una Página — from $400, 2-3 weeks
+Landing pages de alta conversión para negocios en República Dominicana — rápidas, mobile-first y optimizadas para SEO desde el primer día.
+
+### Integraciones de API y Automatización — from $500, 2-4 weeks
+Integraciones de API y automatización para negocios en República Dominicana — PayPal, Stripe, WhatsApp Business, CRMs y correo via Resend. Desde $500.
+
+### Migraciones y Reconstrucciones de Sitios Web — from $600, 3-4 weeks
+Migra o reconstruye el sitio web de tu negocio en República Dominicana — conserva tus posiciones en Google, moderniza tu tecnología y lanza más rápido sin perder datos.
+
+### Desarrollo Headless CMS — from $700, 3-4 weeks
+Desarrollo Headless CMS para negocios en República Dominicana — actualiza el contenido de tu sitio sin tocar código, usando Sanity o Contentful conectado a un front-end Next.js ultrarrápido.
+
+### Integraciones de E-commerce — from $900, 4-5 weeks
+Agrega una tienda online segura al sitio web de tu negocio en República Dominicana — PayPal, Stripe y soluciones de pago personalizadas construidas con Next.js. Desde $900. Consulta gratis.
+
+### Mantenimiento y Soporte Web Mensual — from $95, Ongoing
+Mantenimiento web mensual para negocios en República Dominicana — seguridad, disponibilidad, rendimiento y actualizaciones. $95/mes. Primer año gratis con proyecto nuevo.
+
+### Sitios Web para Negocios — from $950, 6-8 weeks
+Sitios web para negocios en República Dominicana — construidos con Next.js, Sanity CMS y Tailwind CSS para velocidad, SEO y conversiones. Desde $950.
+
+
+## Service catalogue (starting prices — a real project is quoted after a call)
+
+- key=custom-business | Sitios Web para Negocios | base $950 | 6–8 semanas | priced per page
+  includes: Diseño Responsivo; Formularios de Contacto con Protección Anti-Spam; Configuración Completa de SEO On-Page; Google Analytics y Search Console; Integración con Redes Sociales; Certificado SSL y Seguridad; Integración con Sanity CMS
+- key=landing-pages | Landing Pages y Sitios de Una Página | base $400 | 2–3 semanas
+  includes: Diseño Responsivo; Botones de Llamada a la Acción; Estilos de Marca Personalizados; Configuración de SEO On-Page; Formulario de Captura de Leads
+- key=e-commerce | Integraciones de E-commerce | base $900 | 4–5 semanas | priced per page
+  includes: Carrito de Compras; Checkout con Stripe o PayPal; Gestión de Productos via CMS; Notificaciones Automáticas de Pedidos; Correos de Recibo para Clientes
+- key=web-applications | Aplicaciones Web | base $1250 | 5–8 semanas | priced per page
+  includes: Diseño Responsivo; Configuración SEO y de Visibilidad; Integración con CMS Headless; Autenticación de Usuarios y Roles
+- key=headless-cms-development | Desarrollo Headless CMS | base $700 | 3–4 semanas
+  includes: Enrutamiento Dinámico; Panel CMS y Acceso de Administrador; Estructura Optimizada para SEO; Gestión de Medios; Soporte de Texto Enriquecido y Portable Text
+- key=website-migrations-or-rebuilds | Migraciones y Reconstrucciones de Sitios Web | base $600 | 3–4 semanas | priced per page
+  includes: Exportación Completa del Contenido; Redirecciones 301 y Mapeo de URLs; Reconstrucción Responsiva para Móviles; Optimización de Rendimiento; Configuración de CMS
+- key=api-integrations-and-automation | Integraciones de API y Automatización | base $500 | 2–4 semanas
+  includes: Configuración e Instalación de Integración API; Automatización por Webhooks; Sincronización de Datos con CRM; Flujos de Trabajo de Correo Automatizados; Documentación y Entrega de la Integración
+
+
+## FAQ
+
+Q ¿Qué incluye el precio del proyecto?
+A Todos los paquetes incluyen diseño, desarrollo, configuración básica de SEO, compatibilidad con dispositivos móviles y 30 días de soporte técnico tras el lanzamiento. La creación de contenido y las integraciones premium pueden tener un coste adicional.
+
+Q ¿Cuánto tiempo se tarda en completar un sitio web?
+A Sitios web iniciales: 2-3 semanas, sitios web comerciales: 3-5 semanas, comercio electrónico: 4-8 semanas. El plazo depende de la disponibilidad del contenido y de las revisiones realizadas.
+
+Q ¿Ofrecen planes de pago?
+A ¡Sí! Ofrecemos un 50% de anticipo y un 50% al finalizar todos los paquetes. Los proyectos personalizados pueden tener pagos por hitos.
+
+Q ¿Qué pasa si necesito realizar cambios después del lanzamiento?
+A Los ajustes menores están incluidos en el período de soporte de 30 días. Los cambios más importantes y las funciones adicionales se cotizan por separado.
+
+Q ¿Soy dueño de mi sitio web una vez pagado?
+A Sí — completamente. Una vez realizado el pago final, el código, el diseño, el dominio y el contenido son 100% tuyos. No hay ataduras: puedes alojarlo donde quieras, y si algún día prefieres que otro desarrollador lo maneje, todo se entrega de forma ordenada.
+
+Q ¿Cuáles son los costos continuos después del lanzamiento?
+A Los únicos costos obligatorios son tu dominio (unos $15 al año) y el hosting — la mayoría de nuestros sitios funcionan en planes de hosting que comienzan gratis. Si prefieres que nosotros manejemos actualizaciones, respaldos, seguridad y pequeños cambios de contenido, el plan de mantenimiento opcional cuesta $95 al mes. Sin cargos ocultos.
+
+Q ¿Pueden rediseñar o migrar mi sitio web actual?
+A Sí. Migramos regularmente sitios desde WordPress, Wix y otros constructores hacia una plataforma moderna y más rápida — conservando tu contenido y tu posicionamiento en Google con las redirecciones correctas. Las migraciones y reconstrucciones comienzan desde $600.
+
+Q ¿Qué tan rápido puedes responder a mi consulta?
+A Normalmente respondemos a los correos electrónicos dentro de 2 horas durante el horario laboral.
+
+Q ¿Ofrecen consultas gratuitas?
+A ¡Sí! Ofrecemos una consulta gratuita de 30 minutos para hablar sobre su proyecto, comprender sus necesidades y ofrecerle recomendaciones iniciales.
+
+Q ¿Qué información debo incluir en mi mensaje?
+A Cuéntenos sobre su negocio, el tipo de sitio web que necesita, su cronograma, rango de presupuesto y cualquier característica o requisito específico que tenga en mente.
+
+Q ¿Trabajan con clientes fuera de República Dominicana?
+A ¡Por supuesto! Aunque estamos ubicados en República Dominicana, trabajamos con clientes en todo el Caribe, Latinoamérica y el mundo.
+
+Q ¿Cuál es el cronograma típico del proyecto?
+A Los sitios web sencillos tardan de 2 a 3 semanas, los sitios web comerciales, de 3 a 5 semanas, y los sitios de comercio electrónico complejos, de 5 a 8 semanas. El plazo depende del alcance del proyecto y de la disponibilidad del contenido.
+
+Q ¿Quién es DR Web Studio?
+A DR Web Studio es una agencia de desarrollo web ubicada en Punta Cana, República Dominicana. Nos especializamos en crear sitios web rápidos, modernos y multilingües usando Next.js, Sanity CMS, TypeScript y Tailwind CSS. Atendemos negocios en toda República Dominicana — desde empresas turísticas en Punta Cana hasta comercios en Santo Domingo y negocios de servicios a nivel nacional.
+
+Q ¿Con qué industrias trabajan?
+A Trabajamos con negocios de muchas industrias, con experiencia particular en turismo (tiendas de buceo, operadores de tours, hoteles), eventos y bodas, fotografía, e-commerce, restaurantes, bienes raíces y servicios profesionales. Nuestro enfoque bilingüe nos hace especialmente adecuados para negocios que atienden clientes dominicanos e internacionales.
+
+Q ¿Trabajan con negocios fuera de Punta Cana?
+A Por supuesto. Aunque estamos ubicados en Punta Cana, atendemos negocios en toda República Dominicana — Santo Domingo, Santiago, La Romana, Samaná, Puerto Plata, Bávaro, Higüey y más allá. Gestionamos todo de forma remota con videollamadas, herramientas de proyecto compartidas y actualizaciones regulares. Las reuniones presenciales están disponibles para clientes en el área de Punta Cana–Bávaro.
+
+Q ¿Podemos reunirnos en persona?
+A ¡Sí! Estamos en Punta Cana, así que las reuniones presenciales están disponibles para clientes locales. Podemos reunirnos en tu negocio, un coworking o un café. Para clientes en otras partes de República Dominicana o internacionales, trabajamos por videollamada — la misma calidad de servicio, solo remoto.
+
+Q ¿Construyen sitios web bilingües en español e inglés?
+A Sí — los sitios web bilingües son una de nuestras especialidades principales. Construimos versiones completas en español e inglés con cambio de idioma fluido, optimización SEO separada para cada idioma y contenido culturalmente adaptado para cada audiencia — no solo texto traducido por máquina. Esto es esencial para negocios turísticos y cualquier empresa dominicana que atienda clientes internacionales.
+
+Q ¿Cómo puedo empezar?
+A Comienza completando nuestro cuestionario de proyecto gratuito o contáctanos directamente para una consulta. Revisaremos tus necesidades, discutiremos tus objetivos y proporcionaremos una cotización detallada en 48 horas. Una vez que apruebes el pago inicial del 50%, comenzamos la fase de descubrimiento de inmediato.
+
+Q ¿Cuánto tiempo toma crear un sitio web?
+A Los plazos dependen del tipo de proyecto: las landing pages toman 2–3 semanas, los sitios web empresariales personalizados 6–8 semanas y las aplicaciones web 5–8 semanas. Proporcionamos un cronograma detallado durante la fase de descubrimiento para que no haya sorpresas. Proyectos complejos con e-commerce, múltiples idiomas o funcionalidades personalizadas pueden tomar más tiempo.
+
+Q ¿Cuál es su proceso de desarrollo web?
+A Nuestro proceso tiene cinco etapas: (1) Descubrimiento y Planificación — conocemos tu negocio, objetivos y audiencia; (2) Diseño y Prototipado — creamos un diseño visual personalizado con dos rondas de revisión; (3) Desarrollo y Configuración del CMS — construimos con Next.js y conectamos Sanity CMS; (4) Pruebas y Lanzamiento — probamos en todos los dispositivos, configuramos dominio/email y lanzamos; (5) Soporte Post-Lanzamiento — 30 días de soporte gratis más un año de hosting y mantenimiento gratis.
+
+Q ¿Cuántas revisiones de diseño obtengo?
+A Cada proyecto incluye dos rondas completas de revisión. Durante cada ronda, puedes solicitar cambios en colores, layouts, tipografía, imágenes y ubicación de contenido. Trabajamos colaborativamente para asegurar que el diseño final coincida exactamente con tu visión.
+
+Q ¿Puedo editar el contenido del sitio web yo mismo después del lanzamiento?
+A Sí. Cada sitio web incluye Sanity CMS — un editor de contenido intuitivo donde puedes actualizar textos, imágenes, artículos de blog, productos y más sin conocimientos de programación. Proporcionamos capacitación completa para que gestiones tu sitio de forma independiente con confianza.
+
+Q ¿Usan plantillas o construyen diseños personalizados?
+A Cada sitio web que construimos se diseña desde cero — nunca usamos temas de WordPress, plantillas de Wix ni page builders prefabricados. Tu sitio web será completamente único, diseñado específicamente para tu marca, audiencia y objetivos de negocio.
+
+Q ¿Mi sitio web será compatible con móviles?
+A Absolutamente. Usamos un enfoque de diseño mobile-first — diseñamos primero para teléfonos y luego escalamos a tablets y escritorio. Más del 70% de los usuarios de internet dominicanos navegan en móvil, así que cada sitio que construimos es totalmente responsivo y optimizado para carga rápida en conexiones de datos móviles.
+
+Q ¿Qué necesito proporcionar para empezar?
+A Necesitaremos tu logo (si tienes uno), colores y fuentes de marca (si están establecidos), contenido para tus páginas (texto e imágenes) y acceso a tu registrador de dominio si ya posees un dominio. No te preocupes si no tienes todo listo — te guiamos a través de nuestro cuestionario de proyecto, y podemos ayudar con estrategia de contenido y selección de imágenes durante la fase de descubrimiento.
+
+Q ¿Cuánto cuesta un sitio web?
+A Nuestros precios comienzan en $400 para landing pages, $600 para migraciones de sitios web, $700 para desarrollo CMS headless, $900 para integraciones e-commerce, $950 para sitios web empresariales personalizados y $1,250 para aplicaciones web. Las integraciones API comienzan en $500. Cada proyecto se entrega bilingüe en español e inglés sin costo adicional; un tercer idioma se cotiza como add-on. Todos los proyectos incluyen un año de hosting gratis, dos rondas de revisión, configuración de dominio y email, capacitación en CMS y 30 días de soporte post-lanzamiento.
+
+Q ¿Cuáles son sus términos de pago?
+A Cobramos 50% al inicio para comenzar el trabajo y 50% al completar el proyecto antes del lanzamiento. Esta división protege a ambas partes — sabes que estamos comprometidos a terminar, y nosotros sabemos que estás comprometido con el proyecto. Aceptamos transferencias bancarias y PayPal.
+
+Q ¿Qué está incluido en cada proyecto?
+A Cada proyecto incluye: diseño personalizado (sin plantillas), dos rondas de revisión, integración con Sanity CMS con capacitación, configuración de dominio y email empresarial, optimización SEO, diseño responsivo para móvil, un año de hosting y mantenimiento gratis (valorado en $1,140) y 30 días de soporte post-lanzamiento.
+
+Q ¿Hay cargos ocultos o costos continuos?
+A Sin cargos ocultos. El precio que cotizamos es el precio que pagas. Después de tu primer año gratis, el único costo continuo es el plan de mantenimiento opcional a $95/mes por hosting, seguridad, actualizaciones y soporte. Si tienes una tienda e-commerce, PayPal cobra su comisión estándar (típicamente 3.49% + tarifa fija por transacción) — eso va a PayPal, no a nosotros.
+
+Q ¿Cómo funciona el primer año gratis de hosting?
+A Cada proyecto nuevo de sitio web incluye 12 meses de hosting y mantenimiento sin costo alguno — un valor de $1,140. Esto comienza el día que tu sitio se lanza e incluye hosting en la CDN global de Netlify, monitoreo de seguridad, optimización de rendimiento, monitoreo de disponibilidad, actualizaciones y corrección de errores. Después del primer año, puedes continuar a $95/mes o alojar el sitio tú mismo.
+
+Q ¿Ofrecen planes de pago o financiamiento?
+A Nuestros términos estándar son 50% al inicio y 50% al completar. Para proyectos más grandes, podemos discutir cronogramas de pago por hitos donde los pagos se vinculan a fases específicas del proyecto. Contáctanos para discutir qué funciona mejor para tu presupuesto.
+
+Q ¿Cuánto cuesta el mantenimiento web?
+A El mantenimiento web cuesta $95/mes después de tu primer año gratis. Incluye hosting en la CDN global de Netlify, monitoreo de seguridad, optimización de rendimiento, monitoreo de disponibilidad, actualizaciones regulares del framework y corrección de errores. No hay niveles ni cargos ocultos — un precio simple cubre todo.
+
+Q ¿Qué pasa si no pago el mantenimiento después del primer año?
+A Eres dueño completo de tu sitio web — código, diseño y contenido. Si decides no continuar, puedes alojar el sitio tú mismo o con otro proveedor. Sin embargo, perderás monitoreo de seguridad, optimización de rendimiento, alertas de disponibilidad y soporte técnico. Recomendamos continuar para proteger tu inversión.
+
+Q ¿Qué tan rápido responden a los problemas?
+A Monitoreamos tu sitio 24/7 con alertas automatizadas. Para problemas críticos como caídas, recibimos alertas instantáneas y comenzamos a resolver de inmediato. Para solicitudes no críticas como cambios de contenido o reportes de errores, típicamente respondemos dentro de 24 horas en días laborables. Estamos en Punta Cana, así que trabajamos en tu zona horaria.
+
+Q ¿Sus sitios necesitan actualizaciones de plugins como WordPress?
+A No — y esta es una de las mayores ventajas de nuestro enfoque. Los sitios WordPress típicamente necesitan 20–50 actualizaciones de plugins al mes, y cualquiera puede romper tu sitio o crear vulnerabilidades de seguridad. Nuestros sitios Next.js no tienen plugins. El mantenimiento se enfoca en mejoras genuinas como optimización de velocidad y fortalecimiento de seguridad — no en control de daños.
+
+Q ¿Pueden mantener un sitio web construido por alguien más?
+A Nuestros planes de mantenimiento están diseñados específicamente para sitios web que construimos con Next.js y Sanity CMS. Si tienes un sitio existente en WordPress u otra plataforma, recomendamos migrarlo primero a nuestro stack moderno (desde $600) — lo que incluye un año gratis de mantenimiento. Esto te da un sitio más rápido y seguro que cuesta menos mantener a largo plazo.
+
+Q ¿Qué incluye el soporte post-lanzamiento?
+A Cada proyecto incluye 30 días de soporte post-lanzamiento dedicado. Durante este período, corregimos cualquier error, hacemos ajustes menores, respondemos tus preguntas sobre el CMS y aseguramos que todo funcione sin problemas. Esto es separado del año gratis de mantenimiento — piénsalo como un período intensivo de incorporación para asegurar que tú y tu sitio estén completamente preparados para el éxito.
+
+Q ¿Qué tecnologías utilizan?
+A Nos especializamos en Next.js (React), TypeScript, Tailwind CSS y Sanity CMS. Para hosting, usamos Netlify con distribución CDN global. Esta tecnología moderna entrega sitios web significativamente más rápidos, seguros y escalables que los sitios tradicionales en WordPress, Wix o Squarespace.
+
+Q ¿Por qué usan Next.js en vez de WordPress?
+A Next.js ofrece tiempos de carga 3x más rápidos que WordPress, mejores resultados en Core Web Vitals de Google, no necesita plugins que ralenticen tu sitio o creen vulnerabilidades de seguridad, y es mucho más seguro por defecto. Combinado con Sanity CMS, obtienes la misma facilidad para editar contenido sin el peso, las actualizaciones constantes y las penalizaciones de rendimiento de WordPress.
+
+Q ¿Qué es un CMS headless y por qué debería importarme?
+A Un CMS headless separa tu contenido (textos, imágenes, productos) de cómo se muestra en tu sitio web. Sanity CMS es nuestro CMS headless preferido — te da un editor fácil para gestionar tu contenido mientras nosotros construimos el frontend con Next.js para máxima velocidad y flexibilidad. El resultado: puedes actualizar tu sitio fácilmente, y carga mucho más rápido que plataformas CMS tradicionales como WordPress.
+
+Q ¿Qué son los Core Web Vitals y por qué importan?
+A Los Core Web Vitals son las métricas de Google para medir qué tan rápido y fluido se siente tu sitio web para los visitantes — velocidad de carga, interactividad y estabilidad visual. Google los usa como factor directo de posicionamiento, lo que significa que los sitios más rápidos posicionan mejor en resultados de búsqueda. Nuestros sitios en Next.js obtienen consistentemente 90+ en Google PageSpeed, dando a tu negocio una ventaja SEO sobre competidores más lentos en WordPress.
+
+Q ¿Soy dueño del código y contenido de mi sitio web?
+A Sí — 100%. Eres dueño del código, el diseño y todo el contenido. No hay dependencia de proveedores, no hay page builders propietarios ni cuotas de licencia anuales. Si alguna vez quieres cambiar de desarrollador, puedes llevarte todo contigo. Esta es una ventaja importante sobre plataformas como Wix o Squarespace donde tu sitio está encerrado en su ecosistema.
+
+Q ¿Mi sitio web estará optimizado para SEO?
+A Sí. Cada sitio web incluye SEO técnico integrado: estructura de encabezados adecuada, meta tags, optimización de imágenes, datos estructurados (esquema JSON-LD), sitemaps XML, tiempos de carga rápidos, responsividad móvil y URLs limpias. Para sitios bilingües, implementamos etiquetas hreflang adecuadas y optimización SEO separada para cada idioma para que posiciones tanto en búsquedas en español como en inglés.
+
+Q ¿Pueden construir una tienda online para mi negocio?
+A Sí. Construimos tiendas e-commerce completas con catálogos de productos, carritos de compra, gestión de inventario y checkout seguro. Las integraciones de e-commerce comienzan en $900 como complemento a cualquier sitio web, o como tienda independiente. También construimos sistemas de reservas en línea para operadores turísticos, tiendas de buceo, fotógrafos y negocios de servicios.
+
+Q ¿Qué métodos de pago puede aceptar mi tienda?
+A Integramos PayPal, que acepta tarjetas de crédito (Visa, Mastercard, American Express), tarjetas de débito y saldos PayPal de clientes en todo el mundo. PayPal es uno de los procesadores de pago más confiables en República Dominicana y funciona tanto para transacciones locales como internacionales.
+
+Q ¿Por qué no simplemente usar Shopify o WooCommerce?
+A Shopify cobra $39–$399/mes en cuotas de plataforma más comisiones por transacción. WooCommerce requiere WordPress con docenas de plugins, actualizaciones constantes y vulnerabilidades de seguridad. Nuestras tiendas en Next.js no tienen cuotas mensuales de plataforma, cargan 3x más rápido, son inherentemente más seguras y eres dueño de todo el código — sin dependencia de proveedores, sin costos sorpresa.
+
+Q ¿Puedo gestionar productos e inventario yo mismo?
+A Sí. Tu tienda e-commerce viene con Sanity CMS, donde puedes agregar, editar y eliminar productos, actualizar precios, cambiar descripciones e imágenes y gestionar todo tu catálogo — sin programación. Perfecto para actualizar promociones estacionales o agregar nuevos productos y servicios.
+
+Q ¿Pueden construir un sistema de reservas en línea para tours o servicios?
+A Sí. Construimos sistemas personalizados de reservas donde los clientes pueden seleccionar fechas, elegir paquetes y pagar en línea a través de PayPal. Hemos construido estos para empresas de buceo, organizadores de eventos y operadores turísticos en Punta Cana — un cliente vio un aumento del 200% en conversiones de reservas después de lanzar su sistema de reservas en línea.
+
+Q ¿Puedo vender a clientes fuera de República Dominicana?
+A Sí. PayPal procesa pagos de clientes en todo el mundo. Combinado con nuestra capacidad de tienda bilingüe, puedes vender a clientes dominicanos, turistas planificando su viaje y compradores internacionales — todo desde la misma tienda con cambio de idioma y procesamiento de pagos global.
+
+Q ¿Mi sitio web aparecerá en Google?
+A Sí. Cada sitio web que construimos incluye bases técnicas de SEO: estructura de encabezados adecuada, meta tags, sitemaps XML, datos estructurados (esquema JSON-LD), tiempos de carga rápidos, responsividad móvil y estructuras de URL limpias. También enviamos tu sitio a Google Search Console para que se indexe rápidamente. Sin embargo, posicionar en la primera página para palabras clave competitivas toma tiempo y esfuerzo continuo de contenido — el SEO técnico te pone en el juego, la estrategia de contenido lo gana.
+
+Q ¿Cuánto tiempo toma posicionar en Google?
+A Depende de tu industria y competencia. Para búsquedas locales dominicanas con baja competencia, puedes ver resultados dentro de 2–3 meses. Para términos más competitivos como 'desarrollo web república dominicana,' típicamente toma 4–8 meses de contenido y optimización consistente. Nuestro SEO técnico te da una base sólida desde el día uno — tu sitio en Next.js ya carga más rápido y obtiene mejores Core Web Vitals que la mayoría de competidores, lo que Google premia directamente.
+
+Q ¿Cuál es la diferencia entre SEO técnico y SEO de contenido?
+A El SEO técnico es la optimización a nivel de código integrada en tu sitio web — velocidad de página, responsividad móvil, datos estructurados, sitemaps, URLs adecuadas y Core Web Vitals. Esto está incluido en cada proyecto que construimos. El SEO de contenido se trata de crear artículos de blog, landing pages y contenido escrito que apunta a las palabras clave que tus clientes buscan. Nosotros construimos la base técnica; tú puedes crear contenido a través de Sanity CMS, o podemos discutir una estrategia de contenido para acelerar tu posicionamiento.
+
+Q ¿Cómo ayuda un sitio web rápido a mi posicionamiento en Google?
+A Google usa los Core Web Vitals — velocidad de carga, interactividad y estabilidad visual — como factores directos de posicionamiento. Los sitios más rápidos posicionan mejor, punto. Nuestros sitios en Next.js obtienen 90+ en Google PageSpeed, mientras que la mayoría de sitios WordPress en República Dominicana obtienen 40–60. Esta ventaja de velocidad significa que Google es más probable que muestre tu sitio por encima de competidores más lentos para los mismos términos de búsqueda.
+
+Q ¿Cómo afecta un sitio bilingüe a mi SEO?
+A Un sitio bilingüe bien construido duplica tus oportunidades de palabras clave — posicionas tanto en búsquedas en español como en inglés. Implementamos etiquetas hreflang para que Google sepa qué versión mostrar a cada audiencia, creamos meta tags optimizados para SEO separados para cada idioma y estructuramos las URLs adecuadamente (prefijos /en/ y /es/). Esto es especialmente valioso en Punta Cana y zonas turísticas donde los clientes potenciales buscan en ambos idiomas.
+
+Q ¿Incluyen datos estructurados (schema markup) en mi sitio web?
+A Sí. Cada sitio web incluye datos estructurados JSON-LD incluyendo esquema Organization (detalles de tu negocio, servicios, precios, ubicación), esquema WebPage, esquema BreadcrumbList para navegación y esquema FAQPage donde aplique. Para sitios e-commerce, agregamos esquemas Product y Offer. Estos datos estructurados ayudan a Google a entender tu negocio y pueden generar resultados enriquecidos — calificaciones con estrellas, FAQs, precios e información del negocio mostrada directamente en los resultados de búsqueda.
+
+Q ¿Necesito un blog para posicionar en Google?
+A Un blog no es estrictamente necesario, pero es una de las formas más efectivas de posicionar para más palabras clave y atraer tráfico orgánico. Cada artículo de blog es una nueva página que puede posicionar para un término de búsqueda específico que usan tus clientes. Cada configuración de Sanity CMS que construimos incluye un blog completamente funcional — puedes publicar artículos, categorizarlos, y cada post se optimiza automáticamente para SEO con meta tags, encabezados y datos estructurados adecuados.
+
+Q ¿Mi sitio aparecerá en búsquedas locales de mi ciudad?
+A Sí. Optimizamos tu sitio para búsquedas locales incluyendo la ubicación de tu negocio en datos estructurados, creando contenido específico de ubicación e implementando esquema LocalBusiness con tu dirección, área de servicio y coordenadas geográficas. Para negocios en Punta Cana, Santo Domingo, Santiago u otras ciudades dominicanas, esto ayuda a que aparezcas cuando las personas buscan servicios en tu área. También recomendamos configurar un Perfil de Negocio de Google para complementar el SEO local de tu sitio web.

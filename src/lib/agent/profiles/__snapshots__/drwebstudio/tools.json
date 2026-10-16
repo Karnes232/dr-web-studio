@@ -1,0 +1,78 @@
+[
+  {
+    "name": "save_lead",
+    "description": "Record the customer as a lead. Call ONCE, when you first know their name and roughly what they want. Do not call it again on later turns just to add detail — every call costs a full extra request. Only call again if something material changes, such as a different service or a firm deadline.",
+    "strict": true,
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Customer's name."
+        },
+        "company": {
+          "type": "string",
+          "description": "Their business name, or empty string."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email if given, else empty string."
+        },
+        "service_key": {
+          "type": "string",
+          "description": "The matching key from the service catalogue in your knowledge base, or empty string if unclear. Never invent one."
+        },
+        "project_type": {
+          "type": "string",
+          "description": "Short plain description of what they want."
+        },
+        "timeline": {
+          "type": "string",
+          "description": "When they need it, or empty string."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Anything else useful for the follow-up call."
+        }
+      },
+      "required": [
+        "name",
+        "company",
+        "email",
+        "service_key",
+        "project_type",
+        "timeline",
+        "notes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "escalate_to_human",
+    "description": "Hand the conversation to James. Call for custom pricing questions, existing projects, invoices, complaints, direct requests for him, or when you are stuck. After calling this, say briefly that James will pick it up, and stop.",
+    "strict": true,
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "Why this needs a human, one line."
+        },
+        "urgency": {
+          "type": "string",
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ],
+          "description": "high only if the customer is upset or time-critical."
+        }
+      },
+      "required": [
+        "reason",
+        "urgency"
+      ],
+      "additionalProperties": false
+    }
+  }
+]
