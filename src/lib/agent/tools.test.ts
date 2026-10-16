@@ -12,7 +12,12 @@ import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
 const ctx = {
   tenant: { tenant_id: "drwebstudio" },
   conversation: { id: "conv-1" },
-  knowledge: fixture as unknown as AgentKnowledge,
+  catalogue: (fixture as unknown as AgentKnowledge).plannerServices.map(p => ({
+    key: p.key,
+    label: p.title.en,
+  })),
+  escalatedResult:
+    "Escalated. Tell the customer briefly that James will pick this up, then stop.",
   waId: "18295551234",
   profileName: "Ana Gomez",
   locale: "es",
@@ -127,6 +132,8 @@ describe("runTool", () => {
       reason: "asked for a custom quote",
       urgency: "normal",
     })
+    // The wording names the tenant's human, so it comes from the profile.
+    expect(out.result).toBe(ctx.escalatedResult)
   })
 
   it("does not throw on an unknown tool name", async () => {
@@ -206,7 +213,7 @@ describe("save_lead rejects values that are not what the field is for", () => {
   })
 
   it("keeps a service key that exists in the catalogue", async () => {
-    const real = ctx.knowledge.plannerServices[0].key
+    const real = ctx.catalogue[0].key
     await runTool("save_lead", { ...base, service_key: real }, ctx)
     expect(saveLeadMock.mock.calls[0][0].serviceKey).toBe(real)
   })

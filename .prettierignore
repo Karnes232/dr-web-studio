@@ -17,3 +17,7 @@ node_modules
 dist
 .sanity
 .vercel
+
+# Golden snapshots are byte-for-byte records of what is sent to Claude;
+# reformatting them breaks the comparison.
+**/__snapshots__/**

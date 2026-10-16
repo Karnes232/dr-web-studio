@@ -1,8 +1,7 @@
 import "server-only"
 import Anthropic from "@anthropic-ai/sdk"
-import { systemPersona } from "./prompt"
-import { runTool, TOOLS, type ToolContext } from "./tools"
-import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
+import { runTool, type ToolContext } from "./tools"
+import type { AgentProfile, CatalogueEntry } from "./profiles"
 import type { Conversation, Tenant } from "@/lib/whatsapp/store"
 import { PRICE } from "./pricing"
 
@@ -31,9 +30,12 @@ export interface TurnResult {
 export interface TurnParams {
   tenant: Tenant
   conversation: Conversation
-  /** Pre-rendered, byte-stable knowledge block — see lib/agent/knowledge.ts. */
+  /** Persona, tools and wording for this tenant's business. */
+  profile: AgentProfile
+  /** Pre-rendered, byte-stable knowledge block — see the tenant's profile. */
   knowledgeBlock: string
-  knowledge: AgentKnowledge
+  /** Valid service keys for save_lead. */
+  catalogue: CatalogueEntry[]
   /** Full turn history, oldest first, ending with the customer's latest. */
   history: Anthropic.MessageParam[]
   locale: string
@@ -92,7 +94,7 @@ function tally(u: Anthropic.Usage | undefined, acc: TurnUsage): void {
  * cache-write premium.
  */
 export async function runTurn(params: TurnParams): Promise<TurnResult> {
-  const { tenant, knowledgeBlock, history, locale } = params
+  const { tenant, profile, knowledgeBlock, history, locale } = params
 
   const usage: TurnUsage = {
     inputTokens: 0,
@@ -103,29 +105,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
     apiCalls: 0,
   }
 
-  const now = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "America/Santo_Domingo",
-    dateStyle: "full",
-    timeStyle: "short",
-  }).format(new Date())
-
-  const volatile = [
-    `Current local time in the Dominican Republic: ${now}.`,
-    `Conversation language: ${locale}.`,
-    params.profileName
-      ? `The customer's WhatsApp name is ${params.profileName}.`
-      : "",
-    params.resumed
-      ? "This conversation was handled by a person, or paused, and has been quiet for days. You are picking it back up. Greet them again briefly, say plainly that you are the assistant (not James) helping them, and acknowledge the gap before continuing — do not pretend the pause did not happen."
-      : params.conversation.turn_count === 0
-        ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
-        : "You have already introduced yourself; do not do it again.",
-    params.conversation.lead_id
-      ? "A lead has already been saved for this conversation. Do NOT call save_lead again unless the service or the deadline materially changes."
-      : "No lead saved yet for this conversation.",
-  ]
-    .filter(Boolean)
-    .join(" ")
+  const volatile = volatileContext(params)
 
   const messages: Anthropic.MessageParam[] = [
     ...history,
@@ -137,7 +117,8 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
   const ctx: ToolContext = {
     tenant: params.tenant,
     conversation: params.conversation,
-    knowledge: params.knowledge,
+    catalogue: params.catalogue,
+    escalatedResult: profile.escalatedResult,
     waId: params.waId,
     profileName: params.profileName,
     locale,
@@ -174,14 +155,14 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
       // visible text instead of emitting a tool_use block — the turn succeeds,
       // the tool never runs, and no error is raised.
       system: [
-        { type: "text", text: systemPersona(tenant) },
+        { type: "text", text: profile.persona(tenant) },
         {
           type: "text",
           text: knowledgeBlock,
           cache_control: { type: "ephemeral", ttl: "1h" },
         },
       ],
-      tools: TOOLS,
+      tools: profile.tools,
       messages,
     })
 
@@ -238,6 +219,44 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
   }
 
   return { reply: reply.trim(), escalated, leadId, usage }
+}
+
+/**
+ * The per-request state, sent as a `{role: "system"}` message at the end of
+ * `messages` — after the cache breakpoint, so it can change every request
+ * without touching the cached prefix.
+ */
+export function volatileContext(
+  params: Pick<
+    TurnParams,
+    "profile" | "locale" | "profileName" | "resumed" | "conversation"
+  >,
+  at: Date = new Date(),
+): string {
+  const { profile } = params
+  const now = new Intl.DateTimeFormat("en-GB", {
+    timeZone: profile.timezone,
+    dateStyle: "full",
+    timeStyle: "short",
+  }).format(at)
+
+  return [
+    `${profile.clockLabel}: ${now}.`,
+    `Conversation language: ${params.locale}.`,
+    params.profileName
+      ? `The customer's WhatsApp name is ${params.profileName}.`
+      : "",
+    params.resumed
+      ? profile.resumedNote
+      : params.conversation.turn_count === 0
+        ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
+        : "You have already introduced yourself; do not do it again.",
+    params.conversation.lead_id
+      ? "A lead has already been saved for this conversation. Do NOT call save_lead again unless the service or the deadline materially changes."
+      : "No lead saved yet for this conversation.",
+  ]
+    .filter(Boolean)
+    .join(" ")
 }
 
 /** Most-specific-first, so a rate limit is distinguishable from a bad request. */

@@ -1,12 +1,11 @@
 import "server-only"
 import { Resend } from "resend"
 import { runTurn, describeClaudeError } from "./claude"
-import { renderKnowledge } from "./knowledge"
 import { detectLocale } from "./locale"
 import { claimsHandoff } from "./handoffClaim"
 import { countKapsoMessage, noteSendResult } from "./alerts"
 import { getLead } from "@/lib/leads/saveLead"
-import { getAgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
+import { profileFor } from "./profiles"
 import {
   isBusinessScopedUserId,
   sendText,
@@ -35,19 +34,6 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const AGENT_INBOX_URL = "https://inbox.kapso.ai"
 
 /**
- * What the customer hears when the tenant's spend cap has been reached.
- *
- * Deliberately says nothing about budgets or limits — that is the business's
- * problem, not the customer's. It promises only what actually happens next: the
- * escalation email is sent, so a human really has been told.
- */
-function capReachedNotice(business: string, locale: string): string {
-  return locale === "en"
-    ? `Thanks for your message! I can't answer automatically right now, but I've passed it to the ${business} team and someone will get back to you shortly.`
-    : `¡Gracias por escribirnos! En este momento no puedo responderte automáticamente, pero ya le pasé tu mensaje al equipo de ${business} y te contestan en breve.`
-}
-
-/**
  * One inbound message → one reply.
  *
  * Called from inside `after()` in the webhook route, so it runs AFTER the 200
@@ -64,6 +50,19 @@ export async function runAgent(
     conversation.locale ??
     detectLocale(message.text, tenant.default_locale || "es")
 
+  const profile = profileFor(tenant)
+  if (!profile) {
+    // A misconfigured row must not get another business's persona and prices.
+    await escalate(
+      tenant,
+      conversation,
+      message,
+      `misconfigured tenant: unknown agent_profile "${tenant.agent_profile}"`,
+      [],
+    )
+    return
+  }
+
   // Spend cap before anything costly. Degrades to a human handoff rather than
   // silently going over budget.
   const cap = tenant.monthly_cost_cap_usd
@@ -78,7 +77,7 @@ export async function runAgent(
     const notice = await sendText(
       tenant.phone_number_id,
       message.waId,
-      capReachedNotice(tenant.business_name, locale),
+      profile.capReachedNotice(tenant.business_name, locale),
     )
     if (notice.ok) await countKapsoMessage(tenant)
 
@@ -94,14 +93,15 @@ export async function runAgent(
 
   let turn
   try {
-    const knowledge = await getAgentKnowledge()
+    const knowledge = await profile.loadKnowledge()
     const history = await loadHistory(conversation)
 
     turn = await runTurn({
       tenant,
       conversation,
-      knowledge,
-      knowledgeBlock: renderKnowledge(knowledge, locale === "en" ? "en" : "es"),
+      profile,
+      knowledgeBlock: knowledge.block(locale),
+      catalogue: knowledge.catalogue,
       history,
       locale,
       waId: message.waId,

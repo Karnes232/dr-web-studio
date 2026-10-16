@@ -1,7 +1,7 @@
 import "server-only"
 import type Anthropic from "@anthropic-ai/sdk"
 import { saveLead } from "@/lib/leads/saveLead"
-import type { AgentKnowledge } from "@/sanity/queries/agent/agentKnowledge"
+import type { CatalogueEntry } from "./profiles/types"
 import type { Conversation, Tenant } from "@/lib/whatsapp/store"
 
 /**
@@ -22,7 +22,10 @@ import type { Conversation, Tenant } from "@/lib/whatsapp/store"
 export interface ToolContext {
   tenant: Tenant
   conversation: Conversation
-  knowledge: AgentKnowledge
+  /** The tenant's valid service keys; save_lead drops anything else. */
+  catalogue: CatalogueEntry[]
+  /** What escalate_to_human tells the model — names the tenant's human. */
+  escalatedResult: string
   waId: string
   profileName?: string
   locale: string
@@ -165,7 +168,7 @@ export async function runTool(
       // Same posture for the service key: only accept one that actually exists
       // in the catalogue, so an invented or mis-assigned slug never lands.
       const rawKey = str("service_key")
-      const known = new Set(ctx.knowledge.plannerServices.map(p => p.key))
+      const known = new Set(ctx.catalogue.map(c => c.key))
       const serviceKey = rawKey && known.has(rawKey) ? rawKey : undefined
       if (rawKey && !serviceKey) {
         console.warn(`save_lead: discarded unknown service_key: ${rawKey}`)
@@ -204,8 +207,7 @@ export async function runTool(
       const reason = String(input.reason ?? "unspecified")
       const urgency = String(input.urgency ?? "normal")
       return {
-        result:
-          "Escalated. Tell the customer briefly that James will pick this up, then stop.",
+        result: ctx.escalatedResult,
         escalated: { reason, urgency },
       }
     }
