@@ -15,9 +15,10 @@ describe("renderGrandBayKnowledge", () => {
   })
 
   it("stays inside its token budget", () => {
-    // English runs ~4 chars/token. 60K chars ≈ 15K tokens: past that the
-    // cache write per conversation gets expensive; trim course FAQs first.
-    expect(rendered.length).toBeLessThan(60_000)
+    // ~116K chars on 2026-10-16 with the course write-ups, dive site
+    // descriptions, marine life and About page. Past 125K the cache write per
+    // cold start gets expensive: trim the course write-ups or FAQs first.
+    expect(rendered.length).toBeLessThan(125_000)
   })
 
   it("renders every published price as a labelled $N USD line", () => {
@@ -90,6 +91,51 @@ describe("renderGrandBayKnowledge", () => {
 
   it("never mentions DR Web Studio", () => {
     expect(rendered).not.toMatch(/DR Web Studio|dr-webstudio|James/i)
+  })
+})
+
+describe("renderGrandBayKnowledge — long-form content", () => {
+  it("includes each course's write-up under the course", () => {
+    const ow = kb.courses.find(c => c.slug === "openwater")!
+    expect(ow.about).toBeTruthy()
+    const section = rendered.slice(
+      rendered.indexOf("### Open Water Diver ("),
+      rendered.indexOf("### Peak Performance Buoyancy"),
+    )
+    expect(section).toContain("About this course:")
+    expect(section).toContain(ow.about!.split("\n")[0].trim())
+  })
+
+  it("describes every dive site and names its neighbours", () => {
+    for (const s of kb.diveSites.filter(s => s.description)) {
+      expect(rendered).toContain(s.description!.trim().slice(0, 60))
+    }
+    expect(rendered).toMatch(/Nearby sites: /)
+  })
+
+  it("lists the marine life", () => {
+    expect(kb.species.length).toBeGreaterThan(0)
+    expect(rendered).toContain("## Marine life seen on their dives")
+    for (const s of kb.species) expect(rendered).toContain(`- ${s.name}`)
+  })
+
+  it("introduces the team, but never the site's web developer", () => {
+    // He is on their About page; named here, the agent would route
+    // customers to DR Web Studio.
+    expect(kb.about!.team!.some(m => /james karnes/i.test(m.name ?? ""))).toBe(
+      true,
+    )
+    expect(rendered).toContain("Franklin Santos")
+    expect(rendered).not.toMatch(/james/i)
+  })
+
+  it("adds the Punta Cana guide page and its FAQs", () => {
+    expect(rendered).toContain("## Scuba diving in Punta Cana (general guide)")
+    expect(rendered).toContain(kb.puntaCana!.faqs![0].q!.trim())
+  })
+
+  it("collapses runs of blank lines in CMS prose", () => {
+    expect(rendered).not.toMatch(/\n{3,}/)
   })
 })
 

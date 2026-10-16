@@ -136,8 +136,9 @@ describe("Grand Bay — nothing of DR Web Studio reaches customers or staff", ()
   it("keeps the whole cached prefix within budget", async () => {
     const all = await everything()
     const prefix = all.tools + all.persona + all["knowledge.en"]
-    // ~4 chars/token in English: 70K chars ≈ 17.5K tokens.
-    expect(prefix.length).toBeLessThan(70_000)
+    // Measured in production: ~2.75 chars per real token for this prefix, so
+    // 135K chars ≈ 49K tokens. Each cold start writes it all (2x input rate).
+    expect(prefix.length).toBeLessThan(135_000)
   })
 
   it("accepts Grand Bay's catalogue keys and drops anything else", async () => {

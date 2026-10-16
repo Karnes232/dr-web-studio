@@ -65,6 +65,23 @@ function faqBlock(faqs: GbFaq[] | null | undefined): string {
 
 const join = (...parts: string[]) => parts.filter(Boolean).join("\n")
 
+/** Long CMS prose: trimmed, no runs of blank lines or trailing spaces. */
+const prose = (text: string | null | undefined) =>
+  (text ?? "")
+    .split("\n")
+    .map(l => l.trimEnd())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+
+/**
+ * People on their About page the agent must not mention. James built their
+ * site and is listed as "Web & Bookings": named in the prompt, the agent
+ * would offer to pass customers to him, and he is DR Web Studio, not the
+ * dive center. Handoffs go to "the Grand Bay team".
+ */
+const HIDDEN_TEAM = /james karnes/i
+
 export function catalogue(kb: GrandBayKnowledge): CatalogueEntry[] {
   const out: CatalogueEntry[] = []
   for (const c of kb.courses ?? []) {
@@ -126,6 +143,7 @@ export function renderGrandBayKnowledge(kb: GrandBayKnowledge): string {
           line("Maximum depth", c.maxDepth),
           line("Note", c.extraInfo),
           `Book: ${SITE}/courses/${c.slug}`,
+          c.about?.trim() ? `About this course:\n${prose(c.about)}` : "",
           faqBlock(c.faqs),
         ),
       )
@@ -213,10 +231,28 @@ export function renderGrandBayKnowledge(kb: GrandBayKnowledge): string {
             ? ` — ${s.meters} m${s.feet != null ? ` / ${s.feet} ft` : ""}`
             : ""
         const meta = [s.level, s.location].filter(Boolean).join(", ")
-        return `- ${s.name}${depth}${meta ? ` (${meta})` : ""}${
-          s.summary ? `: ${s.summary}` : ""
-        }`
+        const nearby = (s.nearby ?? []).filter(Boolean).join(", ")
+        return join(
+          `- ${s.name}${depth}${meta ? ` (${meta})` : ""}${
+            s.summary ? `: ${s.summary}` : ""
+          }`,
+          s.description?.trim() ? `  ${prose(s.description)}` : "",
+          nearby ? `  Nearby sites: ${nearby}` : "",
+        )
       }),
+    )
+  }
+
+  // ---- Marine life -----------------------------------------------------------
+  const species = (kb.species ?? []).filter(s => s.name)
+  if (species.length) {
+    out.push(
+      "",
+      "## Marine life seen on their dives",
+      prose(kb.speciesIntro),
+      ...species.map(
+        s => `- ${s.name}${s.description ? `: ${prose(s.description)}` : ""}`,
+      ),
     )
   }
 
@@ -299,6 +335,61 @@ export function renderGrandBayKnowledge(kb: GrandBayKnowledge): string {
   for (const g of kb.generalFaqs ?? []) {
     const block = faqBlock(g.faqs)
     if (block) out.push("", `## General questions (${g.page ?? "site"})`, block)
+  }
+
+  // ---- Scuba diving in Punta Cana (guide page) -------------------------------
+  if (kb.puntaCana) {
+    const body = prose(kb.puntaCana.body)
+    const faqs = faqBlock(kb.puntaCana.faqs)
+    if (body || faqs) {
+      out.push(
+        "",
+        "## Scuba diving in Punta Cana (general guide)",
+        join(body, faqs),
+      )
+    }
+  }
+
+  // ---- About the dive center ---------------------------------------------------
+  if (kb.about) {
+    const a = kb.about
+    const team = (a.team ?? []).filter(m => m.name && !HIDDEN_TEAM.test(m.name))
+    out.push(
+      "",
+      "## About Grand Bay of the Sea",
+      join(
+        (a.stats ?? [])
+          .filter(s => s.value && s.label)
+          .map(s => `${s.label!.trim()}: ${s.value!.trim()}`)
+          .join("\n"),
+        prose(a.story),
+        team.length
+          ? [
+              "The team:",
+              prose(a.teamIntro),
+              ...team.map(
+                m =>
+                  `- ${m.name!.trim()}${m.role?.trim() ? `, ${m.role.trim()}` : ""}${
+                    m.bio?.trim() ? `: ${prose(m.bio)}` : ""
+                  }`,
+              ),
+            ]
+              .filter(Boolean)
+              .join("\n")
+          : "",
+        (a.values ?? []).filter(v => v.title).length
+          ? [
+              "What they value:",
+              ...(a.values ?? [])
+                .filter(v => v.title)
+                .map(
+                  v =>
+                    `- ${v.title!.trim()}${v.body ? `: ${prose(v.body)}` : ""}`,
+                ),
+            ].join("\n")
+          : "",
+      ),
+    )
   }
 
   // ---- Cancellation policy ---------------------------------------------------

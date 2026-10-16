@@ -49,6 +49,8 @@ export interface GbCourse {
   dives: string | null
   maxDepth: string | null
   extraInfo: string | null
+  /** The course page's long-form write-up, flattened. */
+  about: string | null
   faqs: GbFaq[] | null
 }
 
@@ -80,6 +82,8 @@ export interface GbDiveSite {
   level: string | null
   location: string | null
   summary: string | null
+  description: string | null
+  nearby: (string | null)[] | null
 }
 
 export interface GrandBayKnowledge {
@@ -125,9 +129,28 @@ export interface GrandBayKnowledge {
     intro: string | null
   } | null
   cancellationPolicy: string | null
+  /** The About Us page. */
+  about: {
+    story: string | null
+    teamIntro: string | null
+    team:
+      | { name: string | null; role: string | null; bio: string | null }[]
+      | null
+    values: { title: string | null; body: string | null }[] | null
+    stats: { value: string | null; label: string | null }[] | null
+  } | null
+  /** Marine life page: one entry per species. */
+  species: { name: string | null; description: string | null }[]
+  speciesIntro: string | null
+  /** The "Scuba diving Punta Cana" guide page. */
+  puntaCana: { body: string | null; faqs: GbFaq[] | null } | null
 }
 
 const FAQS = `"faqs": faqs[]{ "q": question.en, "a": pt::text(answer.en) }`
+
+/** Several Portable Text fields as one plain-text body, blank-line separated. */
+const ptJoin = (...fields: string[]) =>
+  `array::join([${fields.map(f => `pt::text(${f}.en)`).join(", ")}], "\\n\\n")`
 
 export const grandBayKnowledgeQuery = `{
   "courses": *[_type == "individualCourse"] | order(order asc, _id asc) {
@@ -135,6 +158,7 @@ export const grandBayKnowledgeQuery = `{
     "summary": cardDescription.en, "level": level.en, "price": padiPrice,
     "duration": duration.en, "dives": dives.en, "maxDepth": maxDepth.en,
     "extraInfo": extraInfo.en,
+    "about": ${ptJoin("paragraph1", "paragraph2", "paragraph3", "paragraph4", "paragraph5", "paragraph6")},
     ${FAQS}
   },
   "trips": *[_type == "trips"] | order(price asc, _id asc) {
@@ -153,7 +177,8 @@ export const grandBayKnowledgeQuery = `{
   },
   "diveSites": *[_type == "diveSite"] | order(meters asc, name asc, _id asc) {
     name, "slug": slug.current, meters, feet, level, location,
-    "summary": cardDescription.en
+    "summary": cardDescription.en, "description": description.en,
+    "nearby": nearbySites[]->name
   },
   "sharkDive": *[_type == "sharkDive"][0] {
     "name": page, "price": price, "deposit": depositPrice, "duration": duration.en,
@@ -177,7 +202,21 @@ export const grandBayKnowledgeQuery = `{
   "contact": *[_type == "contact"][0] {
     "hours": hoursValue.en, "hoursNote": hoursDesc.en, "intro": heroSubtitle.en
   },
-  "cancellationPolicy": pt::text(*[_type == "cancellationPolicy"][0].content.en)
+  "cancellationPolicy": pt::text(*[_type == "cancellationPolicy"][0].content.en),
+  "about": *[_type == "aboutUs"][0] {
+    "story": pt::text(storyBody.en), "teamIntro": teamIntro.en,
+    "team": teamMembers[]{ name, "role": role.en, "bio": bio.en },
+    "values": values[]{ "title": title.en, "body": body.en },
+    "stats": stats[]{ "value": value.en, "label": label.en }
+  },
+  "species": *[_type == "fishes"] | order(name.en asc, _id asc) {
+    "name": name.en, "description": description.en
+  },
+  "speciesIntro": pt::text(*[_type == "speciesPageContent"][0].content.en),
+  "puntaCana": *[_type == "scubaDivingPuntaCana"][0] {
+    "body": ${ptJoin("paragraph1", "paragraph2", "paragraph3")},
+    ${FAQS}
+  }
 }`
 
 export const getGrandBayKnowledge = unstable_cache(

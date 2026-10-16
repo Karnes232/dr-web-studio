@@ -1,4 +1,81 @@
 {
+  "about": {
+    "stats": [
+      {
+        "label": "159 Google reviews",
+        "value": "4.8★"
+      },
+      {
+        "label": "Verified dive center",
+        "value": "PADI #27147"
+      },
+      {
+        "label": "Divers guided safely",
+        "value": "1000s"
+      },
+      {
+        "label": "English · Español · more",
+        "value": "Multilingual"
+      }
+    ],
+    "story": "Grand Bay of the Sea was founded by divers who fell in love with the waters of the Dominican Republic and wanted to share them the right way — safely, personally, and with genuine care for the reef.\n\nFrom our base on Carretera Cabeza de Toro, we run small-group dives, trips, and PADI courses for everyone from first-timers taking their first breath underwater to seasoned divers chasing walls, wrecks, and sharks. Because we keep groups small, every guest gets real attention from an experienced guide.\n\nWe're proud to be a verified PADI dive center with a 4.8-star reputation built one great dive at a time.",
+    "team": [
+      {
+        "bio": "Franklin is the founder and manager of Grand Bay of the Sea and a certified PADI instructor with 18 years in the diving world. He brings deep expertise in dive safety, training, and recreational dive operations. Fluent in Spanish, English, and French, he welcomes divers from all over the world. Professional, dependable, and safety-focused, Franklin is committed to making every experience well-organized and memorable.",
+        "name": "Franklin Santos",
+        "role": "Owner, Manager & PADI Instructor"
+      },
+      {
+        "bio": "James is a certified PADI dive instructor who manages everything on the digital side of Grand Bay of the Sea. He built and maintains the website and handles online bookings and communications, so he's usually the first person you'll hear from when planning your dives. His diving background means he understands exactly what guests need before they arrive, helping make every booking clear, smooth, and well-organized from the very first message.",
+        "name": "James Karnes",
+        "role": " Web & Bookings"
+      },
+      {
+        "bio": "Katherine is a PADI dive instructor with six years of experience. She speaks Spanish and English and has a warm, fun, and approachable style that puts divers at ease — especially first-timers taking their very first breaths underwater. Her enthusiasm and professionalism turn every dive into a safe and unforgettable adventure.",
+        "name": "Katherine Marroquín",
+        "role": "PADI Dive Instructor"
+      },
+      {
+        "bio": "José is a divemaster with six years of experience in the diving world. Reliable, efficient, and attentive, he speaks Spanish and English and communicates clearly with divers of all backgrounds. His focus on safety and service makes every dive smooth, enjoyable, and secure.",
+        "name": "José Enrique",
+        "role": "Divemaster"
+      },
+      {
+        "bio": "Alexander is a dive boat captain with a lifetime of experience at sea. His knowledge of navigation and sea conditions keeps every trip safe and well-run. He speaks Spanish and is known for his fun, friendly, and easygoing personality, creating a great atmosphere on board throughout each adventure.",
+        "name": "Alexander",
+        "role": "Dive Boat Captain"
+      },
+      {
+        "bio": "Fraylin is a dive boat captain who learned the trade working alongside his father, Franklin Santos. Efficient, capable, and safety-minded, he speaks both Spanish and English, allowing him to connect with divers of many nationalities. His knowledge of the sea and positive attitude help make every outing safe and enjoyable.",
+        "name": "Fraylin Santos",
+        "role": "Dive Boat Captain"
+      },
+      {
+        "bio": "Bolívar is our driver, with more than 30 years of experience behind the wheel. Responsible, punctual, and with an excellent knowledge of the area, he ensures a safe and comfortable transfer for our guests from the start of the day to the very end.",
+        "name": "Bolívar (Felipe Antonio)",
+        "role": "Driver"
+      }
+    ],
+    "teamIntro": "Certified professionals who know these waters intimately — and love introducing new people to them.",
+    "values": [
+      {
+        "body": "Rigorous protocols, well-maintained gear, and certified guides on every dive.",
+        "title": "Safety first"
+      },
+      {
+        "body": "Personal attention and a relaxed pace — never a crowded cattle-boat dive.",
+        "title": "Small groups"
+      },
+      {
+        "body": "We dive responsibly and teach every guest to protect the ecosystems we love.",
+        "title": "Reef respect"
+      },
+      {
+        "body": "Local knowledge of every site, condition, and season — so you see the best.",
+        "title": "Real expertise"
+      }
+    ]
+  },
   "cancellationPolicy": "Refund Policy\n\nAt Grand Bay of the Sea, we aim to provide memorable diving experiences while maintaining fairness in our policies. Please review our refund policy below:\n\nCancellations by the Customer:\n\nMore than 7 days before the scheduled activity (excluding diving courses): Full refund or rescheduling at no additional cost.7 days to 48 hours before the scheduled activity (excluding diving courses): 50% refund or the option to reschedule.Less than 48 hours before the scheduled activity: No refund will be issued.\n\nDiving Courses:\n\nPayments for diving courses are non-refundable. Rescheduling may be possible under certain circumstances. Please contact us for more details.\n\nCancellations by Grand Bay of the Sea:\n\nIf we cancel your activity due to unforeseen circumstances (e.g., weather, equipment issues), you will have the option to reschedule or receive a full refund for eligible activities. This does not apply to diving courses.\n\nSpecial Considerations:\n\nRefunds for multi-day packages will be prorated based on unused portions of the package (excluding diving courses).Medical or personal emergencies will be handled on a case-by-case basis, and supporting documentation may be required.\n\nRefund Process:\n\nRefund requests must be submitted in writing to grandbayofthesea@gmail.com",
   "contact": {
     "hours": "Mon–Sun · 8:30–17:00",
@@ -7,6 +84,7 @@
   },
   "courses": [
     {
+      "about": "Try Discover Scuba Diving in Punta Cana\n\nIf you’ve ever been curious about scuba diving but aren’t sure if it’s for you — or if you simply don’t want to commit to a full certification course — our PADI Discover Scuba Diving experience is the perfect choice. This introductory program lets you experience the thrill of breathing underwater in a safe, fun, and relaxed environment, without the need for previous diving experience.\n\nPunta Cana is one of the easiest places in the world to try it. The water stays a warm 26–29°C (78–84°F) all year, visibility typically runs 15 to 25 meters, and the reefs we use for first-time divers are calm and shallow. There’s no cold to fight and no current to battle — you simply breathe, relax, and look around.\n\nThe whole experience takes about two and a half hours and costs $100, with all equipment included. There are no prerequisites: if you’re at least 10 years old and can swim at a basic level, you can dive with us today.\n\nWith the guidance of our certified PADI instructors, you’ll learn basic scuba skills and safety tips before heading into the water for an unforgettable dive. It’s the ideal way to get your fins wet and explore Punta Cana’s vibrant marine life without investing a lot of time or money in a full course.\n\nOur team teaches in English, Spanish, and French, so your briefing happens in a language you’re comfortable in. The structure is simple: a short theory briefing on land, skills practice in shallow water, and then the dive itself. Before you ever leave the shallows, you’ll know how to breathe from your regulator, clear your mask, and communicate with hand signals.\n\nDuring the dive you stay under the direct supervision of a PADI professional at all times, never deeper than 6 meters (20 feet). You set the pace. If you want a moment at the surface, you take it.\n\nExperience the Underwater World in Just One Day\n\nOur PADI Discover Scuba Diving program is a one-day adventure that takes you into the underwater world, with dives to a maximum depth of 6 meters (20 feet). While it does not result in a certification, it can be credited as your first open water dive toward your PADI Open Water Diver certification if you decide to continue your training.\n\nWe run these dives on the calm, shallow reefs closest to Punta Cana’s shore. A favorite is El Niño, a gentle 6-meter reef that’s ideal for a first breath underwater. Other beginner-friendly sites like Park Reef, Finger Coral Plantation, and the Submarine offer the same easy conditions, with healthy coral and plenty of tropical fish.\n\nIn water this warm and this clear, the dive goes by fast. Most guests surface asking the same question: when can we go again?\n\nThis experience is perfect for anyone who wants to feel the thrill of breathing underwater and explore the vibrant marine life of Punta Cana’s coral reefs. Guided by our experienced PADI instructors, you’ll enjoy a safe, fun, and unforgettable introduction to scuba diving — the perfect first step into a lifetime of underwater adventures.\n\nThe $100 price covers everything: all equipment, the briefing, the skills practice, and the dive itself. Bring a swimsuit, a towel, and a little curiosity — we take care of the rest.\n\nFrom First Breath to Full Certification\n\nDiscover Scuba Diving is not a certification — and that’s exactly the point. It’s a low-commitment way to find out how diving feels before you sign up for anything longer. But if the dive wins you over, and it usually does, the experience doesn’t have to end there: your Discover Scuba dive can be credited toward the PADI Open Water Diver certification.\n\nThat means the skills you practice and the dive you complete become a head start on the full course, which certifies you to 18 meters and lets you dive anywhere in the world. Short on vacation time? The 2-day PADI Scuba Diver course, an official subset of Open Water, is another natural next step. Many of our guests take their first breath underwater on a Discover dive and go home certified divers.\n\nWho Discover Scuba Is For\n\nIf you’re nervous, you’re exactly who this program was designed for. There’s no exam, no pressure, and no depth you have to reach. Your instructor supervises you directly the entire time, and on a shallow reef the surface is never more than a few meters away.\n\nIt’s also a favorite with families: kids as young as 10 can join, and sharing a Caribbean reef together beats another afternoon by the pool. And if you’re visiting Punta Cana on a cruise stop or a short resort stay, the 2.5-hour format fits into a single morning or afternoon without taking over your day.",
       "dives": "1 open water",
       "duration": "2.5 Hours",
       "extraInfo": null,
@@ -53,6 +131,7 @@
       "title": "Discover Scuba Diving in Punta Cana"
     },
     {
+      "about": "Take Your Diving to the Next Level\n\nThe Enriched Air Diver course, commonly called the Nitrox course, allows you to extend your bottom time and reduce surface intervals by using air with a higher oxygen content than regular compressed air. With less nitrogen absorbed in your body, you can dive longer and explore more during each adventure.\n\nIt’s the world’s most popular PADI specialty, and for good reason: no other course changes so much about your diving for so little effort. The only prerequisite is a PADI Open Water Diver certification, or an equivalent from another training organization.\n\nAt Grand Bay of the Sea, the course costs $350 and includes two enriched air dives — so you don’t just learn the theory, you feel the difference in the water.\n\nWhy Dive with Nitrox?\n\nNitrox has become one of the most popular specialties among recreational divers thanks to its many benefits. By reducing nitrogen intake, you can spend more time at your favorite dive sites, make multiple dives in a day more comfortably, and feel less tired after diving. It’s especially ideal for exploring deeper reefs, wrecks, or dive sites with multiple levels.\n\nIn Punta Cana, those benefits pay off immediately. Nitrox pairs perfectly with our 2-tank and 4-tank fun-dive packages: shorter surface intervals mean less time waiting on the boat between dives, and longer no-decompression limits mean more of the reef on every tank.\n\nThe Benefits for Your Diving Experience\n\nUsing enriched air lets you maximize your dive time, particularly when exploring areas that require extended bottom time or when you want to fit in more dives without long surface intervals. You’ll notice the difference, especially on multi-day dive trips, where fatigue is reduced, and your underwater time is optimized.\n\nThe conditions here reward every extra minute. With water at 26–29°C (78–84°F) year-round and visibility that typically runs 15 to 25 meters, the last thing you want is a dive computer telling you to head up early. Nitrox pushes that moment back — and when a turtle shows up late in the dive, you’ll be glad your plan had more minutes in it.\n\nWhat You Will Learn in the Course\n\nDuring the course, you’ll learn how to safely plan and execute dives with enriched air mixtures containing 32% to 40% oxygen. You’ll understand how oxygen exposure affects your body, how to analyze tank contents, and how to adjust your dive computer for Nitrox diving. This knowledge ensures both safety and efficiency on every Nitrox dive.\n\nThe two most practical skills are hands-on: analyzing your own tank before every dive and setting your dive computer for the exact mix you’re breathing. By the end of the course, both take less than a minute — and both are habits that mark you as a careful, self-sufficient diver on any boat in the world.\n\nYou can complete the knowledge development through PADI eLearning before you arrive, and our instructors teach in English, Spanish, and French.\n\nTraining Without Required Dives\n\nOne of the advantages of the Enriched Air Diver certification is that it doesn’t require open water dives to complete. Through theory lessons and practical exercises, you’ll gain the skills to confidently dive with Nitrox up to a maximum depth of 40 meters (130 feet). Once certified, you’ll be ready to apply your new knowledge to any dive trip around the world.\n\nAt Grand Bay of the Sea, though, we believe the best classroom is the ocean — so our course includes two enriched air dives. You’ll analyze your tank, set your computer, and watch your no-decompression time stretch in real conditions, with an instructor right beside you.\n\nThe Gateway to Longer, Better Dives\n\nWhether you’re exploring coral gardens, swimming through a wreck, or spending extended time photographing marine life, diving with Nitrox enhances your experience. With more time underwater and less fatigue afterward, you’ll make the most out of every dive and take your skills to a whole new level.\n\nCertify once and the benefit follows you for the rest of your diving life — on our 2-tank and 4-tank fun-dive packages here in Punta Cana, and on every dive trip you take after that. If you plan to keep diving, this is the specialty that keeps paying you back.\n\nReady to make every dive count? Certify in Enriched Air Nitrox on your next visit, pair it with a 2-tank or 4-tank package, and enjoy the extra bottom time from your very first tank.",
       "dives": "2 dives",
       "duration": "Half day",
       "extraInfo": null,
@@ -95,6 +174,7 @@
       "title": "PADI Enriched Air Nitrox Course in Punta Cana"
     },
     {
+      "about": "Discover the Thrill of Wreck Diving\n\nThe PADI Wreck Diver Specialty Course is designed for divers who dream of exploring sunken ships, airplanes, and other fascinating man-made structures. These wrecks often become vibrant artificial reefs, attracting an incredible variety of marine life. In this course, you'll learn how to explore these sites safely, respectfully, and with confidence.\n\nIn Punta Cana, this is no theoretical exercise. Our local waters hold two genuine training wrecks just minutes from shore: the Monica, a French cargo ship from the 1880s resting in 5 to 15 meters, and a sunken excursion Submarine sitting in only 5 to 7 meters. You'll complete four open water dives on real wrecks, right on our doorstep.\n\nThe course is open to any certified Open Water diver (or equivalent). Equipment is included, and PADI eLearning lets you finish the theory at home before your holiday even begins.\n\nWhy Wreck Diving is Unique\n\nWreck diving isn't just about the adrenaline — it's also a journey into history. Each wreck tells a story, whether it's a ship intentionally sunk to create a reef or an old vessel claimed by the sea decades ago. These underwater landmarks are home to diverse ecosystems, but they also come with unique challenges such as entanglement hazards, overhead environments, and limited visibility.\n\nTake the Monica. She went down in the 1880s carrying railroad materials destined for the Panama Canal, and today her propeller, boiler, and engine still sit in plain view at just 5 to 15 meters. A few fin kicks away lies a stranger story: an excursion Submarine that once carried tourists, sunk in Hurricane George in 2004 and resting in 5 to 7 meters of water ever since.\n\nFew dive destinations let you read this much history in a single morning.\n\nSkills You Will Learn\n\nThroughout the course, you'll gain the skills needed to plan and execute safe wreck dives. Training includes assessing wreck stability, maintaining proper buoyancy to protect both yourself and the wreck, navigating confined spaces, and using specialized tools like reels, torches, and dive computers.\n\nAcross your four training dives you'll map a wreck, run a reel line, and plan a survey the way experienced wreck divers do. You'll learn to spot the difference between a safe swim-through and an overhead environment that demands more training — and to make that call calmly.\n\nBy the final dive, planning a wreck dive will feel like second nature: brief, descend, survey, explore, and ascend with air to spare.\n\nSafety and Equipment for Wreck Diving\n\nThe course emphasizes safe diving practices, from evaluating potential hazards like sharp edges and strong currents to using the right equipment for wreck penetration. You'll learn techniques to avoid disturbing the wreck environment and ensure your own safety while exploring these historic sites.\n\nYou won't be fighting the conditions while you learn, either. The water here stays at 26–29°C (78–84°F) year-round and visibility typically runs 15 to 25 meters, so you can focus on technique instead of cold hands and murky water. All equipment is included in the course.\n\nPractical Dive Training\n\nDuring your open water sessions, you'll visit real wreck sites where you'll practice navigation, buoyancy control, and hazard identification. Each dive builds your confidence and skills, preparing you to explore wrecks at different depths and in a variety of conditions.\n\nYour training dives take place on our local wrecks. The Monica is a forgiving classroom: her scattered machinery in shallow water — propeller, boiler, engine — makes ideal terrain for mapping and survey practice. The Submarine offers a compact, easy-to-read structure that's perfect for navigation and buoyancy work at a relaxed depth.\n\nOur instructors teach in English, Spanish, and French, and every dive ends with a proper debrief so the lessons stick.\n\nYour Gateway to Underwater Exploration\n\nBy the end of the Wreck Diver Specialty Course, you'll have the training to confidently and safely explore wrecks worldwide. Whether you're drawn by history, marine life, or the thrill of discovery, this specialty opens up a whole new world of exciting dive adventures.\n\nAnd there's a local goal worth training toward: the St. George, a 73-meter Scottish-built cargo ship resting at 40 meters near Bayahibe. She requires an Advanced Open Water certification and features on our Bayahibe day trips — for many of our Wreck Diver graduates, she becomes the next big milestone.\n\nReady to start? The Wreck Diver Specialty costs $400, includes four dives and all equipment, and can begin the day after you arrive.",
       "dives": "4 dives",
       "duration": "2 days",
       "extraInfo": null,
@@ -137,6 +217,7 @@
       "title": "PADI Wreck Diver Course in Punta Cana"
     },
     {
+      "about": "Start Your Diving Adventure in Punta Cana\n\nOur PADI Scuba Diver Course is the ideal way to begin your underwater journey. This 2-day beginner program combines dive theory with real-world training, ending with two unforgettable open water dives in the Caribbean Sea. After completion, you’ll be certified to dive up to 12 meters / 40 feet under the supervision of a PADI professional anywhere in the world.\n\nThe Scuba Diver course is an official subset of the PADI Open Water Diver course — the same theory, the same skills, the same instructors, in a shorter format. Three sessions of about two and a half hours each, spread over two days, and you walk away a certified diver. That makes it a perfect fit for a Punta Cana vacation: real training and a real certification without giving up half your trip.\n\nNo experience is needed. The minimum age is 10, basic swimming ability is the only requirement, and all equipment is included in the $399 course price.\n\nLearn the Theory with PADI eLearning\n\nWith PADI eLearning, you can complete your dive theory online before you even arrive in Punta Cana. Study on your Apple or Android device from home, the airport, or even the beach. This flexibility means you’ll spend more time in the water and less time in a classroom during your vacation.\n\nThe eLearning covers the essentials of how diving works: how pressure affects your body, how your equipment functions, and how divers plan safe dives. Work through it at your own pace and arrive with the theory already done.\n\nWhichever way you study, your instructor reviews everything with you in person before you get in the water — in English, Spanish, or French.\n\nConfined Water Training\n\nYour first day begins with a theory review and equipment introduction from your PADI Instructor. Then, you’ll head to the pool for confined water training in small groups, ensuring personalized attention. These sessions are designed to make you feel 100% confident and comfortable before heading into open water.\n\nThe pool is where diving stops being an idea and becomes a physical skill. You’ll assemble your equipment, take your first breaths underwater, and repeat each exercise until it feels natural. Nothing is rushed: you move on when you’re ready, not when the clock says so.\n\nMaster Essential Diving Skills\n\nIn the pool, you’ll learn key scuba skills, including buoyancy control, safe breathing techniques, underwater communication, and basic problem-solving. Our friendly instructors take the time to ensure you are prepared for any situation, while keeping the experience fun and exciting.\n\nBecause Scuba Diver is an official subset of the Open Water course, every skill you master here counts. Nothing is watered down, and nothing needs to be repeated if you decide to upgrade later. By the end of the pool sessions, breathing underwater feels less like a trick and more like second nature.\n\nOpen Water Dives in the Caribbean\n\nThe highlight of the course — two open water dives in Punta Cana’s turquoise waters. You’ll demonstrate your skills while exploring vibrant coral reefs and encountering tropical marine life. Skills are spread across both dives, so you’ll have plenty of time to simply enjoy the underwater beauty.\n\nYour certification dives take place on Punta Cana’s gentle beginner reefs — sites like El Niño, Park Reef, Finger Coral Plantation, and the Submarine — to a maximum depth of 12 meters (40 feet). With water at 26–29°C (78–84°F) year-round and visibility that typically runs 15 to 25 meters, your first ocean dives happen in some of the most forgiving conditions in the Caribbean.\n\nYour First Step Toward a Lifetime of Diving\n\nThis certification is recognized worldwide and can be upgraded to the PADI Open Water Diver whenever you’re ready. Whether you plan to dive on future vacations or continue your training here in Punta Cana, the PADI Scuba Diver Course is your ticket to a lifetime of underwater adventures.\n\nUpgrading is simple. Complete the remaining knowledge, skills, and dives — here in Punta Cana or at any PADI dive center in the world — and everything from your Scuba Diver course counts in full toward Open Water, which takes you to 18 meters.\n\nIf your vacation is short, this is the smart play: get certified in two days, enjoy guided dives to 12 meters wherever you travel, and finish the full course whenever life gives you the time.",
       "dives": "2 open water",
       "duration": "2 Days",
       "extraInfo": "Over 2 Days",
@@ -183,6 +264,7 @@
       "title": "PADI Scuba Diver Course in Punta Cana"
     },
     {
+      "about": "Go Deeper and Expand Your Dive Limits\n\nThe Deep Diver course is designed for adventurous divers who want to explore beyond the standard recreational depths. With this certification, you'll be able to safely dive to depths of up to 40 meters (130 feet), opening up access to deep wrecks, dramatic walls, and breathtaking reefs that few get to experience.\n\nPunta Cana gives that certification a purpose. Shark Point sits at 24 to 30 meters, and near Bayahibe the St. George — a 73-meter cargo ship — waits at 40 meters, right at your new limit. This is a course with a payoff you can dive the same week.\n\nYou'll need an Advanced Open Water certification (or equivalent) to enroll. The course includes four training dives, all equipment, and the option to complete your theory through PADI eLearning before you arrive.\n\nWhy Deep Diving Is Different\n\nDiving at greater depths requires more than just curiosity — it demands knowledge and skill. You'll learn how to plan deep dives, manage your air supply effectively, and understand how depth affects your body and equipment. This course ensures you can explore safely while enjoying the thrill of deep-water adventures.\n\nAt depth, your air goes faster, your margins get thinner, and small mistakes grow. That's why this course centers on gas planning: knowing how much you need, how much to hold in reserve, and how to stay comfortably inside your no-decompression limits from descent to safety stop.\n\nConditions here work in your favor. With water at 26–29°C (78–84°F) year-round and visibility typically between 15 and 25 meters, you can concentrate on procedure instead of fighting the cold.\n\nUnderstanding the Risks and How to Manage Them\n\nDeep diving introduces challenges such as nitrogen narcosis, increased air consumption, and changes in buoyancy control. You'll learn how to recognize and manage these factors, as well as how to minimize risks through careful preparation and proper use of dive computers and tables.\n\nGas narcosis deserves special attention. Many divers feel its effects at depth: slowed thinking, tunnel focus, a false sense of ease. You'll learn to recognize the signs in yourself and in your buddy — and the straightforward fix, which is to ascend a few meters and let it clear.\n\nThere's no shortcut to that kind of judgment except practice under supervision, and that's exactly what your training dives provide.\n\nBuilding Your Deep Diving Knowledge\n\nIn the classroom portion, you'll gain an in-depth understanding of the physics and physiology of deep diving. Topics include gas absorption, oxygen toxicity, the importance of extended safety stops, and dive planning strategies that keep you safe and within no-decompression limits.\n\nIf you prefer, complete this theory at home through PADI eLearning before your trip. That way your time in Punta Cana is spent underwater rather than in a classroom, and you arrive with your dive planning fundamentals already in place.\n\nPractical Deep Diving Experience\n\nThe course includes four open water dives where you'll apply your skills at greater depths. Under the supervision of an experienced instructor, you'll practice descent and ascent procedures, buoyancy control, navigation, and air management while exploring stunning underwater landscapes.\n\nShark Point, sitting at 24 to 30 meters, is a natural training ground for your progression dives — deep enough to feel the difference, generous enough in visibility to stay oriented. Each dive goes a little deeper as your comfort grows.\n\nOur instructors teach in English, Spanish, and French. All equipment is included, so the only things you need to bring are an Advanced Open Water card and a taste for depth.\n\nYour Deep Diver Certification\n\nAfter completing the course, you'll be certified to dive to 40 meters (130 feet), giving you the freedom to explore deeper sites worldwide. With this new skill set, you'll unlock opportunities to experience marine life, wrecks, and geological features that are only found in the deeper zones of the ocean.\n\nLocally, that means one dive above all: the St. George. This 73-meter Scottish-built cargo ship rests at 40 meters near Bayahibe and features on our Bayahibe day trips. Descending along her hull with your new certification is the kind of dive that stays with you.\n\nThe Deep Diver Specialty costs $400 for four dives with everything included. Go deeper — it's worth it.",
       "dives": "4 dives",
       "duration": "2 days",
       "extraInfo": null,
@@ -225,6 +307,7 @@
       "title": "PADI Deep Diver Course in Punta Cana"
     },
     {
+      "about": "Get Certified to Dive Anywhere in the World\n\nOur PADI Open Water Diver Course is the most popular entry-level scuba certification and your passport to underwater adventure. Over 3 exciting days, you'll combine online learning, confined water training, and 4 open water dives in Punta Cana's beautiful Caribbean waters. Once certified, you can dive independently with a buddy to 18 meters / 60 feet anywhere in the world.\n\nThere's no better classroom than Punta Cana: water temperatures of 26–29°C (78–84°F) year-round, visibility that typically ranges from 15 to 25 meters, and calm, protected reefs just minutes from shore. The course is open to anyone aged 10 or older with basic swimming ability and reasonable health — no prior experience needed. Complete it in the first days of your vacation and spend the rest of your stay diving as a certified diver.\n\nLearn the Theory with PADI eLearning\n\nThe PADI eLearning platform makes your theory training easy and flexible. You can complete the knowledge portion online on your Apple or Android device before you even arrive in Punta Cana, freeing up more of your vacation time for actual diving. Interactive videos, quizzes, and knowledge reviews walk you through dive physics, equipment, safety procedures, and dive planning at your own pace.\n\nWhen you arrive, your instructor reviews the material with you and answers any questions before you get in the water. Our instructors teach in English, Spanish, and French, so you can learn in the language you're most comfortable with.\n\nConfined Water Skills Training\n\nYour first day starts with a theory review alongside your instructor, followed by an introduction to scuba equipment — all of which is included in the course, from wetsuit and BCD to regulator, mask, and fins, so there's nothing extra to rent or bring. You'll then move to a confined water environment for training in small groups, ensuring personalized attention and a comfortable learning experience.\n\nThe course runs as five sessions of roughly two and a half hours each spread over three days, so no single day feels rushed — there's always time to repeat a skill until it feels natural.\n\nMaster the Skills You Need Underwater\n\nYou'll practice using scuba gear, controlling your buoyancy, clearing your mask, recovering your regulator, and responding to common underwater situations in a confined water setting. Skills like sharing air with a buddy and managing your air supply become second nature through repetition.\n\nWe ensure you feel completely confident and comfortable before progressing to the open water portion of the course — our instructors listen to your body language, adjust the pace to you, and never move on until you're ready. That patience is what our reviews mention again and again.\n\n4 Open Water Dives in the Caribbean\n\nThe highlight of your training is four open water dives on stunning reefs and wrecks. Skills are spread out over all four dives so you can spend most of your time exploring Punta Cana's marine life — from colorful tropical fish to majestic sea turtles.\n\nYour certification dives take place on our calm local sites off Cabeza de Toro — gentle reefs like El Niño and Park Reef, where lobsters, squid, and turtles are regular visitors. By your fourth dive you're not practicing anymore; you're simply diving, and the moment your instructor shakes your hand underwater is one you'll remember for the rest of your life.\n\nYour Ticket to a Lifetime of Diving\n\nThe PADI Open Water Diver certification is recognized worldwide and never expires. Whether you're planning future dive vacations, joining local dive clubs, or advancing to specialties like wreck diving or night diving, this course is your gateway to a lifetime of underwater exploration.\n\nFrom here, many of our divers continue straight to the Advanced Open Water course, which extends your depth limit to 30 meters and unlocks sites like Shark Point and the deeper walls of Catalina. Short on time? The 2-day PADI Scuba Diver course covers the first portion of Open Water and upgrades to the full certification whenever you're ready — ask us which path fits your vacation best.",
       "dives": "4 open water",
       "duration": "3 Days",
       "extraInfo": "Over 3 Days",
@@ -271,6 +354,7 @@
       "title": "PADI Open Water Diver Course in Punta Cana"
     },
     {
+      "about": "Dominate Your Buoyancy Skills\n\nThe Peak Performance Buoyancy course is designed to take your diving to the next level by giving you perfect control in the water. You'll learn to move effortlessly, conserve air, and reduce your environmental impact while enhancing comfort and safety on every dive.\n\nOver two focused dives, you'll fine-tune your weighting, trim, and body position until holding a depth feels automatic. It's the single fastest upgrade you can make to your diving — and you can take it right after your Open Water course.\n\nAll equipment is included, and PADI eLearning lets you cover the theory at home before you arrive in Punta Cana, so your time here is spent in the water.\n\nWhy Buoyancy Matters\n\nMastering buoyancy is essential for an enjoyable and efficient diving experience. Good buoyancy control keeps you streamlined, minimizes energy use, and protects delicate marine ecosystems from accidental contact or damage.\n\nHere in Punta Cana that matters doubly. The reefs you'll dive are living structures, and a single misplaced fin kick can undo years of coral growth. Divers with dialed-in buoyancy simply don't make accidental contact — they hover, observe, and leave the reef exactly as they found it.\n\nBetter buoyancy also means better air consumption. When you stop sculling and stop sawing up and down the water column, your breathing slows and your dives get noticeably longer.\n\nBecome a More Confident Diver\n\nWith proper buoyancy skills, you'll feel more relaxed and in control underwater. You'll glide effortlessly, maintain better positioning, and be able to focus more on the marine life around you rather than constantly adjusting your depth or balance.\n\nIf you carry a camera, this course pays for itself immediately. Steady buoyancy is the difference between blurry snapshots and photos you actually want to keep: you can hold position in front of your subject, frame calmly, and shoot without touching anything.\n\nThe confidence carries over everywhere else, too. Once depth control becomes automatic, descents feel unhurried, safety stops feel restful, and the nervous energy that new divers burn simply disappears.\n\nLearn Precision Control\n\nIn this course, you'll discover how to adjust your buoyancy using your breathing, your BCD (Buoyancy Control Device), and correct weight distribution. By understanding the science behind buoyancy, you'll be able to adapt to varying depths, conserve air, and reduce fatigue.\n\nWe start with weighting, because most divers carry too much lead. You'll run a proper weight check, position your weights for balanced trim, and streamline your gear so nothing dangles or drags. Small changes, big difference — most divers feel it within the first few minutes of the first dive.\n\nYou'll also fine-tune how you use your breath. Small, deliberate inhales and exhales become your most precise buoyancy tool — quicker and subtler than any button on your BCD.\n\nPractice in Real Dive Conditions\n\nYour training will include both theory and practical sessions where you refine your buoyancy through guided exercises. You'll practice in different dive environments — whether hovering above a coral reef, exploring a wreck, or simply maintaining a stable position in open water.\n\nYour two open water dives take place on our local sites, where the water stays at 26–29°C (78–84°F) year-round and visibility typically runs 15 to 25 meters — calm, clear conditions that let you feel every small adjustment you make.\n\nOur instructors teach in English, Spanish, and French, and everything you need is included.\n\nSkills for a Lifetime of Better Diving\n\nPerfect buoyancy control not only makes your dives longer and more enjoyable, it's a skill you'll use on every single dive in the future. Whether you're a beginner or an experienced diver, this course will make you a safer, more efficient, and more environmentally responsible diver.\n\nIt's also the smartest stepping stone in the PADI system. Excellent buoyancy is the foundation of the Wreck Diver course, where you work around delicate structures, and the Deep Diver course, where precise control matters most. Take this course first and every specialty after it comes easier.\n\nAt $300 for two dives with everything included, it's the course our instructors most often wish every diver had taken.",
       "dives": "2 dives",
       "duration": "Half day",
       "extraInfo": null,
@@ -313,6 +397,7 @@
       "title": "PADI Peak Performance Buoyancy Course in Punta Cana"
     },
     {
+      "about": "Finish Your Open Water Certification in the Caribbean\n\nThe PADI Open Water Referral is for students who have already completed the first two parts of the Open Water Diver course at home — the knowledge development and the confined water training — signed off by a PADI instructor. All that's left is Part Three: your 4 open water certification dives. Complete them with us over 2 relaxed days in Punta Cana's warm, clear Caribbean water and fly home a certified diver.\n\nWhy finish in a cold lake or quarry when you can do your certification dives at 26–29°C (78–84°F) with 15–25 meters of visibility? Your referral paperwork is valid for 12 months from your last training session, so this is the perfect way to turn the final step of your certification into the highlight of your vacation.\n\nHow the Referral Works\n\nBring your signed PADI Referral Form — or your eLearning completion record plus the confined water sign-off from your instructor. We check your paperwork, meet you at the dive center, and get you straight into the water; there's no classroom time and no confined water sessions to repeat.\n\nPADI referral documentation is valid for 12 months from the date of your last completed training session. If you're close to the limit or your paperwork has expired, contact us before your trip — a short refresher is usually all it takes to get you back on track.\n\nDay 1 — Dives 1 & 2\n\nYour first morning starts with a short briefing and equipment setup — everything is included, from wetsuit and BCD to regulator, mask, and fins. Then we head out to our calm local reefs off Cabeza de Toro for your first two certification dives.\n\nSites like El Niño and Park Reef are gentle, shallow, and full of life — lobsters, squid, and turtles are regular visitors. The required skills are spread across the dives, so most of your time is spent actually diving, not kneeling on the sand.\n\nDay 2 — Dives 3 & 4\n\nOn your second day you'll complete dives 3 and 4, going a little deeper and demonstrating the remaining skills. By now the gear feels familiar and your buoyancy is coming together — these dives feel much more like fun dives than training.\n\nWhen you surface from dive 4, you're done: your instructor signs you off and processes your PADI Open Water Diver certification, recognized everywhere in the world. The underwater handshake at the end is a moment you won't forget.\n\nWhat's Included for $375\n\nThe referral price includes all four open water certification dives, boat trips to the dive sites, full equipment rental, your PADI instructor, and the processing of your certification with PADI. There are no hidden extras.\n\nWe teach in English, Spanish, and French, and keep groups small so your instructor can adjust the pace to you. All you need to bring is your referral paperwork, a swimsuit, and a towel.\n\nCertified — Now the Fun Starts\n\nOnce certified, you can dive with a buddy to 18 meters / 60 feet anywhere in the world — and your certification never expires. With the course finished in just 2 days, you'll have the rest of your vacation to enjoy it.\n\nMany of our referral students add a few fun dives on our local reefs and wrecks, or continue straight into the Advanced Open Water course, which extends your depth limit to 30 meters and unlocks sites like Shark Point and Catalina's deeper walls.",
       "dives": "4 open water",
       "duration": "2 Days",
       "extraInfo": "Over 2 Days",
@@ -351,6 +436,7 @@
       "title": "PADI Open Water Referral in Punta Cana"
     },
     {
+      "about": "Your Theory Is Done — Come Dive\n\nThis course is for students who bought PADI Open Water eLearning directly from PADI and completed the knowledge development online. You arrive with the theory done — we take care of everything else: your confined water training and your 4 open water certification dives in Punta Cana's warm Caribbean sea.\n\nBecause you already own your PADI eLearning materials, the in-destination price is $425 instead of the full course price. Over 2–3 relaxed days you'll go from finishing quizzes on your phone to exploring living coral reefs as a certified diver.\n\nQuick Theory Review on Arrival\n\nWhen you arrive, your instructor reviews your eLearning record, goes over the key concepts with you, and answers any questions before you get in the water. There's no classroom marathon — just a focused review to make sure everything clicked.\n\nOur instructors teach in English, Spanish, and French, so you can learn in the language you're most comfortable with. Try to finish all eLearning sections before your trip; it keeps your schedule free for diving.\n\nConfined Water Skills Training\n\nYour in-water training starts in a calm, confined water environment where you learn to set up your equipment and master the fundamental skills — all gear is included in the course, from wetsuit and BCD to regulator, mask, and fins.\n\nWe train in small groups so your instructor can give you personal attention and repeat any skill until it feels natural. Nothing is rushed; you move on when you're ready.\n\nMaster the Skills You Need Underwater\n\nYou'll practice buoyancy control, mask clearing, regulator recovery, air sharing, and responding to common underwater situations until they become second nature.\n\nWe make sure you feel completely confident before progressing to the ocean — our instructors watch your body language, adjust the pace to you, and never move on until you're ready.\n\n4 Open Water Dives in the Caribbean\n\nThe highlight of the course: four certification dives on our calm local reefs off Cabeza de Toro — sites like El Niño and Park Reef, where lobsters, squid, and turtles are regular visitors. Skills are spread across the dives so most of your time is spent exploring.\n\nBy your fourth dive you're not practicing anymore; you're simply diving. When you surface, your instructor processes your PADI Open Water Diver certification — recognized everywhere in the world, and it never expires.\n\nYour Ticket to a Lifetime of Diving\n\nCertified Open Water Divers can dive with a buddy to 18 meters / 60 feet anywhere in the world. Finish the course early in your stay and spend the rest of your vacation diving with us on reefs and wrecks.\n\nReady for more? Many eLearners continue straight into the Advanced Open Water course, which extends your depth limit to 30 meters and unlocks sites like Shark Point and Catalina's deeper walls.",
       "dives": "4 open water",
       "duration": "2-3 Days",
       "extraInfo": "Over 2-3 Days",
@@ -385,6 +471,7 @@
       "title": "PADI Open Water Diver Course for eLearners in Punta Cana"
     },
     {
+      "about": "Take Your Diving Skills to the Next Level\n\nIf you have already completed your PADI Open Water Diver certification, the Advanced Open Water Diver course is the perfect way to continue your underwater journey. This course is designed to refine your diving techniques, build confidence, and introduce you to a variety of exciting specialty dives. Under the close supervision of our experienced PADI instructors, you’ll develop greater control, awareness, and adaptability in different diving environments.\n\nThe format is straightforward: five adventure dives across five sessions of about two and a half hours each, spread over three days. You learn by diving — each dive introduces a new set of skills in the water, not in a classroom. The course costs $449 with all equipment included, and PADI eLearning lets you cover the knowledge portions before you even arrive in Punta Cana.\n\nWho Can Join the Advanced Open Water Course\n\nThe course is open to any certified Open Water Diver, regardless of experience level. Whether you are newly certified or have been diving for years, this program will help you expand your abilities, improve your buoyancy, and increase your comfort when exploring new underwater landscapes. It’s the ideal step forward for divers ready to unlock new depths and adventures.\n\nThe only prerequisites are a PADI Open Water Diver certification — or an equivalent from another training organization — and a minimum age of 12. And if it has been a while since your last dive, don’t worry: the course itself is a structured, supervised way to get back in the water and rebuild your confidence dive by dive.\n\nWhat You Will Learn\n\nThe Advanced Open Water Diver course blends essential skills with adventure-based training. Two core dives form the foundation of your certification. The Deep Dive, reaching depths of up to 30 meters or 100 feet, will teach you how to plan and manage dives at greater depths while understanding the physiological effects and safety considerations. The Underwater Navigation dive will enhance your compass use, improve your ability to navigate by natural landmarks, and help you maintain precision through kick cycles and time tracking.\n\nYou’ll practice all of it in ideal training conditions. The water here stays at 26–29°C (78–84°F) year-round and visibility typically runs 15 to 25 meters — clear enough to see the results of your navigation work instead of guessing at them.\n\nPersonalized Adventure Dives\n\nBeyond the two required dives, you will select three additional adventure dives that match your interests and diving goals. Many of our students enjoy exploring shipwrecks like the famous Wreck Monica, improving buoyancy control to glide effortlessly through the water, or learning to identify the fascinating marine species of the Caribbean. Others choose boat diving to master water entries and exits, practice underwater photography or videography to capture their experiences, or train with enriched air nitrox to extend their time at depth.\n\nWhatever combination you choose, your instructor briefs and debriefs every dive in English, Spanish, or French, and tailors each session to what you want to get out of your diving.\n\nThe Benefits of Advanced Certification\n\nCompleting this course will not only make you a more competent diver but also open the doors to new and exciting dive sites worldwide. You will gain the skills and confidence to handle a variety of conditions, improve your safety awareness, and enjoy more rewarding dive experiences. This training also provides a strong foundation for future certifications such as Rescue Diver or Divemaster.\n\nIn Punta Cana, the difference is immediate. Your new 30-meter (100-foot) certification unlocks sites like Shark Point, where nurse and reef sharks patrol between 24 and 30 meters, and the deeper sections of The Wall at Catalina Island. It’s also the prerequisite for the St. George, the 40-meter wreck on our Bayahibe trips and one of the Dominican Republic’s signature dives.\n\nTrain in the Dominican Republic\n\nThe crystal-clear waters, vibrant reefs, and abundant marine life of Punta Cana and its surrounding areas offer the perfect setting for your Advanced Open Water course. With a combination of warm tropical conditions and diverse dive sites, every training session becomes an unforgettable adventure. Our professional instructors are dedicated to ensuring your safety, maximizing your learning, and creating lasting memories as you take your diving to the next level.\n\nThree days is all it takes. Arrive as an Open Water diver; leave with five adventure dives in your logbook, a 30-meter certification card in your pocket, and a list of new sites you’re finally qualified to see.",
       "dives": "5 adventure",
       "duration": "3 Days",
       "extraInfo": "Over 3 Days",
@@ -429,110 +516,134 @@
   ],
   "diveSites": [
     {
+      "description": "El Niño offers ideal conditions for beginner divers or those looking to refresh their skills. Although it's one of the shallowest dive sites in the area at just 6 meters (20 feet), it never fails to impress with its vibrant schools of tropical reef fish and calm, clear waters — perfect for building confidence underwater. This is one of our favorite sites in Punta Cana for a first ocean dive after a Discover Scuba session, for newly certified Open Water divers, and for check-out dives during certification courses. The gentle conditions also make it a relaxed warm-up dive for experienced divers shaking off the rust after time away from the water. Like all of our local sites, it's a short boat ride from our Cabeza de Toro base.",
       "feet": 20,
       "level": "Beginner",
       "location": "Local",
       "meters": 6,
       "name": "El Nino",
+      "nearby": ["Submarine", "Finger Coral Plantation"],
       "slug": "el-nino",
       "summary": "One of our favourite first-ocean-dive sites: shallow, calm and clear, with vibrant schools of tropical fish. Ideal after a Discover Scuba session."
     },
     {
+      "description": "This site is both beautiful and fascinating, with a depth of just 6 meters (20 feet). The sandy bottom is dotted with large rocks where vibrant coral formations are growing. One of the most unique features here is the coral nursery we've established to help restore and spread coral across our other dive sites — divers get to see reef conservation happening up close, with young coral fragments growing on their frames before being transplanted onto the reef. You'll also find plenty of marine life, including numerous yellowtail snappers and other tropical species. The shallow depth makes Finger Coral Plantation ideal for beginners, Discover Scuba participants, and anyone who wants a long, easy dive with real meaning behind it. Ask our team about the restoration project during your surface interval — it's a story we love to tell.",
       "feet": 20,
       "level": "Beginner",
       "location": "Local",
       "meters": 6,
       "name": "Finger Coral Plantation",
+      "nearby": ["El Nino", "Submarine"],
       "slug": "finger-coral-plantation",
       "summary": "Home to our coral nursery, where young fragments grow before being transplanted onto the reef. Shallow and easy, with yellowtail snappers everywhere."
     },
     {
+      "description": "Originally built for excursions by a Russian engineer, this submarine was in service from 1994 until 2004, when Hurricane George passed through the Dominican Republic and caused it to sink just a quarter mile off the coast of Cabeza de Toro. Since then, it has become a sanctuary for divers — and one of the most unusual artificial reefs in Punta Cana: how often do you get to dive an actual submarine? The vessel measures 50 by 15 feet and rests at a depth of 5 to 7 meters (20 feet), making it a fascinating and accessible site to explore. The shallow depth means bright natural light, long bottom times, and easy conditions — perfect for beginners, Discover Scuba divers, and photographers, while the story alone makes it worth a stop for anyone.",
       "feet": 20,
       "level": "Beginner",
       "location": "Local",
       "meters": 6,
       "name": "Submarine",
+      "nearby": ["Finger Coral Plantation", "El Nino"],
       "slug": "submarine",
       "summary": "A Russian tourist submarine that sank off Cabeza de Toro in 1998 — one of Punta Cana's most unusual artificial reefs. Shallow, bright and beginner-friendly."
     },
     {
+      "description": "Discover the thrill of swimming through the narrow canyons and small caves that make up Cuevitas. These natural swim-throughs are beautifully lit by ambient sunlight, so there's no need for flashlights — though bringing one is recommended, as you might spot lobsters and cleaner shrimp hiding within the crevices. Because the passages are open and sunlit, no overhead-environment training is required: any comfortable Open Water diver can enjoy them, making this an easy introduction to cavern-style diving. At around 10 meters (33 feet), the site also offers a rich variety of coral formations and tropical fish, making it a favorite among adventurous divers. If you've ever wanted that photo of sunbeams cutting through a rocky passage with a diver silhouetted in the blue, Cuevitas is where you'll take it.",
       "feet": 33,
       "level": "All levels",
       "location": "Local",
       "meters": 10,
       "name": "Cuevitas",
+      "nearby": ["Park Reef"],
       "slug": "cuevitas",
       "summary": "Sunlit swim-throughs and small caves, no overhead training needed. Watch for lobster and cleaner shrimp as sunbeams cut through the rock."
     },
     {
+      "description": "The Atlantic Princess was a small cruise ship once used by tourists visiting the area. In 2008, it ran aground on the beach during Tropical Storm Fay. The original plan was to intentionally sink the vessel to create an artificial reef and unique underwater environment. However, the Atlantic Princess sank on its own on May 6, 2009, and now rests just 12 meters (40 feet) below the surface near Bayahibe. Today it's one of the best first wreck dives in the Dominican Republic: shallow enough for Open Water divers and even supervised beginners, yet full of character, with coral colonizing the structure and schools of reef fish patrolling the decks. Underwater photographers love the light at this depth. We visit the Atlantic Princess on our Bayahibe day trips, often paired with nearby reef sites.",
       "feet": 40,
       "level": "All levels",
       "location": "Bayahibe",
       "meters": 12,
       "name": "Atlantic Princess - Bayahibe",
+      "nearby": ["The Wall - Catalina", "St. George Wreck - Bayahibe"],
       "slug": "atlantic-princess-bayahibe",
       "summary": "A former cruise ship, now one of the best first wreck dives in the DR — shallow, full of character and covered in coral. On our Bayahibe trips."
     },
     {
+      "description": "Enjoy a calm and easy dive at Park Reef, a beautiful site known for its fascinating rock formations covered in vibrant corals. This spot is perfect for spotting lobsters, squids, and even sea turtles that often linger in the area. Thanks to its sandy bottom and protected location, Park Reef typically offers excellent visibility — even when overall conditions aren't ideal, which makes it a reliable choice year-round. At a maximum depth of 12 meters (40 feet), it's well suited to every certification level: beginners get long, relaxed bottom times, while experienced divers slow down and hunt for the smaller creatures hiding between the rocks. If you're hoping to photograph a turtle on your Punta Cana dive vacation, this is one of the sites where your odds are best.",
       "feet": 40,
       "level": "All levels",
       "location": "Local",
       "meters": 12,
       "name": "Park Reef",
+      "nearby": ["Cuevitas"],
       "slug": "park-reef",
       "summary": "A calm, easy dive over coral-covered rock, reliably clear even when conditions elsewhere aren't. One of the best sites for turtles, lobster and squid."
     },
     {
+      "description": "The Monica is a French cargo ship from the 1880s that once transported materials for the construction of the Panama Canal. However, it ventured too close to the Dominican coastline and ran aground on the reef. Today, divers can still see the full propeller, parts of the engine, the boiler, and even construction materials intended for railroad tracks — a piece of 19th-century history resting under the Caribbean. Small, narrow but beautiful caves have formed between the wreck and the reef, sheltering tropical fish and the occasional lobster, and making it a unique site to explore with a camera. The Monica lies at a depth ranging from 5 to 15 meters (50 feet at its deepest) and is located just half a mile from the coast — ideal for both beginner and experienced divers, and one of the easiest wreck dives in Punta Cana.",
       "feet": 50,
       "level": "All levels",
       "location": "Local",
       "meters": 15,
       "name": "Wreck Monica",
+      "nearby": ["Anchor", "Rock City", "Shark Point"],
       "slug": "wreck-monica",
       "summary": "An 1880s French cargo ship that once carried materials for the Panama Canal. Propeller, engine and boiler are still visible — an easy first wreck dive."
     },
     {
+      "description": "Rock City features depths ranging from 5 meters (17 feet) to 16 meters (53 feet), thanks to the formation of natural canyons within the reef. These unique geological features also help keep the beach at Cabeza de Toro calm and protected. Weaving through the canyons feels like flying down underwater streets — walls rise on either side of you, decorated with hard corals and sponges that shelter snappers, grunts, and the occasional lobster tucked into the crevices. When conditions allow, Rock City becomes an exceptional site for drift diving — offering a truly memorable underwater experience. The varied depth range makes it a great fit for newly certified divers on the shallower terraces and for more experienced divers exploring the deeper canyon floors.",
       "feet": 53,
       "level": "All levels",
       "location": "Local",
       "meters": 16,
       "name": "Rock City",
+      "nearby": ["Wreck Monica", "Anchor", "Shark Point"],
       "slug": "rock-city",
       "summary": "Natural canyons in the reef feel like flying down underwater streets, walls covered in hard corals and sponges. A superb drift dive when conditions allow."
     },
     {
+      "description": "The Anchor is a reef located at a depth ranging from 14 to 19 meters (62 feet). This is the spot where the sailors of the Monica dropped anchor after realizing they were too close to the \"Dog Coast\" — but by then, it was too late to avoid running aground. Today, divers can still see the anchor chain from the Monica resting on the reef, draped across the coral like a trail leading back through history. The original anchor, however, was later recovered from the water by local residents. The reef itself is healthy and busy with tropical fish, and the moderate depth gives the site a different character from our shallower spots — a great step up for Open Water divers gaining experience, and a natural companion dive to the Monica wreck itself.",
       "feet": 62,
       "level": "Intermediate",
       "location": "Local",
       "meters": 19,
       "name": "Anchor",
+      "nearby": ["Rock City", "Wreck Monica", "Shark Point"],
       "slug": "anchor",
       "summary": "A healthy reef where the Monica's anchor chain still rests across the coral. A great step up for Open Water divers and a natural pairing with the wreck."
     },
     {
+      "description": "This dive is reserved for our more advanced divers, as we descend to approximately 24 to 30 meters (100 feet). At this depth, you'll explore an expansive coral garden on pristine reefs that few other divers in the area ever get to see. As the name suggests, this is a prime location for encountering nurse sharks and reef sharks in their natural environment — no cage, no bait theatrics, just open-water encounters the way they should be. Advanced Open Water certification is required, or Open Water with a minimum of 20 logged dives (bring your logbook). Haven't completed your Advanced Open Water certification yet? This is the perfect opportunity to take the next step in your diving journey — many divers complete their deep adventure dive right here.",
       "feet": 100,
       "level": "Advanced",
       "location": "Local",
       "meters": 30,
       "name": "Shark Point",
+      "nearby": ["Anchor", "Wreck Monica", "Rock City"],
       "slug": "shark-point",
       "summary": "An expansive coral garden on pristine deep reef and a prime spot for nurse and reef sharks — no cage, no bait. Needs Advanced Open Water or 20+ dives."
     },
     {
+      "description": "This spectacular drop-off is undoubtedly one of the best dive sites in the Dominican Republic. A gentle slope leads you to the edge of the wall, where the top reef is teeming with marine life. Every square centimeter of the seabed is covered in colorful sponges and hard or soft corals. The terrace depth ranges from 1.5 to 6 meters, offering incredible scenery even in the shallows — snorkeling companions on our Catalina Island trips get a beautiful show of their own while divers work the wall below. The drop-off itself is completely overgrown with coral, and its crevices are home to an abundance of reef creatures. For safety, we limit the maximum depth to 30 meters (100 feet) — even for advanced divers. The Wall is the signature dive of our Catalina Island day trip, and the reason many divers come back for a second visit.",
       "feet": 100,
       "level": "All levels",
       "location": "Catalina",
       "meters": 30,
       "name": "The Wall - Catalina",
+      "nearby": ["St. George Wreck - Bayahibe", "Atlantic Princess - Bayahibe"],
       "slug": "the-wall-catalina",
       "summary": "A spectacular drop-off, arguably the best dive site in the DR. A coral-covered wall teeming with life, and the signature dive of our Catalina day trip."
     },
     {
+      "description": "Located just half a mile off the coast of Dominicus in Bayahíbe, the St. George is a 73-meter (240-foot) cargo ship originally built in Scotland in 1962. It was once used to transport wheat and barley from Europe to the Caribbean, and was sunk as an artificial reef. Today, this impressive wreck is home to a variety of marine life, including barracudas, moray eels, king mackerels, and groupers — descending along the hull as the ship comes into view is a moment few divers ever forget. Due to its depth of 40 meters (131 feet), this dive site is recommended only for advanced divers: Advanced Open Water certification is required, and it pairs perfectly with Deep Diver training. We visit the St. George on our Bayahibe day trips — for many guests it's the highlight of their Punta Cana dive vacation.",
       "feet": 131,
       "level": "Advanced",
       "location": "Bayahibe",
       "meters": 40,
       "name": "St. George Wreck - Bayahibe",
+      "nearby": ["Atlantic Princess - Bayahibe", "The Wall - Catalina"],
       "slug": "st-george-wreck-bayahibe",
       "summary": "A 73 m Scottish-built cargo ship sunk as an artificial reef, now home to barracuda, morays and groupers. A deep highlight of our Bayahibe day trips."
     }
@@ -743,6 +854,39 @@
     "fourTank": 240,
     "twoTank": 135
   },
+  "puntaCana": {
+    "body": "Scuba Diving in Punta Cana\n\n\n\nGrand Bay of the Sea is a PADI-certified dive center based in Punta Cana, Dominican Republic. With over 15 years of instructor experience and 8 years as a company, we specialize in small-group diving adventures for travelers of all experience levels — from first-time divers to advanced certified divers looking for their next underwater challenge. \n\nWe offer guided reef and wreck dives, PADI certification courses, shark encounters at Shark Point, and full-day island trips to Catalina Island and Bayahibe. Hotel pickup is included from Punta Cana and Bávaro, and our multilingual team speaks English, Spanish, and French. \n\nRated 4.8/5 across 159 verified Google reviews — book direct and dive with one of Punta Cana's most trusted dive centers.\n\nDiving Experiences in Punta Cana for Every Level\n\nWhether you have never tried scuba diving before or you are a certified diver with dozens of logged dives, Grand Bay of the Sea has an experience designed for you.\n\nFirst time diving?\n\nOur Discover Scuba Diving program gets you underwater the same day — no certification required. You will complete a short briefing with one of our PADI instructors before heading into the warm Caribbean water for an open-water dive. No experience, no problem.\n\nCertified diver?\n\nOur local two-tank dives visit Punta Cana's best reef and wreck sites, including the St. George shipwreck and Shark Point — where encounters with nurse sharks and Caribbean reef sharks are a regular part of the dive. For a full-day adventure, our Catalina Island trip combines diving, snorkeling, and a relaxed Caribbean island experience with lunch and drinks included.\n\nWant your PADI certification?\n\nWe offer the full range of PADI courses in Punta Cana — from Open Water and Scuba Diver for beginners to Advanced Open Water for those ready to go deeper. All courses are taught in small groups by experienced multilingual instructors in English, Spanish, and French.\n\nPunta Cana's warm, calm waters and year-round visibility of 15–25 meters make it one of the most accessible and rewarding dive destinations in the Caribbean — and one of the best places in the world to earn your first certification.\n\n\n\nWhy Divers Choose Grand Bay of the Sea\n\nPunta Cana has several dive operators. Here is what sets Grand Bay of the Sea apart.\n\nSmall groups\n\nWe keep our groups small deliberately. Smaller groups mean more time underwater, more personalized attention from your instructor or divemaster, and a better overall experience — whether you are on your first dive or your hundredth.\n\nLocal knowledge\n\nOur team has been diving these waters for over 15 years. We know which sites are diving best on any given day, how conditions change seasonally, and where to find the marine life that makes Punta Cana's reefs worth exploring. That local knowledge is something no larger operation can replicate.\n\nProfessional, multilingual staff\n\nOur PADI-certified instructors and divemasters speak English, Spanish, and French — so whether you are traveling from North America, Europe, or Latin America, you will always be briefed and guided in your own language.\n\nTransparent pricing. No surprises\n\nEverything is clear before you book — what is included, what the deposit covers, and what you pay on the day. Hotel transport is included for guests staying in the main Bávaro resort area. If you are staying in Uvero Alto, Cap Cana, or Punta Cana Resort, an additional transport fee applies — just let us know where you are staying when you get in touch and we will confirm the cost upfront.\n\nReady to dive? Use the contact form below to tell us your dates, where you are staying, and what experience you are interested in. We will get back to you within a few hours with everything you need to confirm your booking.",
+    "faqs": [
+      {
+        "a": "Yes. Punta Cana is one of the best destinations in the Caribbean for beginner divers. Calm, warm waters and year-round visibility of 15 to 25 meters make conditions ideal. Our Discover Scuba Diving program requires no prior certification and gets you underwater the same day.",
+        "q": "Is scuba diving in Punta Cana good for beginners?"
+      },
+      {
+        "a": "No certification is required for our Discover Scuba Diving experience. For guided reef and wreck dives, an Open Water certification or equivalent is required. We also offer full PADI certification courses in Punta Cana for those who want to get certified during their stay.",
+        "q": "Do I need a PADI certification to go scuba diving in Punta Cana?"
+      },
+      {
+        "a": "Discover Scuba Diving starts at $100 per person. Guided two-tank reef and wreck dives are $135 per diver. The shark dive experience at Shark Point is $190. The Catalina Island diving trip is $220, including lunch and drinks. PADI Open Water certification is $499 and Advanced Open Water is $449.",
+        "q": "How much does scuba diving in Punta Cana cost?"
+      },
+      {
+        "a": "Hotel transport is included for guests staying in the main Bávaro resort area. An additional transport fee applies for guests staying in Uvero Alto, Cap Cana, or Punta Cana Resort. Contact us with your hotel name and we will confirm the cost before you book.",
+        "q": "Is transport included from my hotel in Punta Cana?"
+      },
+      {
+        "a": "Our local dive sites include vibrant reef dives and Shark Point, where divers regularly encounter nurse sharks and Caribbean reef sharks. We also offer day trips to Catalina Island and Bayahibe — the St. George shipwreck is one of the highlights of our Bayahibe excursion, considered some of the best diving in the Dominican Republic.",
+        "q": "What dive sites are available in Punta Cana?"
+      },
+      {
+        "a": "Use the contact form on our website to tell us your preferred dates, where you are staying, and which experience you are interested in. We will respond within a few hours to confirm availability and secure your booking with a deposit.",
+        "q": "How do I book scuba diving in Punta Cana with Grand Bay of the Sea?"
+      },
+      {
+        "a": "Yes. We offer the full range of PADI courses in Punta Cana including Discover Scuba Diving, Scuba Diver, Open Water Diver, and Advanced Open Water Diver. All courses are taught in small groups by experienced multilingual instructors.",
+        "q": "Can I get my PADI certification in Punta Cana?"
+      }
+    ]
+  },
   "sharkDive": {
     "deposit": 50,
     "duration": "2.5 Hours",
@@ -789,6 +933,141 @@
     "name": "Shark Dive Punta Cana",
     "price": 190
   },
+  "species": [
+    {
+      "description": "Strange, spindly, and surprisingly charming, arrow crabs are one of Punta Cana’s coolest underwater critters. Learn more about this reef-dwelling crustacean and where to find it.",
+      "name": "Arrow Crab"
+    },
+    {
+      "description": "The Bar Jack is a fast, silver reef fish commonly seen in Punta Cana. Learn to identify them, understand their behavior, and know where to see them on your next dive.",
+      "name": "Bar Jack"
+    },
+    {
+      "description": "Sleek, silver, and often misunderstood — barracudas are a thrilling sight while diving in Punta Cana. Learn where to see them, how to identify them, and why they matter to the reef.",
+      "name": "Barracuda"
+    },
+    {
+      "description": "Get to know the blacktip reef sharks of Punta Cana — where to dive with them, why they’re not dangerous, and how they help maintain healthy coral reefs.",
+      "name": "Black Tip Reef Shark"
+    },
+    {
+      "description": "Famous for its electric blue color and algae-cleaning habits, the Blue Tang is one of Punta Cana’s most beloved reef fish. Discover why it’s essential to a healthy coral ecosystem.",
+      "name": "Blue Tang"
+    },
+    {
+      "description": "Small, striking, and important — the Blue-Headed Wrasse helps keep Punta Cana’s reefs clean and thriving. Learn all about this brilliant little reef resident.",
+      "name": "Blue-Headed Wrasse"
+    },
+    {
+      "description": "Caribbean reef squid are among the most fascinating marine creatures in Punta Cana — flashing color, showing intelligence, and gliding gracefully through the reef.",
+      "name": "Caribbean Reef Squid"
+    },
+    {
+      "description": "Explore the fascinating role of coral crabs in Punta Cana’s reefs. Small but mighty, these crabs defend coral and help keep the reef clean.",
+      "name": "Coral Crabs"
+    },
+    {
+      "description": "Graceful and vibrant, angelfish are a favorite sight on Punta Cana’s reefs. Learn where to find them, their role in the reef, and fun facts about these elegant swimmers.",
+      "name": "French Angel Fish"
+    },
+    {
+      "description": "Learn about the elusive Glassy Sweeper — a silver, schooling fish found in caves and overhangs along Punta Cana’s reefs. A hidden gem for observant divers.",
+      "name": "Glassy Sweeper"
+    },
+    {
+      "description": "Goatfish are smart, bottom-sweeping reef dwellers with chin barbels used to find prey. Learn about these curious fish found across Punta Cana’s sandy reefs.",
+      "name": "Goatfish"
+    },
+    {
+      "description": "Learn about the elusive and endangered Hawksbill Sea Turtle — how to identify them, where to spot them in Punta Cana, and why they play a vital role in reef conservation.",
+      "name": "Hawksbill Sea Turtle"
+    },
+    {
+      "description": "Small, curious, and always on the move — hermit crabs are some of the most entertaining reef dwellers to spot in Punta Cana, both on land and underwater.",
+      "name": "Hermit Crab"
+    },
+    {
+      "description": "The hogfish is a quirky, snouted reef dweller found in Punta Cana. Learn about its unique feeding behavior, appearance, and fascinating biology.",
+      "name": "Hog Fish"
+    },
+    {
+      "description": "Beautiful but invasive, lionfish are now common in Punta Cana’s waters. Learn how they arrived, why they’re harmful to the reef, and how divers can make a difference.",
+      "name": "Lionfish"
+    },
+    {
+      "description": "Explore the role of long-spined sea urchins in Punta Cana’s coral reefs. These nocturnal grazers are vital for maintaining reef balance and coral growth.",
+      "name": "Long-Spined Sea Urchins"
+    },
+    {
+      "description": "Discover the gentle manatees of the Dominican Republic — where they live, why they're endangered, and how we can all play a part in protecting them.",
+      "name": "Manatees"
+    },
+    {
+      "description": "Curious about those toothy reef dwellers with snake-like bodies? Meet the moray eel — a shy, fascinating predator found along Punta Cana’s vibrant reefs.",
+      "name": "Moray Eel"
+    },
+    {
+      "description": "Nurse sharks are peaceful reef dwellers commonly seen in Punta Cana. Learn about their behavior, where to spot them, and why they matter to the marine ecosystem.",
+      "name": "Nurse Shark"
+    },
+    {
+      "description": "Bright, busy, and essential to reef health — parrotfish are one of Punta Cana’s most important marine species. Discover how they help shape both the reef and the beach.",
+      "name": "Parrot Fish"
+    },
+    {
+      "description": "With big eyes, a spiky body, and a slow-moving charm, the porcupine fish is one of the most delightful creatures you’ll encounter while diving or snorkeling in Punta Cana.",
+      "name": "Porcupine Fish"
+    },
+    {
+      "description": "Graceful and vibrant, angelfish are a favorite sight on Punta Cana’s reefs. Learn where to find them, their role in the reef, and fun facts about these elegant swimmers.",
+      "name": "Queen Angel Fish"
+    },
+    {
+      "description": "The Rock Beauty is a brightly colored Caribbean angelfish found on Punta Cana’s reefs. Learn how to identify them and where to spot them while diving.",
+      "name": "Rock Beauty"
+    },
+    {
+      "description": "The Scrawled Filefish is one of the most distinct reef fish in Punta Cana. Learn how to identify it, where to find it, and why it's such a fun species to spot while diving.",
+      "name": "Scrawled Filefish"
+    },
+    {
+      "description": "With bold black stripes and a curious nature, Sergeant Major fish are among the most common and entertaining reef residents in Punta Cana.",
+      "name": "Sergeant Major"
+    },
+    {
+      "description": "Elegant, mysterious, and always impressive — Southern Stingrays are one of the most graceful marine creatures you'll encounter while diving or snorkeling in Punta Cana.",
+      "name": "Southern Stringray"
+    },
+    {
+      "description": "Learn about the spiny lobster — a unique reef-dwelling crustacean found in Punta Cana’s waters. Discover its behavior, habitat, and how divers can protect it.",
+      "name": "Spiny Lobster"
+    },
+    {
+      "description": "The Spotted Drum Fish is one of Punta Cana’s most graceful reef fish. Shy by nature, they’re a treat for observant divers who appreciate quiet beauty underwater.",
+      "name": "Spotted Drum"
+    },
+    {
+      "description": "Spot the bright red squirrelfish hiding in reef crevices on your next dive in Punta Cana — a curious and colorful favorite among divers.",
+      "name": "Squirrel Fish"
+    },
+    {
+      "description": "Long, slow, and full of surprises — trumpetfish are one of the most fascinating predators you’ll see while diving or snorkeling in Punta Cana.",
+      "name": "Trumpetfish"
+    },
+    {
+      "description": "With their boxy shape and polka-dot pattern, trunkfish are some of the most unique reef fish you’ll encounter while diving or snorkeling in Punta Cana.",
+      "name": "Trunk Fish"
+    },
+    {
+      "description": "Graceful, spotted, and unforgettable — learn all about the eagle rays of Punta Cana, where to find them, what they eat, and how they glide through our tropical waters.",
+      "name": "White Spotted Eagle Ray"
+    },
+    {
+      "description": "With their glowing yellow tails and sleek silver bodies, yellowtail snappers are some of the most beautiful fish you’ll encounter while diving in Punta Cana.",
+      "name": "Yellowtail Snapper"
+    }
+  ],
+  "speciesIntro": "Common Fish in the Caribbean: A Visual Guide for Divers\n\nDive into the colorful world beneath the waves and get to know some of the most common fish species found in the Caribbean Sea. Whether you're a first-time snorkeler or a seasoned diver, this visual guide will help you identify the fascinating marine life you might encounter during your underwater adventures with us.",
   "trips": [
     {
       "companionPrice": 100,
