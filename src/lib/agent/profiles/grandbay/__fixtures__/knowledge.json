@@ -1,0 +1,1003 @@
+{
+  "cancellationPolicy": "Refund Policy\n\nAt Grand Bay of the Sea, we aim to provide memorable diving experiences while maintaining fairness in our policies. Please review our refund policy below:\n\nCancellations by the Customer:\n\nMore than 7 days before the scheduled activity (excluding diving courses): Full refund or rescheduling at no additional cost.7 days to 48 hours before the scheduled activity (excluding diving courses): 50% refund or the option to reschedule.Less than 48 hours before the scheduled activity: No refund will be issued.\n\nDiving Courses:\n\nPayments for diving courses are non-refundable. Rescheduling may be possible under certain circumstances. Please contact us for more details.\n\nCancellations by Grand Bay of the Sea:\n\nIf we cancel your activity due to unforeseen circumstances (e.g., weather, equipment issues), you will have the option to reschedule or receive a full refund for eligible activities. This does not apply to diving courses.\n\nSpecial Considerations:\n\nRefunds for multi-day packages will be prorated based on unused portions of the package (excluding diving courses).Medical or personal emergencies will be handled on a case-by-case basis, and supporting documentation may be required.\n\nRefund Process:\n\nRefund requests must be submitted in writing to grandbayofthesea@gmail.com",
+  "contact": {
+    "hours": "Mon–Sun · 8:30–17:00",
+    "hoursNote": "Open every day. Dives depart in the morning — book ahead to reserve your spot.",
+    "intro": "Reserve a dive, ask about courses, or just tell us what you're hoping to see. We reply quickly — usually within a few hours during opening times."
+  },
+  "courses": [
+    {
+      "dives": "1 open water",
+      "duration": "2.5 Hours",
+      "extraInfo": null,
+      "faqs": [
+        {
+          "a": "No certification is required. Discover Scuba Diving is specifically designed for beginners who have never scuba dived before.",
+          "q": "Do I need scuba certification to try Discover Scuba Diving in Punta Cana?"
+        },
+        {
+          "a": "The maximum depth for Discover Scuba Diving is 20 feet (6 meters), always under the direct supervision of a certified instructor.",
+          "q": "How deep do we go during Discover Scuba Diving?"
+        },
+        {
+          "a": "The minimum age to participate in Discover Scuba Diving is 10 years old.",
+          "q": "What is the minimum age for Discover Scuba Diving in Punta Cana?"
+        },
+        {
+          "a": "Basic comfort in the water is recommended. Your instructor will guide you step-by-step and prioritize safety throughout the experience.",
+          "q": "Do I need to know how to swim to participate?"
+        },
+        {
+          "a": "The experience typically includes a short theory session, basic skills practice, and one open-water dive. Total duration depends on conditions and group size.",
+          "q": "How long does the Discover Scuba Diving experience take?"
+        },
+        {
+          "a": "Yes. The program is conducted by certified PADI instructors who provide close supervision, safety briefings, and controlled training before entering open water.",
+          "q": "Is Discover Scuba Diving safe for beginners?"
+        },
+        {
+          "a": "Discover Scuba Diving does not provide a certification. However, it can count toward a future PADI Open Water course if you decide to continue your training.",
+          "q": "Will I receive a certification after Discover Scuba Diving?"
+        },
+        {
+          "a": "Bring swimwear, a towel, sunscreen, and a positive attitude. Scuba equipment is provided.",
+          "q": "What should I bring for my Discover Scuba Diving experience?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": "6 m / 20 ft",
+      "name": "Discover Scuba Diving",
+      "price": 100,
+      "slug": "discover",
+      "summary": "For those who have never tried scuba diving before!",
+      "title": "Discover Scuba Diving in Punta Cana"
+    },
+    {
+      "dives": "2 dives",
+      "duration": "Half day",
+      "extraInfo": null,
+      "faqs": [
+        {
+          "a": "The PADI Enriched Air (Nitrox) course teaches divers how to safely use enriched air nitrox, including dive planning, oxygen exposure limits, cylinder analysis, and dive computer settings.",
+          "q": "What is the PADI Enriched Air (Nitrox) course?"
+        },
+        {
+          "a": "Our Enriched Air (Nitrox) course in Punta Cana is completed in one day, combining theory and practical application.",
+          "q": "How long does the Enriched Air (Nitrox) course take in Punta Cana?"
+        },
+        {
+          "a": "The course includes 2 dives, allowing you to apply nitrox procedures and planning under instructor supervision.",
+          "q": "How many dives are included in the Nitrox course?"
+        },
+        {
+          "a": "Yes. You must be a certified scuba diver (PADI Open Water Diver or equivalent from another recognized organization) to enroll.",
+          "q": "Do I need to be certified to take the Nitrox course?"
+        },
+        {
+          "a": "Diving with nitrox can extend no-decompression limits on certain dives and is popular for repetitive diving days. Many divers also report feeling less fatigued after diving.",
+          "q": "What are the benefits of diving with nitrox?"
+        },
+        {
+          "a": "A nitrox-compatible dive computer is recommended.",
+          "q": "Do I need my own dive computer for nitrox?"
+        },
+        {
+          "a": "Yes. The PADI Enriched Air (Nitrox) certification is internationally recognized and accepted at dive centers around the world.",
+          "q": "Is the PADI Enriched Air (Nitrox) certification recognized worldwide?"
+        }
+      ],
+      "level": "Intermediate",
+      "maxDepth": null,
+      "name": "Enriched Air Nitrox",
+      "price": 350,
+      "slug": "enriched-air",
+      "summary": "Extend dive time and reduce surface intervals with enriched air diving",
+      "title": "PADI Enriched Air Nitrox Course in Punta Cana"
+    },
+    {
+      "dives": "4 dives",
+      "duration": "2 days",
+      "extraInfo": null,
+      "faqs": [
+        {
+          "a": "The PADI Wreck Diver course teaches certified divers how to explore wreck dive sites safely, including wreck navigation, planning, and hazard awareness under instructor supervision.",
+          "q": "What is the PADI Wreck Diver course?"
+        },
+        {
+          "a": "Our Wreck Diver course in Punta Cana takes 2 days to complete.",
+          "q": "How long does the Wreck Diver course take in Punta Cana?"
+        },
+        {
+          "a": "The course includes 4 dives, giving you hands-on experience on wreck sites with instructor guidance.",
+          "q": "How many dives are included in the Wreck Diver course?"
+        },
+        {
+          "a": "To enroll, you must be a certified Adventure Diver (or equivalent from another recognized training organization) and meet the minimum age requirement.",
+          "q": "What are the prerequisites for the Wreck Diver course?"
+        },
+        {
+          "a": "The minimum age for the Wreck Diver course is 15 years old.",
+          "q": "What is the minimum age for the Wreck Diver course?"
+        },
+        {
+          "a": "No prior wreck experience is required. The course is designed to build skills progressively through guided training dives.",
+          "q": "Do I need experience with wrecks before taking this course?"
+        },
+        {
+          "a": "Training focuses on safe wreck diving techniques and planning. Any penetration-related skills, if included, are taught only when appropriate and under strict safety guidelines.",
+          "q": "Does the Wreck Diver course include wreck penetration?"
+        }
+      ],
+      "level": "Intermediate",
+      "maxDepth": "30 m / 100 ft",
+      "name": "Wreck Diver",
+      "price": 400,
+      "slug": "wreck",
+      "summary": "Explore sunken ships and underwater history with the wreck diver course.",
+      "title": "PADI Wreck Diver Course in Punta Cana"
+    },
+    {
+      "dives": "2 open water",
+      "duration": "2 Days",
+      "extraInfo": "Over 2 Days",
+      "faqs": [
+        {
+          "a": "The PADI Scuba Diver course is an entry-level scuba certification that covers part of the Open Water Diver program. It allows you to dive under the supervision of a certified professional.",
+          "q": "What is the PADI Scuba Diver course?"
+        },
+        {
+          "a": "PADI Scuba Divers are certified to dive to a maximum depth of 40 feet (12 meters) under professional supervision.",
+          "q": "How deep can I dive with a PADI Scuba Diver certification?"
+        },
+        {
+          "a": "The course typically takes about two days and includes theory development, confined water training, and open-water dives.",
+          "q": "How long does the Scuba Diver course take in Punta Cana?"
+        },
+        {
+          "a": "The minimum age for the PADI Scuba Diver course is 10 years old.",
+          "q": "What is the minimum age for the PADI Scuba Diver course?"
+        },
+        {
+          "a": "Yes. Basic swimming ability and comfort in the water are required for PADI certification courses.",
+          "q": "Do I need to know how to swim to enroll in the Scuba Diver course?"
+        },
+        {
+          "a": "Yes. The PADI Scuba Diver certification can be upgraded to a full Open Water Diver certification by completing the remaining training modules and open-water dives.",
+          "q": "Can I upgrade from Scuba Diver to Open Water Diver later?"
+        },
+        {
+          "a": "Yes. The certification is recognized internationally and allows you to dive worldwide under professional supervision.",
+          "q": "Is the PADI Scuba Diver certification valid worldwide?"
+        },
+        {
+          "a": "Yes. The Scuba Diver course is ideal for travelers with limited time who want to earn a certification in just a couple of days.",
+          "q": "Is the Scuba Diver course a good option for short vacations?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": "12 m / 40 ft",
+      "name": "Scuba Diver",
+      "price": 399,
+      "slug": "scubadiver",
+      "summary": "Dive under the direct supervision of a PADI professional to a maximum depth of 12 meters / 40 feet",
+      "title": "PADI Scuba Diver Course in Punta Cana"
+    },
+    {
+      "dives": "4 dives",
+      "duration": "2 days",
+      "extraInfo": null,
+      "faqs": [
+        {
+          "a": "The PADI Deep Diver course teaches certified divers how to plan and safely conduct dives beyond 40 meters (130 feet), including deep dive procedures, gas management, and safety considerations.",
+          "q": "What is the PADI Deep Diver course?"
+        },
+        {
+          "a": "The Deep Diver course includes 4 dives.",
+          "q": "How many dives are included in the Deep Diver course?"
+        },
+        {
+          "a": "To enroll, you must be certified as a PADI Advanced Open Water Diver or hold an equivalent certification from another recognized training organization.",
+          "q": "What are the prerequisites for the Deep Diver course?"
+        },
+        {
+          "a": "The minimum age for the Deep Diver course is 15 years old.",
+          "q": "What is the minimum age for the Deep Diver course?"
+        },
+        {
+          "a": "The Deep Diver course in Punta Cana costs $400 USD.",
+          "q": "How much does the Deep Diver course cost in Punta Cana?"
+        },
+        {
+          "a": "No previous deep diving specialty certification is required. The course is designed to help qualified divers build deep diving skills progressively under instructor supervision.",
+          "q": "Do I need previous deep diving experience to take this course?"
+        },
+        {
+          "a": "You will learn about deep dive planning, gas supply management, buddy contact procedures, safety stops, and how depth affects your dive and equipment.",
+          "q": "What will I learn in the Deep Diver course?"
+        }
+      ],
+      "level": "Advanced",
+      "maxDepth": "40 m / 130 ft",
+      "name": "Deep Diver",
+      "price": 400,
+      "slug": "deep-diver",
+      "summary": "Explore deeper dive sites safely with the PADI Deep Diver course",
+      "title": "PADI Deep Diver Course in Punta Cana"
+    },
+    {
+      "dives": "4 open water",
+      "duration": "3 Days",
+      "extraInfo": "Over 3 Days",
+      "faqs": [
+        {
+          "a": "The PADI Open Water Diver course is the most recognized beginner scuba certification. It teaches the knowledge and skills needed to dive confidently and safely, and results in a certification recognized worldwide.",
+          "q": "What is the PADI Open Water Diver course?"
+        },
+        {
+          "a": "The PADI Open Water Diver course in Punta Cana normally takes 3 days to complete. The program includes knowledge development, confined water training, and open water dives with a certified instructor.",
+          "q": "How long does it take to complete the Open Water course in Punta Cana?"
+        },
+        {
+          "a": "The minimum age for the PADI Open Water Diver course is 10 years old.",
+          "q": "What is the minimum age for the PADI Open Water Diver course?"
+        },
+        {
+          "a": "Yes. Basic swimming ability and comfort in the water are required for PADI certification courses.",
+          "q": "Do I need to know how to swim to take the Open Water course?"
+        },
+        {
+          "a": "After certification, PADI Open Water Divers can dive to a maximum depth of 60 feet (18 meters) with a buddy, following safe diving practices and local conditions.",
+          "q": "How deep can I dive after getting Open Water certified?"
+        },
+        {
+          "a": "The course includes knowledge development, confined water skill practice, and open water training dives with a certified instructor. The exact structure can vary based on scheduling.",
+          "q": "What does the Open Water course include?"
+        },
+        {
+          "a": "No. Discover Scuba Diving is not required before Open Water. Many students start directly with the PADI Open Water Diver course.",
+          "q": "Do I need to do Discover Scuba Diving before Open Water?"
+        },
+        {
+          "a": "Yes. The PADI Open Water Diver certification is recognized internationally and allows you to dive with a buddy around the world within the certification limits.",
+          "q": "Is the PADI Open Water certification valid worldwide?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": "18 m / 60 ft",
+      "name": "Open Water Diver",
+      "price": 499,
+      "slug": "openwater",
+      "summary": "Dive anywhere in the world with a certified buddy!",
+      "title": "PADI Open Water Diver Course in Punta Cana"
+    },
+    {
+      "dives": "2 dives",
+      "duration": "Half day",
+      "extraInfo": null,
+      "faqs": [
+        {
+          "a": "The PADI Peak Performance Buoyancy course helps divers improve buoyancy control, trim, and breathing efficiency to become more comfortable and streamlined underwater.",
+          "q": "What is the PADI Peak Performance Buoyancy course?"
+        },
+        {
+          "a": "The Peak Performance Buoyancy course includes 2 dives.",
+          "q": "How many dives are included in the Peak Performance Buoyancy course?"
+        },
+        {
+          "a": "The Peak Performance Buoyancy course in Punta Cana costs $300 USD.",
+          "q": "How much does the Peak Performance Buoyancy course cost in Punta Cana?"
+        },
+        {
+          "a": "This course is ideal for certified divers who want to improve buoyancy control, reduce air consumption, move more efficiently underwater, and protect fragile marine environments.",
+          "q": "Who is the Peak Performance Buoyancy course for?"
+        },
+        {
+          "a": "You will learn how to achieve better trim, improve weighting, refine buoyancy control, and move more smoothly and efficiently underwater.",
+          "q": "What will I learn in the Peak Performance Buoyancy course?"
+        },
+        {
+          "a": "Yes. You must be a certified scuba diver to enroll in the Peak Performance Buoyancy course.",
+          "q": "Do I need to be certified to take the Peak Performance Buoyancy course?"
+        },
+        {
+          "a": "Good buoyancy control helps divers conserve air, improve comfort, avoid contact with the reef, and maintain better control throughout the dive.",
+          "q": "Why is buoyancy control important in scuba diving?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": null,
+      "name": "Peak Performance Buoyancy",
+      "price": 300,
+      "slug": "peak-performance-buoyancy",
+      "summary": "Master buoyancy control for smoother, more efficient and enjoyable dives.",
+      "title": "PADI Peak Performance Buoyancy Course in Punta Cana"
+    },
+    {
+      "dives": "4 open water",
+      "duration": "2 Days",
+      "extraInfo": "Over 2 Days",
+      "faqs": [
+        {
+          "a": "It's the final part of the PADI Open Water Diver course. You complete the theory and confined water training with an instructor at home, then finish the 4 open water certification dives with us in Punta Cana.",
+          "q": "What is the PADI Open Water Referral?"
+        },
+        {
+          "a": "Bring your signed PADI Referral Form, or your eLearning completion record together with your instructor's confined water sign-off. We verify your documents before your first dive.",
+          "q": "What paperwork do I need to bring?"
+        },
+        {
+          "a": "PADI referral paperwork is valid for 12 months from your last completed training session. After that, you'll need a short refresher or to repeat parts of the training.",
+          "q": "How long is my referral valid?"
+        },
+        {
+          "a": "Two days. You'll complete dives 1 and 2 on the first day and dives 3 and 4 on the second day, after which your instructor processes your certification.",
+          "q": "How long does the referral take in Punta Cana?"
+        },
+        {
+          "a": "All 4 certification dives, boat trips to the dive sites, full equipment rental, your PADI instructor, and certification processing. There are no hidden extras.",
+          "q": "What's included in the $375 price?"
+        },
+        {
+          "a": "Contact us before your trip. In most cases a short refresher session is enough to bring your skills up to date so you can complete your certification dives.",
+          "q": "What if my referral paperwork has expired?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": "18 m / 60 ft",
+      "name": "Open Water Referral",
+      "price": 375,
+      "slug": "openwater-referral",
+      "summary": "Finished your theory and confined water training at home? Complete your 4 certification dives with us in Punta Cana!",
+      "title": "PADI Open Water Referral in Punta Cana"
+    },
+    {
+      "dives": "4 open water",
+      "duration": "2-3 Days",
+      "extraInfo": "Over 2-3 Days",
+      "faqs": [
+        {
+          "a": "The training is identical — the difference is that you've already bought the PADI eLearning directly from PADI and completed the theory online, so the in-destination price is lower: $425 instead of $499.",
+          "q": "How is this different from the regular Open Water course?"
+        },
+        {
+          "a": "Yes, ideally. Completing all knowledge development sections before your trip means your time in Punta Cana is spent diving, not studying. If you have a section left, talk to us — we can usually work it into the schedule.",
+          "q": "Do I need to finish the eLearning before I arrive?"
+        },
+        {
+          "a": "Your PADI eLearning completion record (in the PADI app or as a PDF), a swimsuit, and a towel. All diving equipment is included in the course.",
+          "q": "What do I need to bring?"
+        },
+        {
+          "a": "Usually 2 to 3 days: a short theory review, confined water training, and then your 4 open water certification dives.",
+          "q": "How long does the course take?"
+        },
+        {
+          "a": "Confined water training, all 4 open water certification dives, boat trips, full equipment rental, your PADI instructor, and certification processing. The PADI eLearning itself is purchased separately from PADI.",
+          "q": "What's included in the $425 price?"
+        }
+      ],
+      "level": "Beginner",
+      "maxDepth": "18 m / 60 ft",
+      "name": "Open Water eLearning",
+      "price": 425,
+      "slug": "openwater-elearning",
+      "summary": "Bought PADI eLearning and finished the theory? Do your confined water training and 4 ocean dives with us!",
+      "title": "PADI Open Water Diver Course for eLearners in Punta Cana"
+    },
+    {
+      "dives": "5 adventure",
+      "duration": "3 Days",
+      "extraInfo": "Over 3 Days",
+      "faqs": [
+        {
+          "a": "The PADI Advanced Open Water Diver course is designed to improve your diving skills and confidence through guided adventure dives under the supervision of a certified instructor.",
+          "q": "What is the PADI Advanced Open Water Diver course?"
+        },
+        {
+          "a": "To enroll, you must be a certified PADI Open Water Diver (or equivalent from another organization) and meet the minimum age requirements.",
+          "q": "What are the requirements to take Advanced Open Water in Punta Cana?"
+        },
+        {
+          "a": "The PADI Advanced Open Water Diver course in Punta Cana typically takes 2 to 3 days, depending on scheduling and conditions.",
+          "q": "How long does the Advanced Open Water course take in Punta Cana?"
+        },
+        {
+          "a": "The course includes a mix of adventure dives such as deep diving and underwater navigation, plus additional dives that may include wreck or drift diving depending on conditions and availability.",
+          "q": "What types of dives are included in the Advanced course?"
+        },
+        {
+          "a": "After completing the Advanced Open Water course, you will be certified to dive to a maximum depth of 100 feet (30 meters), following safe diving practices and local conditions.",
+          "q": "How deep can I dive after completing Advanced Open Water?"
+        },
+        {
+          "a": "No. Scuba equipment is provided for training dives. You are welcome to bring your own gear if you prefer.",
+          "q": "Do I need my own equipment for the Advanced course?"
+        },
+        {
+          "a": "Yes. The course is designed to build experience with instructor supervision, helping certified divers gain confidence and expand skills in a structured way.",
+          "q": "Is Advanced Open Water worth it if I have only a few logged dives?"
+        }
+      ],
+      "level": "Intermediate",
+      "maxDepth": "30 m / 100 ft",
+      "name": "Advanced Open Water Diver",
+      "price": 449,
+      "slug": "advanced",
+      "summary": "Take it to the next level!",
+      "title": "PADI Advanced Open Water Course in Punta Cana"
+    }
+  ],
+  "diveSites": [
+    {
+      "feet": 20,
+      "level": "Beginner",
+      "location": "Local",
+      "meters": 6,
+      "name": "El Nino",
+      "slug": "el-nino",
+      "summary": "One of our favourite first-ocean-dive sites: shallow, calm and clear, with vibrant schools of tropical fish. Ideal after a Discover Scuba session."
+    },
+    {
+      "feet": 20,
+      "level": "Beginner",
+      "location": "Local",
+      "meters": 6,
+      "name": "Finger Coral Plantation",
+      "slug": "finger-coral-plantation",
+      "summary": "Home to our coral nursery, where young fragments grow before being transplanted onto the reef. Shallow and easy, with yellowtail snappers everywhere."
+    },
+    {
+      "feet": 20,
+      "level": "Beginner",
+      "location": "Local",
+      "meters": 6,
+      "name": "Submarine",
+      "slug": "submarine",
+      "summary": "A Russian tourist submarine that sank off Cabeza de Toro in 1998 — one of Punta Cana's most unusual artificial reefs. Shallow, bright and beginner-friendly."
+    },
+    {
+      "feet": 33,
+      "level": "All levels",
+      "location": "Local",
+      "meters": 10,
+      "name": "Cuevitas",
+      "slug": "cuevitas",
+      "summary": "Sunlit swim-throughs and small caves, no overhead training needed. Watch for lobster and cleaner shrimp as sunbeams cut through the rock."
+    },
+    {
+      "feet": 40,
+      "level": "All levels",
+      "location": "Bayahibe",
+      "meters": 12,
+      "name": "Atlantic Princess - Bayahibe",
+      "slug": "atlantic-princess-bayahibe",
+      "summary": "A former cruise ship, now one of the best first wreck dives in the DR — shallow, full of character and covered in coral. On our Bayahibe trips."
+    },
+    {
+      "feet": 40,
+      "level": "All levels",
+      "location": "Local",
+      "meters": 12,
+      "name": "Park Reef",
+      "slug": "park-reef",
+      "summary": "A calm, easy dive over coral-covered rock, reliably clear even when conditions elsewhere aren't. One of the best sites for turtles, lobster and squid."
+    },
+    {
+      "feet": 50,
+      "level": "All levels",
+      "location": "Local",
+      "meters": 15,
+      "name": "Wreck Monica",
+      "slug": "wreck-monica",
+      "summary": "An 1880s French cargo ship that once carried materials for the Panama Canal. Propeller, engine and boiler are still visible — an easy first wreck dive."
+    },
+    {
+      "feet": 53,
+      "level": "All levels",
+      "location": "Local",
+      "meters": 16,
+      "name": "Rock City",
+      "slug": "rock-city",
+      "summary": "Natural canyons in the reef feel like flying down underwater streets, walls covered in hard corals and sponges. A superb drift dive when conditions allow."
+    },
+    {
+      "feet": 62,
+      "level": "Intermediate",
+      "location": "Local",
+      "meters": 19,
+      "name": "Anchor",
+      "slug": "anchor",
+      "summary": "A healthy reef where the Monica's anchor chain still rests across the coral. A great step up for Open Water divers and a natural pairing with the wreck."
+    },
+    {
+      "feet": 100,
+      "level": "Advanced",
+      "location": "Local",
+      "meters": 30,
+      "name": "Shark Point",
+      "slug": "shark-point",
+      "summary": "An expansive coral garden on pristine deep reef and a prime spot for nurse and reef sharks — no cage, no bait. Needs Advanced Open Water or 20+ dives."
+    },
+    {
+      "feet": 100,
+      "level": "All levels",
+      "location": "Catalina",
+      "meters": 30,
+      "name": "The Wall - Catalina",
+      "slug": "the-wall-catalina",
+      "summary": "A spectacular drop-off, arguably the best dive site in the DR. A coral-covered wall teeming with life, and the signature dive of our Catalina day trip."
+    },
+    {
+      "feet": 131,
+      "level": "Advanced",
+      "location": "Bayahibe",
+      "meters": 40,
+      "name": "St. George Wreck - Bayahibe",
+      "slug": "st-george-wreck-bayahibe",
+      "summary": "A 73 m Scottish-built cargo ship sunk as an artificial reef, now home to barracuda, morays and groupers. A deep highlight of our Bayahibe day trips."
+    }
+  ],
+  "fishing": {
+    "deposit": 50,
+    "duration": "4 Hours",
+    "name": "Fishing Punta Cana",
+    "price": 130,
+    "privateCharter": 700,
+    "spectatorPrice": 90
+  },
+  "generalFaqs": [
+    {
+      "faqs": [
+        {
+          "a": "No experience is required to start. Beginners can begin with Discover Scuba Diving or enroll directly in an entry-level PADI course.",
+          "q": "Do I need experience to start a scuba course in Punta Cana?"
+        },
+        {
+          "a": "Discover Scuba Diving is a beginner experience that does not provide certification. PADI certification courses (like Scuba Diver or Open Water Diver) include structured training and result in an official certification.",
+          "q": "What is the difference between Discover Scuba Diving and a PADI certification course?"
+        },
+        {
+          "a": "The PADI Scuba Diver course takes 2 days. The Open Water Diver course takes 3 to 4 days. The Advanced Open Water course takes 2 to 3 days. Most divers can complete an entry-level certification during a standard vacation stay.",
+          "q": "How long does it take to get scuba certified in Punta Cana?"
+        },
+        {
+          "a": "Yes. Most divers complete the Open Water course in 2 to 3 days. If your stay is\nshort, the 2-day Scuba Diver course is a great option. You can also complete the\ntheory portion via PADI eLearning before you arrive in Punta Cana, so you spend\nmore time in the water and less time in a classroom.",
+          "q": "Can I complete a PADI course during my vacation in Punta Cana?"
+        },
+        {
+          "a": "For PADI certification courses, basic swimming ability and comfort in the water are typically required. For beginner experiences, your instructor will guide you step-by-step while prioritizing safety.",
+          "q": "Do I need to know how to swim to take a PADI course?"
+        },
+        {
+          "a": "The minimum age for Discover Scuba Diving and entry-level PADI certification courses such as Scuba Diver and Open Water Diver is 10 years old.",
+          "q": "What is the minimum age for PADI scuba courses in Punta Cana?"
+        },
+        {
+          "a": "Bring swimwear, a towel, sunscreen, and a positive attitude. Most courses include the necessary scuba equipment; your instructor will confirm any additional recommendations.",
+          "q": "What should I bring for a scuba course in Punta Cana?"
+        },
+        {
+          "a": "Yes. Courses are conducted by certified PADI professionals with a focus on safety, clear instruction, and personalized support.",
+          "q": "Are the scuba courses taught by certified instructors?"
+        }
+      ],
+      "page": "Courses"
+    },
+    {
+      "faqs": [
+        {
+          "a": "Yes. Punta Cana is a great place for first-time divers. We offer Discover Scuba Diving with instructor-led training, shallow practice, and an open-water dive—no certification required.",
+          "q": "Is scuba diving in Punta Cana good for beginners?"
+        },
+        {
+          "a": "Basic comfort in the water is recommended. For Discover Scuba Diving, you do not need advanced swimming skills, and your instructor stays with you throughout the experience.",
+          "q": "Do I need to know how to swim to do Discover Scuba Diving?"
+        },
+        {
+          "a": "We offer Discover Scuba Diving (no certification required) and PADI courses including Scuba Diver, Open Water Diver, and Advanced Open Water Diver.",
+          "q": "What PADI courses do you offer in Punta Cana?"
+        },
+        {
+          "a": "Divers commonly see tropical reef fish, rays, eels, and a variety of coral reef life. On select experiences, divers may also encounter blacktip reef sharks.",
+          "q": "What marine life can I see while diving in Punta Cana?"
+        },
+        {
+          "a": "Yes. We offer guided reef and wreck dives for certified divers, and a shark dive experience for experienced divers.",
+          "q": "Do you offer reef, wreck, and shark diving?"
+        },
+        {
+          "a": "Prices vary by experience. Discover Scuba Diving starts from $100 per person. Certified diver two-tank dives are $135 per diver. PADI courses and day trips have different pricing.",
+          "q": "How much does scuba diving in Punta Cana cost?"
+        },
+        {
+          "a": "We are located on Carretera Cabeza de Toro in Punta Cana, Dominican Republic. You can find the meeting point on Google Maps.",
+          "q": "Where is your dive center located?"
+        },
+        {
+          "a": "You can book directly through our website. Payment options vary by trip; many guests pay a deposit online and the remaining balance on the day of the activity.",
+          "q": "How do I book and what payment methods do you accept?"
+        },
+        {
+          "a": "Hotel transport is included for guests staying in the main Bávaro resort area. An additional transport fee applies for guests staying in Uvero Alto, Cap Cana, or Punta Cana Resort. Contact us with your hotel name and we will confirm the cost before you book.",
+          "q": "Is transport included from my hotel in Punta Cana?"
+        },
+        {
+          "a": "Our local dive sites include vibrant reef dives and Shark Point, where divers regularly encounter nurse sharks and Caribbean reef sharks. We also offer day trips to Catalina Island and Bayahibe — the St. George shipwreck is one of the highlights of our Bayahibe excursion, considered some of the best diving in the Dominican Republic.",
+          "q": "What dive sites are available in Punta Cana?"
+        }
+      ],
+      "page": "Home"
+    },
+    {
+      "faqs": [
+        {
+          "a": "Catalina Island and Saona Island both suit newly certified divers — the reefs offer beautiful shallow sections alongside deeper walls. On the Bayahibe trip, sites like the Atlantic Princess wreck (12 m) welcome all levels, but the St. George wreck requires Advanced Open Water certification.",
+          "q": "Which dive trip is best for beginners?"
+        },
+        {
+          "a": "Yes. Snorkeling companions pay $100 on the Catalina Island trip and $150 on Saona Island; on Bayahibe, non-diving companions can join the boat for $100. They enjoy the same pickup, boat ride, and island time as divers.",
+          "q": "Can non-diving companions join the trips?"
+        },
+        {
+          "a": "Hotel pickup is between about 7:00 and 7:30 AM depending on your hotel. Catalina and Saona are full-day trips returning around 6:00 PM; Bayahibe returns earlier, around 4:00 PM.",
+          "q": "What time do the trips start and end?"
+        },
+        {
+          "a": "Yes, round-trip transport from hotels in the Punta Cana and Bávaro resort area is included on all three trips.",
+          "q": "Is hotel transport included?"
+        },
+        {
+          "a": "You can book online with a $100 deposit per booking; the balance is paid on the day of your trip. See our cancellation policy for full terms.",
+          "q": "How do I reserve, and is there a deposit?"
+        },
+        {
+          "a": "An Open Water certification (or equivalent) covers most sites on all three trips. The St. George wreck in Bayahibe requires Advanced Open Water. Not certified yet? Try Discover Scuba Diving on our local reefs, or complete a PADI course with us before your trip.",
+          "q": "What certification do I need for the dive trips?"
+        },
+        {
+          "a": "Your certification card (and logbook if you have one), swimwear, a towel, and reef-safe sunscreen. All dive equipment is included, so there's no need to travel with your own gear — though you're welcome to bring it.",
+          "q": "What should I bring on the day?"
+        }
+      ],
+      "page": "Trips"
+    }
+  ],
+  "liveaboards": {
+    "faqs": [
+      {
+        "a": "A liveaboard is a boat you live on for several days while diving. You sleep, eat, and dive from the same vessel, allowing access to remote sites and multiple dives per day without returning to shore.",
+        "q": "What is a liveaboard dive trip?"
+      },
+      {
+        "a": "Most liveaboard routes welcome any certified diver, though some remote or deeper sites are better suited to Advanced Open Water divers. We'll match you to the right trip for your experience level.",
+        "q": "Do I need to be an experienced diver?"
+      },
+      {
+        "a": "The Silverbank Expedition is a summer diving liveaboard, running June through August — it is a diving trip, and no whale watching is done at the Silver Bank. Our separate whale-watching adventure runs during the Dominican Republic's humpback season, January through March. Contact us for current schedules.",
+        "q": "When is the best time to go?"
+      },
+      {
+        "a": "Liveaboard packages typically include cabin accommodation, all meals, guided dives, tanks, and weights. Equipment rental, nitrox, and gratuities may be additional. Full details are confirmed at booking.",
+        "q": "What's included in the price?"
+      },
+      {
+        "a": "Liveaboard trips are planned in advance with limited spaces. Contact us with your preferred dates and group size, and we'll confirm availability and guide you through reserving your place.",
+        "q": "How do I book?"
+      }
+    ],
+    "intro": "Explore the Dominican Republic's Most Spectacular Marine Environments\n\nDIVE DEEPER WITH GRAND BAY OF THE SEA\n\nExperience the ultimate Dominican Republic diving adventure with our exclusive liveaboard expeditions. Grand Bay of the Sea proudly offers premium multi-day journeys to the most pristine and rarely visited waters of the Dominican Republic. Leave the crowds behind and immerse yourself in extraordinary marine environments that can only be accessed by liveaboard vessel.Our professional crew, accommodations, and exceptional dining create the perfect setting for the underwater adventure of a lifetime. Whether you're seeking vibrant coral reefs at Silverbank or majestic humpback whales in Samana Bay, our liveaboard experiences deliver unforgettable memories.",
+    "silverBank": "Departing from Sosua - Available June, July & August\n\nJourney to the legendary Silverbank, a remote underwater sanctuary on the northern coast of the Dominican Republic. During summer months, this protected marine reserve offers exceptional diving among pristine coral formations and abundant marine life rarely visited by other divers.",
+    "stats": [
+      {
+        "label": "Duration",
+        "value": "3–7 nights"
+      },
+      {
+        "label": "Dives per day",
+        "value": "Up to 4"
+      },
+      {
+        "label": "Diving season",
+        "value": "Jun–Aug"
+      },
+      {
+        "label": "Level",
+        "value": "All certified"
+      }
+    ],
+    "whaleWatching": "Los Haitises to Cayo Levantado - Prime Season Janurary-March\n\nEmbark on an extraordinary whale watching journey through Samana Bay's most magical waters. Starting from the lush mangroves and limestone formations of Los Haitises National Park and culminating at the idyllic Cayo Levantado (Bacardi Island), this expedition offers unparalleled opportunities to observe magnificent humpback whales in their natural environment."
+  },
+  "localDives": {
+    "deposit": 50,
+    "duration": "2.5 Hours",
+    "faqs": [
+      {
+        "a": "Scuba diving in Punta Cana offers the chance to see a wide variety of Caribbean marine life. Divers commonly encounter sea turtles, stingrays, moray eels, angelfish, trumpetfish, parrotfish, and nurse sharks, along with schools of colorful reef fish. The reefs are also home to healthy coral formations including brain coral, pillar coral, sea fans, and fire coral.",
+        "q": "What marine life can you see while scuba diving in Punta Cana?"
+      },
+      {
+        "a": "Local dive sites in Punta Cana typically range from 6 to 30 meters (20 to 100 feet) in depth. This variety allows both beginner and experienced divers to enjoy the reefs depending on certification level and conditions.",
+        "q": "How deep are the dive sites in Punta Cana?"
+      },
+      {
+        "a": "Visibility while diving in Punta Cana typically ranges between 10 and 20 meters (30 to 65 feet) depending on ocean conditions and weather.",
+        "q": "What is the visibility like when diving in Punta Cana?"
+      },
+      {
+        "a": "No. Dive sites are selected daily based on weather, sea conditions, and visibility to ensure the safest and best diving experience for our guests.",
+        "q": "Are dive sites preselected before the trip?"
+      },
+      {
+        "a": "Yes. Many of the reefs around Punta Cana start at shallow depths, making them suitable for beginners while still offering interesting marine life and coral formations.",
+        "q": "Are the dive sites suitable for beginner divers?"
+      },
+      {
+        "a": "Water temperatures in Punta Cana usually range from 26–29°C (78–84°F) throughout the year, providing comfortable conditions for diving in every season.",
+        "q": "What is the water temperature for diving in Punta Cana?"
+      },
+      {
+        "a": "Yes. Local wreck dives include the Wreck Monica, a French cargo ship from the 1880s, and the Submarine, originally built for tourist excursions. For deeper wreck diving, our Bayahibe day trip visits the St. George, a 73-meter cargo ship at 40 meters depth — one of the best wreck dives in the Caribbean.",
+        "q": "Are there wreck dives in Punta Cana?"
+      }
+    ],
+    "fourTank": 240,
+    "twoTank": 135
+  },
+  "sharkDive": {
+    "deposit": 50,
+    "duration": "2.5 Hours",
+    "faqs": [
+      {
+        "a": "Nurse sharks, blacktip reef sharks, and Caribbean reef sharks are not aggressive toward divers. At Shark Point, encounters happen in the sharks' natural environment. Our divemasters have guided hundreds of shark dives at this site without incident. Proper certification and composure underwater are required, which is why we enforce experience requirements before booking.",
+        "q": "Is it dangerous to dive with sharks in Punta Cana?"
+      },
+      {
+        "a": "No. Shark Point has an excellent safety record. The sharks at this site are accustomed to divers and behave predictably. Our divemasters brief every group before the dive, establish clear protocols, and lead the descent throughout the experience.",
+        "q": "Have there ever been any incidents at Shark Point?"
+      },
+      {
+        "a": "Advanced Open Water certification is the standard requirement because the dive reaches approximately 26 meters (80 feet). However, if you are Open Water certified with a minimum of 20 logged dives and comfortable at depth, we can accommodate you on a case-by-case basis.",
+        "q": "Do I need to be Advanced Open Water certified for the shark dive?"
+      },
+      {
+        "a": "You may still qualify. We assess experience individually. If you have 20 or more logged dives and feel confident at depth, contact us via WhatsApp and we will confirm whether the shark dive is right for you. Please bring your logbook on the day of the dive.",
+        "q": "What if I have 20+ dives but no Advanced Open Water certification?"
+      },
+      {
+        "a": "Shark Point reaches approximately 26 meters (80 feet). This is a reef dive site located 15 to 20 minutes from shore by boat.",
+        "q": "How deep is the shark dive in Punta Cana?"
+      },
+      {
+        "a": "Open water only. There are no cages at Shark Point. You dive freely alongside your divemaster on a natural reef, encountering nurse sharks, blacktip reef sharks, and Caribbean reef sharks in their natural habitat.",
+        "q": "Is shark diving in Punta Cana cage diving or open water?"
+      },
+      {
+        "a": "All diving equipment is provided including BCD, regulator, wetsuit, tank, and weights. Bring your certification card (C-card), logbook, swimsuit, reef-safe sunscreen, a towel, and cash for the remaining balance. Hotel transport is included from Punta Cana and Bávaro.",
+        "q": "What should I bring to the shark dive?"
+      },
+      {
+        "a": "Shark Point is home to nurse sharks, blacktip reef sharks, and Caribbean reef sharks. These are natural, wild encounters on a reef dive site approximately 26 meters deep.",
+        "q": "What sharks will I see at Shark Point Punta Cana?"
+      }
+    ],
+    "included": [
+      "Advanced Certification Required",
+      "or minimum 20 logged dives"
+    ],
+    "level": "Advanced",
+    "maxDepth": "30 m / 100 ft",
+    "name": "Shark Dive Punta Cana",
+    "price": 190
+  },
+  "trips": [
+    {
+      "companionPrice": 100,
+      "deposit": 100,
+      "duration": "7:30 - 16:00",
+      "faqs": [
+        {
+          "a": "We provide full transport from your hotel in Punta Cana. The trip includes a 1.5-hour bus transfer from Punta Cana to the village of Bayahibe on the southeast coast of the Dominican Republic. Hotel pickup begins at approximately 7:30 AM.",
+          "q": "How do I get to Bayahibe from Punta Cana for the diving trip?"
+        },
+        {
+          "a": "Advanced Open Water certification is required to dive the St. George wreck, which rests at 40 meters depth. This is one of the deepest dive sites we offer and is reserved for advanced certified divers. If you are not yet Advanced Open Water certified, we offer the PADI Advanced Open Water course in Punta Cana starting at $400.",
+          "q": "Do I need Advanced Open Water certification for the Bayahibe diving trip?"
+        },
+        {
+          "a": "The $180 per person price includes two guided tank dives, all diving equipment, and hotel transport from Punta Cana and Bávaro. Lunch and drinks are not included.",
+          "q": "What is included in the Bayahibe diving trip price?"
+        },
+        {
+          "a": "The St. George is a 73-meter cargo ship originally built in Scotland in 1962. It was used to transport wheat and barley between Europe and the Caribbean before being intentionally sunk in 1999 to create an artificial reef. It now rests at 40 meters depth half a mile off the coast of Dominicus in Bayahibe and is home to barracudas, groupers, moray eels, and king mackerels. It is widely considered one of the best wreck dives in the Caribbean.",
+          "q": "What is the St. George wreck in Bayahibe?"
+        },
+        {
+          "a": "Bayahibe has dozens of dive sites including the Atlantic Princess — a small cruise ship sunk as an artificial reef at 12 meters — as well as colorful coral gardens, deep walls, and reef sites with excellent visibility. Dive sites are selected on the day based on conditions and the certification levels of the group.",
+          "q": "What other dive sites are available in Bayahibe besides the St. George wreck?"
+        },
+        {
+          "a": "Yes. Non-diving companions are welcome on the Bayahibe trip for $100 per person, which covers the boat ride to and from the dive sites.",
+          "q": "Can non-divers join the Bayahibe trip?"
+        },
+        {
+          "a": "Hotel pickup begins at approximately 7:30 AM from Punta Cana and Bávaro. The trip returns to Punta Cana at approximately 16:00. The day includes bus transfer, two dives, and the return journey.",
+          "q": "What time does the Bayahibe diving trip depart and return?"
+        },
+        {
+          "a": "A $100 deposit per booking is required to reserve your spot on the Bayahibe diving trip. The remaining balance is paid on the day of the trip.",
+          "q": "How much is the deposit for the Bayahibe diving trip?"
+        }
+      ],
+      "included": ["Lunch optional", "Drinks : Alcoholic optional"],
+      "itinerary": [
+        {
+          "detail": "We collect you from your hotel and transfer to the boat.",
+          "step": "Morning pickup"
+        },
+        {
+          "detail": "A guided wreck dive on the legendary St. George.",
+          "step": "First dive"
+        },
+        {
+          "detail": "A second guided dive on a reef or the Atlantic Princess wreck.",
+          "step": "Second dive"
+        },
+        {
+          "detail": "Relax on the boat and road transfer back to your hotel.",
+          "step": "Ride home"
+        }
+      ],
+      "name": "Bayahibe",
+      "note": null,
+      "price": 180,
+      "privateOnly": false,
+      "slug": "bayahibe",
+      "summary": "This quiet fishing village has some amazing dive sites, including a couple wrecks that will surprise any diver.",
+      "title": "Bayahibe Wreck & Reef Diving Trip from Punta Cana"
+    },
+    {
+      "companionPrice": 100,
+      "deposit": 100,
+      "duration": "7:30 - 18:00",
+      "faqs": [
+        {
+          "a": "We provide full transport from your hotel in Punta Cana. The trip includes a 1.5-hour bus transfer from Punta Cana to La Romana, followed by a 30-minute boat ride to Catalina Island. Everything is organized — just be ready for pickup at your hotel at approximately 7:00 AM.",
+          "q": "How do I get to Catalina Island from Punta Cana?"
+        },
+        {
+          "a": "Any level of certification is welcome on the Catalina Island diving trip. Depth is adjusted based on your certification level. Open Water certified divers dive to their certification limit, while Advanced Open Water divers can reach The Wall's maximum depth of 30 meters. If you are not certified, you can join as a snorkeler for $100 with equipment included.",
+          "q": "Do I need scuba certification for the Catalina Island diving trip?"
+        },
+        {
+          "a": "The diving trip at $220 per person includes two guided tank dives at The Wall and The Aquarium, all diving equipment, lunch on the island, and alcoholic and non-alcoholic drinks throughout the day. The snorkeling option at $100 includes snorkeling equipment, lunch, and drinks. Hotel transport from Punta Cana and Bávaro is included. ",
+          "q": "What is included in the Catalina Island trip price?"
+        },
+        {
+          "a": "Catalina Island has two exceptional dive sites. The Wall is one of the best dive sites in the Dominican Republic — a dramatic vertical drop-off with a coral-covered upper reef between 1.5 and 6 meters and a wall that descends to 30 meters. The Aquarium is a sheltered reef at approximately 12 meters, home to yellow stingrays, lobsters, moray eels, angelfish, trumpetfish, and large barrel sponges.",
+          "q": "What are the best dive sites at Catalina Island?"
+        },
+        {
+          "a": "Yes. Non-divers and snorkelers are welcome on the Catalina Island trip at $100 per person, which includes snorkeling equipment, lunch, and drinks. It's a great option for couples or families where some members are certified divers and others prefer to snorkel.",
+          "q": "Can non-divers join the Catalina Island trip?"
+        },
+        {
+          "a": "Hotel pickup begins at approximately 7:00 AM from Punta Cana and Bávaro. The trip returns to Punta Cana at approximately 18:00. The full day includes bus transfer, boat ride, two dives or snorkeling, lunch on the island, and the return journey.",
+          "q": "What time does the Catalina Island trip depart and return?"
+        },
+        {
+          "a": "A $100 deposit per booking is required to reserve your spot on the Catalina Island trip. The remaining balance is paid on the day of the trip.",
+          "q": "How much is the deposit for the Catalina Island trip?"
+        },
+        {
+          "a": "Yes. Catalina Island is one of the best snorkeling destinations in the Dominican Republic. The shallow reefs around the island are home to a wide variety of tropical fish, sea turtles, and healthy coral formations. The calm, clear water and excellent visibility make it ideal for snorkelers of all experience levels.",
+          "q": "Is snorkeling good at Catalina Island?"
+        }
+      ],
+      "included": [
+        "Lunch included",
+        "Drinks : Alcoholic & Non-Alcoholic included"
+      ],
+      "itinerary": [
+        {
+          "detail": "We collect you from your hotel and transfer to the boat.",
+          "step": "Morning pickup"
+        },
+        {
+          "detail": "A guided dive on the trip's signature wall or reef.",
+          "step": "First dive"
+        },
+        {
+          "detail": "A second, more relaxed guided dive.",
+          "step": "Second dive"
+        },
+        {
+          "detail": "Surface interval on the sand with lunch and refreshments.",
+          "step": "Beach & lunch"
+        },
+        {
+          "detail": "Relax on the boat and road transfer back to your hotel.",
+          "step": "Ride home"
+        }
+      ],
+      "name": "Catalina Island",
+      "note": null,
+      "price": 220,
+      "privateOnly": false,
+      "slug": "catalina",
+      "summary": "If you dreamed of a Caribbean paradise, you'll find it right here on Catalina Island. Crystal-clear water, gorgeous beaches.",
+      "title": "Catalina Island Dive Trip from Punta Cana"
+    },
+    {
+      "companionPrice": 150,
+      "deposit": 200,
+      "duration": "7:30 - 18:00",
+      "faqs": [
+        {
+          "a": "Any level of scuba certification is welcome on the Saona Island diving excursion. The Atlantic Princess wreck sits at 12 meters and El Peñón is suitable for all certified divers. If you are not certified, you can join as a snorkeler for $150 per person with snorkeling equipment included.",
+          "q": "Do I need scuba certification for the Saona Island diving excursion?"
+        },
+        {
+          "a": "The private diving charter is $250 per diver and includes two guided tank dives at the Atlantic Princess wreck and El Peñón, all diving equipment, beach lunch on Saona Island, and alcoholic and non-alcoholic drinks throughout the day. Snorkelers join at $150 each with equipment, lunch, and drinks included. A $1,000 minimum applies per private charter. Hotel transport from Punta Cana and Bávaro is included.",
+          "q": "What is included in the Saona Island trip price?"
+        },
+        {
+          "a": "The Saona Island excursion visits two dive sites in Bayahibe before continuing to the island. The first is the Atlantic Princess, a small cruise ship sunk as an artificial reef at 12 meters and full of marine life. The second is El Peñón, one of the Caribbean's top dive sites with a healthy remote reef system and outstanding marine diversity.",
+          "q": "What dive sites are visited on the Saona Island excursion?"
+        },
+        {
+          "a": "Yes. Both the Atlantic Princess wreck and El Peñón are excellent snorkeling sites with clear, shallow water and abundant marine life. Snorkeling equipment is included in the $150 companion price. The natural pool stop on the return also offers a unique snorkeling experience in a shallow turquoise sandbank with starfish.",
+          "q": "Is snorkeling good on the Saona Island excursion?"
+        },
+        {
+          "a": "Hotel pickup begins at approximately 7:30 AM from Punta Cana and Bávaro. The trip returns to Punta Cana at approximately 18:00. The full day includes a 40-minute drive to Bayahibe, two dives or snorkeling, boat to Saona Island, beach lunch, a brief stop at the natural pool, and the return journey.",
+          "q": "What time does the Saona Island trip depart and return?"
+        },
+        {
+          "a": "The natural pool is a famous shallow sandbank with crystal-clear turquoise water located near Saona Island. It is a brief stop on the return journey where you can wade in warm, calm water and admire the starfish in their natural habitat.",
+          "q": "What is the natural pool on the Saona Island trip?"
+        },
+        {
+          "a": "Yes. The Saona Island excursion is now offered exclusively as a private charter — your own boat and guide for the day. Rates are $250 per diver and $150 per snorkeler, with a $1,000 minimum per charter. It is ideal for families, groups of friends, or anyone who prefers an exclusive experience. Book via the form or the booking panel on this page.",
+          "q": "Is the Saona Island trip private?"
+        },
+        {
+          "a": "A $200 deposit per booking is required to reserve your spot on the Saona Island excursion. The remaining balance is paid on the day of the trip.",
+          "q": "How much is the deposit for the Saona Island trip?"
+        }
+      ],
+      "included": [
+        "Lunch included",
+        "Drinks : Alcoholic & Non-Alcoholic included"
+      ],
+      "itinerary": [
+        {
+          "detail": "We collect you from your hotel and transfer to the boat.",
+          "step": "Morning pickup"
+        },
+        {
+          "detail": "A guided dive on the trip's signature reef.",
+          "step": "First dive"
+        },
+        {
+          "detail": "A second, more relaxed guided dive.",
+          "step": "Second dive"
+        },
+        {
+          "detail": "Time on Saona's beaches with lunch and drinks included.",
+          "step": "Beach & lunch"
+        },
+        {
+          "detail": "Relax on the boat and road transfer back to your hotel.",
+          "step": "Ride home"
+        }
+      ],
+      "name": "Saona Island",
+      "note": null,
+      "price": 250,
+      "privateOnly": true,
+      "slug": "saona",
+      "summary": "Saona Island is the excursion that everyone recommends when they know that you are visiting the Dominican Republic.",
+      "title": "Private Saona Island Dive Trip from Punta Cana"
+    }
+  ]
+}
