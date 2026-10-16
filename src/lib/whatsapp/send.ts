@@ -1,4 +1,5 @@
 import "server-only"
+import { tenantSecret } from "@/lib/tenantEnv"
 
 /**
  * Outbound WhatsApp messages.
@@ -59,21 +60,27 @@ function addressed(id: string): Record<string, unknown> {
     : { recipient_type: "individual", to: id }
 }
 
-function config() {
-  return {
-    base: process.env.KAPSO_API_BASE || DEFAULT_BASE,
-    apiKey: process.env.KAPSO_API_KEY,
-  }
+/**
+ * Which Kapso key a send uses. Each business has its own Kapso account, so a
+ * tenant row names its key's env var (`kapso_api_key_env`); NULL is the shared
+ * KAPSO_API_KEY. See `tenantSecret` for why a missing named key fails rather
+ * than falling back.
+ */
+export interface SendOptions {
+  apiKeyEnv?: string | null
 }
 
 async function post(
   phoneNumberId: string,
   payload: Record<string, unknown>,
+  opts: SendOptions = {},
 ): Promise<SendResult> {
-  const { base, apiKey } = config()
-  if (!apiKey) {
-    return { ok: false, errorMessage: "KAPSO_API_KEY is not configured" }
+  const base = process.env.KAPSO_API_BASE || DEFAULT_BASE
+  const key = tenantSecret(opts.apiKeyEnv, "KAPSO_API_KEY")
+  if (!key.ok) {
+    return { ok: false, errorMessage: `Kapso key: ${key.error}` }
   }
+  const apiKey = key.value
 
   try {
     const res = await fetch(`${base}/${phoneNumberId}/messages`, {
@@ -131,12 +138,17 @@ export function sendText(
   phoneNumberId: string,
   to: string,
   body: string,
+  opts: SendOptions = {},
 ): Promise<SendResult> {
-  return post(phoneNumberId, {
-    ...addressed(to),
-    type: "text",
-    text: { body },
-  })
+  return post(
+    phoneNumberId,
+    {
+      ...addressed(to),
+      type: "text",
+      text: { body },
+    },
+    opts,
+  )
 }
 
 export function sendTemplate(
@@ -145,14 +157,19 @@ export function sendTemplate(
   name: string,
   languageCode: string,
   components?: unknown[],
+  opts: SendOptions = {},
 ): Promise<SendResult> {
-  return post(phoneNumberId, {
-    ...addressed(to),
-    type: "template",
-    template: {
-      name,
-      language: { code: languageCode },
-      ...(components ? { components } : {}),
+  return post(
+    phoneNumberId,
+    {
+      ...addressed(to),
+      type: "template",
+      template: {
+        name,
+        language: { code: languageCode },
+        ...(components ? { components } : {}),
+      },
     },
-  })
+    opts,
+  )
 }

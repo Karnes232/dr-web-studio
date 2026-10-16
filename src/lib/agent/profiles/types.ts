@@ -41,6 +41,23 @@ export interface AgentProfile {
 
   /** What the customer hears when the tenant's spend cap is reached. */
   capReachedNotice(business: string, locale: string): string
+
+  /**
+   * Labels for the lead fields in the new-lead email. The tool fields are
+   * shared, so a dive center's "company" is the customer's hotel.
+   */
+  leadLabels: {
+    company: string
+    service: string
+    timeline: string
+    notes: string
+  }
+
+  /** New-lead email footer: how to take the conversation over. */
+  takeoverLines(tenant: Tenant): string[]
+
+  /** Escalation email: how to reply to this customer. */
+  replyLines(tenant: Tenant, waId: string, byPhone: boolean): string[]
 }
 
 /** The knowledge for one request, already shaped for the prompt. */

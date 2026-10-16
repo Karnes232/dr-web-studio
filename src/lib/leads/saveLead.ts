@@ -24,7 +24,17 @@ export interface SaveLeadInput {
    * the same stale state before either writes.
    */
   conversationId?: string
-  tenantId?: string
+  /**
+   * Whose lead this is. Required: with a second business on the agent, a
+   * default would file its customers under DR Web Studio.
+   */
+  tenantId: string
+  /**
+   * Where the payload is emailed if the row cannot be written. Defaults to
+   * DR's contact address. A WhatsApp lead for another business goes to that
+   * business, since for the agent this email is the only copy of the lead.
+   */
+  fallback?: { to: string; from?: string }
   name?: string
   email?: string
   phone?: string
@@ -69,7 +79,7 @@ function toRow(input: SaveLeadInput): Record<string, unknown> {
 
   return {
     source: input.source,
-    tenant_id: input.tenantId ?? "drwebstudio",
+    tenant_id: input.tenantId,
     status: input.status ?? "new",
     ...compact({
       name: input.name,
@@ -117,11 +127,14 @@ function toRow(input: SaveLeadInput): Record<string, unknown> {
  */
 async function emailFallback(input: SaveLeadInput, reason: string) {
   try {
-    const cachedEmail = await getContactEmail()
-    const toEmail = cachedEmail?.trim() || "james@dr-webstudio.com"
+    const { fallback, ...payload } = input
+    const toEmail =
+      fallback?.to ||
+      (await getContactEmail())?.trim() ||
+      "james@dr-webstudio.com"
 
     await resend.emails.send({
-      from: "Dr Web Studio <james@dr-webstudio.com>",
+      from: fallback?.from || "Dr Web Studio <james@dr-webstudio.com>",
       to: [toEmail],
       subject: `⚠️ Lead not saved (${input.source}): ${input.name || "unknown"}`,
       text: [
@@ -133,7 +146,7 @@ async function emailFallback(input: SaveLeadInput, reason: string) {
         "",
         "Re-enter this row by hand, or fix the database and re-add it:",
         "",
-        JSON.stringify(input, null, 2),
+        JSON.stringify(payload, null, 2),
       ].join("\n"),
     })
   } catch (error) {

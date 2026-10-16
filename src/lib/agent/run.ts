@@ -6,12 +6,9 @@ import { claimsHandoff } from "./handoffClaim"
 import { countKapsoMessage, noteSendResult } from "./alerts"
 import { getLead } from "@/lib/leads/saveLead"
 import { profileFor } from "./profiles"
-import {
-  isBusinessScopedUserId,
-  sendText,
-  WINDOW_EXPIRED,
-} from "@/lib/whatsapp/send"
-import { waHref } from "@/lib/contact"
+import { drwebstudio } from "./profiles/drwebstudio"
+import { escalationEmail, newLeadEmail } from "./notifications"
+import { sendText, WINDOW_EXPIRED } from "@/lib/whatsapp/send"
 import {
   linkLead,
   loadHistory,
@@ -24,14 +21,6 @@ import {
 import type { InboundMessage } from "@/lib/whatsapp/types"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-
-/**
- * Where a human picks the conversation up.
- *
- * A Cloud API number is removed from the WhatsApp Business app, so there is no
- * phone to answer on — replying *as* the business means the provider's inbox.
- */
-const AGENT_INBOX_URL = "https://inbox.kapso.ai"
 
 /**
  * One inbound message → one reply.
@@ -78,6 +67,7 @@ export async function runAgent(
       tenant.phone_number_id,
       message.waId,
       profile.capReachedNotice(tenant.business_name, locale),
+      { apiKeyEnv: tenant.kapso_api_key_env },
     )
     if (notice.ok) await countKapsoMessage(tenant)
 
@@ -126,6 +116,7 @@ export async function runAgent(
       tenant.phone_number_id,
       message.waId,
       turn.reply,
+      { apiKeyEnv: tenant.kapso_api_key_env },
     )
     if (result.ok) {
       // First, before anything else: the takeover check races this write.
@@ -229,38 +220,13 @@ async function notifyNewLead(
   leadId: string,
 ): Promise<void> {
   try {
-    const to = tenant.escalation_email
-    if (!to) return
-
-    const lead = await getLead(leadId)
-    const contact = isBusinessScopedUserId(message.waId)
-      ? `@${message.waId} (WhatsApp username — no phone number)`
-      : `+${message.waId}`
-
-    const line = (label: string, value?: string | null) =>
-      value ? `${label.padEnd(10)}${value}` : ""
-
-    await resend.emails.send({
-      from: "Dr Web Studio <james@dr-webstudio.com>",
-      to: [to],
-      subject: `New WhatsApp lead: ${lead?.name || message.profileName || message.waId}`,
-      text: [
-        "The WhatsApp agent saved a new lead.",
-        "",
-        line("Name:", lead?.name ?? message.profileName),
-        line("Contact:", contact),
-        line("Email:", lead?.email),
-        line("Company:", lead?.company),
-        line("Service:", lead?.service_key),
-        line("Timeline:", lead?.timeline),
-        line("Notes:", lead?.message),
-        "",
-        "The agent is still handling this conversation. Reply in the inbox to",
-        `take it over — it will stand down automatically: ${AGENT_INBOX_URL}`,
-      ]
-        .filter(Boolean)
-        .join("\n"),
+    const email = newLeadEmail({
+      tenant,
+      profile: profileFor(tenant) ?? drwebstudio,
+      customer: message,
+      lead: await getLead(leadId),
     })
+    if (email) await resend.emails.send(email)
   } catch (error) {
     // Never let a notification failure affect the conversation.
     console.error("agent: new-lead email failed:", error)
@@ -287,49 +253,18 @@ async function escalate(
   // must not silence a working agent.
   if (opts.standDown !== false) await markEscalated(conversation, reason)
 
-  // A username-only contact has a business-scoped user id where a phone number
-  // would be. Rendering it as "+DO.1757134975438075" or as a wa.me link both
-  // produce something that looks like a number and does not work.
-  const byPhone = !isBusinessScopedUserId(message.waId)
-  const contact = byPhone ? `+${message.waId}` : `@${message.waId}`
-
   try {
-    const to = tenant.escalation_email
-    if (!to) return
-
-    const transcript = history
-      .map(h => `${h.role === "user" ? "Customer" : "Agent"}: ${h.content}`)
-      .join("\n")
-
-    await resend.emails.send({
-      from: "Dr Web Studio <james@dr-webstudio.com>",
-      to: [to],
-      subject: `WhatsApp handoff (${urgency}): ${message.profileName || message.waId}`,
-      text: [
-        `The WhatsApp agent handed a conversation over.`,
-        "",
-        `Reason:   ${reason}`,
-        `Urgency:  ${urgency}`,
-        `Customer: ${message.profileName || "unknown"} (${contact})`,
-        "",
-        `Reply as ${tenant.business_name}:  ${AGENT_INBOX_URL}`,
-        ...(byPhone
-          ? [
-              `Reply from your own phone:  ${waHref(message.waId)}`,
-              "  (that one reaches them from your personal number, not the",
-              "   business number they have been talking to — prefer the inbox)",
-            ]
-          : [
-              "  This contact has a WhatsApp username and no phone number, so",
-              "  the inbox is the ONLY way to reach them. There is nothing to",
-              "  open in your own WhatsApp.",
-            ]),
-        "",
-        "The agent has stopped replying to this conversation.",
-        "",
-        transcript ? `--- transcript ---\n${transcript}` : "",
-      ].join("\n"),
+    const email = escalationEmail({
+      tenant,
+      // A tenant whose profile is unknown still gets told — in DR's wording,
+      // which is better than no email at all.
+      profile: profileFor(tenant) ?? drwebstudio,
+      customer: message,
+      reason,
+      urgency,
+      history,
     })
+    if (email) await resend.emails.send(email)
   } catch (error) {
     console.error("agent: escalation email failed:", error)
   }

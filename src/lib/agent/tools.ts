@@ -184,6 +184,13 @@ export async function runTool(
         source: "whatsapp",
         conversationId: ctx.conversation.id,
         tenantId: ctx.tenant.tenant_id,
+        // If the write fails, the emailed copy goes to this business.
+        fallback: ctx.tenant.escalation_email
+          ? {
+              to: ctx.tenant.escalation_email,
+              from: ctx.tenant.email_from ?? undefined,
+            }
+          : undefined,
         name: str("name") ?? ctx.profileName,
         phone: ctx.waId,
         company: str("company"),

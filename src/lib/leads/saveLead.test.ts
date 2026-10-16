@@ -41,6 +41,7 @@ describe("saveLead", () => {
   it("inserts a contact-form lead and returns the row id", async () => {
     const id = await saveLead({
       source: "contact-form",
+      tenantId: "drwebstudio",
       name: "Ana",
       email: "ana@example.com",
       phone: "8095551234",
@@ -66,6 +67,7 @@ describe("saveLead", () => {
   it("maps references onto reference_urls, since references is reserved SQL", async () => {
     await saveLead({
       source: "project-planner",
+      tenantId: "drwebstudio",
       name: "Luis",
       email: "luis@example.com",
       serviceKey: "e-commerce",
@@ -83,6 +85,7 @@ describe("saveLead", () => {
   it("drops empty strings and empty arrays instead of storing blanks", async () => {
     await saveLead({
       source: "contact-form",
+      tenantId: "drwebstudio",
       name: "Ana",
       email: "ana@example.com",
       company: "",
@@ -99,6 +102,7 @@ describe("saveLead", () => {
   it("stores the estimate as jsonb with a pricing snapshot", async () => {
     await saveLead({
       source: "project-planner",
+      tenantId: "drwebstudio",
       name: "Luis",
       email: "luis@example.com",
       estimate: {
@@ -118,6 +122,7 @@ describe("saveLead", () => {
   it("omits the estimate entirely when there is no total", async () => {
     await saveLead({
       source: "whatsapp",
+      tenantId: "drwebstudio",
       name: "Sin precio",
       email: "x@example.com",
     })
@@ -133,6 +138,7 @@ describe("saveLead", () => {
 
     const id = await saveLead({
       source: "contact-form",
+      tenantId: "drwebstudio",
       name: "Ana",
       email: "ana@example.com",
     })
@@ -145,6 +151,34 @@ describe("saveLead", () => {
     expect(sent.text).toContain("ana@example.com")
   })
 
+  it("writes the tenant it was given, never a default", async () => {
+    await saveLead({ source: "whatsapp", tenantId: "grandbay", name: "Ana" })
+    expect(insert.mock.calls[0][0].tenant_id).toBe("grandbay")
+  })
+
+  it("emails another business's failed lead to that business", async () => {
+    mockSupabase({ data: null, error: { message: "Project is paused" } })
+
+    await saveLead({
+      source: "whatsapp",
+      tenantId: "grandbay",
+      name: "Ana",
+      fallback: {
+        to: "bookings@grandbay.example",
+        from: "Grand Bay of the Sea WhatsApp Assistant <agent@dr-webstudio.com>",
+      },
+    })
+
+    const sent = sendEmail.mock.calls[0][0]
+    expect(sent.to).toEqual(["bookings@grandbay.example"])
+    expect(sent.from).toBe(
+      "Grand Bay of the Sea WhatsApp Assistant <agent@dr-webstudio.com>",
+    )
+    // The routing hint is not part of the lead.
+    expect(sent.text).not.toContain("bookings@grandbay.example")
+    expect(sent.text).toContain('"tenantId": "grandbay"')
+  })
+
   it("emails the payload when the client throws outright", async () => {
     getSupabase.mockReturnValue({
       from: () => {
@@ -153,7 +187,12 @@ describe("saveLead", () => {
     })
 
     await expect(
-      saveLead({ source: "contact-form", name: "Ana", email: "a@b.com" }),
+      saveLead({
+        source: "contact-form",
+        tenantId: "drwebstudio",
+        name: "Ana",
+        email: "a@b.com",
+      }),
     ).resolves.toBeNull()
     expect(sendEmail).toHaveBeenCalledTimes(1)
     expect(sendEmail.mock.calls[0][0].text).toContain("network unreachable")
@@ -164,6 +203,7 @@ describe("saveLead", () => {
 
     const id = await saveLead({
       source: "contact-form",
+      tenantId: "drwebstudio",
       name: "Ana",
       email: "a@b.com",
     })
@@ -178,7 +218,7 @@ describe("saveLead", () => {
     sendEmail.mockRejectedValue(new Error("resend down"))
 
     await expect(
-      saveLead({ source: "whatsapp", name: "Ana" }),
+      saveLead({ source: "whatsapp", tenantId: "drwebstudio", name: "Ana" }),
     ).resolves.toBeNull()
   })
 })

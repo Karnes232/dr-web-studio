@@ -106,6 +106,47 @@ describe("sendText", () => {
     expect(spy).not.toHaveBeenCalled()
   })
 
+  it("sends with the tenant's own Kapso key when the row names one", async () => {
+    process.env.KAPSO_API_KEY_GRANDBAY = "grandbay-key"
+    const spy = mockFetch(200, { messages: [{ id: "wamid.GB1" }] })
+
+    await sendText("900", "18295551234", "Hola", {
+      apiKeyEnv: "KAPSO_API_KEY_GRANDBAY",
+    })
+
+    const init = spy.mock.calls[0][1] as RequestInit
+    expect((init.headers as Record<string, string>)["X-API-Key"]).toBe(
+      "grandbay-key",
+    )
+    delete process.env.KAPSO_API_KEY_GRANDBAY
+  })
+
+  it("never sends one business's message with another's key", async () => {
+    // Named key missing: fail, do not fall back to DR's KAPSO_API_KEY.
+    delete process.env.KAPSO_API_KEY_GRANDBAY
+    const spy = mockFetch(200, { messages: [{ id: "wamid.X" }] })
+
+    const result = await sendText("900", "18295551234", "Hola", {
+      apiKeyEnv: "KAPSO_API_KEY_GRANDBAY",
+    })
+
+    expect(result.ok).toBe(false)
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it("refuses a key name outside the KAPSO_API_KEY prefix", async () => {
+    process.env.SUPABASE_SECRET_KEY = "db-secret"
+    const spy = mockFetch(200, { messages: [{ id: "wamid.X" }] })
+
+    const result = await sendText("900", "18295551234", "Hola", {
+      apiKeyEnv: "SUPABASE_SECRET_KEY",
+    })
+
+    expect(result.ok).toBe(false)
+    expect(spy).not.toHaveBeenCalled()
+    delete process.env.SUPABASE_SECRET_KEY
+  })
+
   it("builds a template body with language and components", async () => {
     const spy = mockFetch(200, { messages: [{ id: "wamid.T1" }] })
 

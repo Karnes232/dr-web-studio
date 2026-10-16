@@ -4,6 +4,7 @@ import { runTool, type ToolContext } from "./tools"
 import type { AgentProfile, CatalogueEntry } from "./profiles"
 import type { Conversation, Tenant } from "@/lib/whatsapp/store"
 import { PRICE } from "./pricing"
+import { tenantSecret } from "@/lib/tenantEnv"
 
 /** A stuck model must not bankrupt the turn. */
 const MAX_TOOL_ITERATIONS = 5
@@ -50,9 +51,29 @@ export interface TurnParams {
   resumed?: boolean
 }
 
-let client: Anthropic | null = null
-function anthropic(): Anthropic {
-  if (!client) client = new Anthropic()
+const clients = new Map<string, Anthropic>()
+
+/**
+ * The Claude client for a tenant.
+ *
+ * NULL `anthropic_api_key_env` = ANTHROPIC_API_KEY, James's account. A client
+ * that brings its own key names its variable, and is billed there. A named
+ * key that is missing throws — `runAgent` turns that into an escalation —
+ * rather than silently billing James. Cost is metered the same either way, so
+ * the spend cap works for a bring-your-own-key tenant too.
+ *
+ * One client per key, kept for the life of the function instance.
+ */
+export function anthropicFor(
+  tenant: Pick<Tenant, "anthropic_api_key_env">,
+): Anthropic {
+  const key = tenantSecret(tenant.anthropic_api_key_env, "ANTHROPIC_API_KEY")
+  if (!key.ok) throw new Error(`Claude key: ${key.error}`)
+  let client = clients.get(key.name)
+  if (!client) {
+    client = new Anthropic({ apiKey: key.value })
+    clients.set(key.name, client)
+  }
   return client
 }
 
@@ -129,7 +150,7 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
   let reply = ""
 
   for (let i = 0; i < MAX_TOOL_ITERATIONS; i++) {
-    const response = await anthropic().messages.create({
+    const response = await anthropicFor(tenant).messages.create({
       // Model is tenant config, but a cheaper model is NOT just a SQL update —
       // four things break, three of them silently, and the whole test suite
       // stays green because nothing here is ever exercised against the API:

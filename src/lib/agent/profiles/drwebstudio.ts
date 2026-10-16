@@ -3,6 +3,8 @@ import { renderKnowledge } from "../knowledge"
 import { systemPersona } from "../prompt"
 import { TOOLS } from "../tools"
 import type { AgentProfile } from "./types"
+import type { Tenant } from "@/lib/whatsapp/store"
+import { waHref } from "@/lib/contact"
 
 /**
  * DR Web Studio — the original agent, wrapped without changing a byte.
@@ -49,4 +51,38 @@ export const drwebstudio: AgentProfile = {
       ? `Thanks for your message! I can't answer automatically right now, but I've passed it to the ${business} team and someone will get back to you shortly.`
       : `¡Gracias por escribirnos! En este momento no puedo responderte automáticamente, pero ya le pasé tu mensaje al equipo de ${business} y te contestan en breve.`
   },
+
+  leadLabels: {
+    company: "Company:",
+    service: "Service:",
+    timeline: "Timeline:",
+    notes: "Notes:",
+  },
+
+  // DR's number is a Cloud API number, removed from the WhatsApp Business
+  // app, so there is no phone to answer on — replying *as* the business means
+  // the provider's inbox.
+  takeoverLines: tenant => [
+    "The agent is still handling this conversation. Reply in the inbox to",
+    `take it over — it will stand down automatically: ${inboxUrl(tenant)}`,
+  ],
+
+  replyLines: (tenant, waId, byPhone) => [
+    `Reply as ${tenant.business_name}:  ${inboxUrl(tenant)}`,
+    ...(byPhone
+      ? [
+          `Reply from your own phone:  ${waHref(waId)}`,
+          "  (that one reaches them from your personal number, not the",
+          "   business number they have been talking to — prefer the inbox)",
+        ]
+      : [
+          "  This contact has a WhatsApp username and no phone number, so",
+          "  the inbox is the ONLY way to reach them. There is nothing to",
+          "  open in your own WhatsApp.",
+        ]),
+  ],
+}
+
+function inboxUrl(tenant: Tenant): string {
+  return tenant.inbox_url || "https://inbox.kapso.ai"
 }
