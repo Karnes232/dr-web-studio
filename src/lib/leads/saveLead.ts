@@ -169,6 +169,7 @@ export interface LeadSummary {
   email: string | null
   company: string | null
   service_key: string | null
+  project_type: string | null
   timeline: string | null
   message: string | null
 }
@@ -189,7 +190,9 @@ export async function getLead(id: string): Promise<LeadSummary | null> {
 
   const { data, error } = await supabase
     .from("leads")
-    .select("name, email, company, service_key, timeline, message")
+    .select(
+      "name, email, company, service_key, project_type, timeline, message",
+    )
     .eq("id", id)
     .maybeSingle()
 

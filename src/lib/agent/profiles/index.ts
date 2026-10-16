@@ -1,11 +1,13 @@
 import type { Tenant } from "@/lib/whatsapp/store"
 import { drwebstudio } from "./drwebstudio"
+import { grandbay } from "./grandbay"
 import type { AgentProfile } from "./types"
 
 export type { AgentProfile, CatalogueEntry, LoadedKnowledge } from "./types"
 
 const PROFILES: Record<string, AgentProfile> = {
   [drwebstudio.id]: drwebstudio,
+  [grandbay.id]: grandbay,
 }
 
 /**

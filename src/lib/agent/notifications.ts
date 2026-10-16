@@ -71,6 +71,7 @@ export function newLeadEmail(args: {
       line("Email:", lead?.email),
       line(labels.company, lead?.company),
       line(labels.service, lead?.service_key),
+      labels.projectType ? line(labels.projectType, lead?.project_type) : "",
       line(labels.timeline, lead?.timeline),
       line(labels.notes, lead?.message),
       "",

@@ -36,6 +36,8 @@ export interface Tenant {
   /** NAME of the env var holding this tenant's Kapso project-webhook secret. */
   kapso_project_secret_env?: string | null
   inbox_url?: string | null
+  /** The number customers see, for humans reading emails. Defined in 0002. */
+  display_phone?: string | null
   email_from?: string | null
   email_reply_to?: string | null
   /** Kapso plan allowance per month. NULL = no limit, nothing is metered. */

@@ -51,6 +51,8 @@ export interface AgentProfile {
     service: string
     timeline: string
     notes: string
+    /** Shown only if set: DR's email has no such line. */
+    projectType?: string
   }
 
   /** New-lead email footer: how to take the conversation over. */

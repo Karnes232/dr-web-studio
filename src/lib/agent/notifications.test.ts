@@ -20,6 +20,7 @@ const lead = {
   email: "ana@example.com",
   company: "Café Ana",
   service_key: "landing-page",
+  project_type: "Landing page",
   timeline: "November",
   message: "Bilingual please",
 }
