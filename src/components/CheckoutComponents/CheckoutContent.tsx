@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 import { Elements } from "@stripe/react-stripe-js"
 import { getStripe } from "@/lib/stripe-client"
 import CheckoutForm from "@/components/CheckoutComponents/CheckoutForm"
@@ -16,6 +16,11 @@ import { useParams } from "next/navigation"
 import type { CustomPaymentData } from "@/sanity/queries/payment/customPayment"
 import { useLocale } from "@/i18n/useLocale"
 import { StripeElementLocale } from "@stripe/stripe-js"
+import {
+  BOTPOISON_PUBLIC_KEY,
+  MAX_CENTS,
+  MIN_CENTS,
+} from "@/lib/payments/config"
 
 const stripePromise = getStripe()
 
@@ -31,12 +36,55 @@ const CheckoutContent = ({
   const [customerEmail, setCustomerEmail] = useState("")
   const [error, setError] = useState("")
   const { lang } = useParams()
-  const { t } = useLocale()
+  const { t, currentLocale } = useLocale()
+  // One id per form session: a double-click or retry with the same details
+  // reuses the server's PaymentIntent instead of creating a second one.
+  const attemptId = useRef(crypto.randomUUID())
+
+  const formatMoney = (cents: number) =>
+    new Intl.NumberFormat(currentLocale === "es" ? "es-DO" : "en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(cents / 100)
+
+  // Server error codes -> translated messages.
+  const errorMessage = (code: unknown) => {
+    switch (code) {
+      case "amount_invalid":
+        return t("checkout.error_amount_invalid")
+      case "amount_min":
+        return t("checkout.error_amount_min")
+      case "amount_max":
+        return t("checkout.error_amount_max")
+      case "name_required":
+        return t("checkout.error_name_required")
+      case "email_required":
+        return t("checkout.error_email_required")
+      case "email_invalid":
+        return t("checkout.error_email_invalid")
+      case "verification_required":
+      case "verification_failed":
+        return t("checkout.error_verification_failed")
+      default:
+        return t("checkout.error_create_failed")
+    }
+  }
+
   const createPaymentIntent = async (paymentAmount: number) => {
     setLoading(true)
     setError("")
 
     try {
+      // Loaded on submit, inside the try, so a blocked request surfaces as an
+      // error message rather than a button that silently does nothing.
+      const { default: Botpoison } = await import("@botpoison/browser")
+      const botpoison = new Botpoison({ publicKey: BOTPOISON_PUBLIC_KEY })
+      const { solution } = await botpoison.challenge()
+      if (!solution) {
+        setError(t("checkout.error_verification_failed"))
+        return
+      }
+
       const response = await fetch("/api/create-payment-intent", {
         method: "POST",
         headers: {
@@ -46,20 +94,23 @@ const CheckoutContent = ({
           amount: paymentAmount,
           customerName,
           customerEmail,
+          lang: currentLocale,
+          attemptId: attemptId.current,
+          _botpoison: solution,
         }),
       })
 
       const data = await response.json()
 
-      if (data.error) {
-        setError(data.error)
+      if (!response.ok || data.error || !data.clientSecret) {
+        setError(errorMessage(data.error))
         return
       }
 
       setClientSecret(data.clientSecret)
     } catch (error) {
       console.error("Error creating payment intent:", error)
-      setError("Failed to create payment. Please try again.")
+      setError(t("checkout.error_create_failed"))
     } finally {
       setLoading(false)
     }
@@ -76,37 +127,38 @@ const CheckoutContent = ({
     const numericAmount = parseFloat(amount)
 
     if (!amount || isNaN(numericAmount) || numericAmount <= 0) {
-      setError("Please enter a valid payment amount")
+      setError(t("checkout.error_amount_invalid"))
       return
     }
 
-    if (numericAmount < 1) {
-      setError("Minimum payment amount is $1.00")
+    // Round once, here, to whole cents; the server only accepts integers.
+    const amountInCents = Math.round(numericAmount * 100)
+
+    if (amountInCents < MIN_CENTS) {
+      setError(t("checkout.error_amount_min"))
       return
     }
 
-    if (numericAmount > 10000) {
-      setError("Maximum payment amount is $10,000.00")
+    if (amountInCents > MAX_CENTS) {
+      setError(t("checkout.error_amount_max"))
       return
     }
 
     if (!customerName.trim()) {
-      setError("Please enter your name")
+      setError(t("checkout.error_name_required"))
       return
     }
 
     if (!customerEmail.trim()) {
-      setError("Please enter your email address")
+      setError(t("checkout.error_email_required"))
       return
     }
 
     if (!validateEmail(customerEmail)) {
-      setError("Please enter a valid email address")
+      setError(t("checkout.error_email_invalid"))
       return
     }
 
-    // Convert to cents for Stripe
-    const amountInCents = Math.round(numericAmount * 100)
     createPaymentIntent(amountInCents)
   }
 
@@ -126,6 +178,7 @@ const CheckoutContent = ({
     setCustomerName("")
     setCustomerEmail("")
     setError("")
+    attemptId.current = crypto.randomUUID()
   }
 
   return (
@@ -255,7 +308,10 @@ const CheckoutContent = ({
                     ) : (
                       <div className="flex items-center justify-center">
                         <Shield className="h-5 w-5 mr-2" />
-                        {t("checkout.pay")} ${amount || "0.00"}
+                        {t("checkout.pay")}{" "}
+                        {formatMoney(
+                          Math.round((parseFloat(amount) || 0) * 100),
+                        )}
                       </div>
                     )}
                   </button>
@@ -282,8 +338,8 @@ const CheckoutContent = ({
               <div className="p-8">
                 <div className="text-center mb-6">
                   <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-4 py-2 rounded-lg inline-block font-semibold mb-2">
-                    {t("checkout.payment_amount")}: $
-                    {(parseFloat(amount) || 0).toFixed(2)}
+                    {t("checkout.payment_amount")}:{" "}
+                    {formatMoney(Math.round((parseFloat(amount) || 0) * 100))}
                   </div>
                   <div className="text-sm text-slate-600 dark:text-slate-400">
                     <p>

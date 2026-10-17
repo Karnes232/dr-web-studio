@@ -219,7 +219,16 @@
     "completed_successfully": "completado exitosamente!",
     "need_help": "¿Necesitas Ayuda?",
     "have_questions": "¿Tienes preguntas sobre tu pago o proyecto? Estamos aquí para ayudarte!",
-    "email_us": "Envíanos un Correo"
+    "email_us": "Envíanos un Correo",
+    "error_amount_invalid": "Escribe un monto válido.",
+    "error_amount_min": "El pago mínimo es $1.00.",
+    "error_amount_max": "El pago máximo es $10,000.00.",
+    "error_name_required": "Escribe tu nombre.",
+    "error_email_required": "Escribe tu correo electrónico.",
+    "error_email_invalid": "Escribe un correo electrónico válido.",
+    "error_create_failed": "No pudimos iniciar tu pago. Intenta de nuevo.",
+    "error_verification_failed": "No pudimos verificar tu solicitud. Intenta de nuevo.",
+    "error_generic_payment": "Algo salió mal con tu pago. No se hizo ningún cargo. Intenta de nuevo."
   },
   "landingPage": {
     "learnMore": "Ver más →",

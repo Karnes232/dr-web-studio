@@ -219,7 +219,16 @@
     "completed_successfully": "completed successfully!",
     "need_help": "Need Help?",
     "have_questions": "Have questions about your payment or project? We're here to help!",
-    "email_us": "Email Us"
+    "email_us": "Email Us",
+    "error_amount_invalid": "Please enter a valid payment amount.",
+    "error_amount_min": "The minimum payment is $1.00.",
+    "error_amount_max": "The maximum payment is $10,000.00.",
+    "error_name_required": "Please enter your name.",
+    "error_email_required": "Please enter your email address.",
+    "error_email_invalid": "Please enter a valid email address.",
+    "error_create_failed": "We could not start your payment. Please try again.",
+    "error_verification_failed": "We could not verify your request. Please try again.",
+    "error_generic_payment": "Something went wrong with your payment. No charge was made. Please try again."
   },
   "landingPage": {
     "learnMore": "Learn more →",
