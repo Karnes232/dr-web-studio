@@ -185,7 +185,9 @@ const CheckoutFlow = () => {
         <>
           {/* Payment Form */}
           <div className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* noValidate: our translated messages, not the browser's tooltip
+                in the browser's language. */}
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
               {/* Customer Name Input */}
               <div>
                 <label
@@ -314,7 +316,13 @@ const CheckoutFlow = () => {
                   <strong>{t("checkout.name")}:</strong> {customerName}
                 </p>
                 <p>
-                  <strong>{t("checkout.email")}:</strong> {customerEmail}
+                  <strong>{t("checkout.email")}:</strong>{" "}
+                  {/* Keep the address whole (it moves to its own line rather
+                      than splitting at a hyphen); break only if it is wider
+                      than the card. */}
+                  <span className="inline-block max-w-full break-all">
+                    {customerEmail}
+                  </span>
                 </p>
               </div>
             </div>

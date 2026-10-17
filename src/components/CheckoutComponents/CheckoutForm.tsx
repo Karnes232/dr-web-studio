@@ -40,12 +40,12 @@ export default function CheckoutForm({ lang }: { lang: string }) {
       })
 
       if (error) {
-        // Card and validation errors are written for the customer; anything
-        // else (network, API) gets our own translated message.
+        // The Payment Element already shows card and validation errors inline,
+        // in the customer's language; repeating them here showed the decline
+        // twice. Anything else (network, API) gets our own translated message.
         setMessage(
-          (error.type === "card_error" || error.type === "validation_error") &&
-            error.message
-            ? error.message
+          error.type === "card_error" || error.type === "validation_error"
+            ? ""
             : t("checkout.error_generic_payment"),
         )
         setLoading(false)
