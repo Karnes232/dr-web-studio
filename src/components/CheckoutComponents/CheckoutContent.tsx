@@ -368,11 +368,7 @@ const CheckoutContent = ({
                     },
                   }}
                 >
-                  <CheckoutForm
-                    lang={lang as string}
-                    customerEmail={customerEmail}
-                    customerName={customerName}
-                  />
+                  <CheckoutForm lang={lang as string} />
                 </Elements>
 
                 {/* Back Button */}

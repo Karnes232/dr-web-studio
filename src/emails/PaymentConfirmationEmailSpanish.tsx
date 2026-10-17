@@ -15,6 +15,8 @@ import {
   Column,
   Tailwind,
 } from "@react-email/components"
+import { formatMoney, formatPaidAt } from "@/lib/payments/format"
+import { waHref } from "@/lib/contact"
 
 const PaymentConfirmationEmailSpanish = ({
   clientName = "John Doe",
@@ -22,18 +24,31 @@ const PaymentConfirmationEmailSpanish = ({
   paymentAmount = 15000,
   transactionId = "txn_1234567890",
   email = "info@dr-webstudio.com",
+  currency = "usd",
+  paidAt = "2026-01-15T15:00:00.000Z",
+  description = "Pago personalizado",
+  whatsapp = "+1 204-809-3662",
+  receiptUrl,
 }: {
   clientName?: string
   clientEmail?: string
   paymentAmount?: number
   transactionId?: string
   email?: string
+  /** Lower-case ISO currency; the amount is in its minor units. */
+  currency?: string
+  paidAt?: Date | string
+  /** What the payment was for. */
+  description?: string
+  /** Display number; the link is built from its digits. */
+  whatsapp?: string
+  /** Stripe's hosted receipt, when the charge has one. */
+  receiptUrl?: string
 }) => {
   const previewText = `Pago confirmado para tu proyecto web - DR Web Studio`
-  const USDollar = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  })
+  const locale = "es" as const
+  const amountText = formatMoney(paymentAmount, currency, locale)
+  const dateText = formatPaidAt(paidAt, locale)
 
   return (
     <Html>
@@ -93,7 +108,7 @@ const PaymentConfirmationEmailSpanish = ({
                     Monto Pagado:
                   </Text>
                   <Text className="text-2xl font-bold text-green-600 mb-4">
-                    {USDollar.format(paymentAmount / 100)}
+                    {amountText}
                   </Text>
                 </Column>
               </Row>
@@ -107,6 +122,32 @@ const PaymentConfirmationEmailSpanish = ({
                   </Text>
                 </Column>
               </Row>
+
+              <Row className="">
+                <Column className="w-full">
+                  <Text className="text-gray-600 text-sm mb-1">Fecha:</Text>
+                  <Text className="text-gray-800 text-sm mb-4">{dateText}</Text>
+                </Column>
+              </Row>
+
+              <Row className="">
+                <Column className="w-full">
+                  <Text className="text-gray-600 text-sm mb-1">Concepto:</Text>
+                  <Text className="text-gray-800 text-sm mb-4">
+                    {description}
+                  </Text>
+                </Column>
+              </Row>
+
+              {receiptUrl && (
+                <Row className="">
+                  <Column className="w-full">
+                    <Link href={receiptUrl} className="text-orange-700 text-sm">
+                      Ver recibo
+                    </Link>
+                  </Column>
+                </Row>
+              )}
             </Section>
 
             <Section className="bg-white rounded-lg shadow-lg mb-6 p-6">
@@ -185,6 +226,15 @@ const PaymentConfirmationEmailSpanish = ({
                   </Text>
                   <Link href={`mailto:${email}`} className="text-orange-700">
                     {email}
+                  </Link>
+                </div>
+
+                <div className="flex items-center">
+                  <Text className="text-gray-600 font-semibold mr-2">
+                    WhatsApp:
+                  </Text>
+                  <Link href={waHref(whatsapp)} className="text-orange-700">
+                    {whatsapp}
                   </Link>
                 </div>
               </div>

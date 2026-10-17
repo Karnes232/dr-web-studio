@@ -5,21 +5,14 @@ import { useLocale } from "@/i18n/useLocale"
 import { getPathname } from "@/i18n/navigation"
 import type { Locale } from "@/lib/slugs"
 
-export default function CheckoutForm({
-  lang,
-  customerEmail,
-  customerName,
-}: {
-  lang: string
-  customerEmail: string
-  customerName: string
-}) {
+export default function CheckoutForm({ lang }: { lang: string }) {
   const stripe = useStripe()
   const elements = useElements()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
   const { t } = useLocale()
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
@@ -28,46 +21,56 @@ export default function CheckoutForm({
     }
 
     setLoading(true)
+    setMessage("")
 
-    const { error, paymentIntent } = await stripe.confirmPayment({
-      elements,
-      redirect: "if_required",
+    const successPath = getPathname({
+      locale: lang as Locale,
+      href: "/payment-success",
     })
 
-    if (error) {
-      setMessage(error.message || "An unexpected error occurred.")
-      setLoading(false)
-    } else if (paymentIntent && paymentIntent.status === "succeeded") {
-      // Redirect with payment details
-      const searchParams = new URLSearchParams({
-        payment_intent: paymentIntent.id,
-        payment_intent_client_secret: paymentIntent.client_secret || "",
-        amount: paymentIntent.amount.toString(),
-        currency: paymentIntent.currency,
-        status: paymentIntent.status,
-      })
-
-      const response = await fetch("/api/payment-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      // Redirect-based methods (3DS fallbacks, bank redirects) come back to
+      // return_url; cards finish in place, so redirect: "if_required".
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}${successPath}`,
         },
-        body: JSON.stringify({
-          clientName: customerName,
-          clientEmail: customerEmail,
-          paymentAmount: paymentIntent.amount.toString(),
-          transactionId: paymentIntent.id,
-          lang: lang,
-        }),
+        redirect: "if_required",
       })
 
-      const data = await response.json()
+      if (error) {
+        // Card and validation errors are written for the customer; anything
+        // else (network, API) gets our own translated message.
+        setMessage(
+          (error.type === "card_error" || error.type === "validation_error") &&
+            error.message
+            ? error.message
+            : t("checkout.error_generic_payment"),
+        )
+        setLoading(false)
+        return
+      }
 
-      const successPath = getPathname({
-        locale: lang as Locale,
-        href: "/payment-success",
-      })
-      router.push(`${successPath}?${searchParams.toString()}`)
+      if (
+        paymentIntent &&
+        (paymentIntent.status === "succeeded" ||
+          paymentIntent.status === "processing")
+      ) {
+        // The id is all the success page needs: it reads the real status from
+        // Stripe on the server. The confirmation email comes from the webhook.
+        router.push(
+          `${successPath}?payment_intent=${encodeURIComponent(paymentIntent.id)}`,
+        )
+        return
+      }
+
+      setMessage(t("checkout.error_generic_payment"))
+      setLoading(false)
+    } catch (err) {
+      console.error("confirmPayment failed", err)
+      setMessage(t("checkout.error_generic_payment"))
+      setLoading(false)
     }
   }
 
@@ -80,7 +83,11 @@ export default function CheckoutForm({
       >
         {loading ? t("checkout.processing") : t("checkout.pay")}
       </button>
-      {message && <div className="mt-4 text-red-600 text-sm">{message}</div>}
+      {message && (
+        <div role="alert" className="mt-4 text-red-600 text-sm">
+          {message}
+        </div>
+      )}
     </form>
   )
 }
