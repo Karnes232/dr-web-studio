@@ -228,7 +228,14 @@
     "error_email_invalid": "Please enter a valid email address.",
     "error_create_failed": "We could not start your payment. Please try again.",
     "error_verification_failed": "We could not verify your request. Please try again.",
-    "error_generic_payment": "Something went wrong with your payment. No charge was made. Please try again."
+    "error_generic_payment": "Something went wrong with your payment. No charge was made. Please try again.",
+    "processing_title": "We are processing your payment",
+    "processing_body": "Your bank has not confirmed the payment yet. We will email you as soon as it goes through. You do not need to pay again.",
+    "not_completed_title": "Your payment was not completed",
+    "not_completed_body": "No charge was made. You can try again whenever you like.",
+    "try_again": "Try again",
+    "status_processing": "Processing",
+    "error_not_completed": "Not completed"
   },
   "landingPage": {
     "learnMore": "Learn more →",

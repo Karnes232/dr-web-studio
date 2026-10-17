@@ -228,7 +228,14 @@
     "error_email_invalid": "Escribe un correo electrónico válido.",
     "error_create_failed": "No pudimos iniciar tu pago. Intenta de nuevo.",
     "error_verification_failed": "No pudimos verificar tu solicitud. Intenta de nuevo.",
-    "error_generic_payment": "Algo salió mal con tu pago. No se hizo ningún cargo. Intenta de nuevo."
+    "error_generic_payment": "Algo salió mal con tu pago. No se hizo ningún cargo. Intenta de nuevo.",
+    "processing_title": "Estamos procesando tu pago",
+    "processing_body": "Tu banco todavía no confirma el pago. Te enviaremos un correo en cuanto se complete. No hace falta que pagues de nuevo.",
+    "not_completed_title": "Tu pago no se completó",
+    "not_completed_body": "No se hizo ningún cargo. Puedes intentarlo de nuevo cuando quieras.",
+    "try_again": "Intentar de nuevo",
+    "status_processing": "Procesando",
+    "error_not_completed": "No completado"
   },
   "landingPage": {
     "learnMore": "Ver más →",
