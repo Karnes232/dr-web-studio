@@ -9,6 +9,7 @@ vi.mock("@/lib/supabase/serverClient", () => ({
 import {
   CLAIM_LEASE_MS,
   claimEmail,
+  isEmailSent,
   markEmailSent,
   recordSucceeded,
   type PaymentRecord,
@@ -100,5 +101,23 @@ describe("claimEmail", () => {
   it("throws on a database error", async () => {
     db.failNext = "update"
     await expect(claimEmail("pi_1", "customer", t0)).rejects.toThrow()
+  })
+})
+
+describe("isEmailSent", () => {
+  beforeEach(async () => {
+    await recordSucceeded(record)
+  })
+
+  it("is false while claimed but unsent, true once marked", async () => {
+    await claimEmail("pi_1", "customer")
+    expect(await isEmailSent("pi_1", "customer")).toBe(false)
+    await markEmailSent("pi_1", "customer")
+    expect(await isEmailSent("pi_1", "customer")).toBe(true)
+    expect(await isEmailSent("pi_1", "owner")).toBe(false)
+  })
+
+  it("is false for an unknown payment", async () => {
+    expect(await isEmailSent("pi_missing", "customer")).toBe(false)
   })
 })

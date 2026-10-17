@@ -37,6 +37,17 @@ export class FakePaymentsDb {
           return { error: null }
         },
         update: (patch: Row) => this.update(patch),
+        select: (col: string) => ({
+          eq: (key: string, val: unknown) => ({
+            maybeSingle: async () => {
+              const row = [...this.rows.values()].find(r => r[key] === val)
+              return {
+                data: row ? { [col]: row[col] ?? null } : null,
+                error: null,
+              }
+            },
+          }),
+        }),
       }
     },
   }

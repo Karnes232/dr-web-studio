@@ -82,6 +82,25 @@ export async function claimEmail(
   return (data?.length ?? 0) > 0
 }
 
+/**
+ * Whether this email has gone out. Used when a claim is lost, to tell "already
+ * sent" (done) apart from "another delivery holds the lease" (not done yet).
+ */
+export async function isEmailSent(
+  paymentIntentId: string,
+  kind: EmailKind,
+): Promise<boolean> {
+  const supabase = requireSupabase()
+  const sent = `${kind}_email_sent_at`
+  const { data, error } = await supabase
+    .from("payments")
+    .select(sent)
+    .eq("payment_intent_id", paymentIntentId)
+    .maybeSingle()
+  if (error) throw new Error(`isEmailSent failed: ${error.code ?? ""}`)
+  return Boolean((data as Record<string, unknown> | null)?.[sent])
+}
+
 /** Record that the email went out. Call only after Resend accepted it. */
 export async function markEmailSent(
   paymentIntentId: string,

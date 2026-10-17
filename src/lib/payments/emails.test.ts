@@ -115,9 +115,11 @@ describe("sendPaymentEmails", () => {
     await expect(sendPaymentEmails(input)).rejects.toThrow()
     expect(db.rows.get("pi_1")!.customer_email_sent_at).toBeTruthy()
 
-    // Immediately retrying is blocked by the owner lease: no duplicate send.
+    // Immediately retrying is blocked by the owner lease: no duplicate send,
+    // and it must still fail so the webhook answers 500 and Stripe comes back.
+    // Resolving here would tell Stripe "done" and the email would never go.
     send.mockResolvedValue({ data: { id: "em_2" }, error: null })
-    await sendPaymentEmails(input)
+    await expect(sendPaymentEmails(input)).rejects.toThrow(/in progress/)
     expect(send).toHaveBeenCalledTimes(2)
 
     // Once the lease lapses the owner email is retried; the customer's never.

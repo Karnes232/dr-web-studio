@@ -10,7 +10,12 @@ import {
 } from "@/sanity/queries/layout/generalLayout"
 import { FALLBACK_WHATSAPP, OWNER_EMAIL, type PaymentLocale } from "./config"
 import { formatMoney } from "./format"
-import { claimEmail, markEmailSent, type EmailKind } from "./store"
+import {
+  claimEmail,
+  isEmailSent,
+  markEmailSent,
+  type EmailKind,
+} from "./store"
 
 const FROM = "Dr Web Studio <james@dr-webstudio.com>"
 
@@ -97,14 +102,24 @@ async function sendOnce(
     replyTo?: string
   }>,
 ): Promise<boolean> {
-  if (!(await claimEmail(input.paymentIntentId, kind))) return false
+  if (!(await claimEmail(input.paymentIntentId, kind))) {
+    if (await isEmailSent(input.paymentIntentId, kind)) return false
+    // Another delivery holds the lease and has not finished. Throw so the
+    // webhook answers 500 and Stripe retries; a 200 here would end the
+    // retries with the email still unsent.
+    throw new Error(`The ${kind} email is in progress elsewhere; retry later`)
+  }
 
   const message = await build()
   const { error } = await resend.emails.send(
     { from: FROM, ...message },
     { idempotencyKey: `payment/${input.paymentIntentId}/${kind}` },
   )
-  if (error) throw new Error(`Resend rejected the ${kind} email: ${error.name}`)
+  if (error) {
+    throw new Error(
+      `Resend rejected the ${kind} email: ${error.name}: ${error.message}`,
+    )
+  }
 
   await markEmailSent(input.paymentIntentId, kind)
   return true
