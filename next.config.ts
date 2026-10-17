@@ -142,6 +142,7 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "'unsafe-inline'",
     "https://js.stripe.com",
+    "https://*.js.stripe.com",
     "https://vercel.live",
     "https://www.googletagmanager.com",
     "https://analytics.ahrefs.com",
@@ -154,6 +155,7 @@ const cspDirectives: Record<string, string[]> = {
     "blob:",
     "https://cdn.sanity.io",
     "https://*.stripe.com",
+    "https://*.link.com",
     "https://www.googletagmanager.com",
     "https://www.google-analytics.com",
     "https://tracker.metricool.com",
@@ -163,6 +165,8 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "https://cdn.sanity.io",
     "https://api.stripe.com",
+    "https://link.com",
+    "https://*.link.com",
     // The BotPoison browser SDK POSTs here for its proof-of-work challenge. It
     // only fires on form *submit*, which is why the report-only soak below —
     // a console sweep of page loads — never saw the violation it was causing.
@@ -175,7 +179,10 @@ const cspDirectives: Record<string, string[]> = {
   "frame-src": [
     "'self'",
     "https://js.stripe.com",
+    "https://*.js.stripe.com",
     "https://hooks.stripe.com",
+    "https://link.com",
+    "https://*.link.com",
     "https://vercel.live",
   ],
   "worker-src": ["'self'", "blob:"],
