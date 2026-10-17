@@ -47,10 +47,7 @@ james-portfolio/
 │   │   │   ├── contact/route.ts               # Contact form → Resend
 │   │   │   ├── project-planner/route.ts       # Project brief → Resend
 │   │   │   ├── create-payment-intent/route.ts # Create Stripe PaymentIntent
-│   │   │   ├── payment-details/
-│   │   │   │   └── [paymentIntentId]/route.ts # Retrieve payment after success
-│   │   │   ├── payment-email/route.ts         # Send payment confirmation email
-│   │   │   └── webhooks/stripe/route.ts       # Stripe webhook handler
+│   │   │   └── webhooks/stripe/route.ts       # Stripe webhook: record payment + send emails
 │   │   │
 │   │   └── studio/                   # Embedded Sanity Studio (bypasses middleware)
 │   │

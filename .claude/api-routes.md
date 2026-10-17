@@ -79,102 +79,30 @@ Note: `projectType` is accepted as an alias for `websiteType` for backwards comp
 
 Creates a Stripe PaymentIntent for the custom checkout.
 
-**Security**: none — public endpoint. Amount is validated client-side ($1–$10,000) before calling this route.
+**Security**: BotPoison (`_botpoison` in the body). Missing token `400`, failed check `403`.
 
-**Body**:
+**Body**: `{ amount, customerName, customerEmail, lang, attemptId?, _botpoison }`
 
-```json
-{
-  "amount": 15000,
-  "currency": "usd",
-  "customerName": "Jane Smith",
-  "customerEmail": "jane@example.com"
-}
-```
-
-- `amount` must be in **cents** (integer)
-- `currency` defaults to `"usd"`
+- `amount`: integer cents, 100 to 1,000,000. Anything else is `400`.
+- Any `currency` in the body is ignored; the PaymentIntent is always `usd`.
+- No `receipt_email` is set (our webhook email is the receipt).
 
 **Success** `200`: `{ "clientSecret": "pi_xxx_secret_xxx" }`  
-**Error** `500`: Stripe error
-
----
-
-### `GET /api/payment-details/[paymentIntentId]`
-
-Retrieves a PaymentIntent from Stripe by ID. Used on the payment-success page to display confirmation details.
-
-**Security**: none — only safe fields are returned (no sensitive payment method details).
-
-**Response** `200`:
-
-```json
-{
-  "success": true,
-  "paymentIntent": {
-    "id": "pi_xxx",
-    "amount": 15000,
-    "currency": "usd",
-    "status": "succeeded",
-    "created": 1700000000,
-    "description": "Payment from Jane Smith",
-    "receipt_email": "jane@example.com",
-    "metadata": {
-      "customer_name": "Jane Smith",
-      "customer_email": "jane@example.com"
-    }
-  }
-}
-```
-
----
-
-### `POST /api/payment-email`
-
-Sends a payment confirmation email to the client and to `james@dr-webstudio.com`.
-
-**Security**: none — called client-side immediately after `stripe.confirmPayment` succeeds.
-
-**Body**:
-
-```json
-{
-  "clientName": "Jane Smith",
-  "clientEmail": "jane@example.com",
-  "paymentAmount": "15000",
-  "transactionId": "pi_xxx",
-  "lang": "en"
-}
-```
-
-- `lang: "es"` → Spanish template; any other value → English template
-- `paymentAmount` is the raw cents string as received from Stripe
-
-**Success** `200`: `{ "message": "Email sent", "data": { ...resendResponse } }`  
-**Templates**: `src/emails/drwebstudioEmail.tsx` (EN), `src/emails/PaymentConfirmationEmailSpanish.tsx` (ES)
+**Errors**: `400` / `403` / `500` as `{ "error": "<code>" }` (generic, no details). Codes are listed in `.claude/stripe.md`.
 
 ---
 
 ### `POST /api/webhooks/stripe`
 
-Receives Stripe webhook events.
+Receives `payment_intent.succeeded` (the only event the endpoint is subscribed to) and sends the payment emails.
 
-**Security**: `stripe-signature` header verified with `STRIPE_WEBHOOK_SECRET`. Body must be read as raw text — never parse as JSON before passing to `constructEvent`.
+**Security**: `stripe-signature` verified with `STRIPE_WEBHOOK_SECRET` against the raw body. Bad or missing signature: `400`.
 
-**Handled events**:
-| Event | Current behaviour |
-|---|---|
-| `payment_intent.succeeded` | Logs payment ID |
-| `payment_intent.payment_failed` | Logs payment ID |
-| All others | Logged and ignored |
+**Behaviour**: re-fetches the PaymentIntent, ignores payments without `metadata.source = "custom-payment"` (`200`), inserts into Supabase `payments` if absent, then sends the customer and owner emails once each (claim, send with Resend idempotency key, mark sent). Any failure is `500 { "error": "processing_failed" }` and Stripe retries; duplicates send nothing. Full detail in `.claude/stripe.md`.
 
-**Response**: always `200 { received: true }` on success; `400 { error: "Invalid signature" }` on signature failure.
+**Local testing**: see `.claude/stripe.md` (use `--api-key` with a test key).
 
-**Local testing**:
-
-```bash
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
-```
+Removed routes: `/api/payment-email` and `/api/payment-details/[id]`.
 
 ---
 

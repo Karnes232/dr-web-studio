@@ -86,11 +86,9 @@ Full-stack Next.js 15 app with:
 All under `src/app/api/`:
 
 - `contact/` — contact form → Resend email (BotPoison verified)
-- `create-payment-intent/` — creates Stripe PaymentIntent
-- `payment-details/[paymentIntentId]/` — retrieves payment info post-checkout
-- `payment-email/` — sends payment confirmation email
+- `create-payment-intent/` — creates Stripe PaymentIntent (BotPoison verified, server-validated cents, always USD)
 - `project-planner/` — submits project brief → Resend email
-- `webhooks/stripe/` — handles Stripe webhook events (signature verified)
+- `webhooks/stripe/` — `payment_intent.succeeded`: records the payment in Supabase `payments` and sends the customer + owner emails once (signature verified, idempotent, 500 on failure so Stripe retries). The webhook is the source of truth; the browser sends no payment email
 
 ### Email Templates
 
@@ -144,6 +142,9 @@ STRIPE_WEBHOOK_SECRET=
 # Resend
 RESEND_API_KEY=
 
+# BotPoison (server secret; also verifies the checkout form)
+BOTPOISON_SECRET_KEY=
+
 # BotPoison
 NEXT_PUBLIC_BOTPOISON_PUBLIC_KEY=
 
@@ -195,10 +196,11 @@ Edit both `src/i18n/locales/en/translation.json` and `src/i18n/locales/es/transl
 ### Run Stripe webhooks locally
 
 ```bash
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+stripe listen --api-key "$STRIPE_SECRET_KEY" --latest --events payment_intent.succeeded \
+  --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-Copy the printed signing secret into `STRIPE_WEBHOOK_SECRET` in `.env.local`.
+Use a **test** key with `--api-key` (the CLI login may be the live account). Copy the printed signing secret into `STRIPE_WEBHOOK_SECRET`. See `.claude/stripe.md`. `.env.example` lists every variable by name.
 
 ### Format code
 
