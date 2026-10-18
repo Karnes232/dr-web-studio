@@ -12,22 +12,25 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
  * misrouted echo means the agent talks over a person, or answers one.
  */
 
-const { pending, runAgent, countKapsoMessage, store } = vi.hoisted(() => ({
-  pending: [] as Promise<unknown>[],
-  runAgent: vi.fn(),
-  countKapsoMessage: vi.fn(),
-  store: {
-    applyStatus: vi.fn(),
-    claimDelivery: vi.fn(),
-    createHandedOffConversation: vi.fn(),
-    findConversation: vi.fn(),
-    haveSentMessage: vi.fn(),
-    recordHumanOutbound: vi.fn(),
-    recordInbound: vi.fn(),
-    resolveTenant: vi.fn(),
-    upsertConversation: vi.fn(),
-  },
-}))
+const { pending, runAgent, notifyWaitingOnYou, countKapsoMessage, store } =
+  vi.hoisted(() => ({
+    pending: [] as Promise<unknown>[],
+    runAgent: vi.fn(),
+    notifyWaitingOnYou: vi.fn(),
+    countKapsoMessage: vi.fn(),
+    store: {
+      applyStatus: vi.fn(),
+      claimDelivery: vi.fn(),
+      createHandedOffConversation: vi.fn(),
+      findConversation: vi.fn(),
+      haveSentMessage: vi.fn(),
+      inboundCountSince: vi.fn(),
+      recordHumanOutbound: vi.fn(),
+      recordInbound: vi.fn(),
+      resolveTenant: vi.fn(),
+      upsertConversation: vi.fn(),
+    },
+  }))
 
 vi.mock("next/server", async importOriginal => {
   const actual = await importOriginal<typeof import("next/server")>()
@@ -42,6 +45,7 @@ vi.mock("next/server", async importOriginal => {
 
 vi.mock("@/lib/agent/run", () => ({
   runAgent: (...args: unknown[]) => runAgent(...args),
+  notifyWaitingOnYou: (...args: unknown[]) => notifyWaitingOnYou(...args),
 }))
 
 vi.mock("@/lib/agent/alerts", () => ({
@@ -129,11 +133,13 @@ beforeEach(() => {
   process.env.WHATSAPP_WEBHOOK_TOKEN = TOKEN
   for (const fn of Object.values(store)) fn.mockReset()
   runAgent.mockReset()
+  notifyWaitingOnYou.mockReset()
   countKapsoMessage.mockReset()
   store.claimDelivery.mockResolvedValue(true)
   store.resolveTenant.mockResolvedValue(grandbay)
   store.recordInbound.mockResolvedValue(true)
   store.haveSentMessage.mockResolvedValue(false)
+  store.inboundCountSince.mockResolvedValue(1)
 })
 
 afterEach(() => {
@@ -312,6 +318,113 @@ describe("inbound", () => {
     await settle()
     expect(store.recordInbound).not.toHaveBeenCalled()
     expect(runAgent).not.toHaveBeenCalled()
+  })
+})
+
+describe("a customer writes into a chat that is a person's", () => {
+  // DR: James took the chat over; the agent waits 12 hours. He is emailed
+  // once per quiet stretch, and only when he has been gone an hour — a live
+  // back-and-forth must not email him on every reply.
+  const MIN = 60 * 1000
+  const HOUR = 60 * MIN
+  const dr = {
+    tenant_id: "drwebstudio",
+    phone_number_id: "900000000000002",
+    resume_after_hours: 12,
+  }
+  const inbound = () =>
+    deliver(fresh(fixture("inbound-text.json")), "whatsapp.message.received")
+  const chat = (status: string, lastAgo: number | null) =>
+    conversation({
+      tenant_id: "drwebstudio",
+      status,
+      last_outbound_at:
+        lastAgo === null ? null : new Date(Date.now() - lastAgo).toISOString(),
+    })
+
+  beforeEach(() => {
+    store.resolveTenant.mockResolvedValue(dr)
+  })
+
+  it("does not email during a live chat (James replied a minute ago)", async () => {
+    // Isabel, 2026-10-17: she answered within a minute of every reply.
+    store.upsertConversation.mockResolvedValue(chat("handed-off", 1 * MIN))
+    await inbound()
+    await settle()
+    expect(runAgent).not.toHaveBeenCalled()
+    expect(notifyWaitingOnYou).not.toHaveBeenCalled()
+    expect(store.inboundCountSince).not.toHaveBeenCalled()
+  })
+
+  it("still does not email at 10 minutes", async () => {
+    store.upsertConversation.mockResolvedValue(chat("handed-off", 10 * MIN))
+    await inbound()
+    await settle()
+    expect(notifyWaitingOnYou).not.toHaveBeenCalled()
+  })
+
+  it("emails, without answering, once James has been quiet an hour", async () => {
+    const c = chat("handed-off", 2 * HOUR)
+    store.upsertConversation.mockResolvedValue(c)
+    await inbound()
+    await settle()
+    expect(runAgent).not.toHaveBeenCalled()
+    expect(notifyWaitingOnYou).toHaveBeenCalledTimes(1)
+
+    const last = new Date(String(c.last_outbound_at)).getTime()
+    // Counted from the end of the quiet hour, not from his last message.
+    expect(store.inboundCountSince).toHaveBeenCalledWith(
+      "conv-1",
+      new Date(last + HOUR).toISOString(),
+    )
+    const resumesAt = notifyWaitingOnYou.mock.calls[0][2] as Date
+    expect(resumesAt.getTime()).toBe(last + 12 * HOUR)
+  })
+
+  it("stays silent on the rest of the burst", async () => {
+    store.upsertConversation.mockResolvedValue(chat("handed-off", 2 * HOUR))
+    store.inboundCountSince.mockResolvedValue(2)
+    await inbound()
+    await settle()
+    expect(notifyWaitingOnYou).not.toHaveBeenCalled()
+  })
+
+  it("emails for an escalation nobody has answered yet", async () => {
+    store.upsertConversation.mockResolvedValue(chat("awaiting-human", 2 * HOUR))
+    await inbound()
+    await settle()
+    expect(notifyWaitingOnYou).toHaveBeenCalledTimes(1)
+  })
+
+  it("never emails about a closed chat", async () => {
+    store.upsertConversation.mockResolvedValue(chat("closed", 2 * HOUR))
+    await inbound()
+    await settle()
+    expect(notifyWaitingOnYou).not.toHaveBeenCalled()
+    expect(runAgent).not.toHaveBeenCalled()
+  })
+
+  it("answers, re-introducing itself, once 12 hours have passed", async () => {
+    store.upsertConversation.mockResolvedValue(chat("handed-off", 13 * HOUR))
+    await inbound()
+    await settle()
+    expect(runAgent).toHaveBeenCalledTimes(1)
+    expect(runAgent.mock.calls[0][3]).toEqual({ resumed: true })
+    expect(notifyWaitingOnYou).not.toHaveBeenCalled()
+  })
+
+  it("hands a never-resuming tenant's chat no resume time", async () => {
+    // Grand Bay: whether that email is sent at all is the profile's call.
+    store.resolveTenant.mockResolvedValue(grandbay)
+    store.upsertConversation.mockResolvedValue(
+      conversation({
+        status: "handed-off",
+        last_outbound_at: new Date(Date.now() - 2 * HOUR).toISOString(),
+      }),
+    )
+    await inbound()
+    await settle()
+    expect(notifyWaitingOnYou.mock.calls[0][2]).toBeNull()
   })
 })
 

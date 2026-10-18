@@ -5,7 +5,7 @@ import {
   normalizeKapsoWebhook,
   ORIGIN_BUSINESS_APP,
 } from "@/lib/whatsapp/provider"
-import { runAgent } from "@/lib/agent/run"
+import { notifyWaitingOnYou, runAgent } from "@/lib/agent/run"
 import { countKapsoMessage } from "@/lib/agent/alerts"
 import {
   applyStatus,
@@ -14,13 +14,17 @@ import {
   createHandedOffConversation,
   findConversation,
   haveSentMessage,
+  inboundCountSince,
   isPaused,
   isWindowOpen,
   recordHumanOutbound,
   recordInbound,
   resolveTenant,
   resumeAfterMsFor,
+  resumeWindowMs,
   upsertConversation,
+  type Conversation,
+  type Tenant,
 } from "@/lib/whatsapp/store"
 import type { InboundMessage, OutboundMessage } from "@/lib/whatsapp/types"
 
@@ -228,7 +232,10 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
       new Date(),
       resumeAfterMsFor(tenant),
     )
-    if (!turn.allowed) return
+    if (!turn.allowed) {
+      await tellWhoeverHasTheChat(tenant, conversation, message)
+      return
+    }
 
     if (!isWindowOpen({ last_inbound_at: message.timestamp.toISOString() })) {
       console.warn("whatsapp: window closed, skipping free-form reply")
@@ -255,6 +262,58 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
     // rejection here would be an unhandled promise, not a retry.
     console.error("whatsapp: handleInbound failed:", error)
   }
+}
+
+/**
+ * How long the business must have been quiet before a customer message in a
+ * chat that is a person's is worth an email.
+ *
+ * Without it, a live chat emails on every customer reply: each time the person
+ * answers, the customer's next message is "the first since the business
+ * spoke". Isabel's chat on 2026-10-17 would have sent five while James was
+ * typing. Within the hour he is assumed to still be in the conversation.
+ */
+const QUIET_BEFORE_EMAIL_MS = 60 * 60 * 1000
+
+/**
+ * The agent is staying quiet because the chat is a person's. Email them once
+ * per quiet stretch: only the first customer message at least an hour after
+ * the business last spoke counts. Whether this tenant wants these emails at
+ * all is the profile's call (see `notifyWhileHuman`), checked when the email
+ * is composed.
+ */
+async function tellWhoeverHasTheChat(
+  tenant: Tenant,
+  conversation: Conversation,
+  message: InboundMessage,
+) {
+  if (
+    conversation.status !== "handed-off" &&
+    conversation.status !== "awaiting-human"
+  ) {
+    return
+  }
+
+  const last = conversation.last_outbound_at
+    ? new Date(conversation.last_outbound_at).getTime()
+    : 0
+  const quietFrom = last + QUIET_BEFORE_EMAIL_MS
+  if (Date.now() < quietFrom) return // they are still in the conversation
+  if (
+    (await inboundCountSince(
+      conversation.id,
+      new Date(quietFrom).toISOString(),
+    )) !== 1
+  ) {
+    return
+  }
+
+  const window = resumeWindowMs(conversation.status, resumeAfterMsFor(tenant))
+  await notifyWaitingOnYou(
+    tenant,
+    message,
+    window === null ? null : new Date(last + window),
+  )
 }
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))

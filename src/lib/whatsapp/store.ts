@@ -421,6 +421,27 @@ export async function recordHumanOutbound(
 }
 
 /**
+ * How long the business must be silent before the agent may pick a paused
+ * conversation back up; `null` means never.
+ *
+ * `handedOffResumeMs` is the tenant's window for `handed-off` (a person
+ * spoke). `null` keeps those human for good. `awaiting-human` (the agent
+ * escalated, and staff may never have answered) never waits longer than a
+ * handed-off chat, and never longer than {@link RESUME_AFTER_MS} — so a
+ * customer nobody picked up is not left in permanent silence, and a tenant
+ * that resumes its own chats after 12 hours resumes escalations as fast.
+ */
+export function resumeWindowMs(
+  status: Conversation["status"],
+  handedOffResumeMs: number | null,
+): number | null {
+  if (status === "handed-off") return handedOffResumeMs
+  return handedOffResumeMs === null
+    ? RESUME_AFTER_MS
+    : Math.min(handedOffResumeMs, RESUME_AFTER_MS)
+}
+
+/**
  * The pure half of {@link claimTurn}: may the agent answer, and does the
  * conversation need reactivating first?
  *
@@ -438,10 +459,7 @@ export async function recordHumanOutbound(
  * `last_outbound_at`; treating that as epoch means it is immediately eligible,
  * which is right — nobody is mid-exchange with the customer.
  *
- * `handedOffResumeMs` applies only to `handed-off` (a person spoke). `null`
- * keeps those human for good. `awaiting-human` (the agent escalated, and staff
- * may never have answered) always uses {@link RESUME_AFTER_MS}, so a customer
- * nobody picked up is not left in permanent silence.
+ * The window itself comes from {@link resumeWindowMs}.
  */
 export function turnDecision(
   conversation: Pick<Conversation, "status" | "last_outbound_at">,
@@ -455,8 +473,7 @@ export function turnDecision(
     return { allowed: false, resumed: false, reactivate: false }
   }
 
-  const window =
-    conversation.status === "handed-off" ? handedOffResumeMs : RESUME_AFTER_MS
+  const window = resumeWindowMs(conversation.status, handedOffResumeMs)
   if (window === null) {
     return { allowed: false, resumed: false, reactivate: false }
   }
@@ -579,6 +596,37 @@ export async function loadHistory(
         m.direction === "inbound" ? ("user" as const) : ("assistant" as const),
       content: m.body as string,
     }))
+}
+
+/**
+ * How many customer messages this conversation has received since `sinceIso`,
+ * counting the one being handled; all of them when `sinceIso` is null.
+ *
+ * The caller picks the point in time. 1 then means this message is the first
+ * since it, which is the only one worth an email: a customer writes in
+ * bursts, and seven messages in a minute should not be seven emails. On error
+ * it returns 1 — an extra email beats a customer nobody hears about.
+ */
+export async function inboundCountSince(
+  conversationId: string,
+  sinceIso: string | null,
+): Promise<number> {
+  const supabase = getSupabase()
+  if (!supabase) return 1
+
+  let query = supabase
+    .from("messages")
+    .select("id", { count: "exact", head: true })
+    .eq("conversation_id", conversationId)
+    .eq("direction", "inbound")
+  if (sinceIso) query = query.gte("created_at", sinceIso)
+
+  const { count, error } = await query
+  if (error || count == null) {
+    console.error("inboundCountSince failed:", error)
+    return 1
+  }
+  return count
 }
 
 /** Link the conversation to the lead row it created, so later saves update it. */

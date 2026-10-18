@@ -4,9 +4,18 @@ vi.mock("@/lib/leads/saveLead", () => ({ saveLead: vi.fn() }))
 vi.mock("@/sanity/queries/agent/agentKnowledge", () => ({
   getAgentKnowledge: vi.fn(),
 }))
+vi.mock("@/sanity/queries/agent/grandbayKnowledge", () => ({
+  getGrandBayKnowledge: vi.fn(),
+}))
 
-import { escalationEmail, newLeadEmail } from "./notifications"
+import {
+  escalationEmail,
+  newLeadEmail,
+  resumedEmail,
+  waitingOnYouEmail,
+} from "./notifications"
 import { drwebstudio } from "./profiles/drwebstudio"
+import { grandbay } from "./profiles/grandbay"
 import type { Tenant } from "@/lib/whatsapp/store"
 
 const dr = {
@@ -141,5 +150,116 @@ describe("per-tenant envelope", () => {
     )
     expect(email?.replyTo).toBe("james@dr-webstudio.com")
     expect(email?.text).toContain("https://inbox.example.test")
+  })
+})
+
+describe("chat resumed email", () => {
+  const base = {
+    tenant: dr,
+    profile: drwebstudio,
+    customer: { waId: "18495551234", profileName: "Isabel" },
+    customerText: "Hola James, ya lo pensé",
+    agentReply: "¡Hola Isabel! Soy el asistente de DR Web Studio (no James)…",
+  }
+
+  it("says the agent took a chat the person had taken over", () => {
+    const email = resumedEmail({ ...base, previousStatus: "handed-off" })
+    expect(email?.to).toEqual(["james@dr-webstudio.com"])
+    expect(email?.subject).toBe("WhatsApp chat resumed: Isabel")
+    expect(email?.text).toContain("You had taken this chat over")
+    expect(email?.text).toContain("They wrote:\nHola James, ya lo pensé")
+    expect(email?.text).toContain("The agent replied:\n¡Hola Isabel!")
+    expect(email?.text).toContain(
+      "Reply as DR Web Studio:  https://inbox.kapso.ai",
+    )
+    expect(email?.text).toContain(
+      "Reply from your own phone:  https://wa.me/18495551234",
+    )
+  })
+
+  it("says the agent took back its own escalation", () => {
+    const email = resumedEmail({ ...base, previousStatus: "awaiting-human" })
+    expect(email?.text).toContain("The agent had handed this chat to you")
+  })
+
+  it("does not claim a reply that was never delivered", () => {
+    const email = resumedEmail({
+      ...base,
+      previousStatus: "handed-off",
+      agentReply: null,
+    })
+    expect(email?.text).toContain("The agent did not send a reply.")
+    expect(email?.text).not.toContain("The agent replied")
+  })
+
+  it("sends nothing without an escalation address", () => {
+    const none = { ...dr, escalation_email: null } as Tenant
+    expect(
+      resumedEmail({ ...base, tenant: none, previousStatus: "handed-off" }),
+    ).toBeNull()
+  })
+
+  it("carries no DR wording for Grand Bay", () => {
+    const gb = {
+      tenant_id: "grandbay",
+      business_name: "Grand Bay of the Sea",
+      display_phone: "+1 829-374-1344",
+      escalation_email: "dive@example.com",
+    } as unknown as Tenant
+    const email = resumedEmail({
+      ...base,
+      tenant: gb,
+      profile: grandbay,
+      customerText: "Do you have space tomorrow?",
+      agentReply: "Hi! I'm the dive center's assistant.",
+      previousStatus: "awaiting-human",
+    })
+    expect(email?.text).not.toMatch(/DR Web Studio|inbox\.kapso|James/)
+    expect(email?.text).toContain("Grand Bay of the Sea WhatsApp")
+  })
+})
+
+describe("chat is yours email", () => {
+  const base = {
+    tenant: dr,
+    profile: drwebstudio,
+    customer: { waId: "18495551234", profileName: "Isabel" },
+    customerText: "Hola James",
+  }
+
+  it("tells James when the agent would step back in, in DR time", () => {
+    const email = waitingOnYouEmail({
+      ...base,
+      // 16:46 UTC is 12:46 in Santo Domingo (UTC-4, no DST).
+      resumesAt: new Date("2026-10-18T16:46:00Z"),
+    })
+    expect(email?.subject).toBe("WhatsApp: Isabel wrote — chat is yours")
+    expect(email?.text).toContain("The agent is staying quiet.")
+    expect(email?.text).toContain("They wrote:\nHola James")
+    expect(email?.text).toContain(
+      "picks the chat back up from Oct 18, 2026, 12:46 PM (America/Santo_Domingo)",
+    )
+    expect(email?.text).toContain("reopened the 24-hour window")
+    expect(email?.text).toContain(
+      "Reply as DR Web Studio:  https://inbox.kapso.ai",
+    )
+  })
+
+  it("says so when the agent never takes the chat back", () => {
+    const email = waitingOnYouEmail({ ...base, resumesAt: null })
+    expect(email?.text).toContain("will not pick this chat back up on its own")
+  })
+
+  it("is never sent for a profile whose staff phones already ring", () => {
+    expect(
+      waitingOnYouEmail({ ...base, profile: grandbay, resumesAt: null }),
+    ).toBeNull()
+  })
+
+  it("sends nothing without an escalation address", () => {
+    const none = { ...dr, escalation_email: null } as Tenant
+    expect(
+      waitingOnYouEmail({ ...base, tenant: none, resumesAt: null }),
+    ).toBeNull()
   })
 })

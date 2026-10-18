@@ -122,3 +122,107 @@ export function escalationEmail(args: {
     ].join("\n"),
   }
 }
+
+/**
+ * The agent picked a quiet conversation back up: the business had been silent
+ * past the tenant's resume window and the customer wrote again.
+ *
+ * Sent after the agent's reply so the email can show what it said. The chat
+ * was a person's a moment ago, so they need to know it no longer is.
+ */
+export function resumedEmail(args: {
+  tenant: Tenant
+  profile: AgentProfile
+  customer: Customer
+  previousStatus: "handed-off" | "awaiting-human"
+  customerText: string
+  agentReply: string | null
+}): ComposedEmail | null {
+  const {
+    tenant,
+    profile,
+    customer,
+    previousStatus,
+    customerText,
+    agentReply,
+  } = args
+  const to = tenant.escalation_email
+  if (!to) return null
+
+  const byPhone = !isBusinessScopedUserId(customer.waId)
+  const contact = byPhone ? `+${customer.waId}` : `@${customer.waId}`
+
+  return {
+    ...envelope(tenant, to),
+    subject: `WhatsApp chat resumed: ${customer.profileName || customer.waId}`,
+    text: [
+      `${customer.profileName || "A customer"} wrote again, and the WhatsApp agent has picked the chat back up.`,
+      previousStatus === "handed-off"
+        ? "You had taken this chat over, and nobody had replied since."
+        : "The agent had handed this chat to you, and nobody had replied since.",
+      "",
+      `Customer: ${customer.profileName || "unknown"} (${contact})`,
+      "",
+      `They wrote:\n${customerText}`,
+      "",
+      agentReply
+        ? `The agent replied:\n${agentReply}`
+        : "The agent did not send a reply.",
+      "",
+      ...profile.replyLines(tenant, customer.waId, byPhone),
+      "",
+      "Reply yourself and the agent stands down again.",
+    ].join("\n"),
+  }
+}
+
+/**
+ * A customer wrote into a chat that is a person's to answer, after the
+ * business had been quiet for an hour, and the agent is staying quiet.
+ * Without this nothing tells anyone: the message just sits in the inbox.
+ *
+ * `resumesAt` is when the agent would take the chat back if nobody replies;
+ * `null` when it never will. Returns null for a profile that does not want
+ * these (`notifyWhileHuman`): its staff are notified by their own phones.
+ */
+export function waitingOnYouEmail(args: {
+  tenant: Tenant
+  profile: AgentProfile
+  customer: Customer
+  customerText: string
+  resumesAt: Date | null
+}): ComposedEmail | null {
+  const { tenant, profile, customer, customerText, resumesAt } = args
+  const to = tenant.escalation_email
+  if (!to || !profile.notifyWhileHuman) return null
+
+  const byPhone = !isBusinessScopedUserId(customer.waId)
+  const contact = byPhone ? `+${customer.waId}` : `@${customer.waId}`
+
+  const when = resumesAt
+    ? new Intl.DateTimeFormat("en-US", {
+        timeZone: profile.timezone,
+        dateStyle: "medium",
+        timeStyle: "short",
+      }).format(resumesAt)
+    : null
+
+  return {
+    ...envelope(tenant, to),
+    subject: `WhatsApp: ${customer.profileName || customer.waId} wrote — chat is yours`,
+    text: [
+      `${customer.profileName || "A customer"} wrote into a chat that is yours to answer. The agent is staying quiet.`,
+      "",
+      `Customer: ${customer.profileName || "unknown"} (${contact})`,
+      "",
+      `They wrote:\n${customerText}`,
+      "",
+      when
+        ? `If nobody replies, the agent picks the chat back up from ${when} (${profile.timezone}), the next time they write.`
+        : "The agent will not pick this chat back up on its own.",
+      "Their message reopened the 24-hour window, so you can reply freely.",
+      "",
+      ...profile.replyLines(tenant, customer.waId, byPhone),
+    ].join("\n"),
+  }
+}

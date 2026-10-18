@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest"
-import { turnDecision, resumeAfterMsFor, RESUME_AFTER_MS } from "./store"
+import {
+  turnDecision,
+  resumeAfterMsFor,
+  resumeWindowMs,
+  RESUME_AFTER_MS,
+} from "./store"
 
 /**
  * When a human takes over — or the agent escalates — the agent goes quiet and
@@ -32,8 +37,10 @@ describe("turnDecision", () => {
 
   it("is still quiet at four days", () => {
     expect(
-      turnDecision({ status: "handed-off", last_outbound_at: ago(4 * DAY) }, NOW)
-        .allowed,
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(4 * DAY) },
+        NOW,
+      ).allowed,
     ).toBe(false)
   })
 
@@ -144,6 +151,66 @@ describe("turnDecision — per-tenant resume window", () => {
         window,
       ).allowed,
     ).toBe(true)
+  })
+})
+
+describe("turnDecision — a 12-hour tenant", () => {
+  // DR: James takes a chat over, and if the customer writes again after he
+  // has been quiet for 12 hours, the agent picks it back up.
+  const HOUR = 60 * 60 * 1000
+  const window = resumeAfterMsFor({ resume_after_hours: 12 })
+
+  it("stays quiet at 11 hours", () => {
+    expect(
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(11 * HOUR) },
+        NOW,
+        window,
+      ).allowed,
+    ).toBe(false)
+  })
+
+  it("resumes a chat a person took over at 13 hours", () => {
+    expect(
+      turnDecision(
+        { status: "handed-off", last_outbound_at: ago(13 * HOUR) },
+        NOW,
+        window,
+      ),
+    ).toEqual({ allowed: true, resumed: true, reactivate: true })
+  })
+
+  it("resumes an escalation nobody answered just as fast", () => {
+    // An escalated chat must never wait longer than one a person spoke in.
+    expect(
+      turnDecision(
+        { status: "awaiting-human", last_outbound_at: ago(13 * HOUR) },
+        NOW,
+        window,
+      ).allowed,
+    ).toBe(true)
+    expect(
+      turnDecision(
+        { status: "awaiting-human", last_outbound_at: ago(11 * HOUR) },
+        NOW,
+        window,
+      ).allowed,
+    ).toBe(false)
+  })
+})
+
+describe("resumeWindowMs", () => {
+  it("gives handed-off chats the tenant's window, never included", () => {
+    expect(resumeWindowMs("handed-off", 12)).toBe(12)
+    expect(resumeWindowMs("handed-off", null)).toBeNull()
+  })
+
+  it("caps escalations at the tenant's window and at five days", () => {
+    expect(resumeWindowMs("awaiting-human", 12)).toBe(12)
+    expect(resumeWindowMs("awaiting-human", 10 * RESUME_AFTER_MS)).toBe(
+      RESUME_AFTER_MS,
+    )
+    expect(resumeWindowMs("awaiting-human", null)).toBe(RESUME_AFTER_MS)
   })
 })
 

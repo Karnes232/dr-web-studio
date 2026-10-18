@@ -80,4 +80,7 @@ export const grandbay: AgentProfile = {
           "  find the chat by their name in the chat list.",
         ]),
   ],
+
+  // Staff phones already ring for every message on the number.
+  notifyWhileHuman: false,
 }

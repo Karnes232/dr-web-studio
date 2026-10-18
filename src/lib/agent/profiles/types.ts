@@ -60,6 +60,13 @@ export interface AgentProfile {
 
   /** Escalation email: how to reply to this customer. */
   replyLines(tenant: Tenant, waId: string, byPhone: boolean): string[]
+
+  /**
+   * Email when a customer writes into a chat that is a person's to answer.
+   * Only for setups where nothing else would tell them: the Kapso inbox sends
+   * no push, but a coexistence number rings the staff phones on its own.
+   */
+  notifyWhileHuman: boolean
 }
 
 /** The knowledge for one request, already shaped for the prompt. */

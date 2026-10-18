@@ -81,6 +81,9 @@ export const drwebstudio: AgentProfile = {
           "  open in your own WhatsApp.",
         ]),
   ],
+
+  // Answered in the Kapso inbox, which notifies nobody.
+  notifyWhileHuman: true,
 }
 
 function inboxUrl(tenant: Tenant): string {

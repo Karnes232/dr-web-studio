@@ -7,7 +7,12 @@ import { countKapsoMessage, noteSendResult } from "./alerts"
 import { getLead } from "@/lib/leads/saveLead"
 import { profileFor } from "./profiles"
 import { drwebstudio } from "./profiles/drwebstudio"
-import { escalationEmail, newLeadEmail } from "./notifications"
+import {
+  escalationEmail,
+  newLeadEmail,
+  resumedEmail,
+  waitingOnYouEmail,
+} from "./notifications"
 import { sendText, WINDOW_EXPIRED } from "@/lib/whatsapp/send"
 import {
   linkLead,
@@ -111,6 +116,7 @@ export async function runAgent(
     return
   }
 
+  let delivered = false
   if (turn.reply) {
     const result = await sendText(
       tenant.phone_number_id,
@@ -119,6 +125,7 @@ export async function runAgent(
       { apiKeyEnv: tenant.kapso_api_key_env },
     )
     if (result.ok) {
+      delivered = true
       // First, before anything else: the takeover check races this write.
       await recordOutbound(tenant, conversation, result.messageId, turn.reply, {
         inputTokens: turn.usage.inputTokens,
@@ -142,6 +149,22 @@ export async function runAgent(
     // replies nobody receives. Kapso gives no reliable "out of messages" code,
     // so it counts failures rather than reading them.
     await noteSendResult(tenant, result)
+  }
+
+  // The chat was a person's until this message; tell them it no longer is.
+  // `conversation` is the row as read before `claimTurn` reactivated it, so
+  // its status is still the paused one.
+  if (
+    opts.resumed &&
+    (conversation.status === "handed-off" ||
+      conversation.status === "awaiting-human")
+  ) {
+    await notifyResumed(
+      tenant,
+      conversation.status,
+      message,
+      delivered ? turn.reply : null,
+    )
   }
 
   // Link the lead to the conversation.
@@ -230,6 +253,55 @@ async function notifyNewLead(
   } catch (error) {
     // Never let a notification failure affect the conversation.
     console.error("agent: new-lead email failed:", error)
+  }
+}
+
+/** Tell the business the agent took a paused chat back. */
+async function notifyResumed(
+  tenant: Tenant,
+  previousStatus: "handed-off" | "awaiting-human",
+  message: InboundMessage,
+  agentReply: string | null,
+): Promise<void> {
+  try {
+    const email = resumedEmail({
+      tenant,
+      profile: profileFor(tenant) ?? drwebstudio,
+      customer: message,
+      previousStatus,
+      customerText: message.text,
+      agentReply,
+    })
+    if (email) await resend.emails.send(email)
+  } catch (error) {
+    // Never let a notification failure affect the conversation.
+    console.error("agent: resumed email failed:", error)
+  }
+}
+
+/**
+ * Tell the business a customer wrote into a chat that is theirs to answer.
+ *
+ * Called from the webhook when the agent stays quiet. The caller decides
+ * whether this message deserves an email (the first since the last reply,
+ * on a profile that wants them); this only composes and sends.
+ */
+export async function notifyWaitingOnYou(
+  tenant: Tenant,
+  message: InboundMessage,
+  resumesAt: Date | null,
+): Promise<void> {
+  try {
+    const email = waitingOnYouEmail({
+      tenant,
+      profile: profileFor(tenant) ?? drwebstudio,
+      customer: message,
+      customerText: message.text,
+      resumesAt,
+    })
+    if (email) await resend.emails.send(email)
+  } catch (error) {
+    console.error("agent: waiting-on-you email failed:", error)
   }
 }
 
