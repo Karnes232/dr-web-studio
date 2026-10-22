@@ -578,7 +578,7 @@ export async function loadHistory(
 
   const { data, error } = await supabase
     .from("messages")
-    .select("direction, body, created_at")
+    .select("direction, body, authored_by, created_at")
     .eq("conversation_id", conversation.id)
     .order("created_at", { ascending: false })
     .limit(limit)
@@ -591,11 +591,30 @@ export async function loadHistory(
   return (data ?? [])
     .reverse()
     .filter(m => typeof m.body === "string" && m.body.trim())
-    .map(m => ({
-      role:
-        m.direction === "inbound" ? ("user" as const) : ("assistant" as const),
-      content: m.body as string,
-    }))
+    .map(toHistoryMessage)
+}
+
+/**
+ * Marks what a person on the team wrote, so the model can tell it from its
+ * own words. Every outbound row replays as `assistant`; without this, a
+ * proposal James typed reads to the model as something it said itself.
+ */
+export const TEAM_MARKER = "[team] "
+
+/** One stored message as the model (and the escalation transcript) sees it. */
+export function toHistoryMessage(m: {
+  direction: string
+  body: string | null
+  authored_by?: string | null
+}): { role: "user" | "assistant"; content: string } {
+  if (m.direction === "inbound") {
+    return { role: "user", content: m.body as string }
+  }
+  return {
+    role: "assistant",
+    content:
+      (m.authored_by === "human" ? TEAM_MARKER : "") + (m.body as string),
+  }
 }
 
 /**

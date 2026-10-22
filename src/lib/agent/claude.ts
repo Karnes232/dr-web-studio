@@ -2,7 +2,11 @@ import "server-only"
 import Anthropic from "@anthropic-ai/sdk"
 import { runTool, type ToolContext } from "./tools"
 import type { AgentProfile, CatalogueEntry } from "./profiles"
-import type { Conversation, Tenant } from "@/lib/whatsapp/store"
+import {
+  TEAM_MARKER,
+  type Conversation,
+  type Tenant,
+} from "@/lib/whatsapp/store"
 import { PRICE } from "./pricing"
 import { tenantSecret } from "@/lib/tenantEnv"
 
@@ -247,11 +251,19 @@ export async function runTurn(params: TurnParams): Promise<TurnResult> {
  * `messages` — after the cache breakpoint, so it can change every request
  * without touching the cached prefix.
  */
+/**
+ * Said whenever the history holds a message a person on the team wrote (see
+ * TEAM_MARKER): those replay as `assistant`, so without this the model takes
+ * a person's proposal for its own words.
+ */
+export const TEAM_NOTE = `Messages starting with ${TEAM_MARKER.trim()} were written by a person on the team, not by you: do not present their offers, prices or promises as your own, and never start your own messages with ${TEAM_MARKER.trim()}.`
+
 export function volatileContext(
   params: Pick<
     TurnParams,
     "profile" | "locale" | "profileName" | "resumed" | "conversation"
-  >,
+  > &
+    Partial<Pick<TurnParams, "history">>,
   at: Date = new Date(),
 ): string {
   const { profile } = params
@@ -272,6 +284,11 @@ export function volatileContext(
       : params.conversation.turn_count === 0
         ? "This is your FIRST reply in this conversation — introduce yourself as an assistant here."
         : "You have already introduced yourself; do not do it again.",
+    params.history?.some(
+      h => typeof h.content === "string" && h.content.startsWith(TEAM_MARKER),
+    )
+      ? TEAM_NOTE
+      : "",
     params.conversation.lead_id
       ? "A lead has already been saved for this conversation. Do NOT call save_lead again unless the service or the deadline materially changes."
       : "No lead saved yet for this conversation.",

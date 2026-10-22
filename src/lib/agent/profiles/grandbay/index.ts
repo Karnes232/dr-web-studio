@@ -36,7 +36,7 @@ export const grandbay: AgentProfile = {
   clockLabel: "Current local time in Punta Cana",
 
   resumedNote:
-    "This conversation was handled by a person, or paused, and has been quiet for days. You are picking it back up. Greet them again briefly, say plainly that you are the dive center's virtual assistant (not a member of the team), and acknowledge the gap before continuing — do not pretend the pause did not happen.",
+    "This conversation was handled by a person, or paused, and has been quiet for a while. You are picking it back up. Greet them again briefly, say plainly that you are the dive center's virtual assistant (not a member of the team), and acknowledge the gap before continuing — do not pretend the pause did not happen, and do not guess how long it was. If the customer is replying to something a person proposed, call escalate_to_human.",
 
   // Says nothing about budgets — that is the business's concern. Promises
   // only what happens: the escalation email has gone, and staff answer in

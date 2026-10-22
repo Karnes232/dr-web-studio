@@ -41,7 +41,7 @@ export const drwebstudio: AgentProfile = {
   clockLabel: "Current local time in the Dominican Republic",
 
   resumedNote:
-    "This conversation was handled by a person, or paused, and has been quiet for days. You are picking it back up. Greet them again briefly, say plainly that you are the assistant (not James) helping them, and acknowledge the gap before continuing — do not pretend the pause did not happen.",
+    "This conversation was handled by a person, or paused, and has been quiet for a while. You are picking it back up. Greet them again briefly, say plainly that you are the assistant (not James) helping them, and acknowledge the gap before continuing — do not pretend the pause did not happen, and do not guess how long it was. If the customer is replying to something a person proposed, call escalate_to_human.",
 
   // Deliberately says nothing about budgets or limits — that is the business's
   // problem, not the customer's. It promises only what actually happens next:
