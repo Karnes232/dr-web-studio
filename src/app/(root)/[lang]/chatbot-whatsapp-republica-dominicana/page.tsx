@@ -16,6 +16,7 @@ import { JsonLd } from "@/components/seo/JsonLd"
 import { getTranslations } from "next-intl/server"
 import { getLayoutSchemaData } from "@/sanity/queries/layout/generalLayout"
 import { waHref } from "@/lib/contact"
+import { SERVICE_PRICES } from "@/lib/schema/config"
 
 export const revalidate = 86400
 
@@ -55,6 +56,7 @@ export default async function ChatbotWhatsappRepublicaDominicana({
     ],
     serviceName: data.hero.headline,
     serviceDescription: data.hero.subheadline,
+    price: SERVICE_PRICES["ai-whatsapp-assistant"],
     faqItems: data.faq.items.map(i => ({
       question: i.question,
       answer: i.answerText,

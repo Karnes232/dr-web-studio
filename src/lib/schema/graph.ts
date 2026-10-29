@@ -312,6 +312,10 @@ export async function getLandingGraph(args: {
   crumbs: Crumb[]
   serviceName: string
   serviceDescription?: string
+  /** A landing page that sells one priced service, from SERVICE_PRICES. The
+   *  CMS structuredData can't carry it: its Service node is dropped in favour
+   *  of this auto-generated one. */
+  price?: { price: number; unit?: "MONTH"; setup?: number }
   faqItems?: { question: string; answer: string }[]
   /** CMS structuredData JSON string; falls back to the page's seo doc. */
   structuredData?: string
@@ -331,6 +335,7 @@ export async function getLandingGraph(args: {
         name: serviceName,
         description: serviceDescription,
         href,
+        ...args.price,
       }),
       webPageNode({
         lang,
