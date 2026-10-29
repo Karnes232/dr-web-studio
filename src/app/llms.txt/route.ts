@@ -175,6 +175,16 @@ const LANDING_PAGE_META: Record<
       es: "Mantenimiento y soporte continuo de sitios web.",
     },
   },
+  "chatbot-whatsapp-republica-dominicana": {
+    title: {
+      en: "AI WhatsApp Chatbot for Businesses in the Dominican Republic",
+      es: "Chatbot de WhatsApp con IA para Negocios en República Dominicana",
+    },
+    description: {
+      en: "An AI assistant that answers a business's WhatsApp 24/7 in Spanish and English: $300 one-time setup + $49/month.",
+      es: "Un asistente con IA que responde el WhatsApp de tu negocio 24/7 en español e inglés: $300 de instalación única + $49/mes.",
+    },
+  },
   "diseno-de-paginas-web-santo-domingo": {
     title: {
       en: "Web Design in Santo Domingo",

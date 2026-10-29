@@ -4,13 +4,14 @@ import React from "react"
 import PricingBadge from "./PricingBadge"
 import FeatureItem from "./FeatureItem"
 import PricingCTA from "./PricingCTA"
-import { Zap, ShoppingCart, Globe, Wrench } from "lucide-react"
+import { Zap, ShoppingCart, Globe, Wrench, MessageCircle } from "lucide-react"
 
 const iconMap = {
   Zap,
   ShoppingCart,
   Globe,
   Wrench,
+  MessageCircle,
 }
 
 const PricingCard = ({
@@ -34,7 +35,7 @@ const PricingCard = ({
   const Icon = iconMap[pricingData.iconName as keyof typeof iconMap] ?? Globe
   return (
     <div
-      className={`relative border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
+      className={`relative h-full border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
     >
       {pricingData.badge?.text && (
         <PricingBadge variant={pricingData.badge.variant}>
@@ -75,6 +76,13 @@ const PricingCard = ({
               </span>
             )}
           </div>
+          {/* A second figure that belongs with the price, e.g. a one-time
+              setup fee on a monthly plan. */}
+          {pricingData.priceNote?.[lang] && (
+            <p className="mt-1 text-sm text-gray-600 dark:text-slate-400">
+              {pricingData.priceNote[lang]}
+            </p>
+          )}
         </div>
       </div>
 

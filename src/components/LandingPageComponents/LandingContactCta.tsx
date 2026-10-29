@@ -13,6 +13,8 @@ interface LandingContactCtaProps {
     secondaryCtaHref?: string | null
   }
   lang: "en" | "es"
+  /** Prefilled wa.me text; defaults to the generic website enquiry. */
+  whatsappText?: string
 }
 
 /** Closing CTA for SEO landing pages: generic localized headline/subtext, the
@@ -21,6 +23,7 @@ interface LandingContactCtaProps {
 export async function LandingContactCta({
   hero,
   lang,
+  whatsappText,
 }: LandingContactCtaProps) {
   const [t, layout] = await Promise.all([
     getTranslations(),
@@ -46,7 +49,7 @@ export async function LandingContactCta({
           : "/en/project-planner")
       }
       whatsappNumber={whatsapp}
-      whatsappText={t("landingPage.whatsappMessage")}
+      whatsappText={whatsappText ?? t("landingPage.whatsappMessage")}
       phone={phone}
       lang={lang}
     />

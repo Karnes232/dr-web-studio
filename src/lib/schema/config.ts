@@ -95,7 +95,8 @@ export const PERSON_KNOWS_LANGUAGE = ["en", "es"]
  * Published base prices per service, keyed by the service's English slug.
  * Names/descriptions/URLs are pulled live from the `serviceItem` documents; only
  * the price lives here (kept out of the CMS to stay consistent with the public
- * pricing page). `unit: "MONTH"` marks recurring offers.
+ * pricing page). `unit: "MONTH"` marks recurring offers; `setup` is a one-time
+ * fee charged on top of a recurring price (the WhatsApp assistant).
  *
  * These duplicate `plannerService.basePrice` in Sanity and have drifted before.
  * This copy exists only for JSON-LD Offers. Anything that quotes a customer —
@@ -106,14 +107,17 @@ export const PERSON_KNOWS_LANGUAGE = ["en", "es"]
  * English ship with every site, so that page describes a capability rather than
  * selling one. No entry here means `serviceNode()` emits no Offer for it.
  */
-export const SERVICE_PRICES: Record<string, { price: number; unit?: "MONTH" }> =
-  {
-    "landing-pages": { price: 400 },
-    "website-migrations-or-rebuilds": { price: 600 },
-    "headless-cms-development": { price: 700 },
-    "e-commerce": { price: 900 },
-    "custom-business": { price: 950 },
-    "web-applications": { price: 1250 },
-    "api-integrations-and-automation": { price: 500 },
-    "ongoing-website-maintenance-and-support": { price: 95, unit: "MONTH" },
-  }
+export const SERVICE_PRICES: Record<
+  string,
+  { price: number; unit?: "MONTH"; setup?: number }
+> = {
+  "landing-pages": { price: 400 },
+  "website-migrations-or-rebuilds": { price: 600 },
+  "headless-cms-development": { price: 700 },
+  "e-commerce": { price: 900 },
+  "custom-business": { price: 950 },
+  "web-applications": { price: 1250 },
+  "api-integrations-and-automation": { price: 500 },
+  "ongoing-website-maintenance-and-support": { price: 95, unit: "MONTH" },
+  "ai-whatsapp-assistant": { price: 49, unit: "MONTH", setup: 300 },
+}

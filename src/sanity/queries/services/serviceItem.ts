@@ -96,6 +96,7 @@ const serviceItemIndividualQuery = `*[_type == "serviceItem" && (slug.current ==
     name,
   },
   timeline,
+  whatsappDemo,
   pageContent {
     mainDescription,
     beforeState,
@@ -233,6 +234,7 @@ export interface ServiceItemIndividual {
     }
   }[]
   timeline: string
+  whatsappDemo?: boolean
   pageContent: {
     mainDescription: {
       en: string

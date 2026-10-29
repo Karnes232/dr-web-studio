@@ -260,6 +260,8 @@ export async function getServiceGraph(args: {
   crumbs: Crumb[]
   price?: number
   unit?: "MONTH"
+  /** One-time fee on top of a recurring `price`. */
+  setup?: number
   /** Localized FAQ items; emits a FAQPage node when present. */
   faqItems?: { question: string; answer: string }[]
   /** CMS structuredData JSON string from the serviceItem's seo object. */
@@ -275,6 +277,7 @@ export async function getServiceGraph(args: {
     crumbs,
     price,
     unit,
+    setup,
   } = args
   const { layout, org } = await buildOrg(lang, { withOffers: true })
   return buildGraph(
@@ -282,7 +285,16 @@ export async function getServiceGraph(args: {
       personNode(layout, lang),
       org,
       webSiteNode(layout, lang),
-      serviceNode({ lang, name, serviceType, description, href, price, unit }),
+      serviceNode({
+        lang,
+        name,
+        serviceType,
+        description,
+        href,
+        price,
+        unit,
+        setup,
+      }),
       webPageNode({ lang, href, name, description, image, breadcrumb: true }),
       faqPageNode(args.faqItems ?? []),
       breadcrumbNode({ lang, pageHref: href, items: crumbs }),

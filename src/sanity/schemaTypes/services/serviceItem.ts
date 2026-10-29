@@ -103,6 +103,14 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "whatsappDemo",
+      title: "WhatsApp demo button",
+      type: "boolean",
+      description:
+        "Replace 'Start Project' with 'Try it now on WhatsApp', which opens DR's own WhatsApp: the live agent is the demo. For the AI WhatsApp Assistant service.",
+      initialValue: false,
+    }),
+    defineField({
       name: "benefits",
       title: "Benefits",
       type: "array",

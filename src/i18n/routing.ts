@@ -146,6 +146,10 @@ export const routing = defineRouting({
       en: "/website-maintenance-dominican-republic",
       es: "/mantenimiento-web-republica-dominicana",
     },
+    "/chatbot-whatsapp-republica-dominicana": {
+      en: "/whatsapp-chatbot-dominican-republic",
+      es: "/chatbot-whatsapp-republica-dominicana",
+    },
     "/guia-completa-desarrollo-web-moderno-negocios": {
       en: "/complete-guide-modern-web-development-business",
       es: "/guia-completa-desarrollo-web-moderno-negocios",

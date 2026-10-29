@@ -51,6 +51,8 @@ const labels = {
         "E-commerce Development — Dominican Republic",
       "mantenimiento-web-republica-dominicana":
         "Website Maintenance — Dominican Republic",
+      "chatbot-whatsapp-republica-dominicana":
+        "AI WhatsApp Chatbot — Dominican Republic",
       "diseno-de-paginas-web-santo-domingo": "Web Design — Santo Domingo",
       "diseno-de-paginas-web-santiago": "Web Design — Santiago",
       "diseno-de-paginas-web-la-romana": "Web Design — La Romana",
@@ -102,6 +104,8 @@ const labels = {
         "Desarrollo E-commerce — República Dominicana",
       "mantenimiento-web-republica-dominicana":
         "Mantenimiento Web — República Dominicana",
+      "chatbot-whatsapp-republica-dominicana":
+        "Chatbot de WhatsApp con IA — República Dominicana",
       "diseno-de-paginas-web-santo-domingo":
         "Diseño de Páginas Web — Santo Domingo",
       "diseno-de-paginas-web-santiago": "Diseño de Páginas Web — Santiago",

@@ -8,7 +8,7 @@ vi.mock("@/lib/urls", () => ({
     `/${lang}${typeof href === "string" ? href : ""}`,
 }))
 
-import { organizationNode } from "./nodes"
+import { offerCatalogNode, organizationNode, serviceNode } from "./nodes"
 import type { LayoutSchemaData } from "@/sanity/queries/layout/generalLayout"
 
 /**
@@ -71,5 +71,75 @@ describe("organizationNode phone handling", () => {
     expect(node.telephone).toBeUndefined()
     // The WhatsApp number still gets published, just never as the voice line.
     expect(contactPoints({ ...base, telephone: undefined })).toHaveLength(2)
+  })
+})
+
+/**
+ * The WhatsApp assistant is $49/month plus a $300 one-time setup. The two must
+ * stay separate specs: a single "$349" or a monthly "$300" would misstate the
+ * published price.
+ */
+describe("prices with a one-time setup fee", () => {
+  const href = {
+    pathname: "/our-services/[slug]" as const,
+    params: { slug: "ai-whatsapp-assistant" },
+  }
+
+  it("emits the monthly price and the setup fee as two specs", () => {
+    const offers = serviceNode({
+      lang: "es",
+      name: "Asistente de WhatsApp con IA",
+      href,
+      price: 49,
+      unit: "MONTH",
+      setup: 300,
+    }).offers as Record<string, unknown>
+    expect(offers.price).toBe("49")
+    expect(offers.priceSpecification).toEqual([
+      {
+        "@type": "UnitPriceSpecification",
+        price: "49",
+        priceCurrency: "USD",
+        unitText: "MONTH",
+      },
+      {
+        "@type": "PriceSpecification",
+        name: "Instalación (pago único)",
+        price: "300",
+        priceCurrency: "USD",
+      },
+    ])
+  })
+
+  it("leaves a plain recurring price as a single spec", () => {
+    const offers = serviceNode({
+      lang: "en",
+      name: "Maintenance",
+      href,
+      price: 95,
+      unit: "MONTH",
+    }).offers as Record<string, unknown>
+    expect(offers.priceSpecification).toEqual({
+      "@type": "UnitPriceSpecification",
+      price: "95",
+      priceCurrency: "USD",
+      unitText: "MONTH",
+    })
+  })
+
+  it("carries the setup fee into the OfferCatalog", () => {
+    const catalog = offerCatalogNode(
+      [
+        {
+          title: { en: "AI WhatsApp Assistant", es: "Asistente" },
+          slug: { current: "ai-whatsapp-assistant" },
+        },
+      ],
+      "en",
+    )
+    const [offer] = catalog.itemListElement as Record<string, unknown>[]
+    const specs = offer.priceSpecification as Record<string, unknown>[]
+    expect(specs.map(x => x.price)).toEqual(["49", "300"])
+    expect(specs[1].name).toBe("One-time setup fee")
   })
 })

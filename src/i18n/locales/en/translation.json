@@ -248,6 +248,11 @@
     "ctaSubtext": "Get a free, no-obligation quote — or message us on WhatsApp and get answers right away.",
     "whatsappMessage": "Hi! I'm interested in a website for my business."
   },
+  "whatsappDemo": {
+    "cta": "Try it now on WhatsApp",
+    "note": "You'll be chatting with our own AI assistant, the same kind we set up for your business.",
+    "message": "Hi! I want to try the AI WhatsApp assistant."
+  },
   "theme": {
     "toLight": "Switch to light mode",
     "toDark": "Switch to dark mode"

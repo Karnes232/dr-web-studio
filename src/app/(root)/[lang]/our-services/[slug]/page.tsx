@@ -12,6 +12,9 @@ import { getServiceItemsSitemap } from "@/sanity/queries/services/serviceItem"
 import { buildAlternates } from "@/lib/urls"
 import { slugPair, type LocalizedSlugDoc } from "@/lib/slugs"
 import SetLocalizedHrefs from "@/i18n/SetLocalizedHrefs"
+import { getTranslations } from "next-intl/server"
+import { getLayoutSchemaData } from "@/sanity/queries/layout/generalLayout"
+import { waHref } from "@/lib/contact"
 
 export const revalidate = 86400
 
@@ -132,6 +135,7 @@ export default async function IndividualService({ params }: PageProps) {
     image,
     price: priceInfo?.price,
     unit: priceInfo?.unit,
+    setup: priceInfo?.setup,
     faqItems: (service.pageContent?.faqs ?? []).map(f => ({
       question: f.question[lang],
       answer: f.answer[lang],
@@ -147,6 +151,19 @@ export default async function IndividualService({ params }: PageProps) {
     structuredData: service.seo?.structuredData?.[lang],
   })
 
+  // The AI WhatsApp Assistant sells itself: its primary CTA opens DR's own
+  // WhatsApp, where the live agent is the demo. The prefill is in the page's
+  // language so the agent answers in it from the first message.
+  let demoHref: string | undefined
+  if (service.whatsappDemo) {
+    const [layout, t] = await Promise.all([
+      getLayoutSchemaData(),
+      getTranslations({ locale: lang }),
+    ])
+    if (layout?.whatsapp)
+      demoHref = waHref(layout.whatsapp, t("whatsappDemo.message"))
+  }
+
   return (
     <>
       <SetLocalizedHrefs
@@ -158,6 +175,7 @@ export default async function IndividualService({ params }: PageProps) {
       <IndividualServiceContent
         // lang={lang}
         service={service}
+        demoHref={demoHref}
       />
     </>
   )

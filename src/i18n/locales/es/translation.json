@@ -248,6 +248,11 @@
     "ctaSubtext": "Recibe una cotización gratis y sin compromiso — o escríbenos por WhatsApp y obtén respuestas al instante.",
     "whatsappMessage": "¡Hola! Me interesa un sitio web para mi negocio."
   },
+  "whatsappDemo": {
+    "cta": "Pruébalo ahora por WhatsApp",
+    "note": "Vas a hablar con nuestro propio asistente con IA, igual al que instalamos en tu negocio.",
+    "message": "¡Hola! Quiero probar el asistente de WhatsApp con IA."
+  },
   "theme": {
     "toLight": "Cambiar a modo claro",
     "toDark": "Cambiar a modo oscuro"

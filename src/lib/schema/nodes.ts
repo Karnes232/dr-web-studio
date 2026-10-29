@@ -283,6 +283,7 @@ export function serviceNode(args: {
   href: Href
   price?: number
   unit?: "MONTH"
+  setup?: number
 }): JsonObject {
   const url = abs(args.href, args.lang)
   const node: JsonObject = {
@@ -302,21 +303,43 @@ export function serviceNode(args: {
       "@type": "Offer",
       price: String(args.price),
       priceCurrency: CURRENCIES_ACCEPTED,
-      ...(args.unit
-        ? { priceSpecification: offerUnit(args.price, args.unit) }
+      ...(args.unit || args.setup != null
+        ? {
+            priceSpecification: priceSpecification(
+              { price: args.price, unit: args.unit, setup: args.setup },
+              args.lang,
+            ),
+          }
         : {}),
     }
   }
   return node
 }
 
-function offerUnit(price: number, unit: "MONTH"): JsonObject {
-  return {
-    "@type": "UnitPriceSpecification",
-    price: String(price),
+/**
+ * One spec for a plain or recurring price. A recurring price with a one-time
+ * setup fee gets both, so the fee is never folded into the monthly figure.
+ */
+function priceSpecification(
+  info: { price: number; unit?: "MONTH"; setup?: number },
+  lang: Locale,
+): JsonObject | JsonObject[] {
+  const main: JsonObject = {
+    "@type": info.unit ? "UnitPriceSpecification" : "PriceSpecification",
+    price: String(info.price),
     priceCurrency: CURRENCIES_ACCEPTED,
-    unitText: unit,
+    ...(info.unit ? { unitText: info.unit } : {}),
   }
+  if (info.setup == null) return main
+  return [
+    main,
+    {
+      "@type": "PriceSpecification",
+      name: lang === "es" ? "Instalación (pago único)" : "One-time setup fee",
+      price: String(info.setup),
+      priceCurrency: CURRENCIES_ACCEPTED,
+    },
+  ]
 }
 
 /** Builds the OfferCatalog from the live `serviceItem` docs + the price map. */
@@ -353,14 +376,7 @@ export function offerCatalogNode(
       if (svc.description) itemOffered.description = svc.description[lang]
       const offer: JsonObject = { "@type": "Offer", itemOffered }
       if (priceInfo) {
-        offer.priceSpecification = {
-          "@type": priceInfo.unit
-            ? "UnitPriceSpecification"
-            : "PriceSpecification",
-          price: String(priceInfo.price),
-          priceCurrency: CURRENCIES_ACCEPTED,
-          ...(priceInfo.unit ? { unitText: priceInfo.unit } : {}),
-        }
+        offer.priceSpecification = priceSpecification(priceInfo, lang)
       }
       return offer
     }),

@@ -62,9 +62,16 @@ export default async function Pricing({ params }: PageProps) {
           />
 
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
+          {/* Wrap rather than a fixed grid so an odd card count centres its
+              last row instead of leaving a hole: 3 + 2 at xl for five cards. */}
+          <div className="flex flex-wrap justify-center gap-8 mb-16">
             {pricingData.map((pkg, index) => (
-              <PricingCard key={index} pricingData={pkg} lang={lang} />
+              <div
+                key={index}
+                className="w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]"
+              >
+                <PricingCard pricingData={pkg} lang={lang} />
+              </div>
             ))}
           </div>
 

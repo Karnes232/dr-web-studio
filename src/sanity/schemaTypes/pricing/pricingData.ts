@@ -41,6 +41,17 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "priceNote",
+      title: "Price Note",
+      description:
+        "Optional small line under the price, e.g. '+ $300 one-time setup'. The WhatsApp agent quotes it verbatim.",
+      type: "object",
+      fields: [
+        { name: "en", title: "English", type: "string" },
+        { name: "es", title: "Spanish", type: "string" },
+      ],
+    }),
+    defineField({
       name: "order",
       title: "Display Order",
       description: "Cards sort ascending by this number.",

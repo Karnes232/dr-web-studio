@@ -28,6 +28,10 @@ export interface PricingData {
     en?: string
     es?: string
   }
+  priceNote?: {
+    en?: string
+    es?: string
+  }
   order?: number
   description: {
     en: string
@@ -49,6 +53,7 @@ const pricingDataQuery = `*[_type == "pricingData"] | order(coalesce(order, 99) 
   title,
   price,
   pricePeriod,
+  priceNote,
   order,
   description,
   iconName,

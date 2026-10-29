@@ -11,8 +11,11 @@ import ServiceFAQ from "./ServiceFAQ"
 
 const IndividualServiceContent = ({
   service,
+  demoHref,
 }: {
   service: ServiceItemIndividual
+  /** wa.me link to DR's own agent; set only for the WhatsApp assistant. */
+  demoHref?: string
 }) => {
   const { currentLocale, getLocalizedPath } = useLocale()
 
@@ -28,6 +31,7 @@ const IndividualServiceContent = ({
           service.description[currentLocale as keyof typeof service.description]
         }
         timeline={service.timeline}
+        demoHref={demoHref}
       />
       <div className="">
         <ServiceOverview

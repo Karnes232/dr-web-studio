@@ -2,6 +2,8 @@
 import { useLocale } from "@/i18n/useLocale"
 import { ArrowRight, Award, MessageCircle, Clock, Star } from "lucide-react"
 import { Link } from "@/i18n/navigation"
+import { FaWhatsapp } from "react-icons/fa"
+import TrackedLink from "@/components/Analytics/TrackedLink"
 import React from "react"
 
 const ServiceHero = ({
@@ -9,13 +11,15 @@ const ServiceHero = ({
   categories,
   description,
   timeline,
+  demoHref,
 }: {
   title: string
   categories: string[]
   description: string
   timeline: string
+  demoHref?: string
 }) => {
-  const { t } = useLocale()
+  const { t, currentLocale } = useLocale()
   return (
     <section className="relative">
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
@@ -41,13 +45,32 @@ const ServiceHero = ({
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link
-                href="/project-planner"
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
-              >
-                {t("individualService.startProject")}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
+              {/* The planner can't price the WhatsApp assistant, so its page
+                  swaps "Start Project" for a chat with the live agent. */}
+              {demoHref ? (
+                <TrackedLink
+                  href={demoHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  event="contact_whatsapp"
+                  eventParams={{
+                    location: "service_demo",
+                    lang: currentLocale,
+                  }}
+                  className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
+                >
+                  <FaWhatsapp className="mr-2 w-5 h-5" />
+                  {t("whatsappDemo.cta")}
+                </TrackedLink>
+              ) : (
+                <Link
+                  href="/project-planner"
+                  className="bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 px-8 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center"
+                >
+                  {t("individualService.startProject")}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              )}
 
               <Link
                 href="/contact"
@@ -57,6 +80,12 @@ const ServiceHero = ({
                 {t("footer.contactUs")}
               </Link>
             </div>
+
+            {demoHref && (
+              <p className="text-sm text-gray-300 -mt-4 mb-8">
+                {t("whatsappDemo.note")}
+              </p>
+            )}
 
             {/* Quick Stats */}
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-sm text-gray-400">

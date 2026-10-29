@@ -57,13 +57,28 @@ export function LandingCta({
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-          <Link
-            href={primaryBtnHref}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-amber-500/20 hover:-translate-y-0.5"
-          >
-            {primaryBtn}
-            <ArrowRight size={18} />
-          </Link>
+          {/* Absolute href = the wa.me demo link reused from the hero. */}
+          {primaryBtnHref.startsWith("https://") ? (
+            <TrackedLink
+              href={primaryBtnHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              event="contact_whatsapp"
+              eventParams={{ location: "landing_cta_primary", lang }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-amber-500/20 hover:-translate-y-0.5"
+            >
+              {primaryBtn}
+              <ArrowRight size={18} />
+            </TrackedLink>
+          ) : (
+            <Link
+              href={primaryBtnHref}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-amber-500/20 hover:-translate-y-0.5"
+            >
+              {primaryBtn}
+              <ArrowRight size={18} />
+            </Link>
+          )}
           <Link
             href={secondaryBtnHref}
             className="inline-flex items-center gap-2 px-8 py-4 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl transition-all duration-200"

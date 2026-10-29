@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import TrackedLink from "@/components/Analytics/TrackedLink"
 import type { HeroData } from "./types"
 
 interface LandingHeroProps {
@@ -72,13 +73,29 @@ export function LandingHero({ data, lang }: LandingHeroProps) {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href={data.primaryCtaHref}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5"
-          >
-            {data.primaryCta}
-            <ArrowRight size={18} />
-          </Link>
+          {/* An absolute href is a wa.me demo link (the WhatsApp chatbot page):
+              it leaves the site, so it opens a new tab and is tracked. */}
+          {data.primaryCtaHref.startsWith("https://") ? (
+            <TrackedLink
+              href={data.primaryCtaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              event="contact_whatsapp"
+              eventParams={{ location: "landing_hero", lang }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5"
+            >
+              {data.primaryCta}
+              <ArrowRight size={18} />
+            </TrackedLink>
+          ) : (
+            <Link
+              href={data.primaryCtaHref}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5"
+            >
+              {data.primaryCta}
+              <ArrowRight size={18} />
+            </Link>
+          )}
           <Link
             href={data.secondaryCtaHref}
             className="inline-flex items-center gap-2 px-8 py-4 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"

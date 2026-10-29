@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Globe,
   ShoppingCart,
+  MessageCircle,
 } from "lucide-react"
 
 const ServiceCardHeader = ({ service }: { service: any }) => {
@@ -25,8 +26,10 @@ const ServiceCardHeader = ({ service }: { service: any }) => {
     ShieldCheck,
     Globe,
     ShoppingCart,
+    MessageCircle,
   }
-  const Icon = icons[service.iconName as keyof typeof icons]
+  // iconName is free text in the CMS; an unknown name must not crash the hub.
+  const Icon = icons[service.iconName as keyof typeof icons] ?? Globe
   return (
     <div className="bg-gradient-to-r from-orange-100 to-yellow-50 p-6 border-b border-slate-100 dark:border-slate-700">
       <div className="flex items-center justify-between mb-4">

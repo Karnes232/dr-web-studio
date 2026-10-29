@@ -64,6 +64,10 @@ export default defineType({
             value: "mantenimiento-web-republica-dominicana",
           },
           {
+            title: "Chatbot WhatsApp República Dominicana (Landing)",
+            value: "chatbot-whatsapp-republica-dominicana",
+          },
+          {
             title: "Diseño de Páginas Web Santo Domingo (Landing)",
             value: "diseno-de-paginas-web-santo-domingo",
           },

@@ -13,6 +13,7 @@ export const LANDING_PAGE_ROUTES = [
   "/desarrollo-web-punta-cana",
   "/desarrollo-ecommerce-republica-dominicana",
   "/mantenimiento-web-republica-dominicana",
+  "/chatbot-whatsapp-republica-dominicana",
   "/diseno-de-paginas-web-santo-domingo",
   "/diseno-de-paginas-web-santiago",
   "/diseno-de-paginas-web-la-romana",
