@@ -23,6 +23,22 @@ interface PageProps {
   }>
 }
 
+/**
+ * Centres a short last row. On the xl six-column grid (three cards a row) a
+ * row of two starts at column 2 and a row of one at column 3; on the md
+ * two-column grid an odd last card spans both columns at single-card width.
+ */
+function lastRowStart(index: number, count: number): string {
+  const classes: string[] = []
+  if (count % 3 === 2 && index === count - 2) classes.push("xl:col-start-2")
+  if (count % 3 === 1 && index === count - 1) classes.push("xl:col-start-3")
+  if (count % 2 === 1 && index === count - 1)
+    classes.push(
+      "md:col-span-2 md:w-[calc(50%-1rem)] md:justify-self-center xl:w-auto xl:justify-self-stretch",
+    )
+  return classes.join(" ")
+}
+
 export default async function Pricing({ params }: PageProps) {
   const { lang } = await params
   const [customSolutionCTA, pricingHeader, faqsHeader, faqs, pricingData] =
@@ -62,13 +78,14 @@ export default async function Pricing({ params }: PageProps) {
           />
 
           {/* Pricing Cards */}
-          {/* Wrap rather than a fixed grid so an odd card count centres its
-              last row instead of leaving a hole: 3 + 2 at xl for five cards. */}
-          <div className="flex flex-wrap justify-center gap-8 mb-16">
+          {/* Three per row on a six-column grid, each card two columns wide,
+              so a short last row can be centred (3 + 2 for five cards) while
+              auto-rows-fr keeps both rows the same height. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 xl:auto-rows-fr gap-8 mb-16">
             {pricingData.map((pkg, index) => (
               <div
                 key={index}
-                className="w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]"
+                className={`xl:col-span-2 ${lastRowStart(index, pricingData.length)}`}
               >
                 <PricingCard pricingData={pkg} lang={lang} />
               </div>

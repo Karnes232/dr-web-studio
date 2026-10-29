@@ -35,7 +35,7 @@ const PricingCard = ({
   const Icon = iconMap[pricingData.iconName as keyof typeof iconMap] ?? Globe
   return (
     <div
-      className={`relative h-full border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
+      className={`relative h-full flex flex-col border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${cardVariants[pricingData.variant as keyof typeof cardVariants]}`}
     >
       {pricingData.badge?.text && (
         <PricingBadge variant={pricingData.badge.variant}>
@@ -86,8 +86,8 @@ const PricingCard = ({
         </div>
       </div>
 
-      {/* Features */}
-      <div className="space-y-3 mb-8">
+      {/* Features — grows so every card's CTA sits on the same baseline */}
+      <div className="flex-1 space-y-3 mb-8">
         {pricingData.features.map((feature: any, index: number) => (
           <FeatureItem
             key={index}
