@@ -44,6 +44,8 @@ export interface AgentPackage {
   /** Bare number as a string, no symbol: "400", "95". */
   price: string | null
   pricePeriod: Localized | null
+  /** e.g. "+ $300 one-time setup"; quoted verbatim with the price. */
+  priceNote?: Localized | null
   variant: string | null
   /**
    * `included: false` means the feature is NOT in this package — the pricing
@@ -99,7 +101,7 @@ const agentKnowledgeQuery = `{
     "slug": slug.current, title, description, priceRange, timeline
   },
   "packages": *[_type == "pricingData"] | order(order asc) {
-    title, description, price, pricePeriod, variant,
+    title, description, price, pricePeriod, priceNote, variant,
     "features": features[]{ text, included }
   },
   "faqs": *[_type == "faq"] | order(order asc) { question, answer },

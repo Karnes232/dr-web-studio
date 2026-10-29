@@ -121,7 +121,17 @@ export function renderKnowledge(
   if (kb.packages.length) {
     const body = kb.packages
       .map(p => {
-        const price = `${money(p.price)}${p.pricePeriod ? p.pricePeriod.en : ""}`
+        // The period follows the conversation's language ("/mes", not "/mo",
+        // in Spanish); the bilingual block keeps the English suffix.
+        const period = !p.pricePeriod
+          ? ""
+          : lang === "both"
+            ? p.pricePeriod.en
+            : one(p.pricePeriod, lang)
+        // A second figure that belongs with the price, e.g. a one-time setup
+        // fee on a monthly plan. Rendered verbatim so it can be quoted.
+        const note = p.priceNote ? ` ${one(p.priceNote, lang)}` : ""
+        const price = `${money(p.price)}${period}${note}`
         const inc = (p.features ?? []).filter(f => f.included)
         const exc = (p.features ?? []).filter(f => !f.included)
         return [

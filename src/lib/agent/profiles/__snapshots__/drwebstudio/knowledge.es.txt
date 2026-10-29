@@ -24,7 +24,7 @@ Solución completa de tienda online para la venta de productos
 Includes: Catálogo de productos; Páginas de producto detalladas; Carrito de compras; Pago seguro; Correos de confirmación de pedido; Páginas optimizadas para SEO; Integración con Google Analytics; Sitio bilingüe — español e inglés incluidos
 NOT included: Estrategia de marca y diseño de logotipo; Software de Inventario
 
-### Plan de Mantenimiento — $95/mo
+### Plan de Mantenimiento — $95/mes
 Mantén tu sitio rápido, seguro y actualizado después del lanzamiento. Incluido gratis el primer año con cualquier plan de sitio web.
 Includes: Hosting administrado y certificado SSL; Actualizaciones de software y seguridad; Copias de seguridad automáticas; Monitoreo de rendimiento y disponibilidad; Actualizaciones de contenido mensuales; Soporte prioritario por WhatsApp
 

@@ -40,6 +40,31 @@ describe("renderKnowledge", () => {
     expect(rendered).toContain("$95")
   })
 
+  it("prices packages in the conversation's language, with any price note", () => {
+    // A monthly plan with a one-time setup fee: both figures must reach the
+    // agent verbatim, or it has nothing published to quote for the setup.
+    const withNote = {
+      ...kb,
+      packages: [
+        {
+          ...kb.packages[0],
+          price: "49",
+          pricePeriod: { en: "/mo", es: "/mes" },
+          priceNote: {
+            en: "+ $300 one-time setup",
+            es: "+ $300 de instalación (pago único)",
+          },
+        },
+      ],
+    }
+    expect(renderKnowledge(withNote, "es")).toContain(
+      "$49/mes + $300 de instalación (pago único)",
+    )
+    expect(renderKnowledge(withNote, "en")).toContain(
+      "$49/mo + $300 one-time setup",
+    )
+  })
+
   it("adds the unit to bare timeline ranges without mangling words", () => {
     expect(rendered).toMatch(/\d+-\d+ weeks/)
     // "Ongoing" must not become "Ongoing weeks".

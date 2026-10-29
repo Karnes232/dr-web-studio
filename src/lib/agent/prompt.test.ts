@@ -27,6 +27,17 @@ describe("systemPersona", () => {
     expect(prompt).toMatch(/MAY state the published package prices/)
   })
 
+  it("keeps the WhatsApp assistant's setup and monthly fees apart", () => {
+    // $300 + $49/mo must never become "$349 the first month": a total is a
+    // calculated price, which is exactly what the agent may not produce.
+    expect(prompt).toMatch(/Always state them as two figures/)
+    expect(prompt).toMatch(/Never add them together/)
+  })
+
+  it("links Spanish speakers to the planner page that exists", () => {
+    expect(prompt).toContain("/es/planificador-de-proyectos ")
+  })
+
   it("requires AI disclosure on the first reply and honesty if asked", () => {
     expect(prompt).toMatch(/FIRST reply/)
     expect(prompt).toMatch(/Never claim to be a human/)
