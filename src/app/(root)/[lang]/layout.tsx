@@ -3,7 +3,6 @@ import Footer from "@/components/Layout/FooterComponents/Footer"
 import { getCompanyInfo, getLogo } from "@/sanity/queries/layout/generalLayout"
 import { getServiceItemsLinks } from "@/sanity/queries/services/serviceItem"
 import { preconnect } from "react-dom"
-import { notFound } from "next/navigation"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import { routing } from "@/i18n/routing"
@@ -28,11 +27,10 @@ export default async function LangLayout({
   children,
   params,
 }: LangLayoutProps) {
-  const { lang } = await params
-  // Paths with a file extension skip the locale middleware, so a missing file
-  // such as /logo.png lands here with lang = "logo.png". Without this guard
-  // the page renders with no locale and crashes with a 500 instead of a 404.
-  if (!hasLocale(routing.locales, lang)) notFound()
+  const { lang: rawLang } = await params
+  const lang = hasLocale(routing.locales, rawLang)
+    ? rawLang
+    : routing.defaultLocale
 
   // Enables static rendering and scopes server-side translations to this locale.
   setRequestLocale(lang)

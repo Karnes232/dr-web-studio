@@ -24,6 +24,12 @@ import { getAllTestimonials } from "@/sanity/queries/home/testimonials"
 import { buildAlternates } from "@/lib/urls"
 
 export const revalidate = 86400
+// Only /es and /en exist. Paths with a file extension skip the locale
+// middleware, so a missing file such as /logo.png matches this route with
+// lang = "logo.png"; without this it renders and crashes with a 500, not a 404.
+// Set here and not in [lang]/layout.tsx: there it cascades to blog/[slug] and
+// our-services/[slug], and posts published after a build would 404.
+export const dynamicParams = false
 
 async function getContent() {
   const query = `*[_type == "heroSection"][0] {
