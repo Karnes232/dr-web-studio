@@ -7,13 +7,35 @@ interface LandingStatsBarProps {
   stats: StatItem[]
 }
 
+/**
+ * Splits a stat into prefix, number and suffix ("~500" → "~", 500, ""), or
+ * returns null when it isn't exactly one number ("24/7", "1–2"). Only a single
+ * number can count up; stripping the digits out of anything else and gluing
+ * the rest on the end turned "24/7" into "247/".
+ */
+export function parseStat(
+  value: string,
+): { prefix: string; num: number; decimals: number; suffix: string } | null {
+  const m = value.match(/^([^0-9]*)(\d+(?:\.(\d+))?)([^0-9]*)$/)
+  if (!m) return null
+  return {
+    prefix: m[1],
+    num: parseFloat(m[2]),
+    // As many places as the CMS wrote: "5.0" stays "5.0", not "5".
+    decimals: m[3]?.length ?? 0,
+    suffix: m[4],
+  }
+}
+
+const show = (prefix: string, n: number, decimals: number, suffix: string) =>
+  `${prefix}${n.toFixed(decimals)}${suffix}`
+
 /** Final, formatted display string for a stat value. Seeds SSR/hydration with
  *  the real number so it lands in the indexed HTML (not a literal "0"). */
-function formatStat(value: string): string {
-  const num = parseFloat(value.replace(/[^0-9.]/g, ""))
-  const suffix = value.replace(/[0-9.]/g, "")
-  if (isNaN(num)) return value
-  return `${num % 1 === 0 ? Math.round(num) : num.toFixed(1)}${suffix}`
+export function formatStat(value: string): string {
+  const stat = parseStat(value)
+  if (!stat) return value
+  return show(stat.prefix, stat.num, stat.decimals, stat.suffix)
 }
 
 function AnimatedStat({
@@ -55,14 +77,14 @@ function AnimatedStat({
 
   useEffect(() => {
     if (!isInView) return
-    const num = parseFloat(value.replace(/[^0-9.]/g, ""))
-    const suffix = value.replace(/[0-9.]/g, "")
-    if (isNaN(num)) {
+    const stat = parseStat(value)
+    if (!stat) {
       setDisplayed(value)
       return
     }
 
-    setDisplayed("0")
+    const { prefix, num, decimals, suffix } = stat
+    setDisplayed(show(prefix, 0, decimals, suffix))
     let start = 0
     const duration = 1800
     const step = 16
@@ -70,14 +92,10 @@ function AnimatedStat({
     const timer = setInterval(() => {
       start += increment
       if (start >= num) {
-        setDisplayed(
-          `${num % 1 === 0 ? Math.round(num) : num.toFixed(1)}${suffix}`,
-        )
+        setDisplayed(show(prefix, num, decimals, suffix))
         clearInterval(timer)
       } else {
-        setDisplayed(
-          `${num % 1 === 0 ? Math.round(start) : start.toFixed(1)}${suffix}`,
-        )
+        setDisplayed(show(prefix, start, decimals, suffix))
       }
     }, step)
     return () => clearInterval(timer)
