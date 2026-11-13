@@ -12,6 +12,7 @@ import {
   newLeadEmail,
   resumedEmail,
   waitingOnYouEmail,
+  type Customer,
 } from "./notifications"
 import { sendText, WINDOW_EXPIRED } from "@/lib/whatsapp/send"
 import {
@@ -306,6 +307,36 @@ export async function notifyWaitingOnYou(
 }
 
 /**
+ * The agent's reply cannot reach this customer, so the chat is a person's.
+ *
+ * Two callers, both in the webhook route: a customer in a country Meta will
+ * not let the API message (no reply is even attempted), and a reply Meta
+ * rejected after Kapso had accepted it. Either way the customer has heard
+ * nothing and, without this, neither had the staff.
+ *
+ * Never throws: it runs inside `after()`.
+ */
+export async function handOffUndeliverable(
+  tenant: Tenant,
+  conversation: Conversation,
+  customer: Customer,
+  reason: string,
+): Promise<void> {
+  try {
+    await escalate(
+      tenant,
+      conversation,
+      customer,
+      reason,
+      await loadHistory(conversation),
+      "high",
+    )
+  } catch (error) {
+    console.error("agent: undeliverable handoff failed:", error)
+  }
+}
+
+/**
  * Hand off to James: stop the agent, then tell him.
  *
  * The status flip comes first and is checked at the top of the webhook handler,
@@ -314,7 +345,7 @@ export async function notifyWaitingOnYou(
 async function escalate(
   tenant: Tenant,
   conversation: Conversation,
-  message: InboundMessage,
+  message: Customer,
   reason: string,
   history: { role: string; content: string }[],
   urgency = "normal",

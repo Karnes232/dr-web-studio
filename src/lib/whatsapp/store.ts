@@ -547,6 +547,60 @@ export async function applyStatus(status: StatusUpdate): Promise<void> {
 }
 
 /**
+ * The outbound message a status update is about, with its conversation.
+ *
+ * Exists for the `failed` status: a send Kapso accepted can still be rejected
+ * by Meta seconds later, and by then `sendText` has long since reported
+ * success. Looking the row up is the only way back to the chat it belonged to.
+ * Null when the row is unknown (not ours, or not written yet) or on any error:
+ * the caller alerts a person, and a wrong alert is worse than a missed one
+ * that the country pre-check already covers for the known case.
+ */
+export async function findOutboundMessage(
+  tenant: Tenant,
+  providerMessageId: string,
+): Promise<{
+  authoredBy: string | null
+  conversation: Conversation
+  profileName?: string
+} | null> {
+  const supabase = getSupabase()
+  if (!supabase) return null
+
+  const { data: message, error } = await supabase
+    .from("messages")
+    .select("conversation_id, authored_by")
+    .eq("tenant_id", tenant.tenant_id)
+    .eq("provider_message_id", providerMessageId)
+    .eq("direction", "outbound")
+    .maybeSingle()
+
+  if (error) {
+    console.error("findOutboundMessage failed:", error)
+    return null
+  }
+  if (!message) return null
+
+  const { data: conversation, error: conversationError } = await supabase
+    .from("conversations")
+    .select("*")
+    .eq("id", message.conversation_id)
+    .maybeSingle()
+
+  if (conversationError) {
+    console.error("findOutboundMessage failed:", conversationError)
+    return null
+  }
+  if (!conversation) return null
+
+  return {
+    authoredBy: message.authored_by ?? null,
+    conversation: conversation as Conversation,
+    profileName: conversation.profile_name ?? undefined,
+  }
+}
+
+/**
  * Is the 24-hour customer service window open?
  *
  * Neither Meta nor Kapso exposes this as a flag, so the app computes it from

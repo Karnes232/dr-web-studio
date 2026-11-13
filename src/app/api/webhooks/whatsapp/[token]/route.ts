@@ -5,7 +5,16 @@ import {
   normalizeKapsoWebhook,
   ORIGIN_BUSINESS_APP,
 } from "@/lib/whatsapp/provider"
-import { notifyWaitingOnYou, runAgent } from "@/lib/agent/run"
+import {
+  handOffUndeliverable,
+  notifyWaitingOnYou,
+  runAgent,
+} from "@/lib/agent/run"
+import { WINDOW_EXPIRED } from "@/lib/whatsapp/send"
+import {
+  COUNTRY_RESTRICTED,
+  isRestrictedDestination,
+} from "@/lib/whatsapp/restricted"
 import { countKapsoMessage } from "@/lib/agent/alerts"
 import {
   applyStatus,
@@ -13,6 +22,7 @@ import {
   claimDelivery,
   createHandedOffConversation,
   findConversation,
+  findOutboundMessage,
   haveSentMessage,
   inboundCountSince,
   isPaused,
@@ -26,7 +36,11 @@ import {
   type Conversation,
   type Tenant,
 } from "@/lib/whatsapp/store"
-import type { InboundMessage, OutboundMessage } from "@/lib/whatsapp/types"
+import type {
+  InboundMessage,
+  OutboundMessage,
+  StatusUpdate,
+} from "@/lib/whatsapp/types"
 
 /**
  * How long to wait before concluding that an outbound message we do not
@@ -181,6 +195,10 @@ export async function POST(
   if (event.kind === "status") {
     // Cheap enough to do inline.
     await applyStatus(event.status)
+    // A reply Meta rejected after Kapso accepted it: someone has to be told.
+    if (event.status.status === "failed") {
+      after(() => handleFailedReply(event.status))
+    }
     return NextResponse.json({ received: true })
   }
 
@@ -237,6 +255,25 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
       return
     }
 
+    // Meta will not deliver an API reply to this customer's country, so do not
+    // pay Claude for one. The chat goes to a person, who can answer from the
+    // phone. After `claimTurn`, so a chat staff already own stays as it was.
+    if (isRestrictedDestination(message.waId)) {
+      console.warn(
+        `whatsapp: ${conversation.id} is in a country the API cannot message, ` +
+          `handing to a person`,
+      )
+      await handOffUndeliverable(
+        tenant,
+        conversation,
+        message,
+        "WhatsApp does not let the assistant message numbers in Brazil or " +
+          "Indonesia, so this customer has had NO reply. Please answer them " +
+          "yourself from the phone.",
+      )
+      return
+    }
+
     if (!isWindowOpen({ last_inbound_at: message.timestamp.toISOString() })) {
       console.warn("whatsapp: window closed, skipping free-form reply")
       return
@@ -261,6 +298,56 @@ async function handleInbound(message: InboundMessage, raw: unknown) {
     // Never throw out of `after()` — the response has already been sent and a
     // rejection here would be an unhandled promise, not a retry.
     console.error("whatsapp: handleInbound failed:", error)
+  }
+}
+
+/**
+ * Meta rejected a message after Kapso had accepted it.
+ *
+ * `sendText` reported success long ago, so nothing downstream knows: the row
+ * is marked failed and, until this existed, that was all. For the agent's own
+ * reply in a chat it still holds, the customer is sitting in silence, so the
+ * chat is handed to a person with the reason Meta gave.
+ *
+ * Left alone: a message a person typed (they can see it failed on the phone),
+ * a closed 24-hour window (normal, the customer went quiet), and a chat that
+ * is already a person's — which also keeps a second failed reply in the same
+ * chat from sending a second email.
+ *
+ * The tenant-wide send breaker is deliberately not fed from here. A rejection
+ * like this is about one recipient, not about the line.
+ */
+async function handleFailedReply(status: StatusUpdate) {
+  try {
+    if (status.errorCode === WINDOW_EXPIRED) return
+
+    const tenant = await resolveTenant(status.phoneNumberId)
+    if (!tenant) return
+
+    const found = await findOutboundMessage(tenant, status.providerMessageId)
+    if (!found || found.authoredBy === "human") return
+    if (found.conversation.status !== "active") return
+
+    console.warn(
+      `whatsapp: reply ${status.providerMessageId} failed ` +
+        `(${status.errorCode ?? "no code"}), handing ${found.conversation.id} to a person`,
+    )
+    await handOffUndeliverable(
+      tenant,
+      found.conversation,
+      { waId: found.conversation.wa_id, profileName: found.profileName },
+      status.errorCode === COUNTRY_RESTRICTED
+        ? "WhatsApp does not let the assistant message numbers in this " +
+            "customer's country, so the reply below was NOT delivered. " +
+            "Please answer them yourself from the phone."
+        : "WhatsApp rejected the assistant's reply, so the reply below was " +
+            "NOT delivered " +
+            `(error ${status.errorCode ?? "unknown"}: ` +
+            `${status.errorMessage ?? "no detail"}). ` +
+            "Please answer this customer yourself.",
+    )
+  } catch (error) {
+    console.error("whatsapp: handleFailedReply failed:", error)
   }
 }
 

@@ -12,25 +12,33 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
  * misrouted echo means the agent talks over a person, or answers one.
  */
 
-const { pending, runAgent, notifyWaitingOnYou, countKapsoMessage, store } =
-  vi.hoisted(() => ({
-    pending: [] as Promise<unknown>[],
-    runAgent: vi.fn(),
-    notifyWaitingOnYou: vi.fn(),
-    countKapsoMessage: vi.fn(),
-    store: {
-      applyStatus: vi.fn(),
-      claimDelivery: vi.fn(),
-      createHandedOffConversation: vi.fn(),
-      findConversation: vi.fn(),
-      haveSentMessage: vi.fn(),
-      inboundCountSince: vi.fn(),
-      recordHumanOutbound: vi.fn(),
-      recordInbound: vi.fn(),
-      resolveTenant: vi.fn(),
-      upsertConversation: vi.fn(),
-    },
-  }))
+const {
+  pending,
+  runAgent,
+  notifyWaitingOnYou,
+  handOffUndeliverable,
+  countKapsoMessage,
+  store,
+} = vi.hoisted(() => ({
+  pending: [] as Promise<unknown>[],
+  runAgent: vi.fn(),
+  handOffUndeliverable: vi.fn(),
+  notifyWaitingOnYou: vi.fn(),
+  countKapsoMessage: vi.fn(),
+  store: {
+    applyStatus: vi.fn(),
+    claimDelivery: vi.fn(),
+    createHandedOffConversation: vi.fn(),
+    findConversation: vi.fn(),
+    findOutboundMessage: vi.fn(),
+    haveSentMessage: vi.fn(),
+    inboundCountSince: vi.fn(),
+    recordHumanOutbound: vi.fn(),
+    recordInbound: vi.fn(),
+    resolveTenant: vi.fn(),
+    upsertConversation: vi.fn(),
+  },
+}))
 
 vi.mock("next/server", async importOriginal => {
   const actual = await importOriginal<typeof import("next/server")>()
@@ -46,6 +54,7 @@ vi.mock("next/server", async importOriginal => {
 vi.mock("@/lib/agent/run", () => ({
   runAgent: (...args: unknown[]) => runAgent(...args),
   notifyWaitingOnYou: (...args: unknown[]) => notifyWaitingOnYou(...args),
+  handOffUndeliverable: (...args: unknown[]) => handOffUndeliverable(...args),
 }))
 
 vi.mock("@/lib/agent/alerts", () => ({
@@ -134,6 +143,7 @@ beforeEach(() => {
   for (const fn of Object.values(store)) fn.mockReset()
   runAgent.mockReset()
   notifyWaitingOnYou.mockReset()
+  handOffUndeliverable.mockReset()
   countKapsoMessage.mockReset()
   store.claimDelivery.mockResolvedValue(true)
   store.resolveTenant.mockResolvedValue(grandbay)
@@ -507,5 +517,122 @@ describe("Kapso allowance and the send breaker", () => {
     )
     await settle()
     expect(countKapsoMessage).not.toHaveBeenCalled()
+  })
+})
+
+/** An inbound fixture re-addressed as coming from another number. */
+function from(raw: string, waId: string): string {
+  return raw.replaceAll("18295551234", waId)
+}
+
+/** The failed-status fixture with Meta's error swapped. */
+function failedWith(code: number, message: string): string {
+  const body = JSON.parse(fixture("status-failed.json"))
+  const failed = body.message.kapso.statuses.at(-1)
+  failed.errors = [{ code, title: message, message }]
+  return JSON.stringify(body)
+}
+
+describe("a customer the API cannot message (Brazil, Indonesia)", () => {
+  it("hands a +55 chat to a person without paying for a reply", async () => {
+    const raw = fresh(fixture("inbound-text.json"))
+    expect(raw).toContain("18295551234") // the helper below relies on it
+    store.upsertConversation.mockResolvedValue(
+      conversation({ wa_id: "5549999990000" }),
+    )
+    await deliver(from(raw, "5549999990000"), "whatsapp.message.received")
+    await settle()
+    expect(runAgent).not.toHaveBeenCalled()
+    expect(handOffUndeliverable).toHaveBeenCalledTimes(1)
+    expect(handOffUndeliverable.mock.calls[0][3]).toMatch(/NO reply/)
+  })
+
+  it("leaves a chat staff already own exactly as before", async () => {
+    store.upsertConversation.mockResolvedValue(
+      conversation({
+        wa_id: "5549999990000",
+        status: "handed-off",
+        last_outbound_at: new Date(Date.now() - 60_000).toISOString(),
+      }),
+    )
+    await deliver(
+      from(fresh(fixture("inbound-text.json")), "5549999990000"),
+      "whatsapp.message.received",
+    )
+    await settle()
+    expect(runAgent).not.toHaveBeenCalled()
+    expect(handOffUndeliverable).not.toHaveBeenCalled()
+  })
+})
+
+describe("a reply Meta rejects after Kapso accepted it", () => {
+  const RESTRICTED =
+    "Business account is restricted from messaging users in this country."
+
+  it("hands the chat to a person, with the reason", async () => {
+    store.findOutboundMessage.mockResolvedValue({
+      authoredBy: null,
+      conversation: conversation({ wa_id: "5549999990000" }),
+      profileName: "Ana",
+    })
+    await deliver(failedWith(130497, RESTRICTED), "whatsapp.message.failed")
+    await settle()
+    expect(store.applyStatus).toHaveBeenCalledTimes(1)
+    expect(handOffUndeliverable).toHaveBeenCalledTimes(1)
+    const [, , customer, reason] = handOffUndeliverable.mock.calls[0]
+    expect(customer).toEqual({ waId: "5549999990000", profileName: "Ana" })
+    expect(reason).toMatch(/NOT delivered/)
+  })
+
+  it("quotes Meta's error for any other rejection", async () => {
+    store.findOutboundMessage.mockResolvedValue({
+      authoredBy: null,
+      conversation: conversation(),
+    })
+    await deliver(
+      failedWith(131026, "Message undeliverable"),
+      "whatsapp.message.failed",
+    )
+    await settle()
+    expect(handOffUndeliverable.mock.calls[0][3]).toMatch(
+      /131026: Message undeliverable/,
+    )
+  })
+
+  it("emails once when two replies in one chat fail", async () => {
+    store.findOutboundMessage.mockResolvedValue({
+      authoredBy: null,
+      conversation: conversation({ status: "awaiting-human" }),
+    })
+    await deliver(failedWith(130497, RESTRICTED), "whatsapp.message.failed")
+    await settle()
+    expect(handOffUndeliverable).not.toHaveBeenCalled()
+  })
+
+  it("ignores a message a person typed", async () => {
+    store.findOutboundMessage.mockResolvedValue({
+      authoredBy: "human",
+      conversation: conversation(),
+    })
+    await deliver(failedWith(130497, RESTRICTED), "whatsapp.message.failed")
+    await settle()
+    expect(handOffUndeliverable).not.toHaveBeenCalled()
+  })
+
+  it("ignores a closed 24-hour window", async () => {
+    store.findOutboundMessage.mockResolvedValue({
+      authoredBy: null,
+      conversation: conversation(),
+    })
+    await deliver(fixture("status-failed.json"), "whatsapp.message.failed")
+    await settle()
+    expect(handOffUndeliverable).not.toHaveBeenCalled()
+  })
+
+  it("ignores a message it has no record of", async () => {
+    store.findOutboundMessage.mockResolvedValue(null)
+    await deliver(failedWith(130497, RESTRICTED), "whatsapp.message.failed")
+    await settle()
+    expect(handOffUndeliverable).not.toHaveBeenCalled()
   })
 })
